@@ -1,8 +1,6 @@
 package net.deadlydiamond.legend_of_steve;
 
-import net.deadlydiamond.legend_of_steve.init.ZeldaEntityTypes;
-import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
-import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
+import net.deadlydiamond.legend_of_steve.init.*;
 import net.deadlydiamond.legend_of_steve.client.rendering.player.ZeldaPlayerRendering;
 import net.fabricmc.api.ModInitializer;
 
@@ -19,6 +17,7 @@ public class LegendOfSteve implements ModInitializer {
 	public void onInitialize() {
 		// Registry
 		ZeldaItems.register();
+		ZeldaBlocks.register();
 		ZeldaEntityTypes.register();
 		ZeldaSounds.register();
 		ZeldaPlayerRendering.register();

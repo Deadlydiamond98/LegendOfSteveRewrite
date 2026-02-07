@@ -9,6 +9,7 @@ import net.minecraft.util.Identifier;
 public class ZeldaSounds {
 
     public static final SoundEvent SECRET_ROOM_JINGLE = register("bomb.jingle");
+    public static final SoundEvent BOMB_HARVESTED = register("bomb.picked");
 
     public static SoundEvent register(String name) {
         Identifier id = LegendOfSteve.id(name);

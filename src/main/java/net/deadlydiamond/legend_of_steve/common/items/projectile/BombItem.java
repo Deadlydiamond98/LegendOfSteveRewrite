@@ -1,14 +1,16 @@
 package net.deadlydiamond.legend_of_steve.common.items.projectile;
 
+import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.entities.bomb.BombEntity;
+import net.deadlydiamond.legend_of_steve.common.entities.bomb.IZeldaBomb;
 import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
-import net.deadlydiamond98.koalalib.common.items.ILighter;
+import net.deadlydiamond98.koalalib.common.items.interaction.IAdvancedItemProperties;
 import net.deadlydiamond98.koalalib.common.items.vanillamodified.projectile.CustomProjectileItem;
 import net.deadlydiamond98.koalalib.init.KoalaLibSounds;
-import net.deadlydiamond98.koalalib.init.KoalaLibTags;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -26,7 +28,7 @@ import oshi.util.tuples.Pair;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BombItem extends CustomProjectileItem {
+public class BombItem extends CustomProjectileItem implements IAdvancedItemProperties, IZeldaBomb {
     public static final List<Pair<Item, Integer>> COOLDOWNS = new ArrayList<>();
     private final TagKey<Block> breakable;
     private final int fuse;
@@ -53,7 +55,6 @@ public class BombItem extends CustomProjectileItem {
     @Override
     public void initProjectile(Entity entity, ItemStack stack, LivingEntity owner, @Nullable Hand hand) {
         super.initProjectile(entity, stack, owner, hand);
-
 
         if (entity instanceof BombEntity bomb) {
             bomb.setVelocity(entity.getVelocity().multiply(0.6, 0.75, 0.6));
@@ -87,5 +88,24 @@ public class BombItem extends CustomProjectileItem {
             }
             bomb.setPrimed(true);
         }
+    }
+
+    @Override
+    public void onItemEntityTick(ItemEntity entity, ItemStack stack) {
+        IAdvancedItemProperties.super.onItemEntityTick(entity, stack);
+        if (entity.isInLava()) {
+            this.explode(entity);
+            entity.discard();
+        }
+    }
+
+//    @Override
+//    public TagKey<Block> getBreakableBlocks() {
+//        return this.breakable;
+//    }
+
+    @Override
+    public float getPower() {
+        return this.power;
     }
 }

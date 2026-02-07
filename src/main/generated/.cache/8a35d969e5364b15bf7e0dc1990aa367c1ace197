@@ -1,8 +1,9 @@
-// 1.20.1	2026-02-07T05:10:52.216820239	The Legend of Steve/Model Definitions
+// 1.20.1	2026-02-07T13:40:32.947386144	The Legend of Steve/Model Definitions
 1201c536521d9a3f88ef4cd240dc583d876345cf assets/legend_of_steve/models/item/bomb_flower.json
-e761a1ae0b0639c5e0968c9f75b2a527de3a4bf3 assets/legend_of_steve/models/item/red_tektite_shell.json
+7c41e5ecddfea3e4ab105db083e62478172a7730 assets/legend_of_steve/models/item/bomb_flower_seeds.json
 c4f2f6c0dcf913c7727e52f2e9e00f54839bbb06 assets/legend_of_steve/models/item/blue_tektite_chitin.json
+e761a1ae0b0639c5e0968c9f75b2a527de3a4bf3 assets/legend_of_steve/models/item/red_tektite_shell.json
 bd3c72241d1281258453b680e75afcf43ce4d997 assets/legend_of_steve/models/item/blue_tektite_shell.json
 22cb331281f8ce708d8f8fa4a2d1e006dad80020 assets/legend_of_steve/models/item/red_tektite_chitin.json
-43fc8c0b5e7b61f7d18e53d4bd31e65b37409a73 assets/legend_of_steve/models/item/super_bomb.json
 5379ee8b9a0fa99aa5e9a12beaf54448ab8dd18b assets/legend_of_steve/models/item/bomb.json
+43fc8c0b5e7b61f7d18e53d4bd31e65b37409a73 assets/legend_of_steve/models/item/super_bomb.json

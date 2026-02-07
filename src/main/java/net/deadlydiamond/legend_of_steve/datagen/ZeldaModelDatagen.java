@@ -20,7 +20,9 @@ public class ZeldaModelDatagen extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-        ItemModelDatagenUtil.registerGenerated(itemModelGenerator,
+        ItemModelDatagenUtil.registerGenerated(
+                itemModelGenerator,
+                ZeldaItems.BOMB_FLOWER_SEEDS,
                 ZeldaItems.BOMB,
                 ZeldaItems.SUPER_BOMB,
                 ZeldaItems.BOMB_FLOWER,

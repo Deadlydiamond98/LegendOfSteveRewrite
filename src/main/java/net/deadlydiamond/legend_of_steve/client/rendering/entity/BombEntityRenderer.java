@@ -48,7 +48,7 @@ public class BombEntityRenderer<T extends BombEntity> extends EntityRenderer<T> 
             scale += (-fuse + 3) * 0.35f;
         }
 
-        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-(entity.getYaw(tickDelta) + 90)));
+        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-(entity.getYaw() + 90)));
         matrices.scale(-scale, -scale, scale);
         matrices.translate(0.0f, -1.501f, 0.0f);
 

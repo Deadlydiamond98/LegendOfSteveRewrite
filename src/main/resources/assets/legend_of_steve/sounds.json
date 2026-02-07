@@ -1,0 +1,15 @@
+{
+  "bomb.picked": {
+    "sounds": [
+      "item/sweet_berries/pick_from_bush1",
+      "item/sweet_berries/pick_from_bush2"
+    ],
+    "subtitle": "subtitles.block.bomb_flower.pick_bomb"
+  },
+  "bomb.jingle": {
+    "sounds": [
+      "legend_of_steve:block/secret_jingle"
+    ],
+    "subtitle": "subtitles.block.secret_jingle"
+  }
+}

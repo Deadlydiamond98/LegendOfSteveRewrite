@@ -5,6 +5,7 @@ import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
+import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.blocks.IExplodedInteraction;
 import net.deadlydiamond.legend_of_steve.common.blocks.secret.ISecretBlock;
 import net.deadlydiamond.legend_of_steve.common.entities.bomb.IZeldaBomb;
@@ -35,16 +36,16 @@ public class ExplosionMixin implements IZeldaExplosion {
 
     // Used for Bomb Explosions & Explosion Interactions
 
-    @Unique private boolean zeldacraft$playJingle;
-    @Unique private boolean zeldacraft$zeldaBomb;
-    @Unique private Predicate<Block> zeldacraft$breakableBlocks;
+    @Unique private boolean legend_of_steve$playJingle;
+    @Unique private boolean legend_of_steve$zeldaBomb;
+    @Unique private Predicate<Block> legend_of_steve$breakableBlocks;
 
     @Shadow @Final private World world;
     @Shadow @Final @Nullable private Entity entity;
 
     @WrapOperation(method = "collectBlocksAndDamageEntities", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;getOtherEntities(Lnet/minecraft/entity/Entity;Lnet/minecraft/util/math/Box;)Ljava/util/List;"))
     private List<Entity> legend_of_steve$collectBlocksAndDamageEntities(World instance, Entity entity, Box box, Operation<List<Entity>> original) {
-        if (this.zeldacraft$zeldaBomb) {
+        if (this.legend_of_steve$zeldaBomb) {
             return List.of();
         }
         return original.call(instance, entity, box);
@@ -53,14 +54,14 @@ public class ExplosionMixin implements IZeldaExplosion {
     @Inject(method = "affectWorld",  at = @At(value = "INVOKE", target = "Lnet/minecraft/block/Block;onDestroyedByExplosion(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/world/explosion/Explosion;)V"))
     private void legend_of_steve$onDestroyedByExplosion(boolean particles, CallbackInfo ci, @Local Block block) {
         if (block instanceof ISecretBlock) {
-            this.zeldacraft$playJingle = true;
+            this.legend_of_steve$playJingle = true;
         }
     }
 
     @ModifyExpressionValue(method = "affectWorld", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;isAir()Z", ordinal = 0))
     private boolean legend_of_steve$isAir(boolean original, @Local Block block, @Local BlockPos blockPos) {
-        if (this.zeldacraft$zeldaBomb) {
-            boolean validBlock = !this.zeldacraft$breakableBlocks.test(block);
+        if (this.legend_of_steve$zeldaBomb) {
+            boolean validBlock = !this.legend_of_steve$breakableBlocks.test(block);
             if (block instanceof IExplodedInteraction interaction) {
                 interaction.onBombExploded(this.world, blockPos, (Explosion) (Object) this);
             }
@@ -73,7 +74,7 @@ public class ExplosionMixin implements IZeldaExplosion {
 
     @Inject(method = "affectWorld",  at = @At("TAIL"))
     private void legend_of_steve$affectWorld(boolean particles, CallbackInfo ci) {
-        if (this.zeldacraft$playJingle) {
+        if (this.legend_of_steve$playJingle) {
             this.world.playSound(null, this.entity.getBlockPos(), ZeldaSounds.SECRET_ROOM_JINGLE, SoundCategory.BLOCKS);
         }
     }
@@ -88,7 +89,7 @@ public class ExplosionMixin implements IZeldaExplosion {
 
     @Override
     public void legend_of_steve$setZeldaBombOrigin(boolean bl, Predicate<Block> tag) {
-        this.zeldacraft$zeldaBomb = bl;
-        this.zeldacraft$breakableBlocks = tag;
+        this.legend_of_steve$zeldaBomb = bl;
+        this.legend_of_steve$breakableBlocks = tag;
     }
 }

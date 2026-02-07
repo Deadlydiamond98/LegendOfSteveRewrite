@@ -1,8 +1,9 @@
 package net.deadlydiamond.legend_of_steve.common.entities.bomb;
 
+import net.deadlydiamond.legend_of_steve.LegendOfSteve;
+import net.deadlydiamond.legend_of_steve.common.entities.temp.TempPhysicsItemProjectile;
 import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
 import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
-import net.deadlydiamond98.koalalib.common.entity.PhysicsItemProjectile;
 import net.deadlydiamond98.koalalib.util.KoalaNbtHelper;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -28,7 +29,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
 
-public abstract class AbstractBombEntity extends PhysicsItemProjectile implements IZeldaBomb {
+public abstract class AbstractBombEntity extends TempPhysicsItemProjectile implements IZeldaBomb {
     private static final TrackedData<Boolean> PRIMED = DataTracker.registerData(AbstractBombEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private static final TrackedData<Integer> MAX_FUSE = DataTracker.registerData(AbstractBombEntity.class, TrackedDataHandlerRegistry.INTEGER);
     private static final TrackedData<Integer> FUSE = DataTracker.registerData(AbstractBombEntity.class, TrackedDataHandlerRegistry.INTEGER);
@@ -40,7 +41,8 @@ public abstract class AbstractBombEntity extends PhysicsItemProjectile implement
         super(entityType, world);
         this.setPower(3);
         this.setBreakableBlocks(ZeldaTags.BOMB_BREAKABLE);
-        this.setYaw(360);
+
+        this.setYaw(360); // This prevents weird rotation issue when throwing
 
         this.setGravity(0.05f);
         this.setDrag(0.95f);
@@ -51,13 +53,22 @@ public abstract class AbstractBombEntity extends PhysicsItemProjectile implement
     @Override
     public ActionResult interact(PlayerEntity player, Hand hand) {
         ItemStack stack = player.getStackInHand(hand);
-        if (stack.isOf(Items.FLINT_AND_STEEL) && !isPrimed()) {
-            this.setPrimed(true);
-            if (!getWorld().isClient) {
-                player.playSound(SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.PLAYERS, 0.4f, 0.8f);
-                player.playSound(SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.NEUTRAL, 0.4f, 0.8f);
+        // TODO: MAKE PRIMING TAKE MORE THAN FLINT & STEEL
+        if (!isPrimed()) {
+            if (stack.isEmpty() && player.isSneaking()) {
+                if (!getWorld().isClient) {
+                    player.playSound(SoundEvents.BLOCK_SNIFFER_EGG_PLOP, SoundCategory.NEUTRAL, 0.4f, 0.8f);
+                }
+                this.despawn();
+                return ActionResult.SUCCESS;
+            } else if (stack.isOf(Items.FLINT_AND_STEEL)) {
+                if (!getWorld().isClient) {
+                    player.playSound(SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.PLAYERS, 0.4f, 0.8f);
+                    player.playSound(SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.NEUTRAL, 0.4f, 0.8f);
+                    this.setPrimed(true);
+                }
+                return ActionResult.SUCCESS;
             }
-            return ActionResult.SUCCESS;
         }
         return super.interact(player, hand);
     }
@@ -69,7 +80,7 @@ public abstract class AbstractBombEntity extends PhysicsItemProjectile implement
 
     @Override
     protected void tickDespawn() {
-        int fuse = isOnFire() ? 0 : this.getFuse();
+        int fuse = this.getFuse();
         boolean lit = isPrimed();
 
         if (lit) {
@@ -77,19 +88,30 @@ public abstract class AbstractBombEntity extends PhysicsItemProjectile implement
             setLitTime(getLitTime() + 1);
         } else {
             if (!this.getWorld().isClient && this.age >= 6000) {
-                getWorld().spawnEntity(new ItemEntity(getWorld(), this.getX(), this.getY(), this.getZ(), getDefaultItem().getDefaultStack()));
-                this.discard();
+                despawn();
+            }
+
+            if (isOnFire() && fuse > 0) {
+                setPrimed(true);
+                setMaxFuse(getMaxFuse() / 2);
+                fuse = getMaxFuse();
+                this.playSound(SoundEvents.ENTITY_TNT_PRIMED, 0.4f, 0.8f);
             }
         }
 
         this.setFuse(fuse);
 
         if (fuse <= 0) {
-            this.discard();
             this.explode(this);
+            this.discard();
         } else if (this.getWorld().isClient && lit && getFuseBurnTimer(0) <= -2) {
             this.getWorld().addParticle(ParticleTypes.SMOKE, this.getX(), this.getY() + 0.5, this.getZ(), 0.0, 0.0, 0.0);
         }
+    }
+
+    public void despawn() {
+        getWorld().spawnEntity(new ItemEntity(getWorld(), this.getX(), this.getY(), this.getZ(), this.getStack()));
+        this.discard();
     }
 
     public float getFuseBurnTimer(float tickDelta) {
@@ -98,9 +120,11 @@ public abstract class AbstractBombEntity extends PhysicsItemProjectile implement
 
     @Override
     public boolean damage(DamageSource source, float amount) {
-        if (source.isIn(DamageTypeTags.IS_EXPLOSION) && !isPrimed()) {
-            triggerChainExplode();
-            return true;
+        if (!isPrimed()) {
+            if (source.isIn(DamageTypeTags.IS_EXPLOSION)) {
+                triggerChainExplode();
+                return true;
+            }
         }
         return super.damage(source, amount);
     }
@@ -115,6 +139,11 @@ public abstract class AbstractBombEntity extends PhysicsItemProjectile implement
     @Override
     protected Item getDefaultItem() {
         return ZeldaItems.BOMB;
+    }
+
+    @Override
+    public boolean doesRenderOnFire() {
+        return false;
     }
 
     public void writeCustomDataToNbt(NbtCompound nbt) {

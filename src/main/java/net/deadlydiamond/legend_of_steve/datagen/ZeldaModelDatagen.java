@@ -1,0 +1,33 @@
+package net.deadlydiamond.legend_of_steve.datagen;
+
+import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
+import net.deadlydiamond98.koalalib.util.datagen.ItemModelDatagenUtil;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
+import net.minecraft.data.client.BlockStateModelGenerator;
+import net.minecraft.data.client.ItemModelGenerator;
+
+public class ZeldaModelDatagen extends FabricModelProvider {
+
+    public ZeldaModelDatagen(FabricDataOutput output) {
+        super(output);
+    }
+
+    @Override
+    public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+
+    }
+
+    @Override
+    public void generateItemModels(ItemModelGenerator itemModelGenerator) {
+        ItemModelDatagenUtil.registerGenerated(itemModelGenerator,
+                ZeldaItems.BOMB,
+                ZeldaItems.SUPER_BOMB,
+                ZeldaItems.BOMB_FLOWER,
+                ZeldaItems.BLUE_TEKTITE_CHITIN,
+                ZeldaItems.BLUE_TEKTITE_SHELL,
+                ZeldaItems.RED_TEKTITE_CHITIN,
+                ZeldaItems.RED_TEKTITE_SHELL
+        );
+    }
+}

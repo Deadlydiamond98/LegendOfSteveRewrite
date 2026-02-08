@@ -80,7 +80,7 @@ public abstract class AbstractBombEntity extends TempPhysicsItemProjectile imple
 
     @Override
     protected void tickDespawn() {
-        int fuse = this.getFuse();
+        int fuse = this.isInLava() ? 0 : this.getFuse();
         boolean lit = isPrimed();
 
         if (lit) {

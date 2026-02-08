@@ -2,8 +2,9 @@ package net.deadlydiamond.legend_of_steve.client.rendering.entity;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.client.models.entity.BombEntityModel;
-import net.deadlydiamond.legend_of_steve.client.models.entity.BombEntitySlimeModel;
+import net.deadlydiamond.legend_of_steve.client.models.entity.BombOverlayModel;
 import net.deadlydiamond.legend_of_steve.client.rendering.IBombRenderer;
+import net.deadlydiamond.legend_of_steve.common.entities.bomb.AbstractBombEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.bomb.BombEntity;
 import net.deadlydiamond.legend_of_steve.init.client.ZeldaRenderLayers;
 import net.minecraft.client.render.OverlayTexture;
@@ -20,20 +21,15 @@ import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
 public class BombEntityRenderer<T extends BombEntity> extends EntityRenderer<T> implements IBombRenderer {
-    private static final Identifier FALLBACK = LegendOfSteve.id("textures/entity/bomb/bomb.png");
     private static final Identifier LOW_FUSE_OVERLAY = LegendOfSteve.id("textures/entity/bomb/fuse_overlay.png");
 
-    private static final Identifier SLIME = LegendOfSteve.id("textures/entity/bomb/slime_overlay.png");
-    private static final Identifier HONEY = LegendOfSteve.id("textures/entity/bomb/honey_overlay.png");
-
-
-    private final BombEntityModel<BombEntity> entityModel;
-    private final BombEntitySlimeModel<BombEntity> slimeOverlay;
+    private final BombEntityModel<T> model;
+    private final BombOverlayModel<T> overlay;
 
     public BombEntityRenderer(EntityRendererFactory.Context ctx) {
         super(ctx);
-        this.entityModel = new BombEntityModel<>(ctx.getPart(BombEntityModel.LAYER_LOCATION));
-        this.slimeOverlay = new BombEntitySlimeModel<>(ctx.getPart(BombEntitySlimeModel.LAYER_LOCATION));
+        this.model = new BombEntityModel<>(ctx.getPart(BombEntityModel.LAYER_LOCATION));
+        this.overlay = new BombOverlayModel<>(ctx.getPart(BombOverlayModel.LAYER_LOCATION));
     }
 
     @Override
@@ -53,12 +49,22 @@ public class BombEntityRenderer<T extends BombEntity> extends EntityRenderer<T> 
         matrices.translate(0.0f, -1.501f, 0.0f);
 
         // Main Model //////////////////////////////////////////////////////////////////////////////////////////////////
-        VertexConsumer vertexConsumer = vertexConsumers.getBuffer(this.entityModel.getLayer(getTexture(entity)));
-        this.entityModel.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
+        VertexConsumer vertexConsumer = vertexConsumers.getBuffer(this.model.getLayer(getTexture(entity)));
+        this.model.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
         if (entity.isPrimed()) {
             renderFuse(entity, tickDelta, matrices, vertexConsumers, light);
         } else {
-            this.entityModel.renderFuse(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
+            this.model.renderFuse(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
+        }
+
+        // Overlay Model ///////////////////////////////////////////////////////////////////////////////////////////////
+        if (entity.isCharged()) {
+            matrices.push();
+            matrices.translate(0, -0.25 - 0.0625, 0);
+            matrices.scale(1.25f, 1.25f, 1.25f);
+            VertexConsumer chargedOverlay = getChargedLayer(entity, vertexConsumers, tickDelta);
+            this.model.renderOverlay(matrices, chargedOverlay, 15728640, OverlayTexture.DEFAULT_UV, 0.5f, 0.5f, 0.5f, 1);
+            matrices.pop();
         }
 
         // Red Flash Warning ///////////////////////////////////////////////////////////////////////////////////////////
@@ -67,10 +73,10 @@ public class BombEntityRenderer<T extends BombEntity> extends EntityRenderer<T> 
             float lowFuseFlash = (float) Math.abs(Math.sin(fuse * 0.4) * 0.5);
 
             VertexConsumer warningFlashVCon = vertexConsumers.getBuffer(RenderLayer.getBeaconBeam(LOW_FUSE_OVERLAY, true));
-            this.entityModel.renderOverlay(matrices, warningFlashVCon, 15728640, OverlayTexture.DEFAULT_UV, 1, 1, 1,
+            this.model.renderOverlay(matrices, warningFlashVCon, 15728640, OverlayTexture.DEFAULT_UV, 1, 1, 1,
                     lowFuseFlash);
             VertexConsumer glow = vertexConsumers.getBuffer(ZeldaRenderLayers.getGlowing(LOW_FUSE_OVERLAY));
-            this.entityModel.renderOverlay(matrices, glow, 15728640, OverlayTexture.DEFAULT_UV, 1, 1, 1,
+            this.model.renderOverlay(matrices, glow, 15728640, OverlayTexture.DEFAULT_UV, 1, 1, 1,
                     Math.max(0, lowFuseFlash - 0.15f));
         }
 
@@ -95,7 +101,7 @@ public class BombEntityRenderer<T extends BombEntity> extends EntityRenderer<T> 
         float fuseMinV = minV + (maxV - minV) * (1 - maxY) * 0.5f;
 
         if (maxY > -2) {
-            VertexConsumer fuseVCon = vertexConsumers.getBuffer(this.entityModel.getLayer(getTexture(entity)));
+            VertexConsumer fuseVCon = vertexConsumers.getBuffer(this.model.getLayer(getTexture(entity)));
             renderFuseFace(matrices, fuseVCon, minU, maxU, fuseMinV, maxV, light, 0, -1, maxY);
 
             VertexConsumer emberVCon = vertexConsumers.getBuffer(ZeldaRenderLayers.getBombFuse(getTexture(entity)));

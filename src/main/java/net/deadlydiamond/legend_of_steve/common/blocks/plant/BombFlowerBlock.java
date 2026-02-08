@@ -1,6 +1,7 @@
 package net.deadlydiamond.legend_of_steve.common.blocks.plant;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
+import net.deadlydiamond.legend_of_steve.common.bes.BombFlowerBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.blocks.IExplodedInteraction;
 import net.deadlydiamond.legend_of_steve.common.blocks.IExtendedLootTable;
 import net.deadlydiamond.legend_of_steve.common.entities.bomb.BombEntity;
@@ -9,6 +10,7 @@ import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
 import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
 import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
 import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.pathing.NavigationType;
@@ -23,8 +25,10 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
+import net.minecraft.state.property.Property;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
@@ -40,16 +44,17 @@ import net.minecraft.world.WorldView;
 import net.minecraft.world.explosion.Explosion;
 import org.jetbrains.annotations.Nullable;
 
-public class BombFlowerBlock extends HorizontalFacingBlock implements IExplodedInteraction, IExtendedLootTable {
+public class BombFlowerBlock extends HorizontalFacingBlock implements IExplodedInteraction, IExtendedLootTable, BlockEntityProvider {
     public static final VoxelShape LEAF_SHAPE = Block.createCuboidShape(0, 0, 0, 16, 3, 16);
     public static final VoxelShape BOMB_AGE_1_SHAPE = Block.createCuboidShape(6, 2, 6, 10, 6, 10);
     public static final VoxelShape BOMB_AGE_2_SHAPE = Block.createCuboidShape(5, 2, 5, 11, 8, 11);
     public static final VoxelShape BOMB_AGE_3_SHAPE = Block.createCuboidShape(4, 2, 4, 12, 10, 12);
+    public static final BooleanProperty CHARGED = BooleanProperty.of("charged");
     public static final IntProperty AGE = Properties.AGE_3;
 
     public BombFlowerBlock(Settings settings) {
         super(settings);
-        this.setDefaultState(this.stateManager.getDefaultState().with(AGE, 0).with(FACING, Direction.NORTH));
+        this.setDefaultState(this.stateManager.getDefaultState().with(AGE, 0).with(FACING, Direction.NORTH).with(CHARGED, false));
     }
 
     @Override
@@ -84,7 +89,7 @@ public class BombFlowerBlock extends HorizontalFacingBlock implements IExplodedI
     private void harvestBomb(BlockState state, World world, BlockPos pos, PlayerEntity player) {
         dropCustomStacks("bomb_flower_picked", state, world, pos);
         playPickedSound(world, pos);
-        world.setBlockState(pos, state.with(AGE, 0));
+        world.setBlockState(pos, state.with(AGE, 0).with(CHARGED, false));
     }
 
     @Override
@@ -106,7 +111,7 @@ public class BombFlowerBlock extends HorizontalFacingBlock implements IExplodedI
 
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (random.nextInt(9) == 0 && state.canPlaceAt(world, pos)) {
+        if (random.nextInt(10) == 0 && state.canPlaceAt(world, pos)) {
             world.setBlockState(pos, state.with(AGE, state.get(AGE) + 1));
         }
     }
@@ -123,8 +128,10 @@ public class BombFlowerBlock extends HorizontalFacingBlock implements IExplodedI
     }
 
     @Override
-    public void onExploded(World world, BlockPos blockPos, Explosion explosion) {
-        onBombExploded(world, blockPos, explosion);
+    public void onExploded(World world, BlockPos blockPos, Explosion explosion, boolean fromBomb) {
+        if (!fromBomb) {
+            onBombExploded(world, blockPos, explosion);
+        }
     }
 
     @Override
@@ -143,9 +150,10 @@ public class BombFlowerBlock extends HorizontalFacingBlock implements IExplodedI
             bomb.setPrimed(true);
             bomb.setFuse(50 / fuseDividend);
             bomb.setOwner(owner);
+            bomb.setCharged(state.get(CHARGED));
             world.spawnEntity(bomb);
 
-            world.setBlockState(blockPos, state.with(AGE, 0));
+            world.setBlockState(blockPos, state.with(AGE, 0).with(CHARGED, false));
         }
     }
 
@@ -183,7 +191,7 @@ public class BombFlowerBlock extends HorizontalFacingBlock implements IExplodedI
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
-        builder.add(FACING, AGE);
+        builder.add(FACING, AGE, CHARGED);
     }
 
     public void playPickedSound(World world, BlockPos pos) {
@@ -192,5 +200,11 @@ public class BombFlowerBlock extends HorizontalFacingBlock implements IExplodedI
 
     public void playPrimedSound(World world, BlockPos pos) {
         world.playSound(null, pos, SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.BLOCKS, 1.0f, 1.0f);
+    }
+
+    @Nullable
+    @Override
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new BombFlowerBlockEntity(pos, state);
     }
 }

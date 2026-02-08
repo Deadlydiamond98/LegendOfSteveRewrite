@@ -1,5 +1,6 @@
 package net.deadlydiamond.legend_of_steve.init.client;
 
+import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond98.koalalib.client.PostProcessingRegistry;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gl.Framebuffer;
@@ -10,13 +11,13 @@ import net.minecraft.client.render.VertexFormats;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class ZeldaRenderLayers extends RenderLayer {
 
     // SHADER PROGRAMS /////////////////////////////////////////////////////////////////////////////////////////////////
     private static final RenderPhase.ShaderProgram BOMB_FUSE_PROGRAM = new ShaderProgram(() -> ZeldaShaders.bombFuseShader);
-    private static final RenderPhase.ShaderProgram GLOWING_PROGRAM = new ShaderProgram(() -> ZeldaShaders.glowingShader);
 
     // SHADER TARGETS //////////////////////////////////////////////////////////////////////////////////////////////////
     private static final RenderPhase.Target GLOWING_TARGET = new Target("legend_of_steve$rendertype_glowing", () -> {
@@ -72,6 +73,28 @@ public class ZeldaRenderLayers extends RenderLayer {
                 );
             }
     );
+
+    private static final BiFunction<Identifier, Boolean, RenderLayer> CUSTOM_GLINT = (identifier, blur) -> of(
+            "legend_of_steve$custom_glint",
+            VertexFormats.POSITION_TEXTURE,
+            VertexFormat.DrawMode.QUADS,
+            256,
+            MultiPhaseParameters.builder()
+                    .program(GLINT_PROGRAM)
+                    .texture(new Texture(identifier, blur, false))
+                    .writeMaskState(COLOR_MASK)
+                    .cull(DISABLE_CULLING)
+                    .depthTest(EQUAL_DEPTH_TEST)
+                    .transparency(GLINT_TRANSPARENCY)
+                    .texturing(GLINT_TEXTURING)
+                    .build(false)
+    );
+
+    private static final RenderLayer CHARGED_GLINT = CUSTOM_GLINT.apply(LegendOfSteve.id("textures/misc/charge_glint.png"), false);
+
+    public static RenderLayer getChargedGlint() {
+        return CHARGED_GLINT;
+    }
 
     public static RenderLayer getBombFuse(Identifier texture) {
         return BOMB_FUSE.apply(texture);

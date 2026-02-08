@@ -3,7 +3,9 @@
   "package": "net.deadlydiamond.legend_of_steve.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "common.ExplosionMixin"
+    "common.ExplosionMixin",
+    "common.entities.LightningEntityMixin",
+    "common.entities.MobEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1
@@ -12,8 +14,10 @@
     "requireAnnotations": true
   },
   "client": [
+    "client.BufferBuilderStorageMixin",
     "client.armpose.BipedEntityModelArmPoseMixin",
     "client.armpose.PlayerEntityRendererCustomArmPoseMixin",
+    "client.rendering.ItemRendererMixin",
     "client.rendering.PlayerHeldItemFeatureRendererMixin"
   ]
 }

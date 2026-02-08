@@ -8,12 +8,12 @@ import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
 
-public class BombEntitySlimeModel<T extends Entity> extends EntityModel<T> {
-    public static final EntityModelLayer LAYER_LOCATION = new EntityModelLayer(LegendOfSteve.id("slime_overlay"), "main");
+public class BombOverlayModel<T extends Entity> extends EntityModel<T> {
+    public static final EntityModelLayer LAYER_LOCATION = new EntityModelLayer(LegendOfSteve.id("bomb_overlay"), "main");
 
     private final ModelPart root;
 
-    public BombEntitySlimeModel(ModelPart root) {
+    public BombOverlayModel(ModelPart root) {
         this.root = root;
     }
 

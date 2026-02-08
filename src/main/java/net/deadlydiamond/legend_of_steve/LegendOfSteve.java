@@ -1,7 +1,7 @@
 package net.deadlydiamond.legend_of_steve;
 
+import net.deadlydiamond.legend_of_steve.events.common.ZeldaLootTableEvents;
 import net.deadlydiamond.legend_of_steve.init.*;
-import net.deadlydiamond.legend_of_steve.client.rendering.player.ZeldaPlayerRendering;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.loader.api.FabricLoader;
@@ -18,9 +18,13 @@ public class LegendOfSteve implements ModInitializer {
 		// Registry
 		ZeldaItems.register();
 		ZeldaBlocks.register();
+		ZeldaBlockEntities.register();
 		ZeldaEntityTypes.register();
 		ZeldaSounds.register();
-		ZeldaPlayerRendering.register();
+		ZeldaVillagerTrades.register();
+
+		// Events
+		ZeldaLootTableEvents.register();
 	}
 
 	public static Identifier id(String path) {

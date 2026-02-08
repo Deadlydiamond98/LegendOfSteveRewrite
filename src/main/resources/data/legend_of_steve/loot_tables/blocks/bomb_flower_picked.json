@@ -11,7 +11,36 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "legend_of_steve:bomb_flower"
+          "name": "legend_of_steve:bomb_flower",
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "legend_of_steve:bomb_flower",
+              "properties": {
+                "age": 3,
+                "charged": false
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "legend_of_steve:charged_bomb_flower",
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "legend_of_steve:bomb_flower",
+              "properties": {
+                "age": 3,
+                "charged": true
+              }
+            }
+          ]
         }
       ]
     }

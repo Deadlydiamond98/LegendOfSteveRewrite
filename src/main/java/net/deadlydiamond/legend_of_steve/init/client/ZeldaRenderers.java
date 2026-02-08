@@ -1,15 +1,19 @@
 package net.deadlydiamond.legend_of_steve.init.client;
 
 import net.deadlydiamond.legend_of_steve.client.models.entity.BombEntityModel;
-import net.deadlydiamond.legend_of_steve.client.models.entity.BombEntitySlimeModel;
+import net.deadlydiamond.legend_of_steve.client.models.entity.BombOverlayModel;
+import net.deadlydiamond.legend_of_steve.client.rendering.block.BombFlowerRenderer;
 import net.deadlydiamond.legend_of_steve.client.rendering.entity.BombEntityRenderer;
+import net.deadlydiamond.legend_of_steve.init.ZeldaBlockEntities;
 import net.deadlydiamond.legend_of_steve.init.ZeldaEntityTypes;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 
 public class ZeldaRenderers {
     public static void register() {
         registerEntityRenderers();
+        registerBlockEntityRenderers();
         registerModelLayers();
     }
 
@@ -17,8 +21,12 @@ public class ZeldaRenderers {
         EntityRendererRegistry.register(ZeldaEntityTypes.BOMB, BombEntityRenderer::new);
     }
 
+    private static void registerBlockEntityRenderers() {
+        BlockEntityRendererFactories.register(ZeldaBlockEntities.BOMB_FLOWER, BombFlowerRenderer::new);
+    }
+
     private static void registerModelLayers() {
         EntityModelLayerRegistry.registerModelLayer(BombEntityModel.LAYER_LOCATION, BombEntityModel::getTexturedModelData);
-        EntityModelLayerRegistry.registerModelLayer(BombEntitySlimeModel.LAYER_LOCATION, BombEntitySlimeModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(BombOverlayModel.LAYER_LOCATION, BombOverlayModel::getTexturedModelData);
     }
 }

@@ -14,7 +14,6 @@ public class ZeldaShaders {
 
     // CORE
     public static ShaderProgram bombFuseShader;
-    public static ShaderProgram glowingShader;
 
     public static void register() {
         // POST
@@ -26,11 +25,6 @@ public class ZeldaShaders {
                     LegendOfSteve.id("rendertype_bomb_fuse"),
                     VertexFormats.POSITION_COLOR_TEXTURE_OVERLAY_LIGHT_NORMAL,
                     program -> bombFuseShader = program
-            );
-            context.register(
-                    LegendOfSteve.id("rendertype_glowing"),
-                    VertexFormats.POSITION_COLOR_TEXTURE,
-                    program -> glowingShader = program
             );
         });
     }

@@ -57,17 +57,21 @@ public class BombItem extends CustomProjectileItem implements IAdvancedItemPrope
         super.initProjectile(entity, stack, owner, hand);
 
         if (entity instanceof BombEntity bomb) {
-            bomb.setVelocity(entity.getVelocity().multiply(0.6, 0.75, 0.6));
-            bomb.setPosition(owner.getEyePos().add(0, 0.25f, 0));
-            bomb.setFuse(this.fuse);
-            bomb.setMaxFuse(this.fuse);
-            bomb.setOwner(owner);
-            bomb.setItem(this.getDefaultStack());
-            bomb.setBreakableBlocks(this.breakable);
-            bomb.setPower(this.power);
+            initBomb(bomb, stack, owner);
 
             lightOnThrow(owner, bomb);
         }
+    }
+
+    protected void initBomb(BombEntity bomb, ItemStack stack, LivingEntity owner) {
+        bomb.setVelocity(bomb.getVelocity().multiply(0.6, 0.75, 0.6));
+        bomb.setPosition(owner.getEyePos().add(0, 0.25f, 0));
+        bomb.setFuse(this.fuse);
+        bomb.setMaxFuse(this.fuse);
+        bomb.setOwner(owner);
+        bomb.setItem(this.getDefaultStack());
+        bomb.setBreakableBlocks(this.breakable);
+        bomb.setPower(this.power);
     }
 
     private void lightOnThrow(LivingEntity owner, BombEntity bomb) {
@@ -99,10 +103,10 @@ public class BombItem extends CustomProjectileItem implements IAdvancedItemPrope
         }
     }
 
-//    @Override
-//    public TagKey<Block> getBreakableBlocks() {
-//        return this.breakable;
-//    }
+    @Override
+    public TagKey<Block> getBreakableBlocks() {
+        return this.breakable;
+    }
 
     @Override
     public float getPower() {

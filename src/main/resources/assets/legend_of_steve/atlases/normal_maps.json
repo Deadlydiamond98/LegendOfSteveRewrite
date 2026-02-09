@@ -1,0 +1,19 @@
+{
+  "sources": [
+    {
+      "type": "directory",
+      "source": "normal/block",
+      "prefix": "block/iridescent/"
+    },
+    {
+      "type": "directory",
+      "source": "normal/item",
+      "prefix": "item/iridescent/"
+    },
+    {
+      "type": "directory",
+      "source": "entity/shulker",
+      "prefix": "entity/shulker/"
+    }
+  ]
+}

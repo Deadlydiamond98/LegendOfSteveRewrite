@@ -19,6 +19,7 @@ public class LegendOfSteve implements ModInitializer {
 		ZeldaItems.register();
 		ZeldaBlocks.register();
 		ZeldaBlockEntities.register();
+		ZeldaFluids.register();
 		ZeldaEntityTypes.register();
 		ZeldaSounds.register();
 		ZeldaVillagerTrades.register();

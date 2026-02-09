@@ -1,0 +1,24 @@
+package net.deadlydiamond.legend_of_steve.mixin.client.iridescence;
+
+
+import com.google.common.collect.ImmutableList;
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import net.deadlydiamond.legend_of_steve.init.client.ZeldaRenderLayers;
+import net.minecraft.client.render.RenderLayer;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Mixin(RenderLayer.class)
+public class RenderLayerMixin {
+    @ModifyExpressionValue(method = "<clinit>", at = @At(value = "INVOKE", target = "Lcom/google/common/collect/ImmutableList;of(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList;", remap = false))
+    private static ImmutableList<RenderLayer> addLayers(ImmutableList<RenderLayer> original) {
+        List<RenderLayer> list = new ArrayList<>(original);
+
+        list.add(ZeldaRenderLayers.IRIDESCENCE);
+
+        return ImmutableList.copyOf(list);
+    }
+}

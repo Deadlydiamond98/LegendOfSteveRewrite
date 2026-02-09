@@ -2,7 +2,7 @@ package net.deadlydiamond.legend_of_steve.mixin.client.armpose;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import net.deadlydiamond.legend_of_steve.client.rendering.player.armpos.ArmPose;
-import net.deadlydiamond.legend_of_steve.util.mixinterfaces.armpose.ICustomArmPose;
+import net.deadlydiamond.legend_of_steve.util.mixinterfaces.client.ICustomArmPose;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.entity.PlayerEntityRenderer;
 import net.minecraft.client.render.entity.model.BipedEntityModel;

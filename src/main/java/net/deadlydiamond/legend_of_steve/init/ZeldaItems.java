@@ -5,7 +5,9 @@ import net.deadlydiamond.legend_of_steve.common.items.projectile.BombItem;
 import net.deadlydiamond.legend_of_steve.common.items.projectile.ChargedBombItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.BucketItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 
@@ -25,17 +27,12 @@ public class ZeldaItems {
     public static final Item RED_TEKTITE_CHITIN = register("red_tektite_chitin", new Item(new FabricItemSettings()));
     public static final Item RED_TEKTITE_SHELL = register("red_tektite_shell", new Item(new FabricItemSettings()));
 
-    // REGISTRATION ////////////////////////////////////////////////////////////////////////////////////////////////////
+    // FLUIDS //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static final Item ENCHANTED_SPRING_WATER_BUCKET = register("enchanted_spring_water_bucket", new BucketItem(
+            ZeldaFluids.ENCHANTED_SPRING_WATER, new Item.Settings().recipeRemainder(Items.BUCKET).maxCount(1))
+    );
 
-//    public static List<Item> registerBombs(String id, int fuse, int power) {
-//        Function<BombItem, > bombSupplier = () -> new BombItem(new Item.Settings().maxCount(16), ZeldaEntityTypes.BOMB, fuse, power);
-//        return List.of(
-//                register(id, bombSupplier.get()),
-//                register("bouncy_" + id, bombSupplier.get()),
-//                register("sticky_" + id, bombSupplier.get()),
-//                register("charged_" + id, bombSupplier.get())
-//        );
-//    }
+    // REGISTRATION ////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public static Item register(String id, Item item) {
         return Registry.register(Registries.ITEM, LegendOfSteve.id(id), item);

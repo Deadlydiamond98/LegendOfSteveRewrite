@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.mixin.client;
+package net.deadlydiamond.legend_of_steve.mixin.client.shader;
 
 import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
 import net.deadlydiamond.legend_of_steve.init.client.ZeldaRenderLayers;

@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.util.mixinterfaces.armpose;
+package net.deadlydiamond.legend_of_steve.util.mixinterfaces.client;
 
 import net.deadlydiamond.legend_of_steve.client.rendering.player.armpos.ArmPose;
 import org.jetbrains.annotations.Nullable;

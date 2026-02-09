@@ -10,14 +10,17 @@ import net.minecraft.util.Identifier;
 public class ZeldaShaders {
 
     // POST
-    public static final Identifier GLOWING_SHADER_ID = LegendOfSteve.id(post("rendertype_glowing"));
+    public static final Identifier BLOOM_GLOWING_SHADER_ID = LegendOfSteve.id(post("bloom_glow"));
 
     // CORE
     public static ShaderProgram bombFuseShader;
+    public static ShaderProgram iridescenceShader;
+    public static ShaderProgram entityIridescenceShader;
+    public static ShaderProgram itemIridescenceShader;
 
     public static void register() {
         // POST
-        PostProcessingRegistry.registerEffect(GLOWING_SHADER_ID);
+        PostProcessingRegistry.registerEffect(BLOOM_GLOWING_SHADER_ID);
 
         // CORE
         CoreShaderRegistrationCallback.EVENT.register(context -> {
@@ -26,6 +29,25 @@ public class ZeldaShaders {
                     VertexFormats.POSITION_COLOR_TEXTURE_OVERLAY_LIGHT_NORMAL,
                     program -> bombFuseShader = program
             );
+
+            context.register(
+                    LegendOfSteve.id("rendertype_iridescence"),
+                    VertexFormats.POSITION_COLOR_TEXTURE_LIGHT_NORMAL,
+                    program -> iridescenceShader = program
+            );
+
+            context.register(
+                    LegendOfSteve.id("rendertype_entity_iridescence"),
+                    VertexFormats.POSITION_COLOR_TEXTURE_OVERLAY_LIGHT_NORMAL,
+                    program -> entityIridescenceShader = program
+            );
+
+            context.register(
+                    LegendOfSteve.id("rendertype_item_iridescence"),
+                    VertexFormats.POSITION_COLOR_TEXTURE_OVERLAY_LIGHT_NORMAL,
+                    program -> itemIridescenceShader = program
+            );
+
         });
     }
 

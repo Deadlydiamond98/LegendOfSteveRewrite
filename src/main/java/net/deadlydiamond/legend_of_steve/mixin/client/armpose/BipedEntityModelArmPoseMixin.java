@@ -4,7 +4,7 @@ import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.deadlydiamond.legend_of_steve.client.rendering.player.armpos.ArmPose;
-import net.deadlydiamond.legend_of_steve.util.mixinterfaces.armpose.ICustomArmPose;
+import net.deadlydiamond.legend_of_steve.util.mixinterfaces.client.ICustomArmPose;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
 import org.jetbrains.annotations.Nullable;

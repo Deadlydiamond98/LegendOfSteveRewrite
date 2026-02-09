@@ -1,6 +1,9 @@
 {
   "required": true,
   "package": "net.deadlydiamond.legend_of_steve.mixin",
+  "mixinextras": {
+    "minVersion": "0.5.0"
+  },
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "common.ExplosionMixin",
@@ -14,9 +17,20 @@
     "requireAnnotations": true
   },
   "client": [
-    "client.BufferBuilderStorageMixin",
+    "client.shader.BufferBuilderStorageMixin",
     "client.armpose.BipedEntityModelArmPoseMixin",
     "client.armpose.PlayerEntityRendererCustomArmPoseMixin",
+    "client.model.BakedModelManagerMixin",
+    "client.iridescence.DrawContextMixin",
+    "client.iridescence.GameRendererMixin",
+    "client.iridescence.HeldItemRendererMixin",
+    "client.model.JsonUnbakedModelMixin",
+    "client.iridescence.JsonUnbakedModelMixin$DeserializerMixin",
+    "client.iridescence.RenderLayerMixin",
+    "client.iridescence.RenderLayersMixin",
+    "client.shader.ShaderProgramMixin",
+    "client.shader.VertexBufferMixin",
+    "client.iridescence.WorldRendererMixin",
     "client.rendering.ItemRendererMixin",
     "client.rendering.PlayerHeldItemFeatureRendererMixin"
   ]

@@ -3,8 +3,8 @@
 #moj_import <fog.glsl>
 
 uniform sampler2D Sampler0; // main texture
-uniform sampler2D Sampler1; // normals texture
-uniform sampler2D Sampler3; // gradient texture
+uniform sampler2D Sampler3; // normals texture
+uniform sampler2D Sampler4; // gradient texture
 
 uniform vec4 ColorModulator;
 uniform float FogStart;
@@ -16,7 +16,10 @@ in float vertexDistance;
 in vec4 vertexColor;
 in vec3 vertexPos;
 in vec3 vertexNormal;
+in vec4 lightMapColor;
+in vec4 overlayColor;
 in vec2 texCoord0;
+in vec4 normal;
 
 out vec4 fragColor;
 
@@ -26,9 +29,12 @@ void main() {
     vec4 colorTex = texture(Sampler0, texCoord0);
     if (colorTex.a <= 0.1) discard;
 
-    vec4 shineColor = shineCol(Sampler1, Sampler3, LegendOfSteveIridescenceItemOffset);
+    vec4 shineColor = shineCol(Sampler3, Sampler4, LegendOfSteveIridescenceItemOffset);
 
-    vec4 color = vec4(shineColor.rgb * shineColor.a + colorTex.rgb * (1 - shineColor.a), 1) * vertexColor * ColorModulator;
+    vec4 color = vec4(
+    shineColor.rgb * shineColor.a + colorTex.rgb * (1 - shineColor.a), 1) * vertexColor * ColorModulator;
+    color.rgb = mix(overlayColor.rgb, color.rgb, overlayColor.a);
+    color *= lightMapColor;
 
     fragColor = linear_fog(color, vertexDistance, FogStart, FogEnd, FogColor);
 }

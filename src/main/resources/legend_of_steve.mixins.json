@@ -17,21 +17,19 @@
     "requireAnnotations": true
   },
   "client": [
-    "client.shader.BufferBuilderStorageMixin",
     "client.armpose.BipedEntityModelArmPoseMixin",
     "client.armpose.PlayerEntityRendererCustomArmPoseMixin",
+    "client.rendering.GameRendererMixin",
+    "client.rendering.RenderLayerMixin",
+    "client.rendering.RenderLayersMixin",
+    "client.rendering.WorldRendererMixin",
     "client.model.BakedModelManagerMixin",
-    "client.iridescence.DrawContextMixin",
-    "client.iridescence.GameRendererMixin",
-    "client.iridescence.HeldItemRendererMixin",
     "client.model.JsonUnbakedModelMixin",
-    "client.iridescence.JsonUnbakedModelMixin$DeserializerMixin",
-    "client.iridescence.RenderLayerMixin",
-    "client.iridescence.RenderLayersMixin",
-    "client.shader.ShaderProgramMixin",
-    "client.shader.VertexBufferMixin",
-    "client.iridescence.WorldRendererMixin",
+    "client.model.JsonUnbakedModelMixin$DeserializerMixin",
     "client.rendering.ItemRendererMixin",
-    "client.rendering.PlayerHeldItemFeatureRendererMixin"
+    "client.rendering.PlayerHeldItemFeatureRendererMixin",
+    "client.shader.BufferBuilderStorageMixin",
+    "client.shader.ShaderProgramMixin",
+    "client.shader.VertexBufferMixin"
   ]
 }

@@ -1,15 +1,13 @@
-package net.deadlydiamond.legend_of_steve.mixin.client.iridescence;
+package net.deadlydiamond.legend_of_steve.mixin.client.rendering;
 
 
 import com.llamalad7.mixinextras.expression.Definition;
 import com.llamalad7.mixinextras.expression.Expression;
 import com.llamalad7.mixinextras.sugar.Local;
-import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
 import net.deadlydiamond.legend_of_steve.init.client.ZeldaRenderLayers;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.RenderLayers;
-import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -23,13 +21,6 @@ public class RenderLayersMixin {
     @Inject(method = "getEntityBlockLayer", at = @At("MIXINEXTRAS:EXPRESSION"), cancellable = true)
     private static void addIridescentLayer(BlockState state, boolean direct, CallbackInfoReturnable<RenderLayer> cir, @Local RenderLayer blockLayer) {
         if (blockLayer == ZeldaRenderLayers.IRIDESCENCE) {
-            cir.setReturnValue(ZeldaRenderLayers.ENTITY_IRIDESCENCE_TEXTURED);
-        }
-    }
-
-    @Inject(method = "getItemLayer", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;getItem()Lnet/minecraft/item/Item;"), cancellable = true)
-    private static void addIridescentLayer(ItemStack stack, boolean direct, CallbackInfoReturnable<RenderLayer> cir) {
-        if (stack.isIn(ZeldaTags.IRIDESCENT)) {
             cir.setReturnValue(ZeldaRenderLayers.ENTITY_IRIDESCENCE_TEXTURED);
         }
     }

@@ -22,6 +22,7 @@ public class ZeldaItems {
     public static final Item SUPER_BOMB = register("super_bomb", new BombItem(new FabricItemSettings().maxCount(16), ZeldaEntityTypes.BOMB,  85, 5));
 
     // MATERIALS ///////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static final Item DEBUG = register("debug_item", new Item(new FabricItemSettings()));
     public static final Item BLUE_TEKTITE_CHITIN = register("blue_tektite_chitin", new Item(new FabricItemSettings()));
     public static final Item BLUE_TEKTITE_SHELL = register("blue_tektite_shell", new Item(new FabricItemSettings()));
     public static final Item RED_TEKTITE_CHITIN = register("red_tektite_chitin", new Item(new FabricItemSettings()));

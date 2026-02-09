@@ -13,10 +13,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class VertexBufferMixin {
     @Inject(method = "drawInternal", at = @At("RETURN"))
     private void legend_of_steve$drawInternal(Matrix4f viewMatrix, Matrix4f projectionMatrix, ShaderProgram program, CallbackInfo ci) {
-        float progress = (System.currentTimeMillis() % 2000) / 2000F;
+        float progress = (System.currentTimeMillis() % 5000) / 5000.0f;
         double angle = progress * (2 * Math.PI);
-        float dx = (float) Math.cos(angle) * 1600F;
-        float dy = (float) Math.sin(angle) * 1600F;
+        float dx = (float) Math.cos(angle) * 1600;
+        float dy = (float) Math.sin(angle) * 1600;
         ((ICustomUniforms) program).legend_of_steve$updateIridescenceItemOffset(new float[] {dx, dy, -5000});
     }
 }

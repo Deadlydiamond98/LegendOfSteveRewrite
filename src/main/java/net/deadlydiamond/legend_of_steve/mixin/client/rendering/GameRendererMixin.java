@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.mixin.client.iridescence;
+package net.deadlydiamond.legend_of_steve.mixin.client.rendering;
 
 import net.deadlydiamond.legend_of_steve.client.iridescence.GradientsTexture;
 import net.minecraft.client.MinecraftClient;

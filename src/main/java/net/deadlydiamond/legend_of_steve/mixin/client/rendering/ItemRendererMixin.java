@@ -23,8 +23,8 @@ public abstract class ItemRendererMixin {
 
     @WrapOperation(method = "renderItem(Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/render/model/json/ModelTransformationMode;ZLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;IILnet/minecraft/client/render/model/BakedModel;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/RenderLayers;getItemLayer(Lnet/minecraft/item/ItemStack;Z)Lnet/minecraft/client/render/RenderLayer;"))
     private RenderLayer legend_of_steve$renderItem(ItemStack stack, boolean direct, Operation<RenderLayer> original, @Local ModelTransformationMode renderMode) {
-        if (renderMode == ModelTransformationMode.GUI && (stack.isIn(ZeldaTags.IRIDESCENT) || stack.isIn(ZeldaTags.IRIDESCENT_BLOCK))) {
-            return ZeldaRenderLayers.GUI_ITEM_IRIDESCENCE;
+        if (stack.isIn(ZeldaTags.IRIDESCENT)) {
+            return renderMode == ModelTransformationMode.GUI ? ZeldaRenderLayers.GUI_ITEM_IRIDESCENCE : ZeldaRenderLayers.ENTITY_IRIDESCENCE_TEXTURED;
         }
         return original.call(stack, direct);
     }

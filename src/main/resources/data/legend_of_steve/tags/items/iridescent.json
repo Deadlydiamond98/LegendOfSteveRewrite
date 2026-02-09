@@ -1,4 +1,7 @@
 {
   "replace": false,
-  "values": []
+  "values": [
+    "legend_of_steve:debug_item",
+    "legend_of_steve:debug"
+  ]
 }

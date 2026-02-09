@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.mixin.client.iridescence;
+package net.deadlydiamond.legend_of_steve.mixin.client.rendering;
 
 
 import com.google.common.collect.ImmutableList;

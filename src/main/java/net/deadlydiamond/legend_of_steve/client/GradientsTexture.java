@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.client.iridescence;
+package net.deadlydiamond.legend_of_steve.client;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.minecraft.client.MinecraftClient;

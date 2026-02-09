@@ -1,7 +1,7 @@
 package net.deadlydiamond.legend_of_steve.init.client;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
-import net.deadlydiamond.legend_of_steve.client.iridescence.GradientsTexture;
+import net.deadlydiamond.legend_of_steve.client.GradientsTexture;
 import net.deadlydiamond98.koalalib.client.PostProcessingRegistry;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gl.Framebuffer;

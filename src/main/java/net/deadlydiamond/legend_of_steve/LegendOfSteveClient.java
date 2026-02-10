@@ -27,8 +27,16 @@ public class LegendOfSteveClient implements ClientModInitializer {
         );
 
         BlockRenderLayerMap.INSTANCE.putBlocks(ZeldaRenderLayers.IRIDESCENCE,
-                ZeldaBlocks.DEBUG
-//                ZeldaFluids.FLOWING_ENCHANTED_SPRING_WATER
+                ZeldaBlocks.FAIRY_MARBLE.base,
+                ZeldaBlocks.FAIRY_MARBLE.slab,
+                ZeldaBlocks.FAIRY_MARBLE.stair,
+                ZeldaBlocks.FAIRY_MARBLE.wall,
+                ZeldaBlocks.FAIRY_MARBLE_BUTTON,
+                ZeldaBlocks.FAIRY_MARBLE_PRESSURE_PLATE,
+                ZeldaBlocks.COBBLED_FAIRY_MARBLE.base,
+                ZeldaBlocks.COBBLED_FAIRY_MARBLE.slab,
+                ZeldaBlocks.COBBLED_FAIRY_MARBLE.stair,
+                ZeldaBlocks.COBBLED_FAIRY_MARBLE.wall
         );
     }
 }

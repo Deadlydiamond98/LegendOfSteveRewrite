@@ -1,7 +1,16 @@
 {
   "replace": false,
   "values": [
-    "legend_of_steve:debug_item",
-    "legend_of_steve:debug"
+    "legend_of_steve:enchanted_spring_water_bucket",
+    "legend_of_steve:fairy_marble",
+    "legend_of_steve:fairy_marble_slab",
+    "legend_of_steve:fairy_marble_stairs",
+    "legend_of_steve:fairy_marble_wall",
+    "legend_of_steve:fairy_marble_button",
+    "legend_of_steve:fairy_marble_pressure_plate",
+    "legend_of_steve:cobbled_fairy_marble",
+    "legend_of_steve:cobbled_fairy_marble_slab",
+    "legend_of_steve:cobbled_fairy_marble_stairs",
+    "legend_of_steve:cobbled_fairy_marble_wall"
   ]
 }

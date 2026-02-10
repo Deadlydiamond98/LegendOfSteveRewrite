@@ -1,6 +1,7 @@
 package net.deadlydiamond.legend_of_steve;
 
 import net.deadlydiamond.legend_of_steve.datagen.ZeldaModelDatagen;
+import net.deadlydiamond.legend_of_steve.datagen.ZeldaTagDatagen;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 
@@ -9,5 +10,6 @@ public class LegendOfSteveDatagen implements DataGeneratorEntrypoint {
 	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
 		FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
 		pack.addProvider(ZeldaModelDatagen::new);
+		pack.addProvider(ZeldaTagDatagen::new);
 	}
 }

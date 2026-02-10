@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "legend_of_steve:block/iridescent/cobbled_fairy_marble@legend_of_steve:textures/atlas/iridescent.png",
+    "particle": "legend_of_steve:block/iridescent/cobbled_fairy_marble"
+  }
+}

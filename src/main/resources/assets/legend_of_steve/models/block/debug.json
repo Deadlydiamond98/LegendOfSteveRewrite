@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "legend_of_steve:block/iridescent/debug@legend_of_steve:textures/atlas/iridescent.png",
-    "particle": "legend_of_steve:block/iridescent/debug"
-  }
-}

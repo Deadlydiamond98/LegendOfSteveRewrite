@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.mixin.common.entities;
+package net.deadlydiamond.legend_of_steve.mixin.common.entity;
 
 import net.deadlydiamond.legend_of_steve.common.entities.bomb.BombEntity;
 import net.minecraft.entity.damage.DamageSource;

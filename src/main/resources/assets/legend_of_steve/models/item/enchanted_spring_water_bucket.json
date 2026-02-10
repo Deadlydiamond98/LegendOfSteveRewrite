@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "legend_of_steve:item/iridescent/enchanted_spring_water_bucket@legend_of_steve:textures/atlas/iridescent.png"
+  }
+}

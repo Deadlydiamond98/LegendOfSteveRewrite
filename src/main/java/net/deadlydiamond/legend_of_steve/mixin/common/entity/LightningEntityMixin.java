@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.mixin.common.entities;
+package net.deadlydiamond.legend_of_steve.mixin.common.entity;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.BombFlowerBlock;

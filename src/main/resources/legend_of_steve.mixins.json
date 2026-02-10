@@ -7,8 +7,10 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "common.ExplosionMixin",
-    "common.entities.LightningEntityMixin",
-    "common.entities.MobEntityMixin"
+    "common.LavaFluidMixin",
+    "common.block.FluidBlockMixin",
+    "common.entity.LightningEntityMixin",
+    "common.entity.MobEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1
@@ -19,15 +21,15 @@
   "client": [
     "client.armpose.BipedEntityModelArmPoseMixin",
     "client.armpose.PlayerEntityRendererCustomArmPoseMixin",
-    "client.rendering.GameRendererMixin",
-    "client.rendering.RenderLayerMixin",
-    "client.rendering.RenderLayersMixin",
-    "client.rendering.WorldRendererMixin",
     "client.model.BakedModelManagerMixin",
     "client.model.JsonUnbakedModelMixin",
     "client.model.JsonUnbakedModelMixin$DeserializerMixin",
+    "client.rendering.GameRendererMixin",
     "client.rendering.ItemRendererMixin",
     "client.rendering.PlayerHeldItemFeatureRendererMixin",
+    "client.rendering.RenderLayerMixin",
+    "client.rendering.RenderLayersMixin",
+    "client.rendering.WorldRendererMixin",
     "client.shader.BufferBuilderStorageMixin",
     "client.shader.ShaderProgramMixin",
     "client.shader.VertexBufferMixin"

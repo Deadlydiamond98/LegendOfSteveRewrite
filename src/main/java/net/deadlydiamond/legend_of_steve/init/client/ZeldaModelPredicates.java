@@ -31,7 +31,7 @@ public class ZeldaModelPredicates {
                 for (ItemStack itemStack : stacks) {
                     i += itemStack.getCount();
                     if (i >= 3) {
-                        return 1;
+                        return 0.75f;
                     }
                 }
                 return i == 2 ? 0.5f : 0.25f;

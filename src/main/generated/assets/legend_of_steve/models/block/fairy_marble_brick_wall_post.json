@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_wall_post",
+  "textures": {
+    "particle": "legend_of_steve:block/iridescent/fairy_marble_bricks",
+    "wall": "legend_of_steve:block/iridescent/fairy_marble_bricks@legend_of_steve:textures/atlas/iridescent.png"
+  }
+}

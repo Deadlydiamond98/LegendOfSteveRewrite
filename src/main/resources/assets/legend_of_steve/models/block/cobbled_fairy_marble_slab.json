@@ -1,9 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "legend_of_steve:block/iridescent/cobbled_fairy_marble@legend_of_steve:textures/atlas/iridescent.png",
-    "side": "legend_of_steve:block/iridescent/cobbled_fairy_marble@legend_of_steve:textures/atlas/iridescent.png",
-    "top": "legend_of_steve:block/iridescent/cobbled_fairy_marble@legend_of_steve:textures/atlas/iridescent.png",
-    "particle": "legend_of_steve:block/iridescent/cobbled_fairy_marble"
-  }
-}

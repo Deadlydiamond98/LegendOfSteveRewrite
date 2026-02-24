@@ -2,6 +2,8 @@ package net.deadlydiamond.legend_of_steve.datagen;
 
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
 import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
+import net.deadlydiamond.legend_of_steve.util.datagen.IridescentBlockModelDatagenUtil;
+import net.deadlydiamond.legend_of_steve.util.datagen.ZeldaItemModelDatagenUtil;
 import net.deadlydiamond98.koalalib.util.datagen.ItemModelDatagenUtil;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
@@ -15,11 +17,24 @@ public class ZeldaModelDatagen extends FabricModelProvider {
     }
 
     @Override
-    public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        ZeldaBlocks.RED_TEKTILES.generateModels(blockStateModelGenerator);
-        ZeldaBlocks.SMALL_RED_TEKTILES.generateModels(blockStateModelGenerator);
-        ZeldaBlocks.BLUE_TEKTILES.generateModels(blockStateModelGenerator);
-        ZeldaBlocks.SMALL_BLUE_TEKTILES.generateModels(blockStateModelGenerator);
+    public void generateBlockStateModels(BlockStateModelGenerator generator) {
+
+        // FAIRY MARBLE ////////////////////////////////////////////////////////////////////////////////////////////////
+        ZeldaBlocks.FAIRY_MARBLE.generateModels(generator);
+        ZeldaBlocks.COBBLED_FAIRY_MARBLE.generateModels(generator);
+        ZeldaBlocks.POLISHED_FAIRY_MARBLE.generateModels(generator);
+        ZeldaBlocks.FAIRY_MARBLE_BRICKS.generateModels(generator);
+        ZeldaBlocks.MOSSY_FAIRY_MARBLE_BRICKS.generateModels(generator);
+        ZeldaBlocks.FAIRY_MARBLE_TILES.generateModels(generator);
+
+        IridescentBlockModelDatagenUtil.registerIridescentPillar(generator, ZeldaBlocks.FAIRY_MARBLE_PILLAR);
+        IridescentBlockModelDatagenUtil.registerIridescentBlock(generator, ZeldaBlocks.SMOOTH_FAIRY_MARBLE);
+
+        // TEKTILES ////////////////////////////////////////////////////////////////////////////////////////////////////
+        ZeldaBlocks.RED_TEKTILES.generateModels(generator);
+        ZeldaBlocks.SMALL_RED_TEKTILES.generateModels(generator);
+        ZeldaBlocks.BLUE_TEKTILES.generateModels(generator);
+        ZeldaBlocks.SMALL_BLUE_TEKTILES.generateModels(generator);
     }
 
     @Override
@@ -35,5 +50,9 @@ public class ZeldaModelDatagen extends FabricModelProvider {
                 ZeldaItems.RED_TEKTITE_CHITIN,
                 ZeldaItems.RED_TEKTITE_SHELL
         );
+
+        ZeldaItemModelDatagenUtil.registerQuiver(itemModelGenerator, ZeldaItems.QUIVER);
+        ZeldaItemModelDatagenUtil.registerQuiver(itemModelGenerator, ZeldaItems.GILDED_QUIVER);
+        ZeldaItemModelDatagenUtil.registerQuiver(itemModelGenerator, ZeldaItems.NETHERITE_QUIVER);
     }
 }

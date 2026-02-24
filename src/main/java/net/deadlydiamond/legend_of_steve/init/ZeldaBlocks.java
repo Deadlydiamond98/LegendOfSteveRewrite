@@ -3,6 +3,8 @@ package net.deadlydiamond.legend_of_steve.init;
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.BombFlowerBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.FruitingLeaves;
+import net.deadlydiamond.legend_of_steve.common.blocksets.IridescentStairSlabBlockset;
+import net.deadlydiamond.legend_of_steve.common.blocksets.IridescentStairSlabWallBlockset;
 import net.deadlydiamond98.koalalib.common.blocksets.BaseStairSlabBlockset;
 import net.deadlydiamond98.koalalib.common.blocksets.BaseStairSlabWallBlockset;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -26,16 +28,20 @@ public class ZeldaBlocks {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // FAIRY MARBLE
-    public static final Block FAIRY_MARBLE_BUTTON = register("fairy_marble_button", new ButtonBlock(FabricBlockSettings.copyOf(Blocks.STONE_BUTTON), ZeldaBlockSetType.FAIRY_MARBLE, 20, false));
-    public static final Block FAIRY_MARBLE_PRESSURE_PLATE = register("fairy_marble_pressure_plate", new PressurePlateBlock(PressurePlateBlock.ActivationRule.MOBS, FabricBlockSettings.copyOf(Blocks.STONE_PRESSURE_PLATE), ZeldaBlockSetType.FAIRY_MARBLE));
-    public static final BaseStairSlabWallBlockset FAIRY_MARBLE = new BaseStairSlabWallBlockset(LegendOfSteve.MOD_ID, "fairy_marble", FabricBlockSettings.copyOf(Blocks.CALCITE));
-    public static final BaseStairSlabWallBlockset COBBLED_FAIRY_MARBLE = new BaseStairSlabWallBlockset(LegendOfSteve.MOD_ID, "cobbled_fairy_marble", FabricBlockSettings.copyOf(Blocks.CALCITE));
-    public static final BaseStairSlabWallBlockset POLISHED_FAIRY_MARBLE = new BaseStairSlabWallBlockset(LegendOfSteve.MOD_ID, "polished_fairy_marble", FabricBlockSettings.copyOf(Blocks.CALCITE));
-    public static final BaseStairSlabWallBlockset FAIRY_MARBLE_BRICKS = new BaseStairSlabWallBlockset(LegendOfSteve.MOD_ID, "fairy_marble_bricks", FabricBlockSettings.copyOf(Blocks.CALCITE));
-    public static final BaseStairSlabBlockset FAIRY_MARBLE_TILES = new BaseStairSlabWallBlockset(LegendOfSteve.MOD_ID, "fairy_marble_tiles", FabricBlockSettings.copyOf(Blocks.CALCITE));
+    public static final IridescentStairSlabWallBlockset FAIRY_MARBLE = new IridescentStairSlabWallBlockset(LegendOfSteve.MOD_ID, "fairy_marble", FabricBlockSettings.copyOf(Blocks.CALCITE));
+    public static final IridescentStairSlabWallBlockset COBBLED_FAIRY_MARBLE = new IridescentStairSlabWallBlockset(LegendOfSteve.MOD_ID, "cobbled_fairy_marble", FabricBlockSettings.copyOf(Blocks.CALCITE));
+    public static final IridescentStairSlabWallBlockset POLISHED_FAIRY_MARBLE = new IridescentStairSlabWallBlockset(LegendOfSteve.MOD_ID, "polished_fairy_marble", FabricBlockSettings.copyOf(Blocks.CALCITE));
+    public static final IridescentStairSlabWallBlockset FAIRY_MARBLE_BRICKS = new IridescentStairSlabWallBlockset(LegendOfSteve.MOD_ID, "fairy_marble_bricks", FabricBlockSettings.copyOf(Blocks.CALCITE));
+    public static final IridescentStairSlabWallBlockset MOSSY_FAIRY_MARBLE_BRICKS = new IridescentStairSlabWallBlockset(LegendOfSteve.MOD_ID, "mossy_fairy_marble_bricks", FabricBlockSettings.copyOf(Blocks.CALCITE));
+    public static final IridescentStairSlabBlockset FAIRY_MARBLE_TILES = new IridescentStairSlabBlockset(LegendOfSteve.MOD_ID, "fairy_marble_tiles", FabricBlockSettings.copyOf(Blocks.CALCITE));
+
     public static final Block CHISELED_FAIRY_MARBLE = register("chiseled_fairy_marble", new Block(FabricBlockSettings.copyOf(Blocks.CALCITE)));
     public static final Block FAIRY_MARBLE_PILLAR = register("fairy_marble_pillar", new PillarBlock(FabricBlockSettings.copyOf(Blocks.CALCITE)));
     public static final Block SMOOTH_FAIRY_MARBLE = register("smooth_fairy_marble", new Block(FabricBlockSettings.copyOf(Blocks.CALCITE)));
+
+    public static final Block FAIRY_MARBLE_BUTTON = register("fairy_marble_button", new ButtonBlock(FabricBlockSettings.copyOf(Blocks.STONE_BUTTON).sounds(BlockSoundGroup.CALCITE), ZeldaBlockSetType.FAIRY_MARBLE, 20, false));
+    public static final Block FAIRY_MARBLE_PRESSURE_PLATE = register("fairy_marble_pressure_plate", new PressurePlateBlock(PressurePlateBlock.ActivationRule.MOBS, FabricBlockSettings.copyOf(Blocks.STONE_PRESSURE_PLATE).sounds(BlockSoundGroup.CALCITE), ZeldaBlockSetType.FAIRY_MARBLE));
+
 
     // DEKU WOOD
     public static final Block DEKU_LOG = register("deku_log", new PillarBlock(FabricBlockSettings.copyOf(Blocks.CHERRY_LOG)));

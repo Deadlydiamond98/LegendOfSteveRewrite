@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "legend_of_steve:item/quiver/gilded_quiver"
+  },
+  "overrides": [
+    { "predicate": { "filled": 0.0 }, "model": "legend_of_steve:item/gilded_quiver"},
+    { "predicate": { "filled": 0.25 }, "model": "legend_of_steve:item/gilded_quiver_one_arrow"},
+    { "predicate": { "filled": 0.5 }, "model": "legend_of_steve:item/gilded_quiver_two_arrows"},
+    { "predicate": { "filled": 1.0 }, "model": "legend_of_steve:item/gilded_quiver_filled"}
+  ]
+}

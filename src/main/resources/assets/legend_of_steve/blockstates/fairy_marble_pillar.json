@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "legend_of_steve:block/fairy_marble_pillar",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "legend_of_steve:block/fairy_marble_pillar"
+    },
+    "axis=z": {
+      "model": "legend_of_steve:block/fairy_marble_pillar",
+      "x": 90
+    }
+  }
+}

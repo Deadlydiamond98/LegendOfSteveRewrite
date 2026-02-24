@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "legend_of_steve:block/polished_fairy_marble_slab"
+    },
+    "type=double": {
+      "model": "legend_of_steve:block/polished_fairy_marble"
+    },
+    "type=top": {
+      "model": "legend_of_steve:block/polished_fairy_marble_slab_top"
+    }
+  }
+}

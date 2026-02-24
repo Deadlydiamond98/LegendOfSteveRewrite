@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "legend_of_steve:block/small_red_tektiles",
+    "side": "legend_of_steve:block/small_red_tektiles",
+    "top": "legend_of_steve:block/small_red_tektiles"
+  }
+}

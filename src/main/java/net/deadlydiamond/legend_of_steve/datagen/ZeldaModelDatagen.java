@@ -1,5 +1,6 @@
 package net.deadlydiamond.legend_of_steve.datagen;
 
+import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
 import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
 import net.deadlydiamond98.koalalib.util.datagen.ItemModelDatagenUtil;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -15,7 +16,10 @@ public class ZeldaModelDatagen extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-
+        ZeldaBlocks.RED_TEKTILES.generateModels(blockStateModelGenerator);
+        ZeldaBlocks.SMALL_RED_TEKTILES.generateModels(blockStateModelGenerator);
+        ZeldaBlocks.BLUE_TEKTILES.generateModels(blockStateModelGenerator);
+        ZeldaBlocks.SMALL_BLUE_TEKTILES.generateModels(blockStateModelGenerator);
     }
 
     @Override

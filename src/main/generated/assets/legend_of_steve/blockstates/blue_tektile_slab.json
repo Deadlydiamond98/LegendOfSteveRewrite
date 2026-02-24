@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "legend_of_steve:block/blue_tektile_slab"
+    },
+    "type=double": {
+      "model": "legend_of_steve:block/blue_tektiles"
+    },
+    "type=top": {
+      "model": "legend_of_steve:block/blue_tektile_slab_top"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "legend_of_steve:block/deku_leaves"
+  }
+}

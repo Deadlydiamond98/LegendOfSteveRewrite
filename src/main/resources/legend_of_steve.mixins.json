@@ -9,8 +9,11 @@
     "common.ExplosionMixin",
     "common.LavaFluidMixin",
     "common.block.FluidBlockMixin",
+    "common.entity.AbstractSkeletonEntityMixin",
     "common.entity.LightningEntityMixin",
-    "common.entity.MobEntityMixin"
+    "common.entity.MobEntityMixin",
+    "common.entity.piglin.PiglinBrainMixin",
+    "common.entity.piglin.PiglinEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1
@@ -26,10 +29,13 @@
     "client.model.JsonUnbakedModelMixin$DeserializerMixin",
     "client.rendering.GameRendererMixin",
     "client.rendering.ItemRendererMixin",
-    "client.rendering.PlayerHeldItemFeatureRendererMixin",
     "client.rendering.RenderLayerMixin",
     "client.rendering.RenderLayersMixin",
     "client.rendering.WorldRendererMixin",
+    "client.rendering.entity.ArmorStandEntityRendererMixin",
+    "client.rendering.entity.BipedEntityRendererMixin",
+    "client.rendering.entity.PlayerEntityRendererMixin",
+    "client.rendering.entity.PlayerHeldItemFeatureRendererMixin",
     "client.shader.BufferBuilderStorageMixin",
     "client.shader.ShaderProgramMixin",
     "client.shader.VertexBufferMixin"

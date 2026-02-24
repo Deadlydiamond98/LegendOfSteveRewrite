@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.mixin.client.rendering;
+package net.deadlydiamond.legend_of_steve.mixin.client.rendering.entity;
 
 import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import net.deadlydiamond.legend_of_steve.client.rendering.player.itemmodel.CustomHeldItemRenderer;

@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "side": "legend_of_steve:block/iridescent/chiseled_fairy_marble@legend_of_steve:textures/atlas/iridescent.png",
+    "end": "legend_of_steve:block/iridescent/polished_fairy_marble@legend_of_steve:textures/atlas/iridescent.png",
+    "particle": "legend_of_steve:block/iridescent/chiseled_fairy_marble"
+  }
+}

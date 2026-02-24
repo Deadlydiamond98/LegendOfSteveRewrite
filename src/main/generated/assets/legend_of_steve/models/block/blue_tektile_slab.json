@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "legend_of_steve:block/blue_tektiles",
+    "side": "legend_of_steve:block/blue_tektiles",
+    "top": "legend_of_steve:block/blue_tektiles"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "legend_of_steve:block/stripped_deku_log_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "legend_of_steve:block/stripped_deku_log"
+    },
+    "axis=z": {
+      "model": "legend_of_steve:block/stripped_deku_log_horizontal",
+      "x": 90
+    }
+  }
+}

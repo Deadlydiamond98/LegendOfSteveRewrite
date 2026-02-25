@@ -5,6 +5,7 @@ import net.deadlydiamond.legend_of_steve.common.blocks.plant.BombFlowerBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.FruitingLeaves;
 import net.deadlydiamond.legend_of_steve.common.blocksets.IridescentStairSlabBlockset;
 import net.deadlydiamond.legend_of_steve.common.blocksets.IridescentStairSlabWallBlockset;
+import net.deadlydiamond.legend_of_steve.common.blocksets.WoodBlockset;
 import net.deadlydiamond98.koalalib.common.blocksets.BaseStairSlabBlockset;
 import net.deadlydiamond98.koalalib.common.blocksets.BaseStairSlabWallBlockset;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -45,8 +46,8 @@ public class ZeldaBlocks {
 
 
     // DEKU WOOD
-    public static final Block DEKU_LOG = register("deku_log", new PillarBlock(FabricBlockSettings.copyOf(Blocks.CHERRY_LOG)));
-    public static final Block DEKU_WOOD = register("deku_wood", new PillarBlock(FabricBlockSettings.copyOf(Blocks.CHERRY_LOG)));
+    public static final WoodBlockset DEKU_WOOD = new WoodBlockset(LegendOfSteve.MOD_ID, "deku", FabricBlockSettings.copyOf(Blocks.CHERRY_PLANKS), BlockSetType.CHERRY);
+
     public static final Block DEKU_LEAVES = register("deku_leaves", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.CHERRY_LEAVES)));
     public static final Block FRUITING_DEKU_LEAVES = register("fruiting_deku_leaves", new FruitingLeaves(FabricBlockSettings.copyOf(Blocks.CHERRY_LEAVES), DEKU_LEAVES));
 

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "legend_of_steve:block/deku_pressure_plate"
+    },
+    "powered=true": {
+      "model": "legend_of_steve:block/deku_pressure_plate_down"
+    }
+  }
+}

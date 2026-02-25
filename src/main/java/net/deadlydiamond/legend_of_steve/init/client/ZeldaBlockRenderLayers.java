@@ -12,6 +12,11 @@ public class ZeldaBlockRenderLayers {
                 ZeldaBlocks.DEKU_LEAVES
         );
 
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(),
+                ZeldaBlocks.DEKU_WOOD.door,
+                ZeldaBlocks.DEKU_WOOD.trapdoor
+        );
+
         BlockRenderLayerMap.INSTANCE.putFluids(RenderLayer.getTranslucent(),
                 ZeldaFluids.ENCHANTED_SPRING_WATER,
                 ZeldaFluids.FLOWING_ENCHANTED_SPRING_WATER

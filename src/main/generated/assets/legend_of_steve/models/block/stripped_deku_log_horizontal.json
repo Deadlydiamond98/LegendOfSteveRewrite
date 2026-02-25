@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "legend_of_steve:block/stripped_deku_log_top",
+    "side": "legend_of_steve:block/stripped_deku_log"
+  }
+}

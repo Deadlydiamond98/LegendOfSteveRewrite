@@ -36,6 +36,9 @@ public class ZeldaModelDatagen extends FabricModelProvider {
         ZeldaBlocks.SMALL_RED_TEKTILES.generateModels(generator);
         ZeldaBlocks.BLUE_TEKTILES.generateModels(generator);
         ZeldaBlocks.SMALL_BLUE_TEKTILES.generateModels(generator);
+
+        // WOOD ////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ZeldaBlocks.DEKU_WOOD.generateModels(generator);
     }
 
     @Override

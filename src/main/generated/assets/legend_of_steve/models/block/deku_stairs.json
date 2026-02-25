@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "legend_of_steve:block/deku_planks",
+    "side": "legend_of_steve:block/deku_planks",
+    "top": "legend_of_steve:block/deku_planks"
+  }
+}

@@ -6,6 +6,7 @@
   },
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "common.BlockEntityTypeMixin",
     "common.ExplosionMixin",
     "common.LavaFluidMixin",
     "common.block.FluidBlockMixin",
@@ -31,11 +32,15 @@
     "client.rendering.ItemRendererMixin",
     "client.rendering.RenderLayerMixin",
     "client.rendering.RenderLayersMixin",
+    "client.rendering.TexturedRenderLayersMixin",
     "client.rendering.WorldRendererMixin",
+    "client.rendering.block.HangingSignBlockEntityRendererMixin",
+    "client.rendering.block.SignBlockEntityRendererMixin",
     "client.rendering.entity.ArmorStandEntityRendererMixin",
     "client.rendering.entity.BipedEntityRendererMixin",
     "client.rendering.entity.PlayerEntityRendererMixin",
     "client.rendering.entity.PlayerHeldItemFeatureRendererMixin",
+    "client.screen.SignEditScreenMixin",
     "client.shader.BufferBuilderStorageMixin",
     "client.shader.ShaderProgramMixin",
     "client.shader.VertexBufferMixin"

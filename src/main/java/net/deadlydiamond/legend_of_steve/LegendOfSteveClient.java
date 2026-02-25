@@ -1,6 +1,8 @@
 package net.deadlydiamond.legend_of_steve;
 
+import net.deadlydiamond.legend_of_steve.client.SpriteIdentifierRegistry;
 import net.deadlydiamond.legend_of_steve.client.rendering.player.ZeldaPlayerRendering;
+import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
 import net.deadlydiamond.legend_of_steve.init.client.*;
 import net.fabricmc.api.ClientModInitializer;
 
@@ -12,5 +14,7 @@ public class LegendOfSteveClient implements ClientModInitializer {
         ZeldaPlayerRendering.register();
         ZeldaBlockRenderLayers.register();
         ZeldaModelPredicates.register();
+
+        SpriteIdentifierRegistry.register(ZeldaBlocks.DEKU_WOOD.sign, ZeldaBlocks.DEKU_WOOD.hangingSign);
     }
 }

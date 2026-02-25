@@ -35,6 +35,7 @@ public class ZeldaBlocks {
     public static final IridescentStairSlabWallBlockset MOSSY_FAIRY_MARBLE_BRICKS = new IridescentStairSlabWallBlockset(LegendOfSteve.MOD_ID, "mossy_fairy_marble_bricks", FabricBlockSettings.copyOf(Blocks.CALCITE));
     public static final IridescentStairSlabBlockset FAIRY_MARBLE_TILES = new IridescentStairSlabBlockset(LegendOfSteve.MOD_ID, "fairy_marble_tiles", FabricBlockSettings.copyOf(Blocks.CALCITE));
 
+    public static final Block CRACKED_FAIRY_MARBLE_BRICKS = register("cracked_fairy_marble_bricks", new Block(FabricBlockSettings.copyOf(Blocks.CALCITE)));
     public static final Block CHISELED_FAIRY_MARBLE = register("chiseled_fairy_marble", new Block(FabricBlockSettings.copyOf(Blocks.CALCITE)));
     public static final Block FAIRY_MARBLE_PILLAR = register("fairy_marble_pillar", new PillarBlock(FabricBlockSettings.copyOf(Blocks.CALCITE)));
     public static final Block SMOOTH_FAIRY_MARBLE = register("smooth_fairy_marble", new Block(FabricBlockSettings.copyOf(Blocks.CALCITE)));

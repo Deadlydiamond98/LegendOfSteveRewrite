@@ -45,7 +45,8 @@ public class ZeldaBlockRenderLayers {
                 ZeldaBlocks.MOSSY_FAIRY_MARBLE_BRICKS.base,
                 ZeldaBlocks.MOSSY_FAIRY_MARBLE_BRICKS.slab,
                 ZeldaBlocks.MOSSY_FAIRY_MARBLE_BRICKS.stair,
-                ZeldaBlocks.MOSSY_FAIRY_MARBLE_BRICKS.wall
+                ZeldaBlocks.MOSSY_FAIRY_MARBLE_BRICKS.wall,
+                ZeldaBlocks.CRACKED_FAIRY_MARBLE_BRICKS
         );
     }
 }

@@ -29,6 +29,7 @@ public class ZeldaModelDatagen extends FabricModelProvider {
 
         IridescentBlockModelDatagenUtil.registerIridescentPillar(generator, ZeldaBlocks.FAIRY_MARBLE_PILLAR);
         IridescentBlockModelDatagenUtil.registerIridescentBlock(generator, ZeldaBlocks.SMOOTH_FAIRY_MARBLE);
+        IridescentBlockModelDatagenUtil.registerIridescentBlock(generator, ZeldaBlocks.CRACKED_FAIRY_MARBLE_BRICKS);
 
         // TEKTILES ////////////////////////////////////////////////////////////////////////////////////////////////////
         ZeldaBlocks.RED_TEKTILES.generateModels(generator);

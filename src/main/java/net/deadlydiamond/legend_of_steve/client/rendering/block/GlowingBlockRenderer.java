@@ -33,6 +33,7 @@ public class GlowingBlockRenderer implements BlockEntityRenderer<GlowingBlockEnt
     @Override
     public void render(GlowingBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
         // Due to how un-performant the Glowing Layer can be, the Blocks needed for Rendering are added to a list to be rendered together
+        // with only 1 glow layer
         GLOWING_BLOCKS.add(entity);
     }
 

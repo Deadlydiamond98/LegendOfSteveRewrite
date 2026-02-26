@@ -9,6 +9,7 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.RenderPhase;
 import net.minecraft.client.render.VertexFormat;
 import net.minecraft.client.render.VertexFormats;
+import net.minecraft.client.texture.SpriteAtlasTexture;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 
@@ -27,7 +28,7 @@ public class ZeldaRenderLayers extends RenderLayer {
     private static final RenderPhase.ShaderProgram ITEM_IRIDESCENCE_PROGRAM = new ShaderProgram(() -> ZeldaShaders.itemIridescenceShader);
 
     // SHADER TARGETS //////////////////////////////////////////////////////////////////////////////////////////////////
-    private static final RenderPhase.Target GLOWING_TARGET = new Target("legend_of_steve$rendertype_glowing", () -> {
+    private static final RenderPhase.Target BLOOM_TARGET = new Target("legend_of_steve$bloom_glowing", () -> {
         Framebuffer target = PostProcessingRegistry.getRenderTargetFor(ZeldaShaders.BLOOM_GLOWING_SHADER_ID);
         if (target != null) {
             target.copyDepthFrom(MinecraftClient.getInstance().getFramebuffer());
@@ -39,22 +40,22 @@ public class ZeldaRenderLayers extends RenderLayer {
         super(name, vertexFormat, drawMode, expectedBufferSize, hasCrumbling, translucent, startAction, endAction);
     }
 
-    private static final Function<Identifier, RenderLayer> BLOOM_GLOWING = Util.memoize(texture -> {
+    public static final Function<Identifier, RenderLayer> ENTITY_BLOOM_GLOW = Util.memoize(texture -> {
         MultiPhaseParameters multiPhaseParameters = MultiPhaseParameters.builder()
                 .program(RenderPhase.POSITION_COLOR_TEXTURE_PROGRAM)
                 .texture(new Texture(texture, false, false))
                 .transparency(TRANSLUCENT_TRANSPARENCY)
                 .cull(DISABLE_CULLING)
                 .depthTest(LEQUAL_DEPTH_TEST)
-                .target(GLOWING_TARGET)
+                .target(BLOOM_TARGET)
                 .build(false);
         return of(
-                "legend_of_steve$rendertype_glowing",
+                "legend_of_steve$entity_bloom_glow",
                 VertexFormats.POSITION_COLOR_TEXTURE,
                 VertexFormat.DrawMode.QUADS,
                 256,
                 true,
-                false,
+                true,
                 multiPhaseParameters
         );
     });
@@ -153,6 +154,7 @@ public class ZeldaRenderLayers extends RenderLayer {
                     .overlay(ENABLE_OVERLAY_COLOR)
                     .build(false));
 
+
     public static final RenderLayer ENTITY_IRIDESCENCE_TEXTURED = ENTITY_IRIDESCENCE.apply(
             IRIDESCENT_ATLAS_TEXTURE,
             NORMAL_MAPS_ATLAS_TEXTURE
@@ -170,6 +172,6 @@ public class ZeldaRenderLayers extends RenderLayer {
 
     public static RenderLayer getGlowing(Identifier texture) {
         PostProcessingRegistry.renderEffectForNextTick(ZeldaShaders.BLOOM_GLOWING_SHADER_ID);
-        return BLOOM_GLOWING.apply(texture);
+        return ENTITY_BLOOM_GLOW.apply(texture);
     }
 }

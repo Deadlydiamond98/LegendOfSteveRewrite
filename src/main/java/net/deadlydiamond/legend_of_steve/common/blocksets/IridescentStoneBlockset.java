@@ -1,0 +1,30 @@
+package net.deadlydiamond.legend_of_steve.common.blocksets;
+
+import net.deadlydiamond.legend_of_steve.util.datagen.IridescentBlockModelDatagenUtil;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.BlockSetType;
+import net.minecraft.data.client.BlockStateModelGenerator;
+
+public class IridescentStoneBlockset extends StoneBlockset {
+    public IridescentStoneBlockset(String modID, String id, AbstractBlock.Settings settings) {
+        super(modID, id, settings);
+    }
+
+    public IridescentStoneBlockset(String modID, String id, AbstractBlock.Settings settings, BlockSetType blockSetTypeReference) {
+        super(modID, id, settings, blockSetTypeReference);
+    }
+
+    public IridescentStoneBlockset(String modID, String id, AbstractBlock.Settings settings, BlockSetType blockSetTypeReference, boolean stripEndS) {
+        super(modID, id, settings, blockSetTypeReference, stripEndS);
+    }
+
+    @Override
+    public void generateModels(BlockStateModelGenerator modelGen, boolean uniqueSlab) {
+        IridescentBlockModelDatagenUtil.registerIridescentBlock(modelGen, this.base);
+        IridescentBlockModelDatagenUtil.registerIridescentSlab(modelGen, this.slab, this.base);
+        IridescentBlockModelDatagenUtil.registerIridescentStairs(modelGen, this.stair, this.base);
+        IridescentBlockModelDatagenUtil.registerIridescentWall(modelGen, this.wall, this.base);
+        IridescentBlockModelDatagenUtil.registerIridescentButton(modelGen, this.button, this.base);
+        IridescentBlockModelDatagenUtil.registerIridescentPressurePlate(modelGen, this.plate, this.base);
+    }
+}

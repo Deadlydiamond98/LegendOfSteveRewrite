@@ -61,6 +61,28 @@ public class IridescentBlockModelDatagenUtil {
         generator.blockStateCollector.accept(BlockStateModelGenerator.createAxisRotatedBlockState(block, reg, horizontal));
     }
 
+    public static void registerIridescentButton(BlockStateModelGenerator generator, Block button, Block base) {
+        Identifier texturePath = getPrefixedId(base, "iridescent");
+        TextureMap textureMap = TextureMap.all(texturePath).put(TextureKey.PARTICLE, texturePath);
+
+        Identifier reg = uploadIridescentModel(generator, ModelIds.getBlockModelId(button), Models.BUTTON, textureMap);
+        Identifier pressed = uploadIridescentModel(generator, ModelIds.getBlockSubModelId(button, "_pressed"), Models.BUTTON_PRESSED, textureMap);
+        generator.blockStateCollector.accept(BlockStateModelGenerator.createButtonBlockState(button, reg, pressed));
+
+        Identifier inv = uploadIridescentModel(generator, ModelIds.getBlockSubModelId(button, "_inventory"), Models.BUTTON_INVENTORY, textureMap);
+        generator.registerParentedItemModel(button, inv);
+    }
+
+    public static void registerIridescentPressurePlate(BlockStateModelGenerator generator, Block plate, Block base) {
+        Identifier texturePath = getPrefixedId(base, "iridescent");
+        TextureMap textureMap = TextureMap.all(texturePath).put(TextureKey.PARTICLE, texturePath);
+
+        Identifier reg = uploadIridescentModel(generator, ModelIds.getBlockModelId(plate), Models.PRESSURE_PLATE_UP, textureMap);
+        Identifier pressed = uploadIridescentModel(generator, ModelIds.getBlockSubModelId(plate, "_down"), Models.PRESSURE_PLATE_DOWN, textureMap);
+
+        generator.blockStateCollector.accept(BlockStateModelGenerator.createPressurePlateBlockState(plate, reg, pressed));
+    }
+
     private static Identifier uploadIridescentModel(BlockStateModelGenerator generator, Identifier modelID, Model model, TextureMap textureMap) {
         return model.upload(modelID, textureMap, generator.modelCollector, (id, textures) -> {
             JsonObject jsonObject = new JsonObject();

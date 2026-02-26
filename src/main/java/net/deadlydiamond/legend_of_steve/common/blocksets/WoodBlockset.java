@@ -12,6 +12,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.minecraft.block.*;
+import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.item.HangingSignItem;
 import net.minecraft.item.Item;
@@ -77,10 +78,10 @@ public class WoodBlockset extends AbstractBlockset {
         this.trapdoor = this.register(modID, this.id() + "_trapdoor", new TrapdoorBlock(settings.nonOpaque(), this.blockSetType));
 
         this.button = this.register(modID, this.id() + "_button", new ButtonBlock(
-                settings.noCollision().strength(0.5F), this.blockSetType, 30, true));
+                settings.noCollision().strength(0.5F).pistonBehavior(PistonBehavior.DESTROY), this.blockSetType, 30, true));
 
         this.plate = this.register(modID, this.id() + "_pressure_plate", new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,
-                settings.noCollision().strength(0.5F), this.blockSetType));
+                settings.noCollision().strength(0.5F).pistonBehavior(PistonBehavior.DESTROY), this.blockSetType));
 
         // SIGNS ///////////////////////////////////////////////////////////////////////////////////////////////////////
 

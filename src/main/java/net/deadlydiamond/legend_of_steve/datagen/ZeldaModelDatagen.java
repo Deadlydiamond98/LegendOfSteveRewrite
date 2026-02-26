@@ -19,6 +19,15 @@ public class ZeldaModelDatagen extends FabricModelProvider {
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator generator) {
 
+        // FAIRY LAMP //////////////////////////////////////////////////////////////////////////////////////////////////
+        generator.registerSimpleCubeAll(ZeldaBlocks.PINK_FAIRY_LAMP);
+        generator.registerSimpleCubeAll(ZeldaBlocks.RED_FAIRY_LAMP);
+        generator.registerSimpleCubeAll(ZeldaBlocks.ORANGE_FAIRY_LAMP);
+        generator.registerSimpleCubeAll(ZeldaBlocks.YELLOW_FAIRY_LAMP);
+        generator.registerSimpleCubeAll(ZeldaBlocks.GREEN_FAIRY_LAMP);
+        generator.registerSimpleCubeAll(ZeldaBlocks.BLUE_FAIRY_LAMP);
+        generator.registerSimpleCubeAll(ZeldaBlocks.PURPLE_FAIRY_LAMP);
+
         // FAIRY MARBLE ////////////////////////////////////////////////////////////////////////////////////////////////
         ZeldaBlocks.FAIRY_MARBLE.generateModels(generator);
         ZeldaBlocks.COBBLED_FAIRY_MARBLE.generateModels(generator);

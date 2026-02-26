@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/pressure_plate_down",
+  "textures": {
+    "particle": "legend_of_steve:block/iridescent/fairy_marble",
+    "texture": "legend_of_steve:block/iridescent/fairy_marble@legend_of_steve:textures/atlas/iridescent.png"
+  }
+}

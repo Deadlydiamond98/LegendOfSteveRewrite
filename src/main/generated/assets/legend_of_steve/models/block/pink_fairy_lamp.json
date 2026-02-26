@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "legend_of_steve:block/pink_fairy_lamp"
+  }
+}

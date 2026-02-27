@@ -1,6 +1,6 @@
 package net.deadlydiamond.legend_of_steve.events.client;
 
-import net.deadlydiamond.legend_of_steve.client.rendering.block.GlowingBlockRenderer;
+import net.deadlydiamond.legend_of_steve.client.rendering.block.glowing.GlowingBlockRenderer;
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
 
 

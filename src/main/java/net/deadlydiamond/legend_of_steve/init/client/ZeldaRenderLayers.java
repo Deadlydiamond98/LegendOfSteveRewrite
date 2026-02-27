@@ -40,6 +40,22 @@ public class ZeldaRenderLayers extends RenderLayer {
         super(name, vertexFormat, drawMode, expectedBufferSize, hasCrumbling, translucent, startAction, endAction);
     }
 
+    public static final RenderLayer BLOOM_GLOW = of(
+            "legend_of_steve$bloom_glow",
+            VertexFormats.POSITION_COLOR_TEXTURE,
+            VertexFormat.DrawMode.QUADS,
+            131072,
+            false,
+            true,
+            MultiPhaseParameters.builder()
+                    .program(RenderPhase.POSITION_COLOR_TEXTURE_PROGRAM)
+                    .texture(RenderPhase.MIPMAP_BLOCK_ATLAS_TEXTURE)
+                    .transparency(TRANSLUCENT_TRANSPARENCY)
+                    .depthTest(LEQUAL_DEPTH_TEST)
+                    .target(BLOOM_TARGET)
+                    .build(false)
+    );
+
     public static final Function<Identifier, RenderLayer> ENTITY_BLOOM_GLOW = Util.memoize(texture -> {
         MultiPhaseParameters multiPhaseParameters = MultiPhaseParameters.builder()
                 .program(RenderPhase.POSITION_COLOR_TEXTURE_PROGRAM)

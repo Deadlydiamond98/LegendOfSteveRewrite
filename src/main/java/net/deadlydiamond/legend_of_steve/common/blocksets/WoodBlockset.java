@@ -4,10 +4,11 @@ import net.deadlydiamond.legend_of_steve.common.blocks.sign.CustomHangingSignBlo
 import net.deadlydiamond.legend_of_steve.common.blocks.sign.CustomSignBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.sign.CustomWallHangingSignBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.sign.CustomWallSignBlock;
-import net.deadlydiamond.legend_of_steve.util.datagen.ZeldaBlockModelDatagenUtil;
+import net.deadlydiamond.legend_of_steve.util.datagen.model.ZeldaBlockModelDatagenUtil;
 import net.deadlydiamond98.koalalib.common.blocksets.AbstractBlockset;
 import net.deadlydiamond98.koalalib.util.datagen.BlockModelDatagenUtil;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
@@ -69,30 +70,30 @@ public class WoodBlockset extends AbstractBlockset {
         this.strippedWood = this.register(modID, "stripped_" + this.id() + "_wood", new PillarBlock(settings));
 
         this.plank = this.register(modID, this.id() + "_planks", new Block(settings));
-        this.slab = this.register(modID, this.id() + "_slab", new SlabBlock(settings));
         this.stair = this.register(modID, this.id() + "_stairs", new StairsBlock(this.plank.getDefaultState(), settings));
+        this.slab = this.register(modID, this.id() + "_slab", new SlabBlock(settings));
+
         this.fence = this.register(modID, this.id() + "_fence", new FenceBlock(settings));
         this.gate = this.register(modID, this.id() + "_fence_gate", new FenceGateBlock(settings, this.woodType));
 
-        this.door = this.register(modID, this.id() + "_door", new DoorBlock(settings.nonOpaque(), this.blockSetType));
-        this.trapdoor = this.register(modID, this.id() + "_trapdoor", new TrapdoorBlock(settings.nonOpaque(), this.blockSetType));
-
-        this.button = this.register(modID, this.id() + "_button", new ButtonBlock(
-                settings.noCollision().strength(0.5F).pistonBehavior(PistonBehavior.DESTROY), this.blockSetType, 30, true));
+        this.door = this.register(modID, this.id() + "_door", new DoorBlock(FabricBlockSettings.copyOf(this.plank).nonOpaque(), this.blockSetType));
+        this.trapdoor = this.register(modID, this.id() + "_trapdoor", new TrapdoorBlock(FabricBlockSettings.copyOf(this.plank).nonOpaque(), this.blockSetType));
 
         this.plate = this.register(modID, this.id() + "_pressure_plate", new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,
-                settings.noCollision().strength(0.5F).pistonBehavior(PistonBehavior.DESTROY), this.blockSetType));
+                FabricBlockSettings.copyOf(this.plank).noCollision().strength(0.5F).pistonBehavior(PistonBehavior.DESTROY), this.blockSetType));
+        this.button = this.register(modID, this.id() + "_button", new ButtonBlock(
+                FabricBlockSettings.copyOf(this.plank).noCollision().strength(0.5F).pistonBehavior(PistonBehavior.DESTROY), this.blockSetType, 30, true));
 
         // SIGNS ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
         Identifier signTexture = new Identifier(modID, "entity/signs/" + this.id());
-        this.sign = this.registerNoItem(modID, this.id() + "_sign", new CustomSignBlock(settings.noCollision().strength(1), this.woodType, signTexture));
-        this.wallSign = this.registerNoItem(modID, this.id() + "_wall_sign", new CustomWallSignBlock(settings.noCollision().strength(1).dropsLike(this.sign), this.woodType, signTexture));
+        this.sign = this.registerNoItem(modID, this.id() + "_sign", new CustomSignBlock(FabricBlockSettings.copyOf(this.plank).noCollision().strength(1), this.woodType, signTexture));
+        this.wallSign = this.registerNoItem(modID, this.id() + "_wall_sign", new CustomWallSignBlock(FabricBlockSettings.copyOf(this.plank).noCollision().strength(1).dropsLike(this.sign), this.woodType, signTexture));
         this.signItem = this.registerItem(new Identifier(modID, this.id() + "_sign"), new SignItem(new FabricItemSettings(), this.sign, this.wallSign));
 
         Identifier hangingSignTexture = new Identifier(modID, "entity/signs/hanging/" + this.id());
-        this.hangingSign = this.registerNoItem(modID, this.id() + "_hanging_sign", new CustomHangingSignBlock(settings.noCollision().strength(1), this.woodType, hangingSignTexture));
-        this.wallHangingSign = this.registerNoItem(modID, this.id() + "_wall_hanging_sign", new CustomWallHangingSignBlock(settings.noCollision().strength(1).dropsLike(this.sign), this.woodType, hangingSignTexture));
+        this.hangingSign = this.registerNoItem(modID, this.id() + "_hanging_sign", new CustomHangingSignBlock(FabricBlockSettings.copyOf(this.plank).noCollision().strength(1), this.woodType, hangingSignTexture));
+        this.wallHangingSign = this.registerNoItem(modID, this.id() + "_wall_hanging_sign", new CustomWallHangingSignBlock(FabricBlockSettings.copyOf(this.plank).noCollision().strength(1).dropsLike(this.sign), this.woodType, hangingSignTexture));
         this.hangingSignItem = this.registerItem(new Identifier(modID, this.id() + "_hanging_sign"), new HangingSignItem(this.hangingSign, this.wallHangingSign, new FabricItemSettings()));
 
         additionalWoodInit(flammable);

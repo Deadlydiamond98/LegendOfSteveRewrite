@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "legend_of_steve:fairy_marble_bricks"
+  },
+  "result": "legend_of_steve:fairy_marble_tiles"
+}

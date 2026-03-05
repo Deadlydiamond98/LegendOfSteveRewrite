@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "legend_of_steve:deepslate_master_ore"
+  },
+  "result": "legend_of_steve:master_scrap",
+  "experience": 2.0,
+  "cookingtime": 200
+}

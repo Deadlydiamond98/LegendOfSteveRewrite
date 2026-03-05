@@ -33,6 +33,10 @@ public class ZeldaItems {
     public static final Item RED_TEKTITE_CHITIN = register("red_tektite_chitin", new Item(new FabricItemSettings()));
     public static final Item RED_TEKTITE_SHELL = register("red_tektite_shell", new Item(new FabricItemSettings()));
 
+    public static final Item RAW_MASTER_ORE = register("raw_master_ore", new Item(new FabricItemSettings()));
+    public static final Item MASTER_SCRAP = register("master_scrap", new Item(new FabricItemSettings()));
+    public static final Item MASTER_INGOT = register("master_ingot", new Item(new FabricItemSettings()));
+
     // FLUIDS //////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static final Item ENCHANTED_SPRING_WATER_BUCKET = register("enchanted_spring_water_bucket", new BucketItem(
             ZeldaFluids.ENCHANTED_SPRING_WATER, new Item.Settings().recipeRemainder(Items.BUCKET).maxCount(1))

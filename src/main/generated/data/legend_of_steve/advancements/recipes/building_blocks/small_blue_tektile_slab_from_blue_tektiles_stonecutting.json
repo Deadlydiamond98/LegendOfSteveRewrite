@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_blue_tektiles": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "legend_of_steve:blue_tektiles"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:small_blue_tektile_slab_from_blue_tektiles_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_blue_tektiles",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:small_blue_tektile_slab_from_blue_tektiles_stonecutting"
+    ]
+  },
+  "sends_telemetry_event": false
+}

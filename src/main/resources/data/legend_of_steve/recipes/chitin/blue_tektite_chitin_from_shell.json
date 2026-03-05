@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "legend_of_steve:blue_tektite_shell"
+    }
+  ],
+  "result": {
+    "item": "legend_of_steve:blue_tektite_chitin",
+    "count": 5
+  }
+}

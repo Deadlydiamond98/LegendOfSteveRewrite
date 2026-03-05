@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "legend_of_steve:fairy_marble_wall",
+    "legend_of_steve:cobbled_fairy_marble_wall",
+    "legend_of_steve:polished_fairy_marble_wall",
+    "legend_of_steve:fairy_marble_brick_wall",
+    "legend_of_steve:mossy_fairy_marble_brick_wall",
+    "legend_of_steve:fairy_marble_tile_wall"
+  ]
+}

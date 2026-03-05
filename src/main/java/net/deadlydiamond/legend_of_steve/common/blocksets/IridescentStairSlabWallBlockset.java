@@ -1,6 +1,6 @@
 package net.deadlydiamond.legend_of_steve.common.blocksets;
 
-import net.deadlydiamond.legend_of_steve.util.datagen.IridescentBlockModelDatagenUtil;
+import net.deadlydiamond.legend_of_steve.util.datagen.model.IridescentBlockModelDatagenUtil;
 import net.deadlydiamond98.koalalib.common.blocksets.BaseStairSlabWallBlockset;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.data.client.BlockStateModelGenerator;

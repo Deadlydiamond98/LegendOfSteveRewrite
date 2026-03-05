@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "cc",
+    "bb",
+    "cc"
+  ],
+  "key": {
+    "c": {
+      "item": "legend_of_steve:master_plate_slab"
+    },
+    "b": {
+      "item": "legend_of_steve:master_bars"
+    }
+  },
+  "result": {
+    "item": "legend_of_steve:master_girder",
+    "count": 4
+  }
+}

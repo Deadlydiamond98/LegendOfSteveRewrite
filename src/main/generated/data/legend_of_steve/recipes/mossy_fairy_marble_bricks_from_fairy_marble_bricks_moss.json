@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "building_blocks",
+  "ingredients": [
+    {
+      "item": "legend_of_steve:fairy_marble_bricks"
+    },
+    {
+      "item": "minecraft:moss_block"
+    }
+  ],
+  "result": {
+    "item": "legend_of_steve:mossy_fairy_marble_bricks"
+  }
+}

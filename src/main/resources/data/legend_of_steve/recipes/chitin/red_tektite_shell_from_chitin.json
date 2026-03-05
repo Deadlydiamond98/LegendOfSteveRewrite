@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "# #"
+  ],
+  "key": {
+    "#": {
+      "item": "legend_of_steve:red_tektite_chitin"
+    }
+  },
+  "result": {
+    "item": "legend_of_steve:red_tektite_shell",
+    "count": 1
+  }
+}

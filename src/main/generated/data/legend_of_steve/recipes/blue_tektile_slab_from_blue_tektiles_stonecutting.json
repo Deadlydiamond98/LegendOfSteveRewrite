@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "ingredient": {
+    "item": "legend_of_steve:blue_tektiles"
+  },
+  "result": "legend_of_steve:blue_tektile_slab"
+}

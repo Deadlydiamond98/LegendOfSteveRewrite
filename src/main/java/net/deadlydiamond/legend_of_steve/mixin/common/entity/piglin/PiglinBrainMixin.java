@@ -14,7 +14,7 @@ public class PiglinBrainMixin {
     @ModifyReturnValue(method = "wearsGoldArmor", at = @At("RETURN"))
     private static boolean legend_of_steve$wearsGoldArmor(boolean original, @Local(argsOnly = true) LivingEntity entity) {
         for (ItemStack itemStack : entity.getArmorItems()) {
-            // I could probably make this a tag :/
+            // TODO: I could probably make this a tag :/
             if (itemStack.isOf(ZeldaItems.GILDED_QUIVER)) {
                 return true;
             }

@@ -9,7 +9,15 @@ public class ZeldaBlockRenderLayers {
     public static void register() {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
                 ZeldaBlocks.BOMB_FLOWER,
-                ZeldaBlocks.DEKU_LEAVES
+                ZeldaBlocks.DEKU_LEAVES,
+                ZeldaBlocks.FRUITING_DEKU_LEAVES,
+                ZeldaBlocks.DEKU_SAPLING,
+                ZeldaBlocks.POTTED_DEKU_SAPLING,
+                ZeldaBlocks.MASTER_DOOR,
+                ZeldaBlocks.MASTER_TRAPDOOR,
+                ZeldaBlocks.MASTER_BARS,
+                ZeldaBlocks.MASTER_CHAIN,
+                ZeldaBlocks.MASTER_GIRDER
         );
 
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(),

@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_polished_fairy_marble": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "legend_of_steve:polished_fairy_marble"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "legend_of_steve:polished_fairy_marble_stairs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_polished_fairy_marble",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "legend_of_steve:polished_fairy_marble_stairs"
+    ]
+  },
+  "sends_telemetry_event": false
+}

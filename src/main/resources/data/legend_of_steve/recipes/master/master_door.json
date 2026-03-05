@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "cc",
+    "cc",
+    "cc"
+  ],
+  "key": {
+    "c": {
+      "item": "legend_of_steve:master_scrap"
+    }
+  },
+  "result": {
+    "item": "legend_of_steve:master_door",
+    "count": 3
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "blocks",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "group": "building_blocks",
+  "ingredient": {
+    "item": "legend_of_steve:fairy_marble"
+  },
+  "result": "legend_of_steve:smooth_fairy_marble"
+}

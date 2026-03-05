@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ccc",
+    "c c",
+    "ccc"
+  ],
+  "key": {
+    "c": {
+      "item": "legend_of_steve:master_scrap"
+    }
+  },
+  "result": {
+    "item": "legend_of_steve:master_plate",
+    "count": 16
+  }
+}

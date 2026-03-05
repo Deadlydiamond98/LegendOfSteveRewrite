@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "legend_of_steve:block/master_barrel_bottom",
+    "side": "legend_of_steve:block/master_barrel_side",
+    "top": "legend_of_steve:block/master_barrel_top_open"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "legend_of_steve:block/deku_sapling"
+  }
+}

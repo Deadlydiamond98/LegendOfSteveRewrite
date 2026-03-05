@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "ingredient": {
+    "item": "legend_of_steve:master_bricks"
+  },
+  "result": "legend_of_steve:master_tile_slab"
+}

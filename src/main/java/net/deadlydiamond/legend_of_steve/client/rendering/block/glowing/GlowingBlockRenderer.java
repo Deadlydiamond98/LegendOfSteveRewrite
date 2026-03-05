@@ -1,7 +1,7 @@
 package net.deadlydiamond.legend_of_steve.client.rendering.block.glowing;
 
 import net.deadlydiamond.legend_of_steve.common.bes.GlowingBlockEntity;
-import net.deadlydiamond.legend_of_steve.common.blocks.light.IGlowingBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.deco.IGlowingBlock;
 import net.deadlydiamond.legend_of_steve.init.client.ZeldaRenderLayers;
 import net.deadlydiamond.legend_of_steve.init.client.ZeldaShaders;
 import net.deadlydiamond98.koalalib.client.PostProcessingRegistry;

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "legend_of_steve:block/master_plate",
+    "side": "legend_of_steve:block/master_plate_slab"
+  }
+}

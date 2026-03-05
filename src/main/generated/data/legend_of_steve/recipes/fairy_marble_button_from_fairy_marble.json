@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "redstone",
+  "ingredients": [
+    {
+      "item": "legend_of_steve:fairy_marble"
+    }
+  ],
+  "result": {
+    "item": "legend_of_steve:fairy_marble_button"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GBG",
+    "BiB",
+    "GBG"
+  ],
+  "key": {
+    "i": {
+      "item": "legend_of_steve:bomb"
+    },
+    "B": {
+      "item": "legend_of_steve:red_tektite_chitin"
+    },
+    "G": {
+      "item": "minecraft:gunpowder"
+    }
+  },
+  "result": {
+    "item": "legend_of_steve:super_bomb",
+    "count": 4
+  }
+}

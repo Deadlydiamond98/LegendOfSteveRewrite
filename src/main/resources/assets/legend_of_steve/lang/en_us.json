@@ -1,0 +1,50 @@
+{
+  "itemgroup.legend_of_steve.blocks": "Legend of Steve Blocks",
+  "itemgroup.legend_of_steve.items": "Legend of Steve Items",
+
+  "block.legend_of_steve.bomb_flower": "Bomb Flower Seeds",
+  "item.legend_of_steve.bomb_flower": "Bomb Flower",
+  "item.legend_of_steve.charged_bomb_flower": "Charged Bomb Flower",
+  "item.legend_of_steve.bomb": "Bomb",
+  "item.legend_of_steve.super_bomb": "Super Bomb",
+
+  "item.legend_of_steve.quiver": "Quiver",
+  "item.legend_of_steve.gilded_quiver": "Gilded Quiver",
+  "item.legend_of_steve.netherite_quiver": "Netherite Quiver",
+
+  "item.legend_of_steve.blue_tektite_chitin": "Blue Tektite Chitin",
+  "item.legend_of_steve.blue_tektite_shell": "Blue Tektite Shell",
+  "item.legend_of_steve.red_tektite_chitin": "Red Tektite Chitin",
+  "item.legend_of_steve.red_tektite_shell": "Red Tektite Shell",
+
+  "item.legend_of_steve.raw_master_ore": "Raw Master Ore",
+  "item.legend_of_steve.master_scrap": "Master Scrap",
+  "item.legend_of_steve.master_ingot": "Master Ingot",
+
+  "block.legend_of_steve.deku_log": "Deku Log",
+  "block.legend_of_steve.deku_wood": "Deku Wood",
+  "block.legend_of_steve.stripped_deku_log": "Stripped Deku Log",
+  "block.legend_of_steve.stripped_deku_wood": "Stripped Deku Wood",
+  "block.legend_of_steve.deku_planks": "Deku Planks",
+  "block.legend_of_steve.deku_stairs": "Deku Stairs",
+  "block.legend_of_steve.deku_slab": "Deku Slab",
+  "block.legend_of_steve.deku_fence": "Deku Fence",
+  "block.legend_of_steve.deku_fence_gate": "Deku Fence Gate",
+  "block.legend_of_steve.deku_door": "Deku Door",
+  "block.legend_of_steve.deku_trapdoor": "Deku Trapdoor",
+  "block.legend_of_steve.deku_pressure_plate": "Deku Pressure Plate",
+  "block.legend_of_steve.deku_button": "Deku Button",
+  "block.legend_of_steve.deku_sign": "Deku Sign",
+  "block.legend_of_steve.deku_hanging_sign": "Deku Hanging Sign",
+  "block.legend_of_steve.deku_sapling": "Deku Sapling",
+  "block.legend_of_steve.deku_leaves": "Deku Leaves",
+  "block.legend_of_steve.fruiting_deku_leaves": "Fruiting Deku Leaves",
+
+  "block.legend_of_steve.pink_fairy_lamp": "Pink Fairy Light",
+  "block.legend_of_steve.red_fairy_lamp": "Red Fairy Light",
+  "block.legend_of_steve.orange_fairy_lamp": "Orange Fairy Light",
+  "block.legend_of_steve.yellow_fairy_lamp": "Yellow Fairy Light",
+  "block.legend_of_steve.green_fairy_lamp": "Green Fairy Light",
+  "block.legend_of_steve.blue_fairy_lamp": "Blue Fairy Light",
+  "block.legend_of_steve.purple_fairy_lamp": "Purple Fairy Light"
+}

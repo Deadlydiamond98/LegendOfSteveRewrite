@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "legend_of_steve:fairy_marble_slab",
+    "legend_of_steve:cobbled_fairy_marble_slab",
+    "legend_of_steve:polished_fairy_marble_slab",
+    "legend_of_steve:fairy_marble_brick_slab",
+    "legend_of_steve:mossy_fairy_marble_brick_slab",
+    "legend_of_steve:fairy_marble_tile_slab",
+    "legend_of_steve:master_plate_slab",
+    "legend_of_steve:master_brick_slab",
+    "legend_of_steve:master_tile_slab",
+    "legend_of_steve:red_tektile_slab",
+    "legend_of_steve:small_red_tektile_slab",
+    "legend_of_steve:blue_tektile_slab",
+    "legend_of_steve:small_blue_tektile_slab"
+  ]
+}

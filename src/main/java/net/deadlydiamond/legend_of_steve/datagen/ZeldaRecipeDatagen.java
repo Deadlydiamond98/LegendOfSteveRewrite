@@ -26,6 +26,8 @@ public class ZeldaRecipeDatagen extends FabricRecipeProvider {
         fairyMarble(consumer);
         masterOre(consumer);
         tektiles(consumer);
+
+        ZeldaBlocks.DEKU_WOOD.generateRecipes(consumer);
     }
 
     private void fairyMarble(Consumer<RecipeJsonProvider> consumer) {

@@ -1,9 +1,9 @@
 package net.deadlydiamond.legend_of_steve.common.entities.bomb;
 
-import net.deadlydiamond.legend_of_steve.LegendOfSteve;
-import net.deadlydiamond.legend_of_steve.common.entities.temp.TempPhysicsItemProjectile;
 import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
 import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
+import net.deadlydiamond98.koalalib.common.entity.PhysicsItemProjectile;
+import net.deadlydiamond98.koalalib.util.IgnitionHelper;
 import net.deadlydiamond98.koalalib.util.KoalaNbtHelper;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -29,7 +29,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
 
-public abstract class AbstractBombEntity extends TempPhysicsItemProjectile implements IZeldaBomb {
+public abstract class AbstractBombEntity extends PhysicsItemProjectile implements IZeldaBomb {
     private static final TrackedData<Boolean> PRIMED = DataTracker.registerData(AbstractBombEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private static final TrackedData<Integer> MAX_FUSE = DataTracker.registerData(AbstractBombEntity.class, TrackedDataHandlerRegistry.INTEGER);
     private static final TrackedData<Integer> FUSE = DataTracker.registerData(AbstractBombEntity.class, TrackedDataHandlerRegistry.INTEGER);
@@ -53,7 +53,6 @@ public abstract class AbstractBombEntity extends TempPhysicsItemProjectile imple
     @Override
     public ActionResult interact(PlayerEntity player, Hand hand) {
         ItemStack stack = player.getStackInHand(hand);
-        // TODO: MAKE PRIMING TAKE MORE THAN FLINT & STEEL
         if (!isPrimed()) {
             if (stack.isEmpty() && player.isSneaking()) {
                 if (!getWorld().isClient) {
@@ -61,9 +60,8 @@ public abstract class AbstractBombEntity extends TempPhysicsItemProjectile imple
                 }
                 this.despawn();
                 return ActionResult.SUCCESS;
-            } else if (stack.isOf(Items.FLINT_AND_STEEL)) {
+            } else if (IgnitionHelper.canUseIgniter(getWorld(), getBlockPos(), player, hand)) {
                 if (!getWorld().isClient) {
-                    player.playSound(SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.PLAYERS, 0.4f, 0.8f);
                     player.playSound(SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.NEUTRAL, 0.4f, 0.8f);
                     this.setPrimed(true);
                 }
@@ -226,5 +224,13 @@ public abstract class AbstractBombEntity extends TempPhysicsItemProjectile imple
     @Override
     public Entity getBombOwner() {
         return getOwner();
+    }
+
+
+    // TODO: THIS WILL BE REMOVED ONCE I PUSH FIX FOR KOALA LIB
+    @Override
+    protected void tickMovement() {
+        this.velocityDirty = true;
+        super.tickMovement();
     }
 }

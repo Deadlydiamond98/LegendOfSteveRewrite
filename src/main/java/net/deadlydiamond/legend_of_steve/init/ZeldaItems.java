@@ -4,6 +4,7 @@ import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.items.bag.QuiverItem;
 import net.deadlydiamond.legend_of_steve.common.items.projectile.BombItem;
 import net.deadlydiamond.legend_of_steve.common.items.projectile.ChargedBombItem;
+import net.deadlydiamond98.koalalib.common.items.interaction.PickupSoundItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -28,11 +29,12 @@ public class ZeldaItems {
     public static final Item NETHERITE_QUIVER = registerQuiver("netherite_quiver", 160, ArmorMaterials.NETHERITE, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE);
 
     // MATERIALS ///////////////////////////////////////////////////////////////////////////////////////////////////////
+    // TEKTITE CHITIN
     public static final Item BLUE_TEKTITE_CHITIN = register("blue_tektite_chitin", new Item(new FabricItemSettings()));
     public static final Item BLUE_TEKTITE_SHELL = register("blue_tektite_shell", new Item(new FabricItemSettings()));
     public static final Item RED_TEKTITE_CHITIN = register("red_tektite_chitin", new Item(new FabricItemSettings()));
     public static final Item RED_TEKTITE_SHELL = register("red_tektite_shell", new Item(new FabricItemSettings()));
-
+    // MASTER ORE
     public static final Item RAW_MASTER_ORE = register("raw_master_ore", new Item(new FabricItemSettings()));
     public static final Item MASTER_SCRAP = register("master_scrap", new Item(new FabricItemSettings()));
     public static final Item MASTER_INGOT = register("master_ingot", new Item(new FabricItemSettings()));

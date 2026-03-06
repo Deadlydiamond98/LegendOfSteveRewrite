@@ -4,9 +4,11 @@ import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.entities.bomb.BombEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.bomb.IZeldaBomb;
 import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
+import net.deadlydiamond98.koalalib.common.items.ILighter;
 import net.deadlydiamond98.koalalib.common.items.interaction.IAdvancedItemProperties;
 import net.deadlydiamond98.koalalib.common.items.vanillamodified.projectile.CustomProjectileItem;
 import net.deadlydiamond98.koalalib.init.KoalaLibSounds;
+import net.deadlydiamond98.koalalib.util.IgnitionHelper;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -76,20 +78,27 @@ public class BombItem extends CustomProjectileItem implements IAdvancedItemPrope
 
     private void lightOnThrow(LivingEntity owner, BombEntity bomb) {
         ItemStack igniter = owner.getStackInHand(Hand.OFF_HAND);
-        if (igniter.isOf(Items.FLINT_AND_STEEL)) {
-            owner.getWorld().playSound(
-                    null, owner.getBlockPos(),
-                    KoalaLibSounds.TOOL_IGNITE, SoundCategory.PLAYERS,
-                    0.4f, 0.8f
-            );
+        if (IgnitionHelper.canUseIgniter(owner.getWorld(), owner.getBlockPos(), owner, Hand.OFF_HAND)) {
+
+            if (igniter.getItem() instanceof ILighter lighter) {
+                owner.getWorld().playSound(
+                        null, owner.getBlockPos(),
+                        lighter.getIgniteSound(), SoundCategory.PLAYERS,
+                        lighter.getVolume(), lighter.getPitch(owner.getWorld())
+                );
+            } else {
+                owner.getWorld().playSound(
+                        null, owner.getBlockPos(),
+                        KoalaLibSounds.TOOL_IGNITE, SoundCategory.PLAYERS,
+                        0.4f, 0.8f
+                );
+            }
+
             owner.getWorld().playSound(
                     null, owner.getBlockPos(),
                     SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.PLAYERS,
                     0.4f, 0.8f
             );
-            if (owner instanceof PlayerEntity player && !player.isCreative()) {
-                igniter.damage(1, owner, playerx -> playerx.sendToolBreakStatus(Hand.OFF_HAND));
-            }
             bomb.setPrimed(true);
         }
     }

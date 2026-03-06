@@ -1,19 +1,23 @@
-// 1.20.1	2026-03-05T18:09:46.257156384	The Legend of Steve/Tags for minecraft:block
+// 1.20.1	2026-03-05T22:27:44.585948644	The Legend of Steve/Tags for minecraft:block
+bb16959c47f727d036e1b5e28ca142e62ad72efc data/minecraft/tags/blocks/saplings.json
+c9d4f99f5491b3ad6b620d3a57eb1eb14729f997 data/minecraft/tags/blocks/flower_pots.json
 0cb48888057b225f0bfc41ab4d3f6da8efb8053b data/minecraft/tags/blocks/slabs.json
-7b40d9ae3acf98c87dc01ed58d8be3691b14c27d data/minecraft/tags/blocks/planks.json
+4c55d201bfe7ece68169d73efa581a5b087d227f data/minecraft/tags/blocks/stone_pressure_plates.json
 a62a7714809b9f9bc69ccf0667a2f9fafba2ea37 data/minecraft/tags/blocks/wooden_doors.json
-6b7d6cea91becded9cdb13f18d6b5298e389caf2 data/minecraft/tags/blocks/stairs.json
+7b40d9ae3acf98c87dc01ed58d8be3691b14c27d data/minecraft/tags/blocks/planks.json
 901f64f708c730f4d91d1bafdaf7647aecf116f6 data/minecraft/tags/blocks/wall_hanging_signs.json
+6b7d6cea91becded9cdb13f18d6b5298e389caf2 data/minecraft/tags/blocks/stairs.json
 2c351bcaac8f9e1ccf33bf9ff6b9de2f2082f907 data/minecraft/tags/blocks/fence_gates.json
 52582474718cec7318b44f492778fbab6eb6b65c data/minecraft/tags/blocks/wall_signs.json
 017256426ee55176f0fd67175039d052701437e7 data/minecraft/tags/blocks/leaves.json
 349720935eb624e2166d5494127a867093a4ed12 data/minecraft/tags/blocks/wooden_slabs.json
-ff98ecfe7496ed8a0d3658a64b9fd94f5b3761d0 data/minecraft/tags/blocks/mineable/pickaxe.json
+68a98af84c54f5e222b7587068ad29f82e70e45e data/minecraft/tags/blocks/mineable/pickaxe.json
 fb2eb71a2efd2c448ff58a44e82144769765946f data/minecraft/tags/blocks/walls.json
 e86ea83105d3f43723be5d06b9e71f24a96276b7 data/minecraft/tags/blocks/logs_that_burn.json
 78e421ba75d9d839368eb80f51dc3bb54125ee35 data/minecraft/tags/blocks/wooden_buttons.json
 b4d7faadc178039d6865f14eedd8edac04e8e1c3 data/minecraft/tags/blocks/trapdoors.json
 e36dcfbfc78c88662c4c076157a1a53a9d98988e data/minecraft/tags/blocks/ceiling_hanging_signs.json
+fda8f23bd1fec00cdacd17cfab7e68c81c42454b data/minecraft/tags/blocks/stone_buttons.json
 fba66bfc33c2dc3dfe13926359d5a3fba438019b data/minecraft/tags/blocks/standing_signs.json
 4fd5ed326fc5f628bc79c467d8a841c262c8faad data/minecraft/tags/blocks/wooden_stairs.json
 c795613332369e0f5ee09d51c3594d9321c8501f data/minecraft/tags/blocks/wooden_pressure_plates.json

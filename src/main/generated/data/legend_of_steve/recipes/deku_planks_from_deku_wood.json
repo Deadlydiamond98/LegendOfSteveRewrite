@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "building_blocks",
+  "ingredients": [
+    {
+      "item": "legend_of_steve:deku_wood"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "legend_of_steve:deku_planks"
+  }
+}

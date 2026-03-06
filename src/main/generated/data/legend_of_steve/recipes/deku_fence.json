@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "legend_of_steve:deku_planks"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "#s#",
+    "#s#"
+  ],
+  "result": {
+    "count": 3,
+    "item": "legend_of_steve:deku_fence"
+  },
+  "show_notification": true
+}

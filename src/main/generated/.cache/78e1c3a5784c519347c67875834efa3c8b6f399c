@@ -1,12 +1,15 @@
-// 1.20.1	2026-03-05T18:09:46.26356372	The Legend of Steve/Tags for minecraft:item
+// 1.20.1	2026-03-05T22:27:44.593991424	The Legend of Steve/Tags for minecraft:item
+6b7d6cea91becded9cdb13f18d6b5298e389caf2 data/minecraft/tags/items/stairs.json
 b4d7faadc178039d6865f14eedd8edac04e8e1c3 data/minecraft/tags/items/wooden_trapdoors.json
 fba66bfc33c2dc3dfe13926359d5a3fba438019b data/minecraft/tags/items/signs.json
 017256426ee55176f0fd67175039d052701437e7 data/minecraft/tags/items/leaves.json
+0cb48888057b225f0bfc41ab4d3f6da8efb8053b data/minecraft/tags/items/slabs.json
 349720935eb624e2166d5494127a867093a4ed12 data/minecraft/tags/items/wooden_slabs.json
 ac147bba5a12528c56d5515c7313fae1019ab380 data/minecraft/tags/items/wooden_fences.json
 07e3f6ace285f0566440004898758fe9fd4304d5 data/minecraft/tags/items/piglin_loved.json
 c795613332369e0f5ee09d51c3594d9321c8501f data/minecraft/tags/items/wooden_pressure_plates.json
 a62a7714809b9f9bc69ccf0667a2f9fafba2ea37 data/minecraft/tags/items/wooden_doors.json
+fb2eb71a2efd2c448ff58a44e82144769765946f data/minecraft/tags/items/walls.json
 2c351bcaac8f9e1ccf33bf9ff6b9de2f2082f907 data/minecraft/tags/items/fence_gates.json
 4fd5ed326fc5f628bc79c467d8a841c262c8faad data/minecraft/tags/items/wooden_stairs.json
 e86ea83105d3f43723be5d06b9e71f24a96276b7 data/minecraft/tags/items/logs_that_burn.json
@@ -14,3 +17,5 @@ e86ea83105d3f43723be5d06b9e71f24a96276b7 data/minecraft/tags/items/logs_that_bur
 bb16959c47f727d036e1b5e28ca142e62ad72efc data/minecraft/tags/items/saplings.json
 7b40d9ae3acf98c87dc01ed58d8be3691b14c27d data/minecraft/tags/items/planks.json
 e36dcfbfc78c88662c4c076157a1a53a9d98988e data/minecraft/tags/items/hanging_signs.json
+fda8f23bd1fec00cdacd17cfab7e68c81c42454b data/minecraft/tags/items/stone_buttons.json
+07e3f6ace285f0566440004898758fe9fd4304d5 data/koalalib/tags/items/piglin_gold_armor.json

@@ -8,11 +8,12 @@ import net.deadlydiamond.legend_of_steve.common.blocks.plant.BombFlowerBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.FruitingLeaves;
 import net.deadlydiamond.legend_of_steve.common.blocksets.IridescentStairSlabWallBlockset;
 import net.deadlydiamond.legend_of_steve.common.blocksets.IridescentStoneBlockset;
-import net.deadlydiamond.legend_of_steve.common.blocksets.WoodBlockset;
 import net.deadlydiamond.legend_of_steve.worldgen.sapling.DekuSaplingGenerator;
 import net.deadlydiamond98.koalalib.common.blocksets.BaseStairSlabBlockset;
+import net.deadlydiamond98.koalalib.common.blocksets.WoodBlockset;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.registry.Registries;
@@ -39,6 +40,7 @@ public class ZeldaBlocks {
     public static final Block POTTED_DEKU_SAPLING = register("potted_deku_sapling", Blocks.createFlowerPotBlock(DEKU_SAPLING), false);
 
     // FAIRY LAMPS
+    // TODO: ADD RECIPE FOR THESE ONCE FAIRIES ARE ADDED
     public static final Block PINK_FAIRY_LAMP = register("pink_fairy_lamp", new GlowingBlock(PINK_FAIRY_LIGHT_SETTINGS));
     public static final Block RED_FAIRY_LAMP = register("red_fairy_lamp", new GlowingBlock(RED_FAIRY_LIGHT_SETTINGS));
     public static final Block ORANGE_FAIRY_LAMP = register("orange_fairy_lamp", new GlowingBlock(ORANGE_FAIRY_LIGHT_SETTINGS));
@@ -100,5 +102,9 @@ public class ZeldaBlocks {
         return Registry.register(Registries.BLOCK, LegendOfSteve.id(id), block);
     }
 
-    public static void register() {}
+    public static void register() {
+        CompostingChanceRegistry.INSTANCE.add(DEKU_SAPLING, 0.3f);
+        CompostingChanceRegistry.INSTANCE.add(DEKU_LEAVES, 0.3f);
+        CompostingChanceRegistry.INSTANCE.add(FRUITING_DEKU_LEAVES, 0.3f);
+    }
 }

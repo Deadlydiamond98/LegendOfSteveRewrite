@@ -17,10 +17,12 @@ public class ZeldaTags {
     public static final TagKey<Item> CHARGED = item("charged");
     public static final TagKey<Item> HELD_OVER_HEAD = item("held_over_head");
     public static final TagKey<Item> IRIDESCENT = item("iridescent");
+    public static final TagKey<Item> CHISELED_PLANKS_ITEM = item("chiseled_planks");
 
     // BLOCKS //////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static final TagKey<Block> BOMB_BREAKABLE = block("bomb_breakable");
     public static final TagKey<Block> BOMB_FLOWER_PLANTABLE = block("bomb_flower_plantable");
+    public static final TagKey<Block> CHISELED_PLANKS_BLOCK = block("chiseled_planks");
 
     // FLUIDS //////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static final TagKey<Fluid> ENCHANTED_SPRING_WATER = fluid("enchanted_spring_water");

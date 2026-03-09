@@ -3,6 +3,7 @@ package net.deadlydiamond.legend_of_steve.init;
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.bes.BombFlowerBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.GlowingBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.bes.MasterBarrelBlockEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntity;
@@ -24,6 +25,10 @@ public class ZeldaBlockEntities {
             ZeldaBlocks.GREEN_FAIRY_LAMP,
             ZeldaBlocks.BLUE_FAIRY_LAMP,
             ZeldaBlocks.PURPLE_FAIRY_LAMP
+    );
+
+    public static final BlockEntityType<MasterBarrelBlockEntity> MASTER_BARREL = register("master_barrel", MasterBarrelBlockEntity::new,
+            ZeldaBlocks.MASTER_BARREL
     );
 
     public static <T extends BlockEntity> BlockEntityType<T> register(String name, FabricBlockEntityTypeBuilder.Factory<T> factory, Block... blocks) {

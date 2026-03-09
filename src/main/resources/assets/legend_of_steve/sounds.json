@@ -1,15 +1,352 @@
 {
-  "bomb.picked": {
-    "sounds": [
-      "item/sweet_berries/pick_from_bush1",
-      "item/sweet_berries/pick_from_bush2"
-    ],
-    "subtitle": "subtitles.block.bomb_flower.pick_bomb"
-  },
   "bomb.jingle": {
     "sounds": [
       "legend_of_steve:block/secret_jingle"
     ],
     "subtitle": "subtitles.block.secret_jingle"
+  },
+
+  "block.bomb_flower.pick": {
+    "sounds": [
+      "legend_of_steve:block/bomb_flower/pick1",
+      "legend_of_steve:block/bomb_flower/pick2",
+      "legend_of_steve:block/bomb_flower/pick3",
+      "legend_of_steve:block/bomb_flower/pick4",
+      "legend_of_steve:block/bomb_flower/pick5",
+      "legend_of_steve:block/bomb_flower/pick6"
+    ],
+    "subtitle": "subtitles.block.bomb_flower.picked"
+  },
+
+  "block.bomb_flower.break": {
+    "sounds": [
+      "legend_of_steve:block/bomb_flower/break1",
+      "legend_of_steve:block/bomb_flower/break2",
+      "legend_of_steve:block/bomb_flower/break3",
+      "legend_of_steve:block/bomb_flower/break4",
+      "legend_of_steve:block/bomb_flower/break5",
+      "legend_of_steve:block/bomb_flower/break6",
+      "legend_of_steve:block/bomb_flower/break7",
+      "legend_of_steve:block/bomb_flower/break8",
+      "legend_of_steve:block/bomb_flower/break9"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.bomb_flower.fall": {
+    "sounds": [
+      "legend_of_steve:block/bomb_flower/step1",
+      "legend_of_steve:block/bomb_flower/step2",
+      "legend_of_steve:block/bomb_flower/step3",
+      "legend_of_steve:block/bomb_flower/step4",
+      "legend_of_steve:block/bomb_flower/step5",
+      "legend_of_steve:block/bomb_flower/step6"
+    ],
+    "subtitle": "subtitles.block.generic.fall"
+  },
+  "block.bomb_flower.hit": {
+    "sounds": [
+      "legend_of_steve:block/bomb_flower/step1",
+      "legend_of_steve:block/bomb_flower/step2",
+      "legend_of_steve:block/bomb_flower/step3",
+      "legend_of_steve:block/bomb_flower/step4",
+      "legend_of_steve:block/bomb_flower/step5",
+      "legend_of_steve:block/bomb_flower/step6"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.bomb_flower.place": {
+    "sounds": [
+      "legend_of_steve:block/bomb_flower/place1",
+      "legend_of_steve:block/bomb_flower/place2",
+      "legend_of_steve:block/bomb_flower/place3",
+      "legend_of_steve:block/bomb_flower/place4",
+      "legend_of_steve:block/bomb_flower/place5",
+      "legend_of_steve:block/bomb_flower/place6",
+      "legend_of_steve:block/bomb_flower/place7",
+      "legend_of_steve:block/bomb_flower/place8",
+      "legend_of_steve:block/bomb_flower/place9"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.bomb_flower.step": {
+    "sounds": [
+      "legend_of_steve:block/bomb_flower/step1",
+      "legend_of_steve:block/bomb_flower/step2",
+      "legend_of_steve:block/bomb_flower/step3",
+      "legend_of_steve:block/bomb_flower/step4",
+      "legend_of_steve:block/bomb_flower/step5",
+      "legend_of_steve:block/bomb_flower/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+
+  "block.master_plate.break": {
+    "sounds": [
+      "legend_of_steve:block/master_plate/break1",
+      "legend_of_steve:block/master_plate/break2",
+      "legend_of_steve:block/master_plate/break3",
+      "legend_of_steve:block/master_plate/break4",
+      "legend_of_steve:block/master_plate/break5"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.master_plate.fall": {
+    "sounds": [
+      "legend_of_steve:block/master_plate/step1",
+      "legend_of_steve:block/master_plate/step2",
+      "legend_of_steve:block/master_plate/step3",
+      "legend_of_steve:block/master_plate/step4",
+      "legend_of_steve:block/master_plate/step5"
+    ],
+    "subtitle": "subtitles.block.generic.fall"
+  },
+  "block.master_plate.hit": {
+    "sounds": [
+      "legend_of_steve:block/master_plate/step1",
+      "legend_of_steve:block/master_plate/step2",
+      "legend_of_steve:block/master_plate/step3",
+      "legend_of_steve:block/master_plate/step4",
+      "legend_of_steve:block/master_plate/step5"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.master_plate.place": {
+    "sounds": [
+      "legend_of_steve:block/master_plate/break1",
+      "legend_of_steve:block/master_plate/break2",
+      "legend_of_steve:block/master_plate/break3",
+      "legend_of_steve:block/master_plate/break4",
+      "legend_of_steve:block/master_plate/break5"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.master_plate.step": {
+    "sounds": [
+      "legend_of_steve:block/master_plate/step1",
+      "legend_of_steve:block/master_plate/step2",
+      "legend_of_steve:block/master_plate/step3",
+      "legend_of_steve:block/master_plate/step4",
+      "legend_of_steve:block/master_plate/step5"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+
+  "block.master_block.break": {
+    "sounds": [
+      "legend_of_steve:block/master_block/break1",
+      "legend_of_steve:block/master_block/break2",
+      "legend_of_steve:block/master_block/break3",
+      "legend_of_steve:block/master_block/break4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.master_block.fall": {
+    "sounds": [
+      "legend_of_steve:block/master_block/step1",
+      "legend_of_steve:block/master_block/step2",
+      "legend_of_steve:block/master_block/step3",
+      "legend_of_steve:block/master_block/step4",
+      "legend_of_steve:block/master_block/step5",
+      "legend_of_steve:block/master_block/step6"
+    ],
+    "subtitle": "subtitles.block.generic.fall"
+  },
+  "block.master_block.hit": {
+    "sounds": [
+      "legend_of_steve:block/master_block/step1",
+      "legend_of_steve:block/master_block/step2",
+      "legend_of_steve:block/master_block/step3",
+      "legend_of_steve:block/master_block/step4",
+      "legend_of_steve:block/master_block/step5",
+      "legend_of_steve:block/master_block/step6"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.master_block.place": {
+    "sounds": [
+      "legend_of_steve:block/master_block/break1",
+      "legend_of_steve:block/master_block/break2",
+      "legend_of_steve:block/master_block/break3",
+      "legend_of_steve:block/master_block/break4"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.master_block.step": {
+    "sounds": [
+      "legend_of_steve:block/master_block/step1",
+      "legend_of_steve:block/master_block/step2",
+      "legend_of_steve:block/master_block/step3",
+      "legend_of_steve:block/master_block/step4",
+      "legend_of_steve:block/master_block/step5",
+      "legend_of_steve:block/master_block/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+
+  "block.master_bars.break": {
+    "sounds": [
+      "legend_of_steve:block/master_bars/break1",
+      "legend_of_steve:block/master_bars/break2",
+      "legend_of_steve:block/master_bars/break3",
+      "legend_of_steve:block/master_bars/break4",
+      "legend_of_steve:block/master_bars/break5"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.master_bars.fall": {
+    "sounds": [
+      "legend_of_steve:block/master_bars/step1",
+      "legend_of_steve:block/master_bars/step2",
+      "legend_of_steve:block/master_bars/step3",
+      "legend_of_steve:block/master_bars/step4",
+      "legend_of_steve:block/master_bars/step5"
+    ],
+    "subtitle": "subtitles.block.generic.fall"
+  },
+  "block.master_bars.hit": {
+    "sounds": [
+      "legend_of_steve:block/master_bars/step1",
+      "legend_of_steve:block/master_bars/step2",
+      "legend_of_steve:block/master_bars/step3",
+      "legend_of_steve:block/master_bars/step4",
+      "legend_of_steve:block/master_bars/step5"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.master_bars.place": {
+    "sounds": [
+      "legend_of_steve:block/master_bars/break1",
+      "legend_of_steve:block/master_bars/break2",
+      "legend_of_steve:block/master_bars/break3",
+      "legend_of_steve:block/master_bars/break4",
+      "legend_of_steve:block/master_bars/break5"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.master_bars.step": {
+    "sounds": [
+      "legend_of_steve:block/master_bars/step1",
+      "legend_of_steve:block/master_bars/step2",
+      "legend_of_steve:block/master_bars/step3",
+      "legend_of_steve:block/master_bars/step4",
+      "legend_of_steve:block/master_bars/step5"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+
+  "block.master_chain.break": {
+    "sounds": [
+      "legend_of_steve:block/master_chain/break1",
+      "legend_of_steve:block/master_chain/break2",
+      "legend_of_steve:block/master_chain/break3",
+      "legend_of_steve:block/master_chain/break4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.master_chain.fall": {
+    "sounds": [
+      "legend_of_steve:block/master_chain/step1",
+      "legend_of_steve:block/master_chain/step2",
+      "legend_of_steve:block/master_chain/step3",
+      "legend_of_steve:block/master_chain/step4",
+      "legend_of_steve:block/master_chain/step5",
+      "legend_of_steve:block/master_chain/step6"
+    ],
+    "subtitle": "subtitles.block.generic.fall"
+  },
+  "block.master_chain.hit": {
+    "sounds": [
+      "legend_of_steve:block/master_chain/step1",
+      "legend_of_steve:block/master_chain/step2",
+      "legend_of_steve:block/master_chain/step3",
+      "legend_of_steve:block/master_chain/step4",
+      "legend_of_steve:block/master_chain/step5",
+      "legend_of_steve:block/master_chain/step6"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.master_chain.place": {
+    "sounds": [
+      "legend_of_steve:block/master_chain/break1",
+      "legend_of_steve:block/master_chain/break2",
+      "legend_of_steve:block/master_chain/break3",
+      "legend_of_steve:block/master_chain/break4"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.master_chain.step": {
+    "sounds": [
+      "legend_of_steve:block/master_chain/step1",
+      "legend_of_steve:block/master_chain/step2",
+      "legend_of_steve:block/master_chain/step3",
+      "legend_of_steve:block/master_chain/step4",
+      "legend_of_steve:block/master_chain/step5",
+      "legend_of_steve:block/master_chain/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+
+  "block.master_barrel.open": {
+    "sounds": [
+      "legend_of_steve:block/master_barrel/open"
+    ],
+    "subtitle": "subtitles.block.barrel.open"
+  },
+  "block.master_barrel.close": {
+    "sounds": [
+      "legend_of_steve:block/master_barrel/close"
+    ],
+    "subtitle": "subtitles.block.barrel.close"
+  },
+
+  "block.tektiles.break": {
+    "sounds": [
+      "legend_of_steve:block/tektiles/break1",
+      "legend_of_steve:block/tektiles/break2",
+      "legend_of_steve:block/tektiles/break3",
+      "legend_of_steve:block/tektiles/break4",
+      "legend_of_steve:block/tektiles/break5"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.tektiles.fall": {
+    "sounds": [
+      "legend_of_steve:block/tektiles/step1",
+      "legend_of_steve:block/tektiles/step2",
+      "legend_of_steve:block/tektiles/step3",
+      "legend_of_steve:block/tektiles/step4",
+      "legend_of_steve:block/tektiles/step5"
+    ],
+    "subtitle": "subtitles.block.generic.fall"
+  },
+  "block.tektiles.hit": {
+    "sounds": [
+      "legend_of_steve:block/tektiles/step1",
+      "legend_of_steve:block/tektiles/step2",
+      "legend_of_steve:block/tektiles/step3",
+      "legend_of_steve:block/tektiles/step4",
+      "legend_of_steve:block/tektiles/step5"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.tektiles.place": {
+    "sounds": [
+      "legend_of_steve:block/tektiles/break1",
+      "legend_of_steve:block/tektiles/break2",
+      "legend_of_steve:block/tektiles/break3",
+      "legend_of_steve:block/tektiles/break4",
+      "legend_of_steve:block/tektiles/break5"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.tektiles.step": {
+    "sounds": [
+      "legend_of_steve:block/tektiles/step1",
+      "legend_of_steve:block/tektiles/step2",
+      "legend_of_steve:block/tektiles/step3",
+      "legend_of_steve:block/tektiles/step4",
+      "legend_of_steve:block/tektiles/step5"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
   }
 }

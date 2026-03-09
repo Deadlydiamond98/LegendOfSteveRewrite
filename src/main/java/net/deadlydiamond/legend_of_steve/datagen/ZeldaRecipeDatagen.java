@@ -23,11 +23,27 @@ public class ZeldaRecipeDatagen extends FabricRecipeProvider {
 
     @Override
     public void generate(Consumer<RecipeJsonProvider> consumer) {
+        chiseledPlanks(consumer);
         fairyMarble(consumer);
         masterOre(consumer);
         tektiles(consumer);
 
         ZeldaBlocks.DEKU_WOOD.generateRecipes(consumer);
+    }
+
+    private void chiseledPlanks(Consumer<RecipeJsonProvider> consumer) {
+        offerChiseledBlockRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_OAK_PLANKS, Blocks.OAK_SLAB);
+        offerChiseledBlockRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_BIRCH_PLANKS, Blocks.BIRCH_SLAB);
+        offerChiseledBlockRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_SPRUCE_PLANKS, Blocks.SPRUCE_SLAB);
+        offerChiseledBlockRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_JUNGLE_PLANKS, Blocks.JUNGLE_SLAB);
+        offerChiseledBlockRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_ACACIA_PLANKS, Blocks.ACACIA_SLAB);
+        offerChiseledBlockRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_DARK_OAK_PLANKS, Blocks.DARK_OAK_SLAB);
+        offerChiseledBlockRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_CRIMSON_PLANKS, Blocks.CRIMSON_SLAB);
+        offerChiseledBlockRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_WARPED_PLANKS, Blocks.WARPED_SLAB);
+        offerChiseledBlockRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_MANGROVE_PLANKS, Blocks.MANGROVE_SLAB);
+        offerChiseledBlockRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_BAMBOO_PLANKS, Blocks.BAMBOO_SLAB);
+        offerChiseledBlockRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_CHERRY_PLANKS, Blocks.CHERRY_SLAB);
+        offerChiseledBlockRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_DEKU_PLANKS, ZeldaBlocks.DEKU_WOOD.slab);
     }
 
     private void fairyMarble(Consumer<RecipeJsonProvider> consumer) {

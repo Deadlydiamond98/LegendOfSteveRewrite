@@ -38,6 +38,19 @@ public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
         );
 
         addSimpleBlockDrops(
+                // CHISELED PLANKS
+                ZeldaBlocks.CHISELED_OAK_PLANKS,
+                ZeldaBlocks.CHISELED_BIRCH_PLANKS,
+                ZeldaBlocks.CHISELED_SPRUCE_PLANKS,
+                ZeldaBlocks.CHISELED_JUNGLE_PLANKS,
+                ZeldaBlocks.CHISELED_ACACIA_PLANKS,
+                ZeldaBlocks.CHISELED_DARK_OAK_PLANKS,
+                ZeldaBlocks.CHISELED_CRIMSON_PLANKS,
+                ZeldaBlocks.CHISELED_WARPED_PLANKS,
+                ZeldaBlocks.CHISELED_MANGROVE_PLANKS,
+                ZeldaBlocks.CHISELED_BAMBOO_PLANKS,
+                ZeldaBlocks.CHISELED_CHERRY_PLANKS,
+                ZeldaBlocks.CHISELED_DEKU_PLANKS,
                 // FAIRY LIGHTS
                 ZeldaBlocks.PINK_FAIRY_LAMP,
                 ZeldaBlocks.RED_FAIRY_LAMP,
@@ -59,11 +72,12 @@ public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
                 ZeldaBlocks.MASTER_PILLAR,
                 ZeldaBlocks.MASTER_BARS,
                 ZeldaBlocks.MASTER_CHAIN,
-                ZeldaBlocks.MASTER_DOOR,
                 ZeldaBlocks.MASTER_TRAPDOOR,
                 ZeldaBlocks.MASTER_GIRDER,
                 ZeldaBlocks.MASTER_BARREL
         );
+
+        addDrop(ZeldaBlocks.MASTER_DOOR, doorDrops(ZeldaBlocks.MASTER_DOOR));
     }
 
     private void generateLootTables(AbstractBlockset... blocksets) {

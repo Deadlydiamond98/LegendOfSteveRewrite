@@ -2,8 +2,8 @@ package net.deadlydiamond.legend_of_steve.datagen;
 
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
 import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
+import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
 import net.deadlydiamond98.koalalib.common.blocksets.AbstractBlockset;
-import net.deadlydiamond98.koalalib.common.blocksets.WoodBlockset;
 import net.deadlydiamond98.koalalib.init.KoalaLibTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -50,6 +50,26 @@ public class ZeldaItemTagDatagen extends FabricTagProvider.ItemTagProvider {
         );
 
         // WOOD ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        getOrCreateTagBuilder(ZeldaTags.CHISELED_PLANKS_ITEM).add(
+                ZeldaBlocks.CHISELED_OAK_PLANKS.asItem(),
+                ZeldaBlocks.CHISELED_BIRCH_PLANKS.asItem(),
+                ZeldaBlocks.CHISELED_SPRUCE_PLANKS.asItem(),
+                ZeldaBlocks.CHISELED_JUNGLE_PLANKS.asItem(),
+                ZeldaBlocks.CHISELED_ACACIA_PLANKS.asItem(),
+                ZeldaBlocks.CHISELED_DARK_OAK_PLANKS.asItem(),
+                ZeldaBlocks.CHISELED_CRIMSON_PLANKS.asItem(),
+                ZeldaBlocks.CHISELED_WARPED_PLANKS.asItem(),
+                ZeldaBlocks.CHISELED_MANGROVE_PLANKS.asItem(),
+                ZeldaBlocks.CHISELED_BAMBOO_PLANKS.asItem(),
+                ZeldaBlocks.CHISELED_CHERRY_PLANKS.asItem(),
+                ZeldaBlocks.CHISELED_DEKU_PLANKS.asItem()
+        );
+
+        getOrCreateTagBuilder(ItemTags.NON_FLAMMABLE_WOOD).add(
+                ZeldaBlocks.CHISELED_CRIMSON_PLANKS.asItem(),
+                ZeldaBlocks.CHISELED_WARPED_PLANKS.asItem()
+        );
 
         getOrCreateTagBuilder(ItemTags.SAPLINGS).add(
                 ZeldaBlocks.DEKU_SAPLING.asItem()

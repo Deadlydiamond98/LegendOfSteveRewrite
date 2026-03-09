@@ -13,21 +13,25 @@ public class ZeldaCreativeTabs {
 
     public static final ItemGroup ITEMS = registerTab("items", ZeldaItems.BOMB, (displayContext, entries) -> {
         add(entries,
+                // BOMBS
                 ZeldaItems.BOMB_FLOWER_SEEDS,
                 ZeldaItems.BOMB_FLOWER,
+                ZeldaItems.CHARGED_BOMB_FLOWER,
                 ZeldaItems.BOMB,
-                ZeldaItems.CHARGED_BOMB,
                 ZeldaItems.SUPER_BOMB,
 
+                // QUIVERS
                 ZeldaItems.QUIVER,
                 ZeldaItems.GILDED_QUIVER,
                 ZeldaItems.NETHERITE_QUIVER,
 
+                // CHITIN
                 ZeldaItems.BLUE_TEKTITE_CHITIN,
                 ZeldaItems.BLUE_TEKTITE_SHELL,
                 ZeldaItems.RED_TEKTITE_CHITIN,
                 ZeldaItems.RED_TEKTITE_SHELL,
 
+                // MASTER
                 ZeldaItems.RAW_MASTER_ORE,
                 ZeldaItems.MASTER_SCRAP,
                 ZeldaItems.MASTER_INGOT
@@ -40,6 +44,19 @@ public class ZeldaCreativeTabs {
         entries.add(ZeldaBlocks.DEKU_SAPLING);
         entries.add(ZeldaBlocks.DEKU_LEAVES);
         entries.add(ZeldaBlocks.FRUITING_DEKU_LEAVES);
+
+        entries.add(ZeldaBlocks.CHISELED_OAK_PLANKS);
+        entries.add(ZeldaBlocks.CHISELED_BIRCH_PLANKS);
+        entries.add(ZeldaBlocks.CHISELED_SPRUCE_PLANKS);
+        entries.add(ZeldaBlocks.CHISELED_JUNGLE_PLANKS);
+        entries.add(ZeldaBlocks.CHISELED_ACACIA_PLANKS);
+        entries.add(ZeldaBlocks.CHISELED_DARK_OAK_PLANKS);
+        entries.add(ZeldaBlocks.CHISELED_CRIMSON_PLANKS);
+        entries.add(ZeldaBlocks.CHISELED_WARPED_PLANKS);
+        entries.add(ZeldaBlocks.CHISELED_MANGROVE_PLANKS);
+        entries.add(ZeldaBlocks.CHISELED_BAMBOO_PLANKS);
+        entries.add(ZeldaBlocks.CHISELED_CHERRY_PLANKS);
+        entries.add(ZeldaBlocks.CHISELED_DEKU_PLANKS);
 
         // FAIRY LAMPS
         entries.add(ZeldaBlocks.RED_FAIRY_LAMP);

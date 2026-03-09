@@ -1,6 +1,7 @@
 package net.deadlydiamond.legend_of_steve.init;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
+import net.deadlydiamond.legend_of_steve.common.blocks.MasterBarrelBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.SpringWaterBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.GirderBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.GlowingBlock;
@@ -14,6 +15,8 @@ import net.deadlydiamond98.koalalib.common.blocksets.WoodBlockset;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.registry.Registries;
@@ -30,6 +33,20 @@ public class ZeldaBlocks {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // DECORATIVE BLOCKS ///////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // CHISELED PLANKS
+    public static final Block CHISELED_OAK_PLANKS = register("chiseled_oak_planks", new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
+    public static final Block CHISELED_BIRCH_PLANKS = register("chiseled_birch_planks", new Block(FabricBlockSettings.copyOf(Blocks.BIRCH_PLANKS)));
+    public static final Block CHISELED_SPRUCE_PLANKS = register("chiseled_spruce_planks", new Block(FabricBlockSettings.copyOf(Blocks.SPRUCE_PLANKS)));
+    public static final Block CHISELED_JUNGLE_PLANKS = register("chiseled_jungle_planks", new Block(FabricBlockSettings.copyOf(Blocks.JUNGLE_PLANKS)));
+    public static final Block CHISELED_ACACIA_PLANKS = register("chiseled_acacia_planks", new Block(FabricBlockSettings.copyOf(Blocks.ACACIA_PLANKS)));
+    public static final Block CHISELED_DARK_OAK_PLANKS = register("chiseled_dark_oak_planks", new Block(FabricBlockSettings.copyOf(Blocks.DARK_OAK_PLANKS)));
+    public static final Block CHISELED_CRIMSON_PLANKS = register("chiseled_crimson_planks", new Block(FabricBlockSettings.copyOf(Blocks.CRIMSON_PLANKS)));
+    public static final Block CHISELED_WARPED_PLANKS = register("chiseled_warped_planks", new Block(FabricBlockSettings.copyOf(Blocks.WARPED_PLANKS)));
+    public static final Block CHISELED_MANGROVE_PLANKS = register("chiseled_mangrove_planks", new Block(FabricBlockSettings.copyOf(Blocks.MANGROVE_PLANKS)));
+    public static final Block CHISELED_BAMBOO_PLANKS = register("chiseled_bamboo_planks", new Block(FabricBlockSettings.copyOf(Blocks.BAMBOO_PLANKS)));
+    public static final Block CHISELED_CHERRY_PLANKS = register("chiseled_cherry_planks", new Block(FabricBlockSettings.copyOf(Blocks.CHERRY_PLANKS)));
+    public static final Block CHISELED_DEKU_PLANKS = register("chiseled_deku_planks", new Block(FabricBlockSettings.copyOf(DEKU_WOOD_SETTINGS)));
 
     // DEKU WOOD
     public static final WoodBlockset DEKU_WOOD = new WoodBlockset(LegendOfSteve.MOD_ID, "deku", DEKU_WOOD_SETTINGS, BlockSetType.CHERRY);
@@ -66,7 +83,7 @@ public class ZeldaBlocks {
     public static final Block MASTER_ORE = register("master_ore", new ExperienceDroppingBlock(MASTER_ORE_BLOCK_SETTINGS, UniformIntProvider.create(3, 7)));
     public static final Block DEEPSLATE_MASTER_ORE = register("deepslate_master_ore", new ExperienceDroppingBlock(DEEPSLATE_MASTER_ORE_BLOCK_SETTINGS, UniformIntProvider.create(3, 7)));
 
-    public static final Block MASTER_SCRAP_BLOCK = register("master_scrap_block", new Block(MASTER_PLATE_SETTINGS));
+    public static final Block MASTER_SCRAP_BLOCK = register("master_scrap_block", new Block(MASTER_SCRAP_SETTINGS));
     public static final Block MASTER_BLOCK = register("master_block", new Block(MASTER_BLOCK_SETTINGS));
     public static final BaseStairSlabBlockset MASTER_PLATE = new BaseStairSlabBlockset(LegendOfSteve.MOD_ID, "master_plate", MASTER_PLATE_SETTINGS);
     public static final BaseStairSlabBlockset MASTER_BRICK = new BaseStairSlabBlockset(LegendOfSteve.MOD_ID, "master_bricks", MASTER_PLATE_SETTINGS);
@@ -75,13 +92,12 @@ public class ZeldaBlocks {
     public static final Block MASTER_PILLAR = register("master_pillar", new PillarBlock(MASTER_PLATE_SETTINGS));
 
     public static final Block MASTER_BARS = register("master_bars", new PaneBlock(MASTER_BAR_SETTINGS));
-    public static final Block MASTER_CHAIN = register("master_chain", new ChainBlock(MASTER_BAR_SETTINGS));
+    public static final Block MASTER_CHAIN = register("master_chain", new ChainBlock(MASTER_CHAIN_SETTINGS));
     public static final Block MASTER_DOOR = register("master_door", new DoorBlock(MASTER_DOOR_SETTINGS, MASTER_TYPE));
     public static final Block MASTER_TRAPDOOR = register("master_trapdoor", new TrapdoorBlock(MASTER_TRAPDOOR_SETTINGS, MASTER_TYPE));
     public static final Block MASTER_GIRDER = register("master_girder", new GirderBlock(MASTER_GIRDER_SETTINGS));
 
-    // TODO: MAKE THIS NOT USE REGULAR BARREL
-    public static final Block MASTER_BARREL = register("master_barrel", new BarrelBlock(MASTER_PLATE_SETTINGS));
+    public static final Block MASTER_BARREL = register("master_barrel", new MasterBarrelBlock(MASTER_PLATE_SETTINGS));
 
     // TEKTILES
     public static final BaseStairSlabBlockset RED_TEKTILES = new BaseStairSlabBlockset(LegendOfSteve.MOD_ID, "red_tektiles", RED_TEKTILES_SETTINGS);
@@ -103,6 +119,12 @@ public class ZeldaBlocks {
     }
 
     public static void register() {
+        FlammableBlockRegistry.getDefaultInstance().add(DEKU_LEAVES, 30, 60);
+        FlammableBlockRegistry.getDefaultInstance().add(FRUITING_DEKU_LEAVES, 30, 60);
+        FlammableBlockRegistry.getDefaultInstance().add(ZeldaTags.CHISELED_PLANKS_BLOCK, 5, 20);
+
+        FuelRegistry.INSTANCE.add(ZeldaTags.CHISELED_PLANKS_ITEM, 300);
+
         CompostingChanceRegistry.INSTANCE.add(DEKU_SAPLING, 0.3f);
         CompostingChanceRegistry.INSTANCE.add(DEKU_LEAVES, 0.3f);
         CompostingChanceRegistry.INSTANCE.add(FRUITING_DEKU_LEAVES, 0.3f);

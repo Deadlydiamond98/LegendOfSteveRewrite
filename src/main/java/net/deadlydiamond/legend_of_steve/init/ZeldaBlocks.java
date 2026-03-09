@@ -80,8 +80,8 @@ public class ZeldaBlocks {
     public static final Block SMOOTH_FAIRY_MARBLE = register("smooth_fairy_marble", new Block(FAIRY_MARBLE_SETTINGS));
 
     // MASTER
-    public static final Block MASTER_ORE = register("master_ore", new ExperienceDroppingBlock(MASTER_ORE_BLOCK_SETTINGS, UniformIntProvider.create(3, 7)));
-    public static final Block DEEPSLATE_MASTER_ORE = register("deepslate_master_ore", new ExperienceDroppingBlock(DEEPSLATE_MASTER_ORE_BLOCK_SETTINGS, UniformIntProvider.create(3, 7)));
+    public static final Block MASTER_ORE = register("master_ore", new ExperienceDroppingBlock(MASTER_ORE_BLOCK_SETTINGS));
+    public static final Block DEEPSLATE_MASTER_ORE = register("deepslate_master_ore", new ExperienceDroppingBlock(DEEPSLATE_MASTER_ORE_BLOCK_SETTINGS));
 
     public static final Block MASTER_SCRAP_BLOCK = register("master_scrap_block", new Block(MASTER_SCRAP_SETTINGS));
     public static final Block MASTER_BLOCK = register("master_block", new Block(MASTER_BLOCK_SETTINGS));

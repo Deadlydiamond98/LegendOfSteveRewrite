@@ -80,6 +80,58 @@
     "subtitle": "subtitles.block.generic.footsteps"
   },
 
+  "block.fairy_lamp.break": {
+    "sounds": [
+      "legend_of_steve:block/fairy_lamp/break1",
+      "legend_of_steve:block/fairy_lamp/break2",
+      "legend_of_steve:block/fairy_lamp/break3",
+      "legend_of_steve:block/fairy_lamp/break4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.fairy_lamp.fall": {
+    "sounds": [
+      "legend_of_steve:block/fairy_lamp/step1",
+      "legend_of_steve:block/fairy_lamp/step2",
+      "legend_of_steve:block/fairy_lamp/step3",
+      "legend_of_steve:block/fairy_lamp/step4",
+      "legend_of_steve:block/fairy_lamp/step5",
+      "legend_of_steve:block/fairy_lamp/step6"
+    ],
+    "subtitle": "subtitles.block.generic.fall"
+  },
+  "block.fairy_lamp.hit": {
+    "sounds": [
+      "legend_of_steve:block/fairy_lamp/step1",
+      "legend_of_steve:block/fairy_lamp/step2",
+      "legend_of_steve:block/fairy_lamp/step3",
+      "legend_of_steve:block/fairy_lamp/step4",
+      "legend_of_steve:block/fairy_lamp/step5",
+      "legend_of_steve:block/fairy_lamp/step6"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.fairy_lamp.place": {
+    "sounds": [
+      "legend_of_steve:block/fairy_lamp/place1",
+      "legend_of_steve:block/fairy_lamp/place2",
+      "legend_of_steve:block/fairy_lamp/place3",
+      "legend_of_steve:block/fairy_lamp/place4"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.fairy_lamp.step": {
+    "sounds": [
+      "legend_of_steve:block/fairy_lamp/step1",
+      "legend_of_steve:block/fairy_lamp/step2",
+      "legend_of_steve:block/fairy_lamp/step3",
+      "legend_of_steve:block/fairy_lamp/step4",
+      "legend_of_steve:block/fairy_lamp/step5",
+      "legend_of_steve:block/fairy_lamp/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+
   "block.master_plate.break": {
     "sounds": [
       "legend_of_steve:block/master_plate/break1",

@@ -92,6 +92,7 @@ public class ZeldaBlockSettings {
 
     public static FabricBlockSettings getFairyLight(MapColor color) {
         return FabricBlockSettings.copyOf(Blocks.SEA_LANTERN)
+                .sounds(ZeldaSounds.FAIRY_LAMP)
                 .mapColor(color);
     }
 

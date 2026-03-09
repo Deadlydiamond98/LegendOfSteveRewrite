@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "psp",
+    "p p",
+    "php"
+  ],
+  "key": {
+    "s": {
+      "item": "legend_of_steve:master_scrap"
+    },
+    "p": {
+      "item": "legend_of_steve:master_plate"
+    },
+    "h": {
+      "item": "legend_of_steve:master_plate_slab"
+    }
+  },
+  "result": {
+    "item": "legend_of_steve:master_barrel"
+  }
+}

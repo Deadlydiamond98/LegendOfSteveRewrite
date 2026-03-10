@@ -15,8 +15,9 @@ public class ZeldaSounds {
 
     public static final SoundEvent SECRET_ROOM_JINGLE = register("bomb.jingle");
 
-    // Fairy Blocks ////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Magicy Blocks ///////////////////////////////////////////////////////////////////////////////////////////////////
     public static final BlockSoundGroup FAIRY_LAMP = registerGroup("fairy_lamp", 1, 1.2f);
+    public static final BlockSoundGroup STARSTONE = registerGroup("starstone", 1, 1);
 
     // Master Ore //////////////////////////////////////////////////////////////////////////////////////////////////////
     public static final BlockSoundGroup MASTER_BLOCK = registerGroup("master_block", 1, 1.5f);

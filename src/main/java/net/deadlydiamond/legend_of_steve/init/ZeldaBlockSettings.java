@@ -39,7 +39,9 @@ public class ZeldaBlockSettings {
 
     // FAIRY MARBLE
     public static final FabricBlockSettings FAIRY_MARBLE_SETTINGS = FabricBlockSettings.copyOf(Blocks.CALCITE)
-            .mapColor(MapColor.WHITE).instrument(Instrument.BELL);
+            .sounds(ZeldaSounds.STARSTONE)
+            .mapColor(MapColor.WHITE)
+            .instrument(Instrument.BELL);
 
     // DEKU WOOD
     public static final FabricBlockSettings DEKU_WOOD_SETTINGS = FabricBlockSettings.copyOf(Blocks.CHERRY_PLANKS)
@@ -86,6 +88,9 @@ public class ZeldaBlockSettings {
     public static final FabricBlockSettings RED_TEKTILES_SETTINGS = FabricBlockSettings.copyOf(Blocks.BONE_BLOCK)
             .sounds(ZeldaSounds.TEKTILES)
             .mapColor(MapColor.RED);
+
+    // CRACKED BRICKS
+    
 
 
     // HELPER METHODS //////////////////////////////////////////////////////////////////////////////////////////////////

@@ -1,8 +1,7 @@
 package net.deadlydiamond.legend_of_steve.events.client;
 
-import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.items.IScrollAction;
-import net.deadlydiamond.legend_of_steve.networking.c2s.ScrollItemActionC2SPacket;
+import net.deadlydiamond.legend_of_steve.networking.c2s.GuiScrollItemActionC2SPacket;
 import net.fabricmc.fabric.api.client.screen.v1.ScreenEvents;
 import net.fabricmc.fabric.api.client.screen.v1.ScreenMouseEvents;
 import net.minecraft.client.MinecraftClient;
@@ -40,7 +39,7 @@ public class ZeldaScreenEvents {
                         // Client says rather than the server, and doesn't have proper slot ids
                         client.player.playerScreenHandler.sendContentUpdates();
                     } else {
-                        ScrollItemActionC2SPacket.send(syncId, handler.getRevision(), slot.id, verticalAmount);
+                        GuiScrollItemActionC2SPacket.send(syncId, handler.getRevision(), slot.id, verticalAmount);
                     }
                 }
             }

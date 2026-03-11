@@ -2,6 +2,7 @@ package net.deadlydiamond.legend_of_steve.common.items.projectile.explosive;
 
 import net.deadlydiamond.legend_of_steve.common.entities.bomb.BombEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.bomb.IZeldaBomb;
+import net.deadlydiamond.legend_of_steve.common.items.bag.BombBagItem;
 import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
 import net.deadlydiamond98.koalalib.common.items.ILighter;
 import net.deadlydiamond98.koalalib.common.items.interaction.IAdvancedItemProperties;
@@ -9,6 +10,8 @@ import net.deadlydiamond98.koalalib.common.items.vanillamodified.projectile.Cust
 import net.deadlydiamond98.koalalib.init.KoalaLibSounds;
 import net.deadlydiamond98.koalalib.util.IgnitionHelper;
 import net.minecraft.block.Block;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
@@ -55,7 +58,7 @@ public class BombItem extends CustomProjectileItem implements IAdvancedItemPrope
         super.initProjectile(entity, stack, owner, hand);
         if (entity instanceof BombEntity bomb) {
             initBomb(bomb, stack, owner);
-            lightOnThrow(owner, bomb);
+            lightOnThrow(stack, owner, bomb);
         }
     }
 
@@ -70,8 +73,13 @@ public class BombItem extends CustomProjectileItem implements IAdvancedItemPrope
         bomb.setPower(this.power);
     }
 
-    private void lightOnThrow(LivingEntity owner, BombEntity bomb) {
+    private void lightOnThrow(ItemStack stack, LivingEntity owner, BombEntity bomb) {
+        if (stack.getItem() instanceof BombBagItem && EnchantmentHelper.getLevel(Enchantments.FIRE_ASPECT, stack) > 0) {
+            lightBomb(owner, bomb);
+        }
+
         ItemStack igniter = owner.getStackInHand(Hand.OFF_HAND);
+
         if (IgnitionHelper.canUseIgniter(owner.getWorld(), owner.getBlockPos(), owner, Hand.OFF_HAND)) {
 
             if (igniter.getItem() instanceof ILighter lighter) {
@@ -87,14 +95,17 @@ public class BombItem extends CustomProjectileItem implements IAdvancedItemPrope
                         0.4f, 0.8f
                 );
             }
-
-            owner.getWorld().playSound(
-                    null, owner.getBlockPos(),
-                    SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.PLAYERS,
-                    0.4f, 0.8f
-            );
-            bomb.setPrimed(true);
+            lightBomb(owner, bomb);
         }
+    }
+
+    private void lightBomb(LivingEntity owner, BombEntity bomb) {
+        owner.getWorld().playSound(
+                null, owner.getBlockPos(),
+                SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.PLAYERS,
+                0.4f, 0.8f
+        );
+        bomb.setPrimed(true);
     }
 
     @Override

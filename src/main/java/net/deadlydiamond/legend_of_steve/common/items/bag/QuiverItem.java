@@ -29,13 +29,13 @@ import net.minecraft.world.World;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuiverItem extends CustomBundleItem implements Equipment, IModifiedCraftingResult {
+public class QuiverItem extends ScrollableBag implements Equipment, IModifiedCraftingResult {
     public static final List<Item> QUIVERS = new ArrayList<>();
     private final Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
     private final SoundEvent equipSound;
 
-    public QuiverItem(Settings settings, int maxStorage, ArmorMaterial material, SoundEvent equipSound, TagKey<Item> acceptedItems) {
-        super(settings.maxCount(1), maxStorage, true, acceptedItems);
+    public QuiverItem(Settings settings, int maxStorage, ArmorMaterial material, SoundEvent equipSound) {
+        super(settings.maxCount(1), maxStorage, true, stack -> stack.isIn(ItemTags.ARROWS) && stack.getItem() instanceof ArrowItem);
         DispenserBlock.registerBehavior(this, ArmorItem.DISPENSER_BEHAVIOR);
 
         int protection = material.getProtection(ArmorItem.Type.CHESTPLATE);
@@ -81,7 +81,7 @@ public class QuiverItem extends CustomBundleItem implements Equipment, IModified
             if (inputStack.getItem() instanceof QuiverItem) {
                 QuiverItem.getItemStacks(inputStack).forEach(itemStack -> addToBundle(result, itemStack.copy()));
             } else if (inputStack.isIn(ItemTags.ARROWS)) {
-                addToBundle(result, inputStack.copy());
+                addToBundle(result, inputStack.copyWithCount(1));
             }
         }
     }
@@ -107,4 +107,27 @@ public class QuiverItem extends CustomBundleItem implements Equipment, IModified
         PotionUtil.setPotion(strayArrows, potion);
         addToBundle(quiver, strayArrows);
     }
+
+    // Arrow Getting ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public static ItemStack getArrow(PlayerEntity player) {
+        return getArrow(player, !player.isCreative());
+    }
+
+    public static ItemStack getArrow(PlayerEntity player, boolean updateInventory) {
+        ItemStack quiver = getQuiverStack(player);
+        if (!quiver.isEmpty()) {
+            return QuiverItem.removeFromBundle(quiver, 1, updateInventory);
+        }
+        return ItemStack.EMPTY;
+    }
+
+    public static ItemStack getQuiverStack(PlayerEntity player) {
+        ItemStack quiverStack = player.getEquippedStack(EquipmentSlot.CHEST);
+        if (quiverStack.getItem() instanceof QuiverItem) {
+            return quiverStack;
+        }
+        return ItemStack.EMPTY;
+    }
+
 }

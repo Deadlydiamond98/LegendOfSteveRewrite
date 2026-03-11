@@ -6,6 +6,8 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.render.VertexConsumers;
+import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.render.model.BakedModel;
 import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.util.math.MatrixStack;
@@ -64,7 +66,11 @@ public class BombBagItemRenderer {
     private static void renderBagFace(MatrixStack matrices, VertexConsumerProvider vertexConsumerProvider, int zOffset, ItemStack bag, String viewType, int light, int overlay) {
         Identifier bombID = Registries.ITEM.getId(bag.getItem());
         Identifier texture = new Identifier(bombID.getNamespace(), "textures/item/bomb_bag/" + bombID.getPath() + "_view_" + viewType + ".png");
-        VertexConsumer vertexConsumer = vertexConsumerProvider.getBuffer(RenderLayer.getEntityCutout(texture));
+
+        VertexConsumer vertexConsumer = bag.hasEnchantments() ? ItemRenderer.getDirectDynamicDisplayGlintConsumer(
+                vertexConsumerProvider, RenderLayer.getEntityCutout(texture), matrices.peek()
+        ) : vertexConsumerProvider.getBuffer(RenderLayer.getEntityCutout(texture));
+
         renderFace(matrices, vertexConsumer, 0, 1, 0, 1, zOffset, 0, 1, 0, 1, light, overlay);
     }
 

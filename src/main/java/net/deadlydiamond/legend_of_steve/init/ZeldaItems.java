@@ -26,7 +26,7 @@ public class ZeldaItems {
 
     // BAGS ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // BOMB BAG
-    public static final Item BOMB_BAG = register("bomb_bag", new BombBagItem(new FabricItemSettings(), 160));
+    public static final Item BOMB_BAG = register("bomb_bag", new BombBagItem(new FabricItemSettings(), 80));
 
     // QUIVER
     public static final Item QUIVER = registerQuiver("quiver", 160, ArmorMaterials.LEATHER, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER);
@@ -55,7 +55,7 @@ public class ZeldaItems {
 
     public static Item registerQuiver(String id, int maxStorage, ArmorMaterial material, SoundEvent equipSound) {
         FabricItemSettings settings = new FabricItemSettings();
-        return register(id, new QuiverItem(material == ArmorMaterials.NETHERITE ? settings.fireproof() : settings, maxStorage, material, equipSound, ItemTags.ARROWS));
+        return register(id, new QuiverItem(material == ArmorMaterials.NETHERITE ? settings.fireproof() : settings, maxStorage, material, equipSound));
     }
 
     public static Item register(String id, Item item) {

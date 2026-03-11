@@ -1,18 +1,22 @@
 package net.deadlydiamond.legend_of_steve.common.items.bag;
 
 import net.deadlydiamond.legend_of_steve.common.items.IModifiedCraftingResult;
-import net.deadlydiamond.legend_of_steve.common.items.IScrollAction;
 import net.deadlydiamond.legend_of_steve.common.items.projectile.explosive.BombItem;
 import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
-import net.deadlydiamond98.koalalib.common.items.vanillamodified.CustomBundleItem;
+import net.deadlydiamond98.koalalib.common.items.vanillamodified.IExtraEnchantments;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Vanishable;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
-public class BombBagItem extends CustomBundleItem implements IModifiedCraftingResult, IScrollAction {
+import java.util.List;
+
+public class BombBagItem extends ScrollableBag implements IModifiedCraftingResult, IExtraEnchantments, Vanishable {
     public BombBagItem(Settings settings, int maxStorage) {
         super(settings.maxCount(1), maxStorage, true, ZeldaTags.BOMBS);
         BombItem.COOLDOWNS.put(this, 40);
@@ -33,29 +37,28 @@ public class BombBagItem extends CustomBundleItem implements IModifiedCraftingRe
             if (inputStack.getItem() instanceof BombBagItem) {
                 getItemStacks(inputStack).forEach(itemStack -> addToBundle(result, itemStack.copy()));
             } else if (inputStack.isIn(ZeldaTags.BOMBS)) {
-                addToBundle(result, inputStack.copy());
+                addToBundle(result, inputStack.copyWithCount(1));
             }
         }
     }
 
     @Override
-    public void onItemScrolled(ItemStack stack, int slot, PlayerEntity player, double scroll) {
-        int scrollDir = (int) Math.signum(scroll);
-
-        if (scrollDir != 0) {
-            if (player.getWorld().isClient()) {
-                playInsertSound(player);
-            }
-
-            BombBagItem.cycleInventory(stack, (int) Math.signum(scroll));
-        }
+    public int getMaxInsertables(ItemStack bundle) {
+        return super.getMaxInsertables(bundle);
     }
 
     @Override
-    public void onItemScrolledHotbar(ItemStack stack, int slot, PlayerEntity player, double direction) {
-        if (player.getWorld().isClient() && direction != 0) {
-            player.sendMessage(getFirstStack(stack).getName(), true);
-        }
-        onItemScrolled(stack, slot, player, direction);
+    public int getEnchantability() {
+        return 15;
+    }
+
+    @Override
+    public boolean isEnchantable(ItemStack stack) {
+        return true;
+    }
+
+    @Override
+    public List<Enchantment> getEnchantments() {
+        return List.of(Enchantments.FIRE_ASPECT);
     }
 }

@@ -1,11 +1,7 @@
 package net.deadlydiamond.legend_of_steve.networking.c2s;
 
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.items.IScrollAction;
-import net.deadlydiamond.legend_of_steve.common.items.bag.BombBagItem;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
@@ -16,8 +12,8 @@ import net.minecraft.server.network.ServerPlayNetworkHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 
-public class ScrollItemActionC2SPacket {
-    public static final Identifier ID = LegendOfSteve.id("scroll_item_action");
+public class GuiScrollItemActionC2SPacket {
+    public static final Identifier ID = LegendOfSteve.id("gui_scroll_item_action");
 
     public static void send(int syncId, int revision, int slot, double scroll) {
         PacketByteBuf buf = PacketByteBufs.create();

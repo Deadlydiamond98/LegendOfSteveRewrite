@@ -13,7 +13,11 @@
     "common.entity.LightningEntityMixin",
     "common.entity.MobEntityMixin",
     "common.entity.piglin.PiglinEntityMixin",
-    "common.handler.CraftingScreenHandlerMixin"
+    "common.handler.CraftingScreenHandlerMixin",
+    "common.item.BowItemMixin",
+    "common.item.CrossbowItemMixin",
+    "common.item.RangedWeaponItemMixin",
+    "common.player.PlayerInventoryMixin"
   ],
   "injectors": {
     "defaultRequire": 1

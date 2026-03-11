@@ -99,5 +99,7 @@ public class ZeldaModelDatagen extends FabricModelProvider {
         ZeldaItemModelDatagenUtil.registerQuiver(itemModelGenerator, ZeldaItems.QUIVER);
         ZeldaItemModelDatagenUtil.registerQuiver(itemModelGenerator, ZeldaItems.GILDED_QUIVER);
         ZeldaItemModelDatagenUtil.registerQuiver(itemModelGenerator, ZeldaItems.NETHERITE_QUIVER);
+
+        ZeldaItemModelDatagenUtil.registerBombBag(itemModelGenerator, ZeldaItems.BOMB_BAG);
     }
 }

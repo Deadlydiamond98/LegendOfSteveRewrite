@@ -1,6 +1,7 @@
 package net.deadlydiamond.legend_of_steve.common.items.bag;
 
 import com.google.common.collect.Multimap;
+import net.deadlydiamond.legend_of_steve.common.items.IModifiedCraftingResult;
 import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
 import net.deadlydiamond.legend_of_steve.util.ArmorItemUtil;
 import net.deadlydiamond98.koalalib.common.items.vanillamodified.CustomBundleItem;
@@ -12,10 +13,12 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.PiglinEntity;
 import net.minecraft.entity.mob.StrayEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.Inventory;
 import net.minecraft.item.*;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.potion.Potions;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Hand;
@@ -26,13 +29,13 @@ import net.minecraft.world.World;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuiverItem extends CustomBundleItem implements Equipment {
+public class QuiverItem extends CustomBundleItem implements Equipment, IModifiedCraftingResult {
     public static final List<Item> QUIVERS = new ArrayList<>();
     private final Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
     private final SoundEvent equipSound;
 
     public QuiverItem(Settings settings, int maxStorage, ArmorMaterial material, SoundEvent equipSound, TagKey<Item> acceptedItems) {
-        super(settings, maxStorage, true, acceptedItems);
+        super(settings.maxCount(1), maxStorage, true, acceptedItems);
         DispenserBlock.registerBehavior(this, ArmorItem.DISPENSER_BEHAVIOR);
 
         int protection = material.getProtection(ArmorItem.Type.CHESTPLATE);
@@ -67,6 +70,23 @@ public class QuiverItem extends CustomBundleItem implements Equipment {
     public SoundEvent getEquipSound() {
         return this.equipSound;
     }
+
+    // CRAFTING RESULT /////////////////////////////////////////////////////////////////////////////////////////////////
+
+    @Override
+    public void modifyCraftingResult(ItemStack result, Inventory craftingTableSlots) {
+        for (int i = 0; i < craftingTableSlots.size(); i++) {
+            ItemStack inputStack = craftingTableSlots.getStack(i);
+
+            if (inputStack.getItem() instanceof QuiverItem) {
+                QuiverItem.getItemStacks(inputStack).forEach(itemStack -> addToBundle(result, itemStack.copy()));
+            } else if (inputStack.isIn(ItemTags.ARROWS)) {
+                addToBundle(result, inputStack.copy());
+            }
+        }
+    }
+
+    // ENTITY SPAWN RELATED ////////////////////////////////////////////////////////////////////////////////////////////
 
     public static ItemStack getFilledQuiver(MobEntity mob, Random random, Item quiverItem) {
         ItemStack quiver = quiverItem.getDefaultStack();

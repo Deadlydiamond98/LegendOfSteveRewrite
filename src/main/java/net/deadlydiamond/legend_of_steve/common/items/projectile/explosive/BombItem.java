@@ -1,6 +1,5 @@
-package net.deadlydiamond.legend_of_steve.common.items.projectile;
+package net.deadlydiamond.legend_of_steve.common.items.projectile.explosive;
 
-import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.entities.bomb.BombEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.bomb.IZeldaBomb;
 import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
@@ -17,7 +16,6 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -25,16 +23,14 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import oshi.util.tuples.Pair;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
-public class BombItem extends CustomProjectileItem implements IAdvancedItemProperties, IZeldaBomb {
-    public static final List<Pair<Item, Integer>> COOLDOWNS = new ArrayList<>();
+public class BombItem extends CustomProjectileItem implements IAdvancedItemProperties, IZeldaBomb, IGuiRotation {
+    public static final Map<Item, Integer> COOLDOWNS = new HashMap<>();
     private final TagKey<Block> breakable;
-    private final int fuse;
-    private final int power;
+    private final int fuse, power;
 
     public BombItem(Settings settings, EntityType<?> type, int fuse, int power) {
         this(settings, type, ZeldaTags.BOMB_BREAKABLE, fuse, power);
@@ -45,22 +41,20 @@ public class BombItem extends CustomProjectileItem implements IAdvancedItemPrope
         this.breakable = breakable;
         this.fuse = fuse;
         this.power = power;
-        COOLDOWNS.add(new Pair<>(this, 20));
+        COOLDOWNS.put(this, 20);
     }
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        COOLDOWNS.forEach(pair -> user.getItemCooldownManager().set(pair.getA(), pair.getB()));
+        COOLDOWNS.forEach((item, integer) -> user.getItemCooldownManager().set(item, integer));
         return super.use(world, user, hand);
     }
 
     @Override
     public void initProjectile(Entity entity, ItemStack stack, LivingEntity owner, @Nullable Hand hand) {
         super.initProjectile(entity, stack, owner, hand);
-
         if (entity instanceof BombEntity bomb) {
             initBomb(bomb, stack, owner);
-
             lightOnThrow(owner, bomb);
         }
     }
@@ -71,7 +65,7 @@ public class BombItem extends CustomProjectileItem implements IAdvancedItemPrope
         bomb.setFuse(this.fuse);
         bomb.setMaxFuse(this.fuse);
         bomb.setOwner(owner);
-        bomb.setItem(this.getDefaultStack());
+        bomb.setItem(getDefaultStack());
         bomb.setBreakableBlocks(this.breakable);
         bomb.setPower(this.power);
     }

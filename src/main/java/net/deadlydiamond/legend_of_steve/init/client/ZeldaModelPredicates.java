@@ -2,6 +2,7 @@ package net.deadlydiamond.legend_of_steve.init.client;
 
 import net.deadlydiamond.legend_of_steve.common.items.bag.QuiverItem;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
+import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.color.world.BiomeColors;
@@ -21,21 +22,9 @@ public class ZeldaModelPredicates {
     }
 
     private static void registerModelPredicates() {
-        // QUIVERS
-        registerPredicateMulti(QuiverItem.QUIVERS, "filled", (stack, world, entity, seed) -> {
-            if (stack.isItemBarVisible()) {
-                List<ItemStack> stacks = QuiverItem.getItemStacks(stack);
-                int i = 0;
-                for (ItemStack itemStack : stacks) {
-                    i += itemStack.getCount();
-                    if (i >= 3) {
-                        return 0.75f;
-                    }
-                }
-                return i == 2 ? 0.5f : 0.25f;
-            }
-            return 0;
-        });
+        // BAGS
+        registerBagPredicate(List.of(ZeldaItems.BOMB_BAG), 2);
+        registerBagPredicate(QuiverItem.QUIVERS, 4);
     }
 
     private static void registerTintables() {
@@ -43,6 +32,25 @@ public class ZeldaModelPredicates {
     }
 
     // HELPER METHODS //////////////////////////////////////////////////////////////////////////////////////////////////
+
+    private static void registerBagPredicate(List<Item> items, int stages) {
+        registerPredicateMulti(items, "filled", (stack, world, entity, seed) -> {
+            if (stack.isItemBarVisible()) {
+                List<ItemStack> stacks = QuiverItem.getItemStacks(stack);
+
+                int i = 0;
+                for (ItemStack itemStack : stacks) {
+                    i += itemStack.getCount();
+                    if (i >= stages - 1) {
+                        break;
+                    }
+                }
+                float stageUnit = (1.0f / Math.max(1, stages));
+                return i * stageUnit;
+            }
+            return 0;
+        });
+    }
 
     private static void registerPredicateMulti(List<Item> items, String id, ClampedModelPredicateProvider provider) {
         items.forEach(item -> ModelPredicateProviderRegistry.register(item, new Identifier(id), provider));

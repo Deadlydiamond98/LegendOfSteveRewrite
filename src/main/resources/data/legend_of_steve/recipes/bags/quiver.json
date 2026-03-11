@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "sls",
+    "lal",
+    "lll"
+  ],
+  "key": {
+    "a": {
+      "tag": "minecraft:arrows"
+    },
+    "s": {
+      "item": "minecraft:string"
+    },
+    "l": {
+      "item": "minecraft:leather"
+    }
+  },
+  "result": {
+    "item": "legend_of_steve:quiver"
+  }
+}

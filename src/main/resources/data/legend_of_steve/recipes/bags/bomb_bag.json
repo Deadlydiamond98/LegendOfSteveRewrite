@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "sls",
+    "lal",
+    "lll"
+  ],
+  "key": {
+    "a": {
+      "tag": "legend_of_steve:bombs"
+    },
+    "s": {
+      "item": "minecraft:string"
+    },
+    "l": {
+      "item": "minecraft:leather"
+    }
+  },
+  "result": {
+    "item": "legend_of_steve:bomb_bag"
+  }
+}

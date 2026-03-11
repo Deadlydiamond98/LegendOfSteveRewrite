@@ -1,9 +1,10 @@
 package net.deadlydiamond.legend_of_steve.init;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
+import net.deadlydiamond.legend_of_steve.common.items.bag.BombBagItem;
 import net.deadlydiamond.legend_of_steve.common.items.bag.QuiverItem;
-import net.deadlydiamond.legend_of_steve.common.items.projectile.BombItem;
-import net.deadlydiamond.legend_of_steve.common.items.projectile.ChargedBombItem;
+import net.deadlydiamond.legend_of_steve.common.items.projectile.explosive.BombItem;
+import net.deadlydiamond.legend_of_steve.common.items.projectile.explosive.ChargedBombItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -24,6 +25,9 @@ public class ZeldaItems {
     public static final Item SUPER_BOMB = register("super_bomb", new BombItem(new FabricItemSettings().maxCount(16), ZeldaEntityTypes.BOMB,  85, 5));
 
     // BAGS ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // BOMB BAG
+    public static final Item BOMB_BAG = register("bomb_bag", new BombBagItem(new FabricItemSettings(), 160));
+
     // QUIVER
     public static final Item QUIVER = registerQuiver("quiver", 160, ArmorMaterials.LEATHER, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER);
     public static final Item GILDED_QUIVER = registerQuiver("gilded_quiver", 320, ArmorMaterials.LEATHER, SoundEvents.ITEM_ARMOR_EQUIP_GOLD);
@@ -50,7 +54,7 @@ public class ZeldaItems {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public static Item registerQuiver(String id, int maxStorage, ArmorMaterial material, SoundEvent equipSound) {
-        FabricItemSettings settings = new FabricItemSettings().maxCount(1);
+        FabricItemSettings settings = new FabricItemSettings();
         return register(id, new QuiverItem(material == ArmorMaterials.NETHERITE ? settings.fireproof() : settings, maxStorage, material, equipSound, ItemTags.ARROWS));
     }
 

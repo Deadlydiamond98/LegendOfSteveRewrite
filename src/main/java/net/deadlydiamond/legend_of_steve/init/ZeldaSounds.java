@@ -13,7 +13,10 @@ public class ZeldaSounds {
     public static final BlockSoundGroup BOMB_FLOWER = registerGroup("bomb_flower");
     public static final SoundEvent BOMB_HARVESTED = register("block.bomb_flower.pick");
 
-    public static final SoundEvent SECRET_ROOM_JINGLE = register("bomb.jingle");
+    public static final SoundEvent SECRET_ROOM_JINGLE = register("entity.bomb.jingle");
+    public static final SoundEvent BOMB_PICKED_UP = register("entity.bomb.pick_up");
+    public static final SoundEvent BOMB_EXTINGUISH = register("entity.bomb.extinguish");
+    public static final SoundEvent BOMB_PRIMED = register("entity.bomb.primed");
 
     // Magicy Blocks ///////////////////////////////////////////////////////////////////////////////////////////////////
     public static final BlockSoundGroup FAIRY_LAMP = registerGroup("fairy_lamp", 1, 1.2f);

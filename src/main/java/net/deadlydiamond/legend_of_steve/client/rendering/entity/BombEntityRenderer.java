@@ -2,12 +2,10 @@ package net.deadlydiamond.legend_of_steve.client.rendering.entity;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.client.models.entity.BombEntityModel;
-import net.deadlydiamond.legend_of_steve.client.models.entity.BombOverlayModel;
-import net.deadlydiamond.legend_of_steve.client.rendering.IBombRenderer;
-import net.deadlydiamond.legend_of_steve.common.entities.bomb.AbstractBombEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.bomb.BombEntity;
 import net.deadlydiamond.legend_of_steve.init.client.ZeldaRenderLayers;
 import net.deadlydiamond.legend_of_steve.init.client.ZeldaShaders;
+import net.deadlydiamond.legend_of_steve.util.rendering.BombRenderHelper;
 import net.deadlydiamond98.koalalib.client.PostProcessingRegistry;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;
@@ -22,16 +20,14 @@ import net.minecraft.util.math.RotationAxis;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
-public class BombEntityRenderer<T extends BombEntity> extends EntityRenderer<T> implements IBombRenderer {
+public class BombEntityRenderer<T extends BombEntity> extends EntityRenderer<T> {
     private static final Identifier LOW_FUSE_OVERLAY = LegendOfSteve.id("textures/entity/bomb/fuse_overlay.png");
 
     private final BombEntityModel<T> model;
-    private final BombOverlayModel<T> overlay;
 
     public BombEntityRenderer(EntityRendererFactory.Context ctx) {
         super(ctx);
         this.model = new BombEntityModel<>(ctx.getPart(BombEntityModel.LAYER_LOCATION));
-        this.overlay = new BombOverlayModel<>(ctx.getPart(BombOverlayModel.LAYER_LOCATION));
     }
 
     @Override
@@ -64,7 +60,7 @@ public class BombEntityRenderer<T extends BombEntity> extends EntityRenderer<T> 
             matrices.push();
             matrices.translate(0, -0.25 - 0.0625, 0);
             matrices.scale(1.25f, 1.25f, 1.25f);
-            VertexConsumer chargedOverlay = getChargedLayer(entity, vertexConsumers, tickDelta);
+            VertexConsumer chargedOverlay = BombRenderHelper.getChargedLayer(entity, vertexConsumers, tickDelta);
             this.model.renderOverlay(matrices, chargedOverlay, 15728640, OverlayTexture.DEFAULT_UV, 0.5f, 0.5f, 0.5f, 1);
             matrices.pop();
         }
@@ -89,6 +85,8 @@ public class BombEntityRenderer<T extends BombEntity> extends EntityRenderer<T> 
         super.render(entity, yaw, tickDelta, matrices, vertexConsumers, light);
     }
 
+    // Renders the Fuse Part of the Bomb.
+    // Done separately from the model, so I can have the Fuse cutoff when burning
     private void renderFuse(T entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light) {
         matrices.push();
         matrices.multiply(RotationAxis.NEGATIVE_Z.rotationDegrees(180));
@@ -134,6 +132,6 @@ public class BombEntityRenderer<T extends BombEntity> extends EntityRenderer<T> 
 
     @Override
     public Identifier getTexture(T entity) {
-        return getBombTexture(entity);
+        return BombRenderHelper.getBombTexture(entity);
     }
 }

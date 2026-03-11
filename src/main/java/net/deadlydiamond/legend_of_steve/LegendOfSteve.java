@@ -3,6 +3,7 @@ package net.deadlydiamond.legend_of_steve;
 import net.deadlydiamond.legend_of_steve.events.common.ZeldaLootTableEvents;
 import net.deadlydiamond.legend_of_steve.init.*;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBiomeModifications;
+import net.deadlydiamond.legend_of_steve.networking.ZeldaNetworking;
 import net.deadlydiamond.legend_of_steve.worldgen.ZeldaFeatures;
 import net.fabricmc.api.ModInitializer;
 
@@ -28,6 +29,9 @@ public class LegendOfSteve implements ModInitializer {
 		ZeldaCreativeTabs.register();
 		ZeldaFeatures.register();
 		ZeldaBiomeModifications.register();
+
+		// Networking
+		ZeldaNetworking.registerC2SReceivers();
 
 		// Events
 		ZeldaLootTableEvents.register();

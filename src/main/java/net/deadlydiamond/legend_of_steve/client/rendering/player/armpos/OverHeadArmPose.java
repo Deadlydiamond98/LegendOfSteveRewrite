@@ -1,15 +1,18 @@
 package net.deadlydiamond.legend_of_steve.client.rendering.player.armpos;
 
-import net.deadlydiamond.legend_of_steve.client.rendering.IBombRenderer;
-import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
 import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
+import net.deadlydiamond.legend_of_steve.util.rendering.BombRenderHelper;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
 
-public class OverHeadArmPose extends ArmPose implements IBombRenderer {
+public class OverHeadArmPose extends ArmPose {
+
+    /**
+     * Sets the Arms to stick straight up to hold something over the head
+     */
 
     public OverHeadArmPose(boolean twoHanded) {
         super(twoHanded);
@@ -17,7 +20,8 @@ public class OverHeadArmPose extends ArmPose implements IBombRenderer {
 
     @Override
     public boolean isValid(AbstractClientPlayerEntity player, Hand hand, ItemStack itemStack) {
-        return itemStack.isIn(ZeldaTags.HELD_OVER_HEAD) && !player.getItemCooldownManager().isCoolingDown(itemStack.getItem()) && !hasTwoBombs(player);
+        return (BombRenderHelper.canShowNicerBombModel(itemStack, player) || itemStack.isIn(ZeldaTags.HELD_OVER_HEAD))
+                && !player.getItemCooldownManager().isCoolingDown(itemStack.getItem());
     }
 
     @Override

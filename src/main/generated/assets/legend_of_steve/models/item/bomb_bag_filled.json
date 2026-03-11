@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "legend_of_steve:item/bomb_bag/bomb_bag_filled"
+  }
+}

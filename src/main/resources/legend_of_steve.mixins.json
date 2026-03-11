@@ -12,7 +12,8 @@
     "common.entity.AbstractSkeletonEntityMixin",
     "common.entity.LightningEntityMixin",
     "common.entity.MobEntityMixin",
-    "common.entity.piglin.PiglinEntityMixin"
+    "common.entity.piglin.PiglinEntityMixin",
+    "common.handler.CraftingScreenHandlerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
@@ -23,6 +24,8 @@
   "client": [
     "client.armpose.BipedEntityModelArmPoseMixin",
     "client.armpose.PlayerEntityRendererCustomArmPoseMixin",
+    "client.gui.HandledScreenMixin",
+    "client.gui.InGameHudMixin",
     "client.model.BakedModelManagerMixin",
     "client.model.JsonUnbakedModelMixin",
     "client.model.JsonUnbakedModelMixin$DeserializerMixin",

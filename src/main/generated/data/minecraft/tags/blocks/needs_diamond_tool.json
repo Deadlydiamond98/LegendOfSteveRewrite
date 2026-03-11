@@ -1,0 +1,26 @@
+{
+  "replace": false,
+  "values": [
+    "legend_of_steve:master_plate",
+    "legend_of_steve:master_plate_stairs",
+    "legend_of_steve:master_plate_slab",
+    "legend_of_steve:master_bricks",
+    "legend_of_steve:master_brick_stairs",
+    "legend_of_steve:master_brick_slab",
+    "legend_of_steve:master_tile",
+    "legend_of_steve:master_tile_stairs",
+    "legend_of_steve:master_tile_slab",
+    "legend_of_steve:master_ore",
+    "legend_of_steve:deepslate_master_ore",
+    "legend_of_steve:master_scrap_block",
+    "legend_of_steve:master_block",
+    "legend_of_steve:cut_master_plate",
+    "legend_of_steve:master_pillar",
+    "legend_of_steve:master_bars",
+    "legend_of_steve:master_chain",
+    "legend_of_steve:master_door",
+    "legend_of_steve:master_trapdoor",
+    "legend_of_steve:master_girder",
+    "legend_of_steve:master_barrel"
+  ]
+}

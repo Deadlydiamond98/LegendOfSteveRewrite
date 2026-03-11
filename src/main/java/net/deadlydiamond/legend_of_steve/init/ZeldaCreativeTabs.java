@@ -20,6 +20,10 @@ public class ZeldaCreativeTabs {
                 ZeldaItems.BOMB,
                 ZeldaItems.SUPER_BOMB,
 
+                // BOMB BAGS
+
+                ZeldaItems.BOMB_BAG,
+
                 // QUIVERS
                 ZeldaItems.QUIVER,
                 ZeldaItems.GILDED_QUIVER,

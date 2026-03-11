@@ -8,6 +8,8 @@
   "item.legend_of_steve.bomb": "Bomb",
   "item.legend_of_steve.super_bomb": "Super Bomb",
 
+  "item.legend_of_steve.bomb_bag": "Bomb Bag",
+
   "item.legend_of_steve.quiver": "Quiver",
   "item.legend_of_steve.gilded_quiver": "Gilded Quiver",
   "item.legend_of_steve.netherite_quiver": "Netherite Quiver",
@@ -128,5 +130,10 @@
   "block.legend_of_steve.small_red_tektile_slab": "Small Red Tektile Slab",
   "block.legend_of_steve.small_red_tektile_stairs": "Small Red Tektile Stairs",
 
-  "subtitles.block.bomb_flower.picked": "Bomb Flower Picked"
+  "subtitles.block.bomb_flower.picked": "Bomb Flower Picked",
+
+  "subtitles.entity.bomb.secret_jingle": "Secret room revealed",
+  "subtitles.entity.bomb.pick_up": "Bomb plops",
+  "subtitles.entity.bomb.extinguish": "Bomb extinguished",
+  "subtitles.entity.bomb.primed": "Bomb fizzes"
 }

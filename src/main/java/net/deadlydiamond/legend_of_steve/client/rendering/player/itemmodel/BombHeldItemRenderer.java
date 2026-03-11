@@ -1,10 +1,10 @@
 package net.deadlydiamond.legend_of_steve.client.rendering.player.itemmodel;
 
-import net.deadlydiamond.legend_of_steve.client.models.entity.BombOverlayModel;
 import net.deadlydiamond.legend_of_steve.client.models.entity.BombEntityModel;
-import net.deadlydiamond.legend_of_steve.client.rendering.IBombRenderer;
 import net.deadlydiamond.legend_of_steve.common.entities.bomb.BombEntity;
-import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
+import net.deadlydiamond.legend_of_steve.common.items.bag.BombBagItem;
+import net.deadlydiamond.legend_of_steve.common.items.projectile.explosive.ICharged;
+import net.deadlydiamond.legend_of_steve.util.rendering.BombRenderHelper;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumer;
@@ -20,19 +20,32 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Arm;
 import net.minecraft.util.math.RotationAxis;
 
-public class BombHeldItemRenderer extends CustomHeldItemRenderer implements IBombRenderer {
+public class BombHeldItemRenderer extends CustomHeldItemRenderer {
 
     @Override
     public boolean isValid(LivingEntity entity, Arm arm, ItemStack itemStack) {
-        return isBomb(itemStack) && !entity.isInSwimmingPose() && !entity.isUsingItem() && !hasTwoBombs(entity);
+        boolean cooldown = false;
+        if (entity instanceof PlayerEntity player) {
+            cooldown = player.getItemCooldownManager().isCoolingDown(itemStack.getItem());
+        }
+
+        return BombRenderHelper.canShowNicerBombModel(itemStack, entity) && !entity.isInSwimmingPose()
+                && !entity.isUsingItem() && !cooldown;
     }
 
     @Override
     public void render(LivingEntity entity, ItemStack stack, ModelTransformationMode transformationMode, Arm arm, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, PlayerEntityModel model, HeldItemRenderer playerHeldItemRenderer) {
+        if (stack.getItem() instanceof BombBagItem) {
+            ItemStack bombStack = BombBagItem.getFirstStack(stack);
+            if (!bombStack.isEmpty()) {
+                this.render(entity, bombStack, transformationMode, arm, matrices, vertexConsumers, light, model, playerHeldItemRenderer);
+                return;
+            }
+        }
+
         if (entity instanceof PlayerEntity player) {
             if (!player.getItemCooldownManager().isCoolingDown(stack.getItem())) {
                 BombEntityModel<BombEntity> bombModel = new BombEntityModel<>(MinecraftClient.getInstance().getEntityModelLoader().getModelPart(BombEntityModel.LAYER_LOCATION));
-                BombOverlayModel<BombEntity> bombOverlayModel = new BombOverlayModel<>(MinecraftClient.getInstance().getEntityModelLoader().getModelPart(BombEntityModel.LAYER_LOCATION));
 
                 matrices.push();
 
@@ -65,15 +78,15 @@ public class BombHeldItemRenderer extends CustomHeldItemRenderer implements IBom
                 HeadFeatureRenderer.translate(matrices, false);
                 boolean bl = arm == Arm.LEFT;
                 matrices.translate((bl ? -2.5F : 2.5F) / 16.0F, -0.0625F, 0.0F);
-                VertexConsumer vCon = vertexConsumers.getBuffer(bombModel.getLayer(getBombTexture(stack.getItem())));
+                VertexConsumer vCon = vertexConsumers.getBuffer(bombModel.getLayer(BombRenderHelper.getBombTexture(stack.getItem())));
                 bombModel.render(matrices, vCon, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
                 bombModel.renderFuse(matrices, vCon, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
 
-                if (stack.isIn(ZeldaTags.CHARGED)) {
+                if (stack.getItem() instanceof ICharged) {
                     matrices.push();
                     matrices.translate(0, -0.25 - 0.0625, 0);
                     matrices.scale(1.25f, 1.25f, 1.25f);
-                    VertexConsumer chargedOverlay = getChargedLayer(entity, vertexConsumers, MinecraftClient.getInstance().getTickDelta());
+                    VertexConsumer chargedOverlay = BombRenderHelper.getChargedLayer(entity, vertexConsumers, MinecraftClient.getInstance().getTickDelta());
                     bombModel.renderOverlay(matrices, chargedOverlay, 15728640, OverlayTexture.DEFAULT_UV, 0.5f, 0.5f, 0.5f, 1);
                     matrices.pop();
                 }

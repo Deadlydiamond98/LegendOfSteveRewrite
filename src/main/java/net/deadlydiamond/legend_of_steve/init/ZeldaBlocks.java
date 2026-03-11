@@ -21,7 +21,6 @@ import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.util.math.intprovider.UniformIntProvider;
 
 import static net.deadlydiamond.legend_of_steve.init.ZeldaBlockSettings.*;
 

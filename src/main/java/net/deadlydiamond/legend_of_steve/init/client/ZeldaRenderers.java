@@ -2,7 +2,6 @@ package net.deadlydiamond.legend_of_steve.init.client;
 
 import net.deadlydiamond.legend_of_steve.client.models.BasicCubeModel;
 import net.deadlydiamond.legend_of_steve.client.models.entity.BombEntityModel;
-import net.deadlydiamond.legend_of_steve.client.models.entity.BombOverlayModel;
 import net.deadlydiamond.legend_of_steve.client.models.feature.QuiverModel;
 import net.deadlydiamond.legend_of_steve.client.rendering.block.BombFlowerRenderer;
 import net.deadlydiamond.legend_of_steve.client.rendering.block.glowing.GlowingBlockRenderer;
@@ -31,7 +30,6 @@ public class ZeldaRenderers {
 
     private static void registerModelLayers() {
         EntityModelLayerRegistry.registerModelLayer(BombEntityModel.LAYER_LOCATION, BombEntityModel::getTexturedModelData);
-        EntityModelLayerRegistry.registerModelLayer(BombOverlayModel.LAYER_LOCATION, BombOverlayModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(QuiverModel.LAYER_LOCATION, QuiverModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(BasicCubeModel.LAYER_LOCATION, BasicCubeModel::getTexturedModelData);
     }

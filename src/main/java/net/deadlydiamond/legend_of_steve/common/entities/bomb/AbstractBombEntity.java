@@ -1,6 +1,8 @@
 package net.deadlydiamond.legend_of_steve.common.entities.bomb;
 
+import net.deadlydiamond.legend_of_steve.common.items.bag.BombBagItem;
 import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
+import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
 import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
 import net.deadlydiamond98.koalalib.common.entity.PhysicsItemProjectile;
 import net.deadlydiamond98.koalalib.util.IgnitionHelper;
@@ -52,23 +54,31 @@ public abstract class AbstractBombEntity extends PhysicsItemProjectile implement
 
     @Override
     public ActionResult interact(PlayerEntity player, Hand hand) {
-        ItemStack stack = player.getStackInHand(hand);
-        if (!isPrimed()) {
-            if (stack.isEmpty() && player.isSneaking()) {
-                if (!getWorld().isClient) {
-                    player.playSound(SoundEvents.BLOCK_SNIFFER_EGG_PLOP, SoundCategory.NEUTRAL, 0.4f, 0.8f);
-                }
+        if (canPickupBomb(player)) {
+            if (!getWorld().isClient()) {
+                player.playSound(ZeldaSounds.BOMB_PICKED_UP, SoundCategory.NEUTRAL, 0.4f, 0.8f);
                 this.despawn();
-                return ActionResult.SUCCESS;
-            } else if (IgnitionHelper.canUseIgniter(getWorld(), getBlockPos(), player, hand)) {
-                if (!getWorld().isClient) {
-                    player.playSound(SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.NEUTRAL, 0.4f, 0.8f);
-                    this.setPrimed(true);
-                }
-                return ActionResult.SUCCESS;
             }
+            return ActionResult.SUCCESS;
+        } else if (IgnitionHelper.canUseIgniter(getWorld(), getBlockPos(), player, hand)) {
+            if (!getWorld().isClient()) {
+                playSound(SoundEvents.ENTITY_TNT_PRIMED, 0.4f, 0.8f);
+                this.setPrimed(true);
+            }
+            return ActionResult.SUCCESS;
         }
         return super.interact(player, hand);
+    }
+
+    public boolean canPickupBomb(PlayerEntity player) {
+        ItemStack stack = player.getStackInHand(Hand.MAIN_HAND);
+        if (stack.getItem() instanceof BombBagItem) {
+            if (!getWorld().isClient() && isPrimed()) {
+                playSound(ZeldaSounds.BOMB_EXTINGUISH, 1, 1);
+            }
+            return true;
+        }
+        return !isPrimed() && stack.isEmpty();
     }
 
     @Override
@@ -143,6 +153,8 @@ public abstract class AbstractBombEntity extends PhysicsItemProjectile implement
     public boolean doesRenderOnFire() {
         return false;
     }
+
+    // GETTERS & SETTERS
 
     public void writeCustomDataToNbt(NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);

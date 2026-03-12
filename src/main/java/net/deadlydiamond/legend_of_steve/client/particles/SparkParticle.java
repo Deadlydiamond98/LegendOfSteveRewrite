@@ -2,6 +2,7 @@ package net.deadlydiamond.legend_of_steve.client.particles;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.client.particles.base.AbstractTrailParticle;
+import net.deadlydiamond.legend_of_steve.common.particles.SparkParticleEffect;
 import net.deadlydiamond.legend_of_steve.init.client.ZeldaRenderLayers;
 import net.deadlydiamond98.koalalib.util.ColorHelper;
 import net.minecraft.client.particle.Particle;
@@ -72,11 +73,37 @@ public class SparkParticle extends AbstractTrailParticle {
         this.trailB = argb[3] / 255.0f;
     }
 
-    public static class Factory implements ParticleFactory<DefaultParticleType> {
+    // FACTORIES ///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public static class Factory implements ParticleFactory<SparkParticleEffect> {
+
+        @Nullable @Override
+        public Particle createParticle(SparkParticleEffect parameters, ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
+            return new SparkParticle(world, x, y, z, velocityX, velocityY, velocityZ, parameters.getStartColor(), parameters.getEndColor());
+        }
+    }
+
+    public static class RegularFactory implements ParticleFactory<DefaultParticleType> {
         @Nullable
         @Override
         public Particle createParticle(DefaultParticleType parameters, ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
             return new SparkParticle(world, x, y, z, velocityX, velocityY, velocityZ, 0xf9ebab, 0xcb2e00);
+        }
+    }
+
+    public static class SoulFactory implements ParticleFactory<DefaultParticleType> {
+        @Nullable
+        @Override
+        public Particle createParticle(DefaultParticleType parameters, ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
+            return new SparkParticle(world, x, y, z, velocityX, velocityY, velocityZ, 0xd4feff, 0x1362ab);
+        }
+    }
+
+    public static class CursedFactory implements ParticleFactory<DefaultParticleType> {
+        @Nullable
+        @Override
+        public Particle createParticle(DefaultParticleType parameters, ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
+            return new SparkParticle(world, x, y, z, velocityX, velocityY, velocityZ, 0xe6f7c7, 0x0a9d64);
         }
     }
 }

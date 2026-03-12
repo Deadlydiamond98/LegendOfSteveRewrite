@@ -35,18 +35,5 @@ public class ZeldaParticleTypes {
         });
     }
 
-    //boolean alwaysShow, ParticleEffect.Factory<T> factory, Function<ParticleType<T>, Codec<T>> codecGetter
-
-//    private static <T extends ParticleEffect> ParticleType<T> register(
-//            String name, boolean alwaysShow, ParticleEffect.Factory<T> factory, Function<ParticleType<T>, Codec<T>> codecGetter
-//    ) {
-//        return Registry.register(Registries.PARTICLE_TYPE, name, new ParticleType<T>(alwaysShow, factory) {
-//            @Override
-//            public Codec<T> getCodec() {
-//                return (Codec<T>)codecGetter.apply(this);
-//            }
-//        });
-//    }
-
     public static void register() {}
 }

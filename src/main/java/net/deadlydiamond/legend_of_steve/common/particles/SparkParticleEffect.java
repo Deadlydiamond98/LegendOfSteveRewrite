@@ -15,9 +15,13 @@ import org.joml.Vector3f;
 
 import java.util.Locale;
 
-public class SparkParticleEffect extends AbstractZeldaParticleEffect {
-    protected final Vector3f startColor;
-    protected final Vector3f endColor;
+public class SparkParticleEffect implements ParticleEffect {
+    protected Vector3f startColor;
+    protected Vector3f endColor;
+
+    public static final SparkParticleEffect FIRE = new SparkParticleEffect(0xf9ebab, 0xcb2e00);
+    public static final SparkParticleEffect SOUL = new SparkParticleEffect(0xd4feff, 0x1362ab);
+    public static final SparkParticleEffect CURSED = new SparkParticleEffect(0xe6f7c7, 0x0a9d64);
 
     public static final Codec<SparkParticleEffect> CODEC = RecordCodecBuilder.create(instance ->
             instance.group(
@@ -26,7 +30,7 @@ public class SparkParticleEffect extends AbstractZeldaParticleEffect {
             ).apply(instance, SparkParticleEffect::new)
     );
 
-    public static final ParticleEffect.Factory<SparkParticleEffect> FACTORY = new ParticleEffect.Factory<SparkParticleEffect>() {
+    public static final ParticleEffect.Factory<SparkParticleEffect> FACTORY = new ParticleEffect.Factory<>() {
         public SparkParticleEffect read(ParticleType<SparkParticleEffect> particleType, StringReader stringReader) throws CommandSyntaxException {
             Vector3f startColor = readColor(stringReader);
             Vector3f endColor = readColor(stringReader);
@@ -34,30 +38,25 @@ public class SparkParticleEffect extends AbstractZeldaParticleEffect {
         }
 
         public SparkParticleEffect read(ParticleType<SparkParticleEffect> particleType, PacketByteBuf packetByteBuf) {
-            Vector3f startColor = readColor(packetByteBuf);
-            Vector3f endColor = readColor(packetByteBuf);
+            Vector3f startColor = packetByteBuf.readVector3f();
+            Vector3f endColor = packetByteBuf.readVector3f();
             return new SparkParticleEffect(startColor, endColor);
         }
     };
 
-    public SparkParticleEffect(Vector3f color, Vector3f endColor) {
-        this.startColor = color;
+    public SparkParticleEffect(int startColor, int endColor) {
+        this(getColorFromHex(startColor), getColorFromHex(endColor));
+    }
+
+    public SparkParticleEffect(Vector3f startColor, Vector3f endColor) {
+        this.startColor = startColor;
         this.endColor = endColor;
     }
 
     @Override
     public void write(PacketByteBuf buf) {
-        buf.writeFloat(this.startColor.x());
-        buf.writeFloat(this.startColor.y());
-        buf.writeFloat(this.startColor.z());
-
-        buf.writeFloat(this.endColor.x());
-        buf.writeFloat(this.endColor.y());
-        buf.writeFloat(this.endColor.z());
-    }
-
-    public static Vector3f readColor(PacketByteBuf buf) {
-        return new Vector3f(buf.readFloat(), buf.readFloat(), buf.readFloat());
+        buf.writeVector3f(this.startColor);
+        buf.writeVector3f(this.endColor);
     }
 
     public static Vector3f readColor(StringReader reader) throws CommandSyntaxException {
@@ -68,18 +67,6 @@ public class SparkParticleEffect extends AbstractZeldaParticleEffect {
         reader.expect(' ');
         float h = reader.readFloat();
         return new Vector3f(f, g, h);
-    }
-
-    public int getStartColor() {
-        return getColor(this.startColor);
-    }
-
-    public int getEndColor() {
-        return getColor(this.endColor);
-    }
-
-    private int getColor(Vector3f color) {
-        return ColorHelper.ARGBToHex(255, (int) (color.x * 255), (int) (color.y * 255), (int) (color.z * 255));
     }
 
     @Override
@@ -100,5 +87,25 @@ public class SparkParticleEffect extends AbstractZeldaParticleEffect {
                 this.endColor.y(),
                 this.endColor.z()
         );
+    }
+
+    public int getStartColor() {
+        return getColor(this.startColor);
+    }
+
+    public int getEndColor() {
+        return getColor(this.endColor);
+    }
+
+    protected int getColor(Vector3f color) {
+        return ColorHelper.ARGBToHex(255, (int) (color.x * 255), (int) (color.y * 255), (int) (color.z * 255));
+    }
+
+    private static Vector3f getColorFromHex(int hex) {
+        int[] argb = ColorHelper.HexToARGB(hex);
+        float r = argb[1] / 255.0f;
+        float g = argb[2] / 255.0f;
+        float b = argb[3] / 255.0f;
+        return new Vector3f(r, g, b);
     }
 }

@@ -12,12 +12,11 @@ import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.world.ClientWorld;
-import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
 public class SparkParticle extends AbstractTrailParticle {
-    private static final Identifier TRAIL_TEXTURE = LegendOfSteve.id("textures/trail/rectangle.png");
+    private static final Identifier TRAIL_TEXTURE = LegendOfSteve.id("textures/trail/rounded.png");
     private final int startHex, endHex;
 
     public SparkParticle(ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, int startingColor, int endingColor) {
@@ -27,7 +26,7 @@ public class SparkParticle extends AbstractTrailParticle {
 
         this.gravityStrength = 0.6f;
         setVelocity(getVelocity().multiply(1.2));
-        this.maxAge = 50;
+        this.maxAge = this.random.nextBetween(35, 50);
     }
 
     @Override
@@ -73,37 +72,10 @@ public class SparkParticle extends AbstractTrailParticle {
         this.trailB = argb[3] / 255.0f;
     }
 
-    // FACTORIES ///////////////////////////////////////////////////////////////////////////////////////////////////////
-
     public static class Factory implements ParticleFactory<SparkParticleEffect> {
-
         @Nullable @Override
         public Particle createParticle(SparkParticleEffect parameters, ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
             return new SparkParticle(world, x, y, z, velocityX, velocityY, velocityZ, parameters.getStartColor(), parameters.getEndColor());
-        }
-    }
-
-    public static class RegularFactory implements ParticleFactory<DefaultParticleType> {
-        @Nullable
-        @Override
-        public Particle createParticle(DefaultParticleType parameters, ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
-            return new SparkParticle(world, x, y, z, velocityX, velocityY, velocityZ, 0xf9ebab, 0xcb2e00);
-        }
-    }
-
-    public static class SoulFactory implements ParticleFactory<DefaultParticleType> {
-        @Nullable
-        @Override
-        public Particle createParticle(DefaultParticleType parameters, ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
-            return new SparkParticle(world, x, y, z, velocityX, velocityY, velocityZ, 0xd4feff, 0x1362ab);
-        }
-    }
-
-    public static class CursedFactory implements ParticleFactory<DefaultParticleType> {
-        @Nullable
-        @Override
-        public Particle createParticle(DefaultParticleType parameters, ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
-            return new SparkParticle(world, x, y, z, velocityX, velocityY, velocityZ, 0xe6f7c7, 0x0a9d64);
         }
     }
 }

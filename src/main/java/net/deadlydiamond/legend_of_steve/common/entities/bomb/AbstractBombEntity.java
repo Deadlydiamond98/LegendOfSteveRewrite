@@ -19,7 +19,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.RegistryKeys;
@@ -54,13 +53,13 @@ public abstract class AbstractBombEntity extends PhysicsItemProjectile implement
 
     @Override
     public ActionResult interact(PlayerEntity player, Hand hand) {
-        if (canPickupBomb(player)) {
+        if (player.isSneaking() && canPickupBomb(player)) {
             if (!getWorld().isClient()) {
                 player.playSound(ZeldaSounds.BOMB_PICKED_UP, SoundCategory.NEUTRAL, 0.4f, 0.8f);
                 this.despawn();
             }
             return ActionResult.SUCCESS;
-        } else if (IgnitionHelper.canUseIgniter(getWorld(), getBlockPos(), player, hand)) {
+        } else if (!isPrimed() && IgnitionHelper.canUseIgniter(getWorld(), getBlockPos(), player, hand)) {
             if (!getWorld().isClient()) {
                 playSound(SoundEvents.ENTITY_TNT_PRIMED, 0.4f, 0.8f);
                 this.setPrimed(true);
@@ -112,7 +111,13 @@ public abstract class AbstractBombEntity extends PhysicsItemProjectile implement
         if (fuse <= 0) {
             this.explode(this);
             this.discard();
-        } else if (this.getWorld().isClient && lit && getFuseBurnTimer(0) <= -2) {
+        } else if (this.getWorld().isClient && lit) {
+            createBombFuseParticles();
+        }
+    }
+
+    protected void createBombFuseParticles() {
+        if (getFuseBurnTimer(0) <= -2) {
             this.getWorld().addParticle(ParticleTypes.SMOKE, this.getX(), this.getY() + 0.5, this.getZ(), 0.0, 0.0, 0.0);
         }
     }

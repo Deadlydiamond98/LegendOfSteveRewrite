@@ -1,11 +1,13 @@
 package net.deadlydiamond.legend_of_steve.common.entities.bomb;
 
+import net.deadlydiamond.legend_of_steve.common.particles.SparkParticleEffect;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.explosion.ExplosionBehavior;
 
@@ -27,6 +29,26 @@ public class BombEntity extends AbstractBombEntity {
 
     public BombEntity(EntityType<? extends ProjectileEntity> entityType, World world) {
         super(entityType, world);
+    }
+
+    @Override
+    protected void createBombFuseParticles() {
+        super.createBombFuseParticles();
+
+        if (getFuseBurnTimer(0) > -2) {
+            Vec3d sparkPos = getPos().add(0, 0.5625, 0);
+            float yOffset = (getFuseBurnTimer(0) * 0.1466f) + 0.0733f;
+
+            Vec3d offset = new Vec3d(0, yOffset, 0)
+                    .rotateZ((float) Math.toRadians(22.5))
+                    .rotateY((float) Math.toRadians(-getYaw()));
+            sparkPos = sparkPos.add(offset);
+
+            SparkParticleEffect sparkParticleEffect = SparkParticleEffect.FIRE;
+            for (int i = 0; i < 3; i++) {
+                getWorld().addParticle(sparkParticleEffect, sparkPos.x, sparkPos.y, sparkPos.z, 0, 0, 0);
+            }
+        }
     }
 
     @Override

@@ -9,7 +9,6 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.RenderPhase;
 import net.minecraft.client.render.VertexFormat;
 import net.minecraft.client.render.VertexFormats;
-import net.minecraft.client.texture.SpriteAtlasTexture;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 
@@ -26,6 +25,7 @@ public class ZeldaRenderLayers extends RenderLayer {
     private static final RenderPhase.ShaderProgram IRIDESCENCE_PROGRAM = new ShaderProgram(() -> ZeldaShaders.iridescenceShader);
     private static final RenderPhase.ShaderProgram ENTITY_IRIDESCENCE_PROGRAM = new ShaderProgram(() -> ZeldaShaders.entityIridescenceShader);
     private static final RenderPhase.ShaderProgram ITEM_IRIDESCENCE_PROGRAM = new ShaderProgram(() -> ZeldaShaders.itemIridescenceShader);
+    private static final RenderPhase.ShaderProgram UNLIT_ENTITY_PROGRAM = new ShaderProgram(() -> ZeldaShaders.fullbrightShader);
 
     // SHADER TARGETS //////////////////////////////////////////////////////////////////////////////////////////////////
     private static final RenderPhase.Target BLOOM_TARGET = new Target("legend_of_steve$bloom_glowing", () -> {
@@ -39,6 +39,25 @@ public class ZeldaRenderLayers extends RenderLayer {
     public ZeldaRenderLayers(String name, VertexFormat vertexFormat, VertexFormat.DrawMode drawMode, int expectedBufferSize, boolean hasCrumbling, boolean translucent, Runnable startAction, Runnable endAction) {
         super(name, vertexFormat, drawMode, expectedBufferSize, hasCrumbling, translucent, startAction, endAction);
     }
+
+
+    public static final Function<Identifier, RenderLayer> UNLIT_ENTITY = Util.memoize(texture -> {
+        MultiPhaseParameters multiPhaseParameters = MultiPhaseParameters.builder()
+                .program(UNLIT_ENTITY_PROGRAM)
+                .texture(new Texture(texture, false, false))
+                .transparency(TRANSLUCENT_TRANSPARENCY)
+                .cull(DISABLE_CULLING)
+                .build(true);
+        return of(
+                "legend_of_steve$fullbright",
+                VertexFormats.POSITION_COLOR_TEXTURE,
+                VertexFormat.DrawMode.QUADS,
+                256,
+                false,
+                true,
+                multiPhaseParameters
+        );
+    });
 
     public static final RenderLayer BLOOM_GLOW = of(
             "legend_of_steve$bloom_glow",
@@ -184,6 +203,10 @@ public class ZeldaRenderLayers extends RenderLayer {
 
     public static RenderLayer getBombFuse(Identifier texture) {
         return BOMB_FUSE.apply(texture);
+    }
+
+    public static RenderLayer getEntityUnlit(Identifier texture) {
+        return UNLIT_ENTITY.apply(texture);
     }
 
     public static RenderLayer getGlowing(Identifier texture) {

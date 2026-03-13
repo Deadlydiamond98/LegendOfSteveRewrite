@@ -2,7 +2,8 @@ package net.deadlydiamond.legend_of_steve.init;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.bes.BombFlowerBlockEntity;
-import net.deadlydiamond.legend_of_steve.common.bes.GlowingBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.bes.visual.BakedBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.bes.visual.GlowingBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.MasterBarrelBlockEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.Block;
@@ -12,6 +13,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 
 public class ZeldaBlockEntities {
+
     public static final BlockEntityType<BombFlowerBlockEntity> BOMB_FLOWER = register("bomb_flower", BombFlowerBlockEntity::new,
             ZeldaBlocks.BOMB_FLOWER
     );
@@ -30,6 +32,8 @@ public class ZeldaBlockEntities {
     public static final BlockEntityType<MasterBarrelBlockEntity> MASTER_BARREL = register("master_barrel", MasterBarrelBlockEntity::new,
             ZeldaBlocks.MASTER_BARREL
     );
+
+    // HELPER METHODS //////////////////////////////////////////////////////////////////////////////////////////////////
 
     public static <T extends BlockEntity> BlockEntityType<T> register(String name, FabricBlockEntityTypeBuilder.Factory<T> factory, Block... blocks) {
         return Registry.register(Registries.BLOCK_ENTITY_TYPE, LegendOfSteve.id(name), FabricBlockEntityTypeBuilder.create(factory, blocks).build());

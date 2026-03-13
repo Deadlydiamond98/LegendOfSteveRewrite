@@ -1,7 +1,7 @@
-package net.deadlydiamond.legend_of_steve.client.rendering.block.baked;
+package net.deadlydiamond.legend_of_steve.client.rendering.block.baked.glowing;
 
-import net.deadlydiamond.legend_of_steve.LegendOfSteve;
-import net.deadlydiamond.legend_of_steve.common.bes.GlowingBlockEntity;
+import net.deadlydiamond.legend_of_steve.client.rendering.block.baked.BakedBlockEntityRenderer;
+import net.deadlydiamond.legend_of_steve.common.bes.visual.GlowingBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.IGlowingBlock;
 import net.deadlydiamond.legend_of_steve.init.client.ZeldaRenderLayers;
 import net.minecraft.block.BlockState;
@@ -11,7 +11,6 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 
 public class GlowingBlockRenderer extends BakedBlockEntityRenderer<GlowingBlockEntity> {
 
@@ -47,26 +46,19 @@ public class GlowingBlockRenderer extends BakedBlockEntityRenderer<GlowingBlockE
 
             VertexConsumer vertexConsumer = vertexConsumers.getBuffer(ZeldaRenderLayers.BLOOM_GLOW);
 
-            this.context.getRenderManager().getModelRenderer().render(
+            GlowingBlockModelRenderer.getGlowingBlockModelRenderer(this.context).render(
                     world,
-                    this.context.getRenderManager().getModel(state),
                     state,
                     pos,
                     matrices,
                     vertexConsumer,
-                    true,
                     Random.create(),
                     state.getRenderingSeed(pos),
-                    OverlayTexture.DEFAULT_UV
+                    glowingBlock.bloomIntensity()
             );
 
             matrices.pop();
         }
-    }
-
-    @Override @Nullable
-    public VertexConsumer getSharedVertexConsumer(VertexConsumerProvider vertexConsumerProvider) {
-        return vertexConsumerProvider.getBuffer(RenderLayer.getSolid());
     }
 
     @Override

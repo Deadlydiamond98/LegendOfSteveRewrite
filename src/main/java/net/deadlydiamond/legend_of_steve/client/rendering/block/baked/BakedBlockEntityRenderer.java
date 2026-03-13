@@ -28,7 +28,7 @@ import java.util.*;
  */
 
 public abstract class BakedBlockEntityRenderer<T extends BlockEntity> implements BlockEntityRenderer<T> {
-    protected static final MinecraftClient mc = MinecraftClient.getInstance();
+    protected static final MinecraftClient client = MinecraftClient.getInstance();
     protected final BlockEntityRendererFactory.Context context;
 
     public BakedBlockEntityRenderer(BlockEntityRendererFactory.Context context) {
@@ -60,9 +60,7 @@ public abstract class BakedBlockEntityRenderer<T extends BlockEntity> implements
 
     public abstract boolean shouldBake(T entity);
 
-    public abstract VertexConsumer getSharedVertexConsumer(VertexConsumerProvider vertexConsumerProvider);
-
-    private static record RenderRegionPos(int x, int z, @Nullable BlockPos origin) {
+    private record RenderRegionPos(int x, int z, @Nullable BlockPos origin) {
         public RenderRegionPos(int x, int z) {
             this(x, z, new BlockPos(x << Manager.REGION_SHIFT, 0, z << Manager.REGION_SHIFT));
         }
@@ -206,7 +204,7 @@ public abstract class BakedBlockEntityRenderer<T extends BlockEntity> implements
                             boolean bakedAnything = false;
 
                             for (BlockEntity be : blockEntities) {
-                                if (mc.getBlockEntityRenderDispatcher().get(be) instanceof BakedBlockEntityRenderer renderer && renderer.shouldBake(be)) {
+                                if (client.getBlockEntityRenderDispatcher().get(be) instanceof BakedBlockEntityRenderer renderer && renderer.shouldBake(be)) {
                                     BlockPos pos = be.getPos();
                                     bakeMatrices.push();
                                     bakeMatrices.translate(pos.getX() & MAX_XZ_IN_REGION, pos.getY(), pos.getZ() & MAX_XZ_IN_REGION);

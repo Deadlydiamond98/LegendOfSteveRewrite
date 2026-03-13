@@ -2,10 +2,7 @@ package net.deadlydiamond.legend_of_steve.mixin.client.rendering;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.client.rendering.block.baked.BakedBlockEntityRenderer;
-import net.deadlydiamond.legend_of_steve.common.bes.GlowingBlockEntity;
-import net.deadlydiamond.legend_of_steve.common.blocks.deco.IGlowingBlock;
 import net.deadlydiamond.legend_of_steve.init.client.ZeldaRenderLayers;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.render.*;

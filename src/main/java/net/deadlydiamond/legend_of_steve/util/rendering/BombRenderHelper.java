@@ -28,7 +28,7 @@ public class BombRenderHelper {
     // TEXTURE GETTER METHODS //////////////////////////////////////////////////////////////////////////////////////////
 
     public static Identifier getFallbackTexture() {
-        return LegendOfSteve.id("textures/entity/bomb/bomb.png");
+        return LegendOfSteve.id("textures/entity/bomb/bomb_flower.png");
     }
 
     public static <T extends AbstractBombEntity> Identifier getBombTexture(T entity) {

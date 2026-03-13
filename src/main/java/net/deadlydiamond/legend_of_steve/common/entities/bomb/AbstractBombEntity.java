@@ -8,7 +8,6 @@ import net.deadlydiamond98.koalalib.common.entity.PhysicsItemProjectile;
 import net.deadlydiamond98.koalalib.util.IgnitionHelper;
 import net.deadlydiamond98.koalalib.util.KoalaNbtHelper;
 import net.minecraft.block.Block;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.damage.DamageSource;
@@ -25,7 +24,6 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
@@ -43,25 +41,27 @@ public abstract class AbstractBombEntity extends PhysicsItemProjectile implement
         this.setPower(3);
         this.setBreakableBlocks(ZeldaTags.BOMB_BREAKABLE);
 
-        this.setYaw(360); // This prevents weird rotation issue when throwing
+        // This prevents weird rotation issue when throwing, I'm honestly not 100% sure why this fixes it, but it works
+        this.setYaw(360);
 
         this.setGravity(0.05f);
         this.setDrag(0.95f);
         this.setBounciness(0.4f);
-        this.setBuoyancy(0.1f);
+        this.setWaterDrag(0.6f);
+        this.setBuoyancy(0);
     }
 
     @Override
     public ActionResult interact(PlayerEntity player, Hand hand) {
-        if (player.isSneaking() && canPickupBomb(player)) {
+        if (player.isSneaking() && player == getOwner() && canPickupBomb(player)) {
             if (!getWorld().isClient()) {
                 player.playSound(ZeldaSounds.BOMB_PICKED_UP, SoundCategory.NEUTRAL, 0.4f, 0.8f);
                 this.despawn();
             }
             return ActionResult.SUCCESS;
-        } else if (!isPrimed() && IgnitionHelper.canUseIgniter(getWorld(), getBlockPos(), player, hand)) {
+        } else if (canIgniteBomb(player, hand)) {
             if (!getWorld().isClient()) {
-                playSound(SoundEvents.ENTITY_TNT_PRIMED, 0.4f, 0.8f);
+                playSound(ZeldaSounds.BOMB_PRIMED, 0.4f, 0.8f);
                 this.setPrimed(true);
             }
             return ActionResult.SUCCESS;
@@ -69,11 +69,15 @@ public abstract class AbstractBombEntity extends PhysicsItemProjectile implement
         return super.interact(player, hand);
     }
 
+    public boolean canIgniteBomb(PlayerEntity player, Hand hand) {
+        return !isPrimed() && !isFuseInWater() && IgnitionHelper.canUseIgniter(getWorld(), getBlockPos(), player, hand);
+    }
+
     public boolean canPickupBomb(PlayerEntity player) {
         ItemStack stack = player.getStackInHand(Hand.MAIN_HAND);
         if (stack.getItem() instanceof BombBagItem) {
             if (!getWorld().isClient() && isPrimed()) {
-                playSound(ZeldaSounds.BOMB_EXTINGUISH, 1, 1);
+                playSound(ZeldaSounds.BOMB_EXTINGUISH, 0.7F, 1.6F + (this.random.nextFloat() - this.random.nextFloat()) * 0.4F);
             }
             return true;
         }
@@ -91,8 +95,12 @@ public abstract class AbstractBombEntity extends PhysicsItemProjectile implement
         boolean lit = isPrimed();
 
         if (lit) {
-            fuse -= 1;
-            setLitTime(getLitTime() + 1);
+            if (isFuseInWater()) {
+                extinguishBomb();
+            } else {
+                fuse -= 1;
+                setLitTime(getLitTime() + 1);
+            }
         } else {
             if (!this.getWorld().isClient && this.age >= 6000) {
                 despawn();
@@ -102,7 +110,8 @@ public abstract class AbstractBombEntity extends PhysicsItemProjectile implement
                 setPrimed(true);
                 setMaxFuse(getMaxFuse() / 2);
                 fuse = getMaxFuse();
-                this.playSound(SoundEvents.ENTITY_TNT_PRIMED, 0.4f, 0.8f);
+                this.playSound(ZeldaSounds.BOMB_PRIMED, 0.4f, 0.8f);
+                setFireTicks(0);
             }
         }
 
@@ -113,6 +122,21 @@ public abstract class AbstractBombEntity extends PhysicsItemProjectile implement
             this.discard();
         } else if (this.getWorld().isClient && lit) {
             createBombFuseParticles();
+        }
+    }
+
+    public boolean isFuseInWater() {
+        return false;
+    }
+
+    public boolean shouldWaterBottleExtinguish() {
+        return true;
+    }
+
+    public void extinguishBomb() {
+        setPrimed(false);
+        if (!getWorld().isClient()) {
+            playSound(ZeldaSounds.BOMB_EXTINGUISH, 0.7F, 1.6F + (this.random.nextFloat() - this.random.nextFloat()) * 0.4F);
         }
     }
 
@@ -143,10 +167,12 @@ public abstract class AbstractBombEntity extends PhysicsItemProjectile implement
     }
 
     public void triggerChainExplode() {
-        int i = getMaxFuse();
-        this.setFuse(this.random.nextInt(Math.max(0, i / 4) + i / 8) + 5);
-        this.setPrimed(true);
-        this.setMaxFuse(this.getFuse());
+        if (!isFuseInWater()) {
+            int i = getMaxFuse();
+            this.setFuse(this.random.nextInt(Math.max(0, i / 4) + i / 8) + 5);
+            this.setPrimed(true);
+            this.setMaxFuse(this.getFuse());
+        }
     }
 
     @Override
@@ -236,11 +262,6 @@ public abstract class AbstractBombEntity extends PhysicsItemProjectile implement
 
     public void setBreakableBlocks(TagKey<Block> breakableBlocks) {
         this.breakableBlocks = breakableBlocks;
-    }
-
-    @Override
-    public Entity getBombOwner() {
-        return getOwner();
     }
 
 

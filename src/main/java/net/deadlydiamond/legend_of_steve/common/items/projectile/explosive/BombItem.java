@@ -3,6 +3,7 @@ package net.deadlydiamond.legend_of_steve.common.items.projectile.explosive;
 import net.deadlydiamond.legend_of_steve.common.entities.bomb.BombEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.bomb.IZeldaBomb;
 import net.deadlydiamond.legend_of_steve.common.items.bag.BombBagItem;
+import net.deadlydiamond.legend_of_steve.common.particles.SparkParticleEffect;
 import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
 import net.deadlydiamond98.koalalib.common.items.ILighter;
 import net.deadlydiamond98.koalalib.common.items.interaction.IAdvancedItemProperties;

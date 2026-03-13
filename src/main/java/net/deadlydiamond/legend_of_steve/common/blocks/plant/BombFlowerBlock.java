@@ -1,14 +1,15 @@
 package net.deadlydiamond.legend_of_steve.common.blocks.plant;
 
-import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.bes.BombFlowerBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.blocks.IExplodedInteraction;
 import net.deadlydiamond.legend_of_steve.common.blocks.IExtendedLootTable;
 import net.deadlydiamond.legend_of_steve.common.entities.bomb.BombEntity;
+import net.deadlydiamond.legend_of_steve.common.particles.SparkParticleEffect;
 import net.deadlydiamond.legend_of_steve.init.ZeldaEntityTypes;
 import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
 import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
 import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
+import net.deadlydiamond98.koalalib.util.IgnitionHelper;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
@@ -19,9 +20,9 @@ import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
@@ -29,12 +30,12 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.state.property.Property;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
@@ -61,7 +62,7 @@ public class BombFlowerBlock extends HorizontalFacingBlock implements IExplodedI
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (state.get(AGE) == 3) {
-            if (!attemptIgniteBomb(world, pos, player, hand)) {
+            if (!attemptIgniteBomb(state, world, pos, player, hand)) {
                 harvestBomb(state, world, pos, player);
             }
             return ActionResult.success(world.isClient);
@@ -69,18 +70,9 @@ public class BombFlowerBlock extends HorizontalFacingBlock implements IExplodedI
         return super.onUse(state, world, pos, player, hand, hit);
     }
 
-    private boolean attemptIgniteBomb(World world, BlockPos pos, PlayerEntity player, Hand hand) {
-        ItemStack stack = player.getStackInHand(hand);
-        if (stack.isOf(Items.FLINT_AND_STEEL) || stack.isOf(Items.FIRE_CHARGE)) {
-            if (!player.isCreative()) {
-                if (stack.isDamageable()) {
-                    stack.damage(1, player, playerx -> playerx.sendToolBreakStatus(hand));
-                } else {
-                    stack.decrement(1);
-                }
-            }
+    private boolean attemptIgniteBomb(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand) {
+        if (IgnitionHelper.canUseIgniterOnBlock(state, world, pos, player, hand)) {
             playPrimedSound(world, pos);
-            player.incrementStat(Stats.USED.getOrCreateStat(stack.getItem()));
             igniteBomb(world, pos, 1, player);
             return true;
         }
@@ -200,7 +192,7 @@ public class BombFlowerBlock extends HorizontalFacingBlock implements IExplodedI
     }
 
     public void playPrimedSound(World world, BlockPos pos) {
-        world.playSound(null, pos, SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.BLOCKS, 1.0f, 1.0f);
+        world.playSound(null, pos, ZeldaSounds.BOMB_PRIMED, SoundCategory.BLOCKS, 0.4f, 0.8f);
     }
 
     @Nullable

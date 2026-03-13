@@ -34,10 +34,6 @@ public interface IZeldaBomb {
         return new BombExplosionBehavior(world, this::canBreakBlock);
     }
 
-    default Entity getBombOwner() {
-        return null;
-    }
-
     default TagKey<Block> getBreakableBlocks() {
         return ZeldaTags.BOMB_BREAKABLE;
     }

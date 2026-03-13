@@ -3,9 +3,11 @@ package net.deadlydiamond.legend_of_steve.common.items.bag;
 import net.deadlydiamond.legend_of_steve.common.items.IModifiedCraftingResult;
 import net.deadlydiamond.legend_of_steve.common.items.projectile.explosive.BombItem;
 import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
+import net.deadlydiamond98.koalalib.common.items.interaction.IAdvancedItemProperties;
 import net.deadlydiamond98.koalalib.common.items.vanillamodified.IExtraEnchantments;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
@@ -16,7 +18,7 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class BombBagItem extends ScrollableBag implements IModifiedCraftingResult, IExtraEnchantments, Vanishable {
+public class BombBagItem extends ScrollableBag implements IModifiedCraftingResult, IExtraEnchantments, Vanishable, IAdvancedItemProperties {
     public BombBagItem(Settings settings, int maxStorage) {
         super(settings.maxCount(1), maxStorage, true, ZeldaTags.BOMBS);
         BombItem.COOLDOWNS.put(this, 40);
@@ -60,5 +62,15 @@ public class BombBagItem extends ScrollableBag implements IModifiedCraftingResul
     @Override
     public List<Enchantment> getEnchantments() {
         return List.of(Enchantments.FIRE_ASPECT);
+    }
+
+    @Override
+    public void onItemEntityTick(ItemEntity entity, ItemStack stack) {
+        for (ItemStack itemStack : getItemStacks(stack)) {
+            if (itemStack.getItem() instanceof IAdvancedItemProperties advancedItemProperties) {
+                advancedItemProperties.onItemEntityTick(entity, stack);
+                return;
+            }
+        }
     }
 }

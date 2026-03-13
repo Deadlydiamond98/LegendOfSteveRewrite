@@ -4,7 +4,7 @@ import net.deadlydiamond.legend_of_steve.client.models.BasicCubeModel;
 import net.deadlydiamond.legend_of_steve.client.models.entity.BombEntityModel;
 import net.deadlydiamond.legend_of_steve.client.models.feature.QuiverModel;
 import net.deadlydiamond.legend_of_steve.client.rendering.block.BombFlowerRenderer;
-import net.deadlydiamond.legend_of_steve.client.rendering.block.glowing.GlowingBlockRenderer;
+import net.deadlydiamond.legend_of_steve.client.rendering.block.baked.GlowingBlockRenderer;
 import net.deadlydiamond.legend_of_steve.client.rendering.entity.BombEntityRenderer;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlockEntities;
 import net.deadlydiamond.legend_of_steve.init.ZeldaEntityTypes;

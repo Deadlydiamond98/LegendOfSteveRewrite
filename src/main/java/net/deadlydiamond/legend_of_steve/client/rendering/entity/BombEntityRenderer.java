@@ -49,11 +49,7 @@ public class BombEntityRenderer<T extends BombEntity> extends EntityRenderer<T> 
         // Main Model //////////////////////////////////////////////////////////////////////////////////////////////////
         VertexConsumer vertexConsumer = vertexConsumers.getBuffer(this.model.getLayer(getTexture(entity)));
         this.model.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
-        if (entity.isPrimed()) {
-            renderFuse(entity, tickDelta, matrices, vertexConsumers, light);
-        } else {
-            this.model.renderFuse(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
-        }
+        renderFuse(entity, tickDelta, matrices, vertexConsumers, light);
 
         // Overlay Model ///////////////////////////////////////////////////////////////////////////////////////////////
         if (entity.isCharged()) {
@@ -71,8 +67,7 @@ public class BombEntityRenderer<T extends BombEntity> extends EntityRenderer<T> 
             float lowFuseFlash = (float) Math.abs(Math.sin(fuse * 0.4) * 0.5);
 
             VertexConsumer warningFlashVCon = vertexConsumers.getBuffer(RenderLayer.getBeaconBeam(LOW_FUSE_OVERLAY, true));
-            this.model.renderOverlay(matrices, warningFlashVCon, 15728640, OverlayTexture.DEFAULT_UV, 1, 1, 1,
-                    lowFuseFlash);
+            this.model.renderOverlay(matrices, warningFlashVCon, 15728640, OverlayTexture.DEFAULT_UV, 1, 1, 1, lowFuseFlash);
 
             PostProcessingRegistry.renderEffectForNextTick(ZeldaShaders.BLOOM_GLOWING_SHADER_ID);
             VertexConsumer glow = vertexConsumers.getBuffer(ZeldaRenderLayers.getGlowing(LOW_FUSE_OVERLAY));
@@ -99,18 +94,20 @@ public class BombEntityRenderer<T extends BombEntity> extends EntityRenderer<T> 
         float minV = 0.5f;
         float maxV = 0.625f;
 
-        float maxY = entity.getFuseBurnTimer(tickDelta);
+        float maxY = entity.getFuseBurnTimer(entity.isPrimed() ? tickDelta : 0);
         float fuseMinV = minV + (maxV - minV) * (1 - maxY) * 0.5f;
 
         if (maxY > -2) {
             VertexConsumer fuseVCon = vertexConsumers.getBuffer(this.model.getLayer(getTexture(entity)));
             renderFuseFace(matrices, fuseVCon, minU, maxU, fuseMinV, maxV, light, 0, -1, maxY);
 
-            VertexConsumer emberVCon = vertexConsumers.getBuffer(ZeldaRenderLayers.getBombFuse(getTexture(entity)));
-            renderFuseFace(matrices, emberVCon, minU + 0.03125f, maxU + 0.03125f, minV, maxV, light, 0.001f, maxY - 1, maxY);
+            if (entity.isPrimed()) {
+                VertexConsumer emberVCon = vertexConsumers.getBuffer(ZeldaRenderLayers.getBombFuse(getTexture(entity)));
+                renderFuseFace(matrices, emberVCon, minU + 0.03125f, maxU + 0.03125f, minV, maxV, light, 0.001f, maxY - 1, maxY);
 
-            matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180));
-            renderFuseFace(matrices, emberVCon, minU + 0.03125f, maxU + 0.03125f, minV, maxV, light, 0.001f, maxY - 1, maxY);
+                matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180));
+                renderFuseFace(matrices, emberVCon, minU + 0.03125f, maxU + 0.03125f, minV, maxV, light, 0.001f, maxY - 1, maxY);
+            }
         }
 
         matrices.pop();

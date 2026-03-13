@@ -12,6 +12,7 @@
     "common.entity.AbstractSkeletonEntityMixin",
     "common.entity.LightningEntityMixin",
     "common.entity.MobEntityMixin",
+    "common.entity.PotionEntityMixin",
     "common.entity.piglin.PiglinEntityMixin",
     "common.handler.CraftingScreenHandlerMixin",
     "common.item.BowItemMixin",

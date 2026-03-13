@@ -11,6 +11,8 @@ import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleType;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.dynamic.Codecs;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.World;
 import org.joml.Vector3f;
 
 import java.util.Locale;
@@ -51,6 +53,12 @@ public class SparkParticleEffect implements ParticleEffect {
     public SparkParticleEffect(Vector3f startColor, Vector3f endColor) {
         this.startColor = startColor;
         this.endColor = endColor;
+    }
+
+    public static void createSparks(World world, SparkParticleEffect sparkParticleEffect, Vec3d pos, int count) {
+        for (int i = 0; i < count; i++) {
+            world.addParticle(sparkParticleEffect, pos.x, pos.y, pos.z, 0, 0, 0);
+        }
     }
 
     @Override

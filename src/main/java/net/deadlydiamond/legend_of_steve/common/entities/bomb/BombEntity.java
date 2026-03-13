@@ -7,6 +7,8 @@ import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.registry.tag.FluidTags;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.explosion.ExplosionBehavior;
@@ -35,20 +37,34 @@ public class BombEntity extends AbstractBombEntity {
     protected void createBombFuseParticles() {
         super.createBombFuseParticles();
 
-        if (getFuseBurnTimer(0) > -2) {
-            Vec3d sparkPos = getPos().add(0, 0.5625, 0);
-            float yOffset = (getFuseBurnTimer(0) * 0.1466f) + 0.0733f;
-
-            Vec3d offset = new Vec3d(0, yOffset, 0)
-                    .rotateZ((float) Math.toRadians(22.5))
-                    .rotateY((float) Math.toRadians(-getYaw()));
-            sparkPos = sparkPos.add(offset);
-
-            SparkParticleEffect sparkParticleEffect = SparkParticleEffect.FIRE;
-            for (int i = 0; i < 3; i++) {
-                getWorld().addParticle(sparkParticleEffect, sparkPos.x, sparkPos.y, sparkPos.z, 0, 0, 0);
+        if (getFuseBurnTimer(0) > -0.5) {
+            SparkParticleEffect.createSparks(getWorld(), SparkParticleEffect.FIRE, getFuseTipPos(), 3);
+            if (isCharged()) {
+                SparkParticleEffect.createSparks(getWorld(), SparkParticleEffect.SOUL, getFuseTipPos(), 3);
             }
         }
+    }
+
+    @Override
+    public boolean isFuseInWater() {
+        Vec3d tip = getPos().add(0, 0.5625, 0);
+
+        if (getFuseBurnTimer(0) > -0.5) {
+            tip = getFuseTipPos();
+        }
+
+        BlockPos fluidPos = new BlockPos((int) Math.floor(tip.x), (int) Math.floor(tip.y), (int) Math.floor(tip.z));
+        return getWorld().getFluidState(fluidPos).isIn(FluidTags.WATER);
+    }
+
+    public Vec3d getFuseTipPos() {
+        Vec3d sparkPos = getPos().add(0, 0.5625, 0);
+        float yOffset = (getFuseBurnTimer(0) * 0.1466f) + 0.0733f;
+
+        Vec3d offset = new Vec3d(0, yOffset, 0)
+                .rotateZ((float) Math.toRadians(22.5))
+                .rotateY((float) Math.toRadians(-getYaw()));
+        return sparkPos.add(offset);
     }
 
     @Override

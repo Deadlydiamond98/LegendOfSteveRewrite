@@ -31,6 +31,8 @@ public abstract class BakedBlockEntityRenderer<T extends BlockEntity> implements
     protected static final MinecraftClient client = MinecraftClient.getInstance();
     protected final BlockEntityRendererFactory.Context context;
 
+    // TODO: This needs to be run on a seperate thread! Small stuttering can occur when placing & breaking blocks!!
+
     public BakedBlockEntityRenderer(BlockEntityRendererFactory.Context context) {
         this.context = context;
     }

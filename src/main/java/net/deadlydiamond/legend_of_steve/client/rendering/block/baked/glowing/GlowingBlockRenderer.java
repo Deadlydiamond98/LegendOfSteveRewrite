@@ -4,15 +4,18 @@ import net.deadlydiamond.legend_of_steve.client.rendering.block.baked.BakedBlock
 import net.deadlydiamond.legend_of_steve.common.bes.visual.GlowingBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.IGlowingBlock;
 import net.deadlydiamond.legend_of_steve.init.client.ZeldaRenderLayers;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.render.*;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 
 public class GlowingBlockRenderer extends BakedBlockEntityRenderer<GlowingBlockEntity> {
+    private static final Direction[] DIRECTIONS = Direction.values();
 
     public GlowingBlockRenderer(BlockEntityRendererFactory.Context context) {
         super(context);
@@ -29,12 +32,12 @@ public class GlowingBlockRenderer extends BakedBlockEntityRenderer<GlowingBlockE
     @Override
     public void renderBaked(GlowingBlockEntity entity, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
         BlockState state = entity.getCachedState();
+        BlockPos pos = entity.getPos();
+        World world = entity.getWorld();
 
         if (state.getBlock() instanceof IGlowingBlock glowingBlock) {
-            matrices.push();
 
-            World world = entity.getWorld();
-            BlockPos pos = entity.getPos();
+            matrices.push();
 
             float scaleOffset = (float) (((Math.sin(entity.getPos().toCenterPos().length() * 2) * 0.05f) + 0.05f) * 0.5f) + 0.01f;
             float glowScale = glowingBlock.getGlowScale();
@@ -63,6 +66,15 @@ public class GlowingBlockRenderer extends BakedBlockEntityRenderer<GlowingBlockE
 
     @Override
     public boolean shouldBake(GlowingBlockEntity entity) {
-        return true;
+        BlockState state = entity.getCachedState();
+        BlockPos pos = entity.getPos();
+        World world = entity.getWorld();
+
+        for (Direction direction : DIRECTIONS) {
+            if (Block.shouldDrawSide(state, world, pos, direction, pos.mutableCopy())) {
+                return false;
+            }
+        }
+        return state.getBlock() instanceof IGlowingBlock;
     }
 }

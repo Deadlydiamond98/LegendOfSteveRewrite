@@ -171,8 +171,6 @@ public abstract class BakedBlockEntityRenderer<T extends BlockEntity> implements
             needsRebuild.add(new RenderRegionPos(pos));
         }
 
-        // TODO: move chunk baking off-thread?
-
         private static boolean isVisiblePos(RenderRegionPos rrp, Vec3d cam) {
             return Math.abs(rrp.x - ((int)cam.getX() >> REGION_SHIFT)) <= VIEW_RADIUS && Math.abs(rrp.z - ((int)cam.getZ() >> REGION_SHIFT)) <= VIEW_RADIUS;
         }

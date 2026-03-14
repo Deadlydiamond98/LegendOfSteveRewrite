@@ -1,5 +1,6 @@
 package net.deadlydiamond.legend_of_steve;
 
+import net.deadlydiamond.legend_of_steve.common.blocks.secret.SecretBlock;
 import net.deadlydiamond.legend_of_steve.events.common.ZeldaLootTableEvents;
 import net.deadlydiamond.legend_of_steve.init.*;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBiomeModifications;
@@ -18,6 +19,8 @@ public class LegendOfSteve implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		SecretBlock.createSecretBlocks();
+
 		// Registry
 		ZeldaItems.register();
 		ZeldaBlocks.register();

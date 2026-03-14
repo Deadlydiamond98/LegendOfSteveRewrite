@@ -7,10 +7,14 @@ import net.deadlydiamond98.koalalib.common.blocksets.AbstractBlockset;
 import net.deadlydiamond98.koalalib.init.KoalaLibTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.minecraft.block.Block;
+import net.minecraft.block.PillarBlock;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
 
 import java.util.concurrent.CompletableFuture;
+
+import static net.deadlydiamond.legend_of_steve.init.ZeldaBlockSettings.FAIRY_MARBLE_SETTINGS;
 
 public class ZeldaItemTagDatagen extends FabricTagProvider.ItemTagProvider {
 
@@ -20,13 +24,8 @@ public class ZeldaItemTagDatagen extends FabricTagProvider.ItemTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-        getOrCreateTagBuilder(ItemTags.PIGLIN_LOVED).add(
-                ZeldaItems.GILDED_QUIVER
-        );
 
-        getOrCreateTagBuilder(KoalaLibTags.PIGLIN_GOLD_ARMOR).add(
-                ZeldaItems.GILDED_QUIVER
-        );
+        // BLOCKSETS ///////////////////////////////////////////////////////////////////////////////////////////////////
 
         createItemTags(
                 // DEKU WOOD
@@ -78,6 +77,25 @@ public class ZeldaItemTagDatagen extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(ItemTags.LEAVES).add(
                 ZeldaBlocks.DEKU_LEAVES.asItem(),
                 ZeldaBlocks.FRUITING_DEKU_LEAVES.asItem()
+        );
+
+        // OTHER ///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        getOrCreateTagBuilder(ZeldaTags.IRIDESCENT_ITEM).add(
+                ZeldaBlocks.CRACKED_FAIRY_MARBLE_BRICKS.asItem(),
+                ZeldaBlocks.CHISELED_FAIRY_MARBLE.asItem(),
+                ZeldaBlocks.FAIRY_MARBLE_PILLAR.asItem(),
+                ZeldaBlocks.SMOOTH_FAIRY_MARBLE.asItem(),
+
+                ZeldaItems.ENCHANTED_SPRING_WATER_BUCKET
+        );
+
+        getOrCreateTagBuilder(ItemTags.PIGLIN_LOVED).add(
+                ZeldaItems.GILDED_QUIVER
+        );
+
+        getOrCreateTagBuilder(KoalaLibTags.PIGLIN_GOLD_ARMOR).add(
+                ZeldaItems.GILDED_QUIVER
         );
     }
 

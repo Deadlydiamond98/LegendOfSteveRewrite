@@ -15,7 +15,7 @@ public class ZeldaTags {
     // ITEMS ///////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static final TagKey<Item> BOMBS = item("bombs");
     public static final TagKey<Item> HELD_OVER_HEAD = item("held_over_head");
-    public static final TagKey<Item> IRIDESCENT = item("iridescent");
+    public static final TagKey<Item> IRIDESCENT_ITEM = item("iridescent");
     public static final TagKey<Item> CHISELED_PLANKS_ITEM = item("chiseled_planks");
 
     // BLOCKS //////////////////////////////////////////////////////////////////////////////////////////////////////////

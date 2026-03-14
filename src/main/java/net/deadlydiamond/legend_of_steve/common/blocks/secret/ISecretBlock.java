@@ -1,4 +1,6 @@
 package net.deadlydiamond.legend_of_steve.common.blocks.secret;
 
-public interface ISecretBlock {
+import net.deadlydiamond98.koalalib.common.items.other.ISpriteIconItem;
+
+public interface ISecretBlock extends ISpriteIconItem {
 }

@@ -2,10 +2,17 @@ package net.deadlydiamond.legend_of_steve.init.client;
 
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
 import net.deadlydiamond.legend_of_steve.init.ZeldaFluids;
+import net.deadlydiamond98.koalalib.common.blocksets.AbstractBlockset;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.minecraft.block.Block;
 import net.minecraft.client.render.RenderLayer;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ZeldaBlockRenderLayers {
+    public static final List<Block> IRIDESCENT_BLOCKS = new ArrayList<>();
+
     public static void register() {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
                 ZeldaBlocks.BOMB_FLOWER,
@@ -62,5 +69,15 @@ public class ZeldaBlockRenderLayers {
                 ZeldaBlocks.MOSSY_FAIRY_MARBLE_BRICKS.wall,
                 ZeldaBlocks.CRACKED_FAIRY_MARBLE_BRICKS
         );
+    }
+
+    private static void registerIridescentSet(AbstractBlockset... blocksets) {
+        for (AbstractBlockset blockset : blocksets) {
+            registerIridescent(blockset.getAll());
+        }
+    }
+
+    private static void registerIridescent(Block... blocks) {
+        BlockRenderLayerMap.INSTANCE.putBlocks(ZeldaRenderLayers.IRIDESCENCE, blocks);
     }
 }

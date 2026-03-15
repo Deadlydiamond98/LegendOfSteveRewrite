@@ -2,17 +2,19 @@ package net.deadlydiamond.legend_of_steve.mixin.client.rendering;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import net.deadlydiamond.legend_of_steve.client.rendering.block.baked.BakedBlockEntityRenderer;
 import net.deadlydiamond.legend_of_steve.init.client.ZeldaRenderLayers;
-import net.minecraft.block.BlockState;
+import net.deadlydiamond.legend_of_steve.init.client.ZeldaShaders;
+import net.deadlydiamond98.koalalib.client.PostProcessingRegistry;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gl.Framebuffer;
+import net.minecraft.client.gl.PostEffectProcessor;
 import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.client.world.ClientWorld;
-import net.minecraft.util.math.BlockPos;
-import org.jetbrains.annotations.Nullable;
 import org.joml.Matrix4f;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -21,23 +23,34 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class WorldRendererMixin {
     @Shadow protected abstract void renderLayer(RenderLayer renderLayer, MatrixStack matrices, double cameraX, double cameraY, double cameraZ, Matrix4f positionMatrix);
 
-    @Shadow private @Nullable ClientWorld world;
+    @Shadow @Final private MinecraftClient client;
 
     @WrapOperation(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/WorldRenderer;renderLayer(Lnet/minecraft/client/render/RenderLayer;Lnet/minecraft/client/util/math/MatrixStack;DDDLorg/joml/Matrix4f;)V"))
     private void legend_of_steve$render(WorldRenderer instance, RenderLayer renderLayer, MatrixStack matrices, double cameraX, double cameraY, double cameraZ, Matrix4f positionMatrix, Operation<Void> original) {
         if (renderLayer == RenderLayer.getCutout()) {
             renderLayer(ZeldaRenderLayers.IRIDESCENCE, matrices, cameraX, cameraY, cameraZ, positionMatrix);
+            renderLayer(ZeldaRenderLayers.BLOOM_GLOW, matrices, cameraX, cameraY, cameraZ, positionMatrix);
         }
+
         original.call(instance, renderLayer, matrices, cameraX, cameraY, cameraZ, positionMatrix);
     }
+    
+    @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/VertexConsumerProvider$Immediate;drawCurrentLayer()V", ordinal = 0, shift = At.Shift.BEFORE))
+    private void test(MatrixStack matrices, float tickDelta, long limitTime, boolean renderBlockOutline, Camera camera, GameRenderer gameRenderer, LightmapTextureManager lightmapTextureManager, Matrix4f projectionMatrix, CallbackInfo ci) {
+        matrices.push();
+        Framebuffer target = PostProcessingRegistry.getRenderTargetFor(ZeldaShaders.BLOOM_GLOWING_SHADER_ID);
+        PostEffectProcessor processor = PostProcessingRegistry.getPostChainFor(ZeldaShaders.BLOOM_GLOWING_SHADER_ID);
 
-    @Inject(method = "setWorld", at = @At("RETURN"))
-    public void legend_of_steve$setWorld(ClientWorld clientWorld, CallbackInfo ci) {
-        BakedBlockEntityRenderer.Manager.setWorld(clientWorld);
+        if (canDrawEntityOutlinesTEST(target, processor))
+
+        matrices.pop();
     }
 
-    @Inject(method = "scheduleBlockRerenderIfNeeded", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/WorldRenderer;scheduleBlockRenders(IIIIII)V"))
-    private void legend_of_steve$scheduleBlockRerenderIfNeeded(BlockPos pos, BlockState old, BlockState updated, CallbackInfo ci) {
-        BlockPos.iterateOutwards(pos, 1, 1, 1).forEach(BakedBlockEntityRenderer.Manager::markForRebuild);
+    @Unique
+    protected boolean canDrawEntityOutlinesTEST(Framebuffer target, PostEffectProcessor processor) {
+        return !this.client.gameRenderer.isRenderingPanorama()
+                && target != null
+                && processor != null
+                && this.client.player != null;
     }
 }

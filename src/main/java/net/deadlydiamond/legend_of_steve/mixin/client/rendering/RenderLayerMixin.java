@@ -18,6 +18,7 @@ public class RenderLayerMixin {
         List<RenderLayer> list = new ArrayList<>(original);
 
         list.add(ZeldaRenderLayers.IRIDESCENCE);
+        list.add(ZeldaRenderLayers.BLOOM_GLOW);
 
         return ImmutableList.copyOf(list);
     }

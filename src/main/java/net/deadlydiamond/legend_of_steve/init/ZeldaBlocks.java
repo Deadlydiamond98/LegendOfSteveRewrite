@@ -65,6 +65,8 @@ public class ZeldaBlocks {
     public static final Block BLUE_FAIRY_LAMP = register("blue_fairy_lamp", new GlowingBlock(BLUE_FAIRY_LIGHT_SETTINGS));
     public static final Block PURPLE_FAIRY_LAMP = register("purple_fairy_lamp", new GlowingBlock(PURPLE_FAIRY_LIGHT_SETTINGS));
 
+    public static final Block BLOOM_ALTERNATIVE_TEST = register("bloom_alternative_test", new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
+
     // FAIRY MARBLE
     public static final IridescentStoneBlockset FAIRY_MARBLE = new IridescentStoneBlockset(LegendOfSteve.MOD_ID, "fairy_marble", FAIRY_MARBLE_SETTINGS);
     public static final IridescentStairSlabWallBlockset COBBLED_FAIRY_MARBLE = new IridescentStairSlabWallBlockset(LegendOfSteve.MOD_ID, "cobbled_fairy_marble", FAIRY_MARBLE_SETTINGS);

@@ -4,14 +4,12 @@ import net.deadlydiamond.legend_of_steve.client.rendering.block.baked.BakedBlock
 import net.deadlydiamond.legend_of_steve.common.bes.visual.GlowingBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.IGlowingBlock;
 import net.deadlydiamond.legend_of_steve.init.client.ZeldaRenderLayers;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.render.*;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 
 public class GlowingBlockRenderer extends BakedBlockEntityRenderer<GlowingBlockEntity> {
@@ -23,10 +21,10 @@ public class GlowingBlockRenderer extends BakedBlockEntityRenderer<GlowingBlockE
 
     @Override
     public void renderUnbaked(GlowingBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
-        if (entity.renderDirty) {
-            entity.renderDirty = false;
-            Manager.markForRebuild(entity.getPos());
-        }
+//        if (entity.renderDirty) {
+//            entity.renderDirty = false;
+//            Manager.markForRebuild(entity.getPos());
+//        }
     }
 
     @Override
@@ -47,18 +45,23 @@ public class GlowingBlockRenderer extends BakedBlockEntityRenderer<GlowingBlockE
             matrices.scale(scale, scale, scale);
             matrices.translate(-0.5, -0.5, -0.5);
 
-            VertexConsumer vertexConsumer = vertexConsumers.getBuffer(ZeldaRenderLayers.BLOOM_GLOW);
+//            VertexConsumer vertexConsumer = vertexConsumers.getBuffer(ZeldaRenderLayers.BOOTLEG_BLOOM);
 
-            GlowingBlockModelRenderer.getGlowingBlockModelRenderer(this.context).render(
-                    world,
-                    state,
-                    pos,
-                    matrices,
-                    vertexConsumer,
-                    Random.create(),
-                    state.getRenderingSeed(pos),
-                    glowingBlock.bloomIntensity()
-            );
+//            GlowingBlockModelRenderer.getGlowingBlockModelRenderer(this.context).render(
+//                    world,
+//                    state,
+//                    pos,
+//                    matrices,
+//                    vertexConsumer,
+//                    Random.create(),
+//                    state.getRenderingSeed(pos),
+//                    glowingBlock.bloomIntensity()
+//            );
+
+//            context.getRenderManager().getModelRenderer()
+//                    .render(world, context.getRenderManager().getModel(state), state, pos, matrices, vertexConsumer,
+//                            true,
+//                            world.random, state.getRenderingSeed(pos), OverlayTexture.DEFAULT_UV);
 
             matrices.pop();
         }
@@ -66,15 +69,16 @@ public class GlowingBlockRenderer extends BakedBlockEntityRenderer<GlowingBlockE
 
     @Override
     public boolean shouldBake(GlowingBlockEntity entity) {
-        BlockState state = entity.getCachedState();
-        BlockPos pos = entity.getPos();
-        World world = entity.getWorld();
-
-        for (Direction direction : DIRECTIONS) {
-            if (Block.shouldDrawSide(state, world, pos, direction, pos.mutableCopy())) {
-                return false;
-            }
-        }
-        return state.getBlock() instanceof IGlowingBlock;
+//        BlockState state = entity.getCachedState();
+//        BlockPos pos = entity.getPos();
+//        World world = entity.getWorld();
+//
+//        for (Direction direction : DIRECTIONS) {
+//            if (Block.shouldDrawSide(state, world, pos, direction, pos.mutableCopy())) {
+//                return false;
+//            }
+//        }
+//        return state.getBlock() instanceof IGlowingBlock;
+        return true;
     }
 }

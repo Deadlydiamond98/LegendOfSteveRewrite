@@ -16,6 +16,9 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class ZeldaRenderLayers extends RenderLayer {
+
+    // TODO: This Class could perhaps use some better organization
+
     // TEXTURE ATLASES /////////////////////////////////////////////////////////////////////////////////////////////////
     public static final Identifier IRIDESCENT_ATLAS_TEXTURE = LegendOfSteve.id("textures/atlas/iridescent.png");
     public static final Identifier NORMAL_MAPS_ATLAS_TEXTURE = LegendOfSteve.id("textures/atlas/normal_maps.png");
@@ -25,7 +28,8 @@ public class ZeldaRenderLayers extends RenderLayer {
     private static final RenderPhase.ShaderProgram IRIDESCENCE_PROGRAM = new ShaderProgram(() -> ZeldaShaders.iridescenceShader);
     private static final RenderPhase.ShaderProgram ENTITY_IRIDESCENCE_PROGRAM = new ShaderProgram(() -> ZeldaShaders.entityIridescenceShader);
     private static final RenderPhase.ShaderProgram ITEM_IRIDESCENCE_PROGRAM = new ShaderProgram(() -> ZeldaShaders.itemIridescenceShader);
-    private static final RenderPhase.ShaderProgram UNLIT_ENTITY_PROGRAM = new ShaderProgram(() -> ZeldaShaders.fullbrightShader);
+    private static final RenderPhase.ShaderProgram FULLBRIGHT_ENTITY_PROGRAM = new ShaderProgram(() -> ZeldaShaders.fullbrightShader);
+    private static final RenderPhase.ShaderProgram BLOOM_PROGRAM = new ShaderProgram(() -> ZeldaShaders.bloomShader);
 
     // SHADER TARGETS //////////////////////////////////////////////////////////////////////////////////////////////////
     private static final RenderPhase.Target BLOOM_TARGET = new Target("legend_of_steve$bloom_glowing", () -> {
@@ -41,9 +45,9 @@ public class ZeldaRenderLayers extends RenderLayer {
     }
 
 
-    public static final Function<Identifier, RenderLayer> UNLIT_ENTITY = Util.memoize(texture -> {
+    public static final Function<Identifier, RenderLayer> FULLBRIGHT_ENTITY = Util.memoize(texture -> {
         MultiPhaseParameters multiPhaseParameters = MultiPhaseParameters.builder()
-                .program(UNLIT_ENTITY_PROGRAM)
+                .program(FULLBRIGHT_ENTITY_PROGRAM)
                 .texture(new Texture(texture, false, false))
                 .transparency(TRANSLUCENT_TRANSPARENCY)
                 .cull(DISABLE_CULLING)
@@ -61,18 +65,19 @@ public class ZeldaRenderLayers extends RenderLayer {
 
     public static final RenderLayer BLOOM_GLOW = of(
             "legend_of_steve$bloom_glow",
-            VertexFormats.POSITION_COLOR_TEXTURE,
+            VertexFormats.POSITION_COLOR_TEXTURE_LIGHT_NORMAL,
             VertexFormat.DrawMode.QUADS,
             131072,
-            false,
             true,
+            false,
             MultiPhaseParameters.builder()
-                    .program(RenderPhase.POSITION_COLOR_TEXTURE_PROGRAM)
+                    .program(BLOOM_PROGRAM)
+                    .lightmap(ENABLE_LIGHTMAP)
                     .texture(RenderPhase.MIPMAP_BLOCK_ATLAS_TEXTURE)
-                    .transparency(TRANSLUCENT_TRANSPARENCY)
-                    .depthTest(LEQUAL_DEPTH_TEST)
+//                    .transparency(TRANSLUCENT_TRANSPARENCY)
+//                    .depthTest(LEQUAL_DEPTH_TEST)
                     .target(BLOOM_TARGET)
-                    .build(false)
+                    .build(true)
     );
 
     public static final Function<Identifier, RenderLayer> ENTITY_BLOOM_GLOW = Util.memoize(texture -> {
@@ -206,7 +211,7 @@ public class ZeldaRenderLayers extends RenderLayer {
     }
 
     public static RenderLayer getEntityUnlit(Identifier texture) {
-        return UNLIT_ENTITY.apply(texture);
+        return FULLBRIGHT_ENTITY.apply(texture);
     }
 
     public static RenderLayer getGlowing(Identifier texture) {

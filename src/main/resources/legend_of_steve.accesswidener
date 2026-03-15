@@ -5,3 +5,5 @@ accessible class net/minecraft/client/render/RenderPhase$Target
 accessible field net/minecraft/data/client/Model parent Ljava/util/Optional;
 accessible field net/minecraft/client/render/block/BlockModelRenderer colors Lnet/minecraft/client/color/block/BlockColors;
 accessible method net/minecraft/client/gui/screen/ingame/HandledScreen getSlotAt (DD)Lnet/minecraft/screen/slot/Slot;
+accessible class net/minecraft/client/render/WorldRenderer$ChunkInfo
+accessible field net/minecraft/client/render/WorldRenderer$ChunkInfo chunk Lnet/minecraft/client/render/chunk/ChunkBuilder$BuiltChunk;

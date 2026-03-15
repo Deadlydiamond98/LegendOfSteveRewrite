@@ -10,14 +10,14 @@ import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
 public class ZeldaWorldRenderEvents {
 
     public static void register() {
-//        WorldRenderEvents.AFTER_ENTITIES.register(context -> {
-//            // This is Used to render baked block entities, so that they are much more performant
+        WorldRenderEvents.LAST.register(context -> {
+            // This is Used to render baked block entities, so that they are much more performant
 //            BakedBlockEntityRenderer.Manager.render(context);
-//        });
+        });
 
         WorldRenderEvents.AFTER_ENTITIES.register(context -> {
-            PostProcessingRegistry.renderEffectForNextTick(ZeldaShaders.BLOOM_GLOWING_SHADER_ID);
-            BakedBlockEntityRenderer.Manager.render(context);
+//            PostProcessingRegistry.renderEffectForNextTick(ZeldaShaders.BLOOM_GLOWING_SHADER_ID);
+//            BakedBlockEntityRenderer.Manager.render(context);
         });
 
         InvalidateRenderStateCallback.EVENT.register(BakedBlockEntityRenderer.Manager::reset);

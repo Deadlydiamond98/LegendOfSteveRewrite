@@ -37,6 +37,10 @@ public class ZeldaBlockRenderLayers {
                 ZeldaFluids.FLOWING_ENCHANTED_SPRING_WATER
         );
 
+        BlockRenderLayerMap.INSTANCE.putBlocks(ZeldaRenderLayers.BLOOM_GLOW,
+                ZeldaBlocks.BLOOM_ALTERNATIVE_TEST
+        );
+
         BlockRenderLayerMap.INSTANCE.putBlocks(ZeldaRenderLayers.IRIDESCENCE,
                 ZeldaBlocks.FAIRY_MARBLE.base,
                 ZeldaBlocks.FAIRY_MARBLE.slab,

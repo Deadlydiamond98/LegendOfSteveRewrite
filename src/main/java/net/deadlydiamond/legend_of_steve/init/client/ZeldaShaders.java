@@ -18,6 +18,7 @@ public class ZeldaShaders {
     public static ShaderProgram entityIridescenceShader;
     public static ShaderProgram itemIridescenceShader;
     public static ShaderProgram fullbrightShader;
+    public static ShaderProgram bloomShader;
 
     public static void register() {
         // POST
@@ -47,6 +48,12 @@ public class ZeldaShaders {
                     LegendOfSteve.id("rendertype_item_iridescence"),
                     VertexFormats.POSITION_COLOR_TEXTURE_OVERLAY_LIGHT_NORMAL,
                     program -> itemIridescenceShader = program
+            );
+
+            context.register(
+                    LegendOfSteve.id("rendertype_bloom"),
+                    VertexFormats.POSITION_COLOR_TEXTURE_OVERLAY_LIGHT_NORMAL,
+                    program -> bloomShader = program
             );
 
             context.register(

@@ -3,13 +3,10 @@ package net.deadlydiamond.legend_of_steve.mixin.client.rendering;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.deadlydiamond.legend_of_steve.client.rendering.block.baked.BakedBlockEntityRenderer;
 import net.deadlydiamond.legend_of_steve.init.client.ZeldaRenderLayers;
 import net.deadlydiamond.legend_of_steve.init.client.ZeldaShaders;
 import net.deadlydiamond98.koalalib.client.PostProcessingRegistry;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gl.Framebuffer;
-import net.minecraft.client.gl.PostEffectProcessor;
 import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.Vec3d;
@@ -29,6 +26,11 @@ public abstract class WorldRendererMixin {
 
     @WrapOperation(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/WorldRenderer;renderLayer(Lnet/minecraft/client/render/RenderLayer;Lnet/minecraft/client/util/math/MatrixStack;DDDLorg/joml/Matrix4f;)V"))
     private void legend_of_steve$render(WorldRenderer instance, RenderLayer renderLayer, MatrixStack matrices, double cameraX, double cameraY, double cameraZ, Matrix4f positionMatrix, Operation<Void> original) {
+        if (renderLayer == RenderLayer.getSolid()) {
+//            PostProcessingRegistry.renderEffectForNextTick(ZeldaShaders.BLOOM_GLOWING_SHADER_ID);
+//            renderLayer(ZeldaRenderLayers.BLOOM_GLOW, matrices, cameraX, cameraY, cameraZ, positionMatrix);
+
+        }
         if (renderLayer == RenderLayer.getCutout()) {
             renderLayer(ZeldaRenderLayers.IRIDESCENCE, matrices, cameraX, cameraY, cameraZ, positionMatrix);
         }
@@ -38,13 +40,18 @@ public abstract class WorldRendererMixin {
     
     @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/OutlineVertexConsumerProvider;draw()V", shift = At.Shift.BEFORE), order = 900)
     private void test(MatrixStack matrices, float tickDelta, long limitTime, boolean renderBlockOutline, Camera camera, GameRenderer gameRenderer, LightmapTextureManager lightmapTextureManager, Matrix4f projectionMatrix, CallbackInfo ci) {
-        float originalFogEnd = RenderSystem.getShaderFogEnd();
-        RenderSystem.setShaderFogEnd(Float.MIN_VALUE);
+        float[] originalFogEnd = RenderSystem.getShaderFogColor();
+        RenderSystem.setShaderFogColor(0, 0, 0, 0);
 
-        PostProcessingRegistry.renderEffectForNextTick(ZeldaShaders.BLOOM_GLOWING_SHADER_ID);
         Vec3d cameraPos = camera.getPos();
         renderLayer(ZeldaRenderLayers.BLOOM_GLOW, matrices, cameraPos.x, cameraPos.y, cameraPos.z, projectionMatrix);
+        PostProcessingRegistry.renderEffectForNextTick(ZeldaShaders.BLOOM_GLOWING_SHADER_ID);
 
-        RenderSystem.setShaderFogEnd(originalFogEnd);
+        RenderSystem.setShaderFogColor(originalFogEnd[0], originalFogEnd[1], originalFogEnd[2], originalFogEnd[3]);
     }
+
+//    @Inject(method = "render", at = @At(value = "HEAD"))
+//    private void testAgain(MatrixStack matrices, float tickDelta, long limitTime, boolean renderBlockOutline, Camera camera, GameRenderer gameRenderer, LightmapTextureManager lightmapTextureManager, Matrix4f projectionMatrix, CallbackInfo ci) {
+//        PostProcessingRegistry.renderEffectForNextTick(ZeldaShaders.BLOOM_GLOWING_SHADER_ID);
+//    }
 }

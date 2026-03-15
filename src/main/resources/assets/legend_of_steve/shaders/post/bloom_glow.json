@@ -1,8 +1,7 @@
 {
   "targets": [
     "swap",
-    "final",
-    "original"
+    "final"
   ],
   "passes": [
     {

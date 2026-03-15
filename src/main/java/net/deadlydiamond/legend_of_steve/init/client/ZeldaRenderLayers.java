@@ -77,7 +77,7 @@ public class ZeldaRenderLayers extends RenderLayer {
 //                    .transparency(TRANSLUCENT_TRANSPARENCY)
 //                    .depthTest(LEQUAL_DEPTH_TEST)
                     .target(BLOOM_TARGET)
-                    .build(true)
+                    .build(false)
     );
 
     public static final Function<Identifier, RenderLayer> ENTITY_BLOOM_GLOW = Util.memoize(texture -> {

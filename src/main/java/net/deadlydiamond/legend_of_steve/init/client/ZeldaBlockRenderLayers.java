@@ -38,8 +38,13 @@ public class ZeldaBlockRenderLayers {
         );
 
         BlockRenderLayerMap.INSTANCE.putBlocks(ZeldaRenderLayers.BLOOM_GLOW,
-                ZeldaBlocks.BLOOM_ALTERNATIVE_TEST,
-                ZeldaBlocks.ENCHANTED_SPRING_WATER
+                ZeldaBlocks.PINK_FAIRY_LAMP,
+                ZeldaBlocks.RED_FAIRY_LAMP,
+                ZeldaBlocks.ORANGE_FAIRY_LAMP,
+                ZeldaBlocks.YELLOW_FAIRY_LAMP,
+                ZeldaBlocks.GREEN_FAIRY_LAMP,
+                ZeldaBlocks.BLUE_FAIRY_LAMP,
+                ZeldaBlocks.PURPLE_FAIRY_LAMP
         );
 
         BlockRenderLayerMap.INSTANCE.putBlocks(ZeldaRenderLayers.IRIDESCENCE,

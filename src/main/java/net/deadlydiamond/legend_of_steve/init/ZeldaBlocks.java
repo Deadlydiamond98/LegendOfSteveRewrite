@@ -5,6 +5,7 @@ import net.deadlydiamond.legend_of_steve.common.blocks.MasterBarrelBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.SpringWaterBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.GirderBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.GlowingBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.deco.TestGlowingBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.BombFlowerBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.FruitingLeaves;
 import net.deadlydiamond.legend_of_steve.common.blocksets.IridescentStairSlabWallBlockset;
@@ -65,7 +66,7 @@ public class ZeldaBlocks {
     public static final Block BLUE_FAIRY_LAMP = register("blue_fairy_lamp", new GlowingBlock(BLUE_FAIRY_LIGHT_SETTINGS));
     public static final Block PURPLE_FAIRY_LAMP = register("purple_fairy_lamp", new GlowingBlock(PURPLE_FAIRY_LIGHT_SETTINGS));
 
-    public static final Block BLOOM_ALTERNATIVE_TEST = register("bloom_alternative_test", new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
+    public static final Block BLOOM_ALTERNATIVE_TEST = register("bloom_alternative_test", new TestGlowingBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
 
     // FAIRY MARBLE
     public static final IridescentStoneBlockset FAIRY_MARBLE = new IridescentStoneBlockset(LegendOfSteve.MOD_ID, "fairy_marble", FAIRY_MARBLE_SETTINGS);

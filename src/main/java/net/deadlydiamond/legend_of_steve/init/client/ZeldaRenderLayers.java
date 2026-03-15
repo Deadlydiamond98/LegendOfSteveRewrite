@@ -74,7 +74,7 @@ public class ZeldaRenderLayers extends RenderLayer {
                     .program(BLOOM_PROGRAM)
                     .lightmap(ENABLE_LIGHTMAP)
                     .texture(RenderPhase.MIPMAP_BLOCK_ATLAS_TEXTURE)
-//                    .transparency(TRANSLUCENT_TRANSPARENCY)
+                    .transparency(TRANSLUCENT_TRANSPARENCY)
                     .depthTest(LEQUAL_DEPTH_TEST)
                     .target(BLOOM_TARGET)
                     .build(false)

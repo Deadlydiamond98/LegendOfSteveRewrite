@@ -38,7 +38,8 @@ public class ZeldaBlockRenderLayers {
         );
 
         BlockRenderLayerMap.INSTANCE.putBlocks(ZeldaRenderLayers.BLOOM_GLOW,
-                ZeldaBlocks.BLOOM_ALTERNATIVE_TEST
+                ZeldaBlocks.BLOOM_ALTERNATIVE_TEST,
+                ZeldaBlocks.ENCHANTED_SPRING_WATER
         );
 
         BlockRenderLayerMap.INSTANCE.putBlocks(ZeldaRenderLayers.IRIDESCENCE,

@@ -2,8 +2,6 @@ package net.deadlydiamond.legend_of_steve.init;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.bes.BombFlowerBlockEntity;
-import net.deadlydiamond.legend_of_steve.common.bes.visual.BakedBlockEntity;
-import net.deadlydiamond.legend_of_steve.common.bes.visual.GlowingBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.MasterBarrelBlockEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.Block;
@@ -16,17 +14,6 @@ public class ZeldaBlockEntities {
 
     public static final BlockEntityType<BombFlowerBlockEntity> BOMB_FLOWER = register("bomb_flower", BombFlowerBlockEntity::new,
             ZeldaBlocks.BOMB_FLOWER
-    );
-
-    public static final BlockEntityType<GlowingBlockEntity> GLOWING_BLOCK = register("glowing_block", GlowingBlockEntity::new,
-//            ZeldaBlocks.ENCHANTED_SPRING_WATER,
-            ZeldaBlocks.PINK_FAIRY_LAMP,
-            ZeldaBlocks.RED_FAIRY_LAMP,
-            ZeldaBlocks.ORANGE_FAIRY_LAMP,
-            ZeldaBlocks.YELLOW_FAIRY_LAMP,
-            ZeldaBlocks.GREEN_FAIRY_LAMP,
-            ZeldaBlocks.BLUE_FAIRY_LAMP,
-            ZeldaBlocks.PURPLE_FAIRY_LAMP
     );
 
     public static final BlockEntityType<MasterBarrelBlockEntity> MASTER_BARREL = register("master_barrel", MasterBarrelBlockEntity::new,

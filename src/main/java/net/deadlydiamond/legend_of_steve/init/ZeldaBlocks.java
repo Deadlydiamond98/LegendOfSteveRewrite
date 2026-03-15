@@ -4,7 +4,6 @@ import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.blocks.MasterBarrelBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.SpringWaterBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.GirderBlock;
-import net.deadlydiamond.legend_of_steve.common.blocks.deco.GlowingBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.TestGlowingBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.BombFlowerBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.FruitingLeaves;
@@ -58,13 +57,13 @@ public class ZeldaBlocks {
 
     // FAIRY LAMPS
     // TODO: ADD RECIPE FOR THESE ONCE FAIRIES ARE ADDED
-    public static final Block PINK_FAIRY_LAMP = register("pink_fairy_lamp", new GlowingBlock(PINK_FAIRY_LIGHT_SETTINGS));
-    public static final Block RED_FAIRY_LAMP = register("red_fairy_lamp", new GlowingBlock(RED_FAIRY_LIGHT_SETTINGS));
-    public static final Block ORANGE_FAIRY_LAMP = register("orange_fairy_lamp", new GlowingBlock(ORANGE_FAIRY_LIGHT_SETTINGS));
-    public static final Block YELLOW_FAIRY_LAMP = register("yellow_fairy_lamp", new GlowingBlock(YELLOW_FAIRY_LIGHT_SETTINGS));
-    public static final Block GREEN_FAIRY_LAMP = register("green_fairy_lamp", new GlowingBlock(GREEN_FAIRY_LIGHT_SETTINGS));
-    public static final Block BLUE_FAIRY_LAMP = register("blue_fairy_lamp", new GlowingBlock(BLUE_FAIRY_LIGHT_SETTINGS));
-    public static final Block PURPLE_FAIRY_LAMP = register("purple_fairy_lamp", new GlowingBlock(PURPLE_FAIRY_LIGHT_SETTINGS));
+    public static final Block PINK_FAIRY_LAMP = register("pink_fairy_lamp", new TestGlowingBlock(PINK_FAIRY_LIGHT_SETTINGS));
+    public static final Block RED_FAIRY_LAMP = register("red_fairy_lamp", new TestGlowingBlock(RED_FAIRY_LIGHT_SETTINGS));
+    public static final Block ORANGE_FAIRY_LAMP = register("orange_fairy_lamp", new TestGlowingBlock(ORANGE_FAIRY_LIGHT_SETTINGS));
+    public static final Block YELLOW_FAIRY_LAMP = register("yellow_fairy_lamp", new TestGlowingBlock(YELLOW_FAIRY_LIGHT_SETTINGS));
+    public static final Block GREEN_FAIRY_LAMP = register("green_fairy_lamp", new TestGlowingBlock(GREEN_FAIRY_LIGHT_SETTINGS));
+    public static final Block BLUE_FAIRY_LAMP = register("blue_fairy_lamp", new TestGlowingBlock(BLUE_FAIRY_LIGHT_SETTINGS));
+    public static final Block PURPLE_FAIRY_LAMP = register("purple_fairy_lamp", new TestGlowingBlock(PURPLE_FAIRY_LIGHT_SETTINGS));
 
     public static final Block BLOOM_ALTERNATIVE_TEST = register("bloom_alternative_test", new TestGlowingBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
 

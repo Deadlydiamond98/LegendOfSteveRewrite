@@ -35,22 +35,25 @@ public abstract class WorldRendererMixin {
         original.call(instance, renderLayer, matrices, cameraX, cameraY, cameraZ, positionMatrix);
     }
     
-    @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/VertexConsumerProvider$Immediate;drawCurrentLayer()V", ordinal = 0, shift = At.Shift.BEFORE))
+    @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/OutlineVertexConsumerProvider;draw()V", shift = At.Shift.BEFORE))
     private void test(MatrixStack matrices, float tickDelta, long limitTime, boolean renderBlockOutline, Camera camera, GameRenderer gameRenderer, LightmapTextureManager lightmapTextureManager, Matrix4f projectionMatrix, CallbackInfo ci) {
-        matrices.push();
-        Framebuffer target = PostProcessingRegistry.getRenderTargetFor(ZeldaShaders.BLOOM_GLOWING_SHADER_ID);
-        PostEffectProcessor processor = PostProcessingRegistry.getPostChainFor(ZeldaShaders.BLOOM_GLOWING_SHADER_ID);
-
-        if (canDrawEntityOutlinesTEST(target, processor))
-
-        matrices.pop();
+        PostProcessingRegistry.renderEffectForNextTick(ZeldaShaders.BLOOM_GLOWING_SHADER_ID);
+//        matrices.push();
+//        Framebuffer target = PostProcessingRegistry.getRenderTargetFor(ZeldaShaders.BLOOM_GLOWING_SHADER_ID);
+//        PostEffectProcessor processor = PostProcessingRegistry.getPostChainFor(ZeldaShaders.BLOOM_GLOWING_SHADER_ID);
+//
+//        if (canDrawEntityOutlinesTEST(target, processor)) {
+//
+//        }
+//
+//        matrices.pop();
     }
 
-    @Unique
-    protected boolean canDrawEntityOutlinesTEST(Framebuffer target, PostEffectProcessor processor) {
-        return !this.client.gameRenderer.isRenderingPanorama()
-                && target != null
-                && processor != null
-                && this.client.player != null;
-    }
+//    @Unique
+//    protected boolean canDrawEntityOutlinesTEST(Framebuffer target, PostEffectProcessor processor) {
+//        return !this.client.gameRenderer.isRenderingPanorama()
+//                && target != null
+//                && processor != null
+//                && this.client.player != null;
+//    }
 }

@@ -35,7 +35,7 @@ public abstract class WorldRendererMixin {
         original.call(instance, renderLayer, matrices, cameraX, cameraY, cameraZ, positionMatrix);
     }
     
-    @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/chunk/ChunkBuilder$ChunkData;getBlockEntities()Ljava/util/List;", shift = At.Shift.BEFORE), order = 900)
+    @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/OutlineVertexConsumerProvider;draw()V", shift = At.Shift.BEFORE), order = 900)
     private void test(MatrixStack matrices, float tickDelta, long limitTime, boolean renderBlockOutline, Camera camera, GameRenderer gameRenderer, LightmapTextureManager lightmapTextureManager, Matrix4f projectionMatrix, CallbackInfo ci) {
         if (legend_of_steve$renderGlowing) {
             Vec3d cameraPos = camera.getPos();

@@ -62,6 +62,9 @@ public class ZeldaCreativeTabs {
         entries.add(ZeldaBlocks.CHISELED_CHERRY_PLANKS);
         entries.add(ZeldaBlocks.CHISELED_DEKU_PLANKS);
 
+        // SPRING WATER
+        entries.add(ZeldaItems.ENCHANTED_SPRING_WATER_BUCKET);
+
         // FAIRY LAMPS
         entries.add(ZeldaBlocks.RED_FAIRY_LAMP);
         entries.add(ZeldaBlocks.ORANGE_FAIRY_LAMP);

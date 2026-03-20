@@ -6,10 +6,14 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.deadlydiamond.legend_of_steve.client.rendering.item.BombBagItemRenderer;
+import net.deadlydiamond.legend_of_steve.common.blocks.deco.glowing.IGlowingBlock;
 import net.deadlydiamond.legend_of_steve.common.items.projectile.explosive.ICharged;
 import net.deadlydiamond.legend_of_steve.common.items.bag.BombBagItem;
+import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
 import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
 import net.deadlydiamond.legend_of_steve.init.client.ZeldaRenderLayers;
+import net.deadlydiamond.legend_of_steve.init.client.ZeldaShaders;
+import net.deadlydiamond98.koalalib.client.PostProcessingRegistry;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.*;
 import net.minecraft.client.render.item.ItemRenderer;
@@ -33,6 +37,7 @@ public abstract class ItemRendererMixin {
         if (stack.isIn(ZeldaTags.IRIDESCENT_ITEM)) {
             return renderMode == ModelTransformationMode.GUI ? ZeldaRenderLayers.GUI_ITEM_IRIDESCENCE : ZeldaRenderLayers.ENTITY_IRIDESCENCE_TEXTURED;
         }
+
         return original.call(stack, direct);
     }
 

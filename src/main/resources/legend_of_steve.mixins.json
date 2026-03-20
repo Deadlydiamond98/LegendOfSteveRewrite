@@ -35,7 +35,6 @@
     "client.model.JsonUnbakedModelMixin",
     "client.model.JsonUnbakedModelMixin$DeserializerMixin",
     "client.rendering.ChunkBuilderMixin",
-    "client.rendering.GameRendererMixin",
     "client.rendering.ItemRendererMixin",
     "client.rendering.RenderLayerMixin",
     "client.rendering.RenderLayersMixin",

@@ -85,9 +85,7 @@ public class ZeldaItemTagDatagen extends FabricTagProvider.ItemTagProvider {
                 ZeldaBlocks.CRACKED_FAIRY_MARBLE_BRICKS.asItem(),
                 ZeldaBlocks.CHISELED_FAIRY_MARBLE.asItem(),
                 ZeldaBlocks.FAIRY_MARBLE_PILLAR.asItem(),
-                ZeldaBlocks.SMOOTH_FAIRY_MARBLE.asItem(),
-
-                ZeldaItems.ENCHANTED_SPRING_WATER_BUCKET
+                ZeldaBlocks.SMOOTH_FAIRY_MARBLE.asItem()
         );
 
         getOrCreateTagBuilder(ItemTags.PIGLIN_LOVED).add(

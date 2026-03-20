@@ -27,7 +27,7 @@ import static net.deadlydiamond.legend_of_steve.init.ZeldaBlockSettings.*;
 public class ZeldaBlocks {
     // BLOCK SETTINGS //////////////////////////////////////////////////////////////////////////////////////////////////
     public static final Block BOMB_FLOWER = register("bomb_flower", new BombFlowerBlock(BOMB_FLOWER_SETTINGS), false);
-    public static final Block ENCHANTED_SPRING_WATER = register("enchanted_spring_water", new SpringWaterBlock(ZeldaFluids.ENCHANTED_SPRING_WATER, FabricBlockSettings.copyOf(Blocks.WATER)), false);
+    public static final Block ENCHANTED_SPRING_WATER = register("enchanted_spring_water", new SpringWaterBlock(ZeldaFluids.ENCHANTED_SPRING_WATER, FabricBlockSettings.copyOf(Blocks.WATER).luminance(state -> 10)), false);
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // DECORATIVE BLOCKS ///////////////////////////////////////////////////////////////////////////////////////////////

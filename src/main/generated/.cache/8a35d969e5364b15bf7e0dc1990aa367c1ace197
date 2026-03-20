@@ -1,4 +1,4 @@
-// 1.20.1	2026-03-14T11:25:36.937137665	The Legend of Steve/Model Definitions
+// 1.20.1	2026-03-20T16:38:31.611675329	The Legend of Steve/Model Definitions
 fdc91b2f75b9380d258310cdbc6a3ed756724ebc assets/legend_of_steve/blockstates/fairy_marble_wall.json
 a1650b5338b0ffc7a237e40c5767da6790e576cb assets/legend_of_steve/models/item/master_tile_stairs.json
 8edfb86230897c360802cebd0a5cdec6377b9dca assets/legend_of_steve/models/item/chiseled_bamboo_planks.json
@@ -60,6 +60,7 @@ dd30c6152d19b2a0086a7f5005ff43e0c9b713c2 assets/legend_of_steve/models/item/deep
 0749a778ece21fb9bc2d1b38aad0d5b74c5cf5ad assets/legend_of_steve/models/item/polished_fairy_marble_stairs.json
 49a0cabe4b766fd3b682f202539075fc83f18824 assets/legend_of_steve/models/item/deku_button.json
 b6ee75d10cbb0f87caaed7dd5cb27b933e86f1fe assets/legend_of_steve/models/item/fairy_marble_slab.json
+98cf65d7014ad6fec74fbd234c8bd384b04cdf66 assets/legend_of_steve/models/item/enchanted_spring_water_bucket.json
 82b234efdab9c4bb0e2f11c1ec6770ea242cc753 assets/legend_of_steve/blockstates/fairy_marble.json
 fd6284c1fc63be9e6117b70e8ba0a10e03287041 assets/legend_of_steve/models/block/fairy_marble_bricks.json
 7d6603bf807833a8f8faf3c7efc1afecc14e8473 assets/legend_of_steve/models/block/deku_fence.json
@@ -321,8 +322,8 @@ f8124227e2c8c55d9220dc1756fa64deecb1290a assets/legend_of_steve/models/item/poli
 713a88ec751dfc564ffeca899cb6828baa4d981b assets/legend_of_steve/models/item/small_blue_tektiles.json
 049eba29780a9f5a69e9e986963c330605f96c4b assets/legend_of_steve/models/item/master_ore.json
 4cc3b78be80f70aa034c27b9f414eef62468b92b assets/legend_of_steve/models/block/master_brick_stairs_inner.json
-9d21e1237d7d7a5001a9e8751283094f69afda66 assets/legend_of_steve/models/block/fairy_marble_tile_stairs_inner.json
 468e45bf6435e62b75f189f496e474d619b44782 assets/legend_of_steve/blockstates/orange_fairy_lamp.json
+9d21e1237d7d7a5001a9e8751283094f69afda66 assets/legend_of_steve/models/block/fairy_marble_tile_stairs_inner.json
 4d350f1da2fd9c749df18ba315b19725284015ca assets/legend_of_steve/models/item/mossy_fairy_marble_bricks.json
 5b27b7d636b57bb4c89e43287709f8056f387027 assets/legend_of_steve/models/block/deepslate_master_ore.json
 37a18095bcc433997f2b48607bd6da14e2dcdd3e assets/legend_of_steve/models/block/deku_fence_gate_open.json

@@ -14,6 +14,7 @@ import java.util.function.Function;
 
 public class ZeldaParticleTypes {
     // REGULAR PARTICLES ///////////////////////////////////////////////////////////////////////////////////////////////
+    public static final ParticleType<DefaultParticleType> MAGIC_SPARKLE = register("magic_sparkle", false);
 
     // COMPLEX PARTICLES ///////////////////////////////////////////////////////////////////////////////////////////////
     public static final ParticleType<SparkParticleEffect> SPARK = register(

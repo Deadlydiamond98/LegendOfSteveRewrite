@@ -11,7 +11,11 @@ import net.minecraft.fluid.FlowableFluid;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.item.Item;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
@@ -19,7 +23,11 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 
+import java.util.Optional;
+
 public class EnchantedSpringWater extends FlowableFluid {
+
+    public static final BooleanProperty GLOWING = BooleanProperty.of("glowing");
 
     public static class Flowing extends EnchantedSpringWater {
         @Override
@@ -88,6 +96,11 @@ public class EnchantedSpringWater extends FlowableFluid {
     }
 
     @Override
+    public Optional<SoundEvent> getBucketFillSound() {
+        return Optional.of(SoundEvents.ITEM_BUCKET_FILL);
+    }
+
+    @Override
     protected boolean canBeReplacedWith(FluidState state, BlockView world, BlockPos pos, Fluid fluid, Direction direction) {
         return false;
     }
@@ -120,5 +133,11 @@ public class EnchantedSpringWater extends FlowableFluid {
     @Override
     public boolean matchesType(Fluid fluid) {
         return fluid == getStill() || fluid == getFlowing();
+    }
+
+    @Override
+    protected void appendProperties(StateManager.Builder<Fluid, FluidState> builder) {
+        super.appendProperties(builder);
+        builder.add(GLOWING);
     }
 }

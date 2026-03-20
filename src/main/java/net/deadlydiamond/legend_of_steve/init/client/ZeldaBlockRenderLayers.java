@@ -4,14 +4,16 @@ import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
 import net.deadlydiamond.legend_of_steve.init.ZeldaFluids;
 import net.deadlydiamond98.koalalib.common.blocksets.AbstractBlockset;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
+import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
 import net.minecraft.block.Block;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.util.Identifier;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ZeldaBlockRenderLayers {
-    public static final List<Block> IRIDESCENT_BLOCKS = new ArrayList<>();
 
     public static void register() {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
@@ -30,11 +32,6 @@ public class ZeldaBlockRenderLayers {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(),
                 ZeldaBlocks.DEKU_WOOD.door,
                 ZeldaBlocks.DEKU_WOOD.trapdoor
-        );
-
-        BlockRenderLayerMap.INSTANCE.putFluids(RenderLayer.getTranslucent(),
-                ZeldaFluids.ENCHANTED_SPRING_WATER,
-                ZeldaFluids.FLOWING_ENCHANTED_SPRING_WATER
         );
 
         BlockRenderLayerMap.INSTANCE.putBlocks(ZeldaRenderLayers.BLOOM_GLOW,
@@ -78,6 +75,21 @@ public class ZeldaBlockRenderLayers {
                 ZeldaBlocks.MOSSY_FAIRY_MARBLE_BRICKS.stair,
                 ZeldaBlocks.MOSSY_FAIRY_MARBLE_BRICKS.wall,
                 ZeldaBlocks.CRACKED_FAIRY_MARBLE_BRICKS
+        );
+
+        // FLUIDS //////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        BlockRenderLayerMap.INSTANCE.putFluids(ZeldaRenderLayers.BLOOM_GLOW,
+                ZeldaFluids.ENCHANTED_SPRING_WATER,
+                ZeldaFluids.FLOWING_ENCHANTED_SPRING_WATER
+        );
+
+        FluidRenderHandlerRegistry.INSTANCE.register(ZeldaFluids.ENCHANTED_SPRING_WATER, ZeldaFluids.FLOWING_ENCHANTED_SPRING_WATER,
+                new SimpleFluidRenderHandler(
+                        new Identifier("block/water_still"),
+                        new Identifier("block/water_flow"),
+                        0x5db7ef
+                )
         );
     }
 

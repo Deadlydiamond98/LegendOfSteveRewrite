@@ -93,7 +93,8 @@ public class ZeldaModelDatagen extends FabricModelProvider {
                 ZeldaItems.RED_TEKTITE_SHELL,
                 ZeldaItems.RAW_MASTER_ORE,
                 ZeldaItems.MASTER_SCRAP,
-                ZeldaItems.MASTER_INGOT
+                ZeldaItems.MASTER_INGOT,
+                ZeldaItems.ENCHANTED_SPRING_WATER_BUCKET
         );
 
         ZeldaItemModelDatagenUtil.registerQuiver(itemModelGenerator, ZeldaItems.QUIVER);

@@ -1,7 +1,6 @@
 package net.deadlydiamond.legend_of_steve.init.client;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
-import net.deadlydiamond.legend_of_steve.client.GradientsTexture;
 import net.deadlydiamond98.koalalib.client.PostProcessingRegistry;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gl.Framebuffer;
@@ -19,7 +18,9 @@ public class ZeldaRenderLayers extends RenderLayer {
 
     // TODO: This Class could perhaps use some better organization
 
-    // TEXTURE ATLASES /////////////////////////////////////////////////////////////////////////////////////////////////
+    // TEXTURES ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static final Identifier IRIDESCENT_GRADIENT_TEXTURE = LegendOfSteve.id("textures/misc/iridescence_gradient.png");
+
     public static final Identifier IRIDESCENT_ATLAS_TEXTURE = LegendOfSteve.id("textures/atlas/iridescent.png");
     public static final Identifier NORMAL_MAPS_ATLAS_TEXTURE = LegendOfSteve.id("textures/atlas/normal_maps.png");
 
@@ -146,8 +147,8 @@ public class ZeldaRenderLayers extends RenderLayer {
                             RenderPhase.Textures.create()
                                     .add(IRIDESCENT_ATLAS_TEXTURE, false, true)
                                     .add(NORMAL_MAPS_ATLAS_TEXTURE, false, true)
-                                    .add(GradientsTexture.LOCATION, false, false)
-                                    .add(GradientsTexture.LOCATION, false, false)
+                                    .add(IRIDESCENT_GRADIENT_TEXTURE, false, false)
+                                    .add(IRIDESCENT_GRADIENT_TEXTURE, false, false)
                                     .build()
                     ).build(true)
     );
@@ -162,10 +163,10 @@ public class ZeldaRenderLayers extends RenderLayer {
                             .program(ENTITY_IRIDESCENCE_PROGRAM)
                             .texture(Textures.create()
                                     .add(texture, false, false)
-                                    .add(GradientsTexture.LOCATION, false, false) // overlay
-                                    .add(GradientsTexture.LOCATION, false, false) // light
+                                    .add(IRIDESCENT_GRADIENT_TEXTURE, false, false) // overlay
+                                    .add(IRIDESCENT_GRADIENT_TEXTURE, false, false) // light
                                     .add(normal, false, false)
-                                    .add(GradientsTexture.LOCATION, false, false)
+                                    .add(IRIDESCENT_GRADIENT_TEXTURE, false, false)
                                     .build())
                             .transparency(NO_TRANSPARENCY)
                             .cull(DISABLE_CULLING)
@@ -183,10 +184,10 @@ public class ZeldaRenderLayers extends RenderLayer {
                     .program(ITEM_IRIDESCENCE_PROGRAM)
                     .texture(Textures.create()
                             .add(IRIDESCENT_ATLAS_TEXTURE, false, false)
-                            .add(GradientsTexture.LOCATION, false, false) // overlay
-                            .add(GradientsTexture.LOCATION, false, false) // light
+                            .add(IRIDESCENT_GRADIENT_TEXTURE, false, false) // overlay
+                            .add(IRIDESCENT_GRADIENT_TEXTURE, false, false) // light
                             .add(NORMAL_MAPS_ATLAS_TEXTURE, false, false)
-                            .add(GradientsTexture.LOCATION, false, false)
+                            .add(IRIDESCENT_GRADIENT_TEXTURE, false, false)
                             .build())
                     .transparency(NO_TRANSPARENCY)
                     .cull(DISABLE_CULLING)

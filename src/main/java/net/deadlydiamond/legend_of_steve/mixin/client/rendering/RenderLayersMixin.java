@@ -7,11 +7,13 @@ import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.glowing.GlowingBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.glowing.IGlowingBlock;
+import net.deadlydiamond.legend_of_steve.common.fluids.EnchantedSpringWater;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
 import net.deadlydiamond.legend_of_steve.init.client.ZeldaRenderLayers;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.RenderLayers;
+import net.minecraft.fluid.FluidState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -33,6 +35,14 @@ public class RenderLayersMixin {
     private static RenderLayer legend_of_steve$getBlockLayer(RenderLayer original, @Local BlockState state) {
         if (state.getBlock() instanceof IGlowingBlock glowingBlock && state.get(glowingBlock.getGlowingProperty())) {
             return RenderLayer.getSolid();
+        }
+        return original;
+    }
+
+    @ModifyReturnValue(method = "getFluidLayer", at = @At("RETURN"))
+    private static RenderLayer legend_of_steve$getFluidLayer(RenderLayer original, @Local FluidState state) {
+        if (state.getFluid() instanceof EnchantedSpringWater && !state.get(EnchantedSpringWater.GLOWING)) {
+            return RenderLayer.getTranslucent();
         }
         return original;
     }

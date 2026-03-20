@@ -63,7 +63,7 @@ public class BombEntityRenderer<T extends BombEntity> extends EntityRenderer<T> 
 
         // Red Flash Warning ///////////////////////////////////////////////////////////////////////////////////////////
         int startFlash = 15;
-        if (fuse <= startFlash) {
+        if (fuse <= startFlash && entity.isPrimed()) {
             float lowFuseFlash = (float) Math.abs(Math.sin(fuse * 0.4) * 0.5);
 
             VertexConsumer warningFlashVCon = vertexConsumers.getBuffer(RenderLayer.getBeaconBeam(LOW_FUSE_OVERLAY, true));

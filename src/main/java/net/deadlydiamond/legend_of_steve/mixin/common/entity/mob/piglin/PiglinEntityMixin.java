@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.mixin.common.entity.piglin;
+package net.deadlydiamond.legend_of_steve.mixin.common.entity.mob.piglin;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import net.deadlydiamond.legend_of_steve.common.items.bag.QuiverItem;

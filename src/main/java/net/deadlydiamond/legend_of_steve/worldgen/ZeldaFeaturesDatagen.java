@@ -1,13 +1,21 @@
 package net.deadlydiamond.legend_of_steve.worldgen;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
+import net.deadlydiamond.legend_of_steve.common.blocks.plant.BombFlowerBlock;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.HorizontalFacingBlock;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.util.collection.DataPool;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.placementmodifier.HeightRangePlacementModifier;
+import net.minecraft.world.gen.stateprovider.BlockStateProvider;
+import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 
 import static net.deadlydiamond.legend_of_steve.util.datagen.worldgen.ZeldaFeatureConfigUtil.*;
 import static net.deadlydiamond.legend_of_steve.util.datagen.worldgen.ZeldaPlacedFeatureUtil.*;
@@ -19,9 +27,11 @@ public class ZeldaFeaturesDatagen {
     // Config
     public static final RegistryKey<ConfiguredFeature<?, ?>> DEKU_TREE_CFG = registerKeyCFG("deku_tree");
     public static final RegistryKey<ConfiguredFeature<?, ?>> MASTER_ORE_CFG = registerKeyCFG("master_ore");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> BOMB_FLOWER_CFG = registerKeyCFG("bomb_flower");
 
     // Placed
     public static final RegistryKey<PlacedFeature> MASTER_ORE_PLACED = registerPlacedKey("master_ore_placed");
+    public static final RegistryKey<PlacedFeature> BOMB_FLOWER_PLACED = registerPlacedKey("bomb_flower_placed");
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FEATURE CONFIGS /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -38,6 +48,15 @@ public class ZeldaFeaturesDatagen {
                 ZeldaBlocks.MASTER_ORE,
                 ZeldaBlocks.DEEPSLATE_MASTER_ORE
         );
+
+        // Bomb Flower
+
+        registerRandomPatch(context, BOMB_FLOWER_CFG, 40, 8, 1,
+                ZeldaBlocks.BOMB_FLOWER.getDefaultState().with(BombFlowerBlock.AGE, 3).with(HorizontalFacingBlock.FACING, Direction.NORTH),
+                ZeldaBlocks.BOMB_FLOWER.getDefaultState().with(BombFlowerBlock.AGE, 3).with(HorizontalFacingBlock.FACING, Direction.SOUTH),
+                ZeldaBlocks.BOMB_FLOWER.getDefaultState().with(BombFlowerBlock.AGE, 3).with(HorizontalFacingBlock.FACING, Direction.EAST),
+                ZeldaBlocks.BOMB_FLOWER.getDefaultState().with(BombFlowerBlock.AGE, 3).with(HorizontalFacingBlock.FACING, Direction.WEST)
+        );
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -49,6 +68,13 @@ public class ZeldaFeaturesDatagen {
         registerPlaced(context, MASTER_ORE_PLACED, MASTER_ORE_CFG,
                 modifiersWithCount(4, HeightRangePlacementModifier.trapezoid(
                         YOffset.aboveBottom(-80), YOffset.aboveBottom(80))
+                )
+        );
+
+        // Bomb Flower
+        registerPlaced(context, BOMB_FLOWER_PLACED, BOMB_FLOWER_CFG,
+                modifiersWithCount(16, HeightRangePlacementModifier.trapezoid(
+                        YOffset.fixed(-64), YOffset.fixed(50))
                 )
         );
     }

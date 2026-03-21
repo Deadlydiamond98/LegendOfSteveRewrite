@@ -10,6 +10,7 @@ import net.deadlydiamond.legend_of_steve.worldgen.ZeldaStructures;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,6 +36,7 @@ public class LegendOfSteve implements ModInitializer {
 		ZeldaFeatures.register();
 		ZeldaStructures.register();
 		ZeldaBiomeModifications.register();
+		ZeldaAdvancements.register();
 
 		// Networking
 		ZeldaNetworking.registerC2SReceivers();
@@ -45,6 +47,10 @@ public class LegendOfSteve implements ModInitializer {
 
 	public static Identifier id(String path) {
 		return new Identifier(MOD_ID, path);
+	}
+
+	public static Text lang(String prefix, String suffix) {
+		return Text.translatable(prefix + "." + MOD_ID + "." + suffix);
 	}
 
 	public static boolean isModLoaded(String modid) {

@@ -17,5 +17,11 @@ public class ZeldaBiomeModifications {
                 GenerationStep.Feature.UNDERGROUND_ORES,
                 ZeldaFeaturesDatagen.MASTER_ORE_PLACED
         );
+
+        BiomeModifications.addFeature(
+                BiomeSelectors.foundInOverworld(),
+                GenerationStep.Feature.UNDERGROUND_DECORATION,
+                ZeldaFeaturesDatagen.BOMB_FLOWER_PLACED
+        );
     }
 }

@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.mixin.common.entity;
+package net.deadlydiamond.legend_of_steve.mixin.common.entity.mob;
 
 import net.deadlydiamond.legend_of_steve.common.items.bag.QuiverItem;
 import net.deadlydiamond.legend_of_steve.init.ZeldaItems;

@@ -7,19 +7,79 @@
           "input_predicate": {
             "block": "legend_of_steve:fairy_marble_bricks",
             "predicate_type": "minecraft:random_block_match",
-            "probability": 0.125
+            "probability": 0.0625
           },
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:mossy_fairy_marble_bricks"
+            "Name": "legend_of_steve:mossy_fairy_marble_bricks"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_blockstate_match",
+            "block_state": {
+              "Name": "legend_of_steve:fairy_marble_brick_slab",
+              "Properties": {
+                "type": "top"
+              }
+            },
+            "probability": 0.0625
+          },
+          "output_state": {
+            "Name": "legend_of_steve:mossy_fairy_marble_brick_slab",
+            "Properties": {
+              "type": "top"
+            }
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_blockstate_match",
+            "block_state": {
+              "Name": "legend_of_steve:fairy_marble_brick_slab",
+              "Properties": {
+                "type": "bottom"
+              }
+            },
+            "probability": 0.0625
+          },
+          "output_state": {
+            "Name": "legend_of_steve:mossy_fairy_marble_brick_slab",
+            "Properties": {
+              "type": "bottom"
+            }
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_blockstate_match",
+            "block_state": {
+              "Name": "legend_of_steve:fairy_marble_brick_slab",
+              "Properties": {
+                "type": "double"
+              }
+            },
+            "probability": 0.0625
+          },
+          "output_state": {
+            "Name": "legend_of_steve:mossy_fairy_marble_brick_slab",
+            "Properties": {
+              "type": "double"
+            }
           }
         }
       ]
-    },
-    {
-      "processor_type": "legend_of_steve:remove_overlapping_water"
     }
   ]
 }

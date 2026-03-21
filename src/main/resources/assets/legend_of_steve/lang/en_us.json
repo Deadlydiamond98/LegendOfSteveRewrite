@@ -138,5 +138,29 @@
   "subtitles.entity.bomb.secret_jingle": "Secret room revealed",
   "subtitles.entity.bomb.pick_up": "Bomb plops",
   "subtitles.entity.bomb.extinguish": "Bomb extinguished",
-  "subtitles.entity.bomb.primed": "Bomb fizzes"
+  "subtitles.entity.bomb.primed": "Bomb fizzes",
+
+  "advancements.legend_of_steve.root": "Legend of Steve",
+  "advancements.legend_of_steve.root.description": "Does this mean Steve is the Princess?",
+
+  "advancements.legend_of_steve.explosive_harvest": "Explosive Harvest",
+  "advancements.legend_of_steve.explosive_harvest.description": "Harvest a Bomb Flower",
+
+  "advancements.legend_of_steve.extremely_explosive_harvest": "Extremely Explosive Harvest",
+  "advancements.legend_of_steve.extremely_explosive_harvest.description": "Harvest a Charged Bomb Flower",
+
+  "advancements.legend_of_steve.whos_the_creeper_now": "Who's the Creeper Now?",
+  "advancements.legend_of_steve.whos_the_creeper_now.description": "Kill a Creeper with Bombs",
+
+  "advancements.legend_of_steve.bomb_bag": "Bombs++",
+  "advancements.legend_of_steve.bomb_bag.description": "Obtain a Bomb Bag",
+
+  "advancements.legend_of_steve.make_a_wish": "Make a Wish",
+  "advancements.legend_of_steve.make_a_wish.description": "Stumble Across a Fairy Fountain",
+
+  "advancements.legend_of_steve.nothing_beats_a_dip": "Nothing Beats a Dip",
+  "advancements.legend_of_steve.nothing_beats_a_dip.description": "Recover Health and Magic by Relaxing in Enchanted Spring Water",
+
+  "advancements.legend_of_steve.decorative_imprisonment": "Decorative Imprisonment",
+  "advancements.legend_of_steve.decorative_imprisonment.description": "Gather every variant of Fairy Light and ignore the Questionable Ethics behind them..."
 }

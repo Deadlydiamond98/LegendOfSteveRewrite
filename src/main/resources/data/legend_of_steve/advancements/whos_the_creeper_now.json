@@ -1,0 +1,45 @@
+{
+  "parent": "legend_of_steve:explosive_harvest",
+  "criteria": {
+    "get_item": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "minecraft:creeper"
+            }
+          }
+        ],
+        "killing_blow": {
+          "direct_entity": {
+            "type": "legend_of_steve:bomb"
+          },
+          "tags": [
+            {
+              "expected": true,
+              "id": "minecraft:is_explosion"
+            }
+          ]
+        }
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "title": {
+      "translate": "advancements.legend_of_steve.whos_the_creeper_now"
+    },
+    "description": {
+      "translate": "advancements.legend_of_steve.whos_the_creeper_now.description"
+    },
+    "icon": {
+      "item": "legend_of_steve:bomb_flower"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  }
+}

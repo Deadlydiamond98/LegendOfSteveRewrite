@@ -5,7 +5,16 @@
     {
       "weight": 1,
       "element": {
-        "location": "legend_of_steve:fairy_fountain_big",
+        "location": "legend_of_steve:fairy_fountain/fairy_fountain_a",
+        "processors": "legend_of_steve:fairy_fountain_processor",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "legend_of_steve:fairy_fountain/fairy_fountain_b",
         "processors": "legend_of_steve:fairy_fountain_processor",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"

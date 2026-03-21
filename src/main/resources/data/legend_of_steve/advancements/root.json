@@ -1,0 +1,33 @@
+{
+  "criteria": {
+    "get_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:crafting_table"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "title": {
+      "translate": "advancements.legend_of_steve.root"
+    },
+    "description": {
+      "translate": "advancements.legend_of_steve.root.description"
+    },
+    "icon": {
+      "item": "minecraft:grass_block"
+    },
+    "frame": "task",
+
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false,
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "parent": "legend_of_steve:make_a_wish",
+  "criteria": {
+    "requirement": {
+      "trigger": "legend_of_steve:relax_in_spring_water"
+    }
+  },
+  "display": {
+    "title": {
+      "translate": "advancements.legend_of_steve.nothing_beats_a_dip"
+    },
+    "description": {
+      "translate": "advancements.legend_of_steve.nothing_beats_a_dip.description"
+    },
+    "icon": {
+      "item": "legend_of_steve:enchanted_spring_water_bucket"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  }
+}

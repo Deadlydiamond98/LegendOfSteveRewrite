@@ -1,0 +1,32 @@
+{
+  "parent": "legend_of_steve:explosive_harvest",
+  "criteria": {
+    "get_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "legend_of_steve:bomb_bag"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "title": {
+      "translate": "advancements.legend_of_steve.bomb_bag"
+    },
+    "description": {
+      "translate": "advancements.legend_of_steve.bomb_bag.description"
+    },
+    "icon": {
+      "item": "legend_of_steve:bomb_bag"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  }
+}

@@ -95,6 +95,16 @@ public class ZeldaItemTagDatagen extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(KoalaLibTags.PIGLIN_GOLD_ARMOR).add(
                 ZeldaItems.GILDED_QUIVER
         );
+
+        getOrCreateTagBuilder(ZeldaTags.BOMB_BAGS).add(
+                ZeldaItems.BOMB_BAG
+        );
+
+        getOrCreateTagBuilder(ZeldaTags.QUIVERS).add(
+                ZeldaItems.QUIVER,
+                ZeldaItems.GILDED_QUIVER,
+                ZeldaItems.NETHERITE_QUIVER
+        );
     }
 
     private void createItemTags(AbstractBlockset... blocksets) {

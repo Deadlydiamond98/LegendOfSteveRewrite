@@ -1,5 +1,6 @@
 package net.deadlydiamond.legend_of_steve.common.blocks.plant;
 
+import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.bes.BombFlowerBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.blocks.IExplodedInteraction;
 import net.deadlydiamond.legend_of_steve.common.blocks.IExtendedLootTable;
@@ -17,6 +18,7 @@ import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
@@ -32,10 +34,8 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
-import net.minecraft.world.BlockView;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
-import net.minecraft.world.WorldView;
+import net.minecraft.world.*;
+import net.minecraft.world.dimension.DimensionTypes;
 import net.minecraft.world.explosion.Explosion;
 import org.jetbrains.annotations.Nullable;
 
@@ -80,14 +80,17 @@ public class BombFlowerBlock extends HorizontalFacingBlock implements IExplodedI
 
     @Override
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
-        if (world.getBlockState(pos.down()).isIn(ZeldaTags.BOMB_FLOWER_PLANTABLE)) {
-            for (BlockPos blockPos : BlockPos.iterateOutwards(pos, 5, 3, 5)) {
-                if (world.getFluidState(blockPos).isIn(FluidTags.LAVA)) {
-                    return true;
-                }
+        if (!world.getBlockState(pos.down()).isIn(ZeldaTags.BOMB_FLOWER_PLANTABLE)) {
+            return false;
+        }
+
+        for (BlockPos blockPos : BlockPos.iterateOutwards(pos, 5, 3, 5)) {
+            if (world.getFluidState(blockPos).isIn(FluidTags.LAVA)) {
+                return true;
             }
         }
-        return false;
+
+        return isInNether(world);
     }
 
     @Override
@@ -97,9 +100,15 @@ public class BombFlowerBlock extends HorizontalFacingBlock implements IExplodedI
 
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (random.nextInt(10) == 0 && state.canPlaceAt(world, pos)) {
+        if (random.nextFloat() <= getGrowChance(world, pos) && state.canPlaceAt(world, pos)) {
             world.setBlockState(pos, state.with(AGE, state.get(AGE) + 1));
         }
+    }
+
+    private float getGrowChance(ServerWorld world, BlockPos pos) {
+        // More Likely to grow if in the nether, less likely to grow with more skylight outside Nether
+        float modifier = (world.getLightLevel(LightType.SKY, pos) - 8) / 250.0f;
+        return isInNether(world) ? 0.2f : 0.1f - modifier;
     }
 
     @Override
@@ -186,6 +195,12 @@ public class BombFlowerBlock extends HorizontalFacingBlock implements IExplodedI
 
     public void playPrimedSound(World world, BlockPos pos) {
         world.playSound(null, pos, ZeldaSounds.BOMB_PRIMED, SoundCategory.BLOCKS, 0.4f, 0.8f);
+    }
+
+    private boolean isInNether(WorldView world) {
+        return world.getDimension().equals(
+                world.getRegistryManager().get(RegistryKeys.DIMENSION_TYPE).get(DimensionTypes.THE_NETHER)
+        );
     }
 
     @Nullable

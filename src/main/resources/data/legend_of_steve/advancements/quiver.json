@@ -1,11 +1,11 @@
 {
-  "parent": "legend_of_steve:explosive_harvest",
+  "parent": "legend_of_steve:root",
   "criteria": {
     "get_item": {
       "conditions": {
         "items": [
           {
-            "tag": "legend_of_steve:bomb_bags"
+            "tag": "legend_of_steve:quivers"
           }
         ]
       },
@@ -14,13 +14,13 @@
   },
   "display": {
     "title": {
-      "translate": "advancements.legend_of_steve.bomb_bag"
+      "translate": "advancements.legend_of_steve.quiver"
     },
     "description": {
-      "translate": "advancements.legend_of_steve.bomb_bag.description"
+      "translate": "advancements.legend_of_steve.quiver.description"
     },
     "icon": {
-      "item": "legend_of_steve:bomb_bag"
+      "item": "legend_of_steve:quiver"
     },
     "frame": "task",
     "show_toast": true,

@@ -13,10 +13,12 @@ import net.minecraft.registry.tag.TagKey;
 public class ZeldaTags {
 
     // ITEMS ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static final TagKey<Item> BOMB_BAGS = item("bomb_bags");
     public static final TagKey<Item> BOMBS = item("bombs");
+    public static final TagKey<Item> CHISELED_PLANKS_ITEM = item("chiseled_planks");
     public static final TagKey<Item> HELD_OVER_HEAD = item("held_over_head");
     public static final TagKey<Item> IRIDESCENT_ITEM = item("iridescent");
-    public static final TagKey<Item> CHISELED_PLANKS_ITEM = item("chiseled_planks");
+    public static final TagKey<Item> QUIVERS = item("quivers");
 
     // BLOCKS //////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static final TagKey<Block> BOMB_BREAKABLE = block("bomb_breakable");

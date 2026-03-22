@@ -52,9 +52,9 @@
       "translate": "advancements.legend_of_steve.decorative_imprisonment.description"
     },
     "icon": {
-      "item": "legend_of_steve:blue_fairy_lamp"
+      "item": "legend_of_steve:pink_fairy_lamp"
     },
-    "frame": "task",
+    "frame": "challenge",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false

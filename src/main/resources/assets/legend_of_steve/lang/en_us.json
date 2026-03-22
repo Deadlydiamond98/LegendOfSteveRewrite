@@ -162,5 +162,8 @@
   "advancements.legend_of_steve.nothing_beats_a_dip.description": "Recover Health and Magic by Relaxing in Enchanted Spring Water",
 
   "advancements.legend_of_steve.decorative_imprisonment": "Decorative Imprisonment",
-  "advancements.legend_of_steve.decorative_imprisonment.description": "Gather every variant of Fairy Light and ignore the Questionable Ethics behind them..."
+  "advancements.legend_of_steve.decorative_imprisonment.description": "Obtain every variant of Fairy Light and ignore the Questionable Ethics behind them...",
+
+  "advancements.legend_of_steve.quiver": "Arrows++",
+  "advancements.legend_of_steve.quiver.description": "Obtain a Quiver"
 }

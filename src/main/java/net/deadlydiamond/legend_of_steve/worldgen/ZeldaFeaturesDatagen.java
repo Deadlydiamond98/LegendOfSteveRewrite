@@ -26,6 +26,7 @@ public class ZeldaFeaturesDatagen {
 
     // Config
     public static final RegistryKey<ConfiguredFeature<?, ?>> DEKU_TREE_CFG = registerKeyCFG("deku_tree");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> LARGE_DEKU_TREE_CFG = registerKeyCFG("large_deku_tree");
     public static final RegistryKey<ConfiguredFeature<?, ?>> MASTER_ORE_CFG = registerKeyCFG("master_ore");
     public static final RegistryKey<ConfiguredFeature<?, ?>> BOMB_FLOWER_CFG = registerKeyCFG("bomb_flower");
 
@@ -41,6 +42,7 @@ public class ZeldaFeaturesDatagen {
 
         // Deku Tree
         registerCFG(context, DEKU_TREE_CFG, ZeldaFeatures.DEKU_TREE_FEATURE, new DefaultFeatureConfig());
+        registerCFG(context, LARGE_DEKU_TREE_CFG, ZeldaFeatures.LARGE_DEKU_TREE_FEATURE, new DefaultFeatureConfig());
 
         // Master Ore
         registerOverworldOre(context, MASTER_ORE_CFG,

@@ -16,7 +16,7 @@ import net.minecraft.world.gen.feature.util.FeatureContext;
 
 import java.util.function.Consumer;
 
-public class SmallDekuTreeFeature extends Feature<DefaultFeatureConfig> {
+public class SmallDekuTreeFeature extends AbstractDekuTreeFeature {
     public SmallDekuTreeFeature(Codec<DefaultFeatureConfig> configCodec) {
         super(configCodec);
     }
@@ -28,13 +28,17 @@ public class SmallDekuTreeFeature extends Feature<DefaultFeatureConfig> {
         Random random = context.getRandom();
         int trunkHeight = 3 + random.nextBetween(0, 1);
 
-        // TREE BASE
+        if (!canGenerate(world, pos, pos.add(1, trunkHeight + 5, 1))) {
+            return false;
+        }
+
+        // tree base
         placeWithDirt(world, pos, ZeldaBlocks.DEKU_WOOD.log);
         placeWithDirt(world, pos.east(), ZeldaBlocks.DEKU_WOOD.log);
         placeWithDirt(world, pos.south(), ZeldaBlocks.DEKU_WOOD.log);
         placeWithDirt(world, pos.south().east(), ZeldaBlocks.DEKU_WOOD.log);
 
-        // TREE SIDE ROOT THINGS
+        // Tree root things
         Direction direction = Direction.Type.HORIZONTAL.random(random);
 
         placeSpiral(direction, pos, pos1 -> {
@@ -56,29 +60,24 @@ public class SmallDekuTreeFeature extends Feature<DefaultFeatureConfig> {
 
         pos = pos.up();
 
-
-        BlockPos cornerTL = pos.offset(Direction.NORTH, 2).offset(Direction.WEST, 2);
-        BlockPos cornerTR = cornerTL.offset(Direction.EAST, 5);
-        BlockPos cornerBL = cornerTL.offset(Direction.SOUTH, 5);
-        BlockPos cornerBR = cornerTL.offset(Direction.SOUTH, 5).offset(Direction.EAST, 5);
-
-        BlockPos.iterate(cornerTL, cornerBR).forEach(pos1 -> {
-            place(world, pos1, ZeldaBlocks.DEKU_LEAVES.getDefaultState());
-        });
-
-        place(world, cornerTL, Blocks.AIR.getDefaultState());
-        place(world, cornerTR, Blocks.AIR.getDefaultState());
-        place(world, cornerBL, Blocks.AIR.getDefaultState());
-        place(world, cornerBR, Blocks.AIR.getDefaultState());
-
         placeSpiral(direction.rotateYClockwise(), pos, pos1 -> {
             place(world, pos1, ZeldaBlocks.DEKU_WOOD.log.getDefaultState());
         });
 
-//        createBresenhamCircle(world, pos.up(4), Blocks.RED_WOOL.getDefaultState(), 4);
-//        createBresenhamCircle(world, pos.up(5), Blocks.RED_WOOL.getDefaultState(), 5);
-//        createBresenhamCircle(world, pos.up(6), Blocks.RED_WOOL.getDefaultState(), 4);
+        // Leaves
 
+        if (random.nextBoolean()) {
+            placeSmallerLeafCircle(world, pos);
+            placeLeafCircle(world, pos.up());
+            placeSmallerLeafCircle(world, pos.up(2));
+        } else {
+            pos = random.nextBoolean() ? pos : pos.down();
+
+            placeSmallerLeafCircle(world, pos);
+            placeLeafCircle(world, pos.up());
+            placeLeafCircle(world, pos.up(2));
+            placeSmallerLeafCircle(world, pos.up(3));
+        }
 
         return true;
     }
@@ -106,57 +105,113 @@ public class SmallDekuTreeFeature extends Feature<DefaultFeatureConfig> {
         }
     }
 
-    private void placeWithDirt(StructureWorldAccess world, BlockPos pos, Block block) {
-        BlockState belowBlock = world.getBlockState(pos.down());
-        if (belowBlock.isFullCube(world, pos.down()) && world.getBlockState(pos).isReplaceable()) {
-            if (supportsTrees(belowBlock)) {
-                place(world, pos.down(), Blocks.DIRT.getDefaultState());
-            }
+    /**
+     * These Leaf Placing Methods aren't procedural, but it gives results that I've found I like better.
+     */
 
-            place(world, pos, block.getDefaultState());
-        }
+    private void placeSmallerLeafCircle(StructureWorldAccess world, BlockPos pos) {
+        BlockPos cornerTL = pos.offset(Direction.NORTH, 2).offset(Direction.WEST, 2);
+
+        placeLeaf(world, cornerTL.east());
+        placeLeaf(world, cornerTL.east(2));
+        placeLeaf(world, cornerTL.east(3));
+        placeLeaf(world, cornerTL.east(4));
+
+        placeLeaf(world, cornerTL.south());
+        placeLeaf(world, cornerTL.south().east());
+        placeLeaf(world, cornerTL.south().east(2));
+        placeLeaf(world, cornerTL.south().east(3));
+        placeLeaf(world, cornerTL.south().east(4));
+        placeLeaf(world, cornerTL.south().east(5));
+
+        placeLeaf(world, cornerTL.south(2));
+        placeLeaf(world, cornerTL.south(2).east());
+        placeLeaf(world, cornerTL.south(2).east(2));
+        placeLeaf(world, cornerTL.south(2).east(3));
+        placeLeaf(world, cornerTL.south(2).east(4));
+        placeLeaf(world, cornerTL.south(2).east(5));
+
+        placeLeaf(world, cornerTL.south(3));
+        placeLeaf(world, cornerTL.south(3).east());
+        placeLeaf(world, cornerTL.south(3).east(2));
+        placeLeaf(world, cornerTL.south(3).east(3));
+        placeLeaf(world, cornerTL.south(3).east(4));
+        placeLeaf(world, cornerTL.south(3).east(5));
+
+        placeLeaf(world, cornerTL.south(4));
+        placeLeaf(world, cornerTL.south(4).east());
+        placeLeaf(world, cornerTL.south(4).east(2));
+        placeLeaf(world, cornerTL.south(4).east(3));
+        placeLeaf(world, cornerTL.south(4).east(4));
+        placeLeaf(world, cornerTL.south(4).east(5));
+
+        placeLeaf(world, cornerTL.south(5).east());
+        placeLeaf(world, cornerTL.south(5).east(2));
+        placeLeaf(world, cornerTL.south(5).east(3));
+        placeLeaf(world, cornerTL.south(5).east(4));
     }
 
-    private void place(StructureWorldAccess world, BlockPos pos, BlockState block) {
-        world.setBlockState(pos, block, Block.NOTIFY_LISTENERS);
+    private void placeLeafCircle(StructureWorldAccess world, BlockPos pos) {
+        BlockPos cornerTL = pos.offset(Direction.NORTH, 3).offset(Direction.WEST, 3);
+
+        placeLeaf(world, cornerTL.east(2));
+        placeLeaf(world, cornerTL.east(3));
+        placeLeaf(world, cornerTL.east(4));
+        placeLeaf(world, cornerTL.east(5));
+
+        placeLeaf(world, cornerTL.south().east());
+        placeLeaf(world, cornerTL.south().east(2));
+        placeLeaf(world, cornerTL.south().east(3));
+        placeLeaf(world, cornerTL.south().east(4));
+        placeLeaf(world, cornerTL.south().east(5));
+        placeLeaf(world, cornerTL.south().east(6));
+
+        placeLeaf(world, cornerTL.south(2));
+        placeLeaf(world, cornerTL.south(2).east());
+        placeLeaf(world, cornerTL.south(2).east(2));
+        placeLeaf(world, cornerTL.south(2).east(3));
+        placeLeaf(world, cornerTL.south(2).east(4));
+        placeLeaf(world, cornerTL.south(2).east(5));
+        placeLeaf(world, cornerTL.south(2).east(6));
+        placeLeaf(world, cornerTL.south(2).east(7));
+
+        placeLeaf(world, cornerTL.south(3));
+        placeLeaf(world, cornerTL.south(3).east());
+        placeLeaf(world, cornerTL.south(3).east(2));
+        placeLeaf(world, cornerTL.south(3).east(3));
+        placeLeaf(world, cornerTL.south(3).east(4));
+        placeLeaf(world, cornerTL.south(3).east(5));
+        placeLeaf(world, cornerTL.south(3).east(6));
+        placeLeaf(world, cornerTL.south(3).east(7));
+
+        placeLeaf(world, cornerTL.south(4));
+        placeLeaf(world, cornerTL.south(4).east());
+        placeLeaf(world, cornerTL.south(4).east(2));
+        placeLeaf(world, cornerTL.south(4).east(3));
+        placeLeaf(world, cornerTL.south(4).east(4));
+        placeLeaf(world, cornerTL.south(4).east(5));
+        placeLeaf(world, cornerTL.south(4).east(6));
+        placeLeaf(world, cornerTL.south(4).east(7));
+
+        placeLeaf(world, cornerTL.south(5));
+        placeLeaf(world, cornerTL.south(5).east());
+        placeLeaf(world, cornerTL.south(5).east(2));
+        placeLeaf(world, cornerTL.south(5).east(3));
+        placeLeaf(world, cornerTL.south(5).east(4));
+        placeLeaf(world, cornerTL.south(5).east(5));
+        placeLeaf(world, cornerTL.south(5).east(6));
+        placeLeaf(world, cornerTL.south(5).east(7));
+
+        placeLeaf(world, cornerTL.south(6).east());
+        placeLeaf(world, cornerTL.south(6).east(2));
+        placeLeaf(world, cornerTL.south(6).east(3));
+        placeLeaf(world, cornerTL.south(6).east(4));
+        placeLeaf(world, cornerTL.south(6).east(5));
+        placeLeaf(world, cornerTL.south(6).east(6));
+
+        placeLeaf(world, cornerTL.south(7).east(2));
+        placeLeaf(world, cornerTL.south(7).east(3));
+        placeLeaf(world, cornerTL.south(7).east(4));
+        placeLeaf(world, cornerTL.south(7).east(5));
     }
-
-    private boolean supportsTrees(BlockState block) {
-        return block.isIn(BlockTags.DIRT) || block.isOf(Blocks.FARMLAND);
-    }
-
-    private void createBresenhamCircle(StructureWorldAccess world, BlockPos pos, BlockState block, double radius) {
-        double x = 0;
-        double z = radius;
-        double d = 3 - 2 * radius;
-
-        createCirclePart(world, pos, block, x, z);
-
-        while (z >= x) {
-            if (d > 0) {
-                z--;
-                d = d + 4 * (x - z) + 10;
-            } else {
-                d = d + 4 * x + 6;
-            }
-
-            x++;
-            createCirclePart(world, pos, block, x, z);
-        }
-    }
-
-    private void createCirclePart(StructureWorldAccess world, BlockPos pos, BlockState block, double x, double z) {
-        fillHorizontalLine(world, pos, block, z, x);
-        fillHorizontalLine(world, pos, block, -z, x);
-
-        fillHorizontalLine(world, pos, block, x, z);
-        fillHorizontalLine(world, pos, block, -x, z);
-    }
-
-    private void fillHorizontalLine(StructureWorldAccess world, BlockPos pos, BlockState block, double zOffset, double radius) {
-        for (double i = -radius; i <= radius; i++) {
-            place(world, new BlockPos((int) Math.round(pos.getX() + i), pos.getY(), (int) Math.round(pos.getZ() + zOffset)), block);
-        }
-    }
-
 }

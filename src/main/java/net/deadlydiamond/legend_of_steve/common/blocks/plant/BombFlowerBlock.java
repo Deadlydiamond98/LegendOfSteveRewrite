@@ -1,6 +1,5 @@
 package net.deadlydiamond.legend_of_steve.common.blocks.plant;
 
-import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.bes.BombFlowerBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.blocks.IExplodedInteraction;
 import net.deadlydiamond.legend_of_steve.common.blocks.IExtendedLootTable;
@@ -13,7 +12,7 @@ import net.deadlydiamond98.koalalib.util.IgnitionHelper;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.Ownable;
 import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
@@ -44,6 +43,7 @@ public class BombFlowerBlock extends HorizontalFacingBlock implements IExplodedI
     public static final VoxelShape BOMB_AGE_1_SHAPE = Block.createCuboidShape(6, 2, 6, 10, 6, 10);
     public static final VoxelShape BOMB_AGE_2_SHAPE = Block.createCuboidShape(5, 2, 5, 11, 8, 11);
     public static final VoxelShape BOMB_AGE_3_SHAPE = Block.createCuboidShape(4, 2, 4, 12, 10, 12);
+
     public static final BooleanProperty CHARGED = BooleanProperty.of("charged");
     public static final IntProperty AGE = Properties.AGE_3;
 
@@ -113,13 +113,21 @@ public class BombFlowerBlock extends HorizontalFacingBlock implements IExplodedI
 
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        if (!world.isClient && entity instanceof ProjectileEntity projectile && state.get(AGE) >= 3) {
-            LivingEntity owner = projectile.getOwner() instanceof LivingEntity living ? living : null;
-            if (projectile.isOnFire() && projectile.canModifyAt(world, pos)) {
+        if (!world.isClient && state.get(AGE) >= 3) {
+            if (entity.isOnFire() && entity.canModifyAt(world, pos)) {
+                Entity owner = entity;
+                if (entity instanceof Ownable ownable) {
+                    owner = ownable.getOwner();
+                }
                 playPrimedSound(world, pos);
                 igniteBomb(world, pos, 1, owner);
             }
         }
+    }
+
+    @Override
+    public void onProjectileHit(World world, BlockState state, BlockHitResult hit, ProjectileEntity projectile) {
+        onEntityCollision(state, world, hit.getBlockPos(), projectile);
     }
 
     @Override
@@ -134,7 +142,7 @@ public class BombFlowerBlock extends HorizontalFacingBlock implements IExplodedI
         igniteBomb(world, blockPos, world.getRandom().nextBetween(4, 7), explosion.getCausingEntity());
     }
 
-    private void igniteBomb(World world, BlockPos blockPos, int fuseDividend, @Nullable LivingEntity owner) {
+    private void igniteBomb(World world, BlockPos blockPos, int fuseDividend, @Nullable Entity owner) {
         BlockState state = world.getBlockState(blockPos);
         if (state.get(AGE) >= 3 && !world.isClient) {
             BombEntity bomb = new BombEntity(ZeldaEntityTypes.BOMB, world);
@@ -165,6 +173,14 @@ public class BombFlowerBlock extends HorizontalFacingBlock implements IExplodedI
             case 3 -> VoxelShapes.union(LEAF_SHAPE, BOMB_AGE_3_SHAPE);
             default -> LEAF_SHAPE;
         };
+    }
+
+    @Override
+    public VoxelShape getRaycastShape(BlockState state, BlockView world, BlockPos pos) {
+        if (state.get(AGE) >= 3) {
+            return VoxelShapes.fullCube();
+        }
+        return super.getRaycastShape(state, world, pos);
     }
 
     @Nullable

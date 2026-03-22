@@ -3,6 +3,7 @@ package net.deadlydiamond.legend_of_steve.common.fluids;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
 import net.deadlydiamond.legend_of_steve.init.ZeldaFluids;
 import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
+import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FluidBlock;
@@ -11,6 +12,7 @@ import net.minecraft.fluid.FlowableFluid;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.item.Item;
+import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
@@ -102,7 +104,7 @@ public class EnchantedSpringWater extends FlowableFluid {
 
     @Override
     protected boolean canBeReplacedWith(FluidState state, BlockView world, BlockPos pos, Fluid fluid, Direction direction) {
-        return false;
+        return direction == Direction.DOWN && !fluid.isIn(ZeldaTags.ENCHANTED_SPRING_WATER);
     }
 
     @Override

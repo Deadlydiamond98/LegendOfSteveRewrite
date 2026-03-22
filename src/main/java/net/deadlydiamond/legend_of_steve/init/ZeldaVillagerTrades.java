@@ -8,6 +8,7 @@ import net.minecraft.village.TradeOffer;
 public class ZeldaVillagerTrades {
     public static void register() {
         registerWanderingTrader(2, 5, new ItemStack(ZeldaItems.BOMB_FLOWER, 4), 4, 1);
+        registerWanderingTrader(1, 5, new ItemStack(ZeldaBlocks.DEKU_SAPLING), 8, 1);
     }
 
     public static void registerWanderingTrader(int level, int cost, ItemStack offer, int maxUses, int exp) {

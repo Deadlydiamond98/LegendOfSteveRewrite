@@ -9,6 +9,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
+import net.minecraft.world.biome.Biome;
 
 public class ZeldaTags {
 
@@ -28,6 +29,9 @@ public class ZeldaTags {
     // FLUIDS //////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static final TagKey<Fluid> ENCHANTED_SPRING_WATER = fluid("enchanted_spring_water");
 
+    // BIOMES //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static final TagKey<Biome> GENERATES_DEKU_TREES = biome("generates_deku_trees");
+
     // Registry ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private static TagKey<Item> item(String name) {
@@ -40,6 +44,10 @@ public class ZeldaTags {
 
     private static TagKey<Fluid> fluid(String name) {
         return getTag(RegistryKeys.FLUID, name);
+    }
+
+    private static TagKey<Biome> biome(String name) {
+        return getTag(RegistryKeys.BIOME, name);
     }
 
     private static TagKey<EntityType<?>> entity(String name) {

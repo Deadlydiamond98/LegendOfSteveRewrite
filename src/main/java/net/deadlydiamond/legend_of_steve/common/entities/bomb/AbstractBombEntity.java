@@ -1,5 +1,6 @@
 package net.deadlydiamond.legend_of_steve.common.entities.bomb;
 
+import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.items.bag.BombBagItem;
 import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
 import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
@@ -8,6 +9,7 @@ import net.deadlydiamond98.koalalib.common.entity.PhysicsItemProjectile;
 import net.deadlydiamond98.koalalib.util.IgnitionHelper;
 import net.deadlydiamond98.koalalib.util.KoalaNbtHelper;
 import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.damage.DamageSource;
@@ -91,6 +93,7 @@ public abstract class AbstractBombEntity extends PhysicsItemProjectile implement
 
     @Override
     protected void tickDespawn() {
+
         int fuse = this.isInLava() ? 0 : this.getFuse();
         boolean lit = isPrimed();
 
@@ -102,16 +105,15 @@ public abstract class AbstractBombEntity extends PhysicsItemProjectile implement
                 setLitTime(getLitTime() + 1);
             }
         } else {
-            if (!this.getWorld().isClient && this.age >= 6000) {
-                despawn();
+            for (Entity otherEntity : getWorld().getOtherEntities(this, getBoundingBox(), entity -> !(entity instanceof AbstractBombEntity))) {
+                if (otherEntity.isOnFire()) {
+                    this.setFireTicks(otherEntity.getFireTicks());
+                    break;
+                }
             }
 
-            if (isOnFire() && fuse > 0) {
-                setPrimed(true);
-                setMaxFuse(getMaxFuse() / 2);
-                fuse = getMaxFuse();
-                this.playSound(ZeldaSounds.BOMB_PRIMED, 0.4f, 0.8f);
-                setFireTicks(0);
+            if (!this.getWorld().isClient && this.age >= 6000) {
+                despawn();
             }
         }
 
@@ -180,12 +182,30 @@ public abstract class AbstractBombEntity extends PhysicsItemProjectile implement
         return ZeldaItems.BOMB;
     }
 
+    // Fire Related Things /////////////////////////////////////////////////////////////////////////////////////////////
+
     @Override
     public boolean doesRenderOnFire() {
         return false;
     }
 
-    // GETTERS & SETTERS
+    @Override
+    public void setFireTicks(int fireTicks) {
+        if (!isPrimed() && fireTicks > 0) {
+            setPrimed(true);
+            setMaxFuse(getMaxFuse() / 2);
+            if (!isInLava()) {
+                this.playSound(ZeldaSounds.BOMB_PRIMED, 0.4f, 0.8f);
+            }
+        }
+    }
+
+    @Override
+    public int getFireTicks() {
+        return 0;
+    }
+
+    // GETTERS & SETTERS ///////////////////////////////////////////////////////////////////////////////////////////////
 
     public void writeCustomDataToNbt(NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);

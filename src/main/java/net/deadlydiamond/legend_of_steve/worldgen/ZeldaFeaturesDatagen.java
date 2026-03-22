@@ -17,6 +17,8 @@ import net.minecraft.world.gen.placementmodifier.HeightRangePlacementModifier;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 
+import java.util.List;
+
 import static net.deadlydiamond.legend_of_steve.util.datagen.worldgen.ZeldaFeatureConfigUtil.*;
 import static net.deadlydiamond.legend_of_steve.util.datagen.worldgen.ZeldaPlacedFeatureUtil.*;
 
@@ -33,16 +35,14 @@ public class ZeldaFeaturesDatagen {
     // Placed
     public static final RegistryKey<PlacedFeature> MASTER_ORE_PLACED = registerPlacedKey("master_ore_placed");
     public static final RegistryKey<PlacedFeature> BOMB_FLOWER_PLACED = registerPlacedKey("bomb_flower_placed");
+    public static final RegistryKey<PlacedFeature> DEKU_TREE_PLACED = registerPlacedKey("deku_tree_placed");
+    public static final RegistryKey<PlacedFeature> LARGE_DEKU_TREE_PLACED = registerPlacedKey("large_deku_tree_placed");
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FEATURE CONFIGS /////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public static void registerFeatureConfigs(Registerable<ConfiguredFeature<?, ?>> context) {
-
-        // Deku Tree
-        registerCFG(context, DEKU_TREE_CFG, ZeldaFeatures.DEKU_TREE_FEATURE, new DefaultFeatureConfig());
-        registerCFG(context, LARGE_DEKU_TREE_CFG, ZeldaFeatures.LARGE_DEKU_TREE_FEATURE, new DefaultFeatureConfig());
 
         // Master Ore
         registerOverworldOre(context, MASTER_ORE_CFG,
@@ -52,13 +52,16 @@ public class ZeldaFeaturesDatagen {
         );
 
         // Bomb Flower
-
         registerRandomPatch(context, BOMB_FLOWER_CFG, 40, 8, 1,
                 ZeldaBlocks.BOMB_FLOWER.getDefaultState().with(BombFlowerBlock.AGE, 3).with(HorizontalFacingBlock.FACING, Direction.NORTH),
                 ZeldaBlocks.BOMB_FLOWER.getDefaultState().with(BombFlowerBlock.AGE, 3).with(HorizontalFacingBlock.FACING, Direction.SOUTH),
                 ZeldaBlocks.BOMB_FLOWER.getDefaultState().with(BombFlowerBlock.AGE, 3).with(HorizontalFacingBlock.FACING, Direction.EAST),
                 ZeldaBlocks.BOMB_FLOWER.getDefaultState().with(BombFlowerBlock.AGE, 3).with(HorizontalFacingBlock.FACING, Direction.WEST)
         );
+
+        // Deku Tree
+        registerCFG(context, DEKU_TREE_CFG, ZeldaFeatures.DEKU_TREE_FEATURE, new DefaultFeatureConfig());
+        registerCFG(context, LARGE_DEKU_TREE_CFG, ZeldaFeatures.LARGE_DEKU_TREE_FEATURE, new DefaultFeatureConfig());
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -79,6 +82,15 @@ public class ZeldaFeaturesDatagen {
                         YOffset.fixed(-64), YOffset.fixed(50))
                 )
         );
+
+        // Deku Tree
+        registerPlaced(context, LARGE_DEKU_TREE_PLACED, LARGE_DEKU_TREE_CFG, VegetationPlacedFeatures.treeModifiersWithWouldSurvive(
+                PlacedFeatures.createCountExtraModifier(0, 0.02f, 1), ZeldaBlocks.DEKU_SAPLING
+        ));
+
+        registerPlaced(context, DEKU_TREE_PLACED, DEKU_TREE_CFG, VegetationPlacedFeatures.treeModifiersWithWouldSurvive(
+                PlacedFeatures.createCountExtraModifier(0, 0.02f, 1), ZeldaBlocks.DEKU_SAPLING
+        ));
     }
 
     // HELPER METHODS //////////////////////////////////////////////////////////////////////////////////////////////////

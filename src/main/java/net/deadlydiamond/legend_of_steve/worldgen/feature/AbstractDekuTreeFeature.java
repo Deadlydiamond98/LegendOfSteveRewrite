@@ -43,7 +43,7 @@ public abstract class AbstractDekuTreeFeature extends Feature<DefaultFeatureConf
 
     protected boolean placeWithDirt(StructureWorldAccess world, BlockPos pos, BlockState block) {
         BlockState belowBlock = world.getBlockState(pos.down());
-        if (belowBlock.isFullCube(world, pos.down()) && world.getBlockState(pos).isReplaceable()) {
+        if (belowBlock.isFullCube(world, pos.down()) && canGenerateAt(world, pos)) {
             if (supportsTrees(belowBlock)) {
                 place(world, pos.down(), Blocks.DIRT.getDefaultState());
             }

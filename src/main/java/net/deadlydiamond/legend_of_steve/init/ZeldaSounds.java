@@ -33,6 +33,11 @@ public class ZeldaSounds {
     // Tektiles ////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static final BlockSoundGroup TEKTILES = registerGroup("tektiles", 1, 1.25f);
 
+    // EMERALD SHARDS //////////////////////////////////////////////////////////////////////////////////////////////////
+    public static final SoundEvent EMERALD_SHARD_PICKED_UP = register("item.emerald_shard.pick_up");
+    public static final SoundEvent EMERALD_SHARD_CONDENSE = register("item.emerald_shard.condense");
+    public static final SoundEvent EMERALD_SHARD_CONDENSE_FURTHER = register("item.emerald_shard.condense_further");
+
     // HELPER METHODS //////////////////////////////////////////////////////////////////////////////////////////////////
 
     public static SoundEvent register(String name) {

@@ -23,11 +23,17 @@ public class ZeldaCreativeTabs {
                 // BOMB BAGS
 
                 ZeldaItems.BOMB_BAG,
+                ZeldaItems.GILDED_BOMB_BAG,
+                ZeldaItems.NETHERITE_BOMB_BAG,
 
                 // QUIVERS
                 ZeldaItems.QUIVER,
                 ZeldaItems.GILDED_QUIVER,
                 ZeldaItems.NETHERITE_QUIVER,
+
+                // EMERALD SHARDS
+                ZeldaItems.EMERALD_SHARD,
+                ZeldaItems.EMERALD_CHUNK,
 
                 // CHITIN
                 ZeldaItems.BLUE_TEKTITE_CHITIN,

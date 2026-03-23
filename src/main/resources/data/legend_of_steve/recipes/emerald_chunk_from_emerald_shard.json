@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "legend_of_steve:emerald_shard"
+    },
+    {
+      "item": "legend_of_steve:emerald_shard"
+    },
+    {
+      "item": "legend_of_steve:emerald_shard"
+    },
+    {
+      "item": "legend_of_steve:emerald_shard"
+    },
+    {
+      "item": "legend_of_steve:emerald_shard"
+    },
+    {
+      "item": "legend_of_steve:emerald_shard"
+    },
+    {
+      "item": "legend_of_steve:emerald_shard"
+    },
+    {
+      "item": "legend_of_steve:emerald_shard"
+    }
+  ],
+  "result": {
+    "item": "legend_of_steve:emerald_chunk"
+  }
+}

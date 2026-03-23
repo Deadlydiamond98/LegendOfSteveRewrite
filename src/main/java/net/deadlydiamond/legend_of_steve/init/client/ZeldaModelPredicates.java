@@ -1,5 +1,6 @@
 package net.deadlydiamond.legend_of_steve.init.client;
 
+import net.deadlydiamond.legend_of_steve.common.items.bag.BombBagItem;
 import net.deadlydiamond.legend_of_steve.common.items.bag.QuiverItem;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
 import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
@@ -23,7 +24,7 @@ public class ZeldaModelPredicates {
 
     private static void registerModelPredicates() {
         // BAGS
-        registerBagPredicate(List.of(ZeldaItems.BOMB_BAG), 2);
+        registerBagPredicate(BombBagItem.BOMB_BAGS, 2);
         registerBagPredicate(QuiverItem.QUIVERS, 4);
     }
 

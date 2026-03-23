@@ -1,0 +1,35 @@
+{
+  "processors": [
+    {
+      "processor_type": "minecraft:rule",
+      "rules": [
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_block_match",
+            "block": "minecraft:cobweb",
+            "probability": 0.9
+          },
+          "output_state": {
+            "Name": "minecraft:air"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_block_match",
+            "block": "legend_of_steve:deku_leaves",
+            "probability": 0.05
+          },
+          "output_state": {
+            "Name": "legend_of_steve:fruiting_deku_leaves"
+          }
+        }
+      ]
+    }
+  ]
+}

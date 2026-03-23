@@ -35,16 +35,16 @@ public class BombHeldItemRenderer extends CustomHeldItemRenderer {
 
     @Override
     public void render(LivingEntity entity, ItemStack stack, ModelTransformationMode transformationMode, Arm arm, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, PlayerEntityModel model, HeldItemRenderer playerHeldItemRenderer) {
-        if (stack.getItem() instanceof BombBagItem) {
-            ItemStack bombStack = BombBagItem.getFirstStack(stack);
-            if (!bombStack.isEmpty()) {
-                this.render(entity, bombStack, transformationMode, arm, matrices, vertexConsumers, light, model, playerHeldItemRenderer);
-                return;
-            }
-        }
-
         if (entity instanceof PlayerEntity player) {
             if (!player.getItemCooldownManager().isCoolingDown(stack.getItem())) {
+                if (stack.getItem() instanceof BombBagItem) {
+                    ItemStack bombStack = BombBagItem.getFirstStack(stack);
+                    if (!bombStack.isEmpty()) {
+                        this.render(entity, bombStack, transformationMode, arm, matrices, vertexConsumers, light, model, playerHeldItemRenderer);
+                        return;
+                    }
+                }
+
                 BombEntityModel<BombEntity> bombModel = new BombEntityModel<>(MinecraftClient.getInstance().getEntityModelLoader().getModelPart(BombEntityModel.LAYER_LOCATION));
 
                 matrices.push();

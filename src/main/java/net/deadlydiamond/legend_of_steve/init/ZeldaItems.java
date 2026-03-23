@@ -1,6 +1,7 @@
 package net.deadlydiamond.legend_of_steve.init;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
+import net.deadlydiamond.legend_of_steve.common.items.EmeraldShardItem;
 import net.deadlydiamond.legend_of_steve.common.items.bag.BombBagItem;
 import net.deadlydiamond.legend_of_steve.common.items.bag.QuiverItem;
 import net.deadlydiamond.legend_of_steve.common.items.projectile.explosive.BombItem;
@@ -9,7 +10,6 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Rarity;
@@ -27,6 +27,8 @@ public class ZeldaItems {
     // BAGS ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // BOMB BAG
     public static final Item BOMB_BAG = register("bomb_bag", new BombBagItem(new FabricItemSettings(), 80));
+    public static final Item GILDED_BOMB_BAG = register("gilded_bomb_bag", new BombBagItem(new FabricItemSettings(), 160));
+    public static final Item NETHERITE_BOMB_BAG = register("netherite_bomb_bag", new BombBagItem(new FabricItemSettings().fireproof(), 320));
 
     // QUIVER
     public static final Item QUIVER = registerQuiver("quiver", 160, ArmorMaterials.LEATHER, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER);
@@ -34,6 +36,13 @@ public class ZeldaItems {
     public static final Item NETHERITE_QUIVER = registerQuiver("netherite_quiver", 160, ArmorMaterials.NETHERITE, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE);
 
     // MATERIALS ///////////////////////////////////////////////////////////////////////////////////////////////////////
+    // EMERALD SHARD
+    public static final Item EMERALD_CHUNK = register("emerald_chunk", new EmeraldShardItem(
+            new FabricItemSettings(), ZeldaSounds.EMERALD_SHARD_CONDENSE_FURTHER, Items.EMERALD
+    ));
+    public static final Item EMERALD_SHARD = register("emerald_shard", new EmeraldShardItem(
+            new FabricItemSettings(), ZeldaSounds.EMERALD_SHARD_CONDENSE, EMERALD_CHUNK
+    ));
     // TEKTITE CHITIN
     public static final Item BLUE_TEKTITE_CHITIN = register("blue_tektite_chitin", new Item(new FabricItemSettings()));
     public static final Item BLUE_TEKTITE_SHELL = register("blue_tektite_shell", new Item(new FabricItemSettings()));

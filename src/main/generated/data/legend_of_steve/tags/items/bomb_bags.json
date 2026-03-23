@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "legend_of_steve:bomb_bag"
+    "legend_of_steve:bomb_bag",
+    "legend_of_steve:gilded_bomb_bag",
+    "legend_of_steve:netherite_bomb_bag"
   ]
 }

@@ -6,7 +6,7 @@ import net.deadlydiamond.legend_of_steve.common.blocks.SpringWaterBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.GirderBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.glowing.GlowingBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.BombFlowerBlock;
-import net.deadlydiamond.legend_of_steve.common.blocks.plant.FruitingLeaves;
+import net.deadlydiamond.legend_of_steve.common.blocks.plant.FruitingLeavesBlock;
 import net.deadlydiamond.legend_of_steve.common.blocksets.IridescentStairSlabWallBlockset;
 import net.deadlydiamond.legend_of_steve.common.blocksets.IridescentStoneBlockset;
 import net.deadlydiamond.legend_of_steve.worldgen.sapling.DekuSaplingGenerator;
@@ -51,7 +51,7 @@ public class ZeldaBlocks {
     public static final WoodBlockset DEKU_WOOD = new WoodBlockset(LegendOfSteve.MOD_ID, "deku", DEKU_WOOD_SETTINGS, BlockSetType.CHERRY);
 
     public static final Block DEKU_LEAVES = register("deku_leaves", new LeavesBlock(DEKU_LEAVES_SETTINGS));
-    public static final Block FRUITING_DEKU_LEAVES = register("fruiting_deku_leaves", new FruitingLeaves(DEKU_LEAVES_SETTINGS, DEKU_LEAVES));
+    public static final Block FRUITING_DEKU_LEAVES = register("fruiting_deku_leaves", new FruitingLeavesBlock(DEKU_LEAVES_SETTINGS, DEKU_LEAVES));
     public static final Block DEKU_SAPLING = register("deku_sapling", new SaplingBlock(new DekuSaplingGenerator(), DEKU_SAPLING_SETTINGS));
     public static final Block POTTED_DEKU_SAPLING = register("potted_deku_sapling", Blocks.createFlowerPotBlock(DEKU_SAPLING), false);
 

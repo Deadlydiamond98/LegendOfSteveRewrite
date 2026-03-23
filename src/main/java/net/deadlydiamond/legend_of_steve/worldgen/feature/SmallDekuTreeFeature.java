@@ -65,14 +65,13 @@ public class SmallDekuTreeFeature extends AbstractDekuTreeFeature {
         });
 
         // Leaves
+        pos = random.nextBoolean() ? pos : pos.down();
 
         if (random.nextBoolean()) {
             placeSmallerLeafCircle(world, pos);
             placeLeafCircle(world, pos.up());
             placeSmallerLeafCircle(world, pos.up(2));
         } else {
-            pos = random.nextBoolean() ? pos : pos.down();
-
             placeSmallerLeafCircle(world, pos);
             placeLeafCircle(world, pos.up());
             placeLeafCircle(world, pos.up(2));

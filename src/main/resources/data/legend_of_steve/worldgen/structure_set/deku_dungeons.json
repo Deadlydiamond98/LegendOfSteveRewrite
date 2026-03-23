@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 33469697,
+    "separation": 8,
+    "spacing": 34
+  },
+  "structures": [
+    {
+      "structure": "legend_of_steve:deku_dungeon",
+      "weight": 1
+    }
+  ]
+}

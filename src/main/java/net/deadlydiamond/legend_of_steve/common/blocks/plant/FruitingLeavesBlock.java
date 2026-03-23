@@ -14,10 +14,10 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class FruitingLeaves extends LeavesBlock implements IExtendedLootTable {
+public class FruitingLeavesBlock extends LeavesBlock implements IExtendedLootTable {
     private final Block pickedBlock;
 
-    public FruitingLeaves(Settings settings, Block pickedBlock) {
+    public FruitingLeavesBlock(Settings settings, Block pickedBlock) {
         super(settings);
         this.pickedBlock = pickedBlock;
     }

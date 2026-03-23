@@ -30,7 +30,7 @@ public class ZeldaTags {
     public static final TagKey<Fluid> ENCHANTED_SPRING_WATER = fluid("enchanted_spring_water");
 
     // BIOMES //////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public static final TagKey<Biome> GENERATES_DEKU_TREES = biome("generates_deku_trees");
+    public static final TagKey<Biome> GENERATES_DEKU_TREES = biome("has_deku_trees");
 
     // Registry ////////////////////////////////////////////////////////////////////////////////////////////////////////
 

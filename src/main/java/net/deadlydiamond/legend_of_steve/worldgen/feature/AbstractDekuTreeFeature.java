@@ -6,12 +6,14 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 
 public abstract class AbstractDekuTreeFeature extends Feature<DefaultFeatureConfig>  {
+
     public AbstractDekuTreeFeature(Codec<DefaultFeatureConfig> configCodec) {
         super(configCodec);
     }
@@ -32,9 +34,7 @@ public abstract class AbstractDekuTreeFeature extends Feature<DefaultFeatureConf
     }
 
     private boolean canGenerateAt(StructureWorldAccess world, BlockPos pos) {
-        return world.getBlockState(pos).isReplaceable() ||
-                world.getBlockState(pos).isIn(BlockTags.LEAVES) ||
-                world.getBlockState(pos).isIn(BlockTags.SMALL_FLOWERS);
+        return world.getBlockState(pos).isReplaceable() || world.getBlockState(pos).isIn(BlockTags.LEAVES);
     }
 
     protected void placeWithDirt(StructureWorldAccess world, BlockPos pos, Block block) {
@@ -61,13 +61,13 @@ public abstract class AbstractDekuTreeFeature extends Feature<DefaultFeatureConf
     }
 
     protected void placeLeaf(StructureWorldAccess world, BlockPos pos, BlockState block) {
-        if (world.getBlockState(pos).isReplaceable()) {
-            place(world, pos, block);
+        if (canGenerateAt(world, pos)) {
+            place(world, pos, block.with(Properties.DISTANCE_1_7, 7));
         }
     }
 
     protected void place(StructureWorldAccess world, BlockPos pos, Block block) {
-        placeLeaf(world, pos, block.getDefaultState());
+        place(world, pos, block.getDefaultState());
     }
 
     protected void place(StructureWorldAccess world, BlockPos pos, BlockState block) {

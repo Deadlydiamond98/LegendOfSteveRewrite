@@ -10,18 +10,23 @@ import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Vanishable;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BombBagItem extends ScrollableBag implements IModifiedCraftingResult, IExtraEnchantments, Vanishable, IAdvancedItemProperties {
+    public static final List<Item> BOMB_BAGS = new ArrayList<>();
+
     public BombBagItem(Settings settings, int maxStorage) {
         super(settings.maxCount(1), maxStorage, true, ZeldaTags.BOMBS);
         BombItem.COOLDOWNS.put(this, 40);
+        BOMB_BAGS.add(this);
     }
 
     @Override

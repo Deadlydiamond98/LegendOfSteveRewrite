@@ -1,4 +1,20 @@
 {
+  "item.emerald_shard.pick_up": {
+    "sounds": [
+      "legend_of_steve:item/emerald_shard/pick_up"
+    ]
+  },
+  "item.emerald_shard.condense": {
+    "sounds": [
+      "legend_of_steve:item/emerald_shard/condense"
+    ]
+  },
+  "item.emerald_shard.condense_further": {
+    "sounds": [
+      "legend_of_steve:item/emerald_shard/condense_further"
+    ]
+  },
+
   "entity.bomb.jingle": {
     "sounds": [
       "legend_of_steve:block/secret_jingle"

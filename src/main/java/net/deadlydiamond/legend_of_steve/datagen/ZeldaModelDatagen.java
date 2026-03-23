@@ -87,6 +87,8 @@ public class ZeldaModelDatagen extends FabricModelProvider {
                 ZeldaItems.BOMB,
                 ZeldaItems.SUPER_BOMB,
                 ZeldaItems.BOMB_FLOWER,
+                ZeldaItems.EMERALD_SHARD,
+                ZeldaItems.EMERALD_CHUNK,
                 ZeldaItems.BLUE_TEKTITE_CHITIN,
                 ZeldaItems.BLUE_TEKTITE_SHELL,
                 ZeldaItems.RED_TEKTITE_CHITIN,
@@ -102,5 +104,7 @@ public class ZeldaModelDatagen extends FabricModelProvider {
         ZeldaItemModelDatagenUtil.registerQuiver(itemModelGenerator, ZeldaItems.NETHERITE_QUIVER);
 
         ZeldaItemModelDatagenUtil.registerBombBag(itemModelGenerator, ZeldaItems.BOMB_BAG);
+        ZeldaItemModelDatagenUtil.registerBombBag(itemModelGenerator, ZeldaItems.GILDED_BOMB_BAG);
+        ZeldaItemModelDatagenUtil.registerBombBag(itemModelGenerator, ZeldaItems.NETHERITE_BOMB_BAG);
     }
 }

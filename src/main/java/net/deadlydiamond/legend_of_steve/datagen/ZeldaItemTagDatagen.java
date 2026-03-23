@@ -89,6 +89,7 @@ public class ZeldaItemTagDatagen extends FabricTagProvider.ItemTagProvider {
         );
 
         getOrCreateTagBuilder(ItemTags.PIGLIN_LOVED).add(
+                ZeldaItems.GILDED_BOMB_BAG,
                 ZeldaItems.GILDED_QUIVER
         );
 
@@ -97,7 +98,9 @@ public class ZeldaItemTagDatagen extends FabricTagProvider.ItemTagProvider {
         );
 
         getOrCreateTagBuilder(ZeldaTags.BOMB_BAGS).add(
-                ZeldaItems.BOMB_BAG
+                ZeldaItems.BOMB_BAG,
+                ZeldaItems.GILDED_BOMB_BAG,
+                ZeldaItems.NETHERITE_BOMB_BAG
         );
 
         getOrCreateTagBuilder(ZeldaTags.QUIVERS).add(

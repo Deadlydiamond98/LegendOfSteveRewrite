@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "legend_of_steve:emerald_chunk"
+    },
+    {
+      "item": "legend_of_steve:emerald_chunk"
+    },
+    {
+      "item": "legend_of_steve:emerald_chunk"
+    },
+    {
+      "item": "legend_of_steve:emerald_chunk"
+    },
+    {
+      "item": "legend_of_steve:emerald_chunk"
+    },
+    {
+      "item": "legend_of_steve:emerald_chunk"
+    },
+    {
+      "item": "legend_of_steve:emerald_chunk"
+    },
+    {
+      "item": "legend_of_steve:emerald_chunk"
+    }
+  ],
+  "result": {
+    "item": "minecraft:emerald"
+  }
+}

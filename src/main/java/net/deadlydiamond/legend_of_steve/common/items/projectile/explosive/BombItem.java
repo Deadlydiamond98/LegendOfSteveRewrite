@@ -1,9 +1,9 @@
 package net.deadlydiamond.legend_of_steve.common.items.projectile.explosive;
 
-import net.deadlydiamond.legend_of_steve.common.entities.bomb.BombEntity;
-import net.deadlydiamond.legend_of_steve.common.entities.bomb.IZeldaBomb;
+import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.BombEntity;
+import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.IZeldaBomb;
 import net.deadlydiamond.legend_of_steve.common.items.bag.BombBagItem;
-import net.deadlydiamond.legend_of_steve.common.particles.SparkParticleEffect;
+import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
 import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
 import net.deadlydiamond98.koalalib.common.items.ILighter;
 import net.deadlydiamond98.koalalib.common.items.interaction.IAdvancedItemProperties;
@@ -22,6 +22,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
@@ -126,5 +127,10 @@ public class BombItem extends CustomProjectileItem implements IAdvancedItemPrope
     @Override
     public float getPower() {
         return this.power;
+    }
+
+    @Override
+    protected SoundEvent getThrowSound() {
+        return ZeldaSounds.BOMB_THROWN;
     }
 }

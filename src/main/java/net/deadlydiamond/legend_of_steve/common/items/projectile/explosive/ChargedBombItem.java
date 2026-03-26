@@ -1,6 +1,6 @@
 package net.deadlydiamond.legend_of_steve.common.items.projectile.explosive;
 
-import net.deadlydiamond.legend_of_steve.common.entities.bomb.BombEntity;
+import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.BombEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;

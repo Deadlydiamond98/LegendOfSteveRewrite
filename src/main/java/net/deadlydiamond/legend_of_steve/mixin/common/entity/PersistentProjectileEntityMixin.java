@@ -2,7 +2,7 @@ package net.deadlydiamond.legend_of_steve.mixin.common.entity;
 
 import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import com.llamalad7.mixinextras.sugar.Local;
-import net.deadlydiamond.legend_of_steve.common.entities.bomb.AbstractBombEntity;
+import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.AbstractBombEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.util.math.Vec3d;

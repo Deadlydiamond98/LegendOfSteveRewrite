@@ -50,6 +50,12 @@
     ],
     "subtitle": "subtitles.entity.bomb.primed"
   },
+  "entity.bomb.thrown": {
+    "sounds": [
+      "random/bow"
+    ],
+    "subtitle": "subtitles.entity.bomb.thrown"
+  },
 
   "block.bomb_flower.break": {
     "sounds": [
@@ -514,5 +520,17 @@
       "block/decorated_pot/step5"
     ],
     "subtitle": "subtitles.block.loot_pot.deposit"
+  },
+  "block.loot_pot.thrown": {
+    "sounds": [
+      "random/bow"
+    ],
+    "subtitle": "subtitles.block.loot_pot.thrown"
+  },
+  "block.loot_pot.grab": {
+    "sounds": [
+      "legend_of_steve:block/loot_pot/grab"
+    ],
+    "subtitle": "subtitles.block.loot_pot.grab"
   }
 }

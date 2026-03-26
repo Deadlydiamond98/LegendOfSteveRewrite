@@ -1,7 +1,8 @@
 package net.deadlydiamond.legend_of_steve.init;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
-import net.deadlydiamond.legend_of_steve.common.entities.bomb.BombEntity;
+import net.deadlydiamond.legend_of_steve.common.entities.projectile.ThrownPotEntity;
+import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.BombEntity;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityDimensions;
@@ -13,9 +14,13 @@ import net.minecraft.world.World;
 
 public class ZeldaEntityTypes {
 
+    // PROJECTILE ENTITIES /////////////////////////////////////////////////////////////////////////////////////////////
     public static final EntityType<BombEntity> BOMB = register("bomb", createMisc(BombEntity.class, 0.5f, 0.5f));
+    public static final EntityType<ThrownPotEntity> THROWN_POT = register("thrown_pot", createMisc(ThrownPotEntity.class, 0.5f, 0.5f));
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // REGISTRATION METHODS ////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public static <T extends Entity> EntityType<T> register(String name, FabricEntityTypeBuilder<T> builder) {
         return Registry.register(Registries.ENTITY_TYPE, LegendOfSteve.id(name), builder.build());

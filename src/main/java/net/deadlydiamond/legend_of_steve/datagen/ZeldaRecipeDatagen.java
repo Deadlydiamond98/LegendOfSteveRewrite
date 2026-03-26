@@ -137,7 +137,6 @@ public class ZeldaRecipeDatagen extends FabricRecipeProvider {
         }
 
         offerDyeableRecipes(consumer, DYES, pots, "loot_pot", ZeldaBlocks.LOOT_POT.asItem());
-        offerDyeable8xRecipes(consumer, DYES, pots, "loot_pot", ZeldaBlocks.LOOT_POT.asItem());
         offerLootPotRecipes(consumer, DYES, pots, "loot_pot");
     }
 
@@ -223,7 +222,7 @@ public class ZeldaRecipeDatagen extends FabricRecipeProvider {
         for (int i = 0; i < dyes.size(); i++) {
             Item dye = dyes.get(i);
             Item output = dyeables.get(i);
-            ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, output, 2)
+            ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, output)
                     .input('E', ZeldaItems.EMERALD_SHARD)
                     .input('X', Items.BRICK)
                     .input('#', dye)

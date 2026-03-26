@@ -3,7 +3,7 @@ package net.deadlydiamond.legend_of_steve.common.blocks.plant;
 import net.deadlydiamond.legend_of_steve.common.bes.BombFlowerBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.blocks.IExplodedInteraction;
 import net.deadlydiamond.legend_of_steve.common.blocks.IExtendedLootTable;
-import net.deadlydiamond.legend_of_steve.common.entities.bomb.BombEntity;
+import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.BombEntity;
 import net.deadlydiamond.legend_of_steve.init.ZeldaEntityTypes;
 import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
 import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;

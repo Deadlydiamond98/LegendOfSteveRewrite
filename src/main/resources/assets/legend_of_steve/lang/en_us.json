@@ -161,9 +161,14 @@
   "subtitles.entity.bomb.pick_up": "Bomb plops",
   "subtitles.entity.bomb.extinguish": "Bomb extinguished",
   "subtitles.entity.bomb.primed": "Bomb fizzes",
+  "subtitles.entity.bomb.thrown": "Bomb thrown",
 
-  "subtitles.block.loot_pot.withdraw": "Item withdrawn",
-  "subtitles.block.loot_pot.deposit": "Item deposited",
+  "subtitles.block.loot_pot.withdraw": "Item withdrawn from Loot Pot",
+  "subtitles.block.loot_pot.deposit": "Item deposited into Loot Pot",
+  "subtitles.block.loot_pot.thrown": "Loot Pot thrown",
+
+  "death.attack.loot_pot_projectile": "%1$s was pummeled to death by flying pottery",
+  "death.attack.loot_pot_projectile.player": "%1$s was pummeled to death by %2$s's pottery",
 
   "advancements.legend_of_steve.root": "Legend of Steve",
   "advancements.legend_of_steve.root.description": "Does this mean Steve is the Princess?",

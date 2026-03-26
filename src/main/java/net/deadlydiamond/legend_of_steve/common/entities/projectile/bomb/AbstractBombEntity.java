@@ -1,6 +1,5 @@
-package net.deadlydiamond.legend_of_steve.common.entities.bomb;
+package net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb;
 
-import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.items.bag.BombBagItem;
 import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
 import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;

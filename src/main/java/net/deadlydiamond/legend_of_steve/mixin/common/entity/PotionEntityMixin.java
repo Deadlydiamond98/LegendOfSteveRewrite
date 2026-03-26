@@ -1,7 +1,7 @@
 package net.deadlydiamond.legend_of_steve.mixin.common.entity;
 
 import com.llamalad7.mixinextras.sugar.Local;
-import net.deadlydiamond.legend_of_steve.common.entities.bomb.AbstractBombEntity;
+import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.AbstractBombEntity;
 import net.minecraft.entity.projectile.thrown.PotionEntity;
 import net.minecraft.util.math.Box;
 import org.spongepowered.asm.mixin.Mixin;

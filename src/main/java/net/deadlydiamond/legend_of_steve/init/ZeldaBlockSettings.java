@@ -89,8 +89,10 @@ public class ZeldaBlockSettings {
             .sounds(ZeldaSounds.TEKTILES)
             .mapColor(MapColor.RED);
 
-    // CRACKED BRICKS
-    
+    // OTHER
+
+    public static final FabricBlockSettings LOOT_POT_SETTINGS = FabricBlockSettings.copyOf(Blocks.DECORATED_POT)
+            .sounds(BlockSoundGroup.DECORATED_POT_SHATTER);
 
 
     // HELPER METHODS //////////////////////////////////////////////////////////////////////////////////////////////////

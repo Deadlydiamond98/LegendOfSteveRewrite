@@ -1,16 +1,13 @@
 package net.deadlydiamond.legend_of_steve.mixin.common;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
-import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.deadlydiamond.legend_of_steve.common.blocks.IExplodedInteraction;
 import net.deadlydiamond.legend_of_steve.common.blocks.secret.ISecretBlock;
-import net.deadlydiamond.legend_of_steve.common.entities.bomb.IZeldaBomb;
 import net.deadlydiamond.legend_of_steve.common.world.BombExplosionBehavior;
 import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;

@@ -17,10 +17,13 @@ public class ZeldaSounds {
     public static final SoundEvent BOMB_PICKED_UP = register("entity.bomb.pick_up");
     public static final SoundEvent BOMB_EXTINGUISH = register("entity.bomb.extinguish");
     public static final SoundEvent BOMB_PRIMED = register("entity.bomb.primed");
+    public static final SoundEvent BOMB_THROWN = register("entity.bomb.thrown");
 
     // Blocks //////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static final SoundEvent LOOT_POT_WITHDRAW = register("block.loot_pot.withdraw");
     public static final SoundEvent LOOT_POT_DEPOSIT = register("block.loot_pot.deposit");
+    public static final SoundEvent LOOT_POT_THROWN = register("block.loot_pot.thrown");
+    public static final SoundEvent LOOT_POT_GRAB = register("block.loot_pot.grab");
     // Magic
     public static final BlockSoundGroup FAIRY_LAMP = registerGroup("fairy_lamp", 1, 1.2f);
     public static final BlockSoundGroup STARSTONE = registerGroup("starstone", 1, 1);

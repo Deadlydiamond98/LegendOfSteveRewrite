@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.common.entities.bomb;
+package net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb;
 
 import net.deadlydiamond.legend_of_steve.common.particles.SparkParticleEffect;
 import net.minecraft.entity.EntityType;

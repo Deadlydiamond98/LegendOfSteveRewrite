@@ -1,7 +1,7 @@
 package net.deadlydiamond.legend_of_steve.client.rendering.player.itemmodel;
 
 import net.deadlydiamond.legend_of_steve.client.models.entity.BombEntityModel;
-import net.deadlydiamond.legend_of_steve.common.entities.bomb.BombEntity;
+import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.BombEntity;
 import net.deadlydiamond.legend_of_steve.common.items.bag.BombBagItem;
 import net.deadlydiamond.legend_of_steve.common.items.projectile.explosive.ICharged;
 import net.deadlydiamond.legend_of_steve.util.rendering.BombRenderHelper;

@@ -34,20 +34,16 @@ public abstract class SingleSlotBlock extends BlockWithEntity {
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         ItemStack stack = player.getStackInHand(hand);
-        if (world.getBlockEntity(pos) instanceof SingleSlotBlockEntity blockEntity) {
+        if (!world.isClient && world.getBlockEntity(pos) instanceof SingleSlotBlockEntity blockEntity) {
             blockEntity.checkLootInteraction(player);
             if (canRemoveItem(state, world, pos, player, hand, stack, blockEntity)) {
                 player.setStackInHand(hand, blockEntity.getStack(0));
                 blockEntity.clear();
-                if (!world.isClient()) {
-                    player.playSound(getRemoveSound(), SoundCategory.BLOCKS, 1, 1);
-                }
+                player.playSound(getRemoveSound(), SoundCategory.BLOCKS, 1, 1);
                 blockEntity.markDirty();
                 return ActionResult.SUCCESS;
             } else if (canInsertItem(state, world, pos, player, hand, stack, blockEntity)) {
-                if (!world.isClient()) {
-                    player.playSound(getInsertSound(), SoundCategory.BLOCKS, 1, 1);
-                }
+                player.playSound(getInsertSound(), SoundCategory.BLOCKS, 1, 1);
                 blockEntity.markDirty();
                 return ActionResult.SUCCESS;
             }

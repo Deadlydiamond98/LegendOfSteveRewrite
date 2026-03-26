@@ -10,9 +10,10 @@ import net.deadlydiamond.legend_of_steve.common.blocks.plant.BombFlowerBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.FruitingLeavesBlock;
 import net.deadlydiamond.legend_of_steve.common.blocksets.IridescentStairSlabWallBlockset;
 import net.deadlydiamond.legend_of_steve.common.blocksets.IridescentStoneBlockset;
+import net.deadlydiamond.legend_of_steve.common.blocksets.LootPotBlockset;
+import net.deadlydiamond.legend_of_steve.common.items.block_item.LootPotItem;
 import net.deadlydiamond.legend_of_steve.worldgen.sapling.DekuSaplingGenerator;
 import net.deadlydiamond98.koalalib.common.blocksets.BaseStairSlabBlockset;
-import net.deadlydiamond98.koalalib.common.blocksets.DyedBlockset;
 import net.deadlydiamond98.koalalib.common.blocksets.WoodBlockset;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -23,7 +24,6 @@ import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.sound.BlockSoundGroup;
 
 import static net.deadlydiamond.legend_of_steve.init.ZeldaBlockSettings.*;
 
@@ -36,10 +36,8 @@ public class ZeldaBlocks {
     public static final Block ENCHANTED_SPRING_WATER = register("enchanted_spring_water", new SpringWaterBlock(ZeldaFluids.ENCHANTED_SPRING_WATER, FabricBlockSettings.copyOf(Blocks.WATER).luminance(state -> 10)), false);
 
     // STORAGE
-    public static final Block LOOT_POT = register("loot_pot", new LootPotBlock(FabricBlockSettings.copyOf(Blocks.DECORATED_POT)
-            .sounds(BlockSoundGroup.DECORATED_POT_SHATTER)));
-    public static final DyedBlockset DYED_LOOT_POTS = new DyedBlockset(LegendOfSteve.MOD_ID, "loot_pot", () -> new LootPotBlock(FabricBlockSettings.copyOf(Blocks.DECORATED_POT)
-            .sounds(BlockSoundGroup.DECORATED_POT_SHATTER)));
+    public static final Block LOOT_POT = registerPot("loot_pot", new LootPotBlock(LOOT_POT_SETTINGS));
+    public static final LootPotBlockset DYED_LOOT_POTS = new LootPotBlockset(LegendOfSteve.MOD_ID, "loot_pot", LOOT_POT);
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // DECORATIVE BLOCKS ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -127,6 +125,11 @@ public class ZeldaBlocks {
             ZeldaItems.register(id, new BlockItem(block, new FabricItemSettings()));
         }
         return Registry.register(Registries.BLOCK, LegendOfSteve.id(id), block);
+    }
+
+    public static Block registerPot(String id, Block block) {
+        ZeldaItems.register(id, new LootPotItem(block, new FabricItemSettings()));
+        return register(id, block, false);
     }
 
     public static void register() {

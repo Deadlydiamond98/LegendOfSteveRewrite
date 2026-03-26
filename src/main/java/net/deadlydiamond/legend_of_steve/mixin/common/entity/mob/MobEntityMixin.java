@@ -1,6 +1,6 @@
 package net.deadlydiamond.legend_of_steve.mixin.common.entity.mob;
 
-import net.deadlydiamond.legend_of_steve.common.entities.bomb.BombEntity;
+import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.BombEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.*;
 import net.minecraft.item.Items;

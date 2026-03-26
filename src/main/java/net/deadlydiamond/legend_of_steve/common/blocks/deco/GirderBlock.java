@@ -3,7 +3,10 @@ package net.deadlydiamond.legend_of_steve.common.blocks.deco;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
+import net.minecraft.block.Waterloggable;
 import net.minecraft.entity.ai.pathing.NavigationType;
+import net.minecraft.fluid.FluidState;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
@@ -15,9 +18,12 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
-public class GirderBlock extends Block {
+public class GirderBlock extends Block implements Waterloggable {
+
+    private static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
     private static final VoxelShape X_SHAPE = VoxelShapes.union(
             createCuboidShape(0, 0, 0, 16, 3, 16),
@@ -43,16 +49,27 @@ public class GirderBlock extends Block {
 
     public GirderBlock(Settings settings) {
         super(settings);
-        setDefaultState(getDefaultState().with(HORIZONTAL_FACING, Direction.Axis.X).with(VERTICAL, false));
+        setDefaultState(getDefaultState().with(HORIZONTAL_FACING, Direction.Axis.X).with(VERTICAL, false).with(WATERLOGGED, false));
+    }
+
+    @Override
+    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+        if (state.get(WATERLOGGED)) {
+            world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+        }
+
+        return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 
     @Nullable
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         Direction direction = ctx.getPlayerLookDirection().getOpposite().getOpposite();
+        FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
 
         return this.getDefaultState().with(HORIZONTAL_FACING, ctx.getHorizontalPlayerFacing().getAxis())
-                .with(VERTICAL, direction.getAxis() == Direction.Axis.Y);
+                .with(VERTICAL, direction.getAxis() == Direction.Axis.Y)
+                .with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
     }
 
     @Override
@@ -89,11 +106,16 @@ public class GirderBlock extends Block {
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(HORIZONTAL_FACING, VERTICAL);
+        builder.add(HORIZONTAL_FACING, VERTICAL, WATERLOGGED);
     }
 
     @Override
     public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
         return false;
+    }
+
+    @Override
+    public FluidState getFluidState(BlockState state) {
+        return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
     }
 }

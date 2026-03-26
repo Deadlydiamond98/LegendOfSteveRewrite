@@ -2,7 +2,7 @@ package net.deadlydiamond.legend_of_steve.mixin.common.entity;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.BombFlowerBlock;
-import net.deadlydiamond.legend_of_steve.common.entities.bomb.BombEntity;
+import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.BombEntity;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.LightningEntity;

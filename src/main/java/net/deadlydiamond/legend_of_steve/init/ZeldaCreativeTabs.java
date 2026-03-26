@@ -49,6 +49,10 @@ public class ZeldaCreativeTabs {
     });
 
     public static final ItemGroup BLOCKS = registerTab("blocks", ZeldaBlocks.DEKU_LEAVES, (displayContext, entries) -> {
+        // LOOT POTS
+        entries.add(ZeldaBlocks.LOOT_POT);
+        ZeldaBlocks.DYED_LOOT_POTS.addToCreative(entries);
+
         // DEKU WOOD
         ZeldaBlocks.DEKU_WOOD.addToCreative(entries);
         entries.add(ZeldaBlocks.DEKU_SAPLING);

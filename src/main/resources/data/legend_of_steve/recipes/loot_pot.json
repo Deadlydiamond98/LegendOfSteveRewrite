@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "e",
+    "B"
+  ],
+  "key": {
+    "e": {
+      "item": "legend_of_steve:emerald_shard"
+    },
+    "B": {
+      "item": "minecraft:brick"
+    }
+  },
+  "result": {
+    "item": "legend_of_steve:loot_pot",
+    "count": 2
+  }
+}

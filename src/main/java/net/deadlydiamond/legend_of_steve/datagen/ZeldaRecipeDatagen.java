@@ -9,13 +9,39 @@ import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.tag.TagKey;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
 public class ZeldaRecipeDatagen extends FabricRecipeProvider {
+
+    private static final List<Item> DYES = List.of(
+            Items.WHITE_DYE,
+            Items.LIGHT_GRAY_DYE,
+            Items.GRAY_DYE,
+            Items.BLACK_DYE,
+            Items.BROWN_DYE,
+            Items.RED_DYE,
+            Items.ORANGE_DYE,
+            Items.YELLOW_DYE,
+            Items.LIME_DYE,
+            Items.GREEN_DYE,
+            Items.CYAN_DYE,
+            Items.LIGHT_BLUE_DYE,
+            Items.BLUE_DYE,
+            Items.PURPLE_DYE,
+            Items.MAGENTA_DYE,
+            Items.PINK_DYE
+    );
 
     public ZeldaRecipeDatagen(FabricDataOutput output) {
         super(output);
@@ -27,6 +53,7 @@ public class ZeldaRecipeDatagen extends FabricRecipeProvider {
         fairyMarble(consumer);
         masterOre(consumer);
         tektiles(consumer);
+        lootpots(consumer);
 
         ZeldaBlocks.DEKU_WOOD.generateRecipes(consumer);
     }
@@ -103,6 +130,17 @@ public class ZeldaRecipeDatagen extends FabricRecipeProvider {
         offerPolishedStoneRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.SMALL_RED_TEKTILES.base, ZeldaBlocks.RED_TEKTILES.base);
     }
 
+    private void lootpots(Consumer<RecipeJsonProvider> consumer) {
+        List<Item> pots = new ArrayList<>();
+        for (Block block : ZeldaBlocks.DYED_LOOT_POTS.getAll()) {
+            pots.add(block.asItem());
+        }
+
+        offerDyeableRecipes(consumer, DYES, pots, "loot_pot", ZeldaBlocks.LOOT_POT.asItem());
+        offerDyeable8xRecipes(consumer, DYES, pots, "loot_pot", ZeldaBlocks.LOOT_POT.asItem());
+        offerLootPotRecipes(consumer, DYES, pots, "loot_pot");
+    }
+
     // HELPER METHODS //////////////////////////////////////////////////////////////////////////////////////////////////
 
     private static void offerStoneSmelt(Consumer<RecipeJsonProvider> consumer, Block input, Block output) {
@@ -141,6 +179,60 @@ public class ZeldaRecipeDatagen extends FabricRecipeProvider {
     public static void offerStoneCuttingRecipes(Consumer<RecipeJsonProvider> exporter, RecipeCategory category, ItemConvertible output, ItemConvertible... inputs) {
         for (ItemConvertible input : inputs) {
             offerStonecuttingRecipe(exporter, category, output, input);
+        }
+    }
+
+    // Dyed ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public static void offerDyeableRecipes(Consumer<RecipeJsonProvider> exporter, List<Item> dyes, List<Item> dyeables, String group, Item... additionalInput) {
+        List<Item> dyableInputs = new ArrayList<>(List.copyOf(dyeables));
+        dyableInputs.addAll(Arrays.asList(additionalInput));
+
+        for (int i = 0; i < dyes.size(); i++) {
+            Item item = dyes.get(i);
+            Item item2 = dyeables.get(i);
+            ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, item2)
+                    .input(item)
+                    .input(Ingredient.ofStacks(dyableInputs.stream().filter(dyeable -> !dyeable.equals(item2)).map(ItemStack::new)))
+                    .group(group)
+                    .criterion("has_needed_dye", conditionsFromItem(item))
+                    .offerTo(exporter, "dye_" + getItemPath(item2));
+        }
+    }
+
+    public static void offerDyeable8xRecipes(Consumer<RecipeJsonProvider> exporter, List<Item> dyes, List<Item> dyeables, String group, Item... additionalInput) {
+        List<Item> dyableInputs = new ArrayList<>(List.copyOf(dyeables));
+        dyableInputs.addAll(Arrays.asList(additionalInput));
+
+        for (int i = 0; i < dyes.size(); i++) {
+            Item item = dyes.get(i);
+            Item item2 = dyeables.get(i);
+            ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, item2, 8)
+                    .input('#', Ingredient.ofStacks(dyableInputs.stream().filter(dyeable -> !dyeable.equals(item2)).map(ItemStack::new)))
+                    .input('X', item)
+                    .pattern("###")
+                    .pattern("#X#")
+                    .pattern("###")
+                    .group(group)
+                    .criterion("has_needed_dye", conditionsFromItem(item))
+                    .offerTo(exporter, "multi_dye_" + getItemPath(item2));
+        }
+    }
+
+    public static void offerLootPotRecipes(Consumer<RecipeJsonProvider> exporter, List<Item> dyes, List<Item> dyeables, String group) {
+        for (int i = 0; i < dyes.size(); i++) {
+            Item dye = dyes.get(i);
+            Item output = dyeables.get(i);
+            ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, output, 2)
+                    .input('E', ZeldaItems.EMERALD_SHARD)
+                    .input('X', Items.BRICK)
+                    .input('#', dye)
+                    .pattern("E")
+                    .pattern("X")
+                    .pattern("#")
+                    .group(group)
+                    .criterion("has_needed_dye", conditionsFromItem(dye))
+                    .offerTo(exporter, "base_dye_" + getItemPath(output));
         }
     }
 }

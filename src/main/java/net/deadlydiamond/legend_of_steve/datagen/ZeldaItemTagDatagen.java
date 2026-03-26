@@ -9,9 +9,12 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Block;
 import net.minecraft.block.PillarBlock;
+import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import static net.deadlydiamond.legend_of_steve.init.ZeldaBlockSettings.FAIRY_MARBLE_SETTINGS;
@@ -107,6 +110,28 @@ public class ZeldaItemTagDatagen extends FabricTagProvider.ItemTagProvider {
                 ZeldaItems.QUIVER,
                 ZeldaItems.GILDED_QUIVER,
                 ZeldaItems.NETHERITE_QUIVER
+        );
+
+        // LOOT POTS
+
+        getOrCreateTagBuilder(ZeldaTags.LOOT_POTS).add(
+                ZeldaBlocks.LOOT_POT.asItem(),
+                ZeldaBlocks.DYED_LOOT_POTS.white.asItem(),
+                ZeldaBlocks.DYED_LOOT_POTS.light_gray.asItem(),
+                ZeldaBlocks.DYED_LOOT_POTS.gray.asItem(),
+                ZeldaBlocks.DYED_LOOT_POTS.black.asItem(),
+                ZeldaBlocks.DYED_LOOT_POTS.brown.asItem(),
+                ZeldaBlocks.DYED_LOOT_POTS.red.asItem(),
+                ZeldaBlocks.DYED_LOOT_POTS.orange.asItem(),
+                ZeldaBlocks.DYED_LOOT_POTS.yellow.asItem(),
+                ZeldaBlocks.DYED_LOOT_POTS.lime.asItem(),
+                ZeldaBlocks.DYED_LOOT_POTS.green.asItem(),
+                ZeldaBlocks.DYED_LOOT_POTS.cyan.asItem(),
+                ZeldaBlocks.DYED_LOOT_POTS.light_blue.asItem(),
+                ZeldaBlocks.DYED_LOOT_POTS.blue.asItem(),
+                ZeldaBlocks.DYED_LOOT_POTS.purple.asItem(),
+                ZeldaBlocks.DYED_LOOT_POTS.magenta.asItem(),
+                ZeldaBlocks.DYED_LOOT_POTS.pink.asItem()
         );
     }
 

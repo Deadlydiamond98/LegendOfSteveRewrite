@@ -1,9 +1,8 @@
 package net.deadlydiamond.legend_of_steve.common.blocks;
 
-import net.deadlydiamond.legend_of_steve.common.bes.MasterBarrelBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.bes.container.MasterBarrelBlockEntity;
 import net.minecraft.block.BarrelBlock;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BarrelBlockEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.PiglinBrain;

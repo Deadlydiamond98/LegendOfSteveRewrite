@@ -14,8 +14,8 @@ public class OverHeadArmPose extends ArmPose {
      * Sets the Arms to stick straight up to hold something over the head
      */
 
-    public OverHeadArmPose(boolean twoHanded) {
-        super(twoHanded);
+    public OverHeadArmPose() {
+        super(true);
     }
 
     @Override

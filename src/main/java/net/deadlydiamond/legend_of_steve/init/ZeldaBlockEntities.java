@@ -2,7 +2,8 @@ package net.deadlydiamond.legend_of_steve.init;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.bes.BombFlowerBlockEntity;
-import net.deadlydiamond.legend_of_steve.common.bes.MasterBarrelBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.bes.container.MasterBarrelBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.bes.container.single.SingleSlotBlockEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntity;
@@ -18,6 +19,10 @@ public class ZeldaBlockEntities {
 
     public static final BlockEntityType<MasterBarrelBlockEntity> MASTER_BARREL = register("master_barrel", MasterBarrelBlockEntity::new,
             ZeldaBlocks.MASTER_BARREL
+    );
+
+    public static final BlockEntityType<SingleSlotBlockEntity> SINGLE_SLOT_CONTAINER = register("single_slot_container", SingleSlotBlockEntity::new,
+            ZeldaBlocks.DYED_LOOT_POTS.getAll(ZeldaBlocks.LOOT_POT)
     );
 
     // HELPER METHODS //////////////////////////////////////////////////////////////////////////////////////////////////

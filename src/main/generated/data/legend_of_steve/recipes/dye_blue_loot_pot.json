@@ -1,0 +1,63 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "loot_pot",
+  "ingredients": [
+    {
+      "item": "minecraft:blue_dye"
+    },
+    [
+      {
+        "item": "legend_of_steve:white_loot_pot"
+      },
+      {
+        "item": "legend_of_steve:light_gray_loot_pot"
+      },
+      {
+        "item": "legend_of_steve:gray_loot_pot"
+      },
+      {
+        "item": "legend_of_steve:black_loot_pot"
+      },
+      {
+        "item": "legend_of_steve:brown_loot_pot"
+      },
+      {
+        "item": "legend_of_steve:red_loot_pot"
+      },
+      {
+        "item": "legend_of_steve:orange_loot_pot"
+      },
+      {
+        "item": "legend_of_steve:yellow_loot_pot"
+      },
+      {
+        "item": "legend_of_steve:lime_loot_pot"
+      },
+      {
+        "item": "legend_of_steve:green_loot_pot"
+      },
+      {
+        "item": "legend_of_steve:cyan_loot_pot"
+      },
+      {
+        "item": "legend_of_steve:light_blue_loot_pot"
+      },
+      {
+        "item": "legend_of_steve:purple_loot_pot"
+      },
+      {
+        "item": "legend_of_steve:magenta_loot_pot"
+      },
+      {
+        "item": "legend_of_steve:pink_loot_pot"
+      },
+      {
+        "item": "legend_of_steve:loot_pot"
+      }
+    ]
+  ],
+  "result": {
+    "item": "legend_of_steve:blue_loot_pot"
+  }
+}

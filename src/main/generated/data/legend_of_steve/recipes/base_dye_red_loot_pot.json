@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "loot_pot",
+  "key": {
+    "#": {
+      "item": "minecraft:red_dye"
+    },
+    "E": {
+      "item": "legend_of_steve:emerald_shard"
+    },
+    "X": {
+      "item": "minecraft:brick"
+    }
+  },
+  "pattern": [
+    "E",
+    "X",
+    "#"
+  ],
+  "result": {
+    "count": 2,
+    "item": "legend_of_steve:red_loot_pot"
+  },
+  "show_notification": true
+}

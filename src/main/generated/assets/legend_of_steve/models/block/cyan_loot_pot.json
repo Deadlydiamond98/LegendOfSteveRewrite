@@ -1,0 +1,7 @@
+{
+  "parent": "legend_of_steve:block/template_loot_pot",
+  "textures": {
+    "all": "legend_of_steve:block/loot_pot/cyan_loot_pot",
+    "particle": "minecraft:block/cyan_terracotta"
+  }
+}

@@ -112,7 +112,6 @@
     ],
     "subtitle": "subtitles.block.generic.footsteps"
   },
-
   "block.bomb_flower.pick": {
     "sounds": [
       "legend_of_steve:block/bomb_flower/pick1",
@@ -495,5 +494,25 @@
       "legend_of_steve:block/tektiles/step5"
     ],
     "subtitle": "subtitles.block.generic.footsteps"
+  },
+
+  "block.loot_pot.withdraw": {
+    "sounds": [
+      "entity/itemframe/remove_item1",
+      "entity/itemframe/remove_item2",
+      "entity/itemframe/remove_item3",
+      "entity/itemframe/remove_item4"
+    ],
+    "subtitle": "subtitles.block.loot_pot.withdraw"
+  },
+  "block.loot_pot.deposit": {
+    "sounds": [
+      "block/decorated_pot/step1",
+      "block/decorated_pot/step2",
+      "block/decorated_pot/step3",
+      "block/decorated_pot/step4",
+      "block/decorated_pot/step5"
+    ],
+    "subtitle": "subtitles.block.loot_pot.deposit"
   }
 }

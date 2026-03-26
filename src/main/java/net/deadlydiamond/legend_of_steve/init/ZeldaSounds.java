@@ -18,22 +18,24 @@ public class ZeldaSounds {
     public static final SoundEvent BOMB_EXTINGUISH = register("entity.bomb.extinguish");
     public static final SoundEvent BOMB_PRIMED = register("entity.bomb.primed");
 
-    // Magicy Blocks ///////////////////////////////////////////////////////////////////////////////////////////////////
+    // Blocks //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static final SoundEvent LOOT_POT_WITHDRAW = register("block.loot_pot.withdraw");
+    public static final SoundEvent LOOT_POT_DEPOSIT = register("block.loot_pot.deposit");
+    // Magic
     public static final BlockSoundGroup FAIRY_LAMP = registerGroup("fairy_lamp", 1, 1.2f);
     public static final BlockSoundGroup STARSTONE = registerGroup("starstone", 1, 1);
-
-    // Master Ore //////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Master Ore
     public static final BlockSoundGroup MASTER_BLOCK = registerGroup("master_block", 1, 1.5f);
     public static final BlockSoundGroup MASTER_PLATE = registerGroup("master_plate", 1, 1.5f);
     public static final BlockSoundGroup MASTER_BARS = registerGroup("master_bars", 1, 1.5f);
     public static final BlockSoundGroup MASTER_CHAIN = registerGroup("master_chain", 1, 1.5f);
     public static final SoundEvent MASTER_BARREL_OPEN = register("block.master_barrel.open");
     public static final SoundEvent MASTER_BARREL_CLOSE = register("block.master_barrel.close");
-
-    // Tektiles ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Tektiles
     public static final BlockSoundGroup TEKTILES = registerGroup("tektiles", 1, 1.25f);
 
-    // EMERALD SHARDS //////////////////////////////////////////////////////////////////////////////////////////////////
+    // Items ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Emerald Shards
     public static final SoundEvent EMERALD_SHARD_PICKED_UP = register("item.emerald_shard.pick_up");
     public static final SoundEvent EMERALD_SHARD_CONDENSE = register("item.emerald_shard.condense");
     public static final SoundEvent EMERALD_SHARD_CONDENSE_FURTHER = register("item.emerald_shard.condense_further");

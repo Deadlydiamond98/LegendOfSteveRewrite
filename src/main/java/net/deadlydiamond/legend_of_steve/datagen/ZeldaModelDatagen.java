@@ -3,13 +3,17 @@ package net.deadlydiamond.legend_of_steve.datagen;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
 import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
 import net.deadlydiamond.legend_of_steve.util.datagen.model.IridescentBlockModelDatagenUtil;
+import net.deadlydiamond.legend_of_steve.util.datagen.model.ZeldaBlockModelDatagenUtil;
 import net.deadlydiamond.legend_of_steve.util.datagen.model.ZeldaItemModelDatagenUtil;
 import net.deadlydiamond98.koalalib.util.datagen.BlockModelDatagenUtil;
 import net.deadlydiamond98.koalalib.util.datagen.ItemModelDatagenUtil;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
+import net.minecraft.block.Blocks;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
+import net.minecraft.registry.Registries;
+import net.minecraft.util.Identifier;
 
 public class ZeldaModelDatagen extends FabricModelProvider {
 
@@ -19,6 +23,14 @@ public class ZeldaModelDatagen extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator generator) {
+
+        // LOOT POTS ///////////////////////////////////////////////////////////////////////////////////////////////////
+        ZeldaBlockModelDatagenUtil.registerPot(generator, ZeldaBlocks.LOOT_POT, Blocks.TERRACOTTA);
+        ZeldaBlocks.DYED_LOOT_POTS.generateModels(generator, (generator1, block, color) ->
+                ZeldaBlockModelDatagenUtil.registerPot(
+                        generator, block, Registries.BLOCK.get(new Identifier(color + "_terracotta"))
+                )
+        );
         
         // CHISELED PLANKS /////////////////////////////////////////////////////////////////////////////////////////////
         generator.registerSimpleCubeAll(ZeldaBlocks.CHISELED_OAK_PLANKS);

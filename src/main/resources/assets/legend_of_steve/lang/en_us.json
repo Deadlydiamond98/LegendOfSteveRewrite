@@ -28,6 +28,24 @@
   "item.legend_of_steve.master_scrap": "Master Scrap",
   "item.legend_of_steve.master_ingot": "Master Ingot",
 
+  "block.legend_of_steve.loot_pot": "Loot Pot",
+  "block.legend_of_steve.white_loot_pot": "White Loot Pot",
+  "block.legend_of_steve.light_gray_loot_pot": "Light Gray Loot Pot",
+  "block.legend_of_steve.gray_loot_pot": "Gray Loot Pot",
+  "block.legend_of_steve.black_loot_pot": "Black Loot Pot",
+  "block.legend_of_steve.brown_loot_pot": "Brown Loot Pot",
+  "block.legend_of_steve.red_loot_pot": "Red Loot Pot",
+  "block.legend_of_steve.orange_loot_pot": "Orange Loot Pot",
+  "block.legend_of_steve.yellow_loot_pot": "Yellow Loot Pot",
+  "block.legend_of_steve.lime_loot_pot": "Lime Loot Pot",
+  "block.legend_of_steve.green_loot_pot": "Green Loot Pot",
+  "block.legend_of_steve.cyan_loot_pot": "Cyan Loot Pot",
+  "block.legend_of_steve.light_blue_loot_pot": "Light Blue Loot Pot",
+  "block.legend_of_steve.blue_loot_pot": "Blue Loot Pot",
+  "block.legend_of_steve.purple_loot_pot": "Purple Loot Pot",
+  "block.legend_of_steve.magenta_loot_pot": "Magenta Loot Pot",
+  "block.legend_of_steve.pink_loot_pot": "Pink Loot Pot",
+
   "block.legend_of_steve.chiseled_oak_planks": "Chiseled Oak Planks",
   "block.legend_of_steve.chiseled_birch_planks": "Chiseled Birch Planks",
   "block.legend_of_steve.chiseled_spruce_planks": "Chiseled Spruce Planks",
@@ -139,11 +157,13 @@
   "block.legend_of_steve.small_red_tektile_stairs": "Small Red Tektile Stairs",
 
   "subtitles.block.bomb_flower.picked": "Bomb Flower Picked",
-
   "subtitles.entity.bomb.secret_jingle": "Secret room revealed",
   "subtitles.entity.bomb.pick_up": "Bomb plops",
   "subtitles.entity.bomb.extinguish": "Bomb extinguished",
   "subtitles.entity.bomb.primed": "Bomb fizzes",
+
+  "subtitles.block.loot_pot.withdraw": "Item withdrawn",
+  "subtitles.block.loot_pot.deposit": "Item deposited",
 
   "advancements.legend_of_steve.root": "Legend of Steve",
   "advancements.legend_of_steve.root.description": "Does this mean Steve is the Princess?",

@@ -168,7 +168,9 @@
   "subtitles.block.loot_pot.thrown": "Loot Pot thrown",
   "subtitles.block.loot_pot.grab": "Loot Pot picked up",
 
-  "subtitles.block.spring_water.transform": "Item transformed from Spring Water",
+  "subtitles.block.spring_water.transform": "Enchanted Spring Water transmutes item",
+  "subtitles.block.spring_water.consume": "Item consumed by Enchanted Spring Water",
+  "subtitles.block.spring_water.sparkle": "Enchanted Spring Water sparkles",
 
   "death.attack.loot_pot_projectile": "%1$s was pummeled to death by flying pottery",
   "death.attack.loot_pot_projectile.player": "%1$s was pummeled to death by %2$s's pottery",
@@ -190,6 +192,9 @@
 
   "advancements.legend_of_steve.make_a_wish": "Make a Wish",
   "advancements.legend_of_steve.make_a_wish.description": "Stumble Across a Fairy Fountain",
+
+  "advancements.legend_of_steve.blessing_from_the_great_fairy": "Blessing From The Great Fairy",
+  "advancements.legend_of_steve.blessing_from_the_great_fairy.description": "Transmute an item by throwing it into Enchanted Spring Water",
 
   "advancements.legend_of_steve.nothing_beats_a_dip": "Nothing Beats a Dip",
   "advancements.legend_of_steve.nothing_beats_a_dip.description": "Recover Health and Magic by Relaxing in Enchanted Spring Water",

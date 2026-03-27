@@ -6,6 +6,7 @@ import net.minecraft.advancement.criterion.Criteria;
 
 public class ZeldaAdvancements {
     public static final CustomAdvancement RELAX_IN_SPRING_WATER = register("relax_in_spring_water");
+    public static final CustomAdvancement TRANSMUTE_ITEM = register("transmute_item");
 
     public static CustomAdvancement register(String name) {
         return Criteria.register(new CustomAdvancement(LegendOfSteve.id(name)));

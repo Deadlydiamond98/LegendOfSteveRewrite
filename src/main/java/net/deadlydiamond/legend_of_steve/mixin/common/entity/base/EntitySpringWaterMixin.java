@@ -8,6 +8,7 @@ import net.deadlydiamond.legend_of_steve.common.recipes.SpringWaterRecipe;
 import net.deadlydiamond.legend_of_steve.init.ZeldaAdvancements;
 import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
 import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
+import net.deadlydiamond.legend_of_steve.networking.s2c.ItemTransmutationPoofS2CPacket;
 import net.deadlydiamond98.koalalib.util.magic.MagicBarHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
@@ -17,6 +18,7 @@ import net.minecraft.fluid.Fluid;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.tag.TagKey;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -45,6 +47,7 @@ public abstract class EntitySpringWaterMixin {
     @Shadow public abstract double getParticleZ(double widthScale);
     @Shadow public abstract double getParticleX(double widthScale);
 
+    @Shadow private World world;
     @Unique private int legend_of_steve$springWaterTicks;
 
     // SPRING WATER INTERACTION ////////////////////////////////////////////////////////////////////////////////////////
@@ -99,21 +102,32 @@ public abstract class EntitySpringWaterMixin {
                     if (submergedTime >= recipe.getTime()) {
                         ItemStack output = recipe.getOutput(itemEntity.getStack().getCount());
 
-                        output.setNbt(itemEntity.getStack().getOrCreateNbt());
+                        if (itemEntity.getStack().getCount() == 1) {
+                            output.setNbt(itemEntity.getStack().getOrCreateNbt());
+                        }
+
+                        if (itemEntity.getOwner() instanceof PlayerEntity player) {
+                            ZeldaAdvancements.TRANSMUTE_ITEM.trigger(player);
+                        }
 
                         ItemEntity result = new ItemEntity(world, getX(), getY(), getZ(), output);
                         result.setNoGravity(true);
                         result.setGlowing(true);
                         result.setVelocity(
                                 (world.random.nextFloat() - 0.5) * 0.01,
-                                0.025,
+                                0.05,
                                 (world.random.nextFloat() - 0.5) * 0.01
                         );
                         world.spawnEntity(result);
 
+                        ItemTransmutationPoofS2CPacket.send(world, itemEntity);
                         playSound(ZeldaSounds.SPRING_WATER_TRANSFORM, 1, 1);
                         this.discard();
                     }
+                } else if (submergedTime >= 140) {
+                    ItemTransmutationPoofS2CPacket.send(world, itemEntity);
+                    playSound(ZeldaSounds.SPRING_WATER_CONSUME, 1, 1);
+                    this.discard();
                 }
             }
 

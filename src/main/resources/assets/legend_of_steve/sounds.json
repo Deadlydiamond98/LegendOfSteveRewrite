@@ -57,6 +57,43 @@
     "subtitle": "subtitles.entity.bomb.thrown"
   },
 
+  "block.note_block.smw_piano": {
+    "sounds": [
+      "legend_of_steve:note/smw_piano"
+    ],
+    "subtitle": "subtitles.block.note_block.note"
+  },
+  "block.note_block.lttp_trumpet": {
+    "sounds": [
+      "legend_of_steve:note/lttp_trumpet"
+    ],
+    "subtitle": "subtitles.block.note_block.note"
+  },
+  "block.note_block.brass_ensemble": {
+    "sounds": [
+      "legend_of_steve:note/brass_ensemble"
+    ],
+    "subtitle": "subtitles.block.note_block.note"
+  },
+  "block.note_block.malon": {
+    "sounds": [
+      "legend_of_steve:note/malon"
+    ],
+    "subtitle": "subtitles.block.note_block.note"
+  },
+  "block.note_block.pizzicato_string": {
+    "sounds": [
+      "legend_of_steve:note/pizzicato_string"
+    ],
+    "subtitle": "subtitles.block.note_block.note"
+  },
+  "block.note_block.ocarina": {
+    "sounds": [
+      "legend_of_steve:note/ocarina"
+    ],
+    "subtitle": "subtitles.block.note_block.note"
+  },
+
   "block.bomb_flower.break": {
     "sounds": [
       "legend_of_steve:block/bomb_flower/break1",
@@ -135,6 +172,25 @@
       "legend_of_steve:block/spring_water/transform"
     ],
     "subtitle": "subtitles.block.spring_water.transform"
+  },
+  "block.spring_water.consume": {
+    "sounds": [
+      "legend_of_steve:block/spring_water/consume1",
+      "legend_of_steve:block/spring_water/consume2"
+    ],
+    "subtitle": "subtitles.block.spring_water.consume"
+  },
+  "block.spring_water.sparkle": {
+    "sounds": [
+      "legend_of_steve:block/spring_water/sparkle1",
+      "legend_of_steve:block/spring_water/sparkle2",
+      "legend_of_steve:block/spring_water/sparkle3",
+      "legend_of_steve:block/spring_water/sparkle4",
+      "legend_of_steve:block/spring_water/sparkle5",
+      "legend_of_steve:block/spring_water/sparkle6",
+      "legend_of_steve:block/spring_water/sparkle7"
+    ],
+    "subtitle": "subtitles.block.spring_water.sparkle"
   },
 
   "block.fairy_lamp.break": {

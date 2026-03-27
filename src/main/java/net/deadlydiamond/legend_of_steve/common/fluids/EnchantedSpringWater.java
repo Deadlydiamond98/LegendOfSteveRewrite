@@ -1,9 +1,8 @@
 package net.deadlydiamond.legend_of_steve.common.fluids;
 
-import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
-import net.deadlydiamond.legend_of_steve.init.ZeldaFluids;
-import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
-import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
+import net.deadlydiamond.legend_of_steve.common.particles.MagicSparkleParticleEffect;
+import net.deadlydiamond.legend_of_steve.common.particles.SparkParticleEffect;
+import net.deadlydiamond.legend_of_steve.init.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FluidBlock;
@@ -13,6 +12,7 @@ import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.item.Item;
 import net.minecraft.registry.tag.FluidTags;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
@@ -20,6 +20,7 @@ import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
@@ -58,6 +59,39 @@ public class EnchantedSpringWater extends FlowableFluid {
         @Override
         public boolean isStill(FluidState state) {
             return true;
+        }
+    }
+
+    @Override
+    protected void randomDisplayTick(World world, BlockPos pos, FluidState state, Random random) {
+        super.randomDisplayTick(world, pos, state, random);
+        float height = world.getFluidState(pos).getHeight();
+
+        if (random.nextFloat() <= 0.025) {
+            MagicSparkleParticleEffect.createFountainSparkles(world, pos.toCenterPos().add(0, -0.5, 0).add(
+                    random.nextFloat() - 0.5,
+                    height,
+                    random.nextFloat() - 0.5
+            ), 1, 0.025, 0.01);
+        } else if (random.nextFloat() <= 0.01) {
+            SparkParticleEffect.createSparks(world, SparkParticleEffect.SOUL, pos.toCenterPos().add(
+                    random.nextFloat() - 0.5,
+                    random.nextFloat() - 0.5,
+                    random.nextFloat() - 0.5
+            ), 1);
+        }
+
+        if (random.nextInt(750) == 0) {
+            world.playSound(
+                    pos.getX(),
+                    pos.getY(),
+                    pos.getZ(),
+                    ZeldaSounds.SPRING_WATER_SPARKLE,
+                    SoundCategory.BLOCKS,
+                    0.2f + random.nextFloat() * 0.2f,
+                    1,
+                    false
+            );
         }
     }
 

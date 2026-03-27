@@ -1,5 +1,5 @@
 {
-  "parent": "legend_of_steve:make_a_wish",
+  "parent": "legend_of_steve:blessing_from_the_great_fairy",
   "criteria": {
     "get_item": {
       "conditions": {

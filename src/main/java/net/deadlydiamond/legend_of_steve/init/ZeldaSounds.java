@@ -28,6 +28,8 @@ public class ZeldaSounds {
     public static final BlockSoundGroup FAIRY_LAMP = registerGroup("fairy_lamp", 1, 1.2f);
     public static final BlockSoundGroup STARSTONE = registerGroup("starstone", 1, 1);
     public static final SoundEvent SPRING_WATER_TRANSFORM = register("block.spring_water.transform");
+    public static final SoundEvent SPRING_WATER_CONSUME = register("block.spring_water.consume");
+    public static final SoundEvent SPRING_WATER_SPARKLE = register("block.spring_water.sparkle");
     // Master Ore
     public static final BlockSoundGroup MASTER_BLOCK = registerGroup("master_block", 1, 1.5f);
     public static final BlockSoundGroup MASTER_PLATE = registerGroup("master_plate", 1, 1.5f);
@@ -37,7 +39,13 @@ public class ZeldaSounds {
     public static final SoundEvent MASTER_BARREL_CLOSE = register("block.master_barrel.close");
     // Tektiles
     public static final BlockSoundGroup TEKTILES = registerGroup("tektiles", 1, 1.25f);
-
+    // Note Block
+    public static final SoundEvent MALON = register("block.note_block.malon");
+    public static final SoundEvent PIZZICATO_STRING = register("block.note_block.pizzicato_string");
+    public static final SoundEvent OCARINA = register("block.note_block.ocarina");
+    public static final SoundEvent SMW_PIANO = register("block.note_block.smw_piano");
+    public static final SoundEvent BRASS_ENSEMBLE = register("block.note_block.brass_ensemble");
+    public static final SoundEvent LTTP_TRUMPET = register("block.note_block.lttp_trumpet");
     // Items ///////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Emerald Shards
     public static final SoundEvent EMERALD_SHARD_PICKED_UP = register("item.emerald_shard.pick_up");

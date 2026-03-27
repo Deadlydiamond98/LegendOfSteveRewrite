@@ -2,7 +2,6 @@ package net.deadlydiamond.legend_of_steve.init;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.blocks.MasterBarrelBlock;
-import net.deadlydiamond.legend_of_steve.common.blocks.SpringWaterBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.container.LootPotBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.GirderBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.glowing.GlowingBlock;
@@ -32,9 +31,12 @@ public class ZeldaBlocks {
     // FUNCTIONAL BLOCKS ///////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    // PLANTS
     public static final Block BOMB_FLOWER = register("bomb_flower", new BombFlowerBlock(BOMB_FLOWER_SETTINGS), false);
-    public static final Block ENCHANTED_SPRING_WATER = register("enchanted_spring_water", new SpringWaterBlock(ZeldaFluids.ENCHANTED_SPRING_WATER, FabricBlockSettings.copyOf(Blocks.WATER).luminance(state -> 10)), false);
-
+    // FLUIDS
+    public static final Block ENCHANTED_SPRING_WATER = register("enchanted_spring_water", new FluidBlock(
+            ZeldaFluids.ENCHANTED_SPRING_WATER, FabricBlockSettings.copyOf(Blocks.WATER).luminance(state -> 10)), false
+    );
     // STORAGE
     public static final Block LOOT_POT = registerPot("loot_pot", new LootPotBlock(LOOT_POT_SETTINGS));
     public static final LootPotBlockset DYED_LOOT_POTS = new LootPotBlockset(LegendOfSteve.MOD_ID, "loot_pot", LOOT_POT);

@@ -8,6 +8,7 @@
   "mixins": [
     "common.ExplosionMixin",
     "common.block.FluidBlockMixin",
+    "common.block.NoteBlockMixin",
     "common.entity.LightningEntityMixin",
     "common.entity.PersistentProjectileEntityMixin",
     "common.entity.PotionEntityMixin",

@@ -2,6 +2,8 @@ package net.deadlydiamond.legend_of_steve.networking;
 
 import net.deadlydiamond.legend_of_steve.networking.c2s.GuiScrollItemActionC2SPacket;
 import net.deadlydiamond.legend_of_steve.networking.c2s.HudScrollItemActionC2SPacket;
+import net.deadlydiamond.legend_of_steve.networking.s2c.ItemTransmutationPoofS2CPacket;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 
 public class ZeldaNetworking {
@@ -12,6 +14,8 @@ public class ZeldaNetworking {
     }
 
     public static class Client {
-        public static void registerS2CReceivers() {}
+        public static void registerS2CReceivers() {
+            ClientPlayNetworking.registerGlobalReceiver(ItemTransmutationPoofS2CPacket.ID, ItemTransmutationPoofS2CPacket.Handler::receive);
+        }
     }
 }

@@ -1,8 +1,7 @@
-package net.deadlydiamond.legend_of_steve.mixin.client.rendering;
+package net.deadlydiamond.legend_of_steve.mixin.client.rendering.world;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.init.client.ZeldaRenderLayers;
 import net.deadlydiamond.legend_of_steve.init.client.ZeldaShaders;
 import net.deadlydiamond98.koalalib.client.PostProcessingRegistry;

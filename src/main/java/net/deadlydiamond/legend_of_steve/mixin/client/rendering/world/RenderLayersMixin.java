@@ -1,14 +1,12 @@
-package net.deadlydiamond.legend_of_steve.mixin.client.rendering;
+package net.deadlydiamond.legend_of_steve.mixin.client.rendering.world;
 
 
 import com.llamalad7.mixinextras.expression.Definition;
 import com.llamalad7.mixinextras.expression.Expression;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
-import net.deadlydiamond.legend_of_steve.common.blocks.deco.glowing.GlowingBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.glowing.IGlowingBlock;
 import net.deadlydiamond.legend_of_steve.common.fluids.EnchantedSpringWater;
-import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
 import net.deadlydiamond.legend_of_steve.init.client.ZeldaRenderLayers;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.render.RenderLayer;

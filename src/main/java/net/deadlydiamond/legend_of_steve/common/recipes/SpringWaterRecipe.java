@@ -75,6 +75,11 @@ public class SpringWaterRecipe implements Recipe<Inventory> {
         return Type.INSTANCE;
     }
 
+    @Override
+    public String getGroup() {
+        return this.group;
+    }
+
     public static class Type implements RecipeType<SpringWaterRecipe> {
         public static final Type INSTANCE = new Type();
     }

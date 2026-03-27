@@ -1,6 +1,7 @@
 package net.deadlydiamond.legend_of_steve.init;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
+import net.deadlydiamond.legend_of_steve.common.entities.projectile.DekuNutProjectileEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.ThrownPotEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.BombEntity;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
@@ -16,6 +17,7 @@ public class ZeldaEntityTypes {
 
     // PROJECTILE ENTITIES /////////////////////////////////////////////////////////////////////////////////////////////
     public static final EntityType<BombEntity> BOMB = register("bomb", createMisc(BombEntity.class, 0.5f, 0.5f));
+    public static final EntityType<DekuNutProjectileEntity> DEKU_NUT = register("deku_nut", createMisc(DekuNutProjectileEntity.class, 0.5f, 0.5f));
     public static final EntityType<ThrownPotEntity> THROWN_POT = register("thrown_pot", createMisc(ThrownPotEntity.class, 0.5f, 0.5f));
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

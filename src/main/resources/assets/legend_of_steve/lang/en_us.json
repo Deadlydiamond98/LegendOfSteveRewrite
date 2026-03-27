@@ -8,6 +8,8 @@
   "item.legend_of_steve.bomb": "Bomb",
   "item.legend_of_steve.super_bomb": "Super Bomb",
 
+  "item.legend_of_steve.deku_nut": "Deku Nut",
+
   "item.legend_of_steve.bomb_bag": "Bomb Bag",
   "item.legend_of_steve.gilded_bomb_bag": "Gilded Bomb Bag",
   "item.legend_of_steve.netherite_bomb_bag": "Netherite Bomb Bag",
@@ -171,6 +173,9 @@
   "subtitles.block.spring_water.transform": "Enchanted Spring Water transmutes item",
   "subtitles.block.spring_water.consume": "Enchanted Spring Water consumes item",
   "subtitles.block.spring_water.sparkle": "Enchanted Spring Water sparkles",
+
+  "subtitles.entity.deku_nut.snap": "Deku Nut colliding with object",
+  "subtitles.entity.deku_nut.freeze": "Deku Nut stunning target",
 
   "death.attack.loot_pot_projectile": "%1$s was pummeled to death by flying pottery",
   "death.attack.loot_pot_projectile.player": "%1$s was pummeled to death by %2$s's pottery",

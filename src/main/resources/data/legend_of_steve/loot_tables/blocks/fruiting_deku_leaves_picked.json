@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "legend_of_steve:fruiting_deku_leaves",
+          "name": "legend_of_steve:deku_nut",
           "conditions": [
             {
               "condition": "minecraft:block_state_property",

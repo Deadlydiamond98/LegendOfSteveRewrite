@@ -20,6 +20,8 @@ public class ZeldaCreativeTabs {
                 ZeldaItems.BOMB,
                 ZeldaItems.SUPER_BOMB,
 
+                ZeldaItems.DEKU_NUT,
+
                 // BOMB BAGS
 
                 ZeldaItems.BOMB_BAG,

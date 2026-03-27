@@ -99,6 +99,7 @@ public class ZeldaModelDatagen extends FabricModelProvider {
                 ZeldaItems.BOMB,
                 ZeldaItems.SUPER_BOMB,
                 ZeldaItems.BOMB_FLOWER,
+                ZeldaItems.DEKU_NUT,
                 ZeldaItems.EMERALD_SHARD,
                 ZeldaItems.EMERALD_CHUNK,
                 ZeldaItems.BLUE_TEKTITE_CHITIN,

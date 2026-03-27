@@ -15,6 +15,19 @@
     ]
   },
 
+  "item.deku_nut.snap": {
+    "sounds": [
+      "legend_of_steve:item/deku_nut/snap"
+    ],
+    "subtitle": "subtitles.entity.deku_nut.snap"
+  },
+  "item.deku_nut.freeze": {
+    "sounds": [
+      "legend_of_steve:item/deku_nut/freeze"
+    ],
+    "subtitle": "subtitles.entity.deku_nut.freeze"
+  },
+
   "entity.bomb.jingle": {
     "sounds": [
       "legend_of_steve:block/secret_jingle"

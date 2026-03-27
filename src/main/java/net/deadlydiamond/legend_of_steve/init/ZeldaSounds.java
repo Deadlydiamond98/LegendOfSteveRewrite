@@ -51,6 +51,9 @@ public class ZeldaSounds {
     public static final SoundEvent EMERALD_SHARD_PICKED_UP = register("item.emerald_shard.pick_up");
     public static final SoundEvent EMERALD_SHARD_CONDENSE = register("item.emerald_shard.condense");
     public static final SoundEvent EMERALD_SHARD_CONDENSE_FURTHER = register("item.emerald_shard.condense_further");
+    // Deku Nut
+    public static final SoundEvent DEKU_NUT_SNAP = register("item.deku_nut.snap");
+    public static final SoundEvent DEKU_NUT_STUN = register("item.deku_nut.freeze");
 
     // HELPER METHODS //////////////////////////////////////////////////////////////////////////////////////////////////
 

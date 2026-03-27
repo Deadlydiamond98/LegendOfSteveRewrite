@@ -1,0 +1,9 @@
+{
+  "type": "legend_of_steve:spring_water_conversion",
+  "input": {
+    "item": "minecraft:nether_brick_stairs"
+  },
+  "result": {
+    "item": "minecraft:brick_stairs"
+  }
+}

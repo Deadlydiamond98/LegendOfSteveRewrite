@@ -1,0 +1,9 @@
+{
+  "type": "legend_of_steve:spring_water_conversion",
+  "input": {
+    "item": "minecraft:orange_glazed_terracotta"
+  },
+  "result": {
+    "item": "minecraft:white_glazed_terracotta"
+  }
+}

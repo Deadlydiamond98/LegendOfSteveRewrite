@@ -1,0 +1,9 @@
+{
+  "type": "legend_of_steve:spring_water_conversion",
+  "input": {
+    "item": "minecraft:cyan_terracotta"
+  },
+  "result": {
+    "item": "minecraft:terracotta"
+  }
+}

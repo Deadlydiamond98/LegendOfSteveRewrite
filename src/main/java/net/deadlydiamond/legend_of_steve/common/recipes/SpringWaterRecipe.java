@@ -1,12 +1,13 @@
 package net.deadlydiamond.legend_of_steve.common.recipes;
 
 import com.google.gson.JsonObject;
-import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.minecraft.inventory.Inventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.recipe.*;
 import net.minecraft.registry.DynamicRegistryManager;
+import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
 import net.minecraft.util.collection.DefaultedList;
@@ -14,15 +15,17 @@ import net.minecraft.world.World;
 
 public class SpringWaterRecipe implements Recipe<Inventory> {
     private final Identifier id;
-    private final ItemStack input;
+    private final Item input;
     private final ItemStack output;
+    private final int time;
     protected final String group;
 
-    public SpringWaterRecipe(Identifier id, String group, ItemStack input, ItemStack output) {
+    public SpringWaterRecipe(Identifier id, String group, Item input, ItemStack output, int time) {
         this.id = id;
         this.group = group;
         this.input = input;
         this.output = output;
+        this.time = time;
     }
 
     public Identifier getId() {
@@ -31,17 +34,13 @@ public class SpringWaterRecipe implements Recipe<Inventory> {
 
     public DefaultedList<Ingredient> getIngredients() {
         DefaultedList<Ingredient> defaultedList = DefaultedList.of();
-        defaultedList.add(Ingredient.ofItems(this.input.getItem()));
+        defaultedList.add(Ingredient.ofItems(this.input));
         return defaultedList;
     }
 
     @Override
     public boolean matches(Inventory inventory, World world) {
-        return Ingredient.ofItems(this.input.getItem()).test(inventory.getStack(0));
-    }
-
-    public ItemStack getInput() {
-        return this.input;
+        return Ingredient.ofItems(this.input).test(inventory.getStack(0));
     }
 
     @Override
@@ -58,8 +57,12 @@ public class SpringWaterRecipe implements Recipe<Inventory> {
         return this.output;
     }
 
-    public ItemStack getOutput() {
-        return this.output;
+    public ItemStack getOutput(int count) {
+        return new ItemStack(this.output.getItem(), this.output.getCount() * count);
+    }
+
+    public int getTime() {
+        return this.time;
     }
 
     @Override
@@ -84,10 +87,12 @@ public class SpringWaterRecipe implements Recipe<Inventory> {
         public SpringWaterRecipe read(Identifier identifier, JsonObject jsonObject) {
 
             String string = JsonHelper.getString(jsonObject, "group", "");
-            ItemStack input = ShapedRecipe.outputFromJson(JsonHelper.getObject(jsonObject, "input"));
-            ItemStack output = ShapedRecipe.outputFromJson(JsonHelper.getObject(jsonObject, "result"));
 
-            return new SpringWaterRecipe(identifier, string, input, output);
+            Item input = ShapedRecipe.getItem(JsonHelper.getObject(jsonObject, "input"));
+            ItemStack output = ShapedRecipe.outputFromJson(JsonHelper.getObject(jsonObject, "result"));
+            int time = JsonHelper.getInt(jsonObject, "submerged_time", 140);
+
+            return new SpringWaterRecipe(identifier, string, input, output, time);
         }
 
         @Override
@@ -95,17 +100,19 @@ public class SpringWaterRecipe implements Recipe<Inventory> {
 
             String string = packetByteBuf.readString();
 
-            ItemStack input = packetByteBuf.readItemStack();
+            Identifier input = packetByteBuf.readIdentifier();
             ItemStack output = packetByteBuf.readItemStack();
+            int time = packetByteBuf.readInt();
 
-            return new SpringWaterRecipe(identifier, string, input, output);
+            return new SpringWaterRecipe(identifier, string, Registries.ITEM.get(input), output, time);
         }
 
         @Override
         public void write(PacketByteBuf packetByteBuf, SpringWaterRecipe recipe) {
             packetByteBuf.writeString(recipe.group);
-            packetByteBuf.writeItemStack(recipe.input);
+            packetByteBuf.writeIdentifier(Registries.ITEM.getId(recipe.input));
             packetByteBuf.writeItemStack(recipe.output);
+            packetByteBuf.writeInt(recipe.time);
         }
     }
 }

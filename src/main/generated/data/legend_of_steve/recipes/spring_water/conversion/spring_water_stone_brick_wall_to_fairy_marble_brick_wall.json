@@ -1,0 +1,9 @@
+{
+  "type": "legend_of_steve:spring_water_conversion",
+  "input": {
+    "item": "minecraft:stone_brick_wall"
+  },
+  "result": {
+    "item": "legend_of_steve:fairy_marble_brick_wall"
+  }
+}

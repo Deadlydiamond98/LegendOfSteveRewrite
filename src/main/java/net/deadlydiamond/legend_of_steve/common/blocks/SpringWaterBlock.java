@@ -1,5 +1,6 @@
 package net.deadlydiamond.legend_of_steve.common.blocks;
 
+import net.deadlydiamond.legend_of_steve.common.particles.MagicSparkleParticleEffect;
 import net.deadlydiamond.legend_of_steve.common.particles.SparkParticleEffect;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FluidBlock;
@@ -16,11 +17,19 @@ public class SpringWaterBlock extends FluidBlock {
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
         super.randomDisplayTick(state, world, pos, random);
-        if (random.nextFloat() <= 0.1) {
+        float height = world.getFluidState(pos).getHeight();
+
+        if (random.nextFloat() <= 0.025) {
+            MagicSparkleParticleEffect.createFountainSparkles(world, pos.toCenterPos().add(0, -0.5, 0).add(
+                    random.nextFloat() - 0.5,
+                    height,
+                    random.nextFloat() - 0.5
+            ), 1, 0.025, 0.01);
+        } else if (random.nextFloat() <= 0.01) {
             SparkParticleEffect.createSparks(world, SparkParticleEffect.SOUL, pos.toCenterPos().add(
-                    random.nextFloat() / 2.0,
-                    random.nextFloat() / 2.0,
-                    random.nextFloat() / 2.0
+                    random.nextFloat() - 0.5,
+                    random.nextFloat() - 0.5,
+                    random.nextFloat() - 0.5
             ), 1);
         }
     }

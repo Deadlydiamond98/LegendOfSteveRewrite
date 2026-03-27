@@ -5,7 +5,6 @@ import net.deadlydiamond.legend_of_steve.common.items.block_item.LootPotItem;
 import net.deadlydiamond98.koalalib.common.blocksets.AbstractBlockset;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.registry.Registries;
@@ -14,7 +13,6 @@ import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.function.Supplier;
 
 public class LootPotBlockset extends AbstractBlockset {
     public final Block white;

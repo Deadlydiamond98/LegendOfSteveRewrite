@@ -1,6 +1,9 @@
 package net.deadlydiamond.legend_of_steve;
 
 import net.deadlydiamond.legend_of_steve.datagen.*;
+import net.deadlydiamond.legend_of_steve.datagen.recipe.ZeldaRecipeDatagen;
+import net.deadlydiamond.legend_of_steve.datagen.tag.ZeldaBlockTagDatagen;
+import net.deadlydiamond.legend_of_steve.datagen.tag.ZeldaItemTagDatagen;
 import net.deadlydiamond.legend_of_steve.worldgen.ZeldaFeaturesDatagen;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;

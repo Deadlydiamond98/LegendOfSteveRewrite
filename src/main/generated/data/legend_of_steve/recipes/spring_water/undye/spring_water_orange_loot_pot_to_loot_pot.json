@@ -1,0 +1,9 @@
+{
+  "type": "legend_of_steve:spring_water_conversion",
+  "input": {
+    "item": "legend_of_steve:orange_loot_pot"
+  },
+  "result": {
+    "item": "legend_of_steve:loot_pot"
+  }
+}

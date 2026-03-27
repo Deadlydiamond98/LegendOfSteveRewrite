@@ -1,0 +1,9 @@
+{
+  "type": "legend_of_steve:spring_water_conversion",
+  "input": {
+    "item": "minecraft:skeleton_skull"
+  },
+  "result": {
+    "item": "minecraft:player_head"
+  }
+}

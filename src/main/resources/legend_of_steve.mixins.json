@@ -8,11 +8,10 @@
   "mixins": [
     "common.ExplosionMixin",
     "common.block.FluidBlockMixin",
-    "common.entity.spring_water.ItemEntitySpringWaterConvertMixin",
     "common.entity.LightningEntityMixin",
     "common.entity.PersistentProjectileEntityMixin",
     "common.entity.PotionEntityMixin",
-    "common.entity.spring_water.EntitySpringWaterMixin",
+    "common.entity.base.EntitySpringWaterMixin",
     "common.entity.mob.AbstractSkeletonEntityMixin",
     "common.entity.mob.MobEntityMixin",
     "common.entity.mob.piglin.PiglinEntityMixin",

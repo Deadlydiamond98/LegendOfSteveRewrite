@@ -1,0 +1,9 @@
+{
+  "type": "legend_of_steve:spring_water_conversion",
+  "input": {
+    "item": "minecraft:dead_horn_coral_block"
+  },
+  "result": {
+    "item": "minecraft:horn_coral_block"
+  }
+}

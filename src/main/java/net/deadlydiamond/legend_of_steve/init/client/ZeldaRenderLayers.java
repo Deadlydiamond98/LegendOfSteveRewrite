@@ -172,7 +172,7 @@ public class ZeldaRenderLayers extends RenderLayer {
                             .cull(DISABLE_CULLING)
                             .lightmap(ENABLE_LIGHTMAP)
                             .overlay(ENABLE_OVERLAY_COLOR)
-                            .build(false))
+                            .build(true))
     ));
 
     public static final RenderLayer GUI_ITEM_IRIDESCENCE = of("legend_of_steve$item_gui_iridescence",

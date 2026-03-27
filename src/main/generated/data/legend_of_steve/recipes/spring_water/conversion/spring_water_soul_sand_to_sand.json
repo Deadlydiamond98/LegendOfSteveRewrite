@@ -1,0 +1,9 @@
+{
+  "type": "legend_of_steve:spring_water_conversion",
+  "input": {
+    "item": "minecraft:soul_sand"
+  },
+  "result": {
+    "item": "minecraft:sand"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "type": "legend_of_steve:spring_water_conversion",
+  "input": {
+    "item": "minecraft:green_carpet"
+  },
+  "result": {
+    "item": "minecraft:white_carpet"
+  }
+}

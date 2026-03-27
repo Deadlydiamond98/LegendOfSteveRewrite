@@ -1,0 +1,9 @@
+{
+  "type": "legend_of_steve:spring_water_conversion",
+  "input": {
+    "item": "minecraft:chiseled_stone_bricks"
+  },
+  "result": {
+    "item": "legend_of_steve:chiseled_fairy_marble"
+  }
+}

@@ -2,6 +2,7 @@ package net.deadlydiamond.legend_of_steve.init;
 
 import com.mojang.serialization.Codec;
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
+import net.deadlydiamond.legend_of_steve.common.particles.MagicSparkleParticleEffect;
 import net.deadlydiamond.legend_of_steve.common.particles.SparkParticleEffect;
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.minecraft.particle.DefaultParticleType;
@@ -14,11 +15,14 @@ import java.util.function.Function;
 
 public class ZeldaParticleTypes {
     // REGULAR PARTICLES ///////////////////////////////////////////////////////////////////////////////////////////////
-    public static final ParticleType<DefaultParticleType> MAGIC_SPARKLE = register("magic_sparkle", false);
 
     // COMPLEX PARTICLES ///////////////////////////////////////////////////////////////////////////////////////////////
     public static final ParticleType<SparkParticleEffect> SPARK = register(
             "spark", false, SparkParticleEffect.FACTORY, particle -> SparkParticleEffect.CODEC
+    );
+
+    public static final ParticleType<MagicSparkleParticleEffect> MAGIC_SPARKLE = register(
+            "magic_sparkle", false, MagicSparkleParticleEffect.FACTORY, particle -> MagicSparkleParticleEffect.CODEC
     );
 
     // HELPER METHODS //////////////////////////////////////////////////////////////////////////////////////////////////

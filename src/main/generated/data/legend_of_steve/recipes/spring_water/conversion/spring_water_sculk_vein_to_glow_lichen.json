@@ -1,0 +1,9 @@
+{
+  "type": "legend_of_steve:spring_water_conversion",
+  "input": {
+    "item": "minecraft:sculk_vein"
+  },
+  "result": {
+    "item": "minecraft:glow_lichen"
+  }
+}

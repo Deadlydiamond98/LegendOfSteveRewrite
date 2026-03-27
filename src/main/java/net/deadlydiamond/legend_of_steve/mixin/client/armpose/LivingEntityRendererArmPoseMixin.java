@@ -4,6 +4,7 @@ import net.deadlydiamond.legend_of_steve.client.rendering.player.armpos.ArmPose;
 import net.deadlydiamond.legend_of_steve.util.mixinterfaces.client.ICustomArmPose;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.LivingEntityRenderer;
+import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
@@ -24,8 +25,7 @@ public class LivingEntityRendererArmPoseMixin<T extends LivingEntity, M extends 
 
     @Inject(method = "render(Lnet/minecraft/entity/LivingEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/entity/model/EntityModel;setAngles(Lnet/minecraft/entity/Entity;FFFFF)V", shift = At.Shift.AFTER))
     private void legend_of_steve$render(T livingEntity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, CallbackInfo ci) {
-        if (!(livingEntity instanceof PlayerEntity)) {
-            ICustomArmPose armPoseModel = (ICustomArmPose) this.model;
+        if (!(livingEntity instanceof PlayerEntity) && this.model instanceof ICustomArmPose armPoseModel) {
             ArmPose customArmPose = legend_of_steve$getCustomArmPose(livingEntity, Hand.MAIN_HAND);
             ArmPose customArmPose2 = legend_of_steve$getCustomArmPose(livingEntity, Hand.OFF_HAND);
 

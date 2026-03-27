@@ -1,18 +1,22 @@
 package net.deadlydiamond.legend_of_steve.client.particles;
 
+import net.deadlydiamond.legend_of_steve.common.particles.MagicSparkleParticleEffect;
+import net.deadlydiamond98.koalalib.util.ColorHelper;
 import net.minecraft.client.particle.*;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.world.ClientWorld;
-import net.minecraft.particle.DefaultParticleType;
 import org.jetbrains.annotations.Nullable;
 
 public class MagicSparkleParticle extends SpriteBillboardParticle {
     private final int alphaOffset;
     private final float angleIncrement;
+    private final int startHex, endHex;
 
-    public MagicSparkleParticle(ClientWorld clientWorld, double x, double y, double z, double velocityX, double velocityY, double velocityZ, SpriteProvider spriteProvider) {
+    public MagicSparkleParticle(ClientWorld clientWorld, double x, double y, double z, double velocityX, double velocityY, double velocityZ, SpriteProvider spriteProvider, int startHex, int endHex) {
         super(clientWorld, x, y, z, velocityX, velocityY, velocityZ);
+        this.startHex = startHex;
+        this.endHex = endHex;
         this.velocityX = velocityX;
         this.velocityY = velocityY;
         this.velocityZ = velocityZ;
@@ -41,7 +45,20 @@ public class MagicSparkleParticle extends SpriteBillboardParticle {
     @Override
     public void buildGeometry(VertexConsumer vertexConsumer, Camera camera, float tickDelta) {
         super.buildGeometry(vertexConsumer, camera, tickDelta);
-        this.alpha = (0.125f * (float) Math.sin(0.25f * (this.age + this.alphaOffset + tickDelta)) + 0.875f);
+        if (this.age + 10 >= this.maxAge) {
+            this.alpha -= 0.1f * tickDelta;
+            this.alpha = Math.max(0, this.alpha);
+        } else {
+            this.alpha = (0.125f * (float) Math.sin(0.25f * (this.age + this.alphaOffset + tickDelta)) + 0.875f);
+        }
+        setColorHex(ColorHelper.blendHexColors(this.startHex, this.endHex, (this.age + tickDelta) / this.maxAge));
+    }
+
+    private void setColorHex(int hex) {
+        int[] argb = ColorHelper.HexToARGB(hex);
+        this.red = argb[1] / 255.0f;
+        this.green = argb[2] / 255.0f;
+        this.blue = argb[3] / 255.0f;
     }
 
     @Override
@@ -54,7 +71,7 @@ public class MagicSparkleParticle extends SpriteBillboardParticle {
         return ParticleTextureSheet.PARTICLE_SHEET_TRANSLUCENT;
     }
 
-    public static class Factory implements ParticleFactory<DefaultParticleType> {
+    public static class Factory implements ParticleFactory<MagicSparkleParticleEffect> {
         private final SpriteProvider spriteProvider;
 
         public Factory(SpriteProvider spriteProvider) {
@@ -63,8 +80,8 @@ public class MagicSparkleParticle extends SpriteBillboardParticle {
 
         @Nullable
         @Override
-        public Particle createParticle(DefaultParticleType parameters, ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
-            return new MagicSparkleParticle(world, x, y, z, velocityX, velocityY, velocityZ, this.spriteProvider);
+        public Particle createParticle(MagicSparkleParticleEffect parameters, ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
+            return new MagicSparkleParticle(world, x, y, z, velocityX, velocityY, velocityZ, this.spriteProvider, parameters.getStartColor(), parameters.getEndColor());
         }
     }
 }

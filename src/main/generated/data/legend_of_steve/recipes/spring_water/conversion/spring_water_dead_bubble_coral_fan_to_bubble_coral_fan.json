@@ -1,0 +1,9 @@
+{
+  "type": "legend_of_steve:spring_water_conversion",
+  "input": {
+    "item": "minecraft:dead_bubble_coral_fan"
+  },
+  "result": {
+    "item": "minecraft:bubble_coral_fan"
+  }
+}

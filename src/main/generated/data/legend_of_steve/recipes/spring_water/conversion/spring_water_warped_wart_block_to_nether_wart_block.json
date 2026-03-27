@@ -1,0 +1,9 @@
+{
+  "type": "legend_of_steve:spring_water_conversion",
+  "input": {
+    "item": "minecraft:warped_wart_block"
+  },
+  "result": {
+    "item": "minecraft:nether_wart_block"
+  }
+}

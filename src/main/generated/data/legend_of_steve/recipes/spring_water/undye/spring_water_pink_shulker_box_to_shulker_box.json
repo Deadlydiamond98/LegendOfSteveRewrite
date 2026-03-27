@@ -1,0 +1,9 @@
+{
+  "type": "legend_of_steve:spring_water_conversion",
+  "input": {
+    "item": "minecraft:pink_shulker_box"
+  },
+  "result": {
+    "item": "minecraft:shulker_box"
+  }
+}

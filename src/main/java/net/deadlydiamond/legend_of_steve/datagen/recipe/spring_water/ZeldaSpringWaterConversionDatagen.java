@@ -87,6 +87,7 @@ public class ZeldaSpringWaterConversionDatagen {
         offerDyeConversion(consumer, Blocks.LIGHT_GRAY_WOOL, Blocks.WHITE_WOOL);
         offerDyeConversion(consumer, Blocks.GRAY_WOOL, Blocks.WHITE_WOOL);
         offerDyeConversion(consumer, Blocks.BLACK_WOOL, Blocks.WHITE_WOOL);
+        offerDyeConversion(consumer, Blocks.BROWN_WOOL, Blocks.WHITE_WOOL);
         offerDyeConversion(consumer, Blocks.RED_WOOL, Blocks.WHITE_WOOL);
         offerDyeConversion(consumer, Blocks.ORANGE_WOOL, Blocks.WHITE_WOOL);
         offerDyeConversion(consumer, Blocks.YELLOW_WOOL, Blocks.WHITE_WOOL);
@@ -102,6 +103,7 @@ public class ZeldaSpringWaterConversionDatagen {
         offerDyeConversion(consumer, Blocks.LIGHT_GRAY_CARPET, Blocks.WHITE_CARPET);
         offerDyeConversion(consumer, Blocks.GRAY_CARPET, Blocks.WHITE_CARPET);
         offerDyeConversion(consumer, Blocks.BLACK_CARPET, Blocks.WHITE_CARPET);
+        offerDyeConversion(consumer, Blocks.BROWN_CARPET, Blocks.WHITE_CARPET);
         offerDyeConversion(consumer, Blocks.RED_CARPET, Blocks.WHITE_CARPET);
         offerDyeConversion(consumer, Blocks.ORANGE_CARPET, Blocks.WHITE_CARPET);
         offerDyeConversion(consumer, Blocks.YELLOW_CARPET, Blocks.WHITE_CARPET);
@@ -118,6 +120,7 @@ public class ZeldaSpringWaterConversionDatagen {
         offerDyeConversion(consumer, Blocks.LIGHT_GRAY_TERRACOTTA, Blocks.TERRACOTTA);
         offerDyeConversion(consumer, Blocks.GRAY_TERRACOTTA, Blocks.TERRACOTTA);
         offerDyeConversion(consumer, Blocks.BLACK_TERRACOTTA, Blocks.TERRACOTTA);
+        offerDyeConversion(consumer, Blocks.BROWN_TERRACOTTA, Blocks.TERRACOTTA);
         offerDyeConversion(consumer, Blocks.RED_TERRACOTTA, Blocks.TERRACOTTA);
         offerDyeConversion(consumer, Blocks.ORANGE_TERRACOTTA, Blocks.TERRACOTTA);
         offerDyeConversion(consumer, Blocks.YELLOW_TERRACOTTA, Blocks.TERRACOTTA);
@@ -133,6 +136,7 @@ public class ZeldaSpringWaterConversionDatagen {
         offerDyeConversion(consumer, Blocks.LIGHT_GRAY_CONCRETE, Blocks.WHITE_CONCRETE);
         offerDyeConversion(consumer, Blocks.GRAY_CONCRETE, Blocks.WHITE_CONCRETE);
         offerDyeConversion(consumer, Blocks.BLACK_CONCRETE, Blocks.WHITE_CONCRETE);
+        offerDyeConversion(consumer, Blocks.BROWN_CONCRETE, Blocks.WHITE_CONCRETE);
         offerDyeConversion(consumer, Blocks.RED_CONCRETE, Blocks.WHITE_CONCRETE);
         offerDyeConversion(consumer, Blocks.ORANGE_CONCRETE, Blocks.WHITE_CONCRETE);
         offerDyeConversion(consumer, Blocks.YELLOW_CONCRETE, Blocks.WHITE_CONCRETE);
@@ -148,6 +152,7 @@ public class ZeldaSpringWaterConversionDatagen {
         offerDyeConversion(consumer, Blocks.LIGHT_GRAY_CONCRETE_POWDER, Blocks.WHITE_CONCRETE_POWDER);
         offerDyeConversion(consumer, Blocks.GRAY_CONCRETE_POWDER, Blocks.WHITE_CONCRETE_POWDER);
         offerDyeConversion(consumer, Blocks.BLACK_CONCRETE_POWDER, Blocks.WHITE_CONCRETE_POWDER);
+        offerDyeConversion(consumer, Blocks.BROWN_CONCRETE_POWDER, Blocks.WHITE_CONCRETE_POWDER);
         offerDyeConversion(consumer, Blocks.RED_CONCRETE_POWDER, Blocks.WHITE_CONCRETE_POWDER);
         offerDyeConversion(consumer, Blocks.ORANGE_CONCRETE_POWDER, Blocks.WHITE_CONCRETE_POWDER);
         offerDyeConversion(consumer, Blocks.YELLOW_CONCRETE_POWDER, Blocks.WHITE_CONCRETE_POWDER);
@@ -163,6 +168,7 @@ public class ZeldaSpringWaterConversionDatagen {
         offerDyeConversion(consumer, Blocks.LIGHT_GRAY_GLAZED_TERRACOTTA, Blocks.WHITE_GLAZED_TERRACOTTA);
         offerDyeConversion(consumer, Blocks.GRAY_GLAZED_TERRACOTTA, Blocks.WHITE_GLAZED_TERRACOTTA);
         offerDyeConversion(consumer, Blocks.BLACK_GLAZED_TERRACOTTA, Blocks.WHITE_GLAZED_TERRACOTTA);
+        offerDyeConversion(consumer, Blocks.BROWN_GLAZED_TERRACOTTA, Blocks.WHITE_GLAZED_TERRACOTTA);
         offerDyeConversion(consumer, Blocks.RED_GLAZED_TERRACOTTA, Blocks.WHITE_GLAZED_TERRACOTTA);
         offerDyeConversion(consumer, Blocks.ORANGE_GLAZED_TERRACOTTA, Blocks.WHITE_GLAZED_TERRACOTTA);
         offerDyeConversion(consumer, Blocks.YELLOW_GLAZED_TERRACOTTA, Blocks.WHITE_GLAZED_TERRACOTTA);
@@ -179,6 +185,7 @@ public class ZeldaSpringWaterConversionDatagen {
         offerDyeConversion(consumer, Blocks.LIGHT_GRAY_STAINED_GLASS, Blocks.GLASS);
         offerDyeConversion(consumer, Blocks.GRAY_STAINED_GLASS, Blocks.GLASS);
         offerDyeConversion(consumer, Blocks.BLACK_STAINED_GLASS, Blocks.GLASS);
+        offerDyeConversion(consumer, Blocks.BROWN_STAINED_GLASS, Blocks.GLASS);
         offerDyeConversion(consumer, Blocks.RED_STAINED_GLASS, Blocks.GLASS);
         offerDyeConversion(consumer, Blocks.ORANGE_STAINED_GLASS, Blocks.GLASS);
         offerDyeConversion(consumer, Blocks.YELLOW_STAINED_GLASS, Blocks.GLASS);
@@ -195,6 +202,7 @@ public class ZeldaSpringWaterConversionDatagen {
         offerDyeConversion(consumer, Blocks.LIGHT_GRAY_STAINED_GLASS_PANE, Blocks.GLASS_PANE);
         offerDyeConversion(consumer, Blocks.GRAY_STAINED_GLASS_PANE, Blocks.GLASS_PANE);
         offerDyeConversion(consumer, Blocks.BLACK_STAINED_GLASS_PANE, Blocks.GLASS_PANE);
+        offerDyeConversion(consumer, Blocks.BROWN_STAINED_GLASS_PANE, Blocks.GLASS_PANE);
         offerDyeConversion(consumer, Blocks.RED_STAINED_GLASS_PANE, Blocks.GLASS_PANE);
         offerDyeConversion(consumer, Blocks.ORANGE_STAINED_GLASS_PANE, Blocks.GLASS_PANE);
         offerDyeConversion(consumer, Blocks.YELLOW_STAINED_GLASS_PANE, Blocks.GLASS_PANE);
@@ -210,6 +218,7 @@ public class ZeldaSpringWaterConversionDatagen {
         offerDyeConversion(consumer, Blocks.LIGHT_GRAY_BED, Blocks.WHITE_BED);
         offerDyeConversion(consumer, Blocks.GRAY_BED, Blocks.WHITE_BED);
         offerDyeConversion(consumer, Blocks.BLACK_BED, Blocks.WHITE_BED);
+        offerDyeConversion(consumer, Blocks.BROWN_BED, Blocks.WHITE_BED);
         offerDyeConversion(consumer, Blocks.RED_BED, Blocks.WHITE_BED);
         offerDyeConversion(consumer, Blocks.ORANGE_BED, Blocks.WHITE_BED);
         offerDyeConversion(consumer, Blocks.YELLOW_BED, Blocks.WHITE_BED);
@@ -226,6 +235,7 @@ public class ZeldaSpringWaterConversionDatagen {
         offerDyeConversion(consumer, Blocks.LIGHT_GRAY_CANDLE, Blocks.CANDLE);
         offerDyeConversion(consumer, Blocks.GRAY_CANDLE, Blocks.CANDLE);
         offerDyeConversion(consumer, Blocks.BLACK_CANDLE, Blocks.CANDLE);
+        offerDyeConversion(consumer, Blocks.BROWN_CANDLE, Blocks.CANDLE);
         offerDyeConversion(consumer, Blocks.RED_CANDLE, Blocks.CANDLE);
         offerDyeConversion(consumer, Blocks.ORANGE_CANDLE, Blocks.CANDLE);
         offerDyeConversion(consumer, Blocks.YELLOW_CANDLE, Blocks.CANDLE);
@@ -241,6 +251,7 @@ public class ZeldaSpringWaterConversionDatagen {
         offerDyeConversion(consumer, Blocks.LIGHT_GRAY_BANNER, Blocks.WHITE_BANNER);
         offerDyeConversion(consumer, Blocks.GRAY_BANNER, Blocks.WHITE_BANNER);
         offerDyeConversion(consumer, Blocks.BLACK_BANNER, Blocks.WHITE_BANNER);
+        offerDyeConversion(consumer, Blocks.BROWN_BANNER, Blocks.WHITE_BANNER);
         offerDyeConversion(consumer, Blocks.RED_BANNER, Blocks.WHITE_BANNER);
         offerDyeConversion(consumer, Blocks.ORANGE_BANNER, Blocks.WHITE_BANNER);
         offerDyeConversion(consumer, Blocks.YELLOW_BANNER, Blocks.WHITE_BANNER);
@@ -257,6 +268,7 @@ public class ZeldaSpringWaterConversionDatagen {
         offerDyeConversion(consumer, Blocks.LIGHT_GRAY_SHULKER_BOX, Blocks.SHULKER_BOX);
         offerDyeConversion(consumer, Blocks.GRAY_SHULKER_BOX, Blocks.SHULKER_BOX);
         offerDyeConversion(consumer, Blocks.BLACK_SHULKER_BOX, Blocks.SHULKER_BOX);
+        offerDyeConversion(consumer, Blocks.BROWN_SHULKER_BOX, Blocks.SHULKER_BOX);
         offerDyeConversion(consumer, Blocks.RED_SHULKER_BOX, Blocks.SHULKER_BOX);
         offerDyeConversion(consumer, Blocks.ORANGE_SHULKER_BOX, Blocks.SHULKER_BOX);
         offerDyeConversion(consumer, Blocks.YELLOW_SHULKER_BOX, Blocks.SHULKER_BOX);

@@ -131,7 +131,7 @@
   "block.legend_of_steve.master_bricks": "Master Bricks",
   "block.legend_of_steve.master_brick_slab": "Master Brick Slab",
   "block.legend_of_steve.master_brick_stairs": "Master Brick Stairs",
-  "block.legend_of_steve.master_tiles": "Master Tiles",
+  "block.legend_of_steve.master_tile": "Master Tiles",
   "block.legend_of_steve.master_tile_slab": "Master Tile Slab",
   "block.legend_of_steve.master_tile_stairs": "Master Tile Stairs",
   "block.legend_of_steve.master_pillar": "Master Pillar",
@@ -169,7 +169,7 @@
   "subtitles.block.loot_pot.grab": "Loot Pot picked up",
 
   "subtitles.block.spring_water.transform": "Enchanted Spring Water transmutes item",
-  "subtitles.block.spring_water.consume": "Item consumed by Enchanted Spring Water",
+  "subtitles.block.spring_water.consume": "Enchanted Spring Water consumes item",
   "subtitles.block.spring_water.sparkle": "Enchanted Spring Water sparkles",
 
   "death.attack.loot_pot_projectile": "%1$s was pummeled to death by flying pottery",

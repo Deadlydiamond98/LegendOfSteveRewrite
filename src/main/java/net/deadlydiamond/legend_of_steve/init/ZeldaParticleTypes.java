@@ -15,12 +15,12 @@ import java.util.function.Function;
 
 public class ZeldaParticleTypes {
     // REGULAR PARTICLES ///////////////////////////////////////////////////////////////////////////////////////////////
+    public static final DefaultParticleType DEKU_NUT_FLASH = register("deku_nut_flash", true);
 
     // COMPLEX PARTICLES ///////////////////////////////////////////////////////////////////////////////////////////////
     public static final ParticleType<SparkParticleEffect> SPARK = register(
             "spark", false, SparkParticleEffect.FACTORY, particle -> SparkParticleEffect.CODEC
     );
-
     public static final ParticleType<MagicSparkleParticleEffect> MAGIC_SPARKLE = register(
             "magic_sparkle", false, MagicSparkleParticleEffect.FACTORY, particle -> MagicSparkleParticleEffect.CODEC
     );

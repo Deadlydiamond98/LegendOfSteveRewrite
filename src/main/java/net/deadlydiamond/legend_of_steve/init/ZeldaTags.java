@@ -27,6 +27,9 @@ public class ZeldaTags {
     public static final TagKey<Block> BOMB_FLOWER_PLANTABLE = block("bomb_flower_plantable");
     public static final TagKey<Block> CHISELED_PLANKS_BLOCK = block("chiseled_planks");
 
+    // ENTITIES ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static final TagKey<EntityType<?>> IMMUNE_TO_STUNNING = entity("immune_to_stunning");
+
     // FLUIDS //////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static final TagKey<Fluid> ENCHANTED_SPRING_WATER = fluid("enchanted_spring_water");
 

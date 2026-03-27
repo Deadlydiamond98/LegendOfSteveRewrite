@@ -18,11 +18,9 @@ public class SpringWaterRecipe implements Recipe<Inventory> {
     private final Item input;
     private final ItemStack output;
     private final int time;
-    protected final String group;
 
-    public SpringWaterRecipe(Identifier id, String group, Item input, ItemStack output, int time) {
+    public SpringWaterRecipe(Identifier id, Item input, ItemStack output, int time) {
         this.id = id;
-        this.group = group;
         this.input = input;
         this.output = output;
         this.time = time;
@@ -66,6 +64,11 @@ public class SpringWaterRecipe implements Recipe<Inventory> {
     }
 
     @Override
+    public boolean isIgnoredInRecipeBook() {
+        return true;
+    }
+
+    @Override
     public RecipeSerializer<?> getSerializer() {
         return Serializer.INSTANCE;
     }
@@ -73,11 +76,6 @@ public class SpringWaterRecipe implements Recipe<Inventory> {
     @Override
     public RecipeType<?> getType() {
         return Type.INSTANCE;
-    }
-
-    @Override
-    public String getGroup() {
-        return this.group;
     }
 
     public static class Type implements RecipeType<SpringWaterRecipe> {
@@ -91,30 +89,25 @@ public class SpringWaterRecipe implements Recipe<Inventory> {
         @Override
         public SpringWaterRecipe read(Identifier identifier, JsonObject jsonObject) {
 
-            String string = JsonHelper.getString(jsonObject, "group", "");
-
             Item input = ShapedRecipe.getItem(JsonHelper.getObject(jsonObject, "input"));
             ItemStack output = ShapedRecipe.outputFromJson(JsonHelper.getObject(jsonObject, "result"));
             int time = JsonHelper.getInt(jsonObject, "submerged_time", 140);
 
-            return new SpringWaterRecipe(identifier, string, input, output, time);
+            return new SpringWaterRecipe(identifier, input, output, time);
         }
 
         @Override
         public SpringWaterRecipe read(Identifier identifier, PacketByteBuf packetByteBuf) {
 
-            String string = packetByteBuf.readString();
-
             Identifier input = packetByteBuf.readIdentifier();
             ItemStack output = packetByteBuf.readItemStack();
             int time = packetByteBuf.readInt();
 
-            return new SpringWaterRecipe(identifier, string, Registries.ITEM.get(input), output, time);
+            return new SpringWaterRecipe(identifier, Registries.ITEM.get(input), output, time);
         }
 
         @Override
         public void write(PacketByteBuf packetByteBuf, SpringWaterRecipe recipe) {
-            packetByteBuf.writeString(recipe.group);
             packetByteBuf.writeIdentifier(Registries.ITEM.getId(recipe.input));
             packetByteBuf.writeItemStack(recipe.output);
             packetByteBuf.writeInt(recipe.time);

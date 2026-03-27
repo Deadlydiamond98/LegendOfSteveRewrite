@@ -208,5 +208,8 @@
   "advancements.legend_of_steve.decorative_imprisonment.description": "Obtain every variant of Fairy Light and ignore the Questionable Ethics behind them...",
 
   "advancements.legend_of_steve.quiver": "Arrows++",
-  "advancements.legend_of_steve.quiver.description": "Obtain a Quiver"
+  "advancements.legend_of_steve.quiver.description": "Obtain a Quiver",
+
+  "advancements.legend_of_steve.stunning": "Stunning!",
+  "advancements.legend_of_steve.stunning.description": "Stun a target (or yourself) with a Deku Nut"
 }

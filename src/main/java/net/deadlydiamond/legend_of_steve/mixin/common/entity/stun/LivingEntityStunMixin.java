@@ -10,6 +10,7 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -143,6 +144,18 @@ public abstract class LivingEntityStunMixin extends Entity implements IZeldaStun
     }
 
     // GETTERS & SETTERS ///////////////////////////////////////////////////////////////////////////////////////////////
+
+    @Inject(method = "writeCustomDataToNbt", at = @At("HEAD"))
+    public void onSave(NbtCompound nbt, CallbackInfo info) {
+        nbt.putInt("ZeldaStunTimer", this.legend_of_steve$stunnedTimer);
+    }
+
+    @Inject(method = "readCustomDataFromNbt", at = @At("HEAD"))
+    public void onLoad(NbtCompound nbt, CallbackInfo info) {
+        if (nbt.contains("ZeldaStunTimer")) {
+            this.legend_of_steve$setStunned(nbt.getInt("ZeldaStunTimer"));
+        }
+    }
 
     @Override
     public boolean legend_of_steve$isStunned() {

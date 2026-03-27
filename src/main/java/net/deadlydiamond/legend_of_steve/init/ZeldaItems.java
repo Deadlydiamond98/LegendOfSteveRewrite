@@ -4,7 +4,7 @@ import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.items.EmeraldShardItem;
 import net.deadlydiamond.legend_of_steve.common.items.bag.BombBagItem;
 import net.deadlydiamond.legend_of_steve.common.items.bag.QuiverItem;
-import net.deadlydiamond.legend_of_steve.common.items.projectile.DekuNutProjectile;
+import net.deadlydiamond.legend_of_steve.common.items.projectile.DekuNutItem;
 import net.deadlydiamond.legend_of_steve.common.items.projectile.explosive.BombItem;
 import net.deadlydiamond.legend_of_steve.common.items.projectile.explosive.ChargedBombItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -25,7 +25,7 @@ public class ZeldaItems {
     public static final Item BOMB = register("bomb", new BombItem(new FabricItemSettings().maxCount(16), ZeldaEntityTypes.BOMB,  50, 3));
     public static final Item SUPER_BOMB = register("super_bomb", new BombItem(new FabricItemSettings().maxCount(16), ZeldaEntityTypes.BOMB,  85, 5));
 
-    public static final Item DEKU_NUT = register("deku_nut", new DekuNutProjectile(new FabricItemSettings().maxCount(16)));
+    public static final Item DEKU_NUT = register("deku_nut", new DekuNutItem(new FabricItemSettings().maxCount(16)));
 
     // BAGS ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // BOMB BAG

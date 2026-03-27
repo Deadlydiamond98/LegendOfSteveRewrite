@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.mixin.common.entity.base;
+package net.deadlydiamond.legend_of_steve.mixin.common.entity.spring_water;
 
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
@@ -9,11 +9,11 @@ import net.deadlydiamond.legend_of_steve.util.mixinterfaces.ISpringWaterInteract
 import net.deadlydiamond98.koalalib.util.magic.MagicBarHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.registry.tag.TagKey;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -23,13 +23,23 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Entity.class)
-public abstract class EntityMixin implements ISpringWaterInteraction {
+public abstract class EntitySpringWaterMixin implements ISpringWaterInteraction {
     @Shadow protected boolean firstUpdate;
     @Shadow protected Object2DoubleMap<TagKey<Fluid>> fluidHeight;
     @Shadow public abstract boolean updateMovementInFluid(TagKey<Fluid> tag, double speed);
     @Shadow public abstract World getWorld();
 
-    @Unique private int legend_of_steve$springWaterTicks;
+    @Shadow public abstract double getX();
+
+    @Shadow public abstract double getY();
+
+    @Shadow public abstract double getZ();
+
+    @Shadow public abstract void playSound(SoundEvent sound, float volume, float pitch);
+
+    @Shadow public abstract Vec3d getPos();
+
+    @Unique protected int legend_of_steve$springWaterTicks;
 
     // SPRING WATER INTERACTION ////////////////////////////////////////////////////////////////////////////////////////
 

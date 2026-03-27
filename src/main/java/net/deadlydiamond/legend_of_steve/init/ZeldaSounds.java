@@ -27,6 +27,7 @@ public class ZeldaSounds {
     // Magic
     public static final BlockSoundGroup FAIRY_LAMP = registerGroup("fairy_lamp", 1, 1.2f);
     public static final BlockSoundGroup STARSTONE = registerGroup("starstone", 1, 1);
+    public static final SoundEvent SPRING_WATER_TRANSFORM = register("block.spring_water.transform");
     // Master Ore
     public static final BlockSoundGroup MASTER_BLOCK = registerGroup("master_block", 1, 1.5f);
     public static final BlockSoundGroup MASTER_PLATE = registerGroup("master_plate", 1, 1.5f);

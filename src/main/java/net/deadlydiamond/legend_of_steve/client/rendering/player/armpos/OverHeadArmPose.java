@@ -5,6 +5,8 @@ import net.deadlydiamond.legend_of_steve.util.rendering.BombRenderHelper;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.mob.ZombieEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
 
@@ -19,9 +21,19 @@ public class OverHeadArmPose extends ArmPose {
     }
 
     @Override
-    public boolean isValid(AbstractClientPlayerEntity player, Hand hand, ItemStack itemStack) {
+    public boolean isValidForPlayer(AbstractClientPlayerEntity player, Hand hand, ItemStack itemStack) {
         return (BombRenderHelper.canShowNicerBombModel(itemStack, player) || itemStack.isIn(ZeldaTags.HELD_OVER_HEAD))
                 && !player.getItemCooldownManager().isCoolingDown(itemStack.getItem());
+    }
+
+    @Override
+    public boolean isValidForMob(LivingEntity entity, Hand hand, ItemStack itemStack) {
+        return BombRenderHelper.canShowNicerBombModel(itemStack, entity) || itemStack.isIn(ZeldaTags.HELD_OVER_HEAD);
+    }
+
+    @Override
+    public boolean shouldRepositionForMob(LivingEntity entity) {
+        return entity instanceof ZombieEntity;
     }
 
     @Override
@@ -55,5 +67,10 @@ public class OverHeadArmPose extends ArmPose {
 
         model.rightArm.pitch = pitch - Math.min(0.65f, Math.max(yawValue, 0));
         model.leftArm.pitch = pitch + Math.max(-0.65f, Math.min(yawValue, 0));
+
+        if (entity.isInSneakingPose()) {
+            model.rightArm.pitch -= 0.4f;
+            model.leftArm.pitch -= 0.4f;
+        }
     }
 }

@@ -9,6 +9,7 @@ import net.minecraft.client.render.RenderLayers;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.BlockRenderManager;
 import net.minecraft.client.render.entity.feature.HeadFeatureRenderer;
+import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.client.render.item.HeldItemRenderer;
 import net.minecraft.client.render.model.json.ModelTransformationMode;
@@ -41,7 +42,7 @@ public class ThrownBlockHeldItemRenderer extends CustomHeldItemRenderer {
     }
 
     @Override
-    public void render(LivingEntity entity, ItemStack stack, ModelTransformationMode transformationMode, Arm arm, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, PlayerEntityModel model, HeldItemRenderer playerHeldItemRenderer) {
+    public void render(LivingEntity entity, ItemStack stack, ModelTransformationMode transformationMode, Arm arm, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, BipedEntityModel model, HeldItemRenderer playerHeldItemRenderer) {
         MinecraftClient client = MinecraftClient.getInstance();
 
         if (stack.getItem() instanceof BlockItem block) {

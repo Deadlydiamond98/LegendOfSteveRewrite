@@ -35,7 +35,7 @@ public class LootPotBlock extends WaterloggableSingleSlotBlock {
                     player.setStackInHand(hand, stack);
                     world.setBlockState(pos, Blocks.AIR.getDefaultState());
                     if (!world.isClient()) {
-                        player.playSound(ZeldaSounds.LOOT_POT_GRAB, SoundCategory.BLOCKS, 1, 1);
+                        player.playSound(ZeldaSounds.LOOT_POT_GRAB, SoundCategory.BLOCKS, 1, 1.25f);
                     }
                 }
                 return ActionResult.SUCCESS;

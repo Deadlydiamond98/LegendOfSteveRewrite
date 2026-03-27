@@ -18,9 +18,18 @@ public abstract class ArmPose {
         CUSTOM_ARM_POSES.add(this);
     }
 
-    public abstract boolean isValid(AbstractClientPlayerEntity player, Hand hand, ItemStack itemStack);
+    public abstract boolean isValidForPlayer(AbstractClientPlayerEntity player, Hand hand, ItemStack itemStack);
     public abstract <T extends LivingEntity> void positionRightArm(T entity, BipedEntityModel<T> model);
     public abstract <T extends LivingEntity> void positionLeftArm(T entity, BipedEntityModel<T> model);
+
+
+    public boolean shouldRepositionForMob(LivingEntity entity) {
+        return false;
+    }
+
+    public boolean isValidForMob(LivingEntity entity, Hand hand, ItemStack itemStack) {
+        return false;
+    }
 
     public boolean isTwoHanded() {
         return this.twoHanded;

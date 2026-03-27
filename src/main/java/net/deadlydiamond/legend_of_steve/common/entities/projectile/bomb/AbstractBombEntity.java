@@ -54,7 +54,7 @@ public abstract class AbstractBombEntity extends PhysicsItemProjectile implement
 
     @Override
     public ActionResult interact(PlayerEntity player, Hand hand) {
-        if (player.isSneaking() && player == getOwner() && canPickupBomb(player)) {
+        if (player.isSneaking() && canPickupBomb(player)) {
             if (!getWorld().isClient()) {
                 player.playSound(ZeldaSounds.BOMB_PICKED_UP, SoundCategory.NEUTRAL, 0.4f, 0.8f);
                 this.despawn();
@@ -75,6 +75,10 @@ public abstract class AbstractBombEntity extends PhysicsItemProjectile implement
     }
 
     public boolean canPickupBomb(PlayerEntity player) {
+        if (getOwner() != null && player != getOwner()) {
+            return false;
+        }
+
         ItemStack stack = player.getStackInHand(Hand.MAIN_HAND);
         if (stack.getItem() instanceof BombBagItem) {
             if (!getWorld().isClient() && isPrimed()) {

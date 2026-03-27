@@ -34,6 +34,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 public class ThrownPotEntity extends PhysicsItemProjectile {
     private boolean shattered;
@@ -48,7 +49,7 @@ public class ThrownPotEntity extends PhysicsItemProjectile {
         this.setBuoyancy(0);
     }
 
-    public ThrownPotEntity(World world, Entity owner, ItemStack stack) {
+    public ThrownPotEntity(World world, @Nullable Entity owner, ItemStack stack) {
         this(ZeldaEntityTypes.THROWN_POT, world);
         setItem(stack.copyWithCount(1));
         setOwner(owner);

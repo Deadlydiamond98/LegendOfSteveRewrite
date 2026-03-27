@@ -21,7 +21,7 @@
       "translate": "advancements.legend_of_steve.root.description"
     },
     "icon": {
-      "item": "minecraft:grass_block"
+      "item": "legend_of_steve:emerald_chunk"
     },
     "frame": "task",
 

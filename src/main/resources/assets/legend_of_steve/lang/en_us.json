@@ -166,6 +166,9 @@
   "subtitles.block.loot_pot.withdraw": "Item withdrawn from Loot Pot",
   "subtitles.block.loot_pot.deposit": "Item deposited into Loot Pot",
   "subtitles.block.loot_pot.thrown": "Loot Pot thrown",
+  "subtitles.block.loot_pot.grab": "Loot Pot picked up",
+
+  "subtitles.block.spring_water.transform": "Item transformed from Spring Water",
 
   "death.attack.loot_pot_projectile": "%1$s was pummeled to death by flying pottery",
   "death.attack.loot_pot_projectile.player": "%1$s was pummeled to death by %2$s's pottery",

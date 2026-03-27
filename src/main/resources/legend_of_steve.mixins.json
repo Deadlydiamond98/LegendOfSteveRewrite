@@ -8,10 +8,11 @@
   "mixins": [
     "common.ExplosionMixin",
     "common.block.FluidBlockMixin",
+    "common.entity.spring_water.ItemEntitySpringWaterConvertMixin",
     "common.entity.LightningEntityMixin",
     "common.entity.PersistentProjectileEntityMixin",
     "common.entity.PotionEntityMixin",
-    "common.entity.base.EntityMixin",
+    "common.entity.spring_water.EntitySpringWaterMixin",
     "common.entity.mob.AbstractSkeletonEntityMixin",
     "common.entity.mob.MobEntityMixin",
     "common.entity.mob.piglin.PiglinEntityMixin",
@@ -21,6 +22,7 @@
     "common.item.BowItemMixin",
     "common.item.CrossbowItemMixin",
     "common.item.RangedWeaponItemMixin",
+    "common.item.SmithingTemplateItemMixin",
     "common.player.PlayerInventoryMixin"
   ],
   "injectors": {
@@ -31,9 +33,11 @@
   },
   "client": [
     "client.armpose.BipedEntityModelArmPoseMixin",
+    "client.armpose.LivingEntityRendererArmPoseMixin",
     "client.armpose.PlayerEntityRendererCustomArmPoseMixin",
     "client.gui.HandledScreenMixin",
     "client.gui.InGameHudMixin",
+    "client.item.HeldItemFeatureRendererMixin",
     "client.model.BakedModelManagerMixin",
     "client.model.JsonUnbakedModelMixin",
     "client.model.JsonUnbakedModelMixin$DeserializerMixin",
@@ -45,7 +49,6 @@
     "client.rendering.entity.ArmorStandEntityRendererMixin",
     "client.rendering.entity.BipedEntityRendererMixin",
     "client.rendering.entity.PlayerEntityRendererMixin",
-    "client.rendering.entity.PlayerHeldItemFeatureRendererMixin",
     "client.shader.BufferBuilderStorageMixin",
     "client.shader.ShaderProgramMixin",
     "client.shader.VertexBufferMixin"

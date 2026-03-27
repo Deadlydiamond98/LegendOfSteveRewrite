@@ -11,7 +11,7 @@ public class ChargedBombItem extends BombItem implements ICharged {
     }
 
     @Override
-    protected void initBomb(BombEntity bomb, ItemStack stack, LivingEntity owner) {
+    public void initBomb(BombEntity bomb, ItemStack stack, LivingEntity owner) {
         super.initBomb(bomb, stack, owner);
         bomb.setCharged(true);
     }

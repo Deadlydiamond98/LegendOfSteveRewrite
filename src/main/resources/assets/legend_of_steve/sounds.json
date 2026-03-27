@@ -130,6 +130,13 @@
     "subtitle": "subtitles.block.bomb_flower.picked"
   },
 
+  "block.spring_water.transform": {
+    "sounds": [
+      "legend_of_steve:block/spring_water/transform"
+    ],
+    "subtitle": "subtitles.block.spring_water.transform"
+  },
+
   "block.fairy_lamp.break": {
     "sounds": [
       "legend_of_steve:block/fairy_lamp/break1",
@@ -529,7 +536,11 @@
   },
   "block.loot_pot.grab": {
     "sounds": [
-      "legend_of_steve:block/loot_pot/grab"
+      "block/decorated_pot/step1",
+      "block/decorated_pot/step2",
+      "block/decorated_pot/step3",
+      "block/decorated_pot/step4",
+      "block/decorated_pot/step5"
     ],
     "subtitle": "subtitles.block.loot_pot.grab"
   }

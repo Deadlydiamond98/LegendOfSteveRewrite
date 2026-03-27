@@ -9,7 +9,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 
 public class ZeldaCreativeTabs {
-    // TODO: CHANGE THE CREATIVE TAB ICONS ONCE APPROPRIATE ITEMS ARE ADDED
+    // TODO: CHANGE THE Item TAB ICON ONCE APPROPRIATE ITEM IS ADDED
 
     public static final ItemGroup ITEMS = registerTab("items", ZeldaItems.BOMB, (displayContext, entries) -> {
         add(entries,
@@ -48,7 +48,7 @@ public class ZeldaCreativeTabs {
         );
     });
 
-    public static final ItemGroup BLOCKS = registerTab("blocks", ZeldaBlocks.DEKU_LEAVES, (displayContext, entries) -> {
+    public static final ItemGroup BLOCKS = registerTab("blocks", ZeldaBlocks.LOOT_POT, (displayContext, entries) -> {
         // LOOT POTS
         entries.add(ZeldaBlocks.LOOT_POT);
         ZeldaBlocks.DYED_LOOT_POTS.addToCreative(entries);

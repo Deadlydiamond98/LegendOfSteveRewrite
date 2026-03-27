@@ -1,7 +1,9 @@
 package net.deadlydiamond.legend_of_steve.client.rendering.player.itemmodel;
 
 import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.render.entity.feature.HeldItemFeatureRenderer;
 import net.minecraft.client.render.entity.feature.PlayerHeldItemFeatureRenderer;
+import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.client.render.item.HeldItemRenderer;
 import net.minecraft.client.render.model.json.ModelTransformationMode;
@@ -21,10 +23,10 @@ public abstract class CustomHeldItemRenderer {
     }
 
     public abstract boolean isValid(LivingEntity entity, Arm arm, ItemStack itemStack);
-    public abstract void render(LivingEntity entity, ItemStack stack, ModelTransformationMode transformationMode, Arm arm, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, PlayerEntityModel model, HeldItemRenderer playerHeldItemRenderer);
+    public abstract void render(LivingEntity entity, ItemStack stack, ModelTransformationMode transformationMode, Arm arm, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, BipedEntityModel model, HeldItemRenderer playerHeldItemRenderer);
     
-    public final void render(LivingEntity entity, ItemStack stack, ModelTransformationMode transformationMode, Arm arm, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, PlayerHeldItemFeatureRenderer playerHeldItemFeatureRenderer, HeldItemRenderer playerHeldItemRenderer) {
-        if (playerHeldItemFeatureRenderer.getContextModel() instanceof PlayerEntityModel model) {
+    public final void render(LivingEntity entity, ItemStack stack, ModelTransformationMode transformationMode, Arm arm, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, HeldItemFeatureRenderer heldItemFeatureRenderer, HeldItemRenderer playerHeldItemRenderer) {
+        if (heldItemFeatureRenderer.getContextModel() instanceof BipedEntityModel model) {
             render(entity, stack, transformationMode, arm, matrices, vertexConsumers, light, model, playerHeldItemRenderer);
         }
     }

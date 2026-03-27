@@ -5,7 +5,11 @@ import net.deadlydiamond.legend_of_steve.common.items.IModifiedCraftingResult;
 import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
 import net.deadlydiamond.legend_of_steve.util.ArmorItemUtil;
 import net.deadlydiamond98.koalalib.common.items.vanillamodified.CustomBundleItem;
+import net.deadlydiamond98.koalalib.common.items.vanillamodified.IExtraEnchantments;
 import net.minecraft.block.DispenserBlock;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentTarget;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
@@ -18,6 +22,7 @@ import net.minecraft.item.*;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.potion.Potions;
+import net.minecraft.registry.Registries;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.SoundEvent;
@@ -29,10 +34,11 @@ import net.minecraft.world.World;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuiverItem extends ScrollableBag implements Equipment, IModifiedCraftingResult {
+public class QuiverItem extends ScrollableBag implements Equipment, IModifiedCraftingResult, IExtraEnchantments {
     public static final List<Item> QUIVERS = new ArrayList<>();
     private final Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
     private final SoundEvent equipSound;
+    private final int enchantablity;
 
     public QuiverItem(Settings settings, int maxStorage, ArmorMaterial material, SoundEvent equipSound) {
         super(settings.maxCount(1), maxStorage, true, stack -> stack.isIn(ItemTags.ARROWS) && stack.getItem() instanceof ArrowItem);
@@ -46,6 +52,7 @@ public class QuiverItem extends ScrollableBag implements Equipment, IModifiedCra
                 material.getToughness(),
                 material.getKnockbackResistance()
         );
+        this.enchantablity = material.getEnchantability();
         this.equipSound = equipSound;
 
         QUIVERS.add(this);
@@ -130,4 +137,28 @@ public class QuiverItem extends ScrollableBag implements Equipment, IModifiedCra
         return ItemStack.EMPTY;
     }
 
+    // Enchanting //////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    @Override
+    public boolean isEnchantable(ItemStack stack) {
+        return true;
+    }
+
+    @Override
+    public int getEnchantability() {
+        return this.enchantablity;
+    }
+
+    @Override
+    public List<Enchantment> getEnchantments() {
+        return List.of(
+                Enchantments.PROTECTION,
+                Enchantments.FIRE_PROTECTION,
+                Enchantments.BLAST_PROTECTION,
+                Enchantments.PROJECTILE_PROTECTION,
+                Enchantments.THORNS,
+                Enchantments.BINDING_CURSE,
+                Enchantments.VANISHING_CURSE
+        );
+    }
 }

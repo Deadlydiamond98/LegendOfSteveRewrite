@@ -66,7 +66,10 @@ public class BombBagItem extends ScrollableBag implements IModifiedCraftingResul
 
     @Override
     public List<Enchantment> getEnchantments() {
-        return List.of(Enchantments.FIRE_ASPECT);
+        return List.of(
+                Enchantments.FIRE_ASPECT,
+                Enchantments.VANISHING_CURSE
+        );
     }
 
     @Override

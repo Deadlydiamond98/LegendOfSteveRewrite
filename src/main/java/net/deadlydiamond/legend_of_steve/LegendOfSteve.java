@@ -37,6 +37,7 @@ public class LegendOfSteve implements ModInitializer {
 		ZeldaStructures.register();
 		ZeldaBiomeModifications.register();
 		ZeldaAdvancements.register();
+		ZeldaRecipes.register();
 
 		// Networking
 		ZeldaNetworking.registerC2SReceivers();

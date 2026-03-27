@@ -3,6 +3,7 @@ package net.deadlydiamond.legend_of_steve.common.items.projectile.explosive;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.BombEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.IZeldaBomb;
 import net.deadlydiamond.legend_of_steve.common.items.bag.BombBagItem;
+import net.deadlydiamond.legend_of_steve.init.ZeldaDispenserBehaviors;
 import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
 import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
 import net.deadlydiamond98.koalalib.common.items.ILighter;
@@ -11,6 +12,7 @@ import net.deadlydiamond98.koalalib.common.items.vanillamodified.projectile.Cust
 import net.deadlydiamond98.koalalib.init.KoalaLibSounds;
 import net.deadlydiamond98.koalalib.util.IgnitionHelper;
 import net.minecraft.block.Block;
+import net.minecraft.block.DispenserBlock;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
@@ -47,6 +49,7 @@ public class BombItem extends CustomProjectileItem implements IAdvancedItemPrope
         this.fuse = fuse;
         this.power = power;
         COOLDOWNS.put(this, 20);
+        DispenserBlock.registerBehavior(this, ZeldaDispenserBehaviors.bomb());
     }
 
     @Override
@@ -64,9 +67,11 @@ public class BombItem extends CustomProjectileItem implements IAdvancedItemPrope
         }
     }
 
-    protected void initBomb(BombEntity bomb, ItemStack stack, LivingEntity owner) {
-        bomb.setVelocity(bomb.getVelocity().multiply(0.6, 0.75, 0.6));
-        bomb.setPosition(owner.getEyePos().add(0, 0.25f, 0));
+    public void initBomb(BombEntity bomb, ItemStack stack, @Nullable LivingEntity owner) {
+        if (owner != null) {
+            bomb.setVelocity(bomb.getVelocity().multiply(0.6, 0.75, 0.6));
+            bomb.setPosition(owner.getEyePos().add(0, 0.25f, 0));
+        }
         bomb.setFuse(this.fuse);
         bomb.setMaxFuse(this.fuse);
         bomb.setOwner(owner);

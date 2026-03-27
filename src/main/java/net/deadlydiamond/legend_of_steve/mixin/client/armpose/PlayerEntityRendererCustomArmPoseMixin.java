@@ -64,7 +64,7 @@ public abstract class PlayerEntityRendererCustomArmPoseMixin {
     @Unique
     private ArmPose legend_of_steve$getCustomArmPose(AbstractClientPlayerEntity player, Hand hand) {
         for (ArmPose customArmPose : ArmPose.CUSTOM_ARM_POSES) {
-            if (customArmPose.isValid(player, hand, player.getStackInHand(hand))) {
+            if (customArmPose.isValidForPlayer(player, hand, player.getStackInHand(hand))) {
                 return customArmPose;
             }
         }

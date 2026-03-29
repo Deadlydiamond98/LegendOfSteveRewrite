@@ -20,16 +20,10 @@ import java.util.function.Supplier;
  */
 
 public class ZeldaEntityTypeBuilder<T extends Entity> extends FabricEntityTypeBuilder<T> {
+
     private final Class<T> usedEntityClass;
-
-    // Attribute
-    @Nullable
-    private Supplier<DefaultAttributeContainer.Builder> defaultAttributeBuilder;
-
-    // Spawn Restriction
-    private SpawnRestriction.Location restrictionLocation;
-    private Heightmap.Type restrictionHeightmap;
-    private SpawnRestriction.SpawnPredicate<T> spawnPredicate;
+    @Nullable private Supplier<DefaultAttributeContainer.Builder> defaultAttributeBuilder;
+    private ZeldaSpawn spawnRestriction = ZeldaSpawn.NONE;
 
     protected ZeldaEntityTypeBuilder(SpawnGroup spawnGroup, Class<T> entityClass) {
         super(spawnGroup, factory(entityClass));
@@ -53,10 +47,8 @@ public class ZeldaEntityTypeBuilder<T extends Entity> extends FabricEntityTypeBu
         return this;
     }
 
-    public ZeldaEntityTypeBuilder<T> spawnRestriction(SpawnRestriction.Location location, Heightmap.Type heightmap, SpawnRestriction.SpawnPredicate<T> spawnPredicate) {
-        this.restrictionLocation = Objects.requireNonNull(location, "Location cannot be null.");
-        this.restrictionHeightmap = Objects.requireNonNull(heightmap, "Heightmap type cannot be null.");
-        this.spawnPredicate = Objects.requireNonNull(spawnPredicate, "Spawn predicate cannot be null.");
+    public ZeldaEntityTypeBuilder<T> spawnRestriction(ZeldaSpawn spawnRestriction) {
+        this.spawnRestriction = spawnRestriction;
         return this;
     }
 
@@ -72,7 +64,8 @@ public class ZeldaEntityTypeBuilder<T extends Entity> extends FabricEntityTypeBu
         if (LivingEntity.class.isAssignableFrom(this.usedEntityClass)) {
             boolean isMob = MobEntity.class.isAssignableFrom(this.usedEntityClass);
             if (isMob) {
-                buildMob((EntityType<MobEntity>) type, (SpawnRestriction.SpawnPredicate<MobEntity>)this.spawnPredicate);
+                initIfNoRestriction();
+                buildMob((EntityType<MobEntity>) type, (SpawnRestriction.SpawnPredicate<MobEntity>)this.spawnRestriction.predicate());
             }
             buildLiving((EntityType<LivingEntity>) type, isMob);
         }
@@ -88,8 +81,22 @@ public class ZeldaEntityTypeBuilder<T extends Entity> extends FabricEntityTypeBu
     }
 
     private <N extends MobEntity> void buildMob(EntityType<N> type, SpawnRestriction.SpawnPredicate<N> spawnPredicate) {
-        if (this.spawnPredicate != null) {
-            SpawnRestriction.register(type, this.restrictionLocation, this.restrictionHeightmap, spawnPredicate);
+        if (this.spawnRestriction.isValid()) {
+            SpawnRestriction.register(type, this.spawnRestriction.location(), this.spawnRestriction.heightmapType(), spawnPredicate);
+        }
+    }
+
+    private void initIfNoRestriction() {
+        if (!this.spawnRestriction.isValid()) {
+            try {
+                Method attributeMethod = this.usedEntityClass.getMethod("createCustomSpawnRestriction");
+                Object result = attributeMethod.invoke(null);
+                if (result instanceof ZeldaSpawn spawnRestriction) {
+                    this.spawnRestriction = spawnRestriction;
+                }
+            } catch (Exception e) {
+                LegendOfSteve.LOGGER.debug("createCustomSpawnRestriction() wasn't found for {}, {}", this.usedEntityClass.getName(), e);
+            }
         }
     }
 

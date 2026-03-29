@@ -165,6 +165,8 @@
   "entity.legend_of_steve.fairy": "Fairy",
   "entity.legend_of_steve.thrown_pot": "Thrown Pot",
 
+  "item.legend_of_steve.fairy_spawn_egg": "Fairy Spawn Egg",
+
   "subtitles.block.bomb_flower.picked": "Bomb Flower Picked",
   "subtitles.entity.bomb.secret_jingle": "Secret room revealed",
   "subtitles.entity.bomb.pick_up": "Bomb plops",

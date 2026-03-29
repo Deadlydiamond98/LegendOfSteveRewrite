@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.client.rendering.entity;
+package net.deadlydiamond.legend_of_steve.client.rendering.entity.projectile;
 
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.ThrownPotEntity;
 import net.minecraft.block.BlockState;

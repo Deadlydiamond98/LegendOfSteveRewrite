@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.client.rendering.entity;
+package net.deadlydiamond.legend_of_steve.client.rendering.entity.projectile;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.client.models.entity.BombEntityModel;
@@ -69,7 +69,6 @@ public class BombEntityRenderer<T extends BombEntity> extends EntityRenderer<T> 
             VertexConsumer warningFlashVCon = vertexConsumers.getBuffer(RenderLayer.getBeaconBeam(LOW_FUSE_OVERLAY, true));
             this.model.renderOverlay(matrices, warningFlashVCon, 15728640, OverlayTexture.DEFAULT_UV, 1, 1, 1, lowFuseFlash);
 
-            PostProcessingRegistry.renderEffectForNextTick(ZeldaShaders.BLOOM_GLOWING_SHADER_ID);
             VertexConsumer glow = vertexConsumers.getBuffer(ZeldaRenderLayers.getGlowing(LOW_FUSE_OVERLAY));
             this.model.renderOverlay(matrices, glow, 15728640, OverlayTexture.DEFAULT_UV, 1, 1, 1,
                     Math.max(0, lowFuseFlash - 0.15f));

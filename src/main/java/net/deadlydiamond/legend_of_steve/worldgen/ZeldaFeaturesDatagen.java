@@ -13,7 +13,7 @@ import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.gen.placementmodifier.HeightRangePlacementModifier;
+import net.minecraft.world.gen.placementmodifier.*;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 
@@ -31,12 +31,14 @@ public class ZeldaFeaturesDatagen {
     public static final RegistryKey<ConfiguredFeature<?, ?>> LARGE_DEKU_TREE_CFG = registerKeyCFG("large_deku_tree");
     public static final RegistryKey<ConfiguredFeature<?, ?>> MASTER_ORE_CFG = registerKeyCFG("master_ore");
     public static final RegistryKey<ConfiguredFeature<?, ?>> BOMB_FLOWER_CFG = registerKeyCFG("bomb_flower");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> LOOT_GRASS_CFG = registerKeyCFG("loot_grass");
 
     // Placed
     public static final RegistryKey<PlacedFeature> MASTER_ORE_PLACED = registerPlacedKey("master_ore_placed");
     public static final RegistryKey<PlacedFeature> BOMB_FLOWER_PLACED = registerPlacedKey("bomb_flower_placed");
     public static final RegistryKey<PlacedFeature> DEKU_TREE_PLACED = registerPlacedKey("deku_tree_placed");
     public static final RegistryKey<PlacedFeature> LARGE_DEKU_TREE_PLACED = registerPlacedKey("large_deku_tree_placed");
+    public static final RegistryKey<PlacedFeature> LOOT_GRASS_PLACED = registerPlacedKey("loot_grass_placed");
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FEATURE CONFIGS /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -62,6 +64,11 @@ public class ZeldaFeaturesDatagen {
         // Deku Tree
         registerCFG(context, DEKU_TREE_CFG, ZeldaFeatures.DEKU_TREE_FEATURE, new DefaultFeatureConfig());
         registerCFG(context, LARGE_DEKU_TREE_CFG, ZeldaFeatures.LARGE_DEKU_TREE_FEATURE, new DefaultFeatureConfig());
+
+        // Loot Grass
+        registerRandomPatch(context, LOOT_GRASS_CFG, 96, 7, 3,
+                ZeldaBlocks.LOOT_GRASS.getDefaultState()
+        );
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -90,6 +97,13 @@ public class ZeldaFeaturesDatagen {
 
         registerPlaced(context, DEKU_TREE_PLACED, DEKU_TREE_CFG, VegetationPlacedFeatures.treeModifiersWithWouldSurvive(
                 PlacedFeatures.createCountExtraModifier(0, 0.02f, 1), ZeldaBlocks.DEKU_SAPLING
+        ));
+
+        registerPlaced(context, LOOT_GRASS_PLACED, LOOT_GRASS_CFG, List.of(
+                RarityFilterPlacementModifier.of(16),
+                SquarePlacementModifier.of(),
+                PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP,
+                BiomePlacementModifier.of()
         ));
     }
 

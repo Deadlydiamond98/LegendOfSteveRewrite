@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.FoliageColors;
+import net.minecraft.client.color.world.GrassColors;
 import net.minecraft.client.item.ClampedModelPredicateProvider;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.item.Item;
@@ -30,6 +31,7 @@ public class ZeldaModelPredicates {
 
     private static void registerTintables() {
         registerTintedLeaves(ZeldaBlocks.DEKU_LEAVES, ZeldaBlocks.FRUITING_DEKU_LEAVES);
+        registerTintedGrass(ZeldaBlocks.LOOT_GRASS);
     }
 
     // HELPER METHODS //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -55,6 +57,20 @@ public class ZeldaModelPredicates {
 
     private static void registerPredicateMulti(List<Item> items, String id, ClampedModelPredicateProvider provider) {
         items.forEach(item -> ModelPredicateProviderRegistry.register(item, new Identifier(id), provider));
+    }
+
+    private static void registerTintedGrass(Block... items) {
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> tintIndex == 0 ? GrassColors.getDefaultColor() : -1, items);
+
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
+            if (tintIndex == 0) {
+                if (world != null && pos != null) {
+                    return BiomeColors.getGrassColor(world, pos);
+                }
+                return GrassColors.getDefaultColor();
+            }
+            return -1;
+        }, items);
     }
 
     private static void registerTintedLeaves(Block... items) {

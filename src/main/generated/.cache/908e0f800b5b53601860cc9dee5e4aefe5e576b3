@@ -1,9 +1,11 @@
-// 1.20.1	2026-03-27T11:28:11.700737754	The Legend of Steve/World Gen
+// 1.20.1	2026-03-28T14:21:58.11608728	The Legend of Steve/World Gen
 2e33b967272864d9b019243a635092f402589411 data/legend_of_steve/worldgen/placed_feature/deku_tree_placed.json
 127d6b4fcece193461cb4e9940d4f618f9a4d904 data/legend_of_steve/worldgen/configured_feature/bomb_flower.json
 e5fa13e3f57dfde0ca8832b0d35fb39a3e949895 data/legend_of_steve/worldgen/placed_feature/bomb_flower_placed.json
 e59107b6b7be008f110e0bb1704510e4bca9ca58 data/legend_of_steve/worldgen/placed_feature/large_deku_tree_placed.json
+d43c96d57d15be7dc539f61a119a6c4d5ba8ba75 data/legend_of_steve/worldgen/placed_feature/loot_grass_placed.json
 837888f28232257f00fec0aba92d2c2891e4f083 data/legend_of_steve/worldgen/configured_feature/large_deku_tree.json
 b07f04e1f802332091921b9f4ce7197548ec5d6d data/legend_of_steve/worldgen/configured_feature/deku_tree.json
+4fec223bdc8297a5e10075e4334002f7fdbdeb0f data/legend_of_steve/worldgen/configured_feature/loot_grass.json
 d2eb9e239e314a5466fa31abeb59b2be1324df26 data/legend_of_steve/worldgen/placed_feature/master_ore_placed.json
 3f459ad0acce2260a70b76cfc7c40c34f01f9ed5 data/legend_of_steve/worldgen/configured_feature/master_ore.json

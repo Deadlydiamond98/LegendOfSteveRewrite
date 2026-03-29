@@ -1,11 +1,12 @@
 package net.deadlydiamond.legend_of_steve.init.client;
 
-import net.deadlydiamond.legend_of_steve.client.models.BasicCubeModel;
 import net.deadlydiamond.legend_of_steve.client.models.entity.BombEntityModel;
+import net.deadlydiamond.legend_of_steve.client.models.entity.FairyEntityModel;
 import net.deadlydiamond.legend_of_steve.client.models.feature.QuiverModel;
 import net.deadlydiamond.legend_of_steve.client.rendering.block.BombFlowerRenderer;
 import net.deadlydiamond.legend_of_steve.client.rendering.entity.BombEntityRenderer;
 import net.deadlydiamond.legend_of_steve.client.rendering.entity.ThrownPotEntityRenderer;
+import net.deadlydiamond.legend_of_steve.client.rendering.entity.living.FairyEntityRenderer;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlockEntities;
 import net.deadlydiamond.legend_of_steve.init.ZeldaEntityTypes;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
@@ -23,6 +24,7 @@ public class ZeldaRenderers {
     private static void registerEntityRenderers() {
         EntityRendererRegistry.register(ZeldaEntityTypes.BOMB, BombEntityRenderer::new);
         EntityRendererRegistry.register(ZeldaEntityTypes.DEKU_NUT, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(ZeldaEntityTypes.FAIRY, FairyEntityRenderer::new);
         EntityRendererRegistry.register(ZeldaEntityTypes.THROWN_POT, ThrownPotEntityRenderer::new);
     }
 
@@ -32,7 +34,7 @@ public class ZeldaRenderers {
 
     private static void registerModelLayers() {
         EntityModelLayerRegistry.registerModelLayer(BombEntityModel.LAYER_LOCATION, BombEntityModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(FairyEntityModel.LAYER_LOCATION, FairyEntityModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(QuiverModel.LAYER_LOCATION, QuiverModel::getTexturedModelData);
-        EntityModelLayerRegistry.registerModelLayer(BasicCubeModel.LAYER_LOCATION, BasicCubeModel::getTexturedModelData);
     }
 }

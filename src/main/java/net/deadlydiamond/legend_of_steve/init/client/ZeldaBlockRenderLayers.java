@@ -18,6 +18,7 @@ public class ZeldaBlockRenderLayers {
     public static void register() {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
                 ZeldaBlocks.BOMB_FLOWER,
+                ZeldaBlocks.LOOT_GRASS,
                 ZeldaBlocks.DEKU_LEAVES,
                 ZeldaBlocks.FRUITING_DEKU_LEAVES,
                 ZeldaBlocks.DEKU_SAPLING,
@@ -91,15 +92,5 @@ public class ZeldaBlockRenderLayers {
                         0x5db7ef
                 )
         );
-    }
-
-    private static void registerIridescentSet(AbstractBlockset... blocksets) {
-        for (AbstractBlockset blockset : blocksets) {
-            registerIridescent(blockset.getAll());
-        }
-    }
-
-    private static void registerIridescent(Block... blocks) {
-        BlockRenderLayerMap.INSTANCE.putBlocks(ZeldaRenderLayers.IRIDESCENCE, blocks);
     }
 }

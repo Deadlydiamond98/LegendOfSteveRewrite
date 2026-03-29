@@ -14,7 +14,14 @@
     },
     "creature": {
       "bounding_box": "full",
-      "spawns": []
+      "spawns": [
+        {
+          "type": "legend_of_steve:fairy",
+          "maxCount": 1,
+          "minCount": 1,
+          "weight": 1
+        }
+      ]
     },
     "misc": {
       "bounding_box": "full",

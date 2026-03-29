@@ -30,6 +30,8 @@
   "item.legend_of_steve.master_scrap": "Master Scrap",
   "item.legend_of_steve.master_ingot": "Master Ingot",
 
+  "block.legend_of_steve.loot_grass": "Loot Grass",
+
   "block.legend_of_steve.loot_pot": "Loot Pot",
   "block.legend_of_steve.white_loot_pot": "White Loot Pot",
   "block.legend_of_steve.light_gray_loot_pot": "Light Gray Loot Pot",
@@ -157,6 +159,11 @@
   "block.legend_of_steve.small_red_tektiles": "Small Red Tektiles",
   "block.legend_of_steve.small_red_tektile_slab": "Small Red Tektile Slab",
   "block.legend_of_steve.small_red_tektile_stairs": "Small Red Tektile Stairs",
+
+  "entity.legend_of_steve.bomb": "Bomb",
+  "entity.legend_of_steve.deku_nut": "Deku Nut",
+  "entity.legend_of_steve.fairy": "Fairy",
+  "entity.legend_of_steve.thrown_pot": "Thrown Pot",
 
   "subtitles.block.bomb_flower.picked": "Bomb Flower Picked",
   "subtitles.entity.bomb.secret_jingle": "Secret room revealed",

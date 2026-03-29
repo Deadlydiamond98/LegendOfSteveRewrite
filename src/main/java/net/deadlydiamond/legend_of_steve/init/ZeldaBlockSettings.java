@@ -28,6 +28,12 @@ public class ZeldaBlockSettings {
             .noCollision()
             .breakInstantly();
 
+    public static final FabricBlockSettings LOOT_GRASS_SETTINGS = FabricBlockSettings.copyOf(Blocks.MOSS_BLOCK)
+            .strength(0.3f, 0)
+            .sounds(BlockSoundGroup.GRASS)
+            .nonOpaque()
+            .noCollision();
+
     // FAIRY LIGHT
     public static final FabricBlockSettings RED_FAIRY_LIGHT_SETTINGS = getFairyLight(MapColor.BRIGHT_RED);
     public static final FabricBlockSettings ORANGE_FAIRY_LIGHT_SETTINGS = getFairyLight(MapColor.ORANGE);

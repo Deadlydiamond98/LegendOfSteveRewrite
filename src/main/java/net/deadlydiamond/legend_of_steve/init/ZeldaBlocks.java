@@ -7,6 +7,7 @@ import net.deadlydiamond.legend_of_steve.common.blocks.deco.GirderBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.glowing.GlowingBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.BombFlowerBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.FruitingLeavesBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.plant.LootGrassBlock;
 import net.deadlydiamond.legend_of_steve.common.blocksets.IridescentStairSlabWallBlockset;
 import net.deadlydiamond.legend_of_steve.common.blocksets.IridescentStoneBlockset;
 import net.deadlydiamond.legend_of_steve.common.blocksets.LootPotBlockset;
@@ -33,6 +34,7 @@ public class ZeldaBlocks {
 
     // PLANTS
     public static final Block BOMB_FLOWER = register("bomb_flower", new BombFlowerBlock(BOMB_FLOWER_SETTINGS), false);
+    public static final Block LOOT_GRASS = register("loot_grass", new LootGrassBlock(LOOT_GRASS_SETTINGS));
     // FLUIDS
     public static final Block ENCHANTED_SPRING_WATER = register("enchanted_spring_water", new FluidBlock(
             ZeldaFluids.ENCHANTED_SPRING_WATER, FabricBlockSettings.copyOf(Blocks.WATER).luminance(state -> 10)), false
@@ -135,6 +137,7 @@ public class ZeldaBlocks {
     }
 
     public static void register() {
+        FlammableBlockRegistry.getDefaultInstance().add(LOOT_GRASS, 60, 100);
         FlammableBlockRegistry.getDefaultInstance().add(DEKU_LEAVES, 30, 60);
         FlammableBlockRegistry.getDefaultInstance().add(FRUITING_DEKU_LEAVES, 30, 60);
         FlammableBlockRegistry.getDefaultInstance().add(ZeldaTags.CHISELED_PLANKS_BLOCK, 5, 20);
@@ -144,5 +147,6 @@ public class ZeldaBlocks {
         CompostingChanceRegistry.INSTANCE.add(DEKU_SAPLING, 0.3f);
         CompostingChanceRegistry.INSTANCE.add(DEKU_LEAVES, 0.3f);
         CompostingChanceRegistry.INSTANCE.add(FRUITING_DEKU_LEAVES, 0.3f);
+        CompostingChanceRegistry.INSTANCE.add(LOOT_GRASS, 0.3f);
     }
 }

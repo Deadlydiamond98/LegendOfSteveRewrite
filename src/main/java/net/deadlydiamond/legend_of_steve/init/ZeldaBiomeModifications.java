@@ -39,5 +39,12 @@ public class ZeldaBiomeModifications {
                 GenerationStep.Feature.VEGETAL_DECORATION,
                 ZeldaFeaturesDatagen.DEKU_TREE_PLACED
         );
+
+        // Loot Grass
+        BiomeModifications.addFeature(
+                BiomeSelectors.foundInOverworld(),
+                GenerationStep.Feature.VEGETAL_DECORATION,
+                ZeldaFeaturesDatagen.LOOT_GRASS_PLACED
+        );
     }
 }

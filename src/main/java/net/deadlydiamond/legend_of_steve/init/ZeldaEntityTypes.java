@@ -1,57 +1,65 @@
 package net.deadlydiamond.legend_of_steve.init;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
+import net.deadlydiamond.legend_of_steve.common.entities.living.fairy.FairyEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.DekuNutProjectileEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.ThrownPotEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.BombEntity;
-import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
+import net.deadlydiamond.legend_of_steve.util.entity.ZeldaEntityTypeBuilder;
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
+import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.item.SpawnEggItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.world.World;
 
 public class ZeldaEntityTypes {
 
     // PROJECTILE ENTITIES /////////////////////////////////////////////////////////////////////////////////////////////
-    public static final EntityType<BombEntity> BOMB = register("bomb", createMisc(BombEntity.class, 0.5f, 0.5f));
-    public static final EntityType<DekuNutProjectileEntity> DEKU_NUT = register("deku_nut", createMisc(DekuNutProjectileEntity.class, 0.5f, 0.5f));
-    public static final EntityType<ThrownPotEntity> THROWN_POT = register("thrown_pot", createMisc(ThrownPotEntity.class, 0.5f, 0.5f));
+    public static final EntityType<BombEntity> BOMB = register("bomb", BombEntity.class, 0.5f);
+    public static final EntityType<DekuNutProjectileEntity> DEKU_NUT = register("deku_nut", DekuNutProjectileEntity.class, 0.5f);
+    public static final EntityType<ThrownPotEntity> THROWN_POT = register("thrown_pot", ThrownPotEntity.class, 0.5f);
+
+    // LIVING ENTITIES /////////////////////////////////////////////////////////////////////////////////////////////////
+    public static final EntityType<FairyEntity> FAIRY = registerCreature(
+            "fairy", FairyEntity.class, 0.4f, 0xffffff, 0x5d8fc2
+    );
+
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // REGISTRATION METHODS ////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public static <T extends Entity> EntityType<T> register(String name, FabricEntityTypeBuilder<T> builder) {
+    public static <T extends MobEntity> EntityType<T> registerMonster(String name, Class<T> entityClass, float size, int primaryColor, int secondaryColor) {
+        return registerMob(name, entityClass, size, SpawnGroup.MONSTER, primaryColor, secondaryColor);
+    }
+
+    public static <T extends MobEntity> EntityType<T> registerCreature(String name, Class<T> entityClass, float size, int primaryColor, int secondaryColor) {
+        return registerMob(name, entityClass, size, SpawnGroup.CREATURE, primaryColor, secondaryColor);
+    }
+
+    public static <T extends MobEntity> EntityType<T> registerMob(String name, Class<T> entityClass, float size, SpawnGroup spawnGroup, int primaryColor, int secondaryColor) {
+        EntityType<T> type = register(name, builder(entityClass, size).spawnGroup(spawnGroup));
+        ZeldaItems.register(name + "_spawn_egg", new SpawnEggItem(type, primaryColor, secondaryColor, new FabricItemSettings()));
+        return type;
+    }
+
+    public static <T extends Entity> EntityType<T> register(String name, Class<T> entityClass, float size) {
+        return register(name, builder(entityClass, size));
+    }
+
+    public static <T extends Entity> EntityType<T> register(String name, ZeldaEntityTypeBuilder<T> builder) {
         return Registry.register(Registries.ENTITY_TYPE, LegendOfSteve.id(name), builder.build());
     }
 
-    public static <T extends Entity> FabricEntityTypeBuilder<T> createMon(Class<T> entityClass, float width, float height) {
-        return create(SpawnGroup.MONSTER, entityClass, width, height);
-    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // BUILDER HELPER METHODS //////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public static <T extends Entity> FabricEntityTypeBuilder<T> createCre(Class<T> entityClass, float width, float height) {
-        return create(SpawnGroup.CREATURE, entityClass, width, height);
-    }
-
-    public static <T extends Entity> FabricEntityTypeBuilder<T> createMisc(Class<T> entityClass, float width, float height) {
-        return create(SpawnGroup.MISC, entityClass, width, height);
-    }
-
-    public static <T extends Entity> FabricEntityTypeBuilder<T> create(SpawnGroup group, Class<T> entityClass, float width, float height) {
-        return FabricEntityTypeBuilder.create(group, factory(entityClass)).dimensions(EntityDimensions.fixed(width, height));
-    }
-
-    public static <T extends Entity> EntityType.EntityFactory<T> factory(Class<T> entityClass) {
-        return (EntityType<T> type, World world) -> {
-            try {
-                return entityClass.getConstructor(EntityType.class, World.class).newInstance(type, world);
-            } catch (Exception ignored) {
-                return null;
-            }
-        };
+    public static <T extends Entity> ZeldaEntityTypeBuilder<T> builder(Class<T> entity, float size) {
+        return ZeldaEntityTypeBuilder.create(entity).dimensions(size);
     }
 
     public static void register() {}

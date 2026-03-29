@@ -51,6 +51,9 @@ public class ZeldaCreativeTabs {
     });
 
     public static final ItemGroup BLOCKS = registerTab("blocks", ZeldaBlocks.LOOT_POT, (displayContext, entries) -> {
+        // LOOT GRASS
+        entries.add(ZeldaBlocks.LOOT_GRASS);
+
         // LOOT POTS
         entries.add(ZeldaBlocks.LOOT_POT);
         ZeldaBlocks.DYED_LOOT_POTS.addToCreative(entries);

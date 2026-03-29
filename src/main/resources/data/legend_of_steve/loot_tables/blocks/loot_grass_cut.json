@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "legend_of_steve:emerald_shard",
+          "weight": 100
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:arrow",
+          "weight": 100
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "legend_of_steve:loot_grass",
+          "properties": {
+            "age": 1
+          }
+        }
+      ]
+    }
+  ],
+  "random_sequence": "legend_of_steve:blocks/loot_grass_cut"
+}

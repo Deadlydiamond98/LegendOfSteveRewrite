@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "legend_of_steve:block/loot_grass_0"
+    },
+    "age=1": {
+      "model": "legend_of_steve:block/loot_grass_1"
+    }
+  }
+}

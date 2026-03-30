@@ -22,7 +22,7 @@ public class FairyLamp extends GlowingBlock {
                     (random.nextFloat() - 0.5f) * 1.25,
                     (random.nextFloat() - 0.5f) * 1.25,
                     (random.nextFloat() - 0.5f) * 1.25
-            ), 1);
+            ));
         }
     }
 }

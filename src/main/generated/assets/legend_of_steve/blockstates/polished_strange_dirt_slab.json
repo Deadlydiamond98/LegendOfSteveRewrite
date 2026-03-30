@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "legend_of_steve:block/polished_strange_dirt_slab"
+    },
+    "type=double": {
+      "model": "legend_of_steve:block/polished_strange_dirt_slab_double"
+    },
+    "type=top": {
+      "model": "legend_of_steve:block/polished_strange_dirt_slab_top"
+    }
+  }
+}

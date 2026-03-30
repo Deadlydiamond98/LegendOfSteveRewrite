@@ -6,11 +6,13 @@ import net.deadlydiamond.legend_of_steve.common.entities.projectile.DekuNutProje
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.ThrownPotEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.BombEntity;
 import net.deadlydiamond.legend_of_steve.util.entity.ZeldaEntityTypeBuilder;
+import net.deadlydiamond.legend_of_steve.util.entity.ZeldaSpawn;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
+import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
@@ -20,6 +22,7 @@ import net.minecraft.registry.Registry;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 
 public class ZeldaEntityTypes {
     public static final List<Item> SPAWN_EGGS = new ArrayList<>();
@@ -30,24 +33,20 @@ public class ZeldaEntityTypes {
     public static final EntityType<ThrownPotEntity> THROWN_POT = register("thrown_pot", ThrownPotEntity.class, 0.5f);
 
     // LIVING ENTITIES /////////////////////////////////////////////////////////////////////////////////////////////////
-    public static final EntityType<FairyEntity> FAIRY = registerMob(
-            "fairy", FairyEntity.class, 0.4f, SpawnGroup.AMBIENT, 0xffffff, 0x5d8fc2
+    public static final EntityType<FairyEntity> FAIRY = registerMob("fairy", FairyEntity.class, 0.4f,
+            SpawnGroup.AMBIENT, FairyEntity::attributes, FairyEntity.spawnRestriction(),
+            0xffffff, 0x5d8fc2
     );
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // REGISTRATION METHODS ////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public static <T extends MobEntity> EntityType<T> registerMonster(String name, Class<T> entityClass, float size, int primaryColor, int secondaryColor) {
-        return registerMob(name, entityClass, size, SpawnGroup.MONSTER, primaryColor, secondaryColor);
-    }
-
-    public static <T extends MobEntity> EntityType<T> registerCreature(String name, Class<T> entityClass, float size, int primaryColor, int secondaryColor) {
-        return registerMob(name, entityClass, size, SpawnGroup.CREATURE, primaryColor, secondaryColor);
-    }
-
-    public static <T extends MobEntity> EntityType<T> registerMob(String name, Class<T> entityClass, float size, SpawnGroup spawnGroup, int primaryColor, int secondaryColor) {
-        EntityType<T> type = register(name, builder(entityClass, size).spawnGroup(spawnGroup));
+    public static <T extends MobEntity> EntityType<T> registerMob(
+            String name, Class<T> entityClass, float size, SpawnGroup spawnGroup, Supplier<DefaultAttributeContainer.Builder> attributes,
+            ZeldaSpawn spawn, int primaryColor, int secondaryColor
+    ) {
+        EntityType<T> type = register(name, builder(entityClass, size).spawnGroup(spawnGroup).defaultAttributes(attributes).spawnRestriction(spawn));
         registerEgg(name, type, primaryColor, secondaryColor);
         return type;
     }

@@ -1,9 +1,9 @@
 {
   "type": "legend_of_steve:spring_water_conversion",
   "input": {
-    "item": "minecraft:grass_block"
+    "item": "minecraft:coarse_dirt"
   },
   "result": {
-    "item": "minecraft:mycelium"
+    "item": "legend_of_steve:strange_dirt"
   }
 }

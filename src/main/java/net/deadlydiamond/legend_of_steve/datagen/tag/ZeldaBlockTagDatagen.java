@@ -30,6 +30,10 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
                 ZeldaBlocks.FAIRY_MARBLE_BRICKS,
                 ZeldaBlocks.MOSSY_FAIRY_MARBLE_BRICKS,
                 ZeldaBlocks.FAIRY_MARBLE_TILES,
+                // RETRO DIRT
+                ZeldaBlocks.STRANGE_DIRT,
+                ZeldaBlocks.STRANGE_DIRT_BRICKS,
+                ZeldaBlocks.POLISHED_STRANGE_DIRT,
                 // TEKTILES
                 ZeldaBlocks.RED_TEKTILES,
                 ZeldaBlocks.SMALL_RED_TEKTILES,
@@ -64,7 +68,9 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
                 ZeldaBlocks.MASTER_DOOR,
                 ZeldaBlocks.MASTER_TRAPDOOR,
                 ZeldaBlocks.MASTER_GIRDER,
-                ZeldaBlocks.MASTER_BARREL
+                ZeldaBlocks.MASTER_BARREL,
+                // RETRO DIRT
+                ZeldaBlocks.REINFORCED_STRANGE_DIRT
         );
 
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(

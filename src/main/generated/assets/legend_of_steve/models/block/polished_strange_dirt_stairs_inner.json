@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "legend_of_steve:block/polished_strange_dirt",
+    "side": "legend_of_steve:block/polished_strange_dirt",
+    "top": "legend_of_steve:block/polished_strange_dirt"
+  }
+}

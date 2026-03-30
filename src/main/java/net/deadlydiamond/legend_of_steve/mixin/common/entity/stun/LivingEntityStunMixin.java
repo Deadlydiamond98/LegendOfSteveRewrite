@@ -83,6 +83,14 @@ public abstract class LivingEntityStunMixin extends Entity implements IZeldaStun
         }
     }
 
+    @WrapMethod(method = "canSee")
+    private boolean legend_of_steve$canSee(Entity entity, Operation<Boolean> original) {
+        if (legend_of_steve$isStunned()) {
+            return false;
+        }
+        return original.call(entity);
+    }
+
     @Inject(method = "onDeath", at = @At("HEAD"))
     private void legend_of_steve$onDeath(DamageSource damageSource, CallbackInfo ci) {
         legend_of_steve$setStunned(0);
@@ -111,7 +119,7 @@ public abstract class LivingEntityStunMixin extends Entity implements IZeldaStun
     }
 
     @WrapMethod(method = "travel")
-    private void temp(Vec3d movementInput, Operation<Void> original) {
+    private void legend_of_steve$travel(Vec3d movementInput, Operation<Void> original) {
         if (legend_of_steve$isStunned() && this.isLogicalSideForUpdatingMovement()) {
             double d = 0.08;
             boolean bl = this.getVelocity().y <= 0.0;
@@ -143,15 +151,20 @@ public abstract class LivingEntityStunMixin extends Entity implements IZeldaStun
         }
     }
 
+    @WrapOperation(method = "tickMovement", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;canMoveVoluntarily()Z", ordinal = 1))
+    private boolean legend_of_steve$tickMovement(LivingEntity instance, Operation<Boolean> original) {
+        return original.call(instance) && !legend_of_steve$isStunned();
+    }
+
     // GETTERS & SETTERS ///////////////////////////////////////////////////////////////////////////////////////////////
 
     @Inject(method = "writeCustomDataToNbt", at = @At("HEAD"))
-    public void onSave(NbtCompound nbt, CallbackInfo info) {
+    public void legend_of_steve$writeCustomDataToNbt(NbtCompound nbt, CallbackInfo info) {
         nbt.putInt("ZeldaStunTimer", this.legend_of_steve$stunnedTimer);
     }
 
     @Inject(method = "readCustomDataFromNbt", at = @At("HEAD"))
-    public void onLoad(NbtCompound nbt, CallbackInfo info) {
+    public void legend_of_steve$readCustomDataFromNbt(NbtCompound nbt, CallbackInfo info) {
         if (nbt.contains("ZeldaStunTimer")) {
             this.legend_of_steve$setStunned(nbt.getInt("ZeldaStunTimer"));
         }

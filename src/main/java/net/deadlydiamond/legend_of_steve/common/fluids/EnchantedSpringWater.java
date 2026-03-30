@@ -11,13 +11,11 @@ import net.minecraft.fluid.FlowableFluid;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.item.Item;
-import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
@@ -68,11 +66,11 @@ public class EnchantedSpringWater extends FlowableFluid {
         float height = world.getFluidState(pos).getHeight();
 
         if (random.nextFloat() <= 0.025) {
-            MagicSparkleParticleEffect.createFountainSparkles(world, pos.toCenterPos().add(0, -0.5, 0).add(
+            MagicSparkleParticleEffect.createFountainSparkle(world, pos.toCenterPos().add(0, -0.5, 0).add(
                     random.nextFloat() - 0.5,
                     height,
                     random.nextFloat() - 0.5
-            ), 1, 0.025, 0.01);
+            ), 0.025, 0.01);
         } else if (random.nextFloat() <= 0.01) {
             SparkParticleEffect.createSparks(world, SparkParticleEffect.SOUL, pos.toCenterPos().add(
                     random.nextFloat() - 0.5,

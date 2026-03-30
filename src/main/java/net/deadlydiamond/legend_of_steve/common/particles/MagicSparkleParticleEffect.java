@@ -44,15 +44,13 @@ public class MagicSparkleParticleEffect extends AbstractColoredParticle {
     }
 
 
-    public static void createSparkles(World world, MagicSparkleParticleEffect magicSparkle, int count, Vec3d pos, Vec3d velocity) {
-        for (int i = 0; i < count; i++) {
-            world.addParticle(magicSparkle, pos.x, pos.y, pos.z, velocity.x, velocity.y, velocity.z);
-        }
+    public static void createSparkle(World world, MagicSparkleParticleEffect magicSparkle, Vec3d pos, Vec3d velocity) {
+        world.addParticle(magicSparkle, pos.x, pos.y, pos.z, velocity.x, velocity.y, velocity.z);
+
     }
 
-    public static void createFountainSparkles(World world, Vec3d pos, int count, double dy, double dxz) {
-        MagicSparkleParticleEffect.createSparkles(world, new MagicSparkleParticleEffect(0xFFFFFF, 0xFFFFFF),
-                count, pos, new Vec3d(
+    public static void createFountainSparkle(World world, Vec3d pos, double dy, double dxz) {
+        MagicSparkleParticleEffect.createSparkle(world, new MagicSparkleParticleEffect(0xFFFFFF, 0xFFFFFF), pos, new Vec3d(
                         (world.random.nextFloat() - 0.5) * dxz,
                         (Math.max(world.random.nextFloat(), 0.1)) * dy,
                         (world.random.nextFloat() - 0.5) * dxz

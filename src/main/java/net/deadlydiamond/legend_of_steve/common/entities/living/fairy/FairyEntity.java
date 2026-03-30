@@ -1,10 +1,10 @@
 package net.deadlydiamond.legend_of_steve.common.entities.living.fairy;
 
+import net.deadlydiamond.legend_of_steve.common.entities.ai.goals.HealPlayerGoal;
 import net.deadlydiamond.legend_of_steve.common.entities.ai.goals.WanderAroundFlyingGoal;
 import net.deadlydiamond.legend_of_steve.common.entities.ai.navigation.FairyEntityNavigation;
 import net.deadlydiamond.legend_of_steve.common.entities.living.FairyColor;
 import net.deadlydiamond.legend_of_steve.common.entities.living.IBottleable;
-import net.deadlydiamond.legend_of_steve.common.particles.MagicSparkleParticleEffect;
 import net.deadlydiamond.legend_of_steve.init.ZeldaCustomTrackedData;
 import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
 import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
@@ -12,6 +12,7 @@ import net.deadlydiamond.legend_of_steve.util.entity.ZeldaSpawn;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.control.FlightMoveControl;
+import net.minecraft.entity.ai.goal.ActiveTargetGoal;
 import net.minecraft.entity.ai.pathing.EntityNavigation;
 import net.minecraft.entity.ai.pathing.PathNodeType;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -19,7 +20,6 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
-import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -64,6 +64,8 @@ public class FairyEntity extends PathAwareEntity implements Flutterer, IBottleab
     @Override
     protected void initGoals() {
         this.goalSelector.add(5, new WanderAroundFlyingGoal(this));
+        this.goalSelector.add(3, new HealPlayerGoal(this, 0.6, true));
+        this.goalSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
     }
 
     @Override
@@ -73,7 +75,7 @@ public class FairyEntity extends PathAwareEntity implements Flutterer, IBottleab
                     this.getParticleX(0.5),
                     this.getRandomBodyY(),
                     this.getParticleZ(0.5)
-            ), 1);
+            ));
         }
         super.tick();
     }
@@ -107,10 +109,19 @@ public class FairyEntity extends PathAwareEntity implements Flutterer, IBottleab
         if (status == EntityStatuses.PLAY_DEATH_SOUND_OR_ADD_PROJECTILE_HIT_PARTICLES) {
             getColor().createSparkParticles(getWorld(), getPos(), 25);
         }
+        if (status == EntityStatuses.ADD_DEATH_PARTICLES) {
+            getColor().createSparkParticles(getWorld(), getPos(), 25);
+            return;
+        }
         super.handleStatus(status);
     }
 
-    public static DefaultAttributeContainer.Builder createCustomAttributes() {
+    @Override
+    public boolean canBeLeashedBy(PlayerEntity player) {
+        return false;
+    }
+
+    public static DefaultAttributeContainer.Builder attributes() {
         return MobEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 3)
                 .add(EntityAttributes.GENERIC_FLYING_SPEED, 0.6)
@@ -118,14 +129,12 @@ public class FairyEntity extends PathAwareEntity implements Flutterer, IBottleab
                 .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 48);
     }
 
-    public static ZeldaSpawn createCustomSpawnRestriction() {
-        return ZeldaSpawn.create(SpawnRestriction.Location.NO_RESTRICTIONS, (type, world, spawnReason, pos, random) -> {
-            boolean bl = world.getBlockState(pos).isAir() && world.getFluidState(pos).isEmpty();
-            if (spawnReason == SpawnReason.SPAWNER) {
-                return bl;
-            } else {
-                return bl && HostileEntity.isSpawnDark(world, pos, random);
-            }
+    public static ZeldaSpawn spawnRestriction() {
+        return ZeldaSpawn.ground((type, world, spawnReason, pos, random) -> {
+            boolean bl = world.getBlockState(pos.down()).allowsSpawning(world, pos.down(), type);
+            int i = world.getLightLevel(pos);
+
+            return i > random.nextInt(4) ? spawnReason == SpawnReason.SPAWNER : bl;
         });
     }
 
@@ -205,6 +214,10 @@ public class FairyEntity extends PathAwareEntity implements Flutterer, IBottleab
     @Override
     protected SoundEvent getAmbientSound() {
         return ZeldaSounds.FAIRY_AMBIENT;
+    }
+
+    public void playHealSound() {
+        this.playSound(ZeldaSounds.FAIRY_HEAL, this.getSoundVolume(), this.getSoundPitch());
     }
 
     @Override

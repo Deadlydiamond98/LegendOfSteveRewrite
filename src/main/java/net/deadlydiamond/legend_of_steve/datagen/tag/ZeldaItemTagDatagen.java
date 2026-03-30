@@ -37,6 +37,9 @@ public class ZeldaItemTagDatagen extends FabricTagProvider.ItemTagProvider {
                 ZeldaBlocks.MASTER_PLATE,
                 ZeldaBlocks.MASTER_BRICK,
                 ZeldaBlocks.MASTER_TILE,
+                // RETRO DIRT
+                ZeldaBlocks.STRANGE_DIRT,
+                ZeldaBlocks.STRANGE_DIRT_BRICKS,
                 // TEKTILES
                 ZeldaBlocks.RED_TEKTILES,
                 ZeldaBlocks.SMALL_RED_TEKTILES,

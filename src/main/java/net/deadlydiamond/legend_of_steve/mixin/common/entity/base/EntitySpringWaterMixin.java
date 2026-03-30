@@ -20,7 +20,6 @@ import net.minecraft.fluid.Fluid;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.tag.TagKey;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -91,7 +90,7 @@ public abstract class EntitySpringWaterMixin {
                         this.getParticleZ(0.5)
                 );
 
-                MagicSparkleParticleEffect.createFountainSparkles(getWorld(), pos, 1, 0.05, 0.01);
+                MagicSparkleParticleEffect.createFountainSparkle(getWorld(), pos, 0.05, 0.01);
             }
         } else if (entity instanceof ItemEntity itemEntity) {
             if (!world.isClient() && submergedTime % 10 == 0) {
@@ -119,12 +118,12 @@ public abstract class EntitySpringWaterMixin {
             }
 
             if (getWorld().isClient() && submergedTime % 2 == 0) {
-                MagicSparkleParticleEffect.createFountainSparkles(
+                MagicSparkleParticleEffect.createFountainSparkle(
                         world, getPos().add(0, 0.25, 0).add(
                                 (world.random.nextFloat() - 0.5) * 0.125,
                                 (world.random.nextFloat() - 0.5) * 0.125,
                                 (world.random.nextFloat() - 0.5) * 0.125
-                        ), 1, 0.05, 0.01
+                        ), 0.05, 0.01
                 );
             }
         }

@@ -4,7 +4,6 @@ import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.particles.MagicSparkleParticleEffect;
 import net.deadlydiamond.legend_of_steve.common.particles.SparkParticleEffect;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Identifier;
@@ -46,9 +45,9 @@ public enum FairyColor {
         SparkParticleEffect.createSparks(world, new SparkParticleEffect(this.hexStart, this.hexEnd), pos, count);
     }
 
-    public void createMagicSparkleParticles(World world, Vec3d pos, int count) {
-        MagicSparkleParticleEffect.createSparkles(world,
-                new MagicSparkleParticleEffect(this.hexStart, this.hexEnd), count,
+    public void createMagicSparkleParticles(World world, Vec3d pos) {
+        MagicSparkleParticleEffect.createSparkle(world,
+                new MagicSparkleParticleEffect(this.hexStart, this.hexEnd),
                 pos, new Vec3d(
                         (world.getRandom().nextFloat() - 0.5) * 0.01,
                         (world.getRandom().nextFloat() - 0.5) * 0.01,

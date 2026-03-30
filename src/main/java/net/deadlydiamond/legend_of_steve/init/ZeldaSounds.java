@@ -37,7 +37,8 @@ public class ZeldaSounds {
     public static final BlockSoundGroup MASTER_CHAIN = registerGroup("master_chain", 1, 1.5f);
     public static final SoundEvent MASTER_BARREL_OPEN = register("block.master_barrel.open");
     public static final SoundEvent MASTER_BARREL_CLOSE = register("block.master_barrel.close");
-    // Tektiles
+    // OTHER
+    public static final BlockSoundGroup RETRO_DIRT = registerGroup("retro_dirt", 1, 1.25f);
     public static final BlockSoundGroup TEKTILES = registerGroup("tektiles", 1, 1.25f);
     // Note Block
     public static final SoundEvent MALON = register("block.note_block.malon");
@@ -46,6 +47,7 @@ public class ZeldaSounds {
     public static final SoundEvent SMW_PIANO = register("block.note_block.smw_piano");
     public static final SoundEvent BRASS_ENSEMBLE = register("block.note_block.brass_ensemble");
     public static final SoundEvent LTTP_TRUMPET = register("block.note_block.lttp_trumpet");
+    public static final SoundEvent SMW_SLAP_BASS = register("block.note_block.smw_slap_bass");
 
     // Items ///////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Emerald Shards
@@ -63,6 +65,7 @@ public class ZeldaSounds {
     public static final SoundEvent FAIRY_DEATH = register("entity.fairy.death");
     public static final SoundEvent FAIRY_HURT = register("entity.fairy.hurt");
     public static final SoundEvent FAIRY_AMBIENT = register("entity.fairy.ambient");
+    public static final SoundEvent FAIRY_HEAL = register("entity.fairy.heal");
 
     // HELPER METHODS //////////////////////////////////////////////////////////////////////////////////////////////////
 

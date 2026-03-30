@@ -16,6 +16,7 @@ public class ZeldaSpringWaterConversionDatagen {
         vanillaBlock(consumer);
         dye(consumer);
         fairyMarble(consumer);
+        strangeDirt(consumer);
     }
 
     private static void vanillaItem(Consumer<RecipeJsonProvider> consumer) {
@@ -28,7 +29,6 @@ public class ZeldaSpringWaterConversionDatagen {
 
     private static void vanillaBlock(Consumer<RecipeJsonProvider> consumer) {
         // Purification
-        offerConversion(consumer, Blocks.GRASS_BLOCK, Blocks.MYCELIUM);
         offerConversion(consumer, Blocks.NETHERRACK, Blocks.COBBLESTONE);
         offerConversion(consumer, Blocks.WARPED_WART_BLOCK, Blocks.NETHER_WART_BLOCK);
         offerConversion(consumer, Blocks.OBSIDIAN, Blocks.CRYING_OBSIDIAN);
@@ -326,6 +326,15 @@ public class ZeldaSpringWaterConversionDatagen {
         offerConversion(consumer, Blocks.CRACKED_STONE_BRICKS, ZeldaBlocks.CRACKED_FAIRY_MARBLE_BRICKS);
         offerConversion(consumer, Blocks.CHISELED_STONE_BRICKS, ZeldaBlocks.CHISELED_FAIRY_MARBLE);
         offerConversion(consumer, Blocks.SMOOTH_STONE, ZeldaBlocks.SMOOTH_FAIRY_MARBLE);
+    }
+
+    private static void strangeDirt(Consumer<RecipeJsonProvider> consumer) {
+        offerConversion(consumer, Blocks.DIRT, ZeldaBlocks.STRANGE_DIRT.base);
+        offerConversion(consumer, Blocks.GRASS_BLOCK, ZeldaBlocks.STRANGE_DIRT.base);
+        offerConversion(consumer, Blocks.MYCELIUM, ZeldaBlocks.STRANGE_DIRT.base);
+        offerConversion(consumer, Blocks.PODZOL, ZeldaBlocks.STRANGE_DIRT.base);
+        offerConversion(consumer, Blocks.COARSE_DIRT, ZeldaBlocks.STRANGE_DIRT.base);
+        offerConversion(consumer, Blocks.ROOTED_DIRT, ZeldaBlocks.STRANGE_DIRT.base);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

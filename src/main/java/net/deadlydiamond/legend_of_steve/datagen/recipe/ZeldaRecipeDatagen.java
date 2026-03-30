@@ -53,6 +53,7 @@ public class ZeldaRecipeDatagen extends FabricRecipeProvider {
         fairyMarble(consumer);
         masterOre(consumer);
         tektiles(consumer);
+        retroDirt(consumer);
         lootpots(consumer);
 
         ZeldaSpringWaterConversionDatagen.generate(consumer);
@@ -122,6 +123,19 @@ public class ZeldaRecipeDatagen extends FabricRecipeProvider {
         offerStonecuttingRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.MASTER_PILLAR, ZeldaBlocks.MASTER_PLATE.base);
     }
 
+    private void retroDirt(Consumer<RecipeJsonProvider> consumer) {
+        ZeldaBlocks.STRANGE_DIRT.generateRecipesStone(consumer);
+
+        offerPolishedStoneRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.POLISHED_STRANGE_DIRT.base, ZeldaBlocks.STRANGE_DIRT.base);
+        ZeldaBlocks.POLISHED_STRANGE_DIRT.generateRecipesStone(consumer, ZeldaBlocks.STRANGE_DIRT.base);
+
+        offerPolishedStoneRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.STRANGE_DIRT_BRICKS.base, ZeldaBlocks.POLISHED_STRANGE_DIRT.base);
+        ZeldaBlocks.STRANGE_DIRT_BRICKS.generateRecipesStone(consumer, ZeldaBlocks.POLISHED_STRANGE_DIRT.base, ZeldaBlocks.STRANGE_DIRT.base);
+
+        offerReinforcedRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.REINFORCED_STRANGE_DIRT, ZeldaBlocks.STRANGE_DIRT.base);
+        offerStonecuttingRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.REINFORCED_STRANGE_DIRT, ZeldaBlocks.STRANGE_DIRT.base);
+    }
+
     private void tektiles(Consumer<RecipeJsonProvider> consumer) {
         ZeldaBlocks.BLUE_TEKTILES.generateRecipesStone(consumer);
         ZeldaBlocks.SMALL_BLUE_TEKTILES.generateRecipesStone(consumer, ZeldaBlocks.BLUE_TEKTILES.base);
@@ -189,6 +203,16 @@ public class ZeldaRecipeDatagen extends FabricRecipeProvider {
         for (ItemConvertible input : inputs) {
             offerStonecuttingRecipe(exporter, category, output, input);
         }
+    }
+
+    public static void offerReinforcedRecipe(Consumer<RecipeJsonProvider> exporter, RecipeCategory category, ItemConvertible output, ItemConvertible input) {
+        ShapedRecipeJsonBuilder.create(category, output, 4)
+                .input('#', input)
+                .pattern("###")
+                .pattern("###")
+                .pattern("###")
+                .criterion(hasItem(input), conditionsFromItem(input))
+                .offerTo(exporter);
     }
 
     // Dyed ////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -1,7 +1,6 @@
 package net.deadlydiamond.legend_of_steve.datagen;
 
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
-import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
 import net.deadlydiamond98.koalalib.common.blocksets.AbstractBlockset;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
@@ -30,6 +29,10 @@ public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
                 ZeldaBlocks.MASTER_PLATE,
                 ZeldaBlocks.MASTER_BRICK,
                 ZeldaBlocks.MASTER_TILE,
+                // RETRO DIRT
+                ZeldaBlocks.STRANGE_DIRT,
+                ZeldaBlocks.STRANGE_DIRT_BRICKS,
+                ZeldaBlocks.POLISHED_STRANGE_DIRT,
                 // TEKTILES
                 ZeldaBlocks.RED_TEKTILES,
                 ZeldaBlocks.SMALL_RED_TEKTILES,
@@ -74,7 +77,9 @@ public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
                 ZeldaBlocks.MASTER_CHAIN,
                 ZeldaBlocks.MASTER_TRAPDOOR,
                 ZeldaBlocks.MASTER_GIRDER,
-                ZeldaBlocks.MASTER_BARREL
+                ZeldaBlocks.MASTER_BARREL,
+                // RETRO DIRT
+                ZeldaBlocks.REINFORCED_STRANGE_DIRT
         );
 
         addDropWithSilkTouch(ZeldaBlocks.LOOT_POT);

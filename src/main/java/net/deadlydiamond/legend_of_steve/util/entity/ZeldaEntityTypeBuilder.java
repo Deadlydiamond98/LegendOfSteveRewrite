@@ -1,18 +1,14 @@
 package net.deadlydiamond.legend_of_steve.util.entity;
 
-import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.mob.MobEntity;
-import net.minecraft.world.Heightmap;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-import java.lang.reflect.Method;
-import java.util.Objects;
 import java.util.function.Supplier;
 
 /**
@@ -64,57 +60,25 @@ public class ZeldaEntityTypeBuilder<T extends Entity> extends FabricEntityTypeBu
         if (LivingEntity.class.isAssignableFrom(this.usedEntityClass)) {
             boolean isMob = MobEntity.class.isAssignableFrom(this.usedEntityClass);
             if (isMob) {
-                initIfNoRestriction();
-                buildMob((EntityType<MobEntity>) type, (SpawnRestriction.SpawnPredicate<MobEntity>)this.spawnRestriction.predicate());
+                if (this.spawnRestriction.isValid()) {
+                    buildMob((EntityType<MobEntity>) type, (SpawnRestriction.SpawnPredicate<MobEntity>)this.spawnRestriction.predicate());
+                }
             }
-            buildLiving((EntityType<LivingEntity>) type, isMob);
+            buildLiving((EntityType<LivingEntity>) type);
         }
 
         return type;
     }
 
-    private <N extends LivingEntity> void buildLiving(EntityType<N> type, boolean isMob) {
-        if (this.defaultAttributeBuilder == null) {
-            this.defaultAttributeBuilder = getDefaultAttributes(isMob);
+    private <N extends LivingEntity> void buildLiving(EntityType<N> type) {
+        if (this.defaultAttributeBuilder != null) {
+            FabricDefaultAttributeRegistry.register(type, this.defaultAttributeBuilder.get());
         }
-        FabricDefaultAttributeRegistry.register(type, this.defaultAttributeBuilder.get());
     }
 
     private <N extends MobEntity> void buildMob(EntityType<N> type, SpawnRestriction.SpawnPredicate<N> spawnPredicate) {
         if (this.spawnRestriction.isValid()) {
             SpawnRestriction.register(type, this.spawnRestriction.location(), this.spawnRestriction.heightmapType(), spawnPredicate);
-        }
-    }
-
-    private void initIfNoRestriction() {
-        if (!this.spawnRestriction.isValid()) {
-            try {
-                Method attributeMethod = this.usedEntityClass.getMethod("createCustomSpawnRestriction");
-                Object result = attributeMethod.invoke(null);
-                if (result instanceof ZeldaSpawn spawnRestriction) {
-                    this.spawnRestriction = spawnRestriction;
-                }
-            } catch (Exception e) {
-                LegendOfSteve.LOGGER.debug("createCustomSpawnRestriction() wasn't found for {}, {}", this.usedEntityClass.getName(), e);
-            }
-        }
-    }
-
-    private Supplier<DefaultAttributeContainer.Builder> getDefaultAttributes(boolean isMob) {
-        try {
-            Method attributeMethod = this.usedEntityClass.getMethod("createCustomAttributes");
-            Object result = attributeMethod.invoke(null);
-            if (result instanceof DefaultAttributeContainer.Builder builder) {
-                return () -> builder;
-            }
-        } catch (Exception e) {
-            LegendOfSteve.LOGGER.info("createCustomAttributes() wasn't found for {}, {}", this.usedEntityClass.getName(), e);
-        }
-
-        if (isMob) {
-            return MobEntity::createMobAttributes;
-        } else {
-            return LivingEntity::createLivingAttributes;
         }
     }
 

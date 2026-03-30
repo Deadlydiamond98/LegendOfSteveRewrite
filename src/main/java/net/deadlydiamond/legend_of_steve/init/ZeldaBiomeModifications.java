@@ -53,9 +53,9 @@ public class ZeldaBiomeModifications {
     private static void registerSpawns() {
         BiomeModifications.addSpawn(
                 BiomeSelectors.foundInOverworld(),
-                SpawnGroup.CREATURE,
+                SpawnGroup.AMBIENT,
                 ZeldaEntityTypes.FAIRY,
-                5,
+                2,
                 1,
                 2
         );

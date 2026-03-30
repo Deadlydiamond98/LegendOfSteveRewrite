@@ -87,6 +87,10 @@ public class ZeldaBlockSettings {
             .suffocates(Blocks::never)
             .blockVision(Blocks::never);
 
+    // RETRO DIRT
+    public static final FabricBlockSettings STRANGE_DIRT_SETTINGS = FabricBlockSettings.copyOf(Blocks.PACKED_MUD)
+            .sounds(ZeldaSounds.RETRO_DIRT);
+
     // TEKTILES
     public static final FabricBlockSettings BLUE_TEKTILES_SETTINGS = FabricBlockSettings.copyOf(Blocks.BONE_BLOCK)
             .sounds(ZeldaSounds.TEKTILES)

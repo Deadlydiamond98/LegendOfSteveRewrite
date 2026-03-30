@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "legend_of_steve:block/strange_dirt",
+    "side": "legend_of_steve:block/strange_dirt",
+    "top": "legend_of_steve:block/strange_dirt"
+  }
+}

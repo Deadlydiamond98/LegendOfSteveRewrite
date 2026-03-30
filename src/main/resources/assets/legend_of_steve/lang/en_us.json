@@ -148,6 +148,20 @@
   "block.legend_of_steve.master_girder": "Master Girder",
   "block.legend_of_steve.master_barrel": "Master Barrel",
 
+  "block.legend_of_steve.strange_dirt": "Strange Dirt",
+  "block.legend_of_steve.strange_dirt_slab": "Strange Dirt Slab",
+  "block.legend_of_steve.strange_dirt_stairs": "Strange Dirt Stairs",
+  "block.legend_of_steve.strange_dirt_wall": "Strange Dirt Wall",
+  "block.legend_of_steve.polished_strange_dirt": "Polished Strange Dirt",
+  "block.legend_of_steve.polished_strange_dirt_slab": "Polished Strange Dirt Slab",
+  "block.legend_of_steve.polished_strange_dirt_stairs": "Polished Strange Dirt Stairs",
+  "block.legend_of_steve.polished_strange_dirt_wall": "Polished Strange Dirt Wall",
+  "block.legend_of_steve.strange_dirt_bricks": "Strange Dirt Bricks",
+  "block.legend_of_steve.strange_dirt_brick_slab": "Strange Dirt Brick Slab",
+  "block.legend_of_steve.strange_dirt_brick_stairs": "Strange Dirt Brick Stairs",
+  "block.legend_of_steve.strange_dirt_brick_wall": "Strange Dirt Brick Wall",
+  "block.legend_of_steve.reinforced_strange_dirt": "Reinforced Strange Dirt",
+
   "block.legend_of_steve.blue_tektiles": "Blue Tektiles",
   "block.legend_of_steve.blue_tektile_slab": "Blue Tektile Slab",
   "block.legend_of_steve.blue_tektile_stairs": "Blue Tektile Stairs",
@@ -191,6 +205,7 @@
   "subtitles.legend_of_steve.entity.fairy.death": "Fairy dies",
   "subtitles.legend_of_steve.entity.fairy.hurt": "Fairy hurt",
   "subtitles.legend_of_steve.entity.fairy.ambient": "Fairy sparkles",
+  "subtitles.legend_of_steve.entity.fairy.heal": "Fairy heals player",
 
   "death.attack.loot_pot_projectile": "%1$s was pummeled to death by flying pottery",
   "death.attack.loot_pot_projectile.player": "%1$s was pummeled to death by %2$s's pottery",

@@ -92,6 +92,22 @@ public class CustomNoteBlockSounds {
             ZeldaBlocks.CHISELED_DEKU_PLANKS
     );
 
+    public static List<Block> SMW_SLAP_BASS = List.of(
+            ZeldaBlocks.STRANGE_DIRT.base,
+            ZeldaBlocks.STRANGE_DIRT.slab,
+            ZeldaBlocks.STRANGE_DIRT.stair,
+            ZeldaBlocks.STRANGE_DIRT.wall,
+            ZeldaBlocks.POLISHED_STRANGE_DIRT.base,
+            ZeldaBlocks.POLISHED_STRANGE_DIRT.slab,
+            ZeldaBlocks.POLISHED_STRANGE_DIRT.stair,
+            ZeldaBlocks.POLISHED_STRANGE_DIRT.wall,
+            ZeldaBlocks.STRANGE_DIRT_BRICKS.base,
+            ZeldaBlocks.STRANGE_DIRT_BRICKS.slab,
+            ZeldaBlocks.STRANGE_DIRT_BRICKS.stair,
+            ZeldaBlocks.STRANGE_DIRT_BRICKS.wall,
+            ZeldaBlocks.REINFORCED_STRANGE_DIRT
+    );
+
     public static SoundEvent getCustomSound(World world, BlockPos pos) {
         Block block = world.getBlockState(pos.down()).getBlock();
         if (BRASS_ENSEMBLE.contains(block)) {
@@ -111,6 +127,9 @@ public class CustomNoteBlockSounds {
         }
         if (SMW_PIANO.contains(block)) {
             return ZeldaSounds.SMW_PIANO;
+        }
+        if (SMW_SLAP_BASS.contains(block)) {
+            return ZeldaSounds.SMW_SLAP_BASS;
         }
         return null;
     }

@@ -120,6 +120,13 @@
     ],
     "subtitle": "subtitles.legend_of_steve.entity.fairy.ambient"
   },
+  "entity.fairy.heal": {
+    "sounds": [
+      "legend_of_steve:entity/fairy/heal1",
+      "legend_of_steve:entity/fairy/heal2"
+    ],
+    "subtitle": "subtitles.legend_of_steve.entity.fairy.heal"
+  },
 
   "block.note_block.smw_piano": {
     "sounds": [
@@ -154,6 +161,12 @@
   "block.note_block.ocarina": {
     "sounds": [
       "legend_of_steve:note/ocarina"
+    ],
+    "subtitle": "subtitles.block.note_block.note"
+  },
+  "block.note_block.smw_slap_bass": {
+    "sounds": [
+      "legend_of_steve:note/smw_slap_bass"
     ],
     "subtitle": "subtitles.block.note_block.note"
   },
@@ -228,7 +241,7 @@
       "legend_of_steve:block/bomb_flower/pick5",
       "legend_of_steve:block/bomb_flower/pick6"
     ],
-    "subtitle": "subtitles.block.bomb_flower.picked"
+    "subtitle": "subtitles.legend_of_steve.block.bomb_flower.picked"
   },
 
   "block.spring_water.transform": {
@@ -663,5 +676,54 @@
       "block/decorated_pot/step5"
     ],
     "subtitle": "subtitles.legend_of_steve.block.loot_pot.grab"
+  },
+
+  "block.retro_dirt.break": {
+    "sounds": [
+      "legend_of_steve:block/retro_dirt/break1",
+      "legend_of_steve:block/retro_dirt/break2",
+      "legend_of_steve:block/retro_dirt/break3",
+      "legend_of_steve:block/retro_dirt/break4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.retro_dirt.fall": {
+    "sounds": [
+      "legend_of_steve:block/retro_dirt/step1",
+      "legend_of_steve:block/retro_dirt/step2",
+      "legend_of_steve:block/retro_dirt/step3",
+      "legend_of_steve:block/retro_dirt/step4",
+      "legend_of_steve:block/retro_dirt/step5"
+    ],
+    "subtitle": "subtitles.block.generic.fall"
+  },
+  "block.retro_dirt.hit": {
+    "sounds": [
+      "legend_of_steve:block/retro_dirt/step1",
+      "legend_of_steve:block/retro_dirt/step2",
+      "legend_of_steve:block/retro_dirt/step3",
+      "legend_of_steve:block/retro_dirt/step4",
+      "legend_of_steve:block/retro_dirt/step5"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.retro_dirt.place": {
+    "sounds": [
+      "legend_of_steve:block/retro_dirt/place1",
+      "legend_of_steve:block/retro_dirt/place2",
+      "legend_of_steve:block/retro_dirt/place3",
+      "legend_of_steve:block/retro_dirt/place4"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.retro_dirt.step": {
+    "sounds": [
+      "legend_of_steve:block/retro_dirt/step1",
+      "legend_of_steve:block/retro_dirt/step2",
+      "legend_of_steve:block/retro_dirt/step3",
+      "legend_of_steve:block/retro_dirt/step4",
+      "legend_of_steve:block/retro_dirt/step5"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
   }
 }

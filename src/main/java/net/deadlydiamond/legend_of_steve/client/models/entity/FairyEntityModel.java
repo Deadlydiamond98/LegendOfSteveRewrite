@@ -4,7 +4,6 @@ import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.entities.living.fairy.FairyEntity;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.model.*;
-import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
@@ -66,7 +65,7 @@ public class FairyEntityModel<T extends FairyEntity> extends SinglePartEntityMod
     public void renderCenterPart(MatrixStack matrices, VertexConsumer vertexConsumer, float scale, int light, int alpha) {
         matrices.push();
         matrices.translate(0, 0.3125f, 0);
-        renderBillboardingFace(matrices, vertexConsumer, -scale, scale, -scale, scale, -0.01f, 0.125f, 0.9375f, 0.125f, 0.9375f, 255, 255, 255, alpha, light);
+        renderBillboardingFace(matrices, vertexConsumer, -scale, scale, -scale, scale, -0.01f, 0.0625f, 0.9375f, 0.0625f, 0.9375f, 255, 255, 255, alpha, light);
         matrices.pop();
     }
 

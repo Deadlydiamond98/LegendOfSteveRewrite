@@ -3,8 +3,11 @@ package net.deadlydiamond.legend_of_steve.common.entities.living.fairy;
 import net.deadlydiamond.legend_of_steve.common.entities.ai.goals.WanderAroundFlyingGoal;
 import net.deadlydiamond.legend_of_steve.common.entities.ai.navigation.FairyEntityNavigation;
 import net.deadlydiamond.legend_of_steve.common.entities.living.FairyColor;
-import net.deadlydiamond.legend_of_steve.common.particles.SparkParticleEffect;
+import net.deadlydiamond.legend_of_steve.common.entities.living.IBottleable;
+import net.deadlydiamond.legend_of_steve.common.particles.MagicSparkleParticleEffect;
 import net.deadlydiamond.legend_of_steve.init.ZeldaCustomTrackedData;
+import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
+import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
 import net.deadlydiamond.legend_of_steve.util.entity.ZeldaSpawn;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
@@ -16,19 +19,24 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
+import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.PathAwareEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.text.Text;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 
-public class FairyEntity extends PathAwareEntity implements Flutterer {
+public class FairyEntity extends PathAwareEntity implements Flutterer, IBottleable {
     private static final TrackedData<FairyColor> FAIRY_COLOR = DataTracker.registerData(FairyEntity.class, ZeldaCustomTrackedData.FAIRY_COLOR);
 
     public FairyEntity(EntityType<? extends PathAwareEntity> entityType, World world) {
@@ -45,6 +53,10 @@ public class FairyEntity extends PathAwareEntity implements Flutterer {
     @Nullable
     @Override
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
+        if (spawnReason == SpawnReason.BUCKET && entityNbt != null && entityNbt.contains("FairyColor")) {
+            this.setColor(FairyColor.readNbt(entityNbt));
+            return entityData;
+        }
         setColor(FairyColor.init(world.getRandom()));
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
     }
@@ -52,6 +64,18 @@ public class FairyEntity extends PathAwareEntity implements Flutterer {
     @Override
     protected void initGoals() {
         this.goalSelector.add(5, new WanderAroundFlyingGoal(this));
+    }
+
+    @Override
+    public void tick() {
+        if (getWorld().isClient() && this.getRandom().nextFloat() < 0.2) {
+            getColor().createMagicSparkleParticles(getWorld(), new Vec3d(
+                    this.getParticleX(0.5),
+                    this.getRandomBodyY(),
+                    this.getParticleZ(0.5)
+            ), 1);
+        }
+        super.tick();
     }
 
     @Override
@@ -81,28 +105,28 @@ public class FairyEntity extends PathAwareEntity implements Flutterer {
     @Override
     public void handleStatus(byte status) {
         if (status == EntityStatuses.PLAY_DEATH_SOUND_OR_ADD_PROJECTILE_HIT_PARTICLES) {
-            getColor().createParticles(getWorld(), getPos(), 25);
-
-            for (int i = 0; i < 2; i++) {
-                double d = this.random.nextGaussian() * 0.02;
-                double e = this.random.nextGaussian() * 0.02;
-                double f = this.random.nextGaussian() * 0.02;
-                this.getWorld().addParticle(ParticleTypes.POOF, this.getParticleX(1.0), this.getRandomBodyY(), this.getParticleZ(1.0), d, e, f);
-            }
+            getColor().createSparkParticles(getWorld(), getPos(), 25);
         }
         super.handleStatus(status);
     }
 
     public static DefaultAttributeContainer.Builder createCustomAttributes() {
         return MobEntity.createMobAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 2)
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 3)
                 .add(EntityAttributes.GENERIC_FLYING_SPEED, 0.6)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.3)
                 .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 48);
     }
 
     public static ZeldaSpawn createCustomSpawnRestriction() {
-        return ZeldaSpawn.DEFAULT;
+        return ZeldaSpawn.create(SpawnRestriction.Location.NO_RESTRICTIONS, (type, world, spawnReason, pos, random) -> {
+            boolean bl = world.getBlockState(pos).isAir() && world.getFluidState(pos).isEmpty();
+            if (spawnReason == SpawnReason.SPAWNER) {
+                return bl;
+            } else {
+                return bl && HostileEntity.isSpawnDark(world, pos, random);
+            }
+        });
     }
 
     // GETTERS & SETTERS ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -133,5 +157,65 @@ public class FairyEntity extends PathAwareEntity implements Flutterer {
 
     public void setColor(FairyColor color) {
         this.dataTracker.set(FAIRY_COLOR, color);
+    }
+
+    // BOTTLING ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    @Override
+    protected ActionResult interactMob(PlayerEntity player, Hand hand) {
+        return IBottleable.tryBottle(player, hand, this).orElse(super.interactMob(player, hand));
+    }
+
+    @Override
+    public void copyDataToStack(ItemStack stack) {
+        IBottleable.copyDataToStack(this, stack);
+        NbtCompound nbt = stack.getOrCreateNbt();
+        getColor().writeNbt(nbt);
+    }
+
+    @Override
+    public void copyDataFromNbt(NbtCompound nbt) {
+        IBottleable.copyDataFromNbt(this, nbt);
+        if (nbt.contains("FairyColor")) {
+            setColor(FairyColor.readNbt(nbt));
+        }
+    }
+
+    @Override
+    public ItemStack getBottleItem() {
+        return new ItemStack(ZeldaItems.FAIRY_BOTTLE);
+    }
+
+    // SOUNDS //////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    @Nullable
+    @Override
+    protected SoundEvent getDeathSound() {
+        return ZeldaSounds.FAIRY_DEATH;
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getHurtSound(DamageSource source) {
+        return ZeldaSounds.FAIRY_HURT;
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return ZeldaSounds.FAIRY_AMBIENT;
+    }
+
+    @Override
+    public void playAmbientSound() {
+        if (this.age > 5) {
+            super.playAmbientSound();
+        }
+    }
+
+    @Override
+    public int getMinAmbientSoundDelay() {
+        return 200;
     }
 }

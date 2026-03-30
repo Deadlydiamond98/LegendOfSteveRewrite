@@ -2,6 +2,7 @@ package net.deadlydiamond.legend_of_steve.init;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.items.EmeraldShardItem;
+import net.deadlydiamond.legend_of_steve.common.items.FairyBottleItem;
 import net.deadlydiamond.legend_of_steve.common.items.bag.BombBagItem;
 import net.deadlydiamond.legend_of_steve.common.items.bag.QuiverItem;
 import net.deadlydiamond.legend_of_steve.common.items.projectile.DekuNutItem;
@@ -55,6 +56,8 @@ public class ZeldaItems {
     public static final Item RAW_MASTER_ORE = register("raw_master_ore", new Item(new FabricItemSettings()));
     public static final Item MASTER_SCRAP = register("master_scrap", new Item(new FabricItemSettings()));
     public static final Item MASTER_INGOT = register("master_ingot", new Item(new FabricItemSettings()));
+    // FAIRY BOTTLE
+    public static final Item FAIRY_BOTTLE = register("fairy_bottle", new FairyBottleItem(ZeldaEntityTypes.FAIRY));
 
     // FLUIDS //////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static final Item ENCHANTED_SPRING_WATER_BUCKET = register("enchanted_spring_water_bucket", new BucketItem(

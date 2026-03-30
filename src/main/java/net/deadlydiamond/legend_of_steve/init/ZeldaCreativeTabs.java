@@ -1,9 +1,12 @@
 package net.deadlydiamond.legend_of_steve.init;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
+import net.deadlydiamond.legend_of_steve.common.entities.living.FairyColor;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
@@ -48,6 +51,14 @@ public class ZeldaCreativeTabs {
                 ZeldaItems.MASTER_SCRAP,
                 ZeldaItems.MASTER_INGOT
         );
+
+        for (FairyColor value : FairyColor.values()) {
+            ItemStack stack = new ItemStack(ZeldaItems.FAIRY_BOTTLE);
+            NbtCompound nbt = stack.getOrCreateNbt();
+            value.writeNbt(nbt);
+            stack.setNbt(nbt);
+            entries.add(stack);
+        }
     });
 
     public static final ItemGroup BLOCKS = registerTab("blocks", ZeldaBlocks.LOOT_POT, (displayContext, entries) -> {

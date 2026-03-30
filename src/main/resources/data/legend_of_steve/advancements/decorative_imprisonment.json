@@ -54,7 +54,7 @@
     "icon": {
       "item": "legend_of_steve:pink_fairy_lamp"
     },
-    "frame": "challenge",
+    "frame": "task",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false

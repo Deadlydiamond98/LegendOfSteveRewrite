@@ -1,4 +1,4 @@
-// 1.20.1	2026-03-28T21:04:20.201154537	The Legend of Steve/Block Loot Tables
+// 1.20.1	2026-03-29T02:11:20.125554737	The Legend of Steve/Block Loot Tables
 29241b7dddc7563e14167f945187632fe6bbe019 data/legend_of_steve/loot_tables/blocks/red_tektile_slab.json
 ef1fb8d6560fbb688eb995a2a698b6634a267030 data/legend_of_steve/loot_tables/blocks/mossy_fairy_marble_bricks.json
 b2097664f61c7de30d6d243baf2b29fa330b4271 data/legend_of_steve/loot_tables/blocks/chiseled_cherry_planks.json
@@ -81,9 +81,9 @@ de39d3c351142f4e271922e94ba8d6c4b496e361 data/legend_of_steve/loot_tables/blocks
 7cd85008fc87fa32cacea5378cc9c41a59252347 data/legend_of_steve/loot_tables/blocks/cobbled_fairy_marble_wall.json
 eee307c05293b4238b84bc55f4ae5a43802c5d29 data/legend_of_steve/loot_tables/blocks/master_scrap_block.json
 ebd80d12cfab4ecee6224e8ba3d2b134b8a55e49 data/legend_of_steve/loot_tables/blocks/chiseled_jungle_planks.json
-4db8cb84978926a6ebc9da4dcf0a46fcb430730d data/legend_of_steve/loot_tables/blocks/yellow_fairy_lamp.json
-ae849d17a5134e82be1582f005d48b388f3d759f data/legend_of_steve/loot_tables/blocks/deku_pressure_plate.json
 12f725063fd25c119b4b0a3a4a22a1628c2c5f56 data/legend_of_steve/loot_tables/blocks/master_trapdoor.json
+ae849d17a5134e82be1582f005d48b388f3d759f data/legend_of_steve/loot_tables/blocks/deku_pressure_plate.json
+4db8cb84978926a6ebc9da4dcf0a46fcb430730d data/legend_of_steve/loot_tables/blocks/yellow_fairy_lamp.json
 3fad31605d488fd94ac140293e56f3aeeeacb403 data/legend_of_steve/loot_tables/blocks/deku_door.json
 ca29a7e8124d483b93c98a171735610d712acafe data/legend_of_steve/loot_tables/blocks/master_barrel.json
 c76b173b2997ec1d27965ad4161ad771c3b0e7c8 data/legend_of_steve/loot_tables/blocks/green_loot_pot.json

@@ -17,9 +17,9 @@
       "spawns": [
         {
           "type": "legend_of_steve:fairy",
-          "maxCount": 1,
-          "minCount": 1,
-          "weight": 1
+          "maxCount": 4,
+          "minCount": 2,
+          "weight": 100
         }
       ]
     },

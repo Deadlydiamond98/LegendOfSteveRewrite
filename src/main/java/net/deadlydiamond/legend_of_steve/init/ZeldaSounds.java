@@ -46,6 +46,7 @@ public class ZeldaSounds {
     public static final SoundEvent SMW_PIANO = register("block.note_block.smw_piano");
     public static final SoundEvent BRASS_ENSEMBLE = register("block.note_block.brass_ensemble");
     public static final SoundEvent LTTP_TRUMPET = register("block.note_block.lttp_trumpet");
+
     // Items ///////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Emerald Shards
     public static final SoundEvent EMERALD_SHARD_PICKED_UP = register("item.emerald_shard.pick_up");
@@ -54,6 +55,14 @@ public class ZeldaSounds {
     // Deku Nut
     public static final SoundEvent DEKU_NUT_SNAP = register("item.deku_nut.snap");
     public static final SoundEvent DEKU_NUT_STUN = register("item.deku_nut.freeze");
+    // Bottle
+    public static final SoundEvent EMPTY_BOTTLE = register("item.bottle.empty");
+
+    // Entities ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Fairy
+    public static final SoundEvent FAIRY_DEATH = register("entity.fairy.death");
+    public static final SoundEvent FAIRY_HURT = register("entity.fairy.hurt");
+    public static final SoundEvent FAIRY_AMBIENT = register("entity.fairy.ambient");
 
     // HELPER METHODS //////////////////////////////////////////////////////////////////////////////////////////////////
 

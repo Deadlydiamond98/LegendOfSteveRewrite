@@ -116,6 +116,8 @@ public class ZeldaModelDatagen extends FabricModelProvider {
 
         ItemModelDatagenUtil.registerSpawnEggs(itemModelGenerator, ZeldaEntityTypes.SPAWN_EGGS.toArray(Item[]::new));
 
+        ZeldaItemModelDatagenUtil.registerFairyBottle(itemModelGenerator, ZeldaItems.FAIRY_BOTTLE);
+
         ZeldaItemModelDatagenUtil.registerQuiver(itemModelGenerator, ZeldaItems.QUIVER);
         ZeldaItemModelDatagenUtil.registerQuiver(itemModelGenerator, ZeldaItems.GILDED_QUIVER);
         ZeldaItemModelDatagenUtil.registerQuiver(itemModelGenerator, ZeldaItems.NETHERITE_QUIVER);

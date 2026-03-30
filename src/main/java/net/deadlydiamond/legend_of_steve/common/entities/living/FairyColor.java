@@ -1,7 +1,11 @@
 package net.deadlydiamond.legend_of_steve.common.entities.living;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
+import net.deadlydiamond.legend_of_steve.common.particles.MagicSparkleParticleEffect;
 import net.deadlydiamond.legend_of_steve.common.particles.SparkParticleEffect;
+import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3d;
@@ -38,8 +42,19 @@ public enum FairyColor {
         return LegendOfSteve.id("textures/entity/fairy/center/" + color + "_fairy.png");
     }
 
-    public void createParticles(World world, Vec3d pos, int count) {
+    public void createSparkParticles(World world, Vec3d pos, int count) {
         SparkParticleEffect.createSparks(world, new SparkParticleEffect(this.hexStart, this.hexEnd), pos, count);
+    }
+
+    public void createMagicSparkleParticles(World world, Vec3d pos, int count) {
+        MagicSparkleParticleEffect.createSparkles(world,
+                new MagicSparkleParticleEffect(this.hexStart, this.hexEnd), count,
+                pos, new Vec3d(
+                        (world.getRandom().nextFloat() - 0.5) * 0.01,
+                        (world.getRandom().nextFloat() - 0.5) * 0.01,
+                        (world.getRandom().nextFloat() - 0.5) * 0.01
+                )
+        );
     }
 
     public void writeNbt(NbtCompound nbt) {
@@ -48,5 +63,17 @@ public enum FairyColor {
 
     public static FairyColor readNbt(NbtCompound nbt) {
         return FairyColor.valueOf(nbt.getString("FairyColor"));
+    }
+
+    public ItemStack getFairyLamp() {
+        return new ItemStack(switch (this) {
+            case RED -> ZeldaBlocks.RED_FAIRY_LAMP;
+            case ORANGE -> ZeldaBlocks.ORANGE_FAIRY_LAMP;
+            case YELLOW -> ZeldaBlocks.YELLOW_FAIRY_LAMP;
+            case GREEN -> ZeldaBlocks.GREEN_FAIRY_LAMP;
+            case BLUE -> ZeldaBlocks.BLUE_FAIRY_LAMP;
+            case PURPLE -> ZeldaBlocks.PURPLE_FAIRY_LAMP;
+            case PINK -> ZeldaBlocks.PINK_FAIRY_LAMP;
+        });
     }
 }

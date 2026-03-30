@@ -3,6 +3,7 @@ package net.deadlydiamond.legend_of_steve.init;
 import net.deadlydiamond.legend_of_steve.worldgen.ZeldaFeaturesDatagen;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.minecraft.entity.SpawnGroup;
 import net.minecraft.registry.tag.BiomeTags;
 import net.minecraft.world.gen.GenerationStep;
 
@@ -10,6 +11,7 @@ public class ZeldaBiomeModifications {
 
     public static void register() {
         registerFeatures();
+        registerSpawns();
     }
 
     private static void registerFeatures() {
@@ -45,6 +47,17 @@ public class ZeldaBiomeModifications {
                 BiomeSelectors.foundInOverworld(),
                 GenerationStep.Feature.VEGETAL_DECORATION,
                 ZeldaFeaturesDatagen.LOOT_GRASS_PLACED
+        );
+    }
+
+    private static void registerSpawns() {
+        BiomeModifications.addSpawn(
+                BiomeSelectors.foundInOverworld(),
+                SpawnGroup.CREATURE,
+                ZeldaEntityTypes.FAIRY,
+                5,
+                1,
+                2
         );
     }
 }

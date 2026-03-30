@@ -19,20 +19,37 @@
     "sounds": [
       "legend_of_steve:item/deku_nut/snap"
     ],
-    "subtitle": "subtitles.entity.deku_nut.snap"
+    "subtitle": "subtitles.legend_of_steve.entity.deku_nut.snap"
   },
   "item.deku_nut.freeze": {
     "sounds": [
       "legend_of_steve:item/deku_nut/freeze"
     ],
-    "subtitle": "subtitles.entity.deku_nut.freeze"
+    "subtitle": "subtitles.legend_of_steve.entity.deku_nut.freeze"
+  },
+
+  "item.bottle.empty": {
+    "sounds": [
+      {
+        "name": "legend_of_steve:item/bottle/empty_bottle",
+        "pitch": 1.0595
+      },
+      {
+        "name": "legend_of_steve:item/bottle/empty_bottle"
+      },
+      {
+        "name": "legend_of_steve:item/bottle/empty_bottle",
+        "pitch": 0.9439
+      }
+    ],
+    "subtitle": "subtitles.item.bottle.empty"
   },
 
   "entity.bomb.jingle": {
     "sounds": [
       "legend_of_steve:block/secret_jingle"
     ],
-    "subtitle": "subtitles.entity.bomb.secret_jingle"
+    "subtitle": "subtitles.legend_of_steve.entity.bomb.secret_jingle"
   },
   "entity.bomb.pick_up": {
     "sounds": [
@@ -49,25 +66,59 @@
         "pitch": 0.8
       }
     ],
-    "subtitle": "subtitles.entity.bomb.pick_up"
+    "subtitle": "subtitles.legend_of_steve.entity.bomb.pick_up"
   },
   "entity.bomb.extinguish": {
     "sounds": [
       "random/fizz"
     ],
-    "subtitle": "subtitles.entity.bomb.extinguish"
+    "subtitle": "subtitles.legend_of_steve.entity.bomb.extinguish"
   },
   "entity.bomb.primed": {
     "sounds": [
       "random/fuse"
     ],
-    "subtitle": "subtitles.entity.bomb.primed"
+    "subtitle": "subtitles.legend_of_steve.entity.bomb.primed"
   },
   "entity.bomb.thrown": {
     "sounds": [
       "random/bow"
     ],
-    "subtitle": "subtitles.entity.bomb.thrown"
+    "subtitle": "subtitles.legend_of_steve.entity.bomb.thrown"
+  },
+
+  "entity.fairy.death": {
+    "sounds": [
+      "legend_of_steve:entity/fairy/death1",
+      "legend_of_steve:entity/fairy/death2",
+      "legend_of_steve:entity/fairy/death3",
+      "legend_of_steve:entity/fairy/death4",
+      "legend_of_steve:entity/fairy/death5",
+      "legend_of_steve:entity/fairy/death6"
+    ],
+    "subtitle": "subtitles.legend_of_steve.entity.fairy.death"
+  },
+  "entity.fairy.hurt": {
+    "sounds": [
+      "legend_of_steve:entity/fairy/hurt1",
+      "legend_of_steve:entity/fairy/hurt2",
+      "legend_of_steve:entity/fairy/hurt3",
+      "legend_of_steve:entity/fairy/hurt4",
+      "legend_of_steve:entity/fairy/hurt5"
+    ],
+    "subtitle": "subtitles.legend_of_steve.entity.fairy.hurt"
+  },
+  "entity.fairy.ambient": {
+    "sounds": [
+      "legend_of_steve:block/spring_water/sparkle1",
+      "legend_of_steve:block/spring_water/sparkle2",
+      "legend_of_steve:block/spring_water/sparkle3",
+      "legend_of_steve:block/spring_water/sparkle4",
+      "legend_of_steve:block/spring_water/sparkle5",
+      "legend_of_steve:block/spring_water/sparkle6",
+      "legend_of_steve:block/spring_water/sparkle7"
+    ],
+    "subtitle": "subtitles.legend_of_steve.entity.fairy.ambient"
   },
 
   "block.note_block.smw_piano": {
@@ -184,14 +235,14 @@
     "sounds": [
       "legend_of_steve:block/spring_water/transform"
     ],
-    "subtitle": "subtitles.block.spring_water.transform"
+    "subtitle": "subtitles.legend_of_steve.block.spring_water.transform"
   },
   "block.spring_water.consume": {
     "sounds": [
       "legend_of_steve:block/spring_water/consume1",
       "legend_of_steve:block/spring_water/consume2"
     ],
-    "subtitle": "subtitles.block.spring_water.consume"
+    "subtitle": "subtitles.legend_of_steve.block.spring_water.consume"
   },
   "block.spring_water.sparkle": {
     "sounds": [
@@ -203,7 +254,7 @@
       "legend_of_steve:block/spring_water/sparkle6",
       "legend_of_steve:block/spring_water/sparkle7"
     ],
-    "subtitle": "subtitles.block.spring_water.sparkle"
+    "subtitle": "subtitles.legend_of_steve.block.spring_water.sparkle"
   },
 
   "block.fairy_lamp.break": {
@@ -585,7 +636,7 @@
       "entity/itemframe/remove_item3",
       "entity/itemframe/remove_item4"
     ],
-    "subtitle": "subtitles.block.loot_pot.withdraw"
+    "subtitle": "subtitles.legend_of_steve.block.loot_pot.withdraw"
   },
   "block.loot_pot.deposit": {
     "sounds": [
@@ -595,13 +646,13 @@
       "block/decorated_pot/step4",
       "block/decorated_pot/step5"
     ],
-    "subtitle": "subtitles.block.loot_pot.deposit"
+    "subtitle": "subtitles.legend_of_steve.block.loot_pot.deposit"
   },
   "block.loot_pot.thrown": {
     "sounds": [
       "random/bow"
     ],
-    "subtitle": "subtitles.block.loot_pot.thrown"
+    "subtitle": "subtitles.legend_of_steve.block.loot_pot.thrown"
   },
   "block.loot_pot.grab": {
     "sounds": [
@@ -611,6 +662,6 @@
       "block/decorated_pot/step4",
       "block/decorated_pot/step5"
     ],
-    "subtitle": "subtitles.block.loot_pot.grab"
+    "subtitle": "subtitles.legend_of_steve.block.loot_pot.grab"
   }
 }

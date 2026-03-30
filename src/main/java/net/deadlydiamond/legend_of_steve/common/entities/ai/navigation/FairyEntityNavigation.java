@@ -11,7 +11,6 @@ public class FairyEntityNavigation extends BirdNavigation {
         this.setCanSwim(false);
     }
 
-    // TODO: Change this to allow for more height
     @Override
     public boolean isValidPosition(BlockPos pos) {
         return !this.world.getBlockState(pos.down()).isAir();

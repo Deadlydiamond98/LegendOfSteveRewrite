@@ -2,6 +2,7 @@ package net.deadlydiamond.legend_of_steve.util.datagen.model;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import net.deadlydiamond.legend_of_steve.common.entities.living.FairyColor;
 import net.minecraft.data.client.*;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -44,6 +45,35 @@ public class ZeldaItemModelDatagenUtil {
 
         for (int i = 1; i < suffixes.length; i++) {
             String suffix = suffixes[i];
+            model.upload(itemModelId.withSuffixedPath(suffix), TextureMap.layer0(texturePath.withSuffixedPath(suffix)), generator.writer);
+        }
+    }
+
+    public static void registerFairyBottle(ItemModelGenerator generator, Item bottle) {
+        FairyColor[] colors = FairyColor.values();
+        Identifier itemModelId = ModelIds.getItemModelId(bottle);
+        Identifier texturePath = getPrefixedId(bottle, "fairy_bottle");
+        Model model = Models.GENERATED;
+
+        model.upload(itemModelId, TextureMap.layer0(texturePath), generator.writer, (id, textures) -> {
+            JsonObject jsonObject = model.createJson(id, textures);
+            JsonArray jsonArray = new JsonArray();
+
+            for (int i = 0; i < colors.length; i++) {
+                JsonObject jsonObject2 = new JsonObject();
+                JsonObject jsonObject3 = new JsonObject();
+                jsonObject3.addProperty("fairy_color", i / (float) colors.length);
+                jsonObject2.add("predicate", jsonObject3);
+                jsonObject2.addProperty("model", id.withSuffixedPath("_" + colors[i].name().toLowerCase()).toString());
+                jsonArray.add(jsonObject2);
+            }
+
+            jsonObject.add("overrides", jsonArray);
+            return jsonObject;
+        });
+
+        for (FairyColor color : colors) {
+            String suffix = "_" + color.toString().toLowerCase();
             model.upload(itemModelId.withSuffixedPath(suffix), TextureMap.layer0(texturePath.withSuffixedPath(suffix)), generator.writer);
         }
     }

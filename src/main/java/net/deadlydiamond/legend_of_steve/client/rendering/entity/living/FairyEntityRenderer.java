@@ -2,6 +2,7 @@ package net.deadlydiamond.legend_of_steve.client.rendering.entity.living;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.client.models.entity.FairyEntityModel;
+import net.deadlydiamond.legend_of_steve.common.entities.living.FairyColor;
 import net.deadlydiamond.legend_of_steve.common.entities.living.fairy.FairyEntity;
 import net.deadlydiamond.legend_of_steve.init.client.ZeldaRenderLayers;
 import net.minecraft.client.render.RenderLayer;
@@ -39,6 +40,8 @@ public class FairyEntityRenderer extends MobEntityRenderer<FairyEntity, FairyEnt
 
     // This Determines the Intensity of the glowing Layer!
     private int getAlpha(FairyEntity entity, float tickDelta) {
+        int maxAlpha = 125;
+
         World world = entity.getWorld();
         float time = (int) (world.getTimeOfDay() % 24000) + tickDelta;
         int blockLight = world.getLightLevel(LightType.BLOCK, entity.getBlockPos());
@@ -51,13 +54,13 @@ public class FairyEntityRenderer extends MobEntityRenderer<FairyEntity, FairyEnt
             alpha = (0.0912964f * time) - 1056.84723f;
         }
 
-        alpha = Math.max(0, Math.min(alpha, 150));
-        alpha += (-10 * skyLight) + 150;
+        alpha = Math.max(0, Math.min(alpha, maxAlpha));
+        alpha += (-10 * skyLight) + maxAlpha;
 
-        alpha = Math.max(0, Math.min(alpha, 150));
+        alpha = Math.max(0, Math.min(alpha, maxAlpha));
         alpha -= (10 * blockLight);
 
-        return (int) Math.floor(Math.max(0, Math.min(alpha, 150)));
+        return (int) Math.floor(Math.max(0, Math.min(alpha, maxAlpha)));
     }
 
     @Override

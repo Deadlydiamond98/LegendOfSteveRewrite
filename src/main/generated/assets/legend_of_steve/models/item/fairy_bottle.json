@@ -1,0 +1,50 @@
+{
+  "parent": "minecraft:item/generated",
+  "overrides": [
+    {
+      "model": "legend_of_steve:item/fairy_bottle_red",
+      "predicate": {
+        "fairy_color": 0.0
+      }
+    },
+    {
+      "model": "legend_of_steve:item/fairy_bottle_orange",
+      "predicate": {
+        "fairy_color": 0.14285715
+      }
+    },
+    {
+      "model": "legend_of_steve:item/fairy_bottle_yellow",
+      "predicate": {
+        "fairy_color": 0.2857143
+      }
+    },
+    {
+      "model": "legend_of_steve:item/fairy_bottle_green",
+      "predicate": {
+        "fairy_color": 0.42857143
+      }
+    },
+    {
+      "model": "legend_of_steve:item/fairy_bottle_blue",
+      "predicate": {
+        "fairy_color": 0.5714286
+      }
+    },
+    {
+      "model": "legend_of_steve:item/fairy_bottle_purple",
+      "predicate": {
+        "fairy_color": 0.71428573
+      }
+    },
+    {
+      "model": "legend_of_steve:item/fairy_bottle_pink",
+      "predicate": {
+        "fairy_color": 0.85714287
+      }
+    }
+  ],
+  "textures": {
+    "layer0": "legend_of_steve:item/fairy_bottle/fairy_bottle"
+  }
+}

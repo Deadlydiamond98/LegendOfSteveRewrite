@@ -30,7 +30,9 @@ public class ZeldaEntityTypes {
     public static final EntityType<ThrownPotEntity> THROWN_POT = register("thrown_pot", ThrownPotEntity.class, 0.5f);
 
     // LIVING ENTITIES /////////////////////////////////////////////////////////////////////////////////////////////////
-    public static final EntityType<FairyEntity> FAIRY = registerCreature("fairy", FairyEntity.class, 0.4f, 0xffffff, 0x5d8fc2);
+    public static final EntityType<FairyEntity> FAIRY = registerMob(
+            "fairy", FairyEntity.class, 0.4f, SpawnGroup.AMBIENT, 0xffffff, 0x5d8fc2
+    );
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // REGISTRATION METHODS ////////////////////////////////////////////////////////////////////////////////////////////

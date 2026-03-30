@@ -3,9 +3,11 @@ package net.deadlydiamond.legend_of_steve.mixin.common.entity.base;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
+import net.deadlydiamond.legend_of_steve.common.items.FairyBottleItem;
 import net.deadlydiamond.legend_of_steve.common.particles.MagicSparkleParticleEffect;
 import net.deadlydiamond.legend_of_steve.common.recipes.SpringWaterRecipe;
 import net.deadlydiamond.legend_of_steve.init.ZeldaAdvancements;
+import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
 import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
 import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
 import net.deadlydiamond.legend_of_steve.networking.s2c.ItemTransmutationPoofS2CPacket;
@@ -93,41 +95,26 @@ public abstract class EntitySpringWaterMixin {
             }
         } else if (entity instanceof ItemEntity itemEntity) {
             if (!world.isClient() && submergedTime % 10 == 0) {
-                Optional<SpringWaterRecipe> match = world.getServer().getRecipeManager().getFirstMatch(
-                        SpringWaterRecipe.Type.INSTANCE, new SimpleInventory(itemEntity.getStack()), world
-                );
 
-                if (match.isPresent()) {
-                    SpringWaterRecipe recipe = match.get();
-                    if (submergedTime >= recipe.getTime()) {
-                        ItemStack output = recipe.getOutput(itemEntity.getStack().getCount());
+                if (itemEntity.getStack().isOf(ZeldaItems.FAIRY_BOTTLE)) {
+                    if (submergedTime >= 140) {
+                        convertItem(itemEntity, FairyBottleItem.getFairyColor(itemEntity.getStack()).getFairyLamp());
+                    }
+                } else {
+                    Optional<SpringWaterRecipe> match = world.getServer().getRecipeManager().getFirstMatch(
+                            SpringWaterRecipe.Type.INSTANCE, new SimpleInventory(itemEntity.getStack()), world
+                    );
 
-                        if (itemEntity.getStack().getCount() == 1) {
-                            output.setNbt(itemEntity.getStack().getOrCreateNbt());
+                    if (match.isPresent()) {
+                        SpringWaterRecipe recipe = match.get();
+                        if (submergedTime >= recipe.getTime()) {
+                            convertItem(itemEntity, recipe.getOutput(itemEntity.getStack().getCount()));
                         }
-
-                        if (itemEntity.getOwner() instanceof PlayerEntity player) {
-                            ZeldaAdvancements.TRANSMUTE_ITEM.trigger(player);
-                        }
-
-                        ItemEntity result = new ItemEntity(world, getX(), getY(), getZ(), output);
-                        result.setNoGravity(true);
-                        result.setGlowing(true);
-                        result.setVelocity(
-                                (world.random.nextFloat() - 0.5) * 0.01,
-                                0.05,
-                                (world.random.nextFloat() - 0.5) * 0.01
-                        );
-                        world.spawnEntity(result);
-
+                    } else if (submergedTime >= 140) {
                         ItemTransmutationPoofS2CPacket.send(world, itemEntity);
-                        playSound(ZeldaSounds.SPRING_WATER_TRANSFORM, 1, 1);
+                        playSound(ZeldaSounds.SPRING_WATER_CONSUME, 1, 1);
                         this.discard();
                     }
-                } else if (submergedTime >= 140) {
-                    ItemTransmutationPoofS2CPacket.send(world, itemEntity);
-                    playSound(ZeldaSounds.SPRING_WATER_CONSUME, 1, 1);
-                    this.discard();
                 }
             }
 
@@ -143,8 +130,32 @@ public abstract class EntitySpringWaterMixin {
         }
     }
 
+    private void convertItem(ItemEntity itemEntity, ItemStack output) {
+        if (itemEntity.getStack().getCount() == 1) {
+            output.setNbt(itemEntity.getStack().getOrCreateNbt());
+        }
+
+        if (itemEntity.getOwner() instanceof PlayerEntity player) {
+            ZeldaAdvancements.TRANSMUTE_ITEM.trigger(player);
+        }
+
+        ItemEntity result = new ItemEntity(world, getX(), getY(), getZ(), output);
+        result.setNoGravity(true);
+        result.setGlowing(true);
+        result.setVelocity(
+                (world.random.nextFloat() - 0.5) * 0.01,
+                0.05,
+                (world.random.nextFloat() - 0.5) * 0.01
+        );
+        world.spawnEntity(result);
+
+        ItemTransmutationPoofS2CPacket.send(world, itemEntity);
+        playSound(ZeldaSounds.SPRING_WATER_TRANSFORM, 1, 1);
+        this.discard();
+    }
+
     @Unique
-    public boolean legend_of_steve$isInSpringWater() {
+    private boolean legend_of_steve$isInSpringWater() {
         return !this.firstUpdate && this.fluidHeight.getDouble(ZeldaTags.ENCHANTED_SPRING_WATER) > 0.0;
     }
 }

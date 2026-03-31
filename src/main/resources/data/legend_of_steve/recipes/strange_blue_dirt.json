@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SdS",
+    "dld",
+    "SdS"
+  ],
+  "key": {
+    "d": {
+      "item": "legend_of_steve:strange_dirt"
+    },
+    "l": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "S": {
+      "tag": "minecraft:stone_crafting_materials"
+    }
+  },
+  "result": {
+    "item": "legend_of_steve:strange_blue_dirt",
+    "count": 8
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_wall_side",
+  "textures": {
+    "wall": "legend_of_steve:block/strange_blue_dirt_bricks"
+  }
+}

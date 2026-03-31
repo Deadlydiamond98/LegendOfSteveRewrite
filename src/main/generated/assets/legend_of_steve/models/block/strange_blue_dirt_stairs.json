@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "legend_of_steve:block/strange_blue_dirt",
+    "side": "legend_of_steve:block/strange_blue_dirt",
+    "top": "legend_of_steve:block/strange_blue_dirt"
+  }
+}

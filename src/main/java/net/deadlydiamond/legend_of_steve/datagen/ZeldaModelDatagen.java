@@ -81,11 +81,15 @@ public class ZeldaModelDatagen extends FabricModelProvider {
         BlockModelDatagenUtil.registerPillar(generator, ZeldaBlocks.MASTER_PILLAR);
         generator.registerDoor(ZeldaBlocks.MASTER_DOOR);
         generator.registerOrientableTrapdoor(ZeldaBlocks.MASTER_TRAPDOOR);
-        // RETRO DIRT //////////////////////////////////////////////////////////////////////////////////////////////////
+        // STRANGE DIRT //////////////////////////////////////////////////////////////////////////////////////////////////
         ZeldaBlocks.STRANGE_DIRT.generateModels(generator);
         ZeldaBlocks.STRANGE_DIRT_BRICKS.generateModels(generator);
         ZeldaBlocks.POLISHED_STRANGE_DIRT.generateModels(generator, true);
         generator.registerSimpleCubeAll(ZeldaBlocks.REINFORCED_STRANGE_DIRT);
+        ZeldaBlocks.STRANGE_BLUE_DIRT.generateModels(generator);
+        ZeldaBlocks.STRANGE_BLUE_DIRT_BRICKS.generateModels(generator);
+        ZeldaBlocks.POLISHED_BLUE_STRANGE_DIRT.generateModels(generator, true);
+        generator.registerSimpleCubeAll(ZeldaBlocks.REINFORCED_STRANGE_BLUE_DIRT);
 
         // TEKTILES ////////////////////////////////////////////////////////////////////////////////////////////////////
         ZeldaBlocks.RED_TEKTILES.generateModels(generator);

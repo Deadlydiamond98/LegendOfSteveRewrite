@@ -34,11 +34,12 @@ public class ZeldaSounds {
     public static final BlockSoundGroup MASTER_BLOCK = registerGroup("master_block", 1, 1.5f);
     public static final BlockSoundGroup MASTER_PLATE = registerGroup("master_plate", 1, 1.5f);
     public static final BlockSoundGroup MASTER_BARS = registerGroup("master_bars", 1, 1.5f);
-    public static final BlockSoundGroup MASTER_CHAIN = registerGroup("master_chain", 1, 1.5f);
+    public static final BlockSoundGroup MASTER_CHAIN = registerGroup("master_chain", 0.75f, 1.5f);
     public static final SoundEvent MASTER_BARREL_OPEN = register("block.master_barrel.open");
     public static final SoundEvent MASTER_BARREL_CLOSE = register("block.master_barrel.close");
     // OTHER
-    public static final BlockSoundGroup RETRO_DIRT = registerGroup("retro_dirt", 1, 1.25f);
+    public static final BlockSoundGroup STRANGE_DIRT = registerGroup("strange_dirt", 1, 1.25f);
+    public static final BlockSoundGroup STRANGE_BLUE_DIRT = registerGroup("strange_blue_dirt", 1, 1);
     public static final BlockSoundGroup TEKTILES = registerGroup("tektiles", 1, 1.25f);
     // Note Block
     public static final SoundEvent MALON = register("block.note_block.malon");
@@ -48,6 +49,7 @@ public class ZeldaSounds {
     public static final SoundEvent BRASS_ENSEMBLE = register("block.note_block.brass_ensemble");
     public static final SoundEvent LTTP_TRUMPET = register("block.note_block.lttp_trumpet");
     public static final SoundEvent SMW_SLAP_BASS = register("block.note_block.smw_slap_bass");
+    public static final SoundEvent HAND_PAN = register("block.note_block.hand_pan");
 
     // Items ///////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Emerald Shards

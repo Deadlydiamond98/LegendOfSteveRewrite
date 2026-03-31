@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "legend_of_steve:block/strange_blue_dirt_bricks"
+  }
+}

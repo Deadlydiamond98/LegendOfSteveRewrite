@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_strange_blue_dirt": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "legend_of_steve:strange_blue_dirt"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "legend_of_steve:strange_blue_dirt_stairs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_strange_blue_dirt",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "legend_of_steve:strange_blue_dirt_stairs"
+    ]
+  },
+  "sends_telemetry_event": false
+}

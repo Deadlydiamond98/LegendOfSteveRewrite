@@ -121,6 +121,11 @@ public class ZeldaBlocks {
     public static final BaseStairSlabWallBlockset POLISHED_STRANGE_DIRT = new BaseStairSlabWallBlockset(LegendOfSteve.MOD_ID, "polished_strange_dirt", STRANGE_DIRT_SETTINGS);
     public static final Block REINFORCED_STRANGE_DIRT = register("reinforced_strange_dirt", new Block(STRANGE_DIRT_SETTINGS));
 
+    public static final BaseStairSlabWallBlockset STRANGE_BLUE_DIRT = new BaseStairSlabWallBlockset(LegendOfSteve.MOD_ID, "strange_blue_dirt", STRANGE_BLUE_DIRT_SETTINGS);
+    public static final StrangeDirtBricksBlockset STRANGE_BLUE_DIRT_BRICKS = new StrangeDirtBricksBlockset(LegendOfSteve.MOD_ID, "strange_blue_dirt_bricks", STRANGE_BLUE_DIRT_SETTINGS);
+    public static final BaseStairSlabWallBlockset POLISHED_BLUE_STRANGE_DIRT = new BaseStairSlabWallBlockset(LegendOfSteve.MOD_ID, "polished_strange_blue_dirt", STRANGE_BLUE_DIRT_SETTINGS);
+    public static final Block REINFORCED_STRANGE_BLUE_DIRT = register("reinforced_strange_blue_dirt", new Block(STRANGE_BLUE_DIRT_SETTINGS));
+
     // TEKTILES
     public static final BaseStairSlabBlockset RED_TEKTILES = new BaseStairSlabBlockset(LegendOfSteve.MOD_ID, "red_tektiles", RED_TEKTILES_SETTINGS);
     public static final BaseStairSlabBlockset SMALL_RED_TEKTILES = new BaseStairSlabBlockset(LegendOfSteve.MOD_ID, "small_red_tektiles", RED_TEKTILES_SETTINGS);

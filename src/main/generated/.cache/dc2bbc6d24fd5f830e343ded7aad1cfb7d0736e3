@@ -1,20 +1,20 @@
-// 1.20.1	2026-03-30T11:01:58.694649576	The Legend of Steve/Tags for minecraft:block
+// 1.20.1	2026-03-30T22:17:47.974563598	The Legend of Steve/Tags for minecraft:block
 7b40d9ae3acf98c87dc01ed58d8be3691b14c27d data/minecraft/tags/blocks/planks.json
 6daca18c7a1797e92327f29d3dcac1cf1e46704d data/minecraft/tags/blocks/mineable/axe.json
 901f64f708c730f4d91d1bafdaf7647aecf116f6 data/minecraft/tags/blocks/wall_hanging_signs.json
-b158ee3159c1ab33a232b2aeeaf8c25f9d68a8bc data/minecraft/tags/blocks/stairs.json
+7b4ae8978eaf4cd97a65998cfab9ba64026460c6 data/minecraft/tags/blocks/stairs.json
 52582474718cec7318b44f492778fbab6eb6b65c data/minecraft/tags/blocks/wall_signs.json
 017256426ee55176f0fd67175039d052701437e7 data/minecraft/tags/blocks/leaves.json
 6daca18c7a1797e92327f29d3dcac1cf1e46704d data/legend_of_steve/tags/blocks/chiseled_planks.json
-2680ec1a901dcc5f0c5b6075acee861fc4fe5fa5 data/minecraft/tags/blocks/mineable/pickaxe.json
-09c0ec1b674426a0b9d9ed6c8cc16b1158648f8d data/minecraft/tags/blocks/walls.json
+ddef815dfd2622b5ead8a92321ab6a8b8be1ead7 data/minecraft/tags/blocks/mineable/pickaxe.json
+812e427787226001c6e2f5804e52ebc3f92a6a7f data/minecraft/tags/blocks/walls.json
 78e421ba75d9d839368eb80f51dc3bb54125ee35 data/minecraft/tags/blocks/wooden_buttons.json
 b4d7faadc178039d6865f14eedd8edac04e8e1c3 data/minecraft/tags/blocks/trapdoors.json
 fba66bfc33c2dc3dfe13926359d5a3fba438019b data/minecraft/tags/blocks/standing_signs.json
 58d400462eb902a0f4472eeeb2e94b1c77dfcb3f data/minecraft/tags/blocks/needs_diamond_tool.json
 bb16959c47f727d036e1b5e28ca142e62ad72efc data/minecraft/tags/blocks/saplings.json
 c9d4f99f5491b3ad6b620d3a57eb1eb14729f997 data/minecraft/tags/blocks/flower_pots.json
-232ba88f0560954aad9b7785a146eca043ebffcc data/minecraft/tags/blocks/slabs.json
+2f3159ffaeeb53d0bdfccec70ad41ec80d84dafa data/minecraft/tags/blocks/slabs.json
 4c55d201bfe7ece68169d73efa581a5b087d227f data/minecraft/tags/blocks/stone_pressure_plates.json
 a62a7714809b9f9bc69ccf0667a2f9fafba2ea37 data/minecraft/tags/blocks/wooden_doors.json
 2c351bcaac8f9e1ccf33bf9ff6b9de2f2082f907 data/minecraft/tags/blocks/fence_gates.json

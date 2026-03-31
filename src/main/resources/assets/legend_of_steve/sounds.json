@@ -170,6 +170,12 @@
     ],
     "subtitle": "subtitles.block.note_block.note"
   },
+  "block.note_block.hand_pan": {
+    "sounds": [
+      "legend_of_steve:note/hand_pan"
+    ],
+    "subtitle": "subtitles.block.note_block.note"
+  },
 
   "block.bomb_flower.break": {
     "sounds": [
@@ -275,7 +281,10 @@
       "legend_of_steve:block/fairy_lamp/break1",
       "legend_of_steve:block/fairy_lamp/break2",
       "legend_of_steve:block/fairy_lamp/break3",
-      "legend_of_steve:block/fairy_lamp/break4"
+      "legend_of_steve:block/fairy_lamp/break4",
+      "legend_of_steve:block/fairy_lamp/break5",
+      "legend_of_steve:block/fairy_lamp/break6",
+      "legend_of_steve:block/fairy_lamp/break7"
     ],
     "subtitle": "subtitles.block.generic.break"
   },
@@ -344,21 +353,21 @@
   },
   "block.master_plate.hit": {
     "sounds": [
-      "legend_of_steve:block/master_plate/step1",
-      "legend_of_steve:block/master_plate/step2",
-      "legend_of_steve:block/master_plate/step3",
-      "legend_of_steve:block/master_plate/step4",
-      "legend_of_steve:block/master_plate/step5"
+      "legend_of_steve:block/master_bars/step1",
+      "legend_of_steve:block/master_bars/step2",
+      "legend_of_steve:block/master_bars/step3",
+      "legend_of_steve:block/master_bars/step4",
+      "legend_of_steve:block/master_bars/step5"
     ],
     "subtitle": "subtitles.block.generic.hit"
   },
   "block.master_plate.place": {
     "sounds": [
-      "legend_of_steve:block/master_plate/break1",
-      "legend_of_steve:block/master_plate/break2",
-      "legend_of_steve:block/master_plate/break3",
-      "legend_of_steve:block/master_plate/break4",
-      "legend_of_steve:block/master_plate/break5"
+      "legend_of_steve:block/master_bars/break1",
+      "legend_of_steve:block/master_bars/break2",
+      "legend_of_steve:block/master_bars/break3",
+      "legend_of_steve:block/master_bars/break4",
+      "legend_of_steve:block/master_bars/break5"
     ],
     "subtitle": "subtitles.block.generic.place"
   },
@@ -678,51 +687,105 @@
     "subtitle": "subtitles.legend_of_steve.block.loot_pot.grab"
   },
 
-  "block.retro_dirt.break": {
+  "block.strange_dirt.break": {
     "sounds": [
-      "legend_of_steve:block/retro_dirt/break1",
-      "legend_of_steve:block/retro_dirt/break2",
-      "legend_of_steve:block/retro_dirt/break3",
-      "legend_of_steve:block/retro_dirt/break4"
+      "legend_of_steve:block/strange_dirt/break1",
+      "legend_of_steve:block/strange_dirt/break2",
+      "legend_of_steve:block/strange_dirt/break3",
+      "legend_of_steve:block/strange_dirt/break4"
     ],
     "subtitle": "subtitles.block.generic.break"
   },
-  "block.retro_dirt.fall": {
+  "block.strange_dirt.fall": {
     "sounds": [
-      "legend_of_steve:block/retro_dirt/step1",
-      "legend_of_steve:block/retro_dirt/step2",
-      "legend_of_steve:block/retro_dirt/step3",
-      "legend_of_steve:block/retro_dirt/step4",
-      "legend_of_steve:block/retro_dirt/step5"
+      "legend_of_steve:block/strange_dirt/step1",
+      "legend_of_steve:block/strange_dirt/step2",
+      "legend_of_steve:block/strange_dirt/step3",
+      "legend_of_steve:block/strange_dirt/step4",
+      "legend_of_steve:block/strange_dirt/step5"
     ],
     "subtitle": "subtitles.block.generic.fall"
   },
-  "block.retro_dirt.hit": {
+  "block.strange_dirt.hit": {
     "sounds": [
-      "legend_of_steve:block/retro_dirt/step1",
-      "legend_of_steve:block/retro_dirt/step2",
-      "legend_of_steve:block/retro_dirt/step3",
-      "legend_of_steve:block/retro_dirt/step4",
-      "legend_of_steve:block/retro_dirt/step5"
+      "legend_of_steve:block/strange_dirt/step1",
+      "legend_of_steve:block/strange_dirt/step2",
+      "legend_of_steve:block/strange_dirt/step3",
+      "legend_of_steve:block/strange_dirt/step4",
+      "legend_of_steve:block/strange_dirt/step5"
     ],
     "subtitle": "subtitles.block.generic.hit"
   },
-  "block.retro_dirt.place": {
+  "block.strange_dirt.place": {
     "sounds": [
-      "legend_of_steve:block/retro_dirt/place1",
-      "legend_of_steve:block/retro_dirt/place2",
-      "legend_of_steve:block/retro_dirt/place3",
-      "legend_of_steve:block/retro_dirt/place4"
+      "legend_of_steve:block/strange_dirt/place1",
+      "legend_of_steve:block/strange_dirt/place2",
+      "legend_of_steve:block/strange_dirt/place3",
+      "legend_of_steve:block/strange_dirt/place4"
     ],
     "subtitle": "subtitles.block.generic.place"
   },
-  "block.retro_dirt.step": {
+  "block.strange_dirt.step": {
     "sounds": [
-      "legend_of_steve:block/retro_dirt/step1",
-      "legend_of_steve:block/retro_dirt/step2",
-      "legend_of_steve:block/retro_dirt/step3",
-      "legend_of_steve:block/retro_dirt/step4",
-      "legend_of_steve:block/retro_dirt/step5"
+      "legend_of_steve:block/strange_dirt/step1",
+      "legend_of_steve:block/strange_dirt/step2",
+      "legend_of_steve:block/strange_dirt/step3",
+      "legend_of_steve:block/strange_dirt/step4",
+      "legend_of_steve:block/strange_dirt/step5"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+
+  "block.strange_blue_dirt.break": {
+    "sounds": [
+      "legend_of_steve:block/strange_blue_dirt/break1",
+      "legend_of_steve:block/strange_blue_dirt/break2",
+      "legend_of_steve:block/strange_blue_dirt/break3",
+      "legend_of_steve:block/strange_blue_dirt/break4",
+      "legend_of_steve:block/strange_blue_dirt/break5"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.strange_blue_dirt.fall": {
+    "sounds": [
+      "legend_of_steve:block/strange_blue_dirt/step1",
+      "legend_of_steve:block/strange_blue_dirt/step2",
+      "legend_of_steve:block/strange_blue_dirt/step3",
+      "legend_of_steve:block/strange_blue_dirt/step4",
+      "legend_of_steve:block/strange_blue_dirt/step5",
+      "legend_of_steve:block/strange_blue_dirt/step6"
+    ],
+    "subtitle": "subtitles.block.generic.fall"
+  },
+  "block.strange_blue_dirt.hit": {
+    "sounds": [
+      "legend_of_steve:block/strange_blue_dirt/step1",
+      "legend_of_steve:block/strange_blue_dirt/step2",
+      "legend_of_steve:block/strange_blue_dirt/step3",
+      "legend_of_steve:block/strange_blue_dirt/step4",
+      "legend_of_steve:block/strange_blue_dirt/step5",
+      "legend_of_steve:block/strange_blue_dirt/step6"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.strange_blue_dirt.place": {
+    "sounds": [
+      "legend_of_steve:block/strange_blue_dirt/place1",
+      "legend_of_steve:block/strange_blue_dirt/place2",
+      "legend_of_steve:block/strange_blue_dirt/place3",
+      "legend_of_steve:block/strange_blue_dirt/place4",
+      "legend_of_steve:block/strange_blue_dirt/place5"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.strange_blue_dirt.step": {
+    "sounds": [
+      "legend_of_steve:block/strange_blue_dirt/step1",
+      "legend_of_steve:block/strange_blue_dirt/step2",
+      "legend_of_steve:block/strange_blue_dirt/step3",
+      "legend_of_steve:block/strange_blue_dirt/step4",
+      "legend_of_steve:block/strange_blue_dirt/step5",
+      "legend_of_steve:block/strange_blue_dirt/step6"
     ],
     "subtitle": "subtitles.block.generic.footsteps"
   }

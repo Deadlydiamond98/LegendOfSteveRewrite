@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "legend_of_steve:block/strange_blue_dirt_slab"
+    },
+    "type=double": {
+      "model": "legend_of_steve:block/strange_blue_dirt"
+    },
+    "type=top": {
+      "model": "legend_of_steve:block/strange_blue_dirt_slab_top"
+    }
+  }
+}

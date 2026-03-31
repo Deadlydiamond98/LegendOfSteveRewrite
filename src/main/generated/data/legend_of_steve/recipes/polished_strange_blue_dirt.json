@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "S": {
+      "item": "legend_of_steve:strange_blue_dirt"
+    }
+  },
+  "pattern": [
+    "SS",
+    "SS"
+  ],
+  "result": {
+    "count": 4,
+    "item": "legend_of_steve:polished_strange_blue_dirt"
+  },
+  "show_notification": true
+}

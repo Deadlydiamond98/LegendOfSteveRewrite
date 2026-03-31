@@ -29,10 +29,13 @@ public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
                 ZeldaBlocks.MASTER_PLATE,
                 ZeldaBlocks.MASTER_BRICK,
                 ZeldaBlocks.MASTER_TILE,
-                // RETRO DIRT
+                // STRANGE DIRT
                 ZeldaBlocks.STRANGE_DIRT,
                 ZeldaBlocks.STRANGE_DIRT_BRICKS,
                 ZeldaBlocks.POLISHED_STRANGE_DIRT,
+                ZeldaBlocks.STRANGE_BLUE_DIRT,
+                ZeldaBlocks.STRANGE_BLUE_DIRT_BRICKS,
+                ZeldaBlocks.POLISHED_BLUE_STRANGE_DIRT,
                 // TEKTILES
                 ZeldaBlocks.RED_TEKTILES,
                 ZeldaBlocks.SMALL_RED_TEKTILES,
@@ -79,7 +82,8 @@ public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
                 ZeldaBlocks.MASTER_GIRDER,
                 ZeldaBlocks.MASTER_BARREL,
                 // RETRO DIRT
-                ZeldaBlocks.REINFORCED_STRANGE_DIRT
+                ZeldaBlocks.REINFORCED_STRANGE_DIRT,
+                ZeldaBlocks.REINFORCED_STRANGE_BLUE_DIRT
         );
 
         addDropWithSilkTouch(ZeldaBlocks.LOOT_POT);

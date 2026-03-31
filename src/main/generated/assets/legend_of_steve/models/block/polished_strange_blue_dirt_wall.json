@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "legend_of_steve:block/polished_strange_blue_dirt"
+  }
+}

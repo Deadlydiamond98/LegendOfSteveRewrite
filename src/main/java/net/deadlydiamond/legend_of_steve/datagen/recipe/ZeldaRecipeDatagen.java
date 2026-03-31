@@ -53,7 +53,7 @@ public class ZeldaRecipeDatagen extends FabricRecipeProvider {
         fairyMarble(consumer);
         masterOre(consumer);
         tektiles(consumer);
-        retroDirt(consumer);
+        strangeDirt(consumer);
         lootpots(consumer);
 
         ZeldaSpringWaterConversionDatagen.generate(consumer);
@@ -123,7 +123,7 @@ public class ZeldaRecipeDatagen extends FabricRecipeProvider {
         offerStonecuttingRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.MASTER_PILLAR, ZeldaBlocks.MASTER_PLATE.base);
     }
 
-    private void retroDirt(Consumer<RecipeJsonProvider> consumer) {
+    private void strangeDirt(Consumer<RecipeJsonProvider> consumer) {
         ZeldaBlocks.STRANGE_DIRT.generateRecipesStone(consumer);
 
         offerPolishedStoneRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.POLISHED_STRANGE_DIRT.base, ZeldaBlocks.STRANGE_DIRT.base);
@@ -134,6 +134,19 @@ public class ZeldaRecipeDatagen extends FabricRecipeProvider {
 
         offerReinforcedRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.REINFORCED_STRANGE_DIRT, ZeldaBlocks.STRANGE_DIRT.base);
         offerStonecuttingRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.REINFORCED_STRANGE_DIRT, ZeldaBlocks.STRANGE_DIRT.base);
+
+        // Blue
+
+        ZeldaBlocks.STRANGE_BLUE_DIRT.generateRecipesStone(consumer);
+
+        offerPolishedStoneRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.POLISHED_BLUE_STRANGE_DIRT.base, ZeldaBlocks.STRANGE_BLUE_DIRT.base);
+        ZeldaBlocks.POLISHED_BLUE_STRANGE_DIRT.generateRecipesStone(consumer, ZeldaBlocks.STRANGE_BLUE_DIRT.base);
+
+        offerPolishedStoneRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.STRANGE_BLUE_DIRT_BRICKS.base, ZeldaBlocks.POLISHED_BLUE_STRANGE_DIRT.base);
+        ZeldaBlocks.STRANGE_BLUE_DIRT_BRICKS.generateRecipesStone(consumer, ZeldaBlocks.POLISHED_BLUE_STRANGE_DIRT.base, ZeldaBlocks.STRANGE_BLUE_DIRT.base);
+
+        offerReinforcedRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.REINFORCED_STRANGE_BLUE_DIRT, ZeldaBlocks.STRANGE_BLUE_DIRT.base);
+        offerStonecuttingRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.REINFORCED_STRANGE_BLUE_DIRT, ZeldaBlocks.STRANGE_BLUE_DIRT.base);
     }
 
     private void tektiles(Consumer<RecipeJsonProvider> consumer) {

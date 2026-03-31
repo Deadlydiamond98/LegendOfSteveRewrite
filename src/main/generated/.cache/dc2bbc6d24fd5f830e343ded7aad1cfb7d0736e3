@@ -1,4 +1,4 @@
-// 1.20.1	2026-03-30T22:17:47.974563598	The Legend of Steve/Tags for minecraft:block
+// 1.20.1	2026-03-31T02:25:42.04693114	The Legend of Steve/Tags for minecraft:block
 7b40d9ae3acf98c87dc01ed58d8be3691b14c27d data/minecraft/tags/blocks/planks.json
 6daca18c7a1797e92327f29d3dcac1cf1e46704d data/minecraft/tags/blocks/mineable/axe.json
 901f64f708c730f4d91d1bafdaf7647aecf116f6 data/minecraft/tags/blocks/wall_hanging_signs.json
@@ -6,7 +6,7 @@
 52582474718cec7318b44f492778fbab6eb6b65c data/minecraft/tags/blocks/wall_signs.json
 017256426ee55176f0fd67175039d052701437e7 data/minecraft/tags/blocks/leaves.json
 6daca18c7a1797e92327f29d3dcac1cf1e46704d data/legend_of_steve/tags/blocks/chiseled_planks.json
-ddef815dfd2622b5ead8a92321ab6a8b8be1ead7 data/minecraft/tags/blocks/mineable/pickaxe.json
+7b4aae014c459da9fb393d9560a10fc6dc0dba3e data/minecraft/tags/blocks/mineable/pickaxe.json
 812e427787226001c6e2f5804e52ebc3f92a6a7f data/minecraft/tags/blocks/walls.json
 78e421ba75d9d839368eb80f51dc3bb54125ee35 data/minecraft/tags/blocks/wooden_buttons.json
 b4d7faadc178039d6865f14eedd8edac04e8e1c3 data/minecraft/tags/blocks/trapdoors.json

@@ -1,6 +1,9 @@
 package net.deadlydiamond.legend_of_steve.mixin.common.entity.base;
 
+import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import net.deadlydiamond.legend_of_steve.common.blocks.IJumpIntoAction;
+import net.deadlydiamond.legend_of_steve.common.entities.PushableBlockEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.MovementType;
@@ -20,6 +23,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(Entity.class)
 public abstract class EntityMixin {
     @Shadow protected abstract Vec3d adjustMovementForCollisions(Vec3d movement);
+
+    // Upwards Block Collisions ////////////////////////////////////////////////////////////////////////////////////////
 
     @Inject(method = "move", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;setPosition(DDD)V", ordinal = 1))
     private void legend_of_steve$move(MovementType movementType, Vec3d movement, CallbackInfo ci) {

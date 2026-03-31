@@ -4,6 +4,7 @@ import net.deadlydiamond.legend_of_steve.client.models.entity.BombEntityModel;
 import net.deadlydiamond.legend_of_steve.client.models.entity.FairyEntityModel;
 import net.deadlydiamond.legend_of_steve.client.models.feature.QuiverModel;
 import net.deadlydiamond.legend_of_steve.client.rendering.block.BombFlowerRenderer;
+import net.deadlydiamond.legend_of_steve.client.rendering.entity.PushableBlockEntityRenderer;
 import net.deadlydiamond.legend_of_steve.client.rendering.entity.projectile.BombEntityRenderer;
 import net.deadlydiamond.legend_of_steve.client.rendering.entity.projectile.ThrownPotEntityRenderer;
 import net.deadlydiamond.legend_of_steve.client.rendering.entity.living.FairyEntityRenderer;
@@ -25,6 +26,7 @@ public class ZeldaRenderers {
         EntityRendererRegistry.register(ZeldaEntityTypes.BOMB, BombEntityRenderer::new);
         EntityRendererRegistry.register(ZeldaEntityTypes.DEKU_NUT, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(ZeldaEntityTypes.FAIRY, FairyEntityRenderer::new);
+        EntityRendererRegistry.register(ZeldaEntityTypes.PUSHABLE_BLOCK, PushableBlockEntityRenderer::new);
         EntityRendererRegistry.register(ZeldaEntityTypes.THROWN_POT, ThrownPotEntityRenderer::new);
     }
 

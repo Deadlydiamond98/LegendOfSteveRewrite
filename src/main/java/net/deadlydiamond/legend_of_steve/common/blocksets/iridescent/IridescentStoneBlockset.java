@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.common.blocksets;
+package net.deadlydiamond.legend_of_steve.common.blocksets.iridescent;
 
 import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
 import net.deadlydiamond.legend_of_steve.util.datagen.model.IridescentBlockModelDatagenUtil;

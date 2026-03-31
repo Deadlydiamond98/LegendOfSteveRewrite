@@ -1,4 +1,4 @@
-// 1.20.1	2026-03-30T22:17:47.97575818	The Legend of Steve/Block Loot Tables
+// 1.20.1	2026-03-31T02:25:42.04785673	The Legend of Steve/Block Loot Tables
 29241b7dddc7563e14167f945187632fe6bbe019 data/legend_of_steve/loot_tables/blocks/red_tektile_slab.json
 ef1fb8d6560fbb688eb995a2a698b6634a267030 data/legend_of_steve/loot_tables/blocks/mossy_fairy_marble_bricks.json
 b2097664f61c7de30d6d243baf2b29fa330b4271 data/legend_of_steve/loot_tables/blocks/chiseled_cherry_planks.json
@@ -62,8 +62,8 @@ e54ea01cd1503a4cc46165172548bc15def255b3 data/legend_of_steve/loot_tables/blocks
 44702759d6a631e2fda60c6cba188434dc34912f data/legend_of_steve/loot_tables/blocks/chiseled_mangrove_planks.json
 32d038a1eb8c1feb349bf6d50bcfb15864f68d31 data/legend_of_steve/loot_tables/blocks/blue_tektile_slab.json
 e8e78e3a9cc4a0a2a61dde0febe6f1ce83e9d008 data/legend_of_steve/loot_tables/blocks/strange_blue_dirt_slab.json
-1b5fada4390f75933e84d7a5b13a3760002ab294 data/legend_of_steve/loot_tables/blocks/chiseled_bamboo_planks.json
 af00727e65676262ab36f7f74a83577f71037cec data/legend_of_steve/loot_tables/blocks/polished_strange_blue_dirt_wall.json
+1b5fada4390f75933e84d7a5b13a3760002ab294 data/legend_of_steve/loot_tables/blocks/chiseled_bamboo_planks.json
 35994cc63254e002140d60493c355e2ee8ba539f data/legend_of_steve/loot_tables/blocks/chiseled_birch_planks.json
 9003489c9bb0c8af793624903dbfd164f71038e0 data/legend_of_steve/loot_tables/blocks/deku_trapdoor.json
 07c0dee102bc1af2bccc9f820449747a5f02fdef data/legend_of_steve/loot_tables/blocks/fairy_marble_pillar.json

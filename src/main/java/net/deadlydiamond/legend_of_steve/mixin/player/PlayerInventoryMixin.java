@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.mixin.common.player;
+package net.deadlydiamond.legend_of_steve.mixin.player;
 
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;

@@ -69,6 +69,13 @@ public abstract class LivingEntityStunMixin extends Entity implements IZeldaStun
         }
     }
 
+    @WrapMethod(method = "jump")
+    private void legend_of_steve$jump(Operation<Void> original) {
+        if (!legend_of_steve$isStunned()) {
+            original.call();
+        }
+    }
+
     @WrapOperation(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LimbAnimator;setSpeed(F)V"))
     private void legend_of_steve$updateLimbSpeedDamage(LimbAnimator instance, float speed, Operation<Void> original) {
         if (!legend_of_steve$isStunned()) {

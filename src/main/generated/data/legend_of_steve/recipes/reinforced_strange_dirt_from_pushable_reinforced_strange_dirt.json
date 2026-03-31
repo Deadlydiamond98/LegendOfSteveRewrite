@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "reinforced_block",
+  "ingredients": [
+    {
+      "item": "legend_of_steve:pushable_reinforced_strange_dirt"
+    }
+  ],
+  "result": {
+    "item": "legend_of_steve:reinforced_strange_dirt"
+  }
+}

@@ -1,6 +1,7 @@
 package net.deadlydiamond.legend_of_steve.init;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
+import net.deadlydiamond.legend_of_steve.common.entities.PushableBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.living.fairy.FairyEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.DekuNutProjectileEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.ThrownPotEntity;
@@ -37,6 +38,9 @@ public class ZeldaEntityTypes {
             SpawnGroup.AMBIENT, FairyEntity::attributes, FairyEntity.spawnRestriction(),
             0xffffff, 0x5d8fc2
     );
+
+    // MISC ENTITIES ///////////////////////////////////////////////////////////////////////////////////////////////////
+    public static final EntityType<PushableBlockEntity> PUSHABLE_BLOCK = register("pushable_block", PushableBlockEntity.class, 1);
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // REGISTRATION METHODS ////////////////////////////////////////////////////////////////////////////////////////////

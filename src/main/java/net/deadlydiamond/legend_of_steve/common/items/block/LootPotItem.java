@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.common.items.block_item;
+package net.deadlydiamond.legend_of_steve.common.items.block;
 
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.ThrownPotEntity;
 import net.deadlydiamond.legend_of_steve.init.ZeldaDispenserBehaviors;

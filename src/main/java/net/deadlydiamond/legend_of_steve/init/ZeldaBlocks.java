@@ -3,18 +3,18 @@ package net.deadlydiamond.legend_of_steve.init;
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.blocks.MasterBarrelBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.container.LootPotBlock;
-import net.deadlydiamond.legend_of_steve.common.blocks.deco.StrangeDirtBricks;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.GirderBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.glowing.FairyLamp;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.BombFlowerBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.FruitingLeavesBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.LootGrassBlock;
-import net.deadlydiamond.legend_of_steve.common.blocksets.IridescentStairSlabWallBlockset;
-import net.deadlydiamond.legend_of_steve.common.blocksets.IridescentStoneBlockset;
+import net.deadlydiamond.legend_of_steve.common.blocksets.ReinforcedBlockset;
+import net.deadlydiamond.legend_of_steve.common.blocksets.iridescent.IridescentStairSlabWallBlockset;
+import net.deadlydiamond.legend_of_steve.common.blocksets.iridescent.IridescentStoneBlockset;
 import net.deadlydiamond.legend_of_steve.common.blocksets.LootPotBlockset;
 import net.deadlydiamond.legend_of_steve.common.blocksets.StrangeDirtBricksBlockset;
 import net.deadlydiamond.legend_of_steve.common.entities.living.FairyColor;
-import net.deadlydiamond.legend_of_steve.common.items.block_item.LootPotItem;
+import net.deadlydiamond.legend_of_steve.common.items.block.LootPotItem;
 import net.deadlydiamond.legend_of_steve.worldgen.sapling.DekuSaplingGenerator;
 import net.deadlydiamond98.koalalib.common.blocksets.BaseStairSlabBlockset;
 import net.deadlydiamond98.koalalib.common.blocksets.BaseStairSlabWallBlockset;
@@ -119,12 +119,12 @@ public class ZeldaBlocks {
     public static final BaseStairSlabWallBlockset STRANGE_DIRT = new BaseStairSlabWallBlockset(LegendOfSteve.MOD_ID, "strange_dirt", STRANGE_DIRT_SETTINGS);
     public static final StrangeDirtBricksBlockset STRANGE_DIRT_BRICKS = new StrangeDirtBricksBlockset(LegendOfSteve.MOD_ID, "strange_dirt_bricks", STRANGE_DIRT_SETTINGS);
     public static final BaseStairSlabWallBlockset POLISHED_STRANGE_DIRT = new BaseStairSlabWallBlockset(LegendOfSteve.MOD_ID, "polished_strange_dirt", STRANGE_DIRT_SETTINGS);
-    public static final Block REINFORCED_STRANGE_DIRT = register("reinforced_strange_dirt", new Block(STRANGE_DIRT_SETTINGS));
+    public static final ReinforcedBlockset REINFORCED_STRANGE_DIRT = new ReinforcedBlockset(LegendOfSteve.MOD_ID, "reinforced_strange_dirt", STRANGE_DIRT_SETTINGS);
 
     public static final BaseStairSlabWallBlockset STRANGE_BLUE_DIRT = new BaseStairSlabWallBlockset(LegendOfSteve.MOD_ID, "strange_blue_dirt", STRANGE_BLUE_DIRT_SETTINGS);
     public static final StrangeDirtBricksBlockset STRANGE_BLUE_DIRT_BRICKS = new StrangeDirtBricksBlockset(LegendOfSteve.MOD_ID, "strange_blue_dirt_bricks", STRANGE_BLUE_DIRT_SETTINGS);
     public static final BaseStairSlabWallBlockset POLISHED_BLUE_STRANGE_DIRT = new BaseStairSlabWallBlockset(LegendOfSteve.MOD_ID, "polished_strange_blue_dirt", STRANGE_BLUE_DIRT_SETTINGS);
-    public static final Block REINFORCED_STRANGE_BLUE_DIRT = register("reinforced_strange_blue_dirt", new Block(STRANGE_BLUE_DIRT_SETTINGS));
+    public static final ReinforcedBlockset REINFORCED_STRANGE_BLUE_DIRT = new ReinforcedBlockset(LegendOfSteve.MOD_ID, "reinforced_strange_blue_dirt", STRANGE_BLUE_DIRT_SETTINGS);
 
     // TEKTILES
     public static final BaseStairSlabBlockset RED_TEKTILES = new BaseStairSlabBlockset(LegendOfSteve.MOD_ID, "red_tektiles", RED_TEKTILES_SETTINGS);

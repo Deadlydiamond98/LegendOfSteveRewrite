@@ -133,12 +133,12 @@ public class ZeldaCreativeTabs {
         ZeldaBlocks.STRANGE_DIRT.addToCreative(entries);
         ZeldaBlocks.POLISHED_STRANGE_DIRT.addToCreative(entries);
         ZeldaBlocks.STRANGE_DIRT_BRICKS.addToCreative(entries);
-        entries.add(ZeldaBlocks.REINFORCED_STRANGE_DIRT);
+        ZeldaBlocks.REINFORCED_STRANGE_DIRT.addToCreative(entries);
 
         ZeldaBlocks.STRANGE_BLUE_DIRT.addToCreative(entries);
         ZeldaBlocks.POLISHED_BLUE_STRANGE_DIRT.addToCreative(entries);
         ZeldaBlocks.STRANGE_BLUE_DIRT_BRICKS.addToCreative(entries);
-        entries.add(ZeldaBlocks.REINFORCED_STRANGE_BLUE_DIRT);
+        ZeldaBlocks.REINFORCED_STRANGE_BLUE_DIRT.addToCreative(entries);
 
         // TEKTILES
         ZeldaBlocks.BLUE_TEKTILES.addToCreative(entries);

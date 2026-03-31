@@ -9,6 +9,7 @@
     "common.ExplosionMixin",
     "common.block.FluidBlockMixin",
     "common.block.NoteBlockMixin",
+    "common.block.PressurePlateBlockMixin",
     "common.entity.LightningEntityMixin",
     "common.entity.PersistentProjectileEntityMixin",
     "common.entity.PotionEntityMixin",
@@ -28,7 +29,7 @@
     "common.item.CrossbowItemMixin",
     "common.item.RangedWeaponItemMixin",
     "common.item.SmithingTemplateItemMixin",
-    "common.player.PlayerInventoryMixin"
+    "player.PlayerInventoryMixin"
   ],
   "injectors": {
     "defaultRequire": 1
@@ -37,6 +38,7 @@
     "requireAnnotations": true
   },
   "client": [
+    "client.ClientPlayerInteractionManagerAccessor",
     "client.armpose.BipedEntityModelArmPoseMixin",
     "client.armpose.LivingEntityRendererArmPoseMixin",
     "client.armpose.PlayerEntityRendererCustomArmPoseMixin",

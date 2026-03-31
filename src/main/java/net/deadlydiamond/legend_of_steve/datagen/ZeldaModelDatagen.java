@@ -85,11 +85,11 @@ public class ZeldaModelDatagen extends FabricModelProvider {
         ZeldaBlocks.STRANGE_DIRT.generateModels(generator);
         ZeldaBlocks.STRANGE_DIRT_BRICKS.generateModels(generator);
         ZeldaBlocks.POLISHED_STRANGE_DIRT.generateModels(generator, true);
-        generator.registerSimpleCubeAll(ZeldaBlocks.REINFORCED_STRANGE_DIRT);
+        ZeldaBlocks.REINFORCED_STRANGE_DIRT.generateModels(generator);
         ZeldaBlocks.STRANGE_BLUE_DIRT.generateModels(generator);
         ZeldaBlocks.STRANGE_BLUE_DIRT_BRICKS.generateModels(generator);
         ZeldaBlocks.POLISHED_BLUE_STRANGE_DIRT.generateModels(generator, true);
-        generator.registerSimpleCubeAll(ZeldaBlocks.REINFORCED_STRANGE_BLUE_DIRT);
+        ZeldaBlocks.REINFORCED_STRANGE_BLUE_DIRT.generateModels(generator);
 
         // TEKTILES ////////////////////////////////////////////////////////////////////////////////////////////////////
         ZeldaBlocks.RED_TEKTILES.generateModels(generator);

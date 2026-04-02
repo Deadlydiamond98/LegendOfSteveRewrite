@@ -47,7 +47,7 @@ public abstract class EntityMixin {
             if (hit.getType() == HitResult.Type.BLOCK && hit.getSide() == Direction.DOWN) {
                 BlockPos pos = hit.getBlockPos();
                 BlockState state = world.getBlockState(pos);
-                if (state.getBlock() instanceof IJumpIntoAction block) {
+                if (state.getBlock() instanceof IJumpIntoAction block && block.canHitBlockWithHead(world, pos, state, entity)) {
                     world.getPlayers().forEach(player -> JumpIntoBlockS2CPacket.send(player, pos, entity));
                     block.jumpIntoBlock(world, pos, state, entity);
                 }

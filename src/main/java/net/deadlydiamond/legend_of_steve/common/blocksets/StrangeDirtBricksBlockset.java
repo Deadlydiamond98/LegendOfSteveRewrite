@@ -1,6 +1,7 @@
 package net.deadlydiamond.legend_of_steve.common.blocksets;
 
-import net.deadlydiamond.legend_of_steve.common.blocks.deco.StrangeDirtBricks;
+import net.deadlydiamond.legend_of_steve.common.blocks.container.hittable.StrangeDirtBrickContainer;
+import net.deadlydiamond.legend_of_steve.util.datagen.model.ZeldaBlockModelDatagenUtil;
 import net.deadlydiamond98.koalalib.common.blocksets.AbstractBlockset;
 import net.deadlydiamond98.koalalib.util.datagen.BlockModelDatagenUtil;
 import net.deadlydiamond98.koalalib.util.datagen.RecipeDatagenUtil;
@@ -22,10 +23,10 @@ import java.util.function.Consumer;
 public class StrangeDirtBricksBlockset extends AbstractBlockset {
     private final boolean stripEndS;
     public final Block base;
+    public final Block container;
     public final Block slab;
     public final Block stair;
     public final Block wall;
-
 
     public StrangeDirtBricksBlockset(String modID, String id, AbstractBlock.Settings settings) {
         this(modID, id, settings, true);
@@ -34,10 +35,11 @@ public class StrangeDirtBricksBlockset extends AbstractBlockset {
     public StrangeDirtBricksBlockset(String modID, String id, AbstractBlock.Settings settings, boolean stripEndS) {
         super(modID, id);
         this.stripEndS = stripEndS;
-        this.base = this.register(modID, this.id(), new StrangeDirtBricks(settings));
+        this.base = this.register(modID, this.id(), new Block(settings));
+        this.container = this.register(modID, this.id() + "_container", new StrangeDirtBrickContainer(settings));
         this.stair = this.register(modID, this.id(this.stripEndS()) + "_stairs", new StairsBlock(this.base.getDefaultState(), settings));
         this.slab = this.register(modID, this.id(this.stripEndS()) + "_slab", new SlabBlock(settings));
-        this.wall = this.register(modID, this.id(new String[]{this.stripEndS()}) + "_wall", new WallBlock(settings));
+        this.wall = this.register(modID, this.id(this.stripEndS()) + "_wall", new WallBlock(settings));
     }
 
     public void generateModels(BlockStateModelGenerator modelGen, @Nullable AbstractBlockset.@Nullable SharedModel sharedModel) {
@@ -47,6 +49,7 @@ public class StrangeDirtBricksBlockset extends AbstractBlockset {
 
     public void generateModels(BlockStateModelGenerator modelGen, boolean uniqueSlab) {
         modelGen.registerSimpleCubeAll(this.base);
+        ZeldaBlockModelDatagenUtil.registerHittableBlock(modelGen, this.container, this.base);
         if (uniqueSlab) {
             BlockModelDatagenUtil.registerSlabUnique(modelGen, this.slab, this.base);
         } else {
@@ -61,6 +64,7 @@ public class StrangeDirtBricksBlockset extends AbstractBlockset {
         RecipeProvider.offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, this.slab, this.base);
         RecipeDatagenUtil.createStairRecipe(exporter, this.stair, this.base);
         RecipeProvider.offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, this.wall, this.base);
+        RecipeProvider.offerSingleOutputShapelessRecipe(exporter, this.container, this.base, "building_blocks");
     }
 
     public void generateRecipesStone(Consumer<RecipeJsonProvider> exporter, Block... additionalInputs) {
@@ -81,6 +85,7 @@ public class StrangeDirtBricksBlockset extends AbstractBlockset {
             RecipeProvider.offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, this.base, block);
         }
 
+        RecipeProvider.offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, this.container, block);
         RecipeProvider.offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, this.stair, block);
         RecipeProvider.offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, this.slab, block, 2);
         RecipeProvider.offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, this.wall, block);

@@ -43,6 +43,7 @@ public class ZeldaSounds {
     public static final BlockSoundGroup QUESTION_BLOCK = registerGroup("question_block", 1, 1);
     public static final SoundEvent QUESTION_BLOCK_HIT = register("block.question_block.bounce");
     public static final SoundEvent QUESTION_BLOCK_EMPTY_CONTENTS = register("block.question_block.empty_content");
+    public static final SoundEvent QUESTION_BLOCK_DEPOSIT = register("block.question_block.deposit");
     // OTHER
     public static final BlockSoundGroup TEKTILES = registerGroup("tektiles", 1, 1.25f);
     // Note Block

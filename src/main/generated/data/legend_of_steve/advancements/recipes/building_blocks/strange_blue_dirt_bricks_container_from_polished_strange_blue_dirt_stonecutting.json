@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_polished_strange_blue_dirt": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "legend_of_steve:polished_strange_blue_dirt"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:strange_blue_dirt_bricks_container_from_polished_strange_blue_dirt_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_polished_strange_blue_dirt",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:strange_blue_dirt_bricks_container_from_polished_strange_blue_dirt_stonecutting"
+    ]
+  },
+  "sends_telemetry_event": false
+}

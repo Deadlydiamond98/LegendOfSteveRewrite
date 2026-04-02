@@ -4,7 +4,7 @@ import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.bes.BombFlowerBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.MasterBarrelBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.single.LootPotBlockEntity;
-import net.deadlydiamond.legend_of_steve.common.bes.container.single.hittable_block.QuestionBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.bes.container.single.HittableContainerBlockEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntity;
@@ -30,8 +30,10 @@ public class ZeldaBlockEntities {
             ZeldaBlocks.DYED_LOOT_POTS.getAll(ZeldaBlocks.LOOT_POT)
     );
 
-    public static final BlockEntityType<QuestionBlockEntity> QUESTION_BLOCK = register("question_block", QuestionBlockEntity::new,
-            ZeldaBlocks.QUESTION_BLOCK
+    public static final BlockEntityType<HittableContainerBlockEntity> HITTABLE_CONTAINER_BLOCK = register("hittable_container_block", HittableContainerBlockEntity::new,
+            ZeldaBlocks.QUESTION_BLOCK,
+            ZeldaBlocks.STRANGE_DIRT_BRICKS.container,
+            ZeldaBlocks.STRANGE_BLUE_DIRT_BRICKS.container
     );
 
     // HELPER METHODS //////////////////////////////////////////////////////////////////////////////////////////////////

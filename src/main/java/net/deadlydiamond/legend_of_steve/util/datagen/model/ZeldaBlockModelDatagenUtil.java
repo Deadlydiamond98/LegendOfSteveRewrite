@@ -1,6 +1,7 @@
 package net.deadlydiamond.legend_of_steve.util.datagen.model;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
+import net.deadlydiamond.legend_of_steve.common.blocks.container.hittable.HittableContainerBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.ConnectedPillarBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.PillarType;
 import net.minecraft.block.Block;
@@ -10,6 +11,7 @@ import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
@@ -26,6 +28,21 @@ public class ZeldaBlockModelDatagenUtil {
         blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(block, pot));
     }
 
+    public static void registerHittableBlock(BlockStateModelGenerator blockStateModelGenerator, Block block, @Nullable Block base) {
+        boolean hasBase = base != null;
+        Identifier regular = hasBase ? ModelIds.getBlockModelId(base) : TexturedModel.CUBE_ALL.upload(block, blockStateModelGenerator.modelCollector);
+        Identifier empty = LegendOfSteve.id("block/empty_container_block");
+
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block).coordinate(
+                        BlockStateVariantMap.create(HittableContainerBlock.HIT)
+                                .register(true, BlockStateVariant.create().put(VariantSettings.MODEL, empty))
+                                .register(false, BlockStateVariant.create().put(VariantSettings.MODEL, regular))
+        ));
+        if (hasBase) {
+            blockStateModelGenerator.registerParentedItemModel(block, regular);
+        }
+    }
+
     public static void registerConnectedPillar(BlockStateModelGenerator blockStateModelGenerator, Block block, Block topBlock) {
         registerConnectedPillar(blockStateModelGenerator, block, TextureMap.getId(topBlock));
     }
@@ -38,51 +55,44 @@ public class ZeldaBlockModelDatagenUtil {
 
         EnumProperty<PillarType> pillarType = ConnectedPillarBlock.PILLAR_TYPE;
 
-        blockStateModelGenerator.blockStateCollector.accept(MultipartBlockStateSupplier.create(block)
-                // SINGLE
-                .with(When.create().set(Properties.AXIS, Direction.Axis.X).set(pillarType, PillarType.SINGLE),
-                        BlockStateVariant.create().put(VariantSettings.MODEL, single).put(VariantSettings.X, VariantSettings.Rotation.R90)
-                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block).coordinate(
+                BlockStateVariantMap.create(Properties.AXIS, pillarType)
+                        // SINGLE
+                        .register(Direction.Axis.X, PillarType.SINGLE,
+                                BlockStateVariant.create().put(VariantSettings.MODEL, single).put(VariantSettings.X, VariantSettings.Rotation.R90)
+                                        .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                        .register(Direction.Axis.Z, PillarType.SINGLE,
+                                BlockStateVariant.create().put(VariantSettings.MODEL, single).put(VariantSettings.X, VariantSettings.Rotation.R90))
+                        .register(Direction.Axis.Y, PillarType.SINGLE,
+                                BlockStateVariant.create().put(VariantSettings.MODEL, single))
 
-                .with(When.create().set(Properties.AXIS, Direction.Axis.Z).set(pillarType, PillarType.SINGLE),
-                        BlockStateVariant.create().put(VariantSettings.MODEL, single).put(VariantSettings.X, VariantSettings.Rotation.R90))
+                        // TOP
+                        .register(Direction.Axis.X, PillarType.TOP,
+                                BlockStateVariant.create().put(VariantSettings.MODEL, top).put(VariantSettings.X, VariantSettings.Rotation.R90)
+                                        .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                        .register(Direction.Axis.Z, PillarType.TOP,
+                                BlockStateVariant.create().put(VariantSettings.MODEL, top).put(VariantSettings.X, VariantSettings.Rotation.R90))
+                        .register(Direction.Axis.Y, PillarType.TOP,
+                                BlockStateVariant.create().put(VariantSettings.MODEL, top))
 
-                .with(When.create().set(Properties.AXIS, Direction.Axis.Y).set(pillarType, PillarType.SINGLE),
-                        BlockStateVariant.create().put(VariantSettings.MODEL, single))
+                        // MIDDLE
+                        .register(Direction.Axis.X, PillarType.MIDDLE,
+                                BlockStateVariant.create().put(VariantSettings.MODEL, middle).put(VariantSettings.X, VariantSettings.Rotation.R90)
+                                        .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                        .register(Direction.Axis.Z, PillarType.MIDDLE,
+                                BlockStateVariant.create().put(VariantSettings.MODEL, middle).put(VariantSettings.X, VariantSettings.Rotation.R90))
+                        .register(Direction.Axis.Y, PillarType.MIDDLE,
+                                BlockStateVariant.create().put(VariantSettings.MODEL, middle))
 
-                // TOP
-                .with(When.create().set(Properties.AXIS, Direction.Axis.X).set(pillarType, PillarType.TOP),
-                        BlockStateVariant.create().put(VariantSettings.MODEL, top).put(VariantSettings.X, VariantSettings.Rotation.R90)
-                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
-
-                .with(When.create().set(Properties.AXIS, Direction.Axis.Z).set(pillarType, PillarType.TOP),
-                        BlockStateVariant.create().put(VariantSettings.MODEL, top).put(VariantSettings.X, VariantSettings.Rotation.R90))
-
-                .with(When.create().set(Properties.AXIS, Direction.Axis.Y).set(pillarType, PillarType.TOP),
-                        BlockStateVariant.create().put(VariantSettings.MODEL, top))
-
-                // MIDDLE
-                .with(When.create().set(Properties.AXIS, Direction.Axis.X).set(pillarType, PillarType.MIDDLE),
-                        BlockStateVariant.create().put(VariantSettings.MODEL, middle).put(VariantSettings.X, VariantSettings.Rotation.R90)
-                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
-
-                .with(When.create().set(Properties.AXIS, Direction.Axis.Z).set(pillarType, PillarType.MIDDLE),
-                        BlockStateVariant.create().put(VariantSettings.MODEL, middle).put(VariantSettings.X, VariantSettings.Rotation.R90))
-
-                .with(When.create().set(Properties.AXIS, Direction.Axis.Y).set(pillarType, PillarType.MIDDLE),
-                        BlockStateVariant.create().put(VariantSettings.MODEL, middle))
-
-                // Bottom
-                .with(When.create().set(Properties.AXIS, Direction.Axis.X).set(pillarType, PillarType.BOTTOM),
-                        BlockStateVariant.create().put(VariantSettings.MODEL, bottom).put(VariantSettings.X, VariantSettings.Rotation.R90)
-                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
-
-                .with(When.create().set(Properties.AXIS, Direction.Axis.Z).set(pillarType, PillarType.BOTTOM),
-                        BlockStateVariant.create().put(VariantSettings.MODEL, bottom).put(VariantSettings.X, VariantSettings.Rotation.R90))
-
-                .with(When.create().set(Properties.AXIS, Direction.Axis.Y).set(pillarType, PillarType.BOTTOM),
-                        BlockStateVariant.create().put(VariantSettings.MODEL, bottom))
-        );
+                        // Bottom
+                        .register(Direction.Axis.X, PillarType.BOTTOM,
+                                BlockStateVariant.create().put(VariantSettings.MODEL, bottom).put(VariantSettings.X, VariantSettings.Rotation.R90)
+                                        .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                        .register(Direction.Axis.Z, PillarType.BOTTOM,
+                                BlockStateVariant.create().put(VariantSettings.MODEL, bottom).put(VariantSettings.X, VariantSettings.Rotation.R90))
+                        .register(Direction.Axis.Y, PillarType.BOTTOM,
+                                BlockStateVariant.create().put(VariantSettings.MODEL, bottom))
+        ));
     }
 
     public static TextureMap pillarTexture(Block block, String varient, Identifier top) {

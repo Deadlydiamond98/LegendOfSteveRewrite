@@ -1,6 +1,6 @@
 package net.deadlydiamond.legend_of_steve.client.rendering.block;
 
-import net.deadlydiamond.legend_of_steve.common.bes.container.single.hittable_block.QuestionBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.bes.container.single.HittableContainerBlockEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayers;
@@ -14,7 +14,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 
-public class QuestionBlockRenderer implements BlockEntityRenderer<QuestionBlockEntity> {
+public class QuestionBlockRenderer implements BlockEntityRenderer<HittableContainerBlockEntity> {
     private final BlockRenderManager blockRenderManager;
 
     public QuestionBlockRenderer(BlockEntityRendererFactory.Context ctx) {
@@ -22,7 +22,7 @@ public class QuestionBlockRenderer implements BlockEntityRenderer<QuestionBlockE
     }
 
     @Override
-    public void render(QuestionBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
+    public void render(HittableContainerBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
         if (entity.shouldRenderHit()) {
             World world = entity.getWorld();
             BlockPos pos = entity.getPos();

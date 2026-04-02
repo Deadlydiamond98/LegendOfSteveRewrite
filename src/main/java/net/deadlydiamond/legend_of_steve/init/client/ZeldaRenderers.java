@@ -33,7 +33,7 @@ public class ZeldaRenderers {
 
     private static void registerBlockEntityRenderers() {
         BlockEntityRendererFactories.register(ZeldaBlockEntities.BOMB_FLOWER, BombFlowerRenderer::new);
-        BlockEntityRendererFactories.register(ZeldaBlockEntities.QUESTION_BLOCK, QuestionBlockRenderer::new);
+        BlockEntityRendererFactories.register(ZeldaBlockEntities.HITTABLE_CONTAINER_BLOCK, QuestionBlockRenderer::new);
     }
 
     private static void registerModelLayers() {

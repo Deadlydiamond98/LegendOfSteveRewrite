@@ -1,7 +1,7 @@
 package net.deadlydiamond.legend_of_steve.networking.s2c.question_block;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
-import net.deadlydiamond.legend_of_steve.common.blocks.container.hittable.QuestionBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.container.hittable.HittableContainerBlock;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -36,7 +36,7 @@ public class UpdateProjectileHitS2CPacket {
             client.execute(() -> {
                 if (client.world != null) {
                     BlockState blockState = client.world.getBlockState(pos);
-                    if (blockState.getBlock() instanceof QuestionBlock block) {
+                    if (blockState.getBlock() instanceof HittableContainerBlock block) {
                         block.hitBlock(client.world, pos, blockState, null, direction, bl);
                     }
                 }

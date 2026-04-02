@@ -1,124 +1,52 @@
 {
-  "multipart": [
-    {
-      "apply": {
-        "model": "legend_of_steve:block/strange_blue_dirt_pillar",
-        "x": 90,
-        "y": 90
-      },
-      "when": {
-        "axis": "x",
-        "pillar_type": "single"
-      }
+  "variants": {
+    "axis=x,pillar_type=bottom": {
+      "model": "legend_of_steve:block/strange_blue_dirt_pillar_bottom",
+      "x": 90,
+      "y": 90
     },
-    {
-      "apply": {
-        "model": "legend_of_steve:block/strange_blue_dirt_pillar",
-        "x": 90
-      },
-      "when": {
-        "axis": "z",
-        "pillar_type": "single"
-      }
+    "axis=x,pillar_type=middle": {
+      "model": "legend_of_steve:block/strange_blue_dirt_pillar_middle",
+      "x": 90,
+      "y": 90
     },
-    {
-      "apply": {
-        "model": "legend_of_steve:block/strange_blue_dirt_pillar"
-      },
-      "when": {
-        "axis": "y",
-        "pillar_type": "single"
-      }
+    "axis=x,pillar_type=single": {
+      "model": "legend_of_steve:block/strange_blue_dirt_pillar",
+      "x": 90,
+      "y": 90
     },
-    {
-      "apply": {
-        "model": "legend_of_steve:block/strange_blue_dirt_pillar_top",
-        "x": 90,
-        "y": 90
-      },
-      "when": {
-        "axis": "x",
-        "pillar_type": "top"
-      }
+    "axis=x,pillar_type=top": {
+      "model": "legend_of_steve:block/strange_blue_dirt_pillar_top",
+      "x": 90,
+      "y": 90
     },
-    {
-      "apply": {
-        "model": "legend_of_steve:block/strange_blue_dirt_pillar_top",
-        "x": 90
-      },
-      "when": {
-        "axis": "z",
-        "pillar_type": "top"
-      }
+    "axis=y,pillar_type=bottom": {
+      "model": "legend_of_steve:block/strange_blue_dirt_pillar_bottom"
     },
-    {
-      "apply": {
-        "model": "legend_of_steve:block/strange_blue_dirt_pillar_top"
-      },
-      "when": {
-        "axis": "y",
-        "pillar_type": "top"
-      }
+    "axis=y,pillar_type=middle": {
+      "model": "legend_of_steve:block/strange_blue_dirt_pillar_middle"
     },
-    {
-      "apply": {
-        "model": "legend_of_steve:block/strange_blue_dirt_pillar_middle",
-        "x": 90,
-        "y": 90
-      },
-      "when": {
-        "axis": "x",
-        "pillar_type": "middle"
-      }
+    "axis=y,pillar_type=single": {
+      "model": "legend_of_steve:block/strange_blue_dirt_pillar"
     },
-    {
-      "apply": {
-        "model": "legend_of_steve:block/strange_blue_dirt_pillar_middle",
-        "x": 90
-      },
-      "when": {
-        "axis": "z",
-        "pillar_type": "middle"
-      }
+    "axis=y,pillar_type=top": {
+      "model": "legend_of_steve:block/strange_blue_dirt_pillar_top"
     },
-    {
-      "apply": {
-        "model": "legend_of_steve:block/strange_blue_dirt_pillar_middle"
-      },
-      "when": {
-        "axis": "y",
-        "pillar_type": "middle"
-      }
+    "axis=z,pillar_type=bottom": {
+      "model": "legend_of_steve:block/strange_blue_dirt_pillar_bottom",
+      "x": 90
     },
-    {
-      "apply": {
-        "model": "legend_of_steve:block/strange_blue_dirt_pillar_bottom",
-        "x": 90,
-        "y": 90
-      },
-      "when": {
-        "axis": "x",
-        "pillar_type": "bottom"
-      }
+    "axis=z,pillar_type=middle": {
+      "model": "legend_of_steve:block/strange_blue_dirt_pillar_middle",
+      "x": 90
     },
-    {
-      "apply": {
-        "model": "legend_of_steve:block/strange_blue_dirt_pillar_bottom",
-        "x": 90
-      },
-      "when": {
-        "axis": "z",
-        "pillar_type": "bottom"
-      }
+    "axis=z,pillar_type=single": {
+      "model": "legend_of_steve:block/strange_blue_dirt_pillar",
+      "x": 90
     },
-    {
-      "apply": {
-        "model": "legend_of_steve:block/strange_blue_dirt_pillar_bottom"
-      },
-      "when": {
-        "axis": "y",
-        "pillar_type": "bottom"
-      }
+    "axis=z,pillar_type=top": {
+      "model": "legend_of_steve:block/strange_blue_dirt_pillar_top",
+      "x": 90
     }
-  ]
+  }
 }

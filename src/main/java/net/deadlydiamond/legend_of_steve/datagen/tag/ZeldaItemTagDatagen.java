@@ -121,17 +121,13 @@ public class ZeldaItemTagDatagen extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(ZeldaTags.LOOT_POTS).add(ZeldaBlocks.LOOT_POT.asItem());
 
         // STRANGE DIRT
-
-        addBlocksetsToTag(ZeldaTags.STRANGE_DIRT,
-                ZeldaBlocks.STRANGE_DIRT,
-                ZeldaBlocks.STRANGE_DIRT_BRICKS,
-                ZeldaBlocks.POLISHED_STRANGE_DIRT,
-                ZeldaBlocks.STRANGE_BLUE_DIRT,
-                ZeldaBlocks.STRANGE_BLUE_DIRT_BRICKS,
-                ZeldaBlocks.POLISHED_BLUE_STRANGE_DIRT
-        );
-
         getOrCreateTagBuilder(ZeldaTags.STRANGE_DIRT).add(
+                ZeldaBlocks.STRANGE_DIRT.base.asItem(),
+                ZeldaBlocks.STRANGE_BLUE_DIRT.base.asItem(),
+                ZeldaBlocks.POLISHED_STRANGE_DIRT.base.asItem(),
+                ZeldaBlocks.POLISHED_BLUE_STRANGE_DIRT.base.asItem(),
+                ZeldaBlocks.STRANGE_DIRT_BRICKS.base.asItem(),
+                ZeldaBlocks.STRANGE_BLUE_DIRT_BRICKS.base.asItem(),
                 ZeldaBlocks.REINFORCED_STRANGE_DIRT.base.asItem(),
                 ZeldaBlocks.REINFORCED_STRANGE_BLUE_DIRT.base.asItem(),
                 ZeldaBlocks.STRANGE_DIRT_PILLAR.asItem(),

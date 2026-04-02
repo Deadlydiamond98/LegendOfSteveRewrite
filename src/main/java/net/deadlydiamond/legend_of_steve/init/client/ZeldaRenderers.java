@@ -25,6 +25,7 @@ public class ZeldaRenderers {
 
     private static void registerEntityRenderers() {
         EntityRendererRegistry.register(ZeldaEntityTypes.BOMB, BombEntityRenderer::new);
+        EntityRendererRegistry.register(ZeldaEntityTypes.CRATE, PushableBlockEntityRenderer::new);
         EntityRendererRegistry.register(ZeldaEntityTypes.DEKU_NUT, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(ZeldaEntityTypes.FAIRY, FairyEntityRenderer::new);
         EntityRendererRegistry.register(ZeldaEntityTypes.PUSHABLE_BLOCK, PushableBlockEntityRenderer::new);

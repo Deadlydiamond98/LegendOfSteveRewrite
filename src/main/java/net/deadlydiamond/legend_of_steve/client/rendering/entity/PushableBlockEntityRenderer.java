@@ -1,6 +1,6 @@
 package net.deadlydiamond.legend_of_steve.client.rendering.entity;
 
-import net.deadlydiamond.legend_of_steve.common.entities.PushableBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.entities.block.PushableBlockEntity;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.render.OverlayTexture;

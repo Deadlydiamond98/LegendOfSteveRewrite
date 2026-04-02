@@ -46,6 +46,7 @@ public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
         );
 
         addSimpleBlockDrops(
+                ZeldaBlocks.CRATE,
                 // CHISELED PLANKS
                 ZeldaBlocks.CHISELED_OAK_PLANKS,
                 ZeldaBlocks.CHISELED_BIRCH_PLANKS,

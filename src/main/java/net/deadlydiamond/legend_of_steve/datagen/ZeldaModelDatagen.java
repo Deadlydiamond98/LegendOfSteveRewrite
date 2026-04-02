@@ -13,6 +13,8 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
+import net.minecraft.data.client.ModelIds;
+import net.minecraft.data.client.Models;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
@@ -33,6 +35,9 @@ public class ZeldaModelDatagen extends FabricModelProvider {
                         generator, block, Registries.BLOCK.get(new Identifier(color + "_terracotta"))
                 )
         );
+
+        generator.registerSimpleCubeAll(ZeldaBlocks.CRATE);
+        generator.registerParentedItemModel(ZeldaBlocks.CRATE_ITEM, ModelIds.getBlockModelId(ZeldaBlocks.CRATE));
         
         // CHISELED PLANKS /////////////////////////////////////////////////////////////////////////////////////////////
         generator.registerSimpleCubeAll(ZeldaBlocks.CHISELED_OAK_PLANKS);

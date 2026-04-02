@@ -1,7 +1,7 @@
 package net.deadlydiamond.legend_of_steve.networking.s2c.pushable_block;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
-import net.deadlydiamond.legend_of_steve.common.entities.PushableBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.entities.block.PushableBlockEntity;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;

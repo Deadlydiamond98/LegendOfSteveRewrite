@@ -1,13 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    " G ",
+    "CGC",
     "GDG",
-    " G "
+    "CGC"
   ],
   "key": {
     "G": {
       "item": "minecraft:gold_ingot"
+    },
+    "C": {
+      "item": "minecraft:copper_ingot"
     },
     "D": {
       "tag": "legend_of_steve:strange_dirt"
@@ -15,6 +18,6 @@
   },
   "result": {
     "item": "legend_of_steve:question_block",
-    "count": 2
+    "count": 3
   }
 }

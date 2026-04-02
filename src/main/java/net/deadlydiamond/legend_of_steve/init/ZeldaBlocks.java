@@ -16,7 +16,9 @@ import net.deadlydiamond.legend_of_steve.common.blocksets.iridescent.IridescentS
 import net.deadlydiamond.legend_of_steve.common.blocksets.LootPotBlockset;
 import net.deadlydiamond.legend_of_steve.common.blocksets.StrangeDirtBricksBlockset;
 import net.deadlydiamond.legend_of_steve.common.entities.living.FairyColor;
+import net.deadlydiamond.legend_of_steve.common.items.block.CrateItem;
 import net.deadlydiamond.legend_of_steve.common.items.block.LootPotItem;
+import net.deadlydiamond.legend_of_steve.common.items.block.PushableBlockItem;
 import net.deadlydiamond.legend_of_steve.worldgen.sapling.DekuSaplingGenerator;
 import net.deadlydiamond98.koalalib.common.blocksets.BaseStairSlabBlockset;
 import net.deadlydiamond98.koalalib.common.blocksets.BaseStairSlabWallBlockset;
@@ -28,6 +30,7 @@ import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 
@@ -48,6 +51,9 @@ public class ZeldaBlocks {
     // STORAGE
     public static final Block LOOT_POT = registerPot("loot_pot", new LootPotBlock(LOOT_POT_SETTINGS));
     public static final LootPotBlockset DYED_LOOT_POTS = new LootPotBlockset(LegendOfSteve.MOD_ID, "loot_pot", LOOT_POT);
+
+    public static final Block CRATE = register("crate", new Block(CRATE_SETTINGS), false);
+    public static final Item CRATE_ITEM = ZeldaItems.register("crate", new CrateItem(new FabricItemSettings(), CRATE.getDefaultState()));
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // DECORATIVE BLOCKS ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -163,6 +169,7 @@ public class ZeldaBlocks {
         FlammableBlockRegistry.getDefaultInstance().add(ZeldaTags.CHISELED_PLANKS_BLOCK, 5, 20);
 
         FuelRegistry.INSTANCE.add(ZeldaTags.CHISELED_PLANKS_ITEM, 300);
+        FuelRegistry.INSTANCE.add(CRATE, 300);
 
         CompostingChanceRegistry.INSTANCE.add(DEKU_SAPLING, 0.3f);
         CompostingChanceRegistry.INSTANCE.add(DEKU_LEAVES, 0.3f);

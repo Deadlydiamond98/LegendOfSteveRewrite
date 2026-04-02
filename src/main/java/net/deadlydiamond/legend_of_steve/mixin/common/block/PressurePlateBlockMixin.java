@@ -2,7 +2,7 @@ package net.deadlydiamond.legend_of_steve.mixin.common.block;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import net.deadlydiamond.legend_of_steve.common.entities.PushableBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.entities.block.PushableBlockEntity;
 import net.minecraft.block.PressurePlateBlock;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;

@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.common.entities;
+package net.deadlydiamond.legend_of_steve.common.entities.block;
 
 import net.deadlydiamond.legend_of_steve.networking.s2c.pushable_block.AddBlockBreakCooldownS2CPacket;
 import net.deadlydiamond.legend_of_steve.networking.s2c.pushable_block.UpdatePushableBlockBreakProgressS2CPacket;
@@ -33,12 +33,13 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class PushableBlockEntity extends LerpedMovmentEntity implements IHitEntityAction {
     private static final TrackedData<BlockState> BLOCK = DataTracker.registerData(PushableBlockEntity.class, TrackedDataHandlerRegistry.BLOCK_STATE);
     private ItemStack itemStack = ItemStack.EMPTY;
-    public float breakingProgress;
     public float blockBreakingSoundCooldown;
+    public float breakingProgress;
     public int stopBreakingTimer;
 
     public PushableBlockEntity(EntityType<?> type, World world) {
@@ -54,8 +55,8 @@ public class PushableBlockEntity extends LerpedMovmentEntity implements IHitEnti
 
         this.move(MovementType.SELF, this.getVelocity());
 
+        // Update Breaking
         if (!getWorld().isClient()) {
-            // Update Block
             if (getBlock() == null || getBlock().isAir()) {
                 this.setBlock(Blocks.DIRT.getDefaultState());
             }
@@ -64,31 +65,56 @@ public class PushableBlockEntity extends LerpedMovmentEntity implements IHitEnti
                 this.breakingProgress = 0;
                 updateClientBreakingProgress();
             }
+        }
 
-            // Move Block
+        // Move Block
+        this.setVelocity(this.getVelocity().multiply(isTouchingWater() ? 0.6 : 0.98));
 
-            this.setVelocity(this.getVelocity().multiply(isTouchingWater() ? 0.6 : 0.98));
+        applyGravity();
 
-            if (!this.hasNoGravity()) {
-                this.setVelocity(this.getVelocity().add(0, -0.04, 0));
+        if (this.isOnGround()) {
+            float slipperiness = getWorld().getBlockState(getBlockPos().down()).getBlock().getSlipperiness();
+            this.setVelocity(this.getVelocity().multiply(slipperiness, 1, slipperiness));
+        }
+
+        List<Entity> pushers = getWorld().getOtherEntities(this, this.getBoundingBox().expand(0.2f, -0.1f, 0.2f),
+                EntityPredicates.EXCEPT_SPECTATOR.and(entity -> entity instanceof PlayerEntity));
+
+        pushers.forEach(entity -> {
+            if (entity instanceof PlayerEntity player && this.isOnGround() &&
+                    this.getPos().y <= player.getPos().getY() && player.isOnGround()) {
+                push(player);
             }
+        });
+        this.velocityDirty = true;
+    }
 
-            if (this.isOnGround()) {
-                float slipperiness = getWorld().getBlockState(getBlockPos().down()).getBlock().getSlipperiness();
-                this.setVelocity(this.getVelocity().multiply(slipperiness, 1, slipperiness));
-            }
+    @Override
+    public void setPosition(double x, double y, double z) {
+        Vec3d oldPos = this.getPos();
+        super.setPosition(x, y, z);
+        Vec3d newPos = this.getPos();
 
-            List<Entity> pushers = getWorld().getOtherEntities(this, this.getBoundingBox().expand(0.2f, -0.1f, 0.2f),
-                    EntityPredicates.EXCEPT_SPECTATOR.and(entity -> entity instanceof PlayerEntity));
+        Vec3d offset = newPos.subtract(oldPos);
+        updatePassengers(entity -> {
+            entity.move(MovementType.SELF, offset.add(additionalOffset()));
+            entity.velocityDirty = true;
+            entity.setOnGround(true);
+            entity.fallDistance = 0;
+        });
+    }
 
-            pushers.forEach(entity -> {
-                if (entity instanceof PlayerEntity player && this.isOnGround() &&
-                        this.getPos().y <= player.getPos().getY() && player.isOnGround()) {
-                    push(player);
-                }
-            });
+    protected Vec3d additionalOffset() {
+        return Vec3d.ZERO;
+    }
 
-            this.velocityDirty = true;
+    protected void updatePassengers(Consumer<Entity> passengers) {
+        getWorld().getOtherEntities(this, getBoundingBox().withMinY(this.getBoundingBox().maxY).withMaxY(this.getBoundingBox().maxY + 0.05)).forEach(passengers);
+    }
+
+    protected void applyGravity() {
+        if (!this.hasNoGravity()) {
+            this.setVelocity(this.getVelocity().add(0, -0.04, 0));
         }
     }
 
@@ -123,6 +149,7 @@ public class PushableBlockEntity extends LerpedMovmentEntity implements IHitEnti
             } else {
                 this.setVelocity(this.getVelocity().add(0, 0, -e));
             }
+            this.velocityDirty = true;
         }
     }
 

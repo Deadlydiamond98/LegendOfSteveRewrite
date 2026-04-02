@@ -1,7 +1,7 @@
 package net.deadlydiamond.legend_of_steve.common.items.block;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
-import net.deadlydiamond.legend_of_steve.common.entities.PushableBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.entities.block.PushableBlockEntity;
 import net.deadlydiamond.legend_of_steve.init.ZeldaEntityTypes;
 import net.deadlydiamond98.koalalib.common.items.other.ISpriteIconItem;
 import net.minecraft.block.BlockState;

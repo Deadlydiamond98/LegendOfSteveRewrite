@@ -68,6 +68,7 @@ public class ZeldaCreativeTabs {
         // LOOT POTS
         entries.add(ZeldaBlocks.LOOT_POT);
         ZeldaBlocks.DYED_LOOT_POTS.addToCreative(entries);
+        entries.add(ZeldaBlocks.CRATE_ITEM);
 
         // DEKU WOOD
         ZeldaBlocks.DEKU_WOOD.addToCreative(entries);

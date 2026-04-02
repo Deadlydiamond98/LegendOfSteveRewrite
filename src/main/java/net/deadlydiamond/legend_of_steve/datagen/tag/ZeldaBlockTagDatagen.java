@@ -93,7 +93,8 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
                 ZeldaBlocks.CHISELED_MANGROVE_PLANKS,
                 ZeldaBlocks.CHISELED_BAMBOO_PLANKS,
                 ZeldaBlocks.CHISELED_CHERRY_PLANKS,
-                ZeldaBlocks.CHISELED_DEKU_PLANKS
+                ZeldaBlocks.CHISELED_DEKU_PLANKS,
+                ZeldaBlocks.CRATE
         );
 
         // MINING LEVEL ////////////////////////////////////////////////////////////////////////////////////////////////

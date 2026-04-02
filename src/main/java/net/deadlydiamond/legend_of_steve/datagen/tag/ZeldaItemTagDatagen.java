@@ -7,8 +7,11 @@ import net.deadlydiamond98.koalalib.common.blocksets.AbstractBlockset;
 import net.deadlydiamond98.koalalib.init.KoalaLibTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
+import net.minecraft.registry.tag.TagKey;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -114,25 +117,34 @@ public class ZeldaItemTagDatagen extends FabricTagProvider.ItemTagProvider {
 
         // LOOT POTS
 
-        getOrCreateTagBuilder(ZeldaTags.LOOT_POTS).add(
-                ZeldaBlocks.LOOT_POT.asItem(),
-                ZeldaBlocks.DYED_LOOT_POTS.white.asItem(),
-                ZeldaBlocks.DYED_LOOT_POTS.light_gray.asItem(),
-                ZeldaBlocks.DYED_LOOT_POTS.gray.asItem(),
-                ZeldaBlocks.DYED_LOOT_POTS.black.asItem(),
-                ZeldaBlocks.DYED_LOOT_POTS.brown.asItem(),
-                ZeldaBlocks.DYED_LOOT_POTS.red.asItem(),
-                ZeldaBlocks.DYED_LOOT_POTS.orange.asItem(),
-                ZeldaBlocks.DYED_LOOT_POTS.yellow.asItem(),
-                ZeldaBlocks.DYED_LOOT_POTS.lime.asItem(),
-                ZeldaBlocks.DYED_LOOT_POTS.green.asItem(),
-                ZeldaBlocks.DYED_LOOT_POTS.cyan.asItem(),
-                ZeldaBlocks.DYED_LOOT_POTS.light_blue.asItem(),
-                ZeldaBlocks.DYED_LOOT_POTS.blue.asItem(),
-                ZeldaBlocks.DYED_LOOT_POTS.purple.asItem(),
-                ZeldaBlocks.DYED_LOOT_POTS.magenta.asItem(),
-                ZeldaBlocks.DYED_LOOT_POTS.pink.asItem()
+        addBlocksetsToTag(ZeldaTags.LOOT_POTS, ZeldaBlocks.DYED_LOOT_POTS);
+        getOrCreateTagBuilder(ZeldaTags.LOOT_POTS).add(ZeldaBlocks.LOOT_POT.asItem());
+
+        // STRANGE DIRT
+
+        addBlocksetsToTag(ZeldaTags.STRANGE_DIRT,
+                ZeldaBlocks.STRANGE_DIRT,
+                ZeldaBlocks.STRANGE_DIRT_BRICKS,
+                ZeldaBlocks.POLISHED_STRANGE_DIRT,
+                ZeldaBlocks.STRANGE_BLUE_DIRT,
+                ZeldaBlocks.STRANGE_BLUE_DIRT_BRICKS,
+                ZeldaBlocks.POLISHED_BLUE_STRANGE_DIRT
         );
+
+        getOrCreateTagBuilder(ZeldaTags.STRANGE_DIRT).add(
+                ZeldaBlocks.REINFORCED_STRANGE_DIRT.base.asItem(),
+                ZeldaBlocks.REINFORCED_STRANGE_BLUE_DIRT.base.asItem(),
+                ZeldaBlocks.STRANGE_DIRT_PILLAR.asItem(),
+                ZeldaBlocks.STRANGE_BLUE_DIRT_PILLAR.asItem()
+        );
+    }
+
+    private void addBlocksetsToTag(TagKey<Item> tag, AbstractBlockset... blocksets) {
+        for (AbstractBlockset blockset : blocksets) {
+            for (Block block : blockset.getAll()) {
+                getOrCreateTagBuilder(tag).add(block.asItem());
+            }
+        }
     }
 
     private void createItemTags(AbstractBlockset... blocksets) {

@@ -87,12 +87,18 @@ public class ZeldaNoteBlockSounds {
                 ZeldaBlocks.STRANGE_DIRT_BRICKS,
                 ZeldaBlocks.REINFORCED_STRANGE_DIRT
         );
+        registerNoteBlockSound(ZeldaSounds.SMW_PIANO,
+                ZeldaBlocks.STRANGE_DIRT_PILLAR
+        );
         // SMW SLAP BASS ///////////////////////////////////////////////////////////////////////////////////////////////
         registerNoteBlockSound(ZeldaSounds.SMW_SLAP_BASS,
                 ZeldaBlocks.STRANGE_BLUE_DIRT,
                 ZeldaBlocks.POLISHED_BLUE_STRANGE_DIRT,
                 ZeldaBlocks.STRANGE_BLUE_DIRT_BRICKS,
                 ZeldaBlocks.REINFORCED_STRANGE_BLUE_DIRT
+        );
+        registerNoteBlockSound(ZeldaSounds.SMW_SLAP_BASS,
+                ZeldaBlocks.STRANGE_BLUE_DIRT_PILLAR
         );
     }
 

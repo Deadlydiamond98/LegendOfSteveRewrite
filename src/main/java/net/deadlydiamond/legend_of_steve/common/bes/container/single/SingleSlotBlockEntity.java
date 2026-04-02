@@ -1,8 +1,8 @@
 package net.deadlydiamond.legend_of_steve.common.bes.container.single;
 
 import net.deadlydiamond.legend_of_steve.common.blocks.container.SingleSlotBlock;
-import net.deadlydiamond.legend_of_steve.init.ZeldaBlockEntities;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.entity.LootableContainerBlockEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
@@ -14,11 +14,11 @@ import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 
-public class SingleSlotBlockEntity extends LootableContainerBlockEntity {
+public abstract class SingleSlotBlockEntity extends LootableContainerBlockEntity {
     private DefaultedList<ItemStack> inventory = DefaultedList.ofSize(1, ItemStack.EMPTY);
 
-    public SingleSlotBlockEntity(BlockPos blockPos, BlockState blockState) {
-        super(ZeldaBlockEntities.SINGLE_SLOT_CONTAINER, blockPos, blockState);
+    public SingleSlotBlockEntity(BlockEntityType<?> blockEntityType, BlockPos blockPos, BlockState blockState) {
+        super(blockEntityType, blockPos, blockState);
     }
 
     @Override

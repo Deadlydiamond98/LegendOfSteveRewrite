@@ -3,7 +3,8 @@ package net.deadlydiamond.legend_of_steve.init;
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.bes.BombFlowerBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.MasterBarrelBlockEntity;
-import net.deadlydiamond.legend_of_steve.common.bes.container.single.SingleSlotBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.bes.container.single.LootPotBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.bes.container.single.hittable_block.QuestionBlockEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntity;
@@ -13,16 +14,24 @@ import net.minecraft.registry.Registry;
 
 public class ZeldaBlockEntities {
 
+    // RENDERING BLOCK ENTITIES ////////////////////////////////////////////////////////////////////////////////////////
+
     public static final BlockEntityType<BombFlowerBlockEntity> BOMB_FLOWER = register("bomb_flower", BombFlowerBlockEntity::new,
             ZeldaBlocks.BOMB_FLOWER
     );
+
+    // STORAGE BLOCK ENTITIES //////////////////////////////////////////////////////////////////////////////////////////
 
     public static final BlockEntityType<MasterBarrelBlockEntity> MASTER_BARREL = register("master_barrel", MasterBarrelBlockEntity::new,
             ZeldaBlocks.MASTER_BARREL
     );
 
-    public static final BlockEntityType<SingleSlotBlockEntity> SINGLE_SLOT_CONTAINER = register("single_slot_container", SingleSlotBlockEntity::new,
+    public static final BlockEntityType<LootPotBlockEntity> LOOT_POT = register("loot_pot", LootPotBlockEntity::new,
             ZeldaBlocks.DYED_LOOT_POTS.getAll(ZeldaBlocks.LOOT_POT)
+    );
+
+    public static final BlockEntityType<QuestionBlockEntity> QUESTION_BLOCK = register("question_block", QuestionBlockEntity::new,
+            ZeldaBlocks.QUESTION_BLOCK
     );
 
     // HELPER METHODS //////////////////////////////////////////////////////////////////////////////////////////////////

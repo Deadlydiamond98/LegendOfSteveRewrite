@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "legend_of_steve:loot_pot",
     "legend_of_steve:white_loot_pot",
     "legend_of_steve:light_gray_loot_pot",
     "legend_of_steve:gray_loot_pot",
@@ -17,6 +16,7 @@
     "legend_of_steve:blue_loot_pot",
     "legend_of_steve:purple_loot_pot",
     "legend_of_steve:magenta_loot_pot",
-    "legend_of_steve:pink_loot_pot"
+    "legend_of_steve:pink_loot_pot",
+    "legend_of_steve:loot_pot"
   ]
 }

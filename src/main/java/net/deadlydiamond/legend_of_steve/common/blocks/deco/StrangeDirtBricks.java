@@ -9,6 +9,7 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 public class StrangeDirtBricks extends Block implements IJumpIntoAction {
     public StrangeDirtBricks(Settings settings) {
@@ -16,7 +17,7 @@ public class StrangeDirtBricks extends Block implements IJumpIntoAction {
     }
 
     @Override
-    public void jumpIntoBlock(World world, BlockPos pos, BlockState state, Entity entity) {
+    public void jumpIntoBlock(World world, BlockPos pos, BlockState state, @Nullable Entity entity) {
         if (entity instanceof PlayerEntity player && player.getAbilities().flying) {
             return;
         }

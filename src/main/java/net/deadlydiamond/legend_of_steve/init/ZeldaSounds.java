@@ -37,9 +37,13 @@ public class ZeldaSounds {
     public static final BlockSoundGroup MASTER_CHAIN = registerGroup("master_chain", 0.75f, 1.5f);
     public static final SoundEvent MASTER_BARREL_OPEN = register("block.master_barrel.open");
     public static final SoundEvent MASTER_BARREL_CLOSE = register("block.master_barrel.close");
-    // OTHER
+    // STRANGE DIRT
     public static final BlockSoundGroup STRANGE_DIRT = registerGroup("strange_dirt", 1, 1.25f);
     public static final BlockSoundGroup STRANGE_BLUE_DIRT = registerGroup("strange_blue_dirt", 1, 1);
+    public static final BlockSoundGroup QUESTION_BLOCK = registerGroup("question_block", 1, 1);
+    public static final SoundEvent QUESTION_BLOCK_HIT = register("block.question_block.bounce");
+    public static final SoundEvent QUESTION_BLOCK_EMPTY_CONTENTS = register("block.question_block.empty_content");
+    // OTHER
     public static final BlockSoundGroup TEKTILES = registerGroup("tektiles", 1, 1.25f);
     // Note Block
     public static final SoundEvent MALON = register("block.note_block.malon");

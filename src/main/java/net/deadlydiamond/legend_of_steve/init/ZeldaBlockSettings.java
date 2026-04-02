@@ -94,6 +94,8 @@ public class ZeldaBlockSettings {
             .strength(1.5f, 6)
             .mapColor(MapColor.LAPIS_BLUE)
             .sounds(ZeldaSounds.STRANGE_BLUE_DIRT);
+    public static final FabricBlockSettings QUESTION_BLOCK_SETTINGS = FabricBlockSettings.copyOf(Blocks.GOLD_BLOCK)
+            .sounds(ZeldaSounds.QUESTION_BLOCK);
 
     // TEKTILES
     public static final FabricBlockSettings BLUE_TEKTILES_SETTINGS = FabricBlockSettings.copyOf(Blocks.BONE_BLOCK)

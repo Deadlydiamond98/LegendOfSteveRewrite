@@ -3,6 +3,8 @@ package net.deadlydiamond.legend_of_steve.init;
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.blocks.MasterBarrelBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.container.LootPotBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.container.hittable.QuestionBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.deco.ConnectedPillarBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.GirderBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.glowing.FairyLamp;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.BombFlowerBlock;
@@ -120,11 +122,15 @@ public class ZeldaBlocks {
     public static final StrangeDirtBricksBlockset STRANGE_DIRT_BRICKS = new StrangeDirtBricksBlockset(LegendOfSteve.MOD_ID, "strange_dirt_bricks", STRANGE_DIRT_SETTINGS);
     public static final BaseStairSlabWallBlockset POLISHED_STRANGE_DIRT = new BaseStairSlabWallBlockset(LegendOfSteve.MOD_ID, "polished_strange_dirt", STRANGE_DIRT_SETTINGS);
     public static final ReinforcedBlockset REINFORCED_STRANGE_DIRT = new ReinforcedBlockset(LegendOfSteve.MOD_ID, "reinforced_strange_dirt", STRANGE_DIRT_SETTINGS);
+    public static final Block STRANGE_DIRT_PILLAR = register("strange_dirt_pillar", new ConnectedPillarBlock(STRANGE_DIRT_SETTINGS));
 
     public static final BaseStairSlabWallBlockset STRANGE_BLUE_DIRT = new BaseStairSlabWallBlockset(LegendOfSteve.MOD_ID, "strange_blue_dirt", STRANGE_BLUE_DIRT_SETTINGS);
     public static final StrangeDirtBricksBlockset STRANGE_BLUE_DIRT_BRICKS = new StrangeDirtBricksBlockset(LegendOfSteve.MOD_ID, "strange_blue_dirt_bricks", STRANGE_BLUE_DIRT_SETTINGS);
     public static final BaseStairSlabWallBlockset POLISHED_BLUE_STRANGE_DIRT = new BaseStairSlabWallBlockset(LegendOfSteve.MOD_ID, "polished_strange_blue_dirt", STRANGE_BLUE_DIRT_SETTINGS);
     public static final ReinforcedBlockset REINFORCED_STRANGE_BLUE_DIRT = new ReinforcedBlockset(LegendOfSteve.MOD_ID, "reinforced_strange_blue_dirt", STRANGE_BLUE_DIRT_SETTINGS);
+    public static final Block STRANGE_BLUE_DIRT_PILLAR = register("strange_blue_dirt_pillar", new ConnectedPillarBlock(STRANGE_BLUE_DIRT_SETTINGS));
+
+    public static final Block QUESTION_BLOCK = register("question_block", new QuestionBlock(QUESTION_BLOCK_SETTINGS));
 
     // TEKTILES
     public static final BaseStairSlabBlockset RED_TEKTILES = new BaseStairSlabBlockset(LegendOfSteve.MOD_ID, "red_tektiles", RED_TEKTILES_SETTINGS);

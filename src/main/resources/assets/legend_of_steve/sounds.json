@@ -788,5 +788,73 @@
       "legend_of_steve:block/strange_blue_dirt/step6"
     ],
     "subtitle": "subtitles.block.generic.footsteps"
+  },
+
+  "block.question_block.break": {
+    "sounds": [
+      "legend_of_steve:block/question_block/break1",
+      "legend_of_steve:block/question_block/break2",
+      "legend_of_steve:block/question_block/break3",
+      "legend_of_steve:block/question_block/break4",
+      "legend_of_steve:block/question_block/break5",
+      "legend_of_steve:block/question_block/break6"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.question_block.fall": {
+    "sounds": [
+      "legend_of_steve:block/question_block/step1",
+      "legend_of_steve:block/question_block/step2",
+      "legend_of_steve:block/question_block/step3",
+      "legend_of_steve:block/question_block/step4",
+      "legend_of_steve:block/question_block/step5",
+      "legend_of_steve:block/question_block/step6"
+    ],
+    "subtitle": "subtitles.block.generic.fall"
+  },
+  "block.question_block.hit": {
+    "sounds": [
+      "legend_of_steve:block/question_block/step1",
+      "legend_of_steve:block/question_block/step2",
+      "legend_of_steve:block/question_block/step3",
+      "legend_of_steve:block/question_block/step4",
+      "legend_of_steve:block/question_block/step5",
+      "legend_of_steve:block/question_block/step6"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.question_block.place": {
+    "sounds": [
+      "legend_of_steve:block/question_block/break1",
+      "legend_of_steve:block/question_block/break2",
+      "legend_of_steve:block/question_block/break3",
+      "legend_of_steve:block/question_block/break4",
+      "legend_of_steve:block/question_block/break5",
+      "legend_of_steve:block/question_block/break6"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.question_block.step": {
+    "sounds": [
+      "legend_of_steve:block/question_block/step1",
+      "legend_of_steve:block/question_block/step2",
+      "legend_of_steve:block/question_block/step3",
+      "legend_of_steve:block/question_block/step4",
+      "legend_of_steve:block/question_block/step5",
+      "legend_of_steve:block/question_block/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.question_block.bounce": {
+    "sounds": [
+      "legend_of_steve:block/question_block/bump"
+    ],
+    "subtitle": "subtitles.legend_of_steve.block.question_block.bounce"
+  },
+  "block.question_block.empty_content": {
+    "sounds": [
+      "legend_of_steve:block/question_block/empty_content"
+    ],
+    "subtitle": "subtitles.legend_of_steve.block.question_block.empty_content"
   }
 }

@@ -73,7 +73,12 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
                 ZeldaBlocks.MASTER_DOOR,
                 ZeldaBlocks.MASTER_TRAPDOOR,
                 ZeldaBlocks.MASTER_GIRDER,
-                ZeldaBlocks.MASTER_BARREL
+                ZeldaBlocks.MASTER_BARREL,
+
+                // Strange Dirt
+                ZeldaBlocks.STRANGE_DIRT_PILLAR,
+                ZeldaBlocks.STRANGE_BLUE_DIRT_PILLAR,
+                ZeldaBlocks.QUESTION_BLOCK
         );
 
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(
@@ -114,6 +119,10 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
                 ZeldaBlocks.MASTER_TRAPDOOR,
                 ZeldaBlocks.MASTER_GIRDER,
                 ZeldaBlocks.MASTER_BARREL
+        );
+
+        getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL).add(
+                ZeldaBlocks.QUESTION_BLOCK
         );
 
         // TREE RELATED ////////////////////////////////////////////////////////////////////////////////////////////////

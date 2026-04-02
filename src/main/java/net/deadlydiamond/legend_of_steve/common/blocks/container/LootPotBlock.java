@@ -1,11 +1,13 @@
 package net.deadlydiamond.legend_of_steve.common.blocks.container;
 
+import net.deadlydiamond.legend_of_steve.common.bes.container.single.LootPotBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.single.SingleSlotBlockEntity;
 import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
@@ -17,6 +19,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 public class LootPotBlock extends WaterloggableSingleSlotBlock {
     public static final VoxelShape SHAPE = Block.createCuboidShape(5, 0, 5, 11, 8, 11);
@@ -57,5 +60,11 @@ public class LootPotBlock extends WaterloggableSingleSlotBlock {
     @Override
     protected SoundEvent getRemoveSound() {
         return ZeldaSounds.LOOT_POT_WITHDRAW;
+    }
+
+    @Nullable
+    @Override
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new LootPotBlockEntity(pos, state);
     }
 }

@@ -1,9 +1,7 @@
 package net.deadlydiamond.legend_of_steve.mixin.common.entity.base;
 
-import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
-import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import net.deadlydiamond.legend_of_steve.common.blocks.IJumpIntoAction;
-import net.deadlydiamond.legend_of_steve.common.entities.PushableBlockEntity;
+import net.deadlydiamond.legend_of_steve.networking.s2c.question_block.JumpIntoBlockS2CPacket;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.MovementType;
@@ -28,10 +26,12 @@ public abstract class EntityMixin {
 
     @Inject(method = "move", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;setPosition(DDD)V", ordinal = 1))
     private void legend_of_steve$move(MovementType movementType, Vec3d movement, CallbackInfo ci) {
+        Entity entity = (Entity) (Object) this;
+        World world = entity.getWorld();
+
         Vec3d vec3d = this.adjustMovementForCollisions(movement);
-        if (vec3d != null && vec3d.getY() > 0) {
-            Entity entity = (Entity) (Object) this;
-            World world = entity.getWorld();
+
+        if (!world.isClient() && vec3d != null && vec3d.getY() > 0) {
             Vec3d entityTopPos = entity.getPos().add(0, entity.getHeight(), 0);
 
             BlockHitResult hit = world.raycast(
@@ -47,7 +47,8 @@ public abstract class EntityMixin {
             if (hit.getType() == HitResult.Type.BLOCK && hit.getSide() == Direction.DOWN) {
                 BlockPos pos = hit.getBlockPos();
                 BlockState state = world.getBlockState(pos);
-                if(state.getBlock() instanceof IJumpIntoAction block) {
+                if (state.getBlock() instanceof IJumpIntoAction block) {
+                    world.getPlayers().forEach(player -> JumpIntoBlockS2CPacket.send(player, pos, entity));
                     block.jumpIntoBlock(world, pos, state, entity);
                 }
             }

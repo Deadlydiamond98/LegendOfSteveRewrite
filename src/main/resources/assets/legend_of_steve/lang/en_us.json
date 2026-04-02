@@ -162,6 +162,7 @@
   "block.legend_of_steve.strange_dirt_brick_wall": "Strange Dirt Brick Wall",
   "block.legend_of_steve.reinforced_strange_dirt": "Reinforced Strange Dirt",
   "item.legend_of_steve.pushable_reinforced_strange_dirt": "Reinforced Strange Dirt",
+  "block.legend_of_steve.strange_dirt_pillar": "Strange Dirt Pillar",
 
   "block.legend_of_steve.strange_blue_dirt": "Strange Blue Dirt",
   "block.legend_of_steve.strange_blue_dirt_slab": "Strange Blue Dirt Slab",
@@ -177,6 +178,9 @@
   "block.legend_of_steve.strange_blue_dirt_brick_wall": "Strange Blue Dirt Brick Wall",
   "block.legend_of_steve.reinforced_strange_blue_dirt": "Reinforced Strange Blue Dirt",
   "item.legend_of_steve.pushable_reinforced_strange_blue_dirt": "Reinforced Strange Blue Dirt",
+  "block.legend_of_steve.strange_blue_dirt_pillar": "Strange Blue Dirt Pillar",
+
+  "block.legend_of_steve.question_block": "Question Block",
 
   "block.legend_of_steve.blue_tektiles": "Blue Tektiles",
   "block.legend_of_steve.blue_tektile_slab": "Blue Tektile Slab",
@@ -223,8 +227,14 @@
   "subtitles.legend_of_steve.entity.fairy.ambient": "Fairy sparkles",
   "subtitles.legend_of_steve.entity.fairy.heal": "Fairy heals player",
 
-  "death.attack.loot_pot_projectile": "%1$s was pummeled to death by flying pottery",
-  "death.attack.loot_pot_projectile.player": "%1$s was pummeled to death by %2$s's pottery",
+  "subtitles.legend_of_steve.block.question_block.bounce": "Question Block being hit",
+  "subtitles.legend_of_steve.block.question_block.empty_content": "Items emerge from Question Block",
+
+  "death.attack.legend_of_steve.loot_pot_projectile": "%1$s was pummeled to death by flying pottery",
+  "death.attack.legend_of_steve.loot_pot_projectile.player": "%1$s was pummeled to death by %2$s's pottery",
+
+  "death.attack.legend_of_steve.question_block_hit": "%1$s was bounced way too hard",
+  "death.attack.legend_of_steve.question_block_hit.player": "%1$s was bounced way too hard by %2$s",
 
   "advancements.legend_of_steve.root": "Legend of Steve",
   "advancements.legend_of_steve.root.description": "Does this mean Steve is the Princess?",

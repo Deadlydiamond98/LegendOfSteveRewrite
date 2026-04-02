@@ -4,7 +4,6 @@ import net.deadlydiamond.legend_of_steve.common.bes.container.single.SingleSlotB
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
-import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
@@ -15,7 +14,6 @@ import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 
 public abstract class SingleSlotBlock extends BlockWithEntity {
     public SingleSlotBlock(Settings settings) {
@@ -39,11 +37,15 @@ public abstract class SingleSlotBlock extends BlockWithEntity {
             if (canRemoveItem(state, world, pos, player, hand, stack, blockEntity)) {
                 player.setStackInHand(hand, blockEntity.getStack(0));
                 blockEntity.clear();
-                player.playSound(getRemoveSound(), SoundCategory.BLOCKS, 1, 1);
+                if (getRemoveSound() != null) {
+                    player.playSound(getRemoveSound(), SoundCategory.BLOCKS, 1, 1);
+                }
                 blockEntity.markDirty();
                 return ActionResult.SUCCESS;
             } else if (canInsertItem(state, world, pos, player, hand, stack, blockEntity)) {
-                player.playSound(getInsertSound(), SoundCategory.BLOCKS, 1, 1);
+                if (getInsertSound() != null) {
+                    player.playSound(getInsertSound(), SoundCategory.BLOCKS, 1, 1);
+                }
                 blockEntity.markDirty();
                 return ActionResult.SUCCESS;
             }
@@ -54,11 +56,6 @@ public abstract class SingleSlotBlock extends BlockWithEntity {
     @Override
     public BlockRenderType getRenderType(BlockState state) {
         return BlockRenderType.MODEL;
-    }
-
-    @Nullable @Override
-    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new SingleSlotBlockEntity(pos, state);
     }
 
     // SOUNDS & OTHER HELPER METHODS ///////////////////////////////////////////////////////////////////////////////////

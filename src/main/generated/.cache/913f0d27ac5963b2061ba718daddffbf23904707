@@ -1,4 +1,4 @@
-// 1.20.1	2026-03-31T02:25:42.04785673	The Legend of Steve/Block Loot Tables
+// 1.20.1	2026-04-01T23:39:08.099023693	The Legend of Steve/Block Loot Tables
 29241b7dddc7563e14167f945187632fe6bbe019 data/legend_of_steve/loot_tables/blocks/red_tektile_slab.json
 ef1fb8d6560fbb688eb995a2a698b6634a267030 data/legend_of_steve/loot_tables/blocks/mossy_fairy_marble_bricks.json
 b2097664f61c7de30d6d243baf2b29fa330b4271 data/legend_of_steve/loot_tables/blocks/chiseled_cherry_planks.json
@@ -69,6 +69,7 @@ af00727e65676262ab36f7f74a83577f71037cec data/legend_of_steve/loot_tables/blocks
 07c0dee102bc1af2bccc9f820449747a5f02fdef data/legend_of_steve/loot_tables/blocks/fairy_marble_pillar.json
 b009725176dea1996f18aee66589758c585b9fac data/legend_of_steve/loot_tables/blocks/master_tile.json
 2f2a1f157f973014d899778603b57ec9de59f188 data/legend_of_steve/loot_tables/blocks/red_tektiles.json
+420ccd6f882e7d75c519e0032608b53989e48e2e data/legend_of_steve/loot_tables/blocks/strange_blue_dirt_pillar.json
 94a909d4fdf2857d0d35be4d9541c4c0aaa63592 data/legend_of_steve/loot_tables/blocks/polished_strange_blue_dirt_stairs.json
 fefe518eb37e9ad0cadeebde8a765b824519366b data/legend_of_steve/loot_tables/blocks/small_blue_tektiles.json
 00c41f8c3c120d15072ccc2012aed21c48526954 data/legend_of_steve/loot_tables/blocks/blue_tektiles.json
@@ -114,6 +115,7 @@ c76b173b2997ec1d27965ad4161ad771c3b0e7c8 data/legend_of_steve/loot_tables/blocks
 a38a7a699774666ac147d6d011384b461e770016 data/legend_of_steve/loot_tables/blocks/fairy_marble_tiles.json
 c53d25d7d240922b86b8cd311c5370b32f53f383 data/legend_of_steve/loot_tables/blocks/deku_fence_gate.json
 f40b3189ef3587a63372a62cc4de94baac6b423a data/legend_of_steve/loot_tables/blocks/strange_blue_dirt_brick_slab.json
+b2ee4bb4be1329e62d105603dfe1e21b1172d405 data/legend_of_steve/loot_tables/blocks/strange_dirt_pillar.json
 f523f2a83a0dfb57f9af21957376941f669808ca data/legend_of_steve/loot_tables/blocks/deku_log.json
 ced7891977b8c69f185e95b1958685a3e7ef1699 data/legend_of_steve/loot_tables/blocks/pink_loot_pot.json
 79f851fa4e5d09271f7d3db33ec56e6828b1a8dc data/legend_of_steve/loot_tables/blocks/master_girder.json

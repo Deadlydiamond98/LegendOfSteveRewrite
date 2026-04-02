@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hit=false": {
+      "model": "legend_of_steve:block/question_block"
+    },
+    "hit=true": {
+      "model": "legend_of_steve:block/question_block_empty"
+    }
+  }
+}

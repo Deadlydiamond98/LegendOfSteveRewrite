@@ -19,8 +19,9 @@ public class ZeldaTags {
     public static final TagKey<Item> CHISELED_PLANKS_ITEM = item("chiseled_planks");
     public static final TagKey<Item> HELD_OVER_HEAD = item("held_over_head");
     public static final TagKey<Item> IRIDESCENT_ITEM = item("iridescent");
-    public static final TagKey<Item> QUIVERS = item("quivers");
     public static final TagKey<Item> LOOT_POTS = item("loot_pots");
+    public static final TagKey<Item> QUIVERS = item("quivers");
+    public static final TagKey<Item> STRANGE_DIRT = item("strange_dirt");
 
     // BLOCKS //////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static final TagKey<Block> BOMB_BREAKABLE = block("bomb_breakable");

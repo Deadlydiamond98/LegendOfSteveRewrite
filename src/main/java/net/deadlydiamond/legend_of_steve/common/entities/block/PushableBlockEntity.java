@@ -39,7 +39,6 @@ public class PushableBlockEntity extends LerpedMovmentEntity implements IHitEnti
     public float blockBreakingSoundCooldown;
     public float breakingProgress;
     public int stopBreakingTimer;
-    protected boolean isOnPushBlock;
 
     public PushableBlockEntity(EntityType<?> type, World world) {
         super(type, world);
@@ -54,16 +53,12 @@ public class PushableBlockEntity extends LerpedMovmentEntity implements IHitEnti
         super.tick();
 
         this.move(MovementType.SELF, this.getVelocity());
-
-
         this.setVelocity(this.getVelocity().multiply(isTouchingWater() ? 0.6 : 0.98));
         applyGravity();
         if (this.isOnGround()) {
             float slipperiness = getWorld().getBlockState(getBlockPos().down()).getBlock().getSlipperiness();
             this.setVelocity(this.getVelocity().multiply(slipperiness, 1, slipperiness));
         }
-        this.velocityDirty = !this.isOnPushBlock;
-        this.isOnPushBlock = false;
 
         // Update Breaking
         if (!getWorld().isClient()) {
@@ -110,18 +105,17 @@ public class PushableBlockEntity extends LerpedMovmentEntity implements IHitEnti
                 }
             }
 
-            if (entity instanceof PushableBlockEntity pushableBlock) {
-                pushableBlock.isOnPushBlock = true;
-            } else {
-                entity.velocityDirty = true;
-            }
-
             entity.setOnGround(true);
+            entity.velocityDirty = true;
         });
+
+        this.velocityDirty = true;
     }
 
     protected void updatePassengers(Predicate<? super Entity> predicate, Consumer<Entity> passengers) {
-        getWorld().getOtherEntities(this, getBoundingBox().expand(1.0E-7, 0.15, 1.0E-7), predicate).forEach(passengers::accept);
+        getWorld().getOtherEntities(this, getBoundingBox().expand(1.0E-7, 0.15, 1.0E-7), predicate.and(
+                object -> !(object instanceof PushableBlockEntity)
+        )).forEach(passengers::accept);
     }
 
     protected void applyGravity() {

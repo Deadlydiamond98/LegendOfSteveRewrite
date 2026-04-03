@@ -866,5 +866,19 @@
       "legend_of_steve:block/question_block/empty_content"
     ],
     "subtitle": "subtitles.legend_of_steve.block.question_block.empty_content"
+  },
+
+  "block.crate.open": {
+    "sounds": [
+      "block/barrel/open1",
+      "block/barrel/open2"
+    ],
+    "subtitle": "subtitles.legend_of_steve.block.crate.open"
+  },
+  "block.crate.close": {
+    "sounds": [
+      "block/barrel/close"
+    ],
+    "subtitle": "subtitles.legend_of_steve.block.crate.close"
   }
 }

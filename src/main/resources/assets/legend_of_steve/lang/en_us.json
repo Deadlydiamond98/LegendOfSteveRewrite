@@ -52,7 +52,7 @@
   "block.legend_of_steve.magenta_loot_pot": "Magenta Loot Pot",
   "block.legend_of_steve.pink_loot_pot": "Pink Loot Pot",
 
-  "block.legend_of_steve.crate": "Crate",
+  "item.legend_of_steve.crate": "Crate",
 
   "block.legend_of_steve.chiseled_oak_planks": "Chiseled Oak Planks",
   "block.legend_of_steve.chiseled_birch_planks": "Chiseled Birch Planks",
@@ -201,8 +201,10 @@
   "block.legend_of_steve.small_red_tektile_stairs": "Small Red Tektile Stairs",
 
   "entity.legend_of_steve.bomb": "Bomb",
+  "entity.legend_of_steve.crate": "Crate",
   "entity.legend_of_steve.deku_nut": "Deku Nut",
   "entity.legend_of_steve.fairy": "Fairy",
+  "entity.legend_of_steve.pushable_block": "Pushable Block",
   "entity.legend_of_steve.thrown_pot": "Thrown Pot",
 
   "item.legend_of_steve.fairy_spawn_egg": "Fairy Spawn Egg",
@@ -234,6 +236,9 @@
   "subtitles.legend_of_steve.block.question_block.deposit": "Item deposited into Container",
   "subtitles.legend_of_steve.block.question_block.bounce": "Container Block being hit",
   "subtitles.legend_of_steve.block.question_block.empty_content": "Items emerge from Container Block",
+
+  "subtitles.legend_of_steve.block.crate.open": "Crate opened",
+  "subtitles.legend_of_steve.block.crate.close": "Crate closed",
 
   "death.attack.legend_of_steve.loot_pot_projectile": "%1$s was pummeled to death by flying pottery",
   "death.attack.legend_of_steve.loot_pot_projectile.player": "%1$s was pummeled to death by %2$s's pottery",

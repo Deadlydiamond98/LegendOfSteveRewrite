@@ -46,6 +46,8 @@ public class ZeldaSounds {
     public static final SoundEvent QUESTION_BLOCK_DEPOSIT = register("block.question_block.deposit");
     // OTHER
     public static final BlockSoundGroup TEKTILES = registerGroup("tektiles", 1, 1.25f);
+    public static final SoundEvent CRATE_OPEN = register("block.crate.open");
+    public static final SoundEvent CRATE_CLOSE = register("block.crate.close");
     // Note Block
     public static final SoundEvent MALON = register("block.note_block.malon");
     public static final SoundEvent PIZZICATO_STRING = register("block.note_block.pizzicato_string");

@@ -7,10 +7,7 @@ import net.deadlydiamond98.koalalib.common.entity.LerpedMovmentEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ItemEntity;
-import net.minecraft.entity.MovementType;
+import net.minecraft.entity.*;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
@@ -34,6 +31,7 @@ import net.minecraft.world.World;
 
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 public class PushableBlockEntity extends LerpedMovmentEntity implements IHitEntityAction {
     private static final TrackedData<BlockState> BLOCK = DataTracker.registerData(PushableBlockEntity.class, TrackedDataHandlerRegistry.BLOCK_STATE);
@@ -41,10 +39,12 @@ public class PushableBlockEntity extends LerpedMovmentEntity implements IHitEnti
     public float blockBreakingSoundCooldown;
     public float breakingProgress;
     public int stopBreakingTimer;
+    protected boolean isOnPushBlock;
 
     public PushableBlockEntity(EntityType<?> type, World world) {
         super(type, world);
         this.intersectionChecked = true;
+        this.refreshPosition();
     }
 
     // PUSHING /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -55,61 +55,73 @@ public class PushableBlockEntity extends LerpedMovmentEntity implements IHitEnti
 
         this.move(MovementType.SELF, this.getVelocity());
 
+
+        this.setVelocity(this.getVelocity().multiply(isTouchingWater() ? 0.6 : 0.98));
+        applyGravity();
+        if (this.isOnGround()) {
+            float slipperiness = getWorld().getBlockState(getBlockPos().down()).getBlock().getSlipperiness();
+            this.setVelocity(this.getVelocity().multiply(slipperiness, 1, slipperiness));
+        }
+        this.velocityDirty = !this.isOnPushBlock;
+        this.isOnPushBlock = false;
+
         // Update Breaking
         if (!getWorld().isClient()) {
             if (getBlock() == null || getBlock().isAir()) {
                 this.setBlock(Blocks.DIRT.getDefaultState());
             }
 
-            if (this.breakingProgress > 0 && this.stopBreakingTimer++ > 2) {
+            if (this.breakingProgress > 0 && this.stopBreakingTimer++ > 1) {
                 this.breakingProgress = 0;
                 updateClientBreakingProgress();
             }
         }
 
         // Move Block
-        this.setVelocity(this.getVelocity().multiply(isTouchingWater() ? 0.6 : 0.98));
 
-        applyGravity();
-
-        if (this.isOnGround()) {
-            float slipperiness = getWorld().getBlockState(getBlockPos().down()).getBlock().getSlipperiness();
-            this.setVelocity(this.getVelocity().multiply(slipperiness, 1, slipperiness));
-        }
-
-        List<Entity> pushers = getWorld().getOtherEntities(this, this.getBoundingBox().expand(0.2f, -0.1f, 0.2f),
+        List<Entity> pushers = getWorld().getOtherEntities(this, this.getBoundingBox().expand(0.25f, 0, 0.25f),
                 EntityPredicates.EXCEPT_SPECTATOR.and(entity -> entity instanceof PlayerEntity));
 
         pushers.forEach(entity -> {
-            if (entity instanceof PlayerEntity player && this.isOnGround() &&
-                    this.getPos().y <= player.getPos().getY() && player.isOnGround()) {
+            if (entity instanceof PlayerEntity player && (this.isOnGround() || this.isSubmergedInWater()) &&
+                    ((this.getPos().y <= player.getPos().getY() && player.isOnGround()) || player.isTouchingWater())) {
                 push(player);
             }
         });
-        this.velocityDirty = true;
-    }
 
-    @Override
-    public void setPosition(double x, double y, double z) {
-        Vec3d oldPos = this.getPos();
-        super.setPosition(x, y, z);
-        Vec3d newPos = this.getPos();
 
-        Vec3d offset = newPos.subtract(oldPos);
-        updatePassengers(entity -> {
-            entity.move(MovementType.SELF, offset.add(additionalOffset()));
-            entity.velocityDirty = true;
+        Vec3d offset = this.getPos().subtract(this.prevX, this.prevY, this.prevZ);
+
+        this.updatePassengers(entity -> !pushers.contains(entity), entity -> {
+            entity.setPosition(entity.getPos().add(offset.x, 0, offset.z));
+
+            if (entity instanceof LivingEntity) {
+                if (!(entity.getY() < getBoundingBox().minY)) {
+                    double thisFrameIntersectingY = entity.getY() - getBoundingBox().maxY;
+                    if (thisFrameIntersectingY < 0) {
+                        entity.setPosition(entity.getX(), getBoundingBox().maxY + 1.0e-7, entity.getZ());
+                    }
+
+                    double nextFrameIntersectingY = entity.getVelocity().y;
+                    if (nextFrameIntersectingY < 0) {
+                        entity.addVelocity(0, -nextFrameIntersectingY, 0);
+                    }
+                    entity.addVelocity(0, this.getVelocity().y - entity.getVelocity().y, 0);
+                }
+            }
+
+            if (entity instanceof PushableBlockEntity pushableBlock) {
+                pushableBlock.isOnPushBlock = true;
+            } else {
+                entity.velocityDirty = true;
+            }
+
             entity.setOnGround(true);
-            entity.fallDistance = 0;
         });
     }
 
-    protected Vec3d additionalOffset() {
-        return Vec3d.ZERO;
-    }
-
-    protected void updatePassengers(Consumer<Entity> passengers) {
-        getWorld().getOtherEntities(this, getBoundingBox().withMinY(this.getBoundingBox().maxY).withMaxY(this.getBoundingBox().maxY + 0.05)).forEach(passengers);
+    protected void updatePassengers(Predicate<? super Entity> predicate, Consumer<Entity> passengers) {
+        getWorld().getOtherEntities(this, getBoundingBox().expand(1.0E-7, 0.15, 1.0E-7), predicate).forEach(passengers::accept);
     }
 
     protected void applyGravity() {

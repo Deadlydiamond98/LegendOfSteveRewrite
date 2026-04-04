@@ -1,17 +1,16 @@
-package net.deadlydiamond.legend_of_steve.common.blocks.container.hittable;
+package net.deadlydiamond.legend_of_steve.common.blocks.container.single.hittable;
 
 import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
 import net.minecraft.sound.SoundEvent;
 
-public class QuestionBlock extends HittableContainerBlock {
-
-    public QuestionBlock(Settings settings) {
+public class HittableContainerBlock extends AbstractHittableContainerBlock {
+    public HittableContainerBlock(Settings settings) {
         super(settings);
     }
 
     @Override
-    protected boolean startEmpty() {
-        return true;
+    protected SoundEvent getInsertSound() {
+        return ZeldaSounds.QUESTION_BLOCK_DEPOSIT;
     }
 
     @Override
@@ -22,10 +21,5 @@ public class QuestionBlock extends HittableContainerBlock {
     @Override
     protected SoundEvent getEmptyingSound() {
         return ZeldaSounds.QUESTION_BLOCK_EMPTY_CONTENTS;
-    }
-
-    @Override
-    protected SoundEvent getInsertSound() {
-        return ZeldaSounds.QUESTION_BLOCK_DEPOSIT;
     }
 }

@@ -6,6 +6,7 @@ import net.deadlydiamond.legend_of_steve.init.ZeldaEntityTypes;
 import net.deadlydiamond98.koalalib.common.items.other.ISpriteIconItem;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
@@ -17,8 +18,14 @@ import net.minecraft.item.ItemUsageContext;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundCategory;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class PushableBlockItem extends Item implements ISpriteIconItem {
     private final BlockState parentBlock;
@@ -67,13 +74,19 @@ public class PushableBlockItem extends Item implements ISpriteIconItem {
     }
 
     @Override
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        super.appendTooltip(stack, world, tooltip, context);
+        tooltip.add(Text.translatable("tooltip.legend_of_steve.pushable").formatted(Formatting.GRAY));
+    }
+
+    @Override
     public boolean isBlock() {
         return true;
     }
 
     @Override
     public GUICorner getGUICorner() {
-        return GUICorner.TOP_LEFT;
+        return GUICorner.BOTTOM_LEFT;
     }
 
     @Override

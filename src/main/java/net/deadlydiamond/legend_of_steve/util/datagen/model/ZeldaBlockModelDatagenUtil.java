@@ -1,7 +1,7 @@
 package net.deadlydiamond.legend_of_steve.util.datagen.model;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
-import net.deadlydiamond.legend_of_steve.common.blocks.container.hittable.HittableContainerBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.container.single.hittable.AbstractHittableContainerBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.ConnectedPillarBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.PillarType;
 import net.minecraft.block.Block;
@@ -34,7 +34,7 @@ public class ZeldaBlockModelDatagenUtil {
         Identifier empty = LegendOfSteve.id("block/empty_container_block");
 
         blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block).coordinate(
-                        BlockStateVariantMap.create(HittableContainerBlock.HIT)
+                        BlockStateVariantMap.create(AbstractHittableContainerBlock.HIT)
                                 .register(true, BlockStateVariant.create().put(VariantSettings.MODEL, empty))
                                 .register(false, BlockStateVariant.create().put(VariantSettings.MODEL, regular))
         ));

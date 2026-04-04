@@ -1,4 +1,4 @@
-// 1.20.1	2026-04-02T11:15:12.914339795	The Legend of Steve/Tags for minecraft:block
+// 1.20.1	2026-04-04T01:23:50.862966493	The Legend of Steve/Tags for minecraft:block
 7b40d9ae3acf98c87dc01ed58d8be3691b14c27d data/minecraft/tags/blocks/planks.json
 b1b30bb2abdedbb91f205051e0328152f1d21607 data/minecraft/tags/blocks/mineable/axe.json
 901f64f708c730f4d91d1bafdaf7647aecf116f6 data/minecraft/tags/blocks/wall_hanging_signs.json
@@ -23,7 +23,7 @@ a62a7714809b9f9bc69ccf0667a2f9fafba2ea37 data/minecraft/tags/blocks/wooden_doors
 e86ea83105d3f43723be5d06b9e71f24a96276b7 data/minecraft/tags/blocks/logs_that_burn.json
 e36dcfbfc78c88662c4c076157a1a53a9d98988e data/minecraft/tags/blocks/ceiling_hanging_signs.json
 fda8f23bd1fec00cdacd17cfab7e68c81c42454b data/minecraft/tags/blocks/stone_buttons.json
-4fd5ed326fc5f628bc79c467d8a841c262c8faad data/minecraft/tags/blocks/wooden_stairs.json
 c795613332369e0f5ee09d51c3594d9321c8501f data/minecraft/tags/blocks/wooden_pressure_plates.json
+4fd5ed326fc5f628bc79c467d8a841c262c8faad data/minecraft/tags/blocks/wooden_stairs.json
 ac147bba5a12528c56d5515c7313fae1019ab380 data/minecraft/tags/blocks/wooden_fences.json
 d99687b198f56c7c6c9318dd224a52bff9669c37 data/minecraft/tags/blocks/combination_step_sound_blocks.json

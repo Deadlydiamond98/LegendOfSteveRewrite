@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.common.blocks;
+package net.deadlydiamond.legend_of_steve.common.blocks.container;
 
 import net.deadlydiamond.legend_of_steve.common.bes.container.MasterBarrelBlockEntity;
 import net.minecraft.block.BarrelBlock;

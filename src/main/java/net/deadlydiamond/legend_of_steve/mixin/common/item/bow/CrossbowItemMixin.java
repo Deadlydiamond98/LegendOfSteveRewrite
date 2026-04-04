@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.mixin.common.item;
+package net.deadlydiamond.legend_of_steve.mixin.common.item.bow;
 
 import net.deadlydiamond.legend_of_steve.common.items.bag.QuiverItem;
 import net.minecraft.entity.LivingEntity;

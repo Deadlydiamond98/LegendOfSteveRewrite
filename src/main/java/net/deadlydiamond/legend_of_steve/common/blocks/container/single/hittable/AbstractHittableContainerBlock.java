@@ -1,12 +1,14 @@
-package net.deadlydiamond.legend_of_steve.common.blocks.container.hittable;
+package net.deadlydiamond.legend_of_steve.common.blocks.container.single.hittable;
 
 import net.deadlydiamond.legend_of_steve.common.bes.container.single.SingleSlotBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.single.HittableContainerBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.blocks.IJumpIntoAction;
-import net.deadlydiamond.legend_of_steve.common.blocks.container.WaterloggableSingleSlotBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.container.single.WaterloggableSingleSlotBlock;
+import net.deadlydiamond.legend_of_steve.common.items.IExtraCanMine;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlockEntities;
 import net.deadlydiamond.legend_of_steve.init.ZeldaDamageTypes;
-import net.deadlydiamond.legend_of_steve.networking.s2c.question_block.UpdateProjectileHitS2CPacket;
+import net.deadlydiamond.legend_of_steve.networking.s2c.question_block.UpdateBlockHitS2CPacket;
+import net.deadlydiamond.legend_of_steve.util.ZeldaProperties;
 import net.deadlydiamond98.koalalib.common.blocks.interaction.IHitBlockAction;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
@@ -15,16 +17,15 @@ import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.ItemEntity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.*;
+import net.minecraft.entity.damage.DamageType;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SpawnEggItem;
 import net.minecraft.item.ToolItem;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundCategory;
@@ -41,19 +42,22 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public abstract class HittableContainerBlock extends WaterloggableSingleSlotBlock implements IJumpIntoAction, IHitBlockAction {
-    public static final BooleanProperty BOUNCING = BooleanProperty.of("bouncing");
-    public static final BooleanProperty HIT = BooleanProperty.of("hit");
+public abstract class AbstractHittableContainerBlock extends WaterloggableSingleSlotBlock implements IJumpIntoAction, IHitBlockAction, IExtraCanMine {
+    public static final BooleanProperty BOUNCING = ZeldaProperties.BOUNCING;
+    public static final BooleanProperty HIT = ZeldaProperties.HIT;
 
-    public HittableContainerBlock(Settings settings) {
+    public AbstractHittableContainerBlock(Settings settings) {
         super(settings);
-        setDefaultState(getDefaultState().with(HIT, startEmpty()).with(BOUNCING, false));
+        setDefaultState(getDefaultState().with(HIT, startHit()).with(BOUNCING, false));
     }
 
-    protected abstract boolean startEmpty();
+    protected boolean startHit() {
+        return true;
+    }
     protected abstract SoundEvent getHittingSound();
     protected abstract SoundEvent getEmptyingSound();
 
@@ -81,13 +85,23 @@ public abstract class HittableContainerBlock extends WaterloggableSingleSlotBloc
     // Hitting Block ///////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
+    public boolean canMineBlock(BlockState state, World world, BlockPos pos, PlayerEntity miner) {
+        if (world.getBlockEntity(pos) instanceof HittableContainerBlockEntity questionBlock) {
+            return (questionBlock.isEmpty() && !state.get(BOUNCING)) || !canAttackTrigger(state, pos, world, miner);
+        }
+        return true;
+    }
+
+    @Override
     public void jumpIntoBlock(World world, BlockPos pos, BlockState state, @Nullable Entity entity) {
-        hitBlock(world, pos, state, entity, Direction.UP, true);
+        if (!world.isClient()) {
+            hitBlock(world, pos, state, entity, Direction.UP, true);
+        }
     }
 
     @Override
     public void attack(BlockState blockState, BlockPos blockPos, World world, PlayerEntity playerEntity) {
-        if (canAttackTrigger(blockState, blockPos, world, playerEntity) && !(playerEntity.isCreative() || playerEntity.getMainHandStack().getItem() instanceof ToolItem)) {
+        if (!world.isClient() && canAttackTrigger(blockState, blockPos, world, playerEntity)) {
             HitResult hitResult = playerEntity.raycast(5, 0, false);
             if (hitResult instanceof BlockHitResult blockHitResult) {
                 hitBlock(world, blockPos, blockState, playerEntity, blockHitResult.getSide().getOpposite(), false);
@@ -96,14 +110,13 @@ public abstract class HittableContainerBlock extends WaterloggableSingleSlotBloc
     }
 
     protected boolean canAttackTrigger(BlockState blockState, BlockPos blockPos, World world, PlayerEntity playerEntity) {
-        return true;
+        return !(playerEntity.getMainHandStack().getItem() instanceof ToolItem);
     }
 
     @Override
     public void onProjectileHit(World world, BlockState state, BlockHitResult hit, ProjectileEntity projectile) {
         if (!world.isClient() && canProjectileTrigger(world, state, hit, projectile)) {
             hitBlock(world, hit.getBlockPos(), state, projectile, hit.getSide().getOpposite(), true);
-            world.getPlayers().forEach(player -> UpdateProjectileHitS2CPacket.send(player, hit.getBlockPos(), hit.getSide().getOpposite(), true));
         }
     }
 
@@ -112,6 +125,16 @@ public abstract class HittableContainerBlock extends WaterloggableSingleSlotBloc
     }
 
     public void hitBlock(World world, BlockPos pos, BlockState state, @Nullable Entity entity, Direction direction, boolean additionalHitSound) {
+        if (entity != null && !((entity instanceof PlayerEntity) || (entity instanceof Ownable ownable && ownable.getOwner() instanceof PlayerEntity))) {
+            if (!entity.canModifyAt(world, pos) && !world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING)) {
+                return;
+            }
+        }
+
+        if (!world.isClient()) {
+            world.getPlayers().forEach(player -> UpdateBlockHitS2CPacket.send(player, pos, direction, additionalHitSound));
+        }
+
         if (world.getBlockEntity(pos) instanceof HittableContainerBlockEntity questionBlock) {
             questionBlock.setBounceDirection(direction);
 
@@ -134,18 +157,26 @@ public abstract class HittableContainerBlock extends WaterloggableSingleSlotBloc
                     }
                 }
 
-                if (direction == Direction.UP) {
+                if (direction == Direction.UP && dealBounceDamage()) {
                     world.getOtherEntities(null, new Box(pos).offset(0, 0.5, 0)).forEach(target -> {
                         target.setVelocity(target.getVelocity().add(0, 0.5, 0));
                         target.velocityDirty = true;
 
                         if (target instanceof LivingEntity living) {
-                            living.damage(ZeldaDamageTypes.of(world, entity, ZeldaDamageTypes.QUESTION_BLOCK), 2);
+                            living.damage(ZeldaDamageTypes.of(world, entity, getBounceDamageType()), 2);
                         }
                     });
                 }
             }
         }
+    }
+
+    protected boolean dealBounceDamage() {
+        return true;
+    }
+
+    protected RegistryKey<DamageType> getBounceDamageType() {
+        return ZeldaDamageTypes.QUESTION_BLOCK;
     }
 
     public void postBlockHit(World world, BlockPos pos, BlockState blockState, HittableContainerBlockEntity blockEntity) {
@@ -265,5 +296,9 @@ public abstract class HittableContainerBlock extends WaterloggableSingleSlotBloc
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new HittableContainerBlockEntity(pos, state);
+    }
+
+    public int getBounceTimer() {
+        return 8;
     }
 }

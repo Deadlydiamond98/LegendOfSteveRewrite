@@ -37,7 +37,7 @@ public class CrateEntity extends PushableBlockEntity implements VehicleInventory
         if (this.isSubmergedInWater()) {
             this.setVelocity(this.getVelocity().add(0, 0.02, 0));
         } else {
-            if (this.isTouchingWater() && !this.hasNoGravity()) {
+            if ((this.isTouchingWater()) && !this.hasNoGravity()) {
                 this.setVelocity(this.getVelocity().add(0, -0.03, 0));
             } else {
                 super.applyGravity();

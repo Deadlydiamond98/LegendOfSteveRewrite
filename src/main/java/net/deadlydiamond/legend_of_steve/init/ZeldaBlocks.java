@@ -1,9 +1,9 @@
 package net.deadlydiamond.legend_of_steve.init;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
-import net.deadlydiamond.legend_of_steve.common.blocks.MasterBarrelBlock;
-import net.deadlydiamond.legend_of_steve.common.blocks.container.LootPotBlock;
-import net.deadlydiamond.legend_of_steve.common.blocks.container.hittable.QuestionBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.container.MasterBarrelBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.container.single.LootPotBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.container.single.hittable.HittableContainerBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.ConnectedPillarBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.GirderBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.glowing.FairyLamp;
@@ -18,7 +18,6 @@ import net.deadlydiamond.legend_of_steve.common.blocksets.StrangeDirtBricksBlock
 import net.deadlydiamond.legend_of_steve.common.entities.living.FairyColor;
 import net.deadlydiamond.legend_of_steve.common.items.block.CrateItem;
 import net.deadlydiamond.legend_of_steve.common.items.block.LootPotItem;
-import net.deadlydiamond.legend_of_steve.common.items.block.PushableBlockItem;
 import net.deadlydiamond.legend_of_steve.worldgen.sapling.DekuSaplingGenerator;
 import net.deadlydiamond98.koalalib.common.blocksets.BaseStairSlabBlockset;
 import net.deadlydiamond98.koalalib.common.blocksets.BaseStairSlabWallBlockset;
@@ -136,7 +135,7 @@ public class ZeldaBlocks {
     public static final ReinforcedBlockset REINFORCED_STRANGE_BLUE_DIRT = new ReinforcedBlockset(LegendOfSteve.MOD_ID, "reinforced_strange_blue_dirt", STRANGE_BLUE_DIRT_SETTINGS);
     public static final Block STRANGE_BLUE_DIRT_PILLAR = register("strange_blue_dirt_pillar", new ConnectedPillarBlock(STRANGE_BLUE_DIRT_SETTINGS));
 
-    public static final Block QUESTION_BLOCK = register("question_block", new QuestionBlock(QUESTION_BLOCK_SETTINGS));
+    public static final Block QUESTION_BLOCK = register("question_block", new HittableContainerBlock(QUESTION_BLOCK_SETTINGS));
 
     // TEKTILES
     public static final BaseStairSlabBlockset RED_TEKTILES = new BaseStairSlabBlockset(LegendOfSteve.MOD_ID, "red_tektiles", RED_TEKTILES_SETTINGS);

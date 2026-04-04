@@ -7,7 +7,7 @@ import net.deadlydiamond.legend_of_steve.networking.s2c.question_block.JumpIntoB
 import net.deadlydiamond.legend_of_steve.networking.s2c.UpdateEntityStunS2CPacket;
 import net.deadlydiamond.legend_of_steve.networking.s2c.pushable_block.AddBlockBreakCooldownS2CPacket;
 import net.deadlydiamond.legend_of_steve.networking.s2c.pushable_block.UpdatePushableBlockBreakProgressS2CPacket;
-import net.deadlydiamond.legend_of_steve.networking.s2c.question_block.UpdateProjectileHitS2CPacket;
+import net.deadlydiamond.legend_of_steve.networking.s2c.question_block.UpdateBlockHitS2CPacket;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 
@@ -25,7 +25,7 @@ public class ZeldaNetworking {
             ClientPlayNetworking.registerGlobalReceiver(UpdatePushableBlockBreakProgressS2CPacket.ID, UpdatePushableBlockBreakProgressS2CPacket.Handler::receive);
             ClientPlayNetworking.registerGlobalReceiver(AddBlockBreakCooldownS2CPacket.ID, AddBlockBreakCooldownS2CPacket.Handler::receive);
             ClientPlayNetworking.registerGlobalReceiver(JumpIntoBlockS2CPacket.ID, JumpIntoBlockS2CPacket.Handler::receive);
-            ClientPlayNetworking.registerGlobalReceiver(UpdateProjectileHitS2CPacket.ID, UpdateProjectileHitS2CPacket.Handler::receive);
+            ClientPlayNetworking.registerGlobalReceiver(UpdateBlockHitS2CPacket.ID, UpdateBlockHitS2CPacket.Handler::receive);
         }
     }
 }

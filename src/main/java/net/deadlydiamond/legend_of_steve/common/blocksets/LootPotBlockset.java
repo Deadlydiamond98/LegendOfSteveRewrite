@@ -1,6 +1,6 @@
 package net.deadlydiamond.legend_of_steve.common.blocksets;
 
-import net.deadlydiamond.legend_of_steve.common.blocks.container.LootPotBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.container.single.LootPotBlock;
 import net.deadlydiamond.legend_of_steve.common.items.block.LootPotItem;
 import net.deadlydiamond98.koalalib.common.blocksets.AbstractBlockset;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;

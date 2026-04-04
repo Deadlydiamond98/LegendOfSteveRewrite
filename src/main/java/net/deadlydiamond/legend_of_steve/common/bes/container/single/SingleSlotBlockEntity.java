@@ -1,6 +1,6 @@
 package net.deadlydiamond.legend_of_steve.common.bes.container.single;
 
-import net.deadlydiamond.legend_of_steve.common.blocks.container.SingleSlotBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.container.single.SingleSlotBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.entity.LootableContainerBlockEntity;

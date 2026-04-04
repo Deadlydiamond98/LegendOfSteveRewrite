@@ -164,7 +164,7 @@
   "block.legend_of_steve.strange_dirt_brick_stairs": "Strange Dirt Brick Stairs",
   "block.legend_of_steve.strange_dirt_brick_wall": "Strange Dirt Brick Wall",
   "block.legend_of_steve.reinforced_strange_dirt": "Reinforced Strange Dirt",
-  "item.legend_of_steve.pushable_reinforced_strange_dirt": "Pushable Reinforced Strange Dirt",
+  "item.legend_of_steve.pushable_reinforced_strange_dirt": "Reinforced Strange Dirt",
   "block.legend_of_steve.strange_dirt_pillar": "Strange Dirt Pillar",
 
   "block.legend_of_steve.strange_blue_dirt": "Strange Blue Dirt",
@@ -181,7 +181,7 @@
   "block.legend_of_steve.strange_blue_dirt_brick_stairs": "Strange Blue Dirt Brick Stairs",
   "block.legend_of_steve.strange_blue_dirt_brick_wall": "Strange Blue Dirt Brick Wall",
   "block.legend_of_steve.reinforced_strange_blue_dirt": "Reinforced Strange Blue Dirt",
-  "item.legend_of_steve.pushable_reinforced_strange_blue_dirt": "Pushable Reinforced Strange Blue Dirt",
+  "item.legend_of_steve.pushable_reinforced_strange_blue_dirt": "Reinforced Strange Blue Dirt",
   "block.legend_of_steve.strange_blue_dirt_pillar": "Strange Blue Dirt Pillar",
 
   "block.legend_of_steve.question_block": "Question Block",
@@ -200,6 +200,8 @@
   "block.legend_of_steve.small_red_tektile_slab": "Small Red Tektile Slab",
   "block.legend_of_steve.small_red_tektile_stairs": "Small Red Tektile Stairs",
 
+  "item.legend_of_steve.fairy_spawn_egg": "Fairy Spawn Egg",
+
   "entity.legend_of_steve.bomb": "Bomb",
   "entity.legend_of_steve.crate": "Crate",
   "entity.legend_of_steve.deku_nut": "Deku Nut",
@@ -207,7 +209,7 @@
   "entity.legend_of_steve.pushable_block": "Pushable Block",
   "entity.legend_of_steve.thrown_pot": "Thrown Pot",
 
-  "item.legend_of_steve.fairy_spawn_egg": "Fairy Spawn Egg",
+  "tooltip.legend_of_steve.pushable": "Pushable",
 
   "subtitles.legend_of_steve.block.bomb_flower.picked": "Bomb Flower Picked",
   "subtitles.legend_of_steve.entity.bomb.secret_jingle": "Secret room revealed",

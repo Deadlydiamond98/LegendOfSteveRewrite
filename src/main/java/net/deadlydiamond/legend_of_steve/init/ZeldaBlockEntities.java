@@ -14,12 +14,6 @@ import net.minecraft.registry.Registry;
 
 public class ZeldaBlockEntities {
 
-    // RENDERING BLOCK ENTITIES ////////////////////////////////////////////////////////////////////////////////////////
-
-    public static final BlockEntityType<BombFlowerBlockEntity> BOMB_FLOWER = register("bomb_flower", BombFlowerBlockEntity::new,
-            ZeldaBlocks.BOMB_FLOWER
-    );
-
     // STORAGE BLOCK ENTITIES //////////////////////////////////////////////////////////////////////////////////////////
 
     public static final BlockEntityType<MasterBarrelBlockEntity> MASTER_BARREL = register("master_barrel", MasterBarrelBlockEntity::new,
@@ -32,8 +26,16 @@ public class ZeldaBlockEntities {
 
     public static final BlockEntityType<HittableContainerBlockEntity> HITTABLE_CONTAINER_BLOCK = register("hittable_container_block", HittableContainerBlockEntity::new,
             ZeldaBlocks.QUESTION_BLOCK,
+            ZeldaBlocks.STRANGE_DIRT_BRICKS.base,
             ZeldaBlocks.STRANGE_DIRT_BRICKS.container,
+            ZeldaBlocks.STRANGE_BLUE_DIRT_BRICKS.base,
             ZeldaBlocks.STRANGE_BLUE_DIRT_BRICKS.container
+    );
+
+    // OTHER BLOCK ENTITIES ////////////////////////////////////////////////////////////////////////////////////////////
+
+    public static final BlockEntityType<BombFlowerBlockEntity> BOMB_FLOWER = register("bomb_flower", BombFlowerBlockEntity::new,
+            ZeldaBlocks.BOMB_FLOWER
     );
 
     // HELPER METHODS //////////////////////////////////////////////////////////////////////////////////////////////////

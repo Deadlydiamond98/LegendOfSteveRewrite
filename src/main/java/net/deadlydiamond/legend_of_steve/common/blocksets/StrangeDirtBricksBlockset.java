@@ -1,6 +1,7 @@
 package net.deadlydiamond.legend_of_steve.common.blocksets;
 
-import net.deadlydiamond.legend_of_steve.common.blocks.container.hittable.StrangeDirtBrickContainer;
+import net.deadlydiamond.legend_of_steve.common.blocks.container.single.hittable.HittableBrickBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.container.single.hittable.HittableContainerBlock;
 import net.deadlydiamond.legend_of_steve.util.datagen.model.ZeldaBlockModelDatagenUtil;
 import net.deadlydiamond98.koalalib.common.blocksets.AbstractBlockset;
 import net.deadlydiamond98.koalalib.util.datagen.BlockModelDatagenUtil;
@@ -35,8 +36,8 @@ public class StrangeDirtBricksBlockset extends AbstractBlockset {
     public StrangeDirtBricksBlockset(String modID, String id, AbstractBlock.Settings settings, boolean stripEndS) {
         super(modID, id);
         this.stripEndS = stripEndS;
-        this.base = this.register(modID, this.id(), new Block(settings));
-        this.container = this.register(modID, this.id() + "_container", new StrangeDirtBrickContainer(settings));
+        this.base = this.register(modID, this.id(), new HittableBrickBlock(settings));
+        this.container = this.register(modID, this.id() + "_container", new HittableContainerBlock(settings));
         this.stair = this.register(modID, this.id(this.stripEndS()) + "_stairs", new StairsBlock(this.base.getDefaultState(), settings));
         this.slab = this.register(modID, this.id(this.stripEndS()) + "_slab", new SlabBlock(settings));
         this.wall = this.register(modID, this.id(this.stripEndS()) + "_wall", new WallBlock(settings));
@@ -64,7 +65,6 @@ public class StrangeDirtBricksBlockset extends AbstractBlockset {
         RecipeProvider.offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, this.slab, this.base);
         RecipeDatagenUtil.createStairRecipe(exporter, this.stair, this.base);
         RecipeProvider.offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, this.wall, this.base);
-        RecipeProvider.offerSingleOutputShapelessRecipe(exporter, this.container, this.base, "building_blocks");
     }
 
     public void generateRecipesStone(Consumer<RecipeJsonProvider> exporter, Block... additionalInputs) {
@@ -77,7 +77,6 @@ public class StrangeDirtBricksBlockset extends AbstractBlockset {
             Block block = var3[var5];
             this.stoneCutterRecipes(exporter, block);
         }
-
     }
 
     protected void stoneCutterRecipes(Consumer<RecipeJsonProvider> exporter, Block block) {
@@ -85,7 +84,6 @@ public class StrangeDirtBricksBlockset extends AbstractBlockset {
             RecipeProvider.offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, this.base, block);
         }
 
-        RecipeProvider.offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, this.container, block);
         RecipeProvider.offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, this.stair, block);
         RecipeProvider.offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, this.slab, block, 2);
         RecipeProvider.offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, this.wall, block);

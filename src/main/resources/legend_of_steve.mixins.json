@@ -25,10 +25,11 @@
     "common.fluid.LavaFluidMixin",
     "common.fluid.WaterFluidMixin",
     "common.handler.CraftingScreenHandlerMixin",
-    "common.item.BowItemMixin",
-    "common.item.CrossbowItemMixin",
-    "common.item.RangedWeaponItemMixin",
+    "common.item.ItemMixin",
     "common.item.SmithingTemplateItemMixin",
+    "common.item.bow.BowItemMixin",
+    "common.item.bow.CrossbowItemMixin",
+    "common.item.bow.RangedWeaponItemMixin",
     "player.PlayerInventoryMixin"
   ],
   "injectors": {

@@ -16,6 +16,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtHelper;
 import net.minecraft.particle.BlockStateParticleEffect;
+import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.registry.RegistryKeys;
@@ -24,9 +25,11 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 
 import java.util.List;
@@ -46,7 +49,7 @@ public class PushableBlockEntity extends LerpedMovmentEntity implements IHitEnti
         this.refreshPosition();
     }
 
-    // PUSHING /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // MOVING //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public void tick() {
@@ -72,50 +75,23 @@ public class PushableBlockEntity extends LerpedMovmentEntity implements IHitEnti
             }
         }
 
-        // Move Block
-
         List<Entity> pushers = getWorld().getOtherEntities(this, this.getBoundingBox().expand(0.25f, 0, 0.25f),
-                EntityPredicates.EXCEPT_SPECTATOR.and(entity -> entity instanceof PlayerEntity));
+                EntityPredicates.EXCEPT_SPECTATOR);
 
         pushers.forEach(entity -> {
-            if (entity instanceof PlayerEntity player && (this.isOnGround() || this.isSubmergedInWater()) &&
-                    ((this.getPos().y <= player.getPos().getY() && player.isOnGround()) || player.isTouchingWater())) {
-                push(player);
+            if (entity instanceof LivingEntity living && (this.isOnGround() || this.isSubmergedInWater()) &&
+                    ((this.getPos().y <= living.getPos().getY() && living.isOnGround()) || living.isTouchingWater())) {
+                if (entity instanceof PlayerEntity) {
+                    push(living);
+                }
             }
         });
 
 
         Vec3d offset = this.getPos().subtract(this.prevX, this.prevY, this.prevZ);
-
-        this.updatePassengers(entity -> !pushers.contains(entity), entity -> {
-            entity.setPosition(entity.getPos().add(offset.x, 0, offset.z));
-
-            if (entity instanceof LivingEntity) {
-                if (!(entity.getY() < getBoundingBox().minY)) {
-                    double thisFrameIntersectingY = entity.getY() - getBoundingBox().maxY;
-                    if (thisFrameIntersectingY < 0) {
-                        entity.setPosition(entity.getX(), getBoundingBox().maxY + 1.0e-7, entity.getZ());
-                    }
-
-                    double nextFrameIntersectingY = entity.getVelocity().y;
-                    if (nextFrameIntersectingY < 0) {
-                        entity.addVelocity(0, -nextFrameIntersectingY, 0);
-                    }
-                    entity.addVelocity(0, this.getVelocity().y - entity.getVelocity().y, 0);
-                }
-            }
-
-            entity.setOnGround(true);
-            entity.velocityDirty = true;
-        });
+        movePassengers(pushers, offset);
 
         this.velocityDirty = true;
-    }
-
-    protected void updatePassengers(Predicate<? super Entity> predicate, Consumer<Entity> passengers) {
-        getWorld().getOtherEntities(this, getBoundingBox().expand(1.0E-7, 0.15, 1.0E-7), predicate.and(
-                object -> !(object instanceof PushableBlockEntity)
-        )).forEach(passengers::accept);
     }
 
     protected void applyGravity() {
@@ -124,7 +100,8 @@ public class PushableBlockEntity extends LerpedMovmentEntity implements IHitEnti
         }
     }
 
-    public void push(PlayerEntity entity) {
+    // PUSHING /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public void push(LivingEntity entity) {
         double e;
         if (this.isConnectedThroughVehicle(entity)) {
             return;
@@ -159,7 +136,7 @@ public class PushableBlockEntity extends LerpedMovmentEntity implements IHitEnti
         }
     }
 
-    private Direction getDirection(PlayerEntity player, Vec3d center) {
+    private Direction getDirection(LivingEntity player, Vec3d center) {
         double dx = player.getX() - (center.getX());
         double dz = player.getZ() - (center.getZ());
 
@@ -180,6 +157,44 @@ public class PushableBlockEntity extends LerpedMovmentEntity implements IHitEnti
             direction = Direction.EAST;
         }
         return direction;
+    }
+
+    private void movePassengers(List<Entity> pushers, Vec3d offset) {
+        this.updatePassengers(entity -> !pushers.contains(entity), entity -> {
+            if (entity instanceof LivingEntity) {
+                stopVerticalClipping(entity);
+            }
+            entity.setPosition(entity.getPos().add(offset.x, 0, offset.z));
+            entity.setOnGround(true);
+            entity.velocityDirty = true;
+        });
+    }
+
+    /*
+        This method prevents the entity from having jittery movement when on top!
+        Credits to BetterWithTime, which I used to help get this working
+        Licensed under: Creative Commons Attribution 4.0 International
+        https://github.com/RatherBeLunar/BetterWithTime/tree/main
+     */
+    private void stopVerticalClipping(Entity entity) {
+        if (!(entity.getY() < getBoundingBox().minY)) {
+            double thisFrameIntersectingY = entity.getY() - getBoundingBox().maxY;
+            if (thisFrameIntersectingY < 0) {
+                entity.setPosition(entity.getX(), getBoundingBox().maxY + 1.0e-7, entity.getZ());
+            }
+
+            double nextFrameIntersectingY = entity.getVelocity().y;
+            if (nextFrameIntersectingY < 0) {
+                entity.addVelocity(0, -nextFrameIntersectingY, 0);
+            }
+            entity.addVelocity(0, this.getVelocity().y - entity.getVelocity().y, 0);
+        }
+    }
+
+    protected void updatePassengers(Predicate<? super Entity> predicate, Consumer<Entity> passengers) {
+        getWorld().getOtherEntities(this, getBoundingBox().expand(0, 0.15, 0),
+                predicate.and(object -> !(object instanceof PushableBlockEntity))
+        ).forEach(passengers::accept);
     }
 
     // MINING //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -262,7 +277,37 @@ public class PushableBlockEntity extends LerpedMovmentEntity implements IHitEnti
     public void handleStatus(byte status) {
         super.handleStatus(status);
         if (status == 3) {
-            getWorld().addBlockBreakParticles(getBlockPos(), getBlock());
+            if (!getBlock().isAir() && getBlock().hasBlockBreakParticles()) {
+                ParticleEffect particleEffect = new BlockStateParticleEffect(ParticleTypes.BLOCK, getBlock());
+                Box box = this.getBoundingBox();
+                Vec3d pos = new Vec3d(box.minX, box.minY, box.minZ);
+
+                this.getBlock().getOutlineShape(this.getWorld(), this.getBlockPos()).forEachBox((minX, minY, minZ, maxX, maxY, maxZ) -> {
+                    double dx = Math.min(1.0, maxX - minX);
+                    double e = Math.min(1.0, maxY - minY);
+                    double f = Math.min(1.0, maxZ - minZ);
+                    int i = Math.max(2, MathHelper.ceil(dx / 0.25));
+                    int j = Math.max(2, MathHelper.ceil(e / 0.25));
+                    int k = Math.max(2, MathHelper.ceil(f / 0.25));
+
+                    for (int l = 0; l < i; l++) {
+                        for (int m = 0; m < j; m++) {
+                            for (int n = 0; n < k; n++) {
+                                double g = (l + 0.5) / i;
+                                double h = (m + 0.5) / j;
+                                double o = (n + 0.5) / k;
+                                double p = g * dx + minX;
+                                double q = h * e + minY;
+                                double r = o * f + minZ;
+                                this.getWorld().addParticle(particleEffect,
+                                        pos.getX() + p, pos.getY() + q, pos.getZ() + r,
+                                        g - 0.5, h - 0.5, o - 0.5
+                                );
+                            }
+                        }
+                    }
+                });
+            }
         }
     }
 

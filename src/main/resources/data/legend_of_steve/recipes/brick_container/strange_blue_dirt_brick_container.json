@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "DDD",
+    "D D",
+    "DDD"
+  ],
+  "key": {
+    "D": {
+      "item": "legend_of_steve:strange_blue_dirt_bricks"
+    }
+  },
+  "result": {
+    "item": "legend_of_steve:strange_blue_dirt_bricks_container",
+    "count": 8
+  }
+}

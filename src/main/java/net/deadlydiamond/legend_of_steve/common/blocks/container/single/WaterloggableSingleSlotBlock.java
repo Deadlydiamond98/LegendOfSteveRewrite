@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.common.blocks.container;
+package net.deadlydiamond.legend_of_steve.common.blocks.container.single;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

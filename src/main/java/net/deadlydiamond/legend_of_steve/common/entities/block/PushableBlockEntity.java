@@ -1,7 +1,10 @@
 package net.deadlydiamond.legend_of_steve.common.entities.block;
 
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
 import net.deadlydiamond.legend_of_steve.networking.s2c.pushable_block.AddBlockBreakCooldownS2CPacket;
 import net.deadlydiamond.legend_of_steve.networking.s2c.pushable_block.UpdatePushableBlockBreakProgressS2CPacket;
+import net.deadlydiamond.legend_of_steve.util.mixinterfaces.IPushBlockMoving;
 import net.deadlydiamond98.koalalib.common.entity.IHitEntityAction;
 import net.deadlydiamond98.koalalib.common.entity.LerpedMovmentEntity;
 import net.minecraft.block.Block;
@@ -29,8 +32,8 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
+import net.minecraft.world.event.GameEvent;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -38,6 +41,7 @@ import java.util.function.Predicate;
 
 public class PushableBlockEntity extends LerpedMovmentEntity implements IHitEntityAction {
     private static final TrackedData<BlockState> BLOCK = DataTracker.registerData(PushableBlockEntity.class, TrackedDataHandlerRegistry.BLOCK_STATE);
+
     private ItemStack itemStack = ItemStack.EMPTY;
     public float blockBreakingSoundCooldown;
     public float breakingProgress;
@@ -86,7 +90,6 @@ public class PushableBlockEntity extends LerpedMovmentEntity implements IHitEnti
                 }
             }
         });
-
 
         Vec3d offset = this.getPos().subtract(this.prevX, this.prevY, this.prevZ);
         movePassengers(pushers, offset);
@@ -164,7 +167,11 @@ public class PushableBlockEntity extends LerpedMovmentEntity implements IHitEnti
             if (entity instanceof LivingEntity) {
                 stopVerticalClipping(entity);
             }
-            entity.setPosition(entity.getPos().add(offset.x, 0, offset.z));
+
+            if (entity instanceof IPushBlockMoving pushBlockMoving) {
+                pushBlockMoving.legend_of_steve$applyPushBlockMovement(new Vec3d(offset.x, 0, offset.z));
+            }
+
             entity.setOnGround(true);
             entity.velocityDirty = true;
         });
@@ -175,7 +182,7 @@ public class PushableBlockEntity extends LerpedMovmentEntity implements IHitEnti
         Credits to BetterWithTime, which I used to help get this working
         Licensed under: Creative Commons Attribution 4.0 International
         https://github.com/RatherBeLunar/BetterWithTime/tree/main
-     */
+    */
     private void stopVerticalClipping(Entity entity) {
         if (!(entity.getY() < getBoundingBox().minY)) {
             double thisFrameIntersectingY = entity.getY() - getBoundingBox().maxY;
@@ -192,9 +199,7 @@ public class PushableBlockEntity extends LerpedMovmentEntity implements IHitEnti
     }
 
     protected void updatePassengers(Predicate<? super Entity> predicate, Consumer<Entity> passengers) {
-        getWorld().getOtherEntities(this, getBoundingBox().expand(0, 0.15, 0),
-                predicate.and(object -> !(object instanceof PushableBlockEntity))
-        ).forEach(passengers::accept);
+        getWorld().getOtherEntities(this, getBoundingBox().offset(0, 0.15, 0), predicate).forEach(passengers::accept);
     }
 
     // MINING //////////////////////////////////////////////////////////////////////////////////////////////////////////

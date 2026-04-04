@@ -1,7 +1,11 @@
 package net.deadlydiamond.legend_of_steve.mixin.common.entity.base;
 
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.deadlydiamond.legend_of_steve.common.blocks.IJumpIntoAction;
 import net.deadlydiamond.legend_of_steve.networking.s2c.question_block.JumpIntoBlockS2CPacket;
+import net.deadlydiamond.legend_of_steve.util.mixinterfaces.IPushBlockMoving;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.MovementType;
@@ -14,18 +18,33 @@ import net.minecraft.world.RaycastContext;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Entity.class)
-public abstract class EntityMixin {
+public abstract class EntityMixin implements IPushBlockMoving {
     @Shadow protected abstract Vec3d adjustMovementForCollisions(Vec3d movement);
 
-    // Upwards Block Collisions ////////////////////////////////////////////////////////////////////////////////////////
+    @Unique private Vec3d legend_of_steve$pushBlockMovement = Vec3d.ZERO;
+
+    @WrapOperation(method = "move", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;adjustMovementForCollisions(Lnet/minecraft/util/math/Vec3d;)Lnet/minecraft/util/math/Vec3d;"))
+    private Vec3d legend_of_steve$moveOnPushableBlock(Entity instance, Vec3d movement, Operation<Vec3d> original) {
+        Vec3d pushBlockMovement = this.legend_of_steve$pushBlockMovement;
+        this.legend_of_steve$pushBlockMovement = Vec3d.ZERO;
+        return original.call(instance, movement.add(pushBlockMovement));
+    }
+
+    @Override
+    public void legend_of_steve$applyPushBlockMovement(Vec3d movement) {
+        this.legend_of_steve$pushBlockMovement = movement;
+    }
+
+    // Hit Blocks from Below
 
     @Inject(method = "move", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;setPosition(DDD)V", ordinal = 1))
-    private void legend_of_steve$move(MovementType movementType, Vec3d movement, CallbackInfo ci) {
+    private void legend_of_steve$moveHitBlockBelow(MovementType movementType, Vec3d movement, CallbackInfo ci) {
         Entity entity = (Entity) (Object) this;
         World world = entity.getWorld();
 

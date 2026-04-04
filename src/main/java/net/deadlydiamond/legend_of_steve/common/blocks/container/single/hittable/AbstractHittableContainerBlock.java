@@ -153,7 +153,7 @@ public abstract class AbstractHittableContainerBlock extends WaterloggableSingle
                     }
 
                     if (getHittingSound() != null) {
-                        world.playSound(null, pos, getHittingSound(), SoundCategory.BLOCKS, 1, 1);
+                        world.playSound(null, pos, getHittingSound(), SoundCategory.BLOCKS, 1.5f, 1);
                     }
                 }
 

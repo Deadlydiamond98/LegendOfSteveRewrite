@@ -3,7 +3,6 @@ package net.deadlydiamond.legend_of_steve.common.blocks.container.single.hittabl
 import net.deadlydiamond.legend_of_steve.common.bes.container.single.HittableContainerBlockEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;

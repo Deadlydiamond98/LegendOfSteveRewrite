@@ -77,6 +77,18 @@ public class HittableContainerBlockEntity extends SingleSlotBlockEntity {
         entity.tick(world, pos, blockState);
     }
 
+    protected boolean shouldUpdateHitStateOnMarkDirty() {
+        return true;
+    }
+
+    @Override
+    public void markDirty() {
+        if (this.world != null && shouldUpdateHitStateOnMarkDirty()) {
+            this.world.setBlockState(this.pos, getCachedState().with(ZeldaProperties.HIT, this.isEmpty()));
+        }
+        super.markDirty();
+    }
+
     protected int timerMax() {
         return getBlock().getBounceTimer();
     }

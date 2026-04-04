@@ -5,6 +5,7 @@ import net.deadlydiamond.legend_of_steve.common.bes.BombFlowerBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.MasterBarrelBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.single.LootPotBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.single.HittableContainerBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.bes.container.single.SwordPedestalBlockEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntity;
@@ -22,6 +23,14 @@ public class ZeldaBlockEntities {
 
     public static final BlockEntityType<LootPotBlockEntity> LOOT_POT = register("loot_pot", LootPotBlockEntity::new,
             ZeldaBlocks.DYED_LOOT_POTS.getAll(ZeldaBlocks.LOOT_POT)
+    );
+
+    public static final BlockEntityType<SwordPedestalBlockEntity> SWORD_PEDESTAL = register("sword_pedestal", SwordPedestalBlockEntity::new,
+            ZeldaBlocks.STONE_SWORD_PEDESTAL,
+            ZeldaBlocks.DEEPSLATE_SWORD_PEDESTAL,
+            ZeldaBlocks.BLACKSTONE_SWORD_PEDESTAL,
+            ZeldaBlocks.QUARTZ_SWORD_PEDESTAL,
+            ZeldaBlocks.FAIRY_MARBLE_SWORD_PEDESTAL
     );
 
     public static final BlockEntityType<HittableContainerBlockEntity> HITTABLE_CONTAINER_BLOCK = register("hittable_container_block", HittableContainerBlockEntity::new,

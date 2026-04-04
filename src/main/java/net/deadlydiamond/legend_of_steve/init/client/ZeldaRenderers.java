@@ -3,8 +3,9 @@ package net.deadlydiamond.legend_of_steve.init.client;
 import net.deadlydiamond.legend_of_steve.client.models.entity.BombEntityModel;
 import net.deadlydiamond.legend_of_steve.client.models.entity.FairyEntityModel;
 import net.deadlydiamond.legend_of_steve.client.models.feature.QuiverModel;
-import net.deadlydiamond.legend_of_steve.client.rendering.block.BombFlowerRenderer;
-import net.deadlydiamond.legend_of_steve.client.rendering.block.QuestionBlockRenderer;
+import net.deadlydiamond.legend_of_steve.client.rendering.block.BombFlowerBlockEntityRenderer;
+import net.deadlydiamond.legend_of_steve.client.rendering.block.HittableContainerBlockEntityRenderer;
+import net.deadlydiamond.legend_of_steve.client.rendering.block.SwordPedestalBlockEntityRenderer;
 import net.deadlydiamond.legend_of_steve.client.rendering.entity.PushableBlockEntityRenderer;
 import net.deadlydiamond.legend_of_steve.client.rendering.entity.projectile.BombEntityRenderer;
 import net.deadlydiamond.legend_of_steve.client.rendering.entity.projectile.ThrownPotEntityRenderer;
@@ -33,8 +34,9 @@ public class ZeldaRenderers {
     }
 
     private static void registerBlockEntityRenderers() {
-        BlockEntityRendererFactories.register(ZeldaBlockEntities.BOMB_FLOWER, BombFlowerRenderer::new);
-        BlockEntityRendererFactories.register(ZeldaBlockEntities.HITTABLE_CONTAINER_BLOCK, QuestionBlockRenderer::new);
+        BlockEntityRendererFactories.register(ZeldaBlockEntities.BOMB_FLOWER, BombFlowerBlockEntityRenderer::new);
+        BlockEntityRendererFactories.register(ZeldaBlockEntities.HITTABLE_CONTAINER_BLOCK, HittableContainerBlockEntityRenderer::new);
+        BlockEntityRendererFactories.register(ZeldaBlockEntities.SWORD_PEDESTAL, SwordPedestalBlockEntityRenderer::new);
     }
 
     private static void registerModelLayers() {

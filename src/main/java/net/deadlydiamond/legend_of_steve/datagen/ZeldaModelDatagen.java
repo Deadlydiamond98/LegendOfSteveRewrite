@@ -14,7 +14,6 @@ import net.minecraft.block.Blocks;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.client.ModelIds;
-import net.minecraft.data.client.Models;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
@@ -35,6 +34,14 @@ public class ZeldaModelDatagen extends FabricModelProvider {
                         generator, block, Registries.BLOCK.get(new Identifier(color + "_terracotta"))
                 )
         );
+
+        // SWORD PEDESTALS /////////////////////////////////////////////////////////////////////////////////////////////
+        ZeldaBlockModelDatagenUtil.registerSwordPedestal(generator, ZeldaBlocks.STONE_SWORD_PEDESTAL);
+        ZeldaBlockModelDatagenUtil.registerSwordPedestal(generator, ZeldaBlocks.DEEPSLATE_SWORD_PEDESTAL);
+        ZeldaBlockModelDatagenUtil.registerSwordPedestal(generator, ZeldaBlocks.BLACKSTONE_SWORD_PEDESTAL);
+        ZeldaBlockModelDatagenUtil.registerSwordPedestal(generator, ZeldaBlocks.QUARTZ_SWORD_PEDESTAL);
+
+        // CRATE ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
         generator.registerSimpleCubeAll(ZeldaBlocks.CRATE);
         generator.registerParentedItemModel(ZeldaBlocks.CRATE_ITEM, ModelIds.getBlockModelId(ZeldaBlocks.CRATE));
@@ -127,7 +134,9 @@ public class ZeldaModelDatagen extends FabricModelProvider {
                 ZeldaItems.RAW_MASTER_ORE,
                 ZeldaItems.MASTER_SCRAP,
                 ZeldaItems.MASTER_INGOT,
-                ZeldaItems.ENCHANTED_SPRING_WATER_BUCKET
+                ZeldaItems.ENCHANTED_SPRING_WATER_BUCKET,
+                ZeldaItems.MUSIC_DISC_LEGEND,
+                ZeldaItems.DISC_FRAGMENT_LEGEND
         );
 
         ItemModelDatagenUtil.registerSpawnEggs(itemModelGenerator, ZeldaEntityTypes.SPAWN_EGGS.toArray(Item[]::new));

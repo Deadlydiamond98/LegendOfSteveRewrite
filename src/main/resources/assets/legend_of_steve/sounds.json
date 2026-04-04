@@ -45,6 +45,15 @@
     "subtitle": "subtitles.item.bottle.empty"
   },
 
+  "music_disc.legend": {
+      "sounds": [
+        {
+          "name": "legend_of_steve:music/legend",
+          "stream": true
+        }
+      ]
+  },
+
   "entity.bomb.jingle": {
     "sounds": [
       "legend_of_steve:block/secret_jingle"
@@ -880,5 +889,22 @@
       "block/barrel/close"
     ],
     "subtitle": "subtitles.legend_of_steve.block.crate.close"
+  },
+
+  "block.sword_pedestal.withdraw": {
+    "sounds": [
+      "legend_of_steve:block/sword_pedestal/withdraw1",
+      "legend_of_steve:block/sword_pedestal/withdraw2",
+      "legend_of_steve:block/sword_pedestal/withdraw3"
+    ],
+    "subtitle": "subtitles.legend_of_steve.block.sword_pedestal.withdraw"
+  },
+  "block.sword_pedestal.deposit": {
+    "sounds": [
+      "legend_of_steve:block/sword_pedestal/deposit1",
+      "legend_of_steve:block/sword_pedestal/deposit2",
+      "legend_of_steve:block/sword_pedestal/deposit3"
+    ],
+    "subtitle": "subtitles.legend_of_steve.block.sword_pedestal.deposit"
   }
 }

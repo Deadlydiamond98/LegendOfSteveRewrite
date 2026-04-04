@@ -12,6 +12,7 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 import org.jetbrains.annotations.Nullable;
+import org.w3c.dom.Text;
 
 import java.util.Optional;
 
@@ -21,11 +22,28 @@ public class ZeldaBlockModelDatagenUtil {
             Optional.empty(), TextureKey.ALL, TextureKey.PARTICLE
     );
 
+    public static final Model SWORD_PEDESTAL = new Model(Optional.of(LegendOfSteve.id("block/template_sword_pedestal")),
+            Optional.empty(), TextureKey.TOP, TextureKey.BOTTOM, TextureKey.SIDE, TextureKey.FRONT
+    );
+
     public static void registerPot(BlockStateModelGenerator blockStateModelGenerator, Block block, Block particle) {
         TextureMap textureMap = TextureMap.all(getPrefixedId(block, "loot_pot")).put(TextureKey.PARTICLE, TextureMap.all(particle).getTexture(TextureKey.PARTICLE));
 
         Identifier pot = LOOT_POT.upload(block, textureMap, blockStateModelGenerator.modelCollector);
         blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(block, pot));
+    }
+
+    public static void registerSwordPedestal(BlockStateModelGenerator blockStateModelGenerator, Block block) {
+        TextureMap textureMap = TextureMap.of(TextureKey.SIDE, TextureMap.getId(block))
+                .put(TextureKey.TOP, TextureMap.getSubId(block, "_top"))
+                .put(TextureKey.BOTTOM, TextureMap.getSubId(block, "_bottom"))
+                .put(TextureKey.FRONT, TextureMap.getSubId(block, "_front"));
+
+        Identifier pedestal = SWORD_PEDESTAL.upload(block, textureMap, blockStateModelGenerator.modelCollector);
+        blockStateModelGenerator.blockStateCollector.accept(
+                VariantsBlockStateSupplier.create(block, BlockStateVariant.create().put(VariantSettings.MODEL, pedestal))
+                        .coordinate(BlockStateModelGenerator.createNorthDefaultHorizontalRotationStates())
+        );
     }
 
     public static void registerHittableBlock(BlockStateModelGenerator blockStateModelGenerator, Block block, @Nullable Block base) {

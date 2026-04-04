@@ -91,7 +91,8 @@ public class ZeldaItemTagDatagen extends FabricTagProvider.ItemTagProvider {
                 ZeldaBlocks.CRACKED_FAIRY_MARBLE_BRICKS.asItem(),
                 ZeldaBlocks.CHISELED_FAIRY_MARBLE.asItem(),
                 ZeldaBlocks.FAIRY_MARBLE_PILLAR.asItem(),
-                ZeldaBlocks.SMOOTH_FAIRY_MARBLE.asItem()
+                ZeldaBlocks.SMOOTH_FAIRY_MARBLE.asItem(),
+                ZeldaBlocks.FAIRY_MARBLE_SWORD_PEDESTAL.asItem()
         );
 
         getOrCreateTagBuilder(ItemTags.PIGLIN_LOVED).add(
@@ -113,6 +114,10 @@ public class ZeldaItemTagDatagen extends FabricTagProvider.ItemTagProvider {
                 ZeldaItems.QUIVER,
                 ZeldaItems.GILDED_QUIVER,
                 ZeldaItems.NETHERITE_QUIVER
+        );
+
+        getOrCreateTagBuilder(ItemTags.MUSIC_DISCS).add(
+                ZeldaItems.MUSIC_DISC_LEGEND
         );
 
         // LOOT POTS

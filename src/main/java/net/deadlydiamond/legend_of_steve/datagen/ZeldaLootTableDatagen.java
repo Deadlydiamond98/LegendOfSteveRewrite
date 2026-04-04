@@ -87,7 +87,13 @@ public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
                 // STRANGE DIRT
                 ZeldaBlocks.STRANGE_DIRT_PILLAR,
                 ZeldaBlocks.STRANGE_BLUE_DIRT_PILLAR,
-                ZeldaBlocks.QUESTION_BLOCK
+                ZeldaBlocks.QUESTION_BLOCK,
+                // Other
+                ZeldaBlocks.STONE_SWORD_PEDESTAL,
+                ZeldaBlocks.DEEPSLATE_SWORD_PEDESTAL,
+                ZeldaBlocks.BLACKSTONE_SWORD_PEDESTAL,
+                ZeldaBlocks.QUARTZ_SWORD_PEDESTAL,
+                ZeldaBlocks.FAIRY_MARBLE_SWORD_PEDESTAL
         );
 
         addDropWithSilkTouch(ZeldaBlocks.LOOT_POT);

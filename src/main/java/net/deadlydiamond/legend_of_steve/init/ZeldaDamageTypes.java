@@ -20,7 +20,7 @@ public class ZeldaDamageTypes {
     }
 
     public static DamageSource of(World world, @Nullable Entity attacker, RegistryKey<DamageType> key) {
-        return new DamageSource(world.getRegistryManager().get(RegistryKeys.DAMAGE_TYPE).entryOf(key));
+        return new DamageSource(world.getRegistryManager().get(RegistryKeys.DAMAGE_TYPE).entryOf(key), attacker);
     }
 
     private static RegistryKey<DamageType> register(String name) {

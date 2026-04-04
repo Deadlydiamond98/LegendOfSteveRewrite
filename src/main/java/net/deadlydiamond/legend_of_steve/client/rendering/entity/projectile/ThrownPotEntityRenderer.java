@@ -28,7 +28,14 @@ public class ThrownPotEntityRenderer<T extends ThrownPotEntity> extends EntityRe
     public void render(T entity, float yaw, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light) {
         if (entity.getStack().getItem() instanceof BlockItem block) {
             matrices.push();
-            matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(entity.getYaw()));
+
+            matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees((float) (entity.getYaw() + entity.rotationClient.y)));
+
+            matrices.translate(0, 0.25, 0);
+            matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees((float) entity.rotationClient.x));
+            matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees((float) entity.rotationClient.z));
+            matrices.translate(0, -0.25, 0);
+
             matrices.translate(-0.5, 0, -0.5);
 
             BlockState state = block.getBlock().getDefaultState();
@@ -48,6 +55,8 @@ public class ThrownPotEntityRenderer<T extends ThrownPotEntity> extends EntityRe
 
             matrices.pop();
         }
+        entity.rotationClient = entity.rotationClient.add(entity.rotationSpeedClient);
+
         super.render(entity, yaw, tickDelta, matrices, vertexConsumers, light);
     }
 

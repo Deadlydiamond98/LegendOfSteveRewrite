@@ -1,6 +1,5 @@
 package net.deadlydiamond.legend_of_steve.client.rendering.block;
 
-import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.client.models.entity.BombEntityModel;
 import net.deadlydiamond.legend_of_steve.common.bes.BombFlowerBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.BombFlowerBlock;
@@ -14,11 +13,11 @@ import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 
-public class BombFlowerRenderer implements BlockEntityRenderer<BombFlowerBlockEntity> {
+public class BombFlowerBlockEntityRenderer implements BlockEntityRenderer<BombFlowerBlockEntity> {
     private static final Identifier TEXTURE = new Identifier("textures/entity/creeper/creeper_armor.png");
     private final BombEntityModel<?> model;
 
-    public BombFlowerRenderer(BlockEntityRendererFactory.Context ctx) {
+    public BombFlowerBlockEntityRenderer(BlockEntityRendererFactory.Context ctx) {
         this.model = new BombEntityModel<>(ctx.getLayerModelPart(BombEntityModel.LAYER_LOCATION));
     }
 

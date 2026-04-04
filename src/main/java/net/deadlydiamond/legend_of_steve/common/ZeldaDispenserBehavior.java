@@ -10,7 +10,7 @@ import net.minecraft.util.math.Position;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldEvents;
 
-public abstract class ZeldaProjectileDispenserBehavior extends ItemDispenserBehavior {
+public abstract class ZeldaDispenserBehavior extends ItemDispenserBehavior {
     @Override
     public ItemStack dispenseSilently(BlockPointer pointer, ItemStack stack) {
         World world = pointer.getWorld();

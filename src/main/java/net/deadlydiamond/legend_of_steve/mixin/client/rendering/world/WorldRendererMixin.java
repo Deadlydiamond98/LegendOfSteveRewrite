@@ -55,5 +55,4 @@ public abstract class WorldRendererMixin {
     private void legend_of_steve$renderFinish(MatrixStack matrices, float tickDelta, long limitTime, boolean renderBlockOutline, Camera camera, GameRenderer gameRenderer, LightmapTextureManager lightmapTextureManager, Matrix4f projectionMatrix, CallbackInfo ci) {
         this.legend_of_steve$renderGlowLayer = true;
     }
-
 }

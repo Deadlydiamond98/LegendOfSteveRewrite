@@ -78,7 +78,7 @@ public abstract class AbstractHittableContainerBlock extends WaterloggableSingle
     }
 
     @Override
-    protected SoundEvent getRemoveSound() {
+    protected SoundEvent getRemoveSound(ItemStack stack) {
         return null;
     }
 

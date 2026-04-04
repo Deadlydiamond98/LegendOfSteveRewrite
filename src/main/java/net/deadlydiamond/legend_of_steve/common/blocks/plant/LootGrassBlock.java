@@ -1,6 +1,7 @@
 package net.deadlydiamond.legend_of_steve.common.blocks.plant;
 
 import net.deadlydiamond.legend_of_steve.common.blocks.IExtendedLootTable;
+import net.deadlydiamond.legend_of_steve.init.ZeldaAdvancements;
 import net.deadlydiamond98.koalalib.common.blocks.interaction.IHitBlockAction;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -39,6 +40,7 @@ public class LootGrassBlock extends PlantBlock implements IExtendedLootTable, IH
             world.setBlockState(pos, state.with(AGE, 0));
 
             dropCustomStacks("loot_grass_cut", state, world, pos);
+            ZeldaAdvancements.CUT_LOOT_GRASS.trigger(player);
 
             server.spawnParticles(
                     new BlockStateParticleEffect(ParticleTypes.BLOCK, state),

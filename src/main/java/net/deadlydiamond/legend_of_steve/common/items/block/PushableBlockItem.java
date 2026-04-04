@@ -74,6 +74,11 @@ public class PushableBlockItem extends Item implements ISpriteIconItem {
     }
 
     @Override
+    public String getTranslationKey() {
+        return this.parentBlock.getBlock().getTranslationKey();
+    }
+
+    @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         super.appendTooltip(stack, world, tooltip, context);
         tooltip.add(Text.translatable("tooltip.legend_of_steve.pushable").formatted(Formatting.GRAY));

@@ -5,6 +5,7 @@ import net.deadlydiamond98.koalalib.common.advancement.CustomAdvancement;
 import net.minecraft.advancement.criterion.Criteria;
 
 public class ZeldaAdvancements {
+    public static final CustomAdvancement CUT_LOOT_GRASS = register("cut_loot_grass");
     public static final CustomAdvancement RELAX_IN_SPRING_WATER = register("relax_in_spring_water");
     public static final CustomAdvancement TRANSMUTE_ITEM = register("transmute_item");
     public static final CustomAdvancement STUN_ENTITY_WITH_NUT = register("stun_entity_with_nut");

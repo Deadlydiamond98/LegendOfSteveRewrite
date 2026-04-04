@@ -14,10 +14,10 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 
-public class QuestionBlockRenderer implements BlockEntityRenderer<HittableContainerBlockEntity> {
+public class HittableContainerBlockEntityRenderer implements BlockEntityRenderer<HittableContainerBlockEntity> {
     private final BlockRenderManager blockRenderManager;
 
-    public QuestionBlockRenderer(BlockEntityRendererFactory.Context ctx) {
+    public HittableContainerBlockEntityRenderer(BlockEntityRendererFactory.Context ctx) {
         this.blockRenderManager = ctx.getRenderManager();
     }
 
@@ -29,8 +29,11 @@ public class QuestionBlockRenderer implements BlockEntityRenderer<HittableContai
             BlockState block = entity.getCachedState();
 
             matrices.push();
-
             Vec3d bouncePos = entity.getBouncePos(tickDelta);
+            matrices.translate(0.5, 0.5, 0.5);
+            matrices.scale(1.005f, 1.005f, 1.005f);
+            matrices.translate(-0.5, -0.5, -0.5);
+
             matrices.translate(bouncePos.x, bouncePos.y, bouncePos.z);
 
             this.blockRenderManager.getModelRenderer().render(world, this.blockRenderManager.getModel(block),

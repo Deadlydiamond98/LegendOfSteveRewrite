@@ -1,11 +1,13 @@
 package net.deadlydiamond.legend_of_steve.common.items.block;
 
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.ThrownPotEntity;
+import net.deadlydiamond.legend_of_steve.common.items.IModifiedCraftingResult;
 import net.deadlydiamond.legend_of_steve.init.ZeldaDispenserBehaviors;
 import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
 import net.minecraft.block.Block;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.Inventory;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -17,7 +19,7 @@ import net.minecraft.world.World;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LootPotItem extends BlockItem {
+public class LootPotItem extends BlockItem implements IModifiedCraftingResult {
     public static final Map<Item, Integer> COOLDOWNS = new HashMap<>();
 
     public LootPotItem(Block block, Settings settings) {
@@ -41,5 +43,18 @@ public class LootPotItem extends BlockItem {
             return TypedActionResult.success(stack);
         }
         return super.use(world, user, hand);
+    }
+
+    @Override
+    public void modifyCraftingResult(ItemStack result, Inventory craftingTableSlots) {
+        if (craftingTableSlots.containsAny(stack -> stack.getItem() instanceof LootPotItem)) {
+            for (int i = 0; i < craftingTableSlots.size(); i++) {
+                ItemStack stack = craftingTableSlots.getStack(i);
+                if (stack.getItem() instanceof LootPotItem) {
+                    result.setNbt(stack.getNbt());
+                    break;
+                }
+            }
+        }
     }
 }

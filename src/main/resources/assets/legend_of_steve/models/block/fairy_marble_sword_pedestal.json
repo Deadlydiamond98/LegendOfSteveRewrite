@@ -1,0 +1,10 @@
+{
+  "parent": "legend_of_steve:block/template_sword_pedestal",
+  "textures": {
+    "bottom": "legend_of_steve:block/iridescent/fairy_marble_sword_pedestal_bottom@legend_of_steve:textures/atlas/iridescent.png",
+    "front": "legend_of_steve:block/iridescent/fairy_marble_sword_pedestal_front@legend_of_steve:textures/atlas/iridescent.png",
+    "side": "legend_of_steve:block/iridescent/fairy_marble_sword_pedestal@legend_of_steve:textures/atlas/iridescent.png",
+    "top": "legend_of_steve:block/iridescent/fairy_marble_sword_pedestal_top@legend_of_steve:textures/atlas/iridescent.png",
+    "particle": "legend_of_steve:block/iridescent/fairy_marble_sword_pedestal_bottom"
+  }
+}

@@ -9,24 +9,22 @@ import net.minecraft.util.Identifier;
 
 public class ZeldaSounds {
 
-    // Bomb Related ////////////////////////////////////////////////////////////////////////////////////////////////////
-    public static final BlockSoundGroup BOMB_FLOWER = registerGroup("bomb_flower");
-    public static final SoundEvent BOMB_HARVESTED = register("block.bomb_flower.pick");
-
-    public static final SoundEvent SECRET_ROOM_JINGLE = register("entity.bomb.jingle");
-    public static final SoundEvent BOMB_PICKED_UP = register("entity.bomb.pick_up");
-    public static final SoundEvent BOMB_EXTINGUISH = register("entity.bomb.extinguish");
-    public static final SoundEvent BOMB_PRIMED = register("entity.bomb.primed");
-    public static final SoundEvent BOMB_THROWN = register("entity.bomb.thrown");
+    // Music ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static final SoundEvent MUSIC_DISC_LEGEND = register("music_disc.legend");
 
     // Blocks //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Bomb Flower
+    public static final BlockSoundGroup BOMB_FLOWER = registerGroup("bomb_flower");
+    public static final SoundEvent BOMB_HARVESTED = register("block.bomb_flower.pick");
+    // Loot Pot
     public static final SoundEvent LOOT_POT_WITHDRAW = register("block.loot_pot.withdraw");
     public static final SoundEvent LOOT_POT_DEPOSIT = register("block.loot_pot.deposit");
     public static final SoundEvent LOOT_POT_THROWN = register("block.loot_pot.thrown");
     public static final SoundEvent LOOT_POT_GRAB = register("block.loot_pot.grab");
-    // Magic
-    public static final BlockSoundGroup FAIRY_LAMP = registerGroup("fairy_lamp", 1, 1.2f);
-    public static final BlockSoundGroup STARSTONE = registerGroup("starstone", 1, 1);
+    // Sword Pedestal
+    public static final SoundEvent SWORD_PEDESTAL_WITHDRAW = register("block.sword_pedestal.withdraw");
+    public static final SoundEvent SWORD_PEDESTAL_DEPOSIT = register("block.sword_pedestal.deposit");
+    // Spring Water
     public static final SoundEvent SPRING_WATER_TRANSFORM = register("block.spring_water.transform");
     public static final SoundEvent SPRING_WATER_CONSUME = register("block.spring_water.consume");
     public static final SoundEvent SPRING_WATER_SPARKLE = register("block.spring_water.sparkle");
@@ -37,14 +35,17 @@ public class ZeldaSounds {
     public static final BlockSoundGroup MASTER_CHAIN = registerGroup("master_chain", 0.75f, 1.5f);
     public static final SoundEvent MASTER_BARREL_OPEN = register("block.master_barrel.open");
     public static final SoundEvent MASTER_BARREL_CLOSE = register("block.master_barrel.close");
-    // STRANGE DIRT
+    // Strange Dirt
     public static final BlockSoundGroup STRANGE_DIRT = registerGroup("strange_dirt", 1, 1.25f);
     public static final BlockSoundGroup STRANGE_BLUE_DIRT = registerGroup("strange_blue_dirt", 1, 1);
     public static final BlockSoundGroup QUESTION_BLOCK = registerGroup("question_block", 1, 1);
+    // Question Block
     public static final SoundEvent QUESTION_BLOCK_HIT = register("block.question_block.bounce");
     public static final SoundEvent QUESTION_BLOCK_EMPTY_CONTENTS = register("block.question_block.empty_content");
     public static final SoundEvent QUESTION_BLOCK_DEPOSIT = register("block.question_block.deposit");
     // OTHER
+    public static final BlockSoundGroup FAIRY_LAMP = registerGroup("fairy_lamp", 1, 1.2f);
+    public static final BlockSoundGroup STARSTONE = registerGroup("starstone", 1, 1);
     public static final BlockSoundGroup TEKTILES = registerGroup("tektiles", 1, 1.25f);
     public static final SoundEvent CRATE_OPEN = register("block.crate.open");
     public static final SoundEvent CRATE_CLOSE = register("block.crate.close");
@@ -70,6 +71,12 @@ public class ZeldaSounds {
     public static final SoundEvent EMPTY_BOTTLE = register("item.bottle.empty");
 
     // Entities ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Bomb
+    public static final SoundEvent SECRET_ROOM_JINGLE = register("entity.bomb.jingle");
+    public static final SoundEvent BOMB_PICKED_UP = register("entity.bomb.pick_up");
+    public static final SoundEvent BOMB_EXTINGUISH = register("entity.bomb.extinguish");
+    public static final SoundEvent BOMB_PRIMED = register("entity.bomb.primed");
+    public static final SoundEvent BOMB_THROWN = register("entity.bomb.thrown");
     // Fairy
     public static final SoundEvent FAIRY_DEATH = register("entity.fairy.death");
     public static final SoundEvent FAIRY_HURT = register("entity.fairy.hurt");

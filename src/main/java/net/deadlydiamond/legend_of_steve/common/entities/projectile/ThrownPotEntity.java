@@ -38,15 +38,22 @@ import org.jetbrains.annotations.Nullable;
 
 public class ThrownPotEntity extends PhysicsItemProjectile {
     private boolean shattered;
+    public Vec3d rotationClient = Vec3d.ZERO;
+    public Vec3d rotationSpeedClient;
 
     public ThrownPotEntity(EntityType<? extends ProjectileEntity> entityType, World world) {
         super(entityType, world);
 
-        this.setGravity(0.05f);
+        this.setGravity(0.06f);
         this.setDrag(0.96f);
         this.setBounciness(0);
         this.setWaterDrag(0.75f);
         this.setBuoyancy(0);
+        this.rotationSpeedClient = new Vec3d(
+                world.getRandom().nextInt(5) * (world.getRandom().nextBoolean() ? 1 : -1),
+                world.getRandom().nextInt(5) * (world.getRandom().nextBoolean() ? 1 : -1),
+                world.getRandom().nextInt(5) * (world.getRandom().nextBoolean() ? 1 : -1)
+        );
     }
 
     public ThrownPotEntity(World world, @Nullable Entity owner, ItemStack stack) {
@@ -108,7 +115,7 @@ public class ThrownPotEntity extends PhysicsItemProjectile {
     protected void onEntityHit(EntityHitResult entityHitResult) {
         super.onEntityHit(entityHitResult);
         Entity entity = entityHitResult.getEntity();
-        entity.damage(ZeldaDamageTypes.of(entity.getWorld(), ZeldaDamageTypes.LOOT_POT), 3);
+        entity.damage(ZeldaDamageTypes.of(entity.getWorld(), getOwner(), ZeldaDamageTypes.LOOT_POT), 3);
         shatter();
     }
 

@@ -53,12 +53,12 @@ public class LootPotBlock extends WaterloggableSingleSlotBlock {
     }
 
     @Override
-    protected SoundEvent getInsertSound() {
+    protected SoundEvent getInsertSound(ItemStack stack) {
         return ZeldaSounds.LOOT_POT_DEPOSIT;
     }
 
     @Override
-    protected SoundEvent getRemoveSound() {
+    protected SoundEvent getRemoveSound(ItemStack stack) {
         return ZeldaSounds.LOOT_POT_WITHDRAW;
     }
 

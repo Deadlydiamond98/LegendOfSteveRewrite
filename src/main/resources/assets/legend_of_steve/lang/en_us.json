@@ -30,6 +30,11 @@
   "item.legend_of_steve.master_scrap": "Master Scrap",
   "item.legend_of_steve.master_ingot": "Master Ingot",
 
+  "item.legend_of_steve.disc_fragment_legend": "Disc Fragment",
+  "item.legend_of_steve.disc_fragment_legend.desc": "Music Disc - Legend",
+  "item.legend_of_steve.music_disc_legend": "Music Disc",
+  "item.legend_of_steve.music_disc_legend.desc": "Deadlydiamond98 - Legend",
+
   "item.legend_of_steve.fairy_bottle": "Bottled Fairy",
 
   "block.legend_of_steve.loot_grass": "Loot Grass",
@@ -52,7 +57,13 @@
   "block.legend_of_steve.magenta_loot_pot": "Magenta Loot Pot",
   "block.legend_of_steve.pink_loot_pot": "Pink Loot Pot",
 
-  "item.legend_of_steve.crate": "Crate",
+  "block.legend_of_steve.stone_sword_pedestal": "Stone Sword Pedestal",
+  "block.legend_of_steve.deepslate_sword_pedestal": "Deepslate Sword Pedestal",
+  "block.legend_of_steve.blackstone_sword_pedestal": "Blackstone Sword Pedestal",
+  "block.legend_of_steve.quartz_sword_pedestal": "Quartz Sword Pedestal",
+  "block.legend_of_steve.fairy_marble_sword_pedestal": "Fairy Marble Sword Pedestal",
+
+  "block.legend_of_steve.crate": "Crate",
 
   "block.legend_of_steve.chiseled_oak_planks": "Chiseled Oak Planks",
   "block.legend_of_steve.chiseled_birch_planks": "Chiseled Birch Planks",
@@ -164,7 +175,6 @@
   "block.legend_of_steve.strange_dirt_brick_stairs": "Strange Dirt Brick Stairs",
   "block.legend_of_steve.strange_dirt_brick_wall": "Strange Dirt Brick Wall",
   "block.legend_of_steve.reinforced_strange_dirt": "Reinforced Strange Dirt",
-  "item.legend_of_steve.pushable_reinforced_strange_dirt": "Reinforced Strange Dirt",
   "block.legend_of_steve.strange_dirt_pillar": "Strange Dirt Pillar",
 
   "block.legend_of_steve.strange_blue_dirt": "Strange Blue Dirt",
@@ -181,7 +191,6 @@
   "block.legend_of_steve.strange_blue_dirt_brick_stairs": "Strange Blue Dirt Brick Stairs",
   "block.legend_of_steve.strange_blue_dirt_brick_wall": "Strange Blue Dirt Brick Wall",
   "block.legend_of_steve.reinforced_strange_blue_dirt": "Reinforced Strange Blue Dirt",
-  "item.legend_of_steve.pushable_reinforced_strange_blue_dirt": "Reinforced Strange Blue Dirt",
   "block.legend_of_steve.strange_blue_dirt_pillar": "Strange Blue Dirt Pillar",
 
   "block.legend_of_steve.question_block": "Question Block",
@@ -242,6 +251,9 @@
   "subtitles.legend_of_steve.block.crate.open": "Crate opened",
   "subtitles.legend_of_steve.block.crate.close": "Crate closed",
 
+  "subtitles.legend_of_steve.block.sword_pedestal.withdraw": "Sword withdrawn from Pedestal",
+  "subtitles.legend_of_steve.block.sword_pedestal.deposit": "Sword slides into Pedestal",
+
   "death.attack.legend_of_steve.loot_pot_projectile": "%1$s was pummeled to death by flying pottery",
   "death.attack.legend_of_steve.loot_pot_projectile.player": "%1$s was pummeled to death by %2$s's pottery",
 
@@ -279,5 +291,11 @@
   "advancements.legend_of_steve.quiver.description": "Obtain a Quiver",
 
   "advancements.legend_of_steve.stunning": "Stunning!",
-  "advancements.legend_of_steve.stunning.description": "Stun a target (or yourself) with a Deku Nut"
+  "advancements.legend_of_steve.stunning.description": "Stun a target (or yourself) with a Deku Nut",
+
+  "advancements.legend_of_steve.mowing_the_lawn": "Mowing the Lawn",
+  "advancements.legend_of_steve.mowing_the_lawn.description": "Cut fully grown Loot Grass using a Sword, and receive some goodies",
+
+  "advancements.legend_of_steve.swordless_route": "Swordless Route",
+  "advancements.legend_of_steve.swordless_route.description": "Kill a creature using Pots"
 }

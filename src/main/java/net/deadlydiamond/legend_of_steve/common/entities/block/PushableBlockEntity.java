@@ -33,7 +33,6 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraft.world.event.GameEvent;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -41,7 +40,6 @@ import java.util.function.Predicate;
 
 public class PushableBlockEntity extends LerpedMovmentEntity implements IHitEntityAction {
     private static final TrackedData<BlockState> BLOCK = DataTracker.registerData(PushableBlockEntity.class, TrackedDataHandlerRegistry.BLOCK_STATE);
-
     private ItemStack itemStack = ItemStack.EMPTY;
     public float blockBreakingSoundCooldown;
     public float breakingProgress;
@@ -99,7 +97,7 @@ public class PushableBlockEntity extends LerpedMovmentEntity implements IHitEnti
 
     protected void applyGravity() {
         if (!this.hasNoGravity()) {
-            this.setVelocity(this.getVelocity().add(0, -0.04, 0));
+            this.setVelocity(this.getVelocity().add(0, -0.04f, 0));
         }
     }
 
@@ -164,9 +162,7 @@ public class PushableBlockEntity extends LerpedMovmentEntity implements IHitEnti
 
     private void movePassengers(List<Entity> pushers, Vec3d offset) {
         this.updatePassengers(entity -> !pushers.contains(entity), entity -> {
-            if (entity instanceof LivingEntity) {
-                stopVerticalClipping(entity);
-            }
+            stopVerticalClipping(entity);
 
             if (entity instanceof IPushBlockMoving pushBlockMoving) {
                 pushBlockMoving.legend_of_steve$applyPushBlockMovement(new Vec3d(offset.x, 0, offset.z));

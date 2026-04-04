@@ -3,6 +3,7 @@ package net.deadlydiamond.legend_of_steve.init;
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.blocks.container.MasterBarrelBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.container.single.LootPotBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.container.single.SwordPedestal;
 import net.deadlydiamond.legend_of_steve.common.blocks.container.single.hittable.HittableContainerBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.ConnectedPillarBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.GirderBlock;
@@ -53,6 +54,12 @@ public class ZeldaBlocks {
 
     public static final Block CRATE = register("crate", new Block(CRATE_SETTINGS), false);
     public static final Item CRATE_ITEM = ZeldaItems.register("crate", new CrateItem(new FabricItemSettings(), CRATE.getDefaultState()));
+
+    public static final Block STONE_SWORD_PEDESTAL = register("stone_sword_pedestal", new SwordPedestal(FabricBlockSettings.copyOf(Blocks.STONE)));
+    public static final Block DEEPSLATE_SWORD_PEDESTAL = register("deepslate_sword_pedestal", new SwordPedestal(FabricBlockSettings.copyOf(Blocks.DEEPSLATE)));
+    public static final Block BLACKSTONE_SWORD_PEDESTAL = register("blackstone_sword_pedestal", new SwordPedestal(FabricBlockSettings.copyOf(Blocks.BLACKSTONE)));
+    public static final Block QUARTZ_SWORD_PEDESTAL = register("quartz_sword_pedestal", new SwordPedestal(FabricBlockSettings.copyOf(Blocks.QUARTZ_BLOCK)));
+    public static final Block FAIRY_MARBLE_SWORD_PEDESTAL = register("fairy_marble_sword_pedestal", new SwordPedestal(FAIRY_MARBLE_SETTINGS));
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // DECORATIVE BLOCKS ///////////////////////////////////////////////////////////////////////////////////////////////

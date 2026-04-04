@@ -1,6 +1,6 @@
 package net.deadlydiamond.legend_of_steve.init;
 
-import net.deadlydiamond.legend_of_steve.common.ZeldaProjectileDispenserBehavior;
+import net.deadlydiamond.legend_of_steve.common.ZeldaDispenserBehavior;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.ThrownPotEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.BombEntity;
 import net.deadlydiamond.legend_of_steve.common.items.projectile.explosive.BombItem;
@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 
 public class ZeldaDispenserBehaviors {
     public static DispenserBehavior bomb() {
-        return new ZeldaProjectileDispenserBehavior() {
+        return new ZeldaDispenserBehavior() {
             @Override
             protected float getForce() {
                 return 0.6f;
@@ -38,7 +38,7 @@ public class ZeldaDispenserBehaviors {
     }
 
     public static DispenserBehavior lootPot() {
-        return new ZeldaProjectileDispenserBehavior() {
+        return new ZeldaDispenserBehavior() {
             @Override
             protected ProjectileEntity createProjectile(World world, Position position, Direction direction, ItemStack stack) {
                 return Util.make(new ThrownPotEntity(ZeldaEntityTypes.THROWN_POT, world), entity -> {

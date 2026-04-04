@@ -37,14 +37,14 @@ public abstract class SingleSlotBlock extends BlockWithEntity {
             if (canRemoveItem(state, world, pos, player, hand, stack, blockEntity)) {
                 player.setStackInHand(hand, blockEntity.getStack(0));
                 blockEntity.clear();
-                if (getRemoveSound() != null) {
-                    player.playSound(getRemoveSound(), SoundCategory.BLOCKS, 1, 1);
+                if (getRemoveSound(stack) != null) {
+                    player.playSound(getRemoveSound(stack), SoundCategory.BLOCKS, 1, 1);
                 }
                 blockEntity.markDirty();
                 return ActionResult.SUCCESS;
             } else if (canInsertItem(state, world, pos, player, hand, stack, blockEntity)) {
-                if (getInsertSound() != null) {
-                    player.playSound(getInsertSound(), SoundCategory.BLOCKS, 1, 1);
+                if (getInsertSound(stack) != null) {
+                    player.playSound(getInsertSound(stack), SoundCategory.BLOCKS, 1, 1);
                 }
                 blockEntity.markDirty();
                 return ActionResult.SUCCESS;
@@ -71,8 +71,8 @@ public abstract class SingleSlotBlock extends BlockWithEntity {
         return !blockEntity.isEmpty() && player.getStackInHand(hand).isEmpty();
     }
 
-    protected abstract SoundEvent getInsertSound();
-    protected abstract SoundEvent getRemoveSound();
+    protected abstract SoundEvent getInsertSound(ItemStack stack);
+    protected abstract SoundEvent getRemoveSound(ItemStack stack);
 
     public boolean isValid(ItemStack stack) {
         return true;

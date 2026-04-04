@@ -49,7 +49,10 @@ public class ZeldaCreativeTabs {
                 // MASTER
                 ZeldaItems.RAW_MASTER_ORE,
                 ZeldaItems.MASTER_SCRAP,
-                ZeldaItems.MASTER_INGOT
+                ZeldaItems.MASTER_INGOT,
+                // MUSIC DISCS
+                ZeldaItems.DISC_FRAGMENT_LEGEND,
+                ZeldaItems.MUSIC_DISC_LEGEND
         );
 
         for (FairyColor value : FairyColor.values()) {
@@ -68,7 +71,16 @@ public class ZeldaCreativeTabs {
         // LOOT POTS
         entries.add(ZeldaBlocks.LOOT_POT);
         ZeldaBlocks.DYED_LOOT_POTS.addToCreative(entries);
+
+        // CRATE
         entries.add(ZeldaBlocks.CRATE_ITEM);
+
+        // SWORD PEDESTALS
+        entries.add(ZeldaBlocks.STONE_SWORD_PEDESTAL);
+        entries.add(ZeldaBlocks.DEEPSLATE_SWORD_PEDESTAL);
+        entries.add(ZeldaBlocks.BLACKSTONE_SWORD_PEDESTAL);
+        entries.add(ZeldaBlocks.QUARTZ_SWORD_PEDESTAL);
+        entries.add(ZeldaBlocks.FAIRY_MARBLE_SWORD_PEDESTAL);
 
         // DEKU WOOD
         ZeldaBlocks.DEKU_WOOD.addToCreative(entries);

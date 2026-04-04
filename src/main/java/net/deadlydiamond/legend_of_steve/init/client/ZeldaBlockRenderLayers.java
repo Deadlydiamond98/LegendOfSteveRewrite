@@ -75,7 +75,8 @@ public class ZeldaBlockRenderLayers {
                 ZeldaBlocks.MOSSY_FAIRY_MARBLE_BRICKS.slab,
                 ZeldaBlocks.MOSSY_FAIRY_MARBLE_BRICKS.stair,
                 ZeldaBlocks.MOSSY_FAIRY_MARBLE_BRICKS.wall,
-                ZeldaBlocks.CRACKED_FAIRY_MARBLE_BRICKS
+                ZeldaBlocks.CRACKED_FAIRY_MARBLE_BRICKS,
+                ZeldaBlocks.FAIRY_MARBLE_SWORD_PEDESTAL
         );
 
         // FLUIDS //////////////////////////////////////////////////////////////////////////////////////////////////////

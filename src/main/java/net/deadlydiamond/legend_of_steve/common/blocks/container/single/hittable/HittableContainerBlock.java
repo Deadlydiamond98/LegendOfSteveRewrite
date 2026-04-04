@@ -1,6 +1,7 @@
 package net.deadlydiamond.legend_of_steve.common.blocks.container.single.hittable;
 
 import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
+import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundEvent;
 
 public class HittableContainerBlock extends AbstractHittableContainerBlock {
@@ -9,7 +10,7 @@ public class HittableContainerBlock extends AbstractHittableContainerBlock {
     }
 
     @Override
-    protected SoundEvent getInsertSound() {
+    protected SoundEvent getInsertSound(ItemStack stack) {
         return ZeldaSounds.QUESTION_BLOCK_DEPOSIT;
     }
 

@@ -100,6 +100,10 @@ public class ZeldaNoteBlockSounds {
         registerNoteBlockSound(ZeldaSounds.SMW_SLAP_BASS,
                 ZeldaBlocks.STRANGE_BLUE_DIRT_PILLAR
         );
+        // PAAH ////////////////////////////////////////////////////////////////////////////////////////////////////////
+        registerNoteBlockSound(ZeldaSounds.PAAH,
+                ZeldaBlocks.QUESTION_BLOCK
+        );
     }
 
 

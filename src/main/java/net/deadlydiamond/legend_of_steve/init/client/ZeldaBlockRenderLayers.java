@@ -6,16 +6,15 @@ import net.deadlydiamond98.koalalib.common.blocksets.AbstractBlockset;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
-import net.minecraft.block.Block;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.util.Identifier;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ZeldaBlockRenderLayers {
 
     public static void register() {
+
+        // CUTOUT //////////////////////////////////////////////////////////////////////////////////////////////////////
+
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
                 ZeldaBlocks.BOMB_FLOWER,
                 ZeldaBlocks.LOOT_GRASS,
@@ -30,10 +29,23 @@ public class ZeldaBlockRenderLayers {
                 ZeldaBlocks.MASTER_GIRDER
         );
 
+        registerBlockset(RenderLayer.getCutout(),
+                ZeldaBlocks.STONE_BRAZIER_BLOCKSET,
+                ZeldaBlocks.DEEPSLATE_BRAZIER_BLOCKSET,
+                ZeldaBlocks.BLACKSTONE_BRAZIER_BLOCKSET,
+                ZeldaBlocks.QUARTZ_BRAZIER_BLOCKSET,
+                ZeldaBlocks.STRANGE_DIRT_BRAZIER_BLOCKSET,
+                ZeldaBlocks.STRANGE_BLUE_DIRT_BRAZIER_BLOCKSET
+        );
+
+        // TRANSLUCENT /////////////////////////////////////////////////////////////////////////////////////////////////
+
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(),
                 ZeldaBlocks.DEKU_WOOD.door,
                 ZeldaBlocks.DEKU_WOOD.trapdoor
         );
+
+        // BLOOM ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
         BlockRenderLayerMap.INSTANCE.putBlocks(ZeldaRenderLayers.BLOOM_GLOW,
                 ZeldaBlocks.PINK_FAIRY_LAMP,
@@ -45,36 +57,22 @@ public class ZeldaBlockRenderLayers {
                 ZeldaBlocks.PURPLE_FAIRY_LAMP
         );
 
+        // IRIDESCENT //////////////////////////////////////////////////////////////////////////////////////////////////
+
+        registerBlockset(ZeldaRenderLayers.IRIDESCENCE,
+                ZeldaBlocks.FAIRY_MARBLE,
+                ZeldaBlocks.COBBLED_FAIRY_MARBLE,
+                ZeldaBlocks.POLISHED_FAIRY_MARBLE,
+                ZeldaBlocks.FAIRY_MARBLE_BRICKS,
+                ZeldaBlocks.MOSSY_FAIRY_MARBLE_BRICKS,
+                ZeldaBlocks.FAIRY_MARBLE_TILES,
+                ZeldaBlocks.FAIRY_MARBLE_BRAZIER_BLOCKSET
+        );
+
         BlockRenderLayerMap.INSTANCE.putBlocks(ZeldaRenderLayers.IRIDESCENCE,
-                ZeldaBlocks.FAIRY_MARBLE.base,
-                ZeldaBlocks.FAIRY_MARBLE.slab,
-                ZeldaBlocks.FAIRY_MARBLE.stair,
-                ZeldaBlocks.FAIRY_MARBLE.wall,
-                ZeldaBlocks.FAIRY_MARBLE.button,
-                ZeldaBlocks.FAIRY_MARBLE.plate,
-                ZeldaBlocks.COBBLED_FAIRY_MARBLE.base,
-                ZeldaBlocks.COBBLED_FAIRY_MARBLE.slab,
-                ZeldaBlocks.COBBLED_FAIRY_MARBLE.stair,
-                ZeldaBlocks.COBBLED_FAIRY_MARBLE.wall,
-                ZeldaBlocks.POLISHED_FAIRY_MARBLE.base,
-                ZeldaBlocks.POLISHED_FAIRY_MARBLE.slab,
-                ZeldaBlocks.POLISHED_FAIRY_MARBLE.stair,
-                ZeldaBlocks.POLISHED_FAIRY_MARBLE.wall,
-                ZeldaBlocks.FAIRY_MARBLE_BRICKS.base,
-                ZeldaBlocks.FAIRY_MARBLE_BRICKS.slab,
-                ZeldaBlocks.FAIRY_MARBLE_BRICKS.stair,
-                ZeldaBlocks.FAIRY_MARBLE_BRICKS.wall,
-                ZeldaBlocks.FAIRY_MARBLE_TILES.base,
-                ZeldaBlocks.FAIRY_MARBLE_TILES.slab,
-                ZeldaBlocks.FAIRY_MARBLE_TILES.stair,
-                ZeldaBlocks.FAIRY_MARBLE_TILES.wall,
                 ZeldaBlocks.SMOOTH_FAIRY_MARBLE,
                 ZeldaBlocks.CHISELED_FAIRY_MARBLE,
                 ZeldaBlocks.FAIRY_MARBLE_PILLAR,
-                ZeldaBlocks.MOSSY_FAIRY_MARBLE_BRICKS.base,
-                ZeldaBlocks.MOSSY_FAIRY_MARBLE_BRICKS.slab,
-                ZeldaBlocks.MOSSY_FAIRY_MARBLE_BRICKS.stair,
-                ZeldaBlocks.MOSSY_FAIRY_MARBLE_BRICKS.wall,
                 ZeldaBlocks.CRACKED_FAIRY_MARBLE_BRICKS,
                 ZeldaBlocks.FAIRY_MARBLE_SWORD_PEDESTAL
         );
@@ -93,5 +91,11 @@ public class ZeldaBlockRenderLayers {
                         0x5db7ef
                 )
         );
+    }
+
+    public static void registerBlockset(RenderLayer renderLayer, AbstractBlockset... blocksets) {
+        for (AbstractBlockset blockset : blocksets) {
+            BlockRenderLayerMap.INSTANCE.putBlocks(renderLayer, blockset.getAll());
+        }
     }
 }

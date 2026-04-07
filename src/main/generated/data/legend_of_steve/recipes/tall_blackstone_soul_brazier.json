@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:polished_blackstone_slab"
+    },
+    "B": {
+      "item": "minecraft:polished_blackstone"
+    },
+    "c": {
+      "tag": "minecraft:soul_fire_base_blocks"
+    },
+    "i": {
+      "item": "minecraft:gold_nugget"
+    }
+  },
+  "pattern": [
+    "ici",
+    " B ",
+    "#B#"
+  ],
+  "result": {
+    "item": "legend_of_steve:tall_blackstone_soul_brazier"
+  },
+  "show_notification": true
+}

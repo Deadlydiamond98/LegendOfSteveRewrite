@@ -81,6 +81,17 @@ public class ZeldaCreativeTabs {
         entries.add(ZeldaBlocks.BLACKSTONE_SWORD_PEDESTAL);
         entries.add(ZeldaBlocks.QUARTZ_SWORD_PEDESTAL);
         entries.add(ZeldaBlocks.FAIRY_MARBLE_SWORD_PEDESTAL);
+        entries.add(ZeldaBlocks.STRANGE_DIRT_SWORD_PEDESTAL);
+        entries.add(ZeldaBlocks.STRANGE_BLUE_DIRT_SWORD_PEDESTAL);
+
+        // BRAZIERS
+        ZeldaBlocks.STONE_BRAZIER_BLOCKSET.addToCreative(entries);
+        ZeldaBlocks.DEEPSLATE_BRAZIER_BLOCKSET.addToCreative(entries);
+        ZeldaBlocks.BLACKSTONE_BRAZIER_BLOCKSET.addToCreative(entries);
+        ZeldaBlocks.QUARTZ_BRAZIER_BLOCKSET.addToCreative(entries);
+        ZeldaBlocks.FAIRY_MARBLE_BRAZIER_BLOCKSET.addToCreative(entries);
+        ZeldaBlocks.STRANGE_DIRT_BRAZIER_BLOCKSET.addToCreative(entries);
+        ZeldaBlocks.STRANGE_BLUE_DIRT_BRAZIER_BLOCKSET.addToCreative(entries);
 
         // DEKU WOOD
         ZeldaBlocks.DEKU_WOOD.addToCreative(entries);

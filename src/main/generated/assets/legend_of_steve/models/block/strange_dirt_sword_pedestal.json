@@ -1,0 +1,9 @@
+{
+  "parent": "legend_of_steve:block/template_sword_pedestal",
+  "textures": {
+    "bottom": "legend_of_steve:block/strange_dirt_sword_pedestal_bottom",
+    "front": "legend_of_steve:block/strange_dirt_sword_pedestal_front",
+    "side": "legend_of_steve:block/strange_dirt_sword_pedestal",
+    "top": "legend_of_steve:block/strange_dirt_sword_pedestal_top"
+  }
+}

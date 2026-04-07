@@ -30,7 +30,9 @@ public class ZeldaBlockEntities {
             ZeldaBlocks.DEEPSLATE_SWORD_PEDESTAL,
             ZeldaBlocks.BLACKSTONE_SWORD_PEDESTAL,
             ZeldaBlocks.QUARTZ_SWORD_PEDESTAL,
-            ZeldaBlocks.FAIRY_MARBLE_SWORD_PEDESTAL
+            ZeldaBlocks.FAIRY_MARBLE_SWORD_PEDESTAL,
+            ZeldaBlocks.STRANGE_DIRT_SWORD_PEDESTAL,
+            ZeldaBlocks.STRANGE_BLUE_DIRT_SWORD_PEDESTAL
     );
 
     public static final BlockEntityType<HittableContainerBlockEntity> HITTABLE_CONTAINER_BLOCK = register("hittable_container_block", HittableContainerBlockEntity::new,

@@ -55,6 +55,7 @@ public class ZeldaRecipeDatagen extends FabricRecipeProvider {
         tektiles(consumer);
         strangeDirt(consumer);
         lootpots(consumer);
+        braziers(consumer);
 
         ZeldaSpringWaterConversionDatagen.generate(consumer);
 
@@ -71,7 +72,7 @@ public class ZeldaRecipeDatagen extends FabricRecipeProvider {
         offerChiseledBlockRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_CRIMSON_PLANKS, Blocks.CRIMSON_SLAB);
         offerChiseledBlockRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_WARPED_PLANKS, Blocks.WARPED_SLAB);
         offerChiseledBlockRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_MANGROVE_PLANKS, Blocks.MANGROVE_SLAB);
-        offerChiseledBlockRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_BAMBOO_PLANKS, Blocks.BAMBOO_SLAB);
+        offerChiseledBlockRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_BAMBOO_PLANKS, Blocks.BAMBOO_MOSAIC_SLAB);
         offerChiseledBlockRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_CHERRY_PLANKS, Blocks.CHERRY_SLAB);
         offerChiseledBlockRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_DEKU_PLANKS, ZeldaBlocks.DEKU_WOOD.slab);
     }
@@ -175,7 +176,22 @@ public class ZeldaRecipeDatagen extends FabricRecipeProvider {
         offerLootPotRecipes(consumer, DYES, pots, "loot_pot");
     }
 
-
+    private void braziers(Consumer<RecipeJsonProvider> consumer) {
+        ZeldaBlocks.STONE_BRAZIER_BLOCKSET.generateRecipes(consumer, Blocks.STONE, Blocks.STONE_SLAB, Items.IRON_NUGGET);
+        ZeldaBlocks.DEEPSLATE_BRAZIER_BLOCKSET.generateRecipes(consumer, Blocks.POLISHED_DEEPSLATE, Blocks.POLISHED_DEEPSLATE_SLAB, Items.IRON_NUGGET);
+        ZeldaBlocks.BLACKSTONE_BRAZIER_BLOCKSET.generateRecipes(consumer, Blocks.POLISHED_BLACKSTONE, Blocks.POLISHED_BLACKSTONE_SLAB, Items.GOLD_NUGGET);
+        ZeldaBlocks.QUARTZ_BRAZIER_BLOCKSET.generateRecipes(consumer,
+                Ingredient.ofItems(Blocks.QUARTZ_BLOCK, Blocks.CHISELED_QUARTZ_BLOCK, Blocks.QUARTZ_PILLAR),
+                Blocks.QUARTZ_SLAB, Items.GOLD_NUGGET
+        );
+        ZeldaBlocks.FAIRY_MARBLE_BRAZIER_BLOCKSET.generateRecipes(consumer,
+                ZeldaBlocks.POLISHED_FAIRY_MARBLE.base,
+                ZeldaBlocks.POLISHED_FAIRY_MARBLE.slab,
+                Items.GOLD_NUGGET
+        );
+        ZeldaBlocks.STRANGE_DIRT_BRAZIER_BLOCKSET.generateRecipes(consumer, ZeldaBlocks.POLISHED_STRANGE_DIRT.base, ZeldaBlocks.POLISHED_STRANGE_DIRT.slab, Items.IRON_NUGGET);
+        ZeldaBlocks.STRANGE_BLUE_DIRT_BRAZIER_BLOCKSET.generateRecipes(consumer, ZeldaBlocks.POLISHED_BLUE_STRANGE_DIRT.base, ZeldaBlocks.POLISHED_BLUE_STRANGE_DIRT.slab, Items.IRON_NUGGET);
+    }
 
 
 

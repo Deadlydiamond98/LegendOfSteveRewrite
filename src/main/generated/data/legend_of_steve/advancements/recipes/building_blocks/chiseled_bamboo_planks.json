@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_bamboo_slab": {
+    "has_bamboo_mosaic_slab": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:bamboo_slab"
+              "minecraft:bamboo_mosaic_slab"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_bamboo_slab",
+      "has_bamboo_mosaic_slab",
       "has_the_recipe"
     ]
   ],

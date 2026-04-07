@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "legend_of_steve:polished_fairy_marble_slab"
+    },
+    "B": {
+      "item": "legend_of_steve:polished_fairy_marble"
+    },
+    "c": {
+      "tag": "minecraft:soul_fire_base_blocks"
+    },
+    "i": {
+      "item": "minecraft:gold_nugget"
+    }
+  },
+  "pattern": [
+    "ici",
+    " B ",
+    "#B#"
+  ],
+  "result": {
+    "item": "legend_of_steve:tall_fairy_marble_soul_brazier"
+  },
+  "show_notification": true
+}

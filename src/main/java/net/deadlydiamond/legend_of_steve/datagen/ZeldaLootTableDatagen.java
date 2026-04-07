@@ -93,7 +93,9 @@ public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
                 ZeldaBlocks.DEEPSLATE_SWORD_PEDESTAL,
                 ZeldaBlocks.BLACKSTONE_SWORD_PEDESTAL,
                 ZeldaBlocks.QUARTZ_SWORD_PEDESTAL,
-                ZeldaBlocks.FAIRY_MARBLE_SWORD_PEDESTAL
+                ZeldaBlocks.FAIRY_MARBLE_SWORD_PEDESTAL,
+                ZeldaBlocks.STRANGE_DIRT_SWORD_PEDESTAL,
+                ZeldaBlocks.STRANGE_BLUE_DIRT_SWORD_PEDESTAL
         );
 
         addDropWithSilkTouch(ZeldaBlocks.LOOT_POT);

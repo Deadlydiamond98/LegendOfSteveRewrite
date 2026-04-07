@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:quartz_slab"
+    },
+    "B": [
+      {
+        "item": "minecraft:quartz_block"
+      },
+      {
+        "item": "minecraft:chiseled_quartz_block"
+      },
+      {
+        "item": "minecraft:quartz_pillar"
+      }
+    ],
+    "c": {
+      "tag": "minecraft:soul_fire_base_blocks"
+    },
+    "i": {
+      "item": "minecraft:gold_nugget"
+    }
+  },
+  "pattern": [
+    "ici",
+    " B ",
+    "#B#"
+  ],
+  "result": {
+    "item": "legend_of_steve:tall_quartz_soul_brazier"
+  },
+  "show_notification": true
+}

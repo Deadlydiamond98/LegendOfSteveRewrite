@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:polished_deepslate_slab"
+    },
+    "c": {
+      "tag": "minecraft:coals"
+    },
+    "i": {
+      "item": "minecraft:iron_nugget"
+    }
+  },
+  "pattern": [
+    "ici",
+    "###"
+  ],
+  "result": {
+    "item": "legend_of_steve:deepslate_brazier"
+  },
+  "show_notification": true
+}

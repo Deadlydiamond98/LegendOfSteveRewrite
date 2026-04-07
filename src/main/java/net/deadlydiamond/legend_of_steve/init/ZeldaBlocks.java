@@ -11,6 +11,7 @@ import net.deadlydiamond.legend_of_steve.common.blocks.deco.glowing.FairyLamp;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.BombFlowerBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.FruitingLeavesBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.LootGrassBlock;
+import net.deadlydiamond.legend_of_steve.common.blocksets.BrazierBlockset;
 import net.deadlydiamond.legend_of_steve.common.blocksets.ReinforcedBlockset;
 import net.deadlydiamond.legend_of_steve.common.blocksets.iridescent.IridescentStairSlabWallBlockset;
 import net.deadlydiamond.legend_of_steve.common.blocksets.iridescent.IridescentStoneBlockset;
@@ -37,30 +38,6 @@ import net.minecraft.registry.Registry;
 import static net.deadlydiamond.legend_of_steve.init.ZeldaBlockSettings.*;
 
 public class ZeldaBlocks {
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // FUNCTIONAL BLOCKS ///////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    // PLANTS
-    public static final Block BOMB_FLOWER = register("bomb_flower", new BombFlowerBlock(BOMB_FLOWER_SETTINGS), false);
-    public static final Block LOOT_GRASS = register("loot_grass", new LootGrassBlock(LOOT_GRASS_SETTINGS));
-    // FLUIDS
-    public static final Block ENCHANTED_SPRING_WATER = register("enchanted_spring_water", new FluidBlock(
-            ZeldaFluids.ENCHANTED_SPRING_WATER, FabricBlockSettings.copyOf(Blocks.WATER).luminance(state -> 10)), false
-    );
-    // STORAGE
-    public static final Block LOOT_POT = registerPot("loot_pot", new LootPotBlock(LOOT_POT_SETTINGS));
-    public static final LootPotBlockset DYED_LOOT_POTS = new LootPotBlockset(LegendOfSteve.MOD_ID, "loot_pot", LOOT_POT);
-
-    public static final Block CRATE = register("crate", new Block(CRATE_SETTINGS), false);
-    public static final Item CRATE_ITEM = ZeldaItems.register("crate", new CrateItem(new FabricItemSettings(), CRATE.getDefaultState()));
-
-    public static final Block STONE_SWORD_PEDESTAL = register("stone_sword_pedestal", new SwordPedestal(FabricBlockSettings.copyOf(Blocks.STONE)));
-    public static final Block DEEPSLATE_SWORD_PEDESTAL = register("deepslate_sword_pedestal", new SwordPedestal(FabricBlockSettings.copyOf(Blocks.DEEPSLATE)));
-    public static final Block BLACKSTONE_SWORD_PEDESTAL = register("blackstone_sword_pedestal", new SwordPedestal(FabricBlockSettings.copyOf(Blocks.BLACKSTONE)));
-    public static final Block QUARTZ_SWORD_PEDESTAL = register("quartz_sword_pedestal", new SwordPedestal(FabricBlockSettings.copyOf(Blocks.QUARTZ_BLOCK)));
-    public static final Block FAIRY_MARBLE_SWORD_PEDESTAL = register("fairy_marble_sword_pedestal", new SwordPedestal(FAIRY_MARBLE_SETTINGS));
-
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // DECORATIVE BLOCKS ///////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -149,6 +126,42 @@ public class ZeldaBlocks {
     public static final BaseStairSlabBlockset SMALL_RED_TEKTILES = new BaseStairSlabBlockset(LegendOfSteve.MOD_ID, "small_red_tektiles", RED_TEKTILES_SETTINGS);
     public static final BaseStairSlabBlockset BLUE_TEKTILES = new BaseStairSlabBlockset(LegendOfSteve.MOD_ID, "blue_tektiles", BLUE_TEKTILES_SETTINGS);
     public static final BaseStairSlabBlockset SMALL_BLUE_TEKTILES = new BaseStairSlabBlockset(LegendOfSteve.MOD_ID, "small_blue_tektiles", BLUE_TEKTILES_SETTINGS);
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // FUNCTIONAL BLOCKS ///////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // PLANTS
+    public static final Block BOMB_FLOWER = register("bomb_flower", new BombFlowerBlock(BOMB_FLOWER_SETTINGS), false);
+    public static final Block LOOT_GRASS = register("loot_grass", new LootGrassBlock(LOOT_GRASS_SETTINGS));
+    // FLUIDS
+    public static final Block ENCHANTED_SPRING_WATER = register("enchanted_spring_water", new FluidBlock(
+            ZeldaFluids.ENCHANTED_SPRING_WATER, FabricBlockSettings.copyOf(Blocks.WATER).luminance(state -> 10)), false
+    );
+    // STORAGE
+    public static final Block LOOT_POT = registerPot("loot_pot", new LootPotBlock(LOOT_POT_SETTINGS));
+    public static final LootPotBlockset DYED_LOOT_POTS = new LootPotBlockset(LegendOfSteve.MOD_ID, "loot_pot", LOOT_POT);
+
+    public static final Block CRATE = register("crate", new Block(CRATE_SETTINGS), false);
+    public static final Item CRATE_ITEM = ZeldaItems.register("crate", new CrateItem(new FabricItemSettings(), CRATE.getDefaultState()));
+
+    public static final Block STONE_SWORD_PEDESTAL = register("stone_sword_pedestal", new SwordPedestal(FabricBlockSettings.copyOf(Blocks.STONE)));
+    public static final Block DEEPSLATE_SWORD_PEDESTAL = register("deepslate_sword_pedestal", new SwordPedestal(FabricBlockSettings.copyOf(Blocks.POLISHED_DEEPSLATE)));
+    public static final Block BLACKSTONE_SWORD_PEDESTAL = register("blackstone_sword_pedestal", new SwordPedestal(FabricBlockSettings.copyOf(Blocks.POLISHED_BLACKSTONE)));
+    public static final Block QUARTZ_SWORD_PEDESTAL = register("quartz_sword_pedestal", new SwordPedestal(FabricBlockSettings.copyOf(Blocks.QUARTZ_BLOCK)));
+    public static final Block FAIRY_MARBLE_SWORD_PEDESTAL = register("fairy_marble_sword_pedestal", new SwordPedestal(FAIRY_MARBLE_SETTINGS));
+    public static final Block STRANGE_DIRT_SWORD_PEDESTAL = register("strange_dirt_sword_pedestal", new SwordPedestal(STRANGE_DIRT_SETTINGS));
+    public static final Block STRANGE_BLUE_DIRT_SWORD_PEDESTAL = register("strange_blue_dirt_sword_pedestal", new SwordPedestal(STRANGE_BLUE_DIRT_SETTINGS));
+
+    // BRAZIERS
+    public static final BrazierBlockset STONE_BRAZIER_BLOCKSET = new BrazierBlockset(LegendOfSteve.MOD_ID, "stone", Blocks.STONE);
+    public static final BrazierBlockset DEEPSLATE_BRAZIER_BLOCKSET = new BrazierBlockset(LegendOfSteve.MOD_ID, "deepslate", Blocks.POLISHED_DEEPSLATE);
+    public static final BrazierBlockset BLACKSTONE_BRAZIER_BLOCKSET = new BrazierBlockset(LegendOfSteve.MOD_ID, "blackstone", Blocks.POLISHED_BLACKSTONE);
+    public static final BrazierBlockset QUARTZ_BRAZIER_BLOCKSET = new BrazierBlockset(LegendOfSteve.MOD_ID, "quartz", Blocks.QUARTZ_BLOCK);
+    public static final BrazierBlockset FAIRY_MARBLE_BRAZIER_BLOCKSET = new BrazierBlockset(LegendOfSteve.MOD_ID, "fairy_marble", FAIRY_MARBLE.base);
+    public static final BrazierBlockset STRANGE_DIRT_BRAZIER_BLOCKSET = new BrazierBlockset(LegendOfSteve.MOD_ID, "strange_dirt", STRANGE_DIRT.base);
+    public static final BrazierBlockset STRANGE_BLUE_DIRT_BRAZIER_BLOCKSET = new BrazierBlockset(LegendOfSteve.MOD_ID, "strange_blue_dirt", STRANGE_BLUE_DIRT.base);
+
 
     // REGISTRATION ////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -57,13 +57,50 @@
   "block.legend_of_steve.magenta_loot_pot": "Magenta Loot Pot",
   "block.legend_of_steve.pink_loot_pot": "Pink Loot Pot",
 
+  "block.legend_of_steve.crate": "Crate",
+
   "block.legend_of_steve.stone_sword_pedestal": "Stone Sword Pedestal",
   "block.legend_of_steve.deepslate_sword_pedestal": "Deepslate Sword Pedestal",
   "block.legend_of_steve.blackstone_sword_pedestal": "Blackstone Sword Pedestal",
   "block.legend_of_steve.quartz_sword_pedestal": "Quartz Sword Pedestal",
   "block.legend_of_steve.fairy_marble_sword_pedestal": "Fairy Marble Sword Pedestal",
+  "block.legend_of_steve.strange_dirt_sword_pedestal": "Strange Dirt Sword Pedestal",
+  "block.legend_of_steve.strange_blue_dirt_sword_pedestal": "Strange Blue Dirt Sword Pedestal",
 
-  "block.legend_of_steve.crate": "Crate",
+  "block.legend_of_steve.stone_brazier": "Stone Brazier",
+  "block.legend_of_steve.stone_soul_brazier": "Stone Soul Brazier",
+  "block.legend_of_steve.tall_stone_brazier": "Tall Stone Brazier",
+  "block.legend_of_steve.tall_stone_soul_brazier": "Tall Stone Soul Brazier",
+
+  "block.legend_of_steve.deepslate_brazier": "Deepslate Brazier",
+  "block.legend_of_steve.deepslate_soul_brazier": "Deepslate Soul Brazier",
+  "block.legend_of_steve.tall_deepslate_brazier": "Tall Deepslate Brazier",
+  "block.legend_of_steve.tall_deepslate_soul_brazier": "Tall Deepslate Soul Brazier",
+
+  "block.legend_of_steve.blackstone_brazier": "Blackstone Brazier",
+  "block.legend_of_steve.blackstone_soul_brazier": "Blackstone Soul Brazier",
+  "block.legend_of_steve.tall_blackstone_brazier": "Tall Blackstone Brazier",
+  "block.legend_of_steve.tall_blackstone_soul_brazier": "Tall Blackstone Soul Brazier",
+
+  "block.legend_of_steve.quartz_brazier": "Quartz Brazier",
+  "block.legend_of_steve.quartz_soul_brazier": "Quartz Soul Brazier",
+  "block.legend_of_steve.tall_quartz_brazier": "Tall Quartz Brazier",
+  "block.legend_of_steve.tall_quartz_soul_brazier": "Tall Quartz Soul Brazier",
+
+  "block.legend_of_steve.fairy_marble_brazier": "Fairy Marble Brazier",
+  "block.legend_of_steve.fairy_marble_soul_brazier": "Fairy Marble Soul Brazier",
+  "block.legend_of_steve.tall_fairy_marble_brazier": "Tall Fairy Marble Brazier",
+  "block.legend_of_steve.tall_fairy_marble_soul_brazier": "Tall Fairy Marble Soul Brazier",
+
+  "block.legend_of_steve.strange_dirt_brazier": "Strange Dirt Brazier",
+  "block.legend_of_steve.strange_dirt_soul_brazier": "Strange Dirt Soul Brazier",
+  "block.legend_of_steve.tall_strange_dirt_brazier": "Tall Strange Dirt Brazier",
+  "block.legend_of_steve.tall_strange_dirt_soul_brazier": "Tall Strange Dirt Soul Brazier",
+
+  "block.legend_of_steve.strange_blue_dirt_brazier": "Strange Blue Dirt Brazier",
+  "block.legend_of_steve.strange_blue_dirt_soul_brazier": "Strange Blue Dirt Soul Brazier",
+  "block.legend_of_steve.tall_strange_blue_dirt_brazier": "Tall Strange Blue Dirt Brazier",
+  "block.legend_of_steve.tall_strange_blue_dirt_soul_brazier": "Tall Strange Blue Dirt Soul Brazier",
 
   "block.legend_of_steve.chiseled_oak_planks": "Chiseled Oak Planks",
   "block.legend_of_steve.chiseled_birch_planks": "Chiseled Birch Planks",

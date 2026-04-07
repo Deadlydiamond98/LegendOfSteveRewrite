@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "legend_of_steve:block/fairy_marble_soul_brazier"
+    },
+    "lit=true": {
+      "model": "legend_of_steve:block/fairy_marble_soul_brazier_lit"
+    }
+  }
+}

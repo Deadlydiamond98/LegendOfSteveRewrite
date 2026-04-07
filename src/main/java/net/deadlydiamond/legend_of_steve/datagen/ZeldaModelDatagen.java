@@ -40,9 +40,18 @@ public class ZeldaModelDatagen extends FabricModelProvider {
         ZeldaBlockModelDatagenUtil.registerSwordPedestal(generator, ZeldaBlocks.DEEPSLATE_SWORD_PEDESTAL);
         ZeldaBlockModelDatagenUtil.registerSwordPedestal(generator, ZeldaBlocks.BLACKSTONE_SWORD_PEDESTAL);
         ZeldaBlockModelDatagenUtil.registerSwordPedestal(generator, ZeldaBlocks.QUARTZ_SWORD_PEDESTAL);
+        ZeldaBlockModelDatagenUtil.registerSwordPedestal(generator, ZeldaBlocks.STRANGE_DIRT_SWORD_PEDESTAL);
+        ZeldaBlockModelDatagenUtil.registerSwordPedestal(generator, ZeldaBlocks.STRANGE_BLUE_DIRT_SWORD_PEDESTAL);
+
+        // BRAZIERS ////////////////////////////////////////////////////////////////////////////////////////////////////
+        ZeldaBlocks.STONE_BRAZIER_BLOCKSET.generateModels(generator);
+        ZeldaBlocks.DEEPSLATE_BRAZIER_BLOCKSET.generateModels(generator);
+        ZeldaBlocks.BLACKSTONE_BRAZIER_BLOCKSET.generateModels(generator);
+        ZeldaBlocks.QUARTZ_BRAZIER_BLOCKSET.generateModels(generator);
+        ZeldaBlocks.STRANGE_DIRT_BRAZIER_BLOCKSET.generateModels(generator);
+        ZeldaBlocks.STRANGE_BLUE_DIRT_BRAZIER_BLOCKSET.generateModels(generator);
 
         // CRATE ///////////////////////////////////////////////////////////////////////////////////////////////////////
-
         generator.registerSimpleCubeAll(ZeldaBlocks.CRATE);
         generator.registerParentedItemModel(ZeldaBlocks.CRATE_ITEM, ModelIds.getBlockModelId(ZeldaBlocks.CRATE));
         

@@ -8,7 +8,9 @@ import net.deadlydiamond.legend_of_steve.common.items.bag.QuiverItem;
 import net.deadlydiamond.legend_of_steve.common.items.projectile.DekuNutItem;
 import net.deadlydiamond.legend_of_steve.common.items.projectile.explosive.BombItem;
 import net.deadlydiamond.legend_of_steve.common.items.projectile.explosive.ChargedBombItem;
+import net.fabricmc.fabric.api.item.v1.FabricItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -83,5 +85,6 @@ public class ZeldaItems {
         return Registry.register(Registries.ITEM, LegendOfSteve.id(id), item);
     }
 
-    public static void register() {}
+    public static void register() {
+    }
 }

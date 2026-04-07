@@ -95,6 +95,10 @@ public class ZeldaItemTagDatagen extends FabricTagProvider.ItemTagProvider {
                 ZeldaBlocks.FAIRY_MARBLE_SWORD_PEDESTAL.asItem()
         );
 
+        addBlocksetsToTag(ZeldaTags.IRIDESCENT_ITEM,
+                ZeldaBlocks.FAIRY_MARBLE_BRAZIER_BLOCKSET
+        );
+
         getOrCreateTagBuilder(ItemTags.PIGLIN_LOVED).add(
                 ZeldaItems.GILDED_BOMB_BAG,
                 ZeldaItems.GILDED_QUIVER
@@ -132,6 +136,14 @@ public class ZeldaItemTagDatagen extends FabricTagProvider.ItemTagProvider {
                 ZeldaBlocks.STRANGE_DIRT_BRICKS.base.asItem(),
                 ZeldaBlocks.REINFORCED_STRANGE_DIRT.base.asItem(),
                 ZeldaBlocks.STRANGE_DIRT_PILLAR.asItem()
+        );
+
+        getOrCreateTagBuilder(ZeldaTags.STRANGE_BLUE_DIRT).add(
+                ZeldaBlocks.STRANGE_BLUE_DIRT.base.asItem(),
+                ZeldaBlocks.POLISHED_BLUE_STRANGE_DIRT.base.asItem(),
+                ZeldaBlocks.STRANGE_BLUE_DIRT_BRICKS.base.asItem(),
+                ZeldaBlocks.REINFORCED_STRANGE_BLUE_DIRT.base.asItem(),
+                ZeldaBlocks.STRANGE_BLUE_DIRT_PILLAR.asItem()
         );
     }
 

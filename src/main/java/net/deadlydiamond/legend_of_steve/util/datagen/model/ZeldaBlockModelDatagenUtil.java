@@ -4,7 +4,9 @@ import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.blocks.container.single.hittable.AbstractHittableContainerBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.ConnectedPillarBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.PillarType;
+import net.deadlydiamond.legend_of_steve.util.ZeldaModels;
 import net.minecraft.block.Block;
+import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.data.client.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.state.property.EnumProperty;
@@ -18,18 +20,10 @@ import java.util.Optional;
 
 public class ZeldaBlockModelDatagenUtil {
 
-    public static final Model LOOT_POT = new Model(Optional.of(LegendOfSteve.id("block/template_loot_pot")),
-            Optional.empty(), TextureKey.ALL, TextureKey.PARTICLE
-    );
-
-    public static final Model SWORD_PEDESTAL = new Model(Optional.of(LegendOfSteve.id("block/template_sword_pedestal")),
-            Optional.empty(), TextureKey.TOP, TextureKey.BOTTOM, TextureKey.SIDE, TextureKey.FRONT
-    );
-
     public static void registerPot(BlockStateModelGenerator blockStateModelGenerator, Block block, Block particle) {
         TextureMap textureMap = TextureMap.all(getPrefixedId(block, "loot_pot")).put(TextureKey.PARTICLE, TextureMap.all(particle).getTexture(TextureKey.PARTICLE));
 
-        Identifier pot = LOOT_POT.upload(block, textureMap, blockStateModelGenerator.modelCollector);
+        Identifier pot = ZeldaModels.LOOT_POT.upload(block, textureMap, blockStateModelGenerator.modelCollector);
         blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(block, pot));
     }
 
@@ -39,11 +33,63 @@ public class ZeldaBlockModelDatagenUtil {
                 .put(TextureKey.BOTTOM, TextureMap.getSubId(block, "_bottom"))
                 .put(TextureKey.FRONT, TextureMap.getSubId(block, "_front"));
 
-        Identifier pedestal = SWORD_PEDESTAL.upload(block, textureMap, blockStateModelGenerator.modelCollector);
+        Identifier pedestal = ZeldaModels.SWORD_PEDESTAL.upload(block, textureMap, blockStateModelGenerator.modelCollector);
         blockStateModelGenerator.blockStateCollector.accept(
                 VariantsBlockStateSupplier.create(block, BlockStateVariant.create().put(VariantSettings.MODEL, pedestal))
                         .coordinate(BlockStateModelGenerator.createNorthDefaultHorizontalRotationStates())
         );
+    }
+
+    public static void registerBrazier(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier fireTexture) {
+        registerBrazierParented(blockStateModelGenerator, block, block, fireTexture);
+    }
+
+    public static void registerBrazierParented(BlockStateModelGenerator blockStateModelGenerator, Block block, Block parent, Identifier fireTexture) {
+        TextureMap unlitTextureMap = TextureMap.of(TextureKey.SIDE, TextureMap.getId(parent))
+                .put(TextureKey.TOP, TextureMap.getSubId(parent, "_top"))
+                .put(TextureKey.BOTTOM, TextureMap.getSubId(parent, "_bottom"));
+
+        TextureMap litTextureMap = TextureMap.of(TextureKey.SIDE, TextureMap.getId(parent))
+                .put(TextureKey.TOP, TextureMap.getSubId(block, "_top_lit"))
+                .put(TextureKey.BOTTOM, TextureMap.getSubId(parent, "_bottom"))
+                .put(TextureKey.FIRE, fireTexture);
+
+        Identifier unlit = ZeldaModels.BRAZIER.upload(block, unlitTextureMap, blockStateModelGenerator.modelCollector);
+        Identifier lit = ZeldaModels.BRAZIER_LIT.upload(block, litTextureMap, blockStateModelGenerator.modelCollector);
+
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block).coordinate(
+                BlockStateVariantMap.create(Properties.LIT)
+                        .register(false, BlockStateVariant.create().put(VariantSettings.MODEL, unlit))
+                        .register(true, BlockStateVariant.create().put(VariantSettings.MODEL, lit))
+        ));
+        blockStateModelGenerator.registerItemModel(block.asItem());
+    }
+
+    public static void registerTallBrazier(BlockStateModelGenerator blockStateModelGenerator, Block block, Block parent, Block litParent, Identifier fireTexture) {
+        TextureMap unlitTextureMap = TextureMap.of(TextureKey.SIDE, TextureMap.getId(parent))
+                .put(TextureKey.TOP, TextureMap.getSubId(parent, "_top"))
+                .put(TextureKey.BOTTOM, TextureMap.getSubId(parent, "_bottom"));
+
+        TextureMap litTextureMap = TextureMap.of(TextureKey.SIDE, TextureMap.getId(parent))
+                .put(TextureKey.TOP, TextureMap.getSubId(litParent, "_top_lit"))
+                .put(TextureKey.BOTTOM, TextureMap.getSubId(parent, "_bottom"))
+                .put(TextureKey.FIRE, fireTexture);
+
+        TextureMap bottomTextureMap = TextureMap.of(TextureKey.SIDE, TextureMap.getSubId(parent, "_side"))
+                .put(TextureKey.BOTTOM, TextureMap.getSubId(parent, "_bottom"));
+
+        Identifier unlit = ZeldaModels.BRAZIER.upload(block, unlitTextureMap, blockStateModelGenerator.modelCollector);
+        Identifier lit = ZeldaModels.BRAZIER_LIT.upload(block, litTextureMap, blockStateModelGenerator.modelCollector);
+        Identifier bottom = ZeldaModels.TALL_BRAZIER_BOTTOM.upload(block, bottomTextureMap, blockStateModelGenerator.modelCollector);
+
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block).coordinate(
+                BlockStateVariantMap.create(Properties.LIT, Properties.DOUBLE_BLOCK_HALF)
+                        .register(false, DoubleBlockHalf.UPPER, BlockStateVariant.create().put(VariantSettings.MODEL, unlit))
+                        .register(true, DoubleBlockHalf.UPPER, BlockStateVariant.create().put(VariantSettings.MODEL, lit))
+                        .register(false, DoubleBlockHalf.LOWER, BlockStateVariant.create().put(VariantSettings.MODEL, bottom))
+                        .register(true, DoubleBlockHalf.LOWER, BlockStateVariant.create().put(VariantSettings.MODEL, bottom))
+        ));
+        blockStateModelGenerator.registerItemModel(block.asItem());
     }
 
     public static void registerHittableBlock(BlockStateModelGenerator blockStateModelGenerator, Block block, @Nullable Block base) {

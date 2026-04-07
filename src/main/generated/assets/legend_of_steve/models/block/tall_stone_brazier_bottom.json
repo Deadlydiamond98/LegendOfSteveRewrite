@@ -1,0 +1,7 @@
+{
+  "parent": "legend_of_steve:block/template_tall_brazier_bottom",
+  "textures": {
+    "bottom": "legend_of_steve:block/stone_brazier_bottom",
+    "side": "legend_of_steve:block/stone_brazier_side"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "legend_of_steve:block/template_brazier",
+  "textures": {
+    "bottom": "legend_of_steve:block/strange_blue_dirt_brazier_bottom",
+    "side": "legend_of_steve:block/strange_blue_dirt_brazier",
+    "top": "legend_of_steve:block/strange_blue_dirt_brazier_top"
+  }
+}

@@ -22,6 +22,7 @@ public class ZeldaTags {
     public static final TagKey<Item> LOOT_POTS = item("loot_pots");
     public static final TagKey<Item> QUIVERS = item("quivers");
     public static final TagKey<Item> STRANGE_DIRT = item("strange_dirt");
+    public static final TagKey<Item> STRANGE_BLUE_DIRT = item("strange_blue_dirt");
 
     // BLOCKS //////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static final TagKey<Block> BOMB_BREAKABLE = block("bomb_breakable");

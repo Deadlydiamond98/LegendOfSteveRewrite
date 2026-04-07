@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:quartz_slab"
+    },
+    "c": {
+      "tag": "minecraft:soul_fire_base_blocks"
+    },
+    "i": {
+      "item": "minecraft:gold_nugget"
+    }
+  },
+  "pattern": [
+    "ici",
+    "###"
+  ],
+  "result": {
+    "item": "legend_of_steve:quartz_soul_brazier"
+  },
+  "show_notification": true
+}

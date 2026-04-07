@@ -1,0 +1,9 @@
+{
+  "parent": "legend_of_steve:block/template_brazier_lit",
+  "textures": {
+    "bottom": "legend_of_steve:block/blackstone_brazier_bottom",
+    "fire": "minecraft:block/soul_campfire_fire",
+    "side": "legend_of_steve:block/blackstone_brazier",
+    "top": "legend_of_steve:block/blackstone_soul_brazier_top_lit"
+  }
+}

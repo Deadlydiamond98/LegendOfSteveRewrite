@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "half=lower,lit=false": {
+      "model": "legend_of_steve:block/tall_stone_soul_brazier_bottom"
+    },
+    "half=lower,lit=true": {
+      "model": "legend_of_steve:block/tall_stone_soul_brazier_bottom"
+    },
+    "half=upper,lit=false": {
+      "model": "legend_of_steve:block/tall_stone_soul_brazier"
+    },
+    "half=upper,lit=true": {
+      "model": "legend_of_steve:block/tall_stone_soul_brazier_lit"
+    }
+  }
+}

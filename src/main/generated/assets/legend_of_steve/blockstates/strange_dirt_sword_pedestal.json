@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "legend_of_steve:block/strange_dirt_sword_pedestal",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "legend_of_steve:block/strange_dirt_sword_pedestal"
+    },
+    "facing=south": {
+      "model": "legend_of_steve:block/strange_dirt_sword_pedestal",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "legend_of_steve:block/strange_dirt_sword_pedestal",
+      "y": 270
+    }
+  }
+}

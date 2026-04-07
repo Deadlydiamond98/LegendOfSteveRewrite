@@ -3,6 +3,7 @@ package net.deadlydiamond.legend_of_steve.init;
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.items.EmeraldShardItem;
 import net.deadlydiamond.legend_of_steve.common.items.FairyBottleItem;
+import net.deadlydiamond.legend_of_steve.common.items.KeyItem;
 import net.deadlydiamond.legend_of_steve.common.items.bag.BombBagItem;
 import net.deadlydiamond.legend_of_steve.common.items.bag.QuiverItem;
 import net.deadlydiamond.legend_of_steve.common.items.projectile.DekuNutItem;
@@ -40,6 +41,9 @@ public class ZeldaItems {
     public static final Item QUIVER = registerQuiver("quiver", 160, ArmorMaterials.LEATHER, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER);
     public static final Item GILDED_QUIVER = registerQuiver("gilded_quiver", 320, ArmorMaterials.LEATHER, SoundEvents.ITEM_ARMOR_EQUIP_GOLD);
     public static final Item NETHERITE_QUIVER = registerQuiver("netherite_quiver", 160, ArmorMaterials.NETHERITE, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE);
+
+    // LOCKS & KEYS ////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static final Item TEST_KEY = register("test_key", new KeyItem(new FabricItemSettings()));
 
     // MATERIALS ///////////////////////////////////////////////////////////////////////////////////////////////////////
     // EMERALD SHARD

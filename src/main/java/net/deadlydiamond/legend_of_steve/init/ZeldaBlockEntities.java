@@ -43,6 +43,7 @@ public class ZeldaBlockEntities {
             ZeldaBlocks.STRANGE_BLUE_DIRT_BRICKS.container
     );
 
+
     // OTHER BLOCK ENTITIES ////////////////////////////////////////////////////////////////////////////////////////////
 
     public static final BlockEntityType<BombFlowerBlockEntity> BOMB_FLOWER = register("bomb_flower", BombFlowerBlockEntity::new,

@@ -7,6 +7,8 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "common.ExplosionMixin",
+    "common.be.LootableContainerBlockEntityMixin",
+    "common.block.AbstractBlockStateMixin",
     "common.block.FluidBlockMixin",
     "common.block.NoteBlockMixin",
     "common.block.PressurePlateBlockMixin",

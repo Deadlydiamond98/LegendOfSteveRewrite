@@ -30,6 +30,7 @@ import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -161,7 +162,6 @@ public class ZeldaBlocks {
     public static final BrazierBlockset FAIRY_MARBLE_BRAZIER_BLOCKSET = new BrazierBlockset(LegendOfSteve.MOD_ID, "fairy_marble", FAIRY_MARBLE.base);
     public static final BrazierBlockset STRANGE_DIRT_BRAZIER_BLOCKSET = new BrazierBlockset(LegendOfSteve.MOD_ID, "strange_dirt", STRANGE_DIRT.base);
     public static final BrazierBlockset STRANGE_BLUE_DIRT_BRAZIER_BLOCKSET = new BrazierBlockset(LegendOfSteve.MOD_ID, "strange_blue_dirt", STRANGE_BLUE_DIRT.base);
-
 
     // REGISTRATION ////////////////////////////////////////////////////////////////////////////////////////////////////
 

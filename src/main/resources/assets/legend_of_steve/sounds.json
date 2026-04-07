@@ -378,11 +378,11 @@
   },
   "block.master_plate.place": {
     "sounds": [
-      "legend_of_steve:block/master_bars/break1",
-      "legend_of_steve:block/master_bars/break2",
-      "legend_of_steve:block/master_bars/break3",
-      "legend_of_steve:block/master_bars/break4",
-      "legend_of_steve:block/master_bars/break5"
+      "legend_of_steve:block/master_plate/break1",
+      "legend_of_steve:block/master_plate/break2",
+      "legend_of_steve:block/master_plate/break3",
+      "legend_of_steve:block/master_plate/break4",
+      "legend_of_steve:block/master_plate/break5"
     ],
     "subtitle": "subtitles.block.generic.place"
   },

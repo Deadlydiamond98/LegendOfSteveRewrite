@@ -1,0 +1,9 @@
+{
+  "type": "legend_of_steve:spring_water_conversion",
+  "input": {
+    "item": "legend_of_steve:stone_soul_brazier"
+  },
+  "result": {
+    "item": "legend_of_steve:fairy_marble_brazier"
+  }
+}

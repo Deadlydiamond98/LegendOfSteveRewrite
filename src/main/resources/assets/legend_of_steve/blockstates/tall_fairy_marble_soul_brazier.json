@@ -1,16 +1,16 @@
 {
   "variants": {
     "half=lower,lit=false": {
-      "model": "legend_of_steve:block/tall_fairy_marble_soul_brazier_bottom"
+      "model": "legend_of_steve:block/tall_fairy_marble_brazier_bottom"
     },
     "half=lower,lit=true": {
-      "model": "legend_of_steve:block/tall_fairy_marble_soul_brazier_bottom"
+      "model": "legend_of_steve:block/tall_fairy_marble_brazier_bottom"
     },
-    "half=upper,lit=false": {
-      "model": "legend_of_steve:block/tall_fairy_marble_soul_brazier"
+    "lit=false": {
+      "model": "legend_of_steve:block/fairy_marble_brazier"
     },
     "half=upper,lit=true": {
-      "model": "legend_of_steve:block/tall_fairy_marble_soul_brazier_lit"
+      "model": "legend_of_steve:block/fairy_marble_soul_brazier_lit"
     }
   }
 }

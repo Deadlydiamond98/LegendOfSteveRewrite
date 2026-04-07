@@ -322,10 +322,16 @@ public class ZeldaSpringWaterConversionDatagen {
         offerConversion(consumer, Blocks.MOSSY_STONE_BRICK_SLAB, ZeldaBlocks.MOSSY_FAIRY_MARBLE_BRICKS.slab);
         offerConversion(consumer, Blocks.MOSSY_STONE_BRICK_STAIRS, ZeldaBlocks.MOSSY_FAIRY_MARBLE_BRICKS.stair);
         offerConversion(consumer, Blocks.MOSSY_STONE_BRICK_WALL, ZeldaBlocks.MOSSY_FAIRY_MARBLE_BRICKS.wall);
+        // brazier
+        offerConversion(consumer, ZeldaBlocks.STONE_BRAZIER_BLOCKSET.regular, ZeldaBlocks.FAIRY_MARBLE_BRAZIER_BLOCKSET.regular);
+        offerConversion(consumer, ZeldaBlocks.STONE_BRAZIER_BLOCKSET.soul, ZeldaBlocks.FAIRY_MARBLE_BRAZIER_BLOCKSET.regular);
+        offerConversion(consumer, ZeldaBlocks.STONE_BRAZIER_BLOCKSET.tall, ZeldaBlocks.FAIRY_MARBLE_BRAZIER_BLOCKSET.tall);
+        offerConversion(consumer, ZeldaBlocks.STONE_BRAZIER_BLOCKSET.tall_soul, ZeldaBlocks.FAIRY_MARBLE_BRAZIER_BLOCKSET.tall);
         // other
         offerConversion(consumer, Blocks.CRACKED_STONE_BRICKS, ZeldaBlocks.CRACKED_FAIRY_MARBLE_BRICKS);
         offerConversion(consumer, Blocks.CHISELED_STONE_BRICKS, ZeldaBlocks.CHISELED_FAIRY_MARBLE);
         offerConversion(consumer, Blocks.SMOOTH_STONE, ZeldaBlocks.SMOOTH_FAIRY_MARBLE);
+        offerConversion(consumer, ZeldaBlocks.STONE_SWORD_PEDESTAL, ZeldaBlocks.FAIRY_MARBLE_SWORD_PEDESTAL);
     }
 
     private static void strangeDirt(Consumer<RecipeJsonProvider> consumer) {
@@ -335,6 +341,8 @@ public class ZeldaSpringWaterConversionDatagen {
         offerConversion(consumer, Blocks.PODZOL, ZeldaBlocks.STRANGE_DIRT.base);
         offerConversion(consumer, Blocks.COARSE_DIRT, ZeldaBlocks.STRANGE_DIRT.base);
         offerConversion(consumer, Blocks.ROOTED_DIRT, ZeldaBlocks.STRANGE_DIRT.base);
+
+        offerConversion(consumer, ZeldaBlocks.STRANGE_DIRT.base, Blocks.DIRT);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

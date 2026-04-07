@@ -2,6 +2,7 @@
   "parent": "legend_of_steve:block/template_tall_brazier_bottom",
   "textures": {
     "bottom": "legend_of_steve:block/iridescent/fairy_marble_brazier_bottom@legend_of_steve:textures/atlas/iridescent.png",
-    "side": "legend_of_steve:block/iridescent/fairy_marble_brazier_side@legend_of_steve:textures/atlas/iridescent.png"
+    "side": "legend_of_steve:block/iridescent/fairy_marble_brazier_side@legend_of_steve:textures/atlas/iridescent.png",
+    "particle": "legend_of_steve:block/iridescent/fairy_marble_brazier_bottom"
   }
 }

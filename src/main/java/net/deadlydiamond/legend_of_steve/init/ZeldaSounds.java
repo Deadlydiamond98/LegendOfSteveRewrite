@@ -70,6 +70,9 @@ public class ZeldaSounds {
     public static final SoundEvent DEKU_NUT_STUN = register("item.deku_nut.freeze");
     // Bottle
     public static final SoundEvent EMPTY_BOTTLE = register("item.bottle.empty");
+    // Lock
+    public static final SoundEvent LOCK = register("item.lock.lock");
+    public static final SoundEvent UNLOCK = register("item.lock.unlock");
 
     // Entities ////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Bomb

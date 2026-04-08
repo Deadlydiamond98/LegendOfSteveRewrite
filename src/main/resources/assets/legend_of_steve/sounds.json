@@ -45,6 +45,25 @@
     "subtitle": "subtitles.item.bottle.empty"
   },
 
+  "item.lock.lock": {
+    "sounds": [
+      "block/hanging_sign/break1",
+      "block/hanging_sign/break2",
+      "block/hanging_sign/break3",
+      "block/hanging_sign/break4"
+    ],
+    "subtitle": "subtitles.legend_of_steve.item.lock.lock"
+  },
+  "item.lock.unlock": {
+    "sounds": [
+      "block/hanging_sign/break1",
+      "block/hanging_sign/break2",
+      "block/hanging_sign/break3",
+      "block/hanging_sign/break4"
+    ],
+    "subtitle": "subtitles.legend_of_steve.item.lock.unlock"
+  },
+
   "music_disc.legend": {
       "sounds": [
         {

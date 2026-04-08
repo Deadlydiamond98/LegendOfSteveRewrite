@@ -28,6 +28,7 @@ public class ZeldaTags {
     public static final TagKey<Block> BOMB_BREAKABLE = block("bomb_breakable");
     public static final TagKey<Block> BOMB_FLOWER_PLANTABLE = block("bomb_flower_plantable");
     public static final TagKey<Block> CHISELED_PLANKS_BLOCK = block("chiseled_planks");
+    public static final TagKey<Block> LOCKABLE = block("lockable");
 
     // ENTITIES ////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static final TagKey<EntityType<?>> IMMUNE_TO_STUNNING = entity("immune_to_stunning");

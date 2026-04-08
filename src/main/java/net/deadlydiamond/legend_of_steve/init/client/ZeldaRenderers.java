@@ -1,5 +1,8 @@
 package net.deadlydiamond.legend_of_steve.init.client;
 
+import net.deadlydiamond.legend_of_steve.client.models.block.lock.ChestLockLeftModel;
+import net.deadlydiamond.legend_of_steve.client.models.block.lock.ChestLockModel;
+import net.deadlydiamond.legend_of_steve.client.models.block.lock.ChestLockRightModel;
 import net.deadlydiamond.legend_of_steve.client.models.entity.BombEntityModel;
 import net.deadlydiamond.legend_of_steve.client.models.entity.FairyEntityModel;
 import net.deadlydiamond.legend_of_steve.client.models.feature.QuiverModel;
@@ -41,6 +44,9 @@ public class ZeldaRenderers {
 
     private static void registerModelLayers() {
         EntityModelLayerRegistry.registerModelLayer(BombEntityModel.LAYER_LOCATION, BombEntityModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(ChestLockLeftModel.LAYER_LOCATION, ChestLockLeftModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(ChestLockModel.LAYER_LOCATION, ChestLockModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(ChestLockRightModel.LAYER_LOCATION, ChestLockRightModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(FairyEntityModel.LAYER_LOCATION, FairyEntityModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(QuiverModel.LAYER_LOCATION, QuiverModel::getTexturedModelData);
     }

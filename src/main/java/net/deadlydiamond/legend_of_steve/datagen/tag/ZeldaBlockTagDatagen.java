@@ -6,6 +6,7 @@ import net.deadlydiamond98.koalalib.common.blocksets.AbstractBlockset;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.TagKey;
@@ -164,6 +165,11 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
         );
 
         // OTHER ///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        getOrCreateTagBuilder(ZeldaTags.LOCKABLE).add(
+                Blocks.CHEST,
+                Blocks.TRAPPED_CHEST
+        );
 
         getOrCreateTagBuilder(BlockTags.COMBINATION_STEP_SOUND_BLOCKS).add(
                 ZeldaBlocks.BOMB_FLOWER

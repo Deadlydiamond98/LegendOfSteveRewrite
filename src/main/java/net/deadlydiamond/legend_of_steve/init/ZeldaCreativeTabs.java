@@ -37,7 +37,16 @@ public class ZeldaCreativeTabs {
                 ZeldaItems.NETHERITE_QUIVER,
 
                 // KEYS
-                ZeldaItems.TEST_KEY,
+                ZeldaItems.COPPER_KEY,
+                ZeldaItems.IRON_KEY,
+                ZeldaItems.GOLD_KEY,
+                ZeldaItems.BOSS_KEY,
+
+                // LOCKS
+                ZeldaItems.COPPER_LOCK,
+                ZeldaItems.IRON_LOCK,
+                ZeldaItems.GOLD_LOCK,
+                ZeldaItems.BOSS_LOCK,
 
                 // EMERALD SHARDS
                 ZeldaItems.EMERALD_SHARD,

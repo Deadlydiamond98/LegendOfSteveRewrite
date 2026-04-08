@@ -145,7 +145,15 @@ public class ZeldaModelDatagen extends FabricModelProvider {
                 ZeldaItems.MASTER_INGOT,
                 ZeldaItems.ENCHANTED_SPRING_WATER_BUCKET,
                 ZeldaItems.MUSIC_DISC_LEGEND,
-                ZeldaItems.DISC_FRAGMENT_LEGEND
+                ZeldaItems.DISC_FRAGMENT_LEGEND,
+                ZeldaItems.COPPER_KEY,
+                ZeldaItems.IRON_KEY,
+                ZeldaItems.GOLD_KEY,
+                ZeldaItems.BOSS_KEY,
+                ZeldaItems.COPPER_LOCK,
+                ZeldaItems.IRON_LOCK,
+                ZeldaItems.GOLD_LOCK,
+                ZeldaItems.BOSS_LOCK
         );
 
         ItemModelDatagenUtil.registerSpawnEggs(itemModelGenerator, ZeldaEntityTypes.SPAWN_EGGS.toArray(Item[]::new));

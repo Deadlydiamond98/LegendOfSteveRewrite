@@ -18,6 +18,17 @@
   "item.legend_of_steve.gilded_quiver": "Gilded Quiver",
   "item.legend_of_steve.netherite_quiver": "Netherite Quiver",
 
+  "item.legend_of_steve.copper_key": "Copper Key",
+  "item.legend_of_steve.iron_key": "Iron Key",
+  "item.legend_of_steve.gold_key": "Gold Key",
+  "item.legend_of_steve.boss_key": "Boss Key",
+
+  "item.legend_of_steve.copper_lock": "Copper Lock",
+  "item.legend_of_steve.iron_lock": "Iron Lock",
+  "item.legend_of_steve.gold_lock": "Gold Lock",
+  "item.legend_of_steve.boss_lock": "Boss Lock",
+
+
   "item.legend_of_steve.emerald_shard": "Emerald Shard",
   "item.legend_of_steve.emerald_chunk": "Emerald Chunk",
 
@@ -290,6 +301,10 @@
 
   "subtitles.legend_of_steve.block.sword_pedestal.withdraw": "Sword withdrawn from Pedestal",
   "subtitles.legend_of_steve.block.sword_pedestal.deposit": "Sword slides into Pedestal",
+
+  "subtitles.legend_of_steve.item.lock.lock": "Lock being applied",
+  "subtitles.legend_of_steve.item.lock.unlock": "Lock being Unlocked",
+
 
   "death.attack.legend_of_steve.loot_pot_projectile": "%1$s was pummeled to death by flying pottery",
   "death.attack.legend_of_steve.loot_pot_projectile.player": "%1$s was pummeled to death by %2$s's pottery",

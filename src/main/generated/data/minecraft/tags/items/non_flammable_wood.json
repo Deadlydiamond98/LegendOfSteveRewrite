@@ -1,6 +1,10 @@
 {
   "replace": false,
   "values": [
+    "legend_of_steve:chiseled_crimson_brick_slab",
+    "legend_of_steve:chiseled_crimson_brick_stairs",
+    "legend_of_steve:chiseled_warped_brick_slab",
+    "legend_of_steve:chiseled_warped_brick_stairs",
     "legend_of_steve:chiseled_crimson_planks",
     "legend_of_steve:chiseled_warped_planks"
   ]

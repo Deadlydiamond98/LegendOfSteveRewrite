@@ -1,6 +1,18 @@
 {
   "replace": false,
   "values": [
+    "legend_of_steve:chiseled_oak_bricks",
+    "legend_of_steve:chiseled_birch_bricks",
+    "legend_of_steve:chiseled_spruce_bricks",
+    "legend_of_steve:chiseled_jungle_bricks",
+    "legend_of_steve:chiseled_acacia_bricks",
+    "legend_of_steve:chiseled_dark_oak_bricks",
+    "legend_of_steve:chiseled_crimson_bricks",
+    "legend_of_steve:chiseled_warped_bricks",
+    "legend_of_steve:chiseled_mangrove_bricks",
+    "legend_of_steve:chiseled_bamboo_bricks",
+    "legend_of_steve:chiseled_cherry_bricks",
+    "legend_of_steve:chiseled_deku_bricks",
     "legend_of_steve:chiseled_oak_planks",
     "legend_of_steve:chiseled_birch_planks",
     "legend_of_steve:chiseled_spruce_planks",

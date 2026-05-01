@@ -1,6 +1,18 @@
 {
   "replace": false,
   "values": [
-    "legend_of_steve:deku_slab"
+    "legend_of_steve:deku_slab",
+    "legend_of_steve:chiseled_oak_brick_slab",
+    "legend_of_steve:chiseled_birch_brick_slab",
+    "legend_of_steve:chiseled_spruce_brick_slab",
+    "legend_of_steve:chiseled_jungle_brick_slab",
+    "legend_of_steve:chiseled_acacia_brick_slab",
+    "legend_of_steve:chiseled_dark_oak_brick_slab",
+    "legend_of_steve:chiseled_crimson_brick_slab",
+    "legend_of_steve:chiseled_warped_brick_slab",
+    "legend_of_steve:chiseled_mangrove_brick_slab",
+    "legend_of_steve:chiseled_bamboo_brick_slab",
+    "legend_of_steve:chiseled_cherry_brick_slab",
+    "legend_of_steve:chiseled_deku_brick_slab"
   ]
 }

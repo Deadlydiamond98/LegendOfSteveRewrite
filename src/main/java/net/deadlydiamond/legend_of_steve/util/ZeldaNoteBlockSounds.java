@@ -67,6 +67,21 @@ public class ZeldaNoteBlockSounds {
         );
         // HAND PAN ////////////////////////////////////////////////////////////////////////////////////////////////////
         registerNoteBlockSound(ZeldaSounds.HAND_PAN,
+                ZeldaBlocks.CHISELED_OAK_BRICKS,
+                ZeldaBlocks.CHISELED_BIRCH_BRICKS,
+                ZeldaBlocks.CHISELED_SPRUCE_BRICKS,
+                ZeldaBlocks.CHISELED_JUNGLE_BRICKS,
+                ZeldaBlocks.CHISELED_ACACIA_BRICKS,
+                ZeldaBlocks.CHISELED_DARK_OAK_BRICKS,
+                ZeldaBlocks.CHISELED_CRIMSON_BRICKS,
+                ZeldaBlocks.CHISELED_WARPED_BRICKS,
+                ZeldaBlocks.CHISELED_MANGROVE_BRICKS,
+                ZeldaBlocks.CHISELED_BAMBOO_BRICKS,
+                ZeldaBlocks.CHISELED_CHERRY_BRICKS,
+                ZeldaBlocks.CHISELED_DEKU_BRICKS
+        );
+
+        registerNoteBlockSound(ZeldaSounds.HAND_PAN,
                 ZeldaBlocks.CHISELED_OAK_PLANKS,
                 ZeldaBlocks.CHISELED_BIRCH_PLANKS,
                 ZeldaBlocks.CHISELED_SPRUCE_PLANKS,

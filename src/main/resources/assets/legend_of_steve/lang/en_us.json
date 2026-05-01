@@ -114,17 +114,65 @@
   "block.legend_of_steve.tall_strange_blue_dirt_soul_brazier": "Tall Strange Blue Dirt Soul Brazier",
 
   "block.legend_of_steve.chiseled_oak_planks": "Chiseled Oak Planks",
+  "block.legend_of_steve.chiseled_oak_bricks": "Beveled Oak Planks",
+  "block.legend_of_steve.chiseled_oak_brick_slab": "Beveled Oak Slab",
+  "block.legend_of_steve.chiseled_oak_brick_stairs": "Beveled Oak Stairs",
+
   "block.legend_of_steve.chiseled_birch_planks": "Chiseled Birch Planks",
+  "block.legend_of_steve.chiseled_birch_bricks": "Beveled Birch Planks",
+  "block.legend_of_steve.chiseled_birch_brick_slab": "Beveled Birch Slab",
+  "block.legend_of_steve.chiseled_birch_brick_stairs": "Beveled Birch Stairs",
+
   "block.legend_of_steve.chiseled_spruce_planks": "Chiseled Spruce Planks",
+  "block.legend_of_steve.chiseled_spruce_bricks": "Beveled Spruce Planks",
+  "block.legend_of_steve.chiseled_spruce_brick_slab": "Beveled Spruce Slab",
+  "block.legend_of_steve.chiseled_spruce_brick_stairs": "Beveled Spruce Stairs",
+
   "block.legend_of_steve.chiseled_jungle_planks": "Chiseled Jungle Planks",
+  "block.legend_of_steve.chiseled_jungle_bricks": "Beveled Jungle Planks",
+  "block.legend_of_steve.chiseled_jungle_brick_slab": "Beveled Jungle Slab",
+  "block.legend_of_steve.chiseled_jungle_brick_stairs": "Beveled Jungle Stairs",
+
   "block.legend_of_steve.chiseled_acacia_planks": "Chiseled Acacia Planks",
+  "block.legend_of_steve.chiseled_acacia_bricks": "Beveled Acacia Planks",
+  "block.legend_of_steve.chiseled_acacia_brick_slab": "Beveled Acacia Slab",
+  "block.legend_of_steve.chiseled_acacia_brick_stairs": "Beveled Acacia Stairs",
+
   "block.legend_of_steve.chiseled_dark_oak_planks": "Chiseled Dark Oak Planks",
+  "block.legend_of_steve.chiseled_dark_oak_bricks": "Beveled Dark Oak Planks",
+  "block.legend_of_steve.chiseled_dark_oak_brick_slab": "Beveled Dark Oak Slab",
+  "block.legend_of_steve.chiseled_dark_oak_brick_stairs": "Beveled Dark Oak Stairs",
+
   "block.legend_of_steve.chiseled_crimson_planks": "Chiseled Crimson Planks",
+  "block.legend_of_steve.chiseled_crimson_bricks": "Beveled Crimson Planks",
+  "block.legend_of_steve.chiseled_crimson_brick_slab": "Beveled Crimson Slab",
+  "block.legend_of_steve.chiseled_crimson_brick_stairs": "Beveled Crimson Stairs",
+
   "block.legend_of_steve.chiseled_warped_planks": "Chiseled Warped Planks",
+  "block.legend_of_steve.chiseled_warped_bricks": "Beveled Warped Planks",
+  "block.legend_of_steve.chiseled_warped_brick_slab": "Beveled Warped Slab",
+  "block.legend_of_steve.chiseled_warped_brick_stairs": "Beveled Warped Stairs",
+
   "block.legend_of_steve.chiseled_mangrove_planks": "Chiseled Mangrove Planks",
+  "block.legend_of_steve.chiseled_mangrove_bricks": "Beveled Mangrove Planks",
+  "block.legend_of_steve.chiseled_mangrove_brick_slab": "Beveled Mangrove Slab",
+  "block.legend_of_steve.chiseled_mangrove_brick_stairs": "Beveled Mangrove Stairs",
+
   "block.legend_of_steve.chiseled_bamboo_planks": "Chiseled Bamboo Planks",
+  "block.legend_of_steve.chiseled_bamboo_bricks": "Beveled Bamboo Planks",
+  "block.legend_of_steve.chiseled_bamboo_brick_slab": "Beveled Bamboo Slab",
+  "block.legend_of_steve.chiseled_bamboo_brick_stairs": "Beveled Bamboo Stairs",
+
   "block.legend_of_steve.chiseled_cherry_planks": "Chiseled Cherry Planks",
+  "block.legend_of_steve.chiseled_cherry_bricks": "Beveled Cherry Planks",
+  "block.legend_of_steve.chiseled_cherry_brick_slab": "Beveled Cherry Slab",
+  "block.legend_of_steve.chiseled_cherry_brick_stairs": "Beveled Cherry Stairs",
+
   "block.legend_of_steve.chiseled_deku_planks": "Chiseled Deku Planks",
+  "block.legend_of_steve.chiseled_deku_bricks": "Beveled Deku Planks",
+  "block.legend_of_steve.chiseled_deku_brick_slab": "Beveled Deku Slab",
+  "block.legend_of_steve.chiseled_deku_brick_stairs": "Beveled Deku Stairs",
+
 
   "block.legend_of_steve.deku_log": "Deku Log",
   "block.legend_of_steve.deku_wood": "Deku Wood",
@@ -249,6 +297,10 @@
   "block.legend_of_steve.small_blue_tektiles": "Small Blue Tektiles",
   "block.legend_of_steve.small_blue_tektile_slab": "Small Blue Tektile Slab",
   "block.legend_of_steve.small_blue_tektile_stairs": "Small Blue Tektile Stairs",
+  "block.legend_of_steve.blue_tektile_bricks": "Blue Tektile Bricks",
+  "block.legend_of_steve.blue_tektile_brick_slab": "Blue Tektile Brick Slab",
+  "block.legend_of_steve.blue_tektile_brick_stairs": "Blue Tektile Brick Stairs",
+  "block.legend_of_steve.blue_tektile_brick_wall": "Blue Tektile Brick Wall",
 
   "block.legend_of_steve.red_tektiles": "Red Tektiles",
   "block.legend_of_steve.red_tektile_slab": "Red Tektile Slab",
@@ -256,6 +308,10 @@
   "block.legend_of_steve.small_red_tektiles": "Small Red Tektiles",
   "block.legend_of_steve.small_red_tektile_slab": "Small Red Tektile Slab",
   "block.legend_of_steve.small_red_tektile_stairs": "Small Red Tektile Stairs",
+  "block.legend_of_steve.red_tektile_bricks": "Red Tektile Bricks",
+  "block.legend_of_steve.red_tektile_brick_slab": "Red Tektile Brick Slab",
+  "block.legend_of_steve.red_tektile_brick_stairs": "Red Tektile Brick Stairs",
+  "block.legend_of_steve.red_tektile_brick_wall": "Red Tektile Brick Wall",
 
   "item.legend_of_steve.fairy_spawn_egg": "Fairy Spawn Egg",
 

@@ -23,6 +23,19 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
         ZeldaBlocks.DEKU_WOOD.generateBlockTags((blockTagKey, block) -> getOrCreateTagBuilder(blockTagKey).add(block));
 
+        ZeldaBlocks.CHISELED_OAK_BRICKS.generateBlockTags((blockTagKey, block) -> getOrCreateTagBuilder(blockTagKey).add(block));
+        ZeldaBlocks.CHISELED_BIRCH_BRICKS.generateBlockTags((blockTagKey, block) -> getOrCreateTagBuilder(blockTagKey).add(block));
+        ZeldaBlocks.CHISELED_SPRUCE_BRICKS.generateBlockTags((blockTagKey, block) -> getOrCreateTagBuilder(blockTagKey).add(block));
+        ZeldaBlocks.CHISELED_JUNGLE_BRICKS.generateBlockTags((blockTagKey, block) -> getOrCreateTagBuilder(blockTagKey).add(block));
+        ZeldaBlocks.CHISELED_ACACIA_BRICKS.generateBlockTags((blockTagKey, block) -> getOrCreateTagBuilder(blockTagKey).add(block));
+        ZeldaBlocks.CHISELED_DARK_OAK_BRICKS.generateBlockTags((blockTagKey, block) -> getOrCreateTagBuilder(blockTagKey).add(block));
+        ZeldaBlocks.CHISELED_CRIMSON_BRICKS.generateBlockTags((blockTagKey, block) -> getOrCreateTagBuilder(blockTagKey).add(block));
+        ZeldaBlocks.CHISELED_WARPED_BRICKS.generateBlockTags((blockTagKey, block) -> getOrCreateTagBuilder(blockTagKey).add(block));
+        ZeldaBlocks.CHISELED_MANGROVE_BRICKS.generateBlockTags((blockTagKey, block) -> getOrCreateTagBuilder(blockTagKey).add(block));
+        ZeldaBlocks.CHISELED_BAMBOO_BRICKS.generateBlockTags((blockTagKey, block) -> getOrCreateTagBuilder(blockTagKey).add(block));
+        ZeldaBlocks.CHISELED_CHERRY_BRICKS.generateBlockTags((blockTagKey, block) -> getOrCreateTagBuilder(blockTagKey).add(block));
+        ZeldaBlocks.CHISELED_DEKU_BRICKS.generateBlockTags((blockTagKey, block) -> getOrCreateTagBuilder(blockTagKey).add(block));
+
         createMinables(
                 // FAIRY MARBLE
                 ZeldaBlocks.FAIRY_MARBLE,
@@ -43,8 +56,10 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
                 // TEKTILES
                 ZeldaBlocks.RED_TEKTILES,
                 ZeldaBlocks.SMALL_RED_TEKTILES,
+                ZeldaBlocks.RED_TEKTILE_BRICKS,
                 ZeldaBlocks.BLUE_TEKTILES,
-                ZeldaBlocks.SMALL_BLUE_TEKTILES
+                ZeldaBlocks.SMALL_BLUE_TEKTILES,
+                ZeldaBlocks.BLUE_TEKTILE_BRICKS
         );
 
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(

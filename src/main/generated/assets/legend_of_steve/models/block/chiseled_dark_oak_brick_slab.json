@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "legend_of_steve:block/chiseled_dark_oak_bricks",
+    "side": "legend_of_steve:block/chiseled_dark_oak_bricks",
+    "top": "legend_of_steve:block/chiseled_dark_oak_bricks"
+  }
+}

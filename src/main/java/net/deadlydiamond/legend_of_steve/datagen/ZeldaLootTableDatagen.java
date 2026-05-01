@@ -18,6 +18,19 @@ public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
         generateLootTables(
                 // DEKU WOOD
                 ZeldaBlocks.DEKU_WOOD,
+                // CHISELED PLANK BRICKS
+                ZeldaBlocks.CHISELED_OAK_BRICKS,
+                ZeldaBlocks.CHISELED_BIRCH_BRICKS,
+                ZeldaBlocks.CHISELED_SPRUCE_BRICKS,
+                ZeldaBlocks.CHISELED_JUNGLE_BRICKS,
+                ZeldaBlocks.CHISELED_ACACIA_BRICKS,
+                ZeldaBlocks.CHISELED_DARK_OAK_BRICKS,
+                ZeldaBlocks.CHISELED_CRIMSON_BRICKS,
+                ZeldaBlocks.CHISELED_WARPED_BRICKS,
+                ZeldaBlocks.CHISELED_MANGROVE_BRICKS,
+                ZeldaBlocks.CHISELED_BAMBOO_BRICKS,
+                ZeldaBlocks.CHISELED_CHERRY_BRICKS,
+                ZeldaBlocks.CHISELED_DEKU_BRICKS,
                 // FAIRY MARBLE
                 ZeldaBlocks.FAIRY_MARBLE,
                 ZeldaBlocks.COBBLED_FAIRY_MARBLE,
@@ -41,8 +54,9 @@ public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
                 // TEKTILES
                 ZeldaBlocks.RED_TEKTILES,
                 ZeldaBlocks.SMALL_RED_TEKTILES,
+                ZeldaBlocks.RED_TEKTILE_BRICKS,
                 ZeldaBlocks.BLUE_TEKTILES,
-                ZeldaBlocks.SMALL_BLUE_TEKTILES
+                ZeldaBlocks.BLUE_TEKTILE_BRICKS
         );
 
         addSimpleBlockDrops(

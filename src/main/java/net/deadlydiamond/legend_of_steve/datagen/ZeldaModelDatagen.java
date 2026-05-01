@@ -117,12 +117,27 @@ public class ZeldaModelDatagen extends FabricModelProvider {
         // TEKTILES ////////////////////////////////////////////////////////////////////////////////////////////////////
         ZeldaBlocks.RED_TEKTILES.generateModels(generator);
         ZeldaBlocks.SMALL_RED_TEKTILES.generateModels(generator);
+        ZeldaBlocks.RED_TEKTILE_BRICKS.generateModels(generator);
         ZeldaBlocks.BLUE_TEKTILES.generateModels(generator);
         ZeldaBlocks.SMALL_BLUE_TEKTILES.generateModels(generator);
+        ZeldaBlocks.BLUE_TEKTILE_BRICKS.generateModels(generator);
 
         // WOOD ////////////////////////////////////////////////////////////////////////////////////////////////////////
         ZeldaBlocks.DEKU_WOOD.generateModels(generator);
         generator.registerFlowerPotPlant(ZeldaBlocks.DEKU_SAPLING, ZeldaBlocks.POTTED_DEKU_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
+
+        ZeldaBlocks.CHISELED_OAK_BRICKS.generateModels(generator);
+        ZeldaBlocks.CHISELED_BIRCH_BRICKS.generateModels(generator);
+        ZeldaBlocks.CHISELED_SPRUCE_BRICKS.generateModels(generator);
+        ZeldaBlocks.CHISELED_JUNGLE_BRICKS.generateModels(generator);
+        ZeldaBlocks.CHISELED_ACACIA_BRICKS.generateModels(generator);
+        ZeldaBlocks.CHISELED_DARK_OAK_BRICKS.generateModels(generator);
+        ZeldaBlocks.CHISELED_CRIMSON_BRICKS.generateModels(generator);
+        ZeldaBlocks.CHISELED_WARPED_BRICKS.generateModels(generator);
+        ZeldaBlocks.CHISELED_MANGROVE_BRICKS.generateModels(generator);
+        ZeldaBlocks.CHISELED_BAMBOO_BRICKS.generateModels(generator);
+        ZeldaBlocks.CHISELED_CHERRY_BRICKS.generateModels(generator);
+        ZeldaBlocks.CHISELED_DEKU_BRICKS.generateModels(generator);
     }
 
     @Override

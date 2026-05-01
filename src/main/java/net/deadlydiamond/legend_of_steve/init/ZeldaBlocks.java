@@ -11,12 +11,9 @@ import net.deadlydiamond.legend_of_steve.common.blocks.deco.glowing.FairyLamp;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.BombFlowerBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.FruitingLeavesBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.LootGrassBlock;
-import net.deadlydiamond.legend_of_steve.common.blocksets.BrazierBlockset;
-import net.deadlydiamond.legend_of_steve.common.blocksets.ReinforcedBlockset;
+import net.deadlydiamond.legend_of_steve.common.blocksets.*;
 import net.deadlydiamond.legend_of_steve.common.blocksets.iridescent.IridescentStairSlabWallBlockset;
 import net.deadlydiamond.legend_of_steve.common.blocksets.iridescent.IridescentStoneBlockset;
-import net.deadlydiamond.legend_of_steve.common.blocksets.LootPotBlockset;
-import net.deadlydiamond.legend_of_steve.common.blocksets.StrangeDirtBricksBlockset;
 import net.deadlydiamond.legend_of_steve.common.entities.living.FairyColor;
 import net.deadlydiamond.legend_of_steve.common.items.block.CrateItem;
 import net.deadlydiamond.legend_of_steve.common.items.block.LootPotItem;
@@ -30,7 +27,6 @@ import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.*;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -45,17 +41,31 @@ public class ZeldaBlocks {
 
     // CHISELED PLANKS
     public static final Block CHISELED_OAK_PLANKS = register("chiseled_oak_planks", new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
+    public static final ChiseledWoodBrickBlockset CHISELED_OAK_BRICKS = new ChiseledWoodBrickBlockset(LegendOfSteve.MOD_ID, "chiseled_oak_bricks", FabricBlockSettings.copyOf(Blocks.OAK_PLANKS), true);
+//    public static final ChiseledWoodBlockset CHISELED_OAK = new ChiseledWoodBlockset(LegendOfSteve.MOD_ID, "chiseled_oak_bricks", FabricBlockSettings.copyOf(Blocks.OAK_PLANKS), true);
+
     public static final Block CHISELED_BIRCH_PLANKS = register("chiseled_birch_planks", new Block(FabricBlockSettings.copyOf(Blocks.BIRCH_PLANKS)));
+    public static final ChiseledWoodBrickBlockset CHISELED_BIRCH_BRICKS = new ChiseledWoodBrickBlockset(LegendOfSteve.MOD_ID, "chiseled_birch_bricks", FabricBlockSettings.copyOf(Blocks.BIRCH_PLANKS), true);
     public static final Block CHISELED_SPRUCE_PLANKS = register("chiseled_spruce_planks", new Block(FabricBlockSettings.copyOf(Blocks.SPRUCE_PLANKS)));
+    public static final ChiseledWoodBrickBlockset CHISELED_SPRUCE_BRICKS = new ChiseledWoodBrickBlockset(LegendOfSteve.MOD_ID, "chiseled_spruce_bricks", FabricBlockSettings.copyOf(Blocks.SPRUCE_PLANKS), true);
     public static final Block CHISELED_JUNGLE_PLANKS = register("chiseled_jungle_planks", new Block(FabricBlockSettings.copyOf(Blocks.JUNGLE_PLANKS)));
+    public static final ChiseledWoodBrickBlockset CHISELED_JUNGLE_BRICKS = new ChiseledWoodBrickBlockset(LegendOfSteve.MOD_ID, "chiseled_jungle_bricks", FabricBlockSettings.copyOf(Blocks.JUNGLE_PLANKS), true);
     public static final Block CHISELED_ACACIA_PLANKS = register("chiseled_acacia_planks", new Block(FabricBlockSettings.copyOf(Blocks.ACACIA_PLANKS)));
+    public static final ChiseledWoodBrickBlockset CHISELED_ACACIA_BRICKS = new ChiseledWoodBrickBlockset(LegendOfSteve.MOD_ID, "chiseled_acacia_bricks", FabricBlockSettings.copyOf(Blocks.ACACIA_PLANKS), true);
     public static final Block CHISELED_DARK_OAK_PLANKS = register("chiseled_dark_oak_planks", new Block(FabricBlockSettings.copyOf(Blocks.DARK_OAK_PLANKS)));
+    public static final ChiseledWoodBrickBlockset CHISELED_DARK_OAK_BRICKS = new ChiseledWoodBrickBlockset(LegendOfSteve.MOD_ID, "chiseled_dark_oak_bricks", FabricBlockSettings.copyOf(Blocks.DARK_OAK_PLANKS), true);
     public static final Block CHISELED_CRIMSON_PLANKS = register("chiseled_crimson_planks", new Block(FabricBlockSettings.copyOf(Blocks.CRIMSON_PLANKS)));
+    public static final ChiseledWoodBrickBlockset CHISELED_CRIMSON_BRICKS = new ChiseledWoodBrickBlockset(LegendOfSteve.MOD_ID, "chiseled_crimson_bricks", FabricBlockSettings.copyOf(Blocks.CRIMSON_PLANKS), false);
     public static final Block CHISELED_WARPED_PLANKS = register("chiseled_warped_planks", new Block(FabricBlockSettings.copyOf(Blocks.WARPED_PLANKS)));
+    public static final ChiseledWoodBrickBlockset CHISELED_WARPED_BRICKS = new ChiseledWoodBrickBlockset(LegendOfSteve.MOD_ID, "chiseled_warped_bricks", FabricBlockSettings.copyOf(Blocks.WARPED_PLANKS), false);
     public static final Block CHISELED_MANGROVE_PLANKS = register("chiseled_mangrove_planks", new Block(FabricBlockSettings.copyOf(Blocks.MANGROVE_PLANKS)));
+    public static final ChiseledWoodBrickBlockset CHISELED_MANGROVE_BRICKS = new ChiseledWoodBrickBlockset(LegendOfSteve.MOD_ID, "chiseled_mangrove_bricks", FabricBlockSettings.copyOf(Blocks.MANGROVE_PLANKS), true);
     public static final Block CHISELED_BAMBOO_PLANKS = register("chiseled_bamboo_planks", new Block(FabricBlockSettings.copyOf(Blocks.BAMBOO_PLANKS)));
+    public static final ChiseledWoodBrickBlockset CHISELED_BAMBOO_BRICKS = new ChiseledWoodBrickBlockset(LegendOfSteve.MOD_ID, "chiseled_bamboo_bricks", FabricBlockSettings.copyOf(Blocks.BAMBOO_PLANKS), true);
     public static final Block CHISELED_CHERRY_PLANKS = register("chiseled_cherry_planks", new Block(FabricBlockSettings.copyOf(Blocks.CHERRY_PLANKS)));
+    public static final ChiseledWoodBrickBlockset CHISELED_CHERRY_BRICKS = new ChiseledWoodBrickBlockset(LegendOfSteve.MOD_ID, "chiseled_cherry_bricks", FabricBlockSettings.copyOf(Blocks.CHERRY_PLANKS), true);
     public static final Block CHISELED_DEKU_PLANKS = register("chiseled_deku_planks", new Block(FabricBlockSettings.copyOf(DEKU_WOOD_SETTINGS)));
+    public static final ChiseledWoodBrickBlockset CHISELED_DEKU_BRICKS = new ChiseledWoodBrickBlockset(LegendOfSteve.MOD_ID, "chiseled_deku_bricks", DEKU_WOOD_SETTINGS, true);
 
     // DEKU WOOD
     public static final WoodBlockset DEKU_WOOD = new WoodBlockset(LegendOfSteve.MOD_ID, "deku", DEKU_WOOD_SETTINGS, BlockSetType.CHERRY);
@@ -92,7 +102,8 @@ public class ZeldaBlocks {
     public static final Block DEEPSLATE_MASTER_ORE = register("deepslate_master_ore", new ExperienceDroppingBlock(DEEPSLATE_MASTER_ORE_BLOCK_SETTINGS));
 
     public static final Block MASTER_SCRAP_BLOCK = register("master_scrap_block", new Block(MASTER_SCRAP_SETTINGS));
-    public static final Block MASTER_BLOCK = register("master_block", new Block(MASTER_BLOCK_SETTINGS));
+    public static final Block MASTER_BLOCK = register("master_block", new Block(MASTER_BLOCK_SETTINGS), false);
+    public static final Item MASTER_BLOCK_ITEM = ZeldaItems.register("master_block", new BlockItem(MASTER_BLOCK, new FabricItemSettings().fireproof()));
     public static final BaseStairSlabBlockset MASTER_PLATE = new BaseStairSlabBlockset(LegendOfSteve.MOD_ID, "master_plate", MASTER_PLATE_SETTINGS);
     public static final BaseStairSlabBlockset MASTER_BRICK = new BaseStairSlabBlockset(LegendOfSteve.MOD_ID, "master_bricks", MASTER_PLATE_SETTINGS);
     public static final BaseStairSlabBlockset MASTER_TILE = new BaseStairSlabBlockset(LegendOfSteve.MOD_ID, "master_tile", MASTER_PLATE_SETTINGS);
@@ -125,8 +136,10 @@ public class ZeldaBlocks {
     // TEKTILES
     public static final BaseStairSlabBlockset RED_TEKTILES = new BaseStairSlabBlockset(LegendOfSteve.MOD_ID, "red_tektiles", RED_TEKTILES_SETTINGS);
     public static final BaseStairSlabBlockset SMALL_RED_TEKTILES = new BaseStairSlabBlockset(LegendOfSteve.MOD_ID, "small_red_tektiles", RED_TEKTILES_SETTINGS);
+    public static final BaseStairSlabWallBlockset RED_TEKTILE_BRICKS = new BaseStairSlabWallBlockset(LegendOfSteve.MOD_ID, "red_tektile_bricks", RED_TEKTILES_SETTINGS);
     public static final BaseStairSlabBlockset BLUE_TEKTILES = new BaseStairSlabBlockset(LegendOfSteve.MOD_ID, "blue_tektiles", BLUE_TEKTILES_SETTINGS);
     public static final BaseStairSlabBlockset SMALL_BLUE_TEKTILES = new BaseStairSlabBlockset(LegendOfSteve.MOD_ID, "small_blue_tektiles", BLUE_TEKTILES_SETTINGS);
+    public static final BaseStairSlabWallBlockset BLUE_TEKTILE_BRICKS = new BaseStairSlabWallBlockset(LegendOfSteve.MOD_ID, "blue_tektile_bricks", BLUE_TEKTILES_SETTINGS);
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // FUNCTIONAL BLOCKS ///////////////////////////////////////////////////////////////////////////////////////////////

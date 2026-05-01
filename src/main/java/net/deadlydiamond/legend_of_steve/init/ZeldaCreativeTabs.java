@@ -88,17 +88,29 @@ public class ZeldaCreativeTabs {
         entries.add(ZeldaBlocks.CRATE_ITEM);
 
         entries.add(ZeldaBlocks.CHISELED_OAK_PLANKS);
+        ZeldaBlocks.CHISELED_OAK_BRICKS.addToCreative(entries);
         entries.add(ZeldaBlocks.CHISELED_BIRCH_PLANKS);
+        ZeldaBlocks.CHISELED_BIRCH_BRICKS.addToCreative(entries);
         entries.add(ZeldaBlocks.CHISELED_SPRUCE_PLANKS);
+        ZeldaBlocks.CHISELED_SPRUCE_BRICKS.addToCreative(entries);
         entries.add(ZeldaBlocks.CHISELED_JUNGLE_PLANKS);
+        ZeldaBlocks.CHISELED_JUNGLE_BRICKS.addToCreative(entries);
         entries.add(ZeldaBlocks.CHISELED_ACACIA_PLANKS);
+        ZeldaBlocks.CHISELED_ACACIA_BRICKS.addToCreative(entries);
         entries.add(ZeldaBlocks.CHISELED_DARK_OAK_PLANKS);
+        ZeldaBlocks.CHISELED_DARK_OAK_BRICKS.addToCreative(entries);
         entries.add(ZeldaBlocks.CHISELED_CRIMSON_PLANKS);
+        ZeldaBlocks.CHISELED_CRIMSON_BRICKS.addToCreative(entries);
         entries.add(ZeldaBlocks.CHISELED_WARPED_PLANKS);
+        ZeldaBlocks.CHISELED_WARPED_BRICKS.addToCreative(entries);
         entries.add(ZeldaBlocks.CHISELED_MANGROVE_PLANKS);
+        ZeldaBlocks.CHISELED_MANGROVE_BRICKS.addToCreative(entries);
         entries.add(ZeldaBlocks.CHISELED_BAMBOO_PLANKS);
+        ZeldaBlocks.CHISELED_BAMBOO_BRICKS.addToCreative(entries);
         entries.add(ZeldaBlocks.CHISELED_CHERRY_PLANKS);
+        ZeldaBlocks.CHISELED_CHERRY_BRICKS.addToCreative(entries);
         entries.add(ZeldaBlocks.CHISELED_DEKU_PLANKS);
+        ZeldaBlocks.CHISELED_DEKU_BRICKS.addToCreative(entries);
 
         // DEKU WOOD
         ZeldaBlocks.DEKU_WOOD.addToCreative(entries);
@@ -165,8 +177,10 @@ public class ZeldaCreativeTabs {
         // TEKTILES
         ZeldaBlocks.BLUE_TEKTILES.addToCreative(entries);
         ZeldaBlocks.SMALL_BLUE_TEKTILES.addToCreative(entries);
+        ZeldaBlocks.BLUE_TEKTILE_BRICKS.addToCreative(entries);
         ZeldaBlocks.RED_TEKTILES.addToCreative(entries);
         ZeldaBlocks.SMALL_RED_TEKTILES.addToCreative(entries);
+        ZeldaBlocks.RED_TEKTILE_BRICKS.addToCreative(entries);
 
         // SWORD PEDESTALS
         entries.add(ZeldaBlocks.STONE_SWORD_PEDESTAL);

@@ -1,6 +1,18 @@
 {
   "replace": false,
   "values": [
+    "legend_of_steve:chiseled_oak_brick_stairs",
+    "legend_of_steve:chiseled_birch_brick_stairs",
+    "legend_of_steve:chiseled_spruce_brick_stairs",
+    "legend_of_steve:chiseled_jungle_brick_stairs",
+    "legend_of_steve:chiseled_acacia_brick_stairs",
+    "legend_of_steve:chiseled_dark_oak_brick_stairs",
+    "legend_of_steve:chiseled_crimson_brick_stairs",
+    "legend_of_steve:chiseled_warped_brick_stairs",
+    "legend_of_steve:chiseled_mangrove_brick_stairs",
+    "legend_of_steve:chiseled_bamboo_brick_stairs",
+    "legend_of_steve:chiseled_cherry_brick_stairs",
+    "legend_of_steve:chiseled_deku_brick_stairs",
     "legend_of_steve:fairy_marble_stairs",
     "legend_of_steve:cobbled_fairy_marble_stairs",
     "legend_of_steve:polished_fairy_marble_stairs",
@@ -18,7 +30,9 @@
     "legend_of_steve:strange_blue_dirt_brick_stairs",
     "legend_of_steve:red_tektile_stairs",
     "legend_of_steve:small_red_tektile_stairs",
+    "legend_of_steve:red_tektile_brick_stairs",
     "legend_of_steve:blue_tektile_stairs",
-    "legend_of_steve:small_blue_tektile_stairs"
+    "legend_of_steve:small_blue_tektile_stairs",
+    "legend_of_steve:blue_tektile_brick_stairs"
   ]
 }

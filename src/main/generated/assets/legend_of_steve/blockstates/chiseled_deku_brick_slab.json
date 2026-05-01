@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "legend_of_steve:block/chiseled_deku_brick_slab"
+    },
+    "type=double": {
+      "model": "legend_of_steve:block/chiseled_deku_bricks"
+    },
+    "type=top": {
+      "model": "legend_of_steve:block/chiseled_deku_brick_slab_top"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "type": "legend_of_steve:spring_water_conversion",
+  "input": {
+    "item": "minecraft:prismarine_crystals"
+  },
+  "result": {
+    "item": "minecraft:prismarine_shard"
+  }
+}

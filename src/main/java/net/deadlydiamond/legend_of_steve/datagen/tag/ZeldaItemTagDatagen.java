@@ -29,6 +29,8 @@ public class ZeldaItemTagDatagen extends FabricTagProvider.ItemTagProvider {
         createItemTags(
                 // DEKU WOOD
                 ZeldaBlocks.DEKU_WOOD,
+                // DUNGEONCITE
+                ZeldaBlocks.BROWN_DUNGEONCITE,
                 // CHISELED WOOD BRICKS
                 ZeldaBlocks.CHISELED_OAK_BRICKS,
                 ZeldaBlocks.CHISELED_BIRCH_BRICKS,

@@ -1,11 +1,11 @@
-// 1.20.1	2026-04-30T22:26:16.194562908	The Legend of Steve/Tags for minecraft:item
-9977e202eb58ee3c2a0d440e273e0121adaf9ff1 data/minecraft/tags/items/stairs.json
+// 1.20.1	2026-05-12T04:21:02.000235453	The Legend of Steve/Tags for minecraft:item
+27e718ec3cb3cbd6f948501a0ac0733406f25749 data/minecraft/tags/items/stairs.json
 b4d7faadc178039d6865f14eedd8edac04e8e1c3 data/minecraft/tags/items/wooden_trapdoors.json
 fba66bfc33c2dc3dfe13926359d5a3fba438019b data/minecraft/tags/items/signs.json
 017256426ee55176f0fd67175039d052701437e7 data/minecraft/tags/items/leaves.json
-142e320e4e9fdef465111ad076093bd75c97770c data/minecraft/tags/items/slabs.json
-be91e7b9b5922fd920b1ddf1ec0f07728bff876e data/legend_of_steve/tags/items/quivers.json
+6caf7f254e022b1f41b92ce4269fb2f8d7ec1bff data/minecraft/tags/items/slabs.json
 02a628f45e0cb1aa5034ead020b4844474a34ae6 data/minecraft/tags/items/non_flammable_wood.json
+be91e7b9b5922fd920b1ddf1ec0f07728bff876e data/legend_of_steve/tags/items/quivers.json
 1a3705a704de01fbbf8531c48244f1d5da62f81c data/minecraft/tags/items/piglin_loved.json
 59f9f10c7868bf6bc7074e66173ea5e6bc895339 data/legend_of_steve/tags/items/iridescent.json
 d2bab28d9502989c22003bd7534ed7529bb451b7 data/legend_of_steve/tags/items/loot_pots.json

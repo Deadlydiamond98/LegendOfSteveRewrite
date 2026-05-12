@@ -1,6 +1,14 @@
 {
   "replace": false,
   "values": [
+    "legend_of_steve:brown_dungeoncite_stairs",
+    "legend_of_steve:mossy_brown_dungeoncite_stairs",
+    "legend_of_steve:brown_dungeoncite_brick_stairs",
+    "legend_of_steve:mossy_brown_dungeoncite_brick_stairs",
+    "legend_of_steve:chiseled_brown_dungeoncite_brick_stairs",
+    "legend_of_steve:mossy_chiseled_brown_dungeoncite_brick_stairs",
+    "legend_of_steve:small_brown_dungeoncite_brick_stairs",
+    "legend_of_steve:small_mossy_brown_dungeoncite_brick_stairs",
     "legend_of_steve:chiseled_oak_brick_stairs",
     "legend_of_steve:chiseled_birch_brick_stairs",
     "legend_of_steve:chiseled_spruce_brick_stairs",

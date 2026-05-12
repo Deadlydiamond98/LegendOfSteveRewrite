@@ -34,6 +34,10 @@ public class BombExplosionBehavior extends ExplosionBehavior {
         if (fluidState.isIn(FluidTags.LAVA) || (this.canWorkInWater && fluidState.isIn(FluidTags.WATER))) {
             return Optional.empty();
         }
+
+        if (breakableBlocks.test(blockState.getBlock())) {
+            return Optional.empty();
+        }
         return super.getBlastResistance(explosion, world, pos, blockState, fluidState);
     }
 

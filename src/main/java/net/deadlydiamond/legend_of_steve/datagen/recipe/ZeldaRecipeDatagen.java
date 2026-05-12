@@ -60,6 +60,7 @@ public class ZeldaRecipeDatagen extends FabricRecipeProvider {
         ZeldaSpringWaterConversionDatagen.generate(consumer);
 
         ZeldaBlocks.DEKU_WOOD.generateRecipes(consumer);
+        ZeldaBlocks.BROWN_DUNGEONCITE.generateRecipes(consumer);
     }
 
     private void chiseledPlanks(Consumer<RecipeJsonProvider> consumer) {
@@ -185,11 +186,15 @@ public class ZeldaRecipeDatagen extends FabricRecipeProvider {
     private void tektiles(Consumer<RecipeJsonProvider> consumer) {
         ZeldaBlocks.BLUE_TEKTILES.generateRecipesStone(consumer);
         ZeldaBlocks.SMALL_BLUE_TEKTILES.generateRecipesStone(consumer, ZeldaBlocks.BLUE_TEKTILES.base);
-        offerPolishedStoneRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.SMALL_BLUE_TEKTILES.base, ZeldaBlocks.BLUE_TEKTILES.base);
+        ZeldaBlocks.BLUE_TEKTILE_BRICKS.generateRecipesStone(consumer, ZeldaBlocks.BLUE_TEKTILES.base);
+        offerPolishedStoneRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.BLUE_TEKTILE_BRICKS.base, ZeldaBlocks.BLUE_TEKTILES.base);
+        offerSingleOutputShapelessRecipe(consumer, ZeldaBlocks.SMALL_BLUE_TEKTILES.base, ZeldaBlocks.BLUE_TEKTILES.base, "small_blue_tektiles");
 
         ZeldaBlocks.RED_TEKTILES.generateRecipesStone(consumer);
         ZeldaBlocks.SMALL_RED_TEKTILES.generateRecipesStone(consumer, ZeldaBlocks.RED_TEKTILES.base);
-        offerPolishedStoneRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.SMALL_RED_TEKTILES.base, ZeldaBlocks.RED_TEKTILES.base);
+        ZeldaBlocks.RED_TEKTILE_BRICKS.generateRecipesStone(consumer, ZeldaBlocks.RED_TEKTILES.base);
+        offerPolishedStoneRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.RED_TEKTILE_BRICKS.base, ZeldaBlocks.RED_TEKTILES.base);
+        offerSingleOutputShapelessRecipe(consumer, ZeldaBlocks.SMALL_RED_TEKTILES.base, ZeldaBlocks.RED_TEKTILES.base, "small_red_tektiles");
     }
 
     private void lootpots(Consumer<RecipeJsonProvider> consumer) {

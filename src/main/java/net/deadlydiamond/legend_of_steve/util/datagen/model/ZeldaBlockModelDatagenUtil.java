@@ -44,6 +44,31 @@ public class ZeldaBlockModelDatagenUtil {
         registerBrazierParented(blockStateModelGenerator, block, block, fireTexture);
     }
 
+    public static void registerTile(BlockStateModelGenerator blockStateModelGenerator, Block init, Block... blocks) {
+        TextureMap textureMap = (new TextureMap()).put(TextureKey.TOP, TextureMap.getId(init))
+                .put(TextureKey.SIDE, TextureMap.getSubId(init, "_side"))
+                .put(TextureKey.FRONT, TextureMap.getSubId(init, "_side"))
+                .put(TextureKey.BOTTOM, TextureMap.getSubId(init, "_bottom"));
+
+        Identifier reg = Models.ORIENTABLE_WITH_BOTTOM.upload(init, textureMap, blockStateModelGenerator.modelCollector);
+
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier
+                .create(init, BlockStateVariant.create().put(VariantSettings.MODEL, reg))
+                .coordinate(BlockStateModelGenerator.createSouthDefaultHorizontalRotationStates())
+        );
+
+        for (Block block : blocks) {
+            TextureMap textureMapVarient = textureMap.put(TextureKey.TOP, TextureMap.getId(block));
+
+            Identifier varient = Models.ORIENTABLE_WITH_BOTTOM.upload(block, textureMapVarient, blockStateModelGenerator.modelCollector);
+
+            blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier
+                    .create(block, BlockStateVariant.create().put(VariantSettings.MODEL, varient))
+                    .coordinate(BlockStateModelGenerator.createSouthDefaultHorizontalRotationStates())
+            );
+        }
+    }
+
     public static void registerBrazierParented(BlockStateModelGenerator blockStateModelGenerator, Block block, Block parent, Identifier fireTexture) {
         TextureMap unlitTextureMap = TextureMap.of(TextureKey.SIDE, TextureMap.getId(parent))
                 .put(TextureKey.TOP, TextureMap.getSubId(parent, "_top"))

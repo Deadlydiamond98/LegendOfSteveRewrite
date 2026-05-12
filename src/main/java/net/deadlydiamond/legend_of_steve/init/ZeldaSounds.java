@@ -25,9 +25,14 @@ public class ZeldaSounds {
     public static final SoundEvent SWORD_PEDESTAL_WITHDRAW = register("block.sword_pedestal.withdraw");
     public static final SoundEvent SWORD_PEDESTAL_DEPOSIT = register("block.sword_pedestal.deposit");
     // Spring Water
+    public static final SoundEvent SPRING_WATER_HEAL = register("block.spring_water.heal");
     public static final SoundEvent SPRING_WATER_TRANSFORM = register("block.spring_water.transform");
     public static final SoundEvent SPRING_WATER_CONSUME = register("block.spring_water.consume");
     public static final SoundEvent SPRING_WATER_SPARKLE = register("block.spring_water.sparkle");
+    // Dungeoncite
+    public static final BlockSoundGroup DUNGEONCITE = registerGroup("dungeoncite", 1, 0.75f);
+    public static final BlockSoundGroup DUNGEONCITE_BRICKS = registerGroup("dungeoncite_bricks", 1, 0.75f);
+    public static final BlockSoundGroup DUNGEONCITE_TILE = registerGroup("dungeoncite_tile", 1, 0.75f);
     // Master Ore
     public static final BlockSoundGroup MASTER_BLOCK = registerGroup("master_block", 1, 1.5f);
     public static final BlockSoundGroup MASTER_PLATE = registerGroup("master_plate", 1, 1.5f);
@@ -43,12 +48,13 @@ public class ZeldaSounds {
     public static final SoundEvent QUESTION_BLOCK_HIT = register("block.question_block.bounce");
     public static final SoundEvent QUESTION_BLOCK_EMPTY_CONTENTS = register("block.question_block.empty_content");
     public static final SoundEvent QUESTION_BLOCK_DEPOSIT = register("block.question_block.deposit");
+    // CRATE
+    public static final SoundEvent CRATE_OPEN = register("block.crate.open");
+    public static final SoundEvent CRATE_CLOSE = register("block.crate.close");
     // OTHER
     public static final BlockSoundGroup FAIRY_LAMP = registerGroup("fairy_lamp", 1, 1.2f);
     public static final BlockSoundGroup STARSTONE = registerGroup("starstone", 1, 1);
-    public static final BlockSoundGroup TEKTILES = registerGroup("tektiles", 1, 1.25f);
-    public static final SoundEvent CRATE_OPEN = register("block.crate.open");
-    public static final SoundEvent CRATE_CLOSE = register("block.crate.close");
+    public static final BlockSoundGroup TEKTILES = registerGroup("tektiles", 1, 1);
     // Note Block
     public static final SoundEvent MALON = register("block.note_block.malon");
     public static final SoundEvent PIZZICATO_STRING = register("block.note_block.pizzicato_string");
@@ -73,6 +79,9 @@ public class ZeldaSounds {
     // Lock
     public static final SoundEvent LOCK = register("item.lock.lock");
     public static final SoundEvent UNLOCK = register("item.lock.unlock");
+    // Magic Sword
+    public static final SoundEvent SWORD_SHOOT = register("item.magic_sword.shoot");
+    public static final SoundEvent SWORD_RECHARGE = register("item.magic_sword.recharge");
 
     // Entities ////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Bomb

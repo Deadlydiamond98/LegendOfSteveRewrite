@@ -1,0 +1,9 @@
+{
+  "type": "legend_of_steve:spring_water_conversion",
+  "input": {
+    "item": "minecraft:grass"
+  },
+  "result": {
+    "item": "minecraft:tall_grass"
+  }
+}

@@ -14,6 +14,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
+import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -43,6 +44,14 @@ public class BrazierBlock extends Block implements IExtinguish, Waterloggable {
         super(settings);
         setDefaultState(this.stateManager.getDefaultState().with(LIT, true).with(WATERLOGGED, false));
         this.fireDamage = fireDamage;
+    }
+
+    @Override
+    public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
+        if (isLit(state)) {
+            this.updateNeighbors(world, pos);
+        }
+        super.onPlaced(world, pos, state, placer, itemStack);
     }
 
     @Override
@@ -133,7 +142,7 @@ public class BrazierBlock extends Block implements IExtinguish, Waterloggable {
 
     // REDSTONE ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    private void updateNeighbors(World world, BlockPos pos) {
+    protected void updateNeighbors(World world, BlockPos pos) {
         BlockPos.iterateOutwards(pos, 1, 0, 1).forEach(pos1 ->
                 world.updateNeighborsAlways(pos1, this));
     }

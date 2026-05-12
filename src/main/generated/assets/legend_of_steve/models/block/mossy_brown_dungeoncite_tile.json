@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "bottom": "legend_of_steve:block/mossy_brown_dungeoncite_tile_bottom",
+    "front": "legend_of_steve:block/mossy_brown_dungeoncite_tile_side",
+    "side": "legend_of_steve:block/mossy_brown_dungeoncite_tile_side",
+    "top": "legend_of_steve:block/mossy_brown_dungeoncite_tile"
+  }
+}

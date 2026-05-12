@@ -12,6 +12,7 @@ import net.deadlydiamond.legend_of_steve.common.blocks.plant.BombFlowerBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.FruitingLeavesBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.LootGrassBlock;
 import net.deadlydiamond.legend_of_steve.common.blocksets.*;
+import net.deadlydiamond.legend_of_steve.common.blocksets.dungeoncite.DungeonciteBlockset;
 import net.deadlydiamond.legend_of_steve.common.blocksets.iridescent.IridescentStairSlabWallBlockset;
 import net.deadlydiamond.legend_of_steve.common.blocksets.iridescent.IridescentStoneBlockset;
 import net.deadlydiamond.legend_of_steve.common.entities.living.FairyColor;
@@ -42,8 +43,6 @@ public class ZeldaBlocks {
     // CHISELED PLANKS
     public static final Block CHISELED_OAK_PLANKS = register("chiseled_oak_planks", new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
     public static final ChiseledWoodBrickBlockset CHISELED_OAK_BRICKS = new ChiseledWoodBrickBlockset(LegendOfSteve.MOD_ID, "chiseled_oak_bricks", FabricBlockSettings.copyOf(Blocks.OAK_PLANKS), true);
-//    public static final ChiseledWoodBlockset CHISELED_OAK = new ChiseledWoodBlockset(LegendOfSteve.MOD_ID, "chiseled_oak_bricks", FabricBlockSettings.copyOf(Blocks.OAK_PLANKS), true);
-
     public static final Block CHISELED_BIRCH_PLANKS = register("chiseled_birch_planks", new Block(FabricBlockSettings.copyOf(Blocks.BIRCH_PLANKS)));
     public static final ChiseledWoodBrickBlockset CHISELED_BIRCH_BRICKS = new ChiseledWoodBrickBlockset(LegendOfSteve.MOD_ID, "chiseled_birch_bricks", FabricBlockSettings.copyOf(Blocks.BIRCH_PLANKS), true);
     public static final Block CHISELED_SPRUCE_PLANKS = register("chiseled_spruce_planks", new Block(FabricBlockSettings.copyOf(Blocks.SPRUCE_PLANKS)));
@@ -97,6 +96,9 @@ public class ZeldaBlocks {
     public static final Block FAIRY_MARBLE_PILLAR = register("fairy_marble_pillar", new PillarBlock(FAIRY_MARBLE_SETTINGS));
     public static final Block SMOOTH_FAIRY_MARBLE = register("smooth_fairy_marble", new Block(FAIRY_MARBLE_SETTINGS));
 
+    // DUNGEONCITE
+    public static final DungeonciteBlockset BROWN_DUNGEONCITE = new DungeonciteBlockset("brown", "story/mine_diamond", MapColor.SPRUCE_BROWN);
+
     // MASTER
     public static final Block MASTER_ORE = register("master_ore", new ExperienceDroppingBlock(MASTER_ORE_BLOCK_SETTINGS));
     public static final Block DEEPSLATE_MASTER_ORE = register("deepslate_master_ore", new ExperienceDroppingBlock(DEEPSLATE_MASTER_ORE_BLOCK_SETTINGS));
@@ -105,10 +107,10 @@ public class ZeldaBlocks {
     public static final Block MASTER_BLOCK = register("master_block", new Block(MASTER_BLOCK_SETTINGS), false);
     public static final Item MASTER_BLOCK_ITEM = ZeldaItems.register("master_block", new BlockItem(MASTER_BLOCK, new FabricItemSettings().fireproof()));
     public static final BaseStairSlabBlockset MASTER_PLATE = new BaseStairSlabBlockset(LegendOfSteve.MOD_ID, "master_plate", MASTER_PLATE_SETTINGS);
-    public static final BaseStairSlabBlockset MASTER_BRICK = new BaseStairSlabBlockset(LegendOfSteve.MOD_ID, "master_bricks", MASTER_PLATE_SETTINGS);
-    public static final BaseStairSlabBlockset MASTER_TILE = new BaseStairSlabBlockset(LegendOfSteve.MOD_ID, "master_tile", MASTER_PLATE_SETTINGS);
+    public static final BaseStairSlabBlockset MASTER_BRICK = new BaseStairSlabBlockset(LegendOfSteve.MOD_ID, "master_bricks", MASTER_SCRAP_SETTINGS);
+    public static final BaseStairSlabBlockset MASTER_TILE = new BaseStairSlabBlockset(LegendOfSteve.MOD_ID, "master_tile", MASTER_SCRAP_SETTINGS);
     public static final Block CUT_MASTER_PLATE = register("cut_master_plate", new Block(MASTER_PLATE_SETTINGS));
-    public static final Block MASTER_PILLAR = register("master_pillar", new PillarBlock(MASTER_PLATE_SETTINGS));
+    public static final Block MASTER_PILLAR = register("master_pillar", new PillarBlock(MASTER_SCRAP_SETTINGS));
 
     public static final Block MASTER_BARS = register("master_bars", new PaneBlock(MASTER_BAR_SETTINGS));
     public static final Block MASTER_CHAIN = register("master_chain", new ChainBlock(MASTER_CHAIN_SETTINGS));

@@ -17,6 +17,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.Rarity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
@@ -26,7 +27,7 @@ public class FairyBottleItem extends Item {
     private final EntityType<?> entityType;
 
     public FairyBottleItem(EntityType<? extends MobEntity> entityType) {
-        super(new FabricItemSettings().maxCount(1).recipeRemainder(Items.GLASS_BOTTLE));
+        super(new FabricItemSettings().maxCount(1).rarity(Rarity.UNCOMMON).recipeRemainder(Items.GLASS_BOTTLE));
         this.entityType = entityType;
     }
 

@@ -10,6 +10,7 @@ import net.deadlydiamond.legend_of_steve.common.items.locking.LockItem;
 import net.deadlydiamond.legend_of_steve.common.items.projectile.DekuNutItem;
 import net.deadlydiamond.legend_of_steve.common.items.projectile.explosive.BombItem;
 import net.deadlydiamond.legend_of_steve.common.items.projectile.explosive.ChargedBombItem;
+import net.deadlydiamond.legend_of_steve.common.items.sword.BeamSwordItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.*;
@@ -20,6 +21,9 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Rarity;
 
 public class ZeldaItems {
+
+    // SWORDS //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static final Item MAGIC_SWORD = register("magic_sword", new BeamSwordItem(ZeldaToolMaterials.MAGIC_SWORD, 3, -2.4F, new FabricItemSettings()));
 
     // BOMB ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static final Item BOMB_FLOWER_SEEDS = register("bomb_flower_seeds", new BlockItem(ZeldaBlocks.BOMB_FLOWER, new FabricItemSettings()));

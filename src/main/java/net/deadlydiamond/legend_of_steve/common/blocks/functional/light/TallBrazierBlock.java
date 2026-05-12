@@ -74,8 +74,10 @@ public class TallBrazierBlock extends BrazierBlock {
         BlockState upState = this.getDefaultState().with(HALF, DoubleBlockHalf.UPPER);
         BlockState waterloggedState = upState.contains(Properties.WATERLOGGED) ? upState.with(Properties.WATERLOGGED, world.isWater(pos)) : upState;
         BlockPos blockPos = pos.up();
-
         world.setBlockState(blockPos, waterloggedState, 3);
+
+        this.updateNeighbors(world, pos);
+        this.updateNeighbors(world, blockPos);
     }
 
     @Override

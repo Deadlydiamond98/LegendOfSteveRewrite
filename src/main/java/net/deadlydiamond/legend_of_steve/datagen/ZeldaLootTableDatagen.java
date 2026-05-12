@@ -5,6 +5,7 @@ import net.deadlydiamond98.koalalib.common.blocksets.AbstractBlockset;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 
 public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
 
@@ -18,6 +19,8 @@ public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
         generateLootTables(
                 // DEKU WOOD
                 ZeldaBlocks.DEKU_WOOD,
+                // DUNGEONCITE
+                ZeldaBlocks.BROWN_DUNGEONCITE,
                 // CHISELED PLANK BRICKS
                 ZeldaBlocks.CHISELED_OAK_BRICKS,
                 ZeldaBlocks.CHISELED_BIRCH_BRICKS,
@@ -32,7 +35,6 @@ public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
                 ZeldaBlocks.CHISELED_CHERRY_BRICKS,
                 ZeldaBlocks.CHISELED_DEKU_BRICKS,
                 // FAIRY MARBLE
-                ZeldaBlocks.FAIRY_MARBLE,
                 ZeldaBlocks.COBBLED_FAIRY_MARBLE,
                 ZeldaBlocks.POLISHED_FAIRY_MARBLE,
                 ZeldaBlocks.FAIRY_MARBLE_BRICKS,
@@ -111,6 +113,13 @@ public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
                 ZeldaBlocks.STRANGE_DIRT_SWORD_PEDESTAL,
                 ZeldaBlocks.STRANGE_BLUE_DIRT_SWORD_PEDESTAL
         );
+
+        addDrop(ZeldaBlocks.FAIRY_MARBLE.base, block -> this.drops(block, ZeldaBlocks.COBBLED_FAIRY_MARBLE.base));
+        addDrop(ZeldaBlocks.FAIRY_MARBLE.slab);
+        addDrop(ZeldaBlocks.FAIRY_MARBLE.stair);
+        addDrop(ZeldaBlocks.FAIRY_MARBLE.wall);
+        addDrop(ZeldaBlocks.FAIRY_MARBLE.button);
+        addDrop(ZeldaBlocks.FAIRY_MARBLE.plate);
 
         addDropWithSilkTouch(ZeldaBlocks.LOOT_POT);
         addDropWithSilkTouch(ZeldaBlocks.DYED_LOOT_POTS.white);

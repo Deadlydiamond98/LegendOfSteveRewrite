@@ -1,0 +1,9 @@
+{
+  "type": "legend_of_steve:spring_water_conversion",
+  "input": {
+    "item": "minecraft:dark_oak_sapling"
+  },
+  "result": {
+    "item": "minecraft:mangrove_propagule"
+  }
+}

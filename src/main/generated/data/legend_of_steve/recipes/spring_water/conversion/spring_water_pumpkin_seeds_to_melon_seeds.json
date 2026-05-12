@@ -1,0 +1,9 @@
+{
+  "type": "legend_of_steve:spring_water_conversion",
+  "input": {
+    "item": "minecraft:pumpkin_seeds"
+  },
+  "result": {
+    "item": "minecraft:melon_seeds"
+  }
+}

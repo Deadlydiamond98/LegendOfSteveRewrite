@@ -64,6 +64,19 @@
     "subtitle": "subtitles.legend_of_steve.item.lock.unlock"
   },
 
+  "item.magic_sword.shoot": {
+    "sounds": [
+      "legend_of_steve:item/magic_sword/shoot"
+    ],
+    "subtitle": "subtitles.legend_of_steve.item.magic_sword.shoot"
+  },
+  "item.magic_sword.recharge": {
+    "sounds": [
+      "legend_of_steve:item/magic_sword/recharge"
+    ],
+    "subtitle": "subtitles.legend_of_steve.item.magic_sword.recharge"
+  },
+
   "music_disc.legend": {
       "sounds": [
         {
@@ -284,6 +297,18 @@
     "subtitle": "subtitles.legend_of_steve.block.bomb_flower.picked"
   },
 
+  "block.spring_water.heal": {
+    "sounds": [
+      "legend_of_steve:block/spring_water/heal1",
+      "legend_of_steve:block/spring_water/heal2",
+      "legend_of_steve:block/spring_water/heal3",
+      "legend_of_steve:block/spring_water/heal4",
+      "legend_of_steve:block/spring_water/heal5",
+      "legend_of_steve:block/spring_water/heal6",
+      "legend_of_steve:block/spring_water/heal7"
+    ],
+    "subtitle": "subtitles.legend_of_steve.block.spring_water.heal"
+  },
   "block.spring_water.transform": {
     "sounds": [
       "legend_of_steve:block/spring_water/transform"
@@ -666,11 +691,11 @@
   },
   "block.tektiles.place": {
     "sounds": [
-      "legend_of_steve:block/tektiles/break1",
-      "legend_of_steve:block/tektiles/break2",
-      "legend_of_steve:block/tektiles/break3",
-      "legend_of_steve:block/tektiles/break4",
-      "legend_of_steve:block/tektiles/break5"
+      "legend_of_steve:block/tektiles/place1",
+      "legend_of_steve:block/tektiles/place1",
+      "legend_of_steve:block/tektiles/place2",
+      "legend_of_steve:block/tektiles/place3",
+      "legend_of_steve:block/tektiles/place4"
     ],
     "subtitle": "subtitles.block.generic.place"
   },
@@ -820,6 +845,307 @@
       "legend_of_steve:block/strange_blue_dirt/step4",
       "legend_of_steve:block/strange_blue_dirt/step5",
       "legend_of_steve:block/strange_blue_dirt/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+
+  "block.dungeoncite.break": {
+    "sounds": [
+      "block/deepslate/break1",
+      "block/deepslate/break2",
+      "block/deepslate/break3",
+      "block/deepslate/break4",
+      "block/deepslate/break5"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.dungeoncite.fall": {
+    "sounds": [
+      "block/deepslate/step1",
+      "block/deepslate/step2",
+      "block/deepslate/step3",
+      "block/deepslate/step4",
+      "block/deepslate/step5",
+      "block/deepslate/step6"
+    ]
+  },
+  "block.dungeoncite.hit": {
+    "sounds": [
+      "block/deepslate/step1",
+      "block/deepslate/step2",
+      "block/deepslate/step3",
+      "block/deepslate/step4",
+      "block/deepslate/step5",
+      "block/deepslate/step6"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.dungeoncite.place": {
+    "sounds": [
+      "block/deepslate/break1",
+      "block/deepslate/break2",
+      "block/deepslate/break3",
+      "block/deepslate/break4",
+      "block/deepslate/break5"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.dungeoncite.step": {
+    "sounds": [
+      "block/deepslate/step1",
+      "block/deepslate/step2",
+      "block/deepslate/step3",
+      "block/deepslate/step4",
+      "block/deepslate/step5",
+      "block/deepslate/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+
+  "block.dungeoncite_bricks.break": {
+    "sounds": [
+      {
+        "name": "block/deepslate_bricks/place1",
+        "volume": 0.85
+      },
+      {
+        "name": "block/deepslate_bricks/place2",
+        "volume": 0.85
+      },
+      {
+        "name": "block/deepslate_bricks/place3",
+        "volume": 0.85
+      },
+      {
+        "name": "block/deepslate_bricks/place4",
+        "volume": 0.85
+      },
+      {
+        "name": "block/deepslate_bricks/place5",
+        "volume": 0.85
+      },
+      {
+        "name": "block/deepslate_bricks/place6",
+        "volume": 0.85
+      }
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.dungeoncite_bricks.fall": {
+    "sounds": [
+      "block/deepslate_bricks/step1",
+      "block/deepslate_bricks/step2",
+      "block/deepslate_bricks/step3",
+      "block/deepslate_bricks/step4",
+      "block/deepslate_bricks/step5"
+    ]
+  },
+  "block.dungeoncite_bricks.hit": {
+    "sounds": [
+      "block/deepslate_bricks/step1",
+      "block/deepslate_bricks/step2",
+      "block/deepslate_bricks/step3",
+      "block/deepslate_bricks/step4",
+      "block/deepslate_bricks/step5"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.dungeoncite_bricks.place": {
+    "sounds": [
+      {
+        "name": "block/deepslate_bricks/place1",
+        "volume": 0.85
+      },
+      {
+        "name": "block/deepslate_bricks/place2",
+        "volume": 0.85
+      },
+      {
+        "name": "block/deepslate_bricks/place3",
+        "volume": 0.85
+      },
+      {
+        "name": "block/deepslate_bricks/place4",
+        "volume": 0.85
+      },
+      {
+        "name": "block/deepslate_bricks/place5",
+        "volume": 0.85
+      },
+      {
+        "name": "block/deepslate_bricks/place6",
+        "volume": 0.85
+      }
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.dungeoncite_bricks.step": {
+    "sounds": [
+      {
+        "name": "block/deepslate_bricks/step1",
+        "pitch": 0.9
+      },
+      {
+        "name": "block/deepslate_bricks/step2",
+        "pitch": 0.9
+      },
+      {
+        "name": "block/deepslate_bricks/step3",
+        "pitch": 0.9
+      },
+      {
+        "name": "block/deepslate_bricks/step4",
+        "pitch": 0.9
+      },
+      {
+        "name": "block/deepslate_bricks/step5",
+        "pitch": 0.9
+      }
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+
+  "block.dungeoncite_tile.break": {
+    "sounds": [
+      {
+        "name": "block/deepslate_bricks/place1",
+        "pitch": 1.3,
+        "volume": 0.92
+      },
+      {
+        "name": "block/deepslate_bricks/place2",
+        "pitch": 1.3,
+        "volume": 0.92
+      },
+      {
+        "name": "block/deepslate_bricks/place3",
+        "pitch": 1.3,
+        "volume": 0.92
+      },
+      {
+        "name": "block/deepslate_bricks/place4",
+        "pitch": 1.3,
+        "volume": 0.92
+      },
+      {
+        "name": "block/deepslate_bricks/place5",
+        "pitch": 1.3,
+        "volume": 0.92
+      },
+      {
+        "name": "block/deepslate_bricks/place6",
+        "pitch": 1.3,
+        "volume": 0.92
+      }
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.dungeoncite_tile.fall": {
+    "sounds": [
+      {
+        "name": "block/deepslate_bricks/step1",
+        "pitch": 1.3
+      },
+      {
+        "name": "block/deepslate_bricks/step2",
+        "pitch": 1.3
+      },
+      {
+        "name": "block/deepslate_bricks/step3",
+        "pitch": 1.3
+      },
+      {
+        "name": "block/deepslate_bricks/step4",
+        "pitch": 1.3
+      },
+      {
+        "name": "block/deepslate_bricks/step5",
+        "pitch": 1.3
+      }
+    ]
+  },
+  "block.dungeoncite_tile.hit": {
+    "sounds": [
+      {
+        "name": "block/deepslate_bricks/step1",
+        "pitch": 1.3
+      },
+      {
+        "name": "block/deepslate_bricks/step2",
+        "pitch": 1.3
+      },
+      {
+        "name": "block/deepslate_bricks/step3",
+        "pitch": 1.3
+      },
+      {
+        "name": "block/deepslate_bricks/step4",
+        "pitch": 1.3
+      },
+      {
+        "name": "block/deepslate_bricks/step5",
+        "pitch": 1.3
+      }
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.dungeoncite_tile.place": {
+    "sounds": [
+      {
+        "name": "block/deepslate_bricks/place1",
+        "pitch": 1.2,
+        "volume": 0.85
+      },
+      {
+        "name": "block/deepslate_bricks/place2",
+        "pitch": 1.2,
+        "volume": 0.85
+      },
+      {
+        "name": "block/deepslate_bricks/place3",
+        "pitch": 1.2,
+        "volume": 0.85
+      },
+      {
+        "name": "block/deepslate_bricks/place4",
+        "pitch": 1.2,
+        "volume": 0.85
+      },
+      {
+        "name": "block/deepslate_bricks/place5",
+        "pitch": 1.2,
+        "volume": 0.85
+      },
+      {
+        "name": "block/deepslate_bricks/place6",
+        "pitch": 1.2,
+        "volume": 0.85
+      }
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.dungeoncite_tile.step": {
+    "sounds": [
+      {
+        "name": "block/deepslate_bricks/step1",
+        "pitch": 1.2
+      },
+      {
+        "name": "block/deepslate_bricks/step2",
+        "pitch": 1.2
+      },
+      {
+        "name": "block/deepslate_bricks/step3",
+        "pitch": 1.2
+      },
+      {
+        "name": "block/deepslate_bricks/step4",
+        "pitch": 1.2
+      },
+      {
+        "name": "block/deepslate_bricks/step5",
+        "pitch": 1.2
+      }
     ],
     "subtitle": "subtitles.block.generic.footsteps"
   },

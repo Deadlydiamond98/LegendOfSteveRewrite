@@ -94,6 +94,10 @@ public class ZeldaBlockSettings {
             .strength(1.5f, 6)
             .mapColor(MapColor.LAPIS_BLUE)
             .sounds(ZeldaSounds.STRANGE_BLUE_DIRT);
+    public static final FabricBlockSettings STRANGE_WHITE_DIRT_SETTINGS = FabricBlockSettings.copyOf(Blocks.PACKED_MUD)
+            .strength(1.5f, 6)
+            .mapColor(MapColor.GRAY)
+            .sounds(ZeldaSounds.STRANGE_BLUE_DIRT);
     public static final FabricBlockSettings QUESTION_BLOCK_SETTINGS = FabricBlockSettings.copyOf(Blocks.GOLD_BLOCK)
             .sounds(ZeldaSounds.QUESTION_BLOCK);
 

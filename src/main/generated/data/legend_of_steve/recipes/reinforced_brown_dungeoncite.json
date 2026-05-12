@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "legend_of_steve:brown_dungeoncite"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 4,
+    "item": "legend_of_steve:reinforced_brown_dungeoncite"
+  },
+  "show_notification": true
+}

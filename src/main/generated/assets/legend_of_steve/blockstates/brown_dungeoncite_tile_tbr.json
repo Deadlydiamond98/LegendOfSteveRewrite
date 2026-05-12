@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "legend_of_steve:block/brown_dungeoncite_tile_tbr",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "legend_of_steve:block/brown_dungeoncite_tile_tbr",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "legend_of_steve:block/brown_dungeoncite_tile_tbr"
+    },
+    "facing=west": {
+      "model": "legend_of_steve:block/brown_dungeoncite_tile_tbr",
+      "y": 90
+    }
+  }
+}

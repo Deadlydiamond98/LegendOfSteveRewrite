@@ -42,6 +42,7 @@ public class ReinforcedBlockset extends AbstractBlockset {
         super.generateRecipes(exporter);
         RecipeProvider.offerSingleOutputShapelessRecipe(exporter, this.base, this.pushable, "reinforced_block");
         RecipeProvider.offerSingleOutputShapelessRecipe(exporter, this.pushable, this.base, "push_block");
+        RecipeProvider.offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, this.base, this.pushable);
     }
 
     public void generateRecipesStone(Consumer<RecipeJsonProvider> exporter, Block... additionalInputs) {

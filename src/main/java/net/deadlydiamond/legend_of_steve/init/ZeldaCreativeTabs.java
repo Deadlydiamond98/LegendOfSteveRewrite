@@ -12,10 +12,12 @@ import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 
 public class ZeldaCreativeTabs {
-    // TODO: CHANGE THE Item TAB ICON ONCE APPROPRIATE ITEM IS ADDED
 
-    public static final ItemGroup ITEMS = registerTab("items", ZeldaItems.BOMB, (displayContext, entries) -> {
+    public static final ItemGroup ITEMS = registerTab("items", ZeldaItems.MAGIC_SWORD, (displayContext, entries) -> {
         add(entries,
+                // SWORDS
+                ZeldaItems.MAGIC_SWORD,
+
                 // BOMBS
                 ZeldaItems.BOMB_FLOWER_SEEDS,
                 ZeldaItems.BOMB_FLOWER,
@@ -141,6 +143,9 @@ public class ZeldaCreativeTabs {
         entries.add(ZeldaBlocks.FAIRY_MARBLE_PILLAR);
         entries.add(ZeldaBlocks.SMOOTH_FAIRY_MARBLE);
         ZeldaBlocks.FAIRY_MARBLE_TILES.addToCreative(entries);
+
+        // DUNGEONCITE
+        ZeldaBlocks.BROWN_DUNGEONCITE.addToCreative(entries);
 
         // MASTER
         entries.add(ZeldaBlocks.MASTER_ORE);

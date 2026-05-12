@@ -1,0 +1,9 @@
+{
+  "type": "legend_of_steve:spring_water_conversion",
+  "input": {
+    "item": "minecraft:fermented_spider_eye"
+  },
+  "result": {
+    "item": "minecraft:spider_eye"
+  }
+}

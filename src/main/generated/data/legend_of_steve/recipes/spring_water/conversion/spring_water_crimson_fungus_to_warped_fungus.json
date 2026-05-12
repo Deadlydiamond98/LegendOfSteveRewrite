@@ -1,0 +1,9 @@
+{
+  "type": "legend_of_steve:spring_water_conversion",
+  "input": {
+    "item": "minecraft:crimson_fungus"
+  },
+  "result": {
+    "item": "minecraft:warped_fungus"
+  }
+}

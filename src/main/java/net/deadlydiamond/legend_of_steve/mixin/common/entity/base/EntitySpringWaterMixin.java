@@ -90,6 +90,10 @@ public abstract class EntitySpringWaterMixin {
                         this.getParticleZ(0.5)
                 );
 
+                if (living.getMaxHealth() > living.getHealth() && submergedTime % 20 == 0) {
+                    living.playSound(ZeldaSounds.SPRING_WATER_HEAL, 0.5f, 1);
+                }
+
                 MagicSparkleParticleEffect.createFountainSparkle(getWorld(), pos, 0.05, 0.01);
             }
         } else if (entity instanceof ItemEntity itemEntity) {

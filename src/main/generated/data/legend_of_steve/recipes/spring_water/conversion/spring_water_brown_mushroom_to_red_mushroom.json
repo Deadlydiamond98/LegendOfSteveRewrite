@@ -1,0 +1,9 @@
+{
+  "type": "legend_of_steve:spring_water_conversion",
+  "input": {
+    "item": "minecraft:brown_mushroom"
+  },
+  "result": {
+    "item": "minecraft:red_mushroom"
+  }
+}

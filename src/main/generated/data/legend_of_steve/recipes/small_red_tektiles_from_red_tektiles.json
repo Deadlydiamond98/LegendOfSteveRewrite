@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "small_red_tektiles",
+  "ingredients": [
+    {
+      "item": "legend_of_steve:red_tektiles"
+    }
+  ],
+  "result": {
+    "item": "legend_of_steve:small_red_tektiles"
+  }
+}

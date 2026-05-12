@@ -11,6 +11,7 @@ import net.deadlydiamond.legend_of_steve.client.rendering.block.HittableContaine
 import net.deadlydiamond.legend_of_steve.client.rendering.block.SwordPedestalBlockEntityRenderer;
 import net.deadlydiamond.legend_of_steve.client.rendering.entity.PushableBlockEntityRenderer;
 import net.deadlydiamond.legend_of_steve.client.rendering.entity.projectile.BombEntityRenderer;
+import net.deadlydiamond.legend_of_steve.client.rendering.entity.projectile.SwordBeamEntityRenderer;
 import net.deadlydiamond.legend_of_steve.client.rendering.entity.projectile.ThrownPotEntityRenderer;
 import net.deadlydiamond.legend_of_steve.client.rendering.entity.living.FairyEntityRenderer;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlockEntities;
@@ -33,6 +34,7 @@ public class ZeldaRenderers {
         EntityRendererRegistry.register(ZeldaEntityTypes.DEKU_NUT, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(ZeldaEntityTypes.FAIRY, FairyEntityRenderer::new);
         EntityRendererRegistry.register(ZeldaEntityTypes.PUSHABLE_BLOCK, PushableBlockEntityRenderer::new);
+        EntityRendererRegistry.register(ZeldaEntityTypes.SWORD_BEAM, SwordBeamEntityRenderer::new);
         EntityRendererRegistry.register(ZeldaEntityTypes.THROWN_POT, ThrownPotEntityRenderer::new);
     }
 

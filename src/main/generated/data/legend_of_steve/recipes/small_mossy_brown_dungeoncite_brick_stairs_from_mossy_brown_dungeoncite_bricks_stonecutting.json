@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "legend_of_steve:mossy_brown_dungeoncite_bricks"
+  },
+  "result": "legend_of_steve:small_mossy_brown_dungeoncite_brick_stairs"
+}

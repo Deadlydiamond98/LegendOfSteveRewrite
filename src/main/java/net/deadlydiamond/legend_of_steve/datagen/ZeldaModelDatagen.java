@@ -69,6 +69,9 @@ public class ZeldaModelDatagen extends FabricModelProvider {
         generator.registerSimpleCubeAll(ZeldaBlocks.CHISELED_CHERRY_PLANKS);
         generator.registerSimpleCubeAll(ZeldaBlocks.CHISELED_DEKU_PLANKS);
 
+        // DUNGEONCITE /////////////////////////////////////////////////////////////////////////////////////////////////
+        ZeldaBlocks.BROWN_DUNGEONCITE.generateModels(generator);
+
         // FAIRY LAMP //////////////////////////////////////////////////////////////////////////////////////////////////
         generator.registerSimpleCubeAll(ZeldaBlocks.PINK_FAIRY_LAMP);
         generator.registerSimpleCubeAll(ZeldaBlocks.RED_FAIRY_LAMP);
@@ -169,6 +172,11 @@ public class ZeldaModelDatagen extends FabricModelProvider {
                 ZeldaItems.IRON_LOCK,
                 ZeldaItems.GOLD_LOCK,
                 ZeldaItems.BOSS_LOCK
+        );
+
+        ItemModelDatagenUtil.registerHandheld(
+                itemModelGenerator,
+                ZeldaItems.MAGIC_SWORD
         );
 
         ItemModelDatagenUtil.registerSpawnEggs(itemModelGenerator, ZeldaEntityTypes.SPAWN_EGGS.toArray(Item[]::new));

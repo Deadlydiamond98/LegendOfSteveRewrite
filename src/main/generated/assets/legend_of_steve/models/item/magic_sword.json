@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "legend_of_steve:item/magic_sword"
+  }
+}

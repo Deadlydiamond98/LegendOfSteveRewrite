@@ -3,6 +3,7 @@ package net.deadlydiamond.legend_of_steve.datagen.tag;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
 import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
 import net.deadlydiamond98.koalalib.common.blocksets.AbstractBlockset;
+import net.deadlydiamond98.koalalib.init.KoalaLibTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Block;
@@ -37,6 +38,8 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
         ZeldaBlocks.CHISELED_DEKU_BRICKS.generateBlockTags((blockTagKey, block) -> getOrCreateTagBuilder(blockTagKey).add(block));
 
         createMinables(
+                // DUNGEONCITE
+                ZeldaBlocks.BROWN_DUNGEONCITE,
                 // FAIRY MARBLE
                 ZeldaBlocks.FAIRY_MARBLE,
                 ZeldaBlocks.COBBLED_FAIRY_MARBLE,
@@ -180,6 +183,10 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
         );
 
         // OTHER ///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        getOrCreateTagBuilder(KoalaLibTags.CRACKED_BRICKS).add(
+                ZeldaBlocks.CRACKED_FAIRY_MARBLE_BRICKS
+        );
 
         getOrCreateTagBuilder(ZeldaTags.LOCKABLE).add(
                 Blocks.CHEST,

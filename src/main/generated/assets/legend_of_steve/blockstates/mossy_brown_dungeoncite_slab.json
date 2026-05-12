@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "legend_of_steve:block/mossy_brown_dungeoncite_slab"
+    },
+    "type=double": {
+      "model": "legend_of_steve:block/mossy_brown_dungeoncite"
+    },
+    "type=top": {
+      "model": "legend_of_steve:block/mossy_brown_dungeoncite_slab_top"
+    }
+  }
+}

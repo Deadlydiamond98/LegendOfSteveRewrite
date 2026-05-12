@@ -5,6 +5,7 @@ import net.deadlydiamond.legend_of_steve.common.entities.block.CrateEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.block.PushableBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.living.fairy.FairyEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.DekuNutProjectileEntity;
+import net.deadlydiamond.legend_of_steve.common.entities.projectile.SwordBeamEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.ThrownPotEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.BombEntity;
 import net.deadlydiamond.legend_of_steve.util.entity.ZeldaEntityTypeBuilder;
@@ -32,6 +33,7 @@ public class ZeldaEntityTypes {
     // PROJECTILE ENTITIES /////////////////////////////////////////////////////////////////////////////////////////////
     public static final EntityType<BombEntity> BOMB = register("bomb", BombEntity.class, 0.5f);
     public static final EntityType<DekuNutProjectileEntity> DEKU_NUT = register("deku_nut", DekuNutProjectileEntity.class, 0.5f);
+    public static final EntityType<SwordBeamEntity> SWORD_BEAM = register("sword_beam", SwordBeamEntity.class, 0.5f);
     public static final EntityType<ThrownPotEntity> THROWN_POT = register("thrown_pot", ThrownPotEntity.class, 0.5f);
 
     // LIVING ENTITIES /////////////////////////////////////////////////////////////////////////////////////////////////

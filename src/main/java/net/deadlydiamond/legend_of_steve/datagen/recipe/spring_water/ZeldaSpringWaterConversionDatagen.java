@@ -1,6 +1,7 @@
 package net.deadlydiamond.legend_of_steve.datagen.recipe.spring_water;
 
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
+import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.item.ItemConvertible;
@@ -14,25 +15,36 @@ public class ZeldaSpringWaterConversionDatagen {
     public static void generate(Consumer<RecipeJsonProvider> consumer) {
         vanillaItem(consumer);
         vanillaBlock(consumer);
+        swapRecipe(consumer);
         dye(consumer);
         fairyMarble(consumer);
         strangeDirt(consumer);
+        special(consumer);
     }
 
     private static void vanillaItem(Consumer<RecipeJsonProvider> consumer) {
         // Purification
         offerConversion(consumer, Items.POISONOUS_POTATO, Items.POTATO);
         offerConversion(consumer, Items.ECHO_SHARD, Items.AMETHYST_SHARD);
+        offerConversion(consumer, Items.QUARTZ, Blocks.CALCITE);
         offerConversion(consumer, Items.NETHER_BRICK, Items.BRICK);
         offerConversion(consumer, Items.ENDER_EYE, Items.ENDER_PEARL);
+        offerConversion(consumer, Items.MUSIC_DISC_11, Items.MUSIC_DISC_STAL);
+        offerConversion(consumer, Items.ROTTEN_FLESH, Items.LEATHER);
+        offerConversion(consumer, Items.FERMENTED_SPIDER_EYE, Items.SPIDER_EYE);
+
+        // Other
+        offerConversion(consumer, Items.RABBIT_FOOT, Items.RABBIT_HIDE);
+        offerConversion(consumer, Items.GLASS_BOTTLE, Blocks.GLASS);
     }
 
     private static void vanillaBlock(Consumer<RecipeJsonProvider> consumer) {
         // Purification
         offerConversion(consumer, Blocks.NETHERRACK, Blocks.COBBLESTONE);
         offerConversion(consumer, Blocks.WARPED_WART_BLOCK, Blocks.NETHER_WART_BLOCK);
-        offerConversion(consumer, Blocks.OBSIDIAN, Blocks.CRYING_OBSIDIAN);
-        offerConversion(consumer, Blocks.DEEPSLATE, Blocks.STONE);
+        offerConversion(consumer, Blocks.CRYING_OBSIDIAN, Blocks.OBSIDIAN);
+        offerConversion(consumer, Blocks.DEEPSLATE, Blocks.TUFF);
+        offerConversion(consumer, Blocks.TUFF, Blocks.STONE);
         offerConversion(consumer, Blocks.DEAD_BUSH, Blocks.OAK_SAPLING);
 
         // Nether Brick
@@ -80,6 +92,47 @@ public class ZeldaSpringWaterConversionDatagen {
         // HEAD
         offerConversion(consumer, Blocks.ZOMBIE_HEAD, Blocks.PLAYER_HEAD);
         offerConversion(consumer, Blocks.SKELETON_SKULL, Blocks.PLAYER_HEAD);
+
+        // Other
+        offerConversion(consumer, Blocks.DRIPSTONE_BLOCK, Blocks.POINTED_DRIPSTONE);
+        offerConversion(consumer, Blocks.GRASS, Blocks.TALL_GRASS);
+        offerConversion(consumer, Blocks.FERN, Blocks.LARGE_FERN);
+        offerConversion(consumer, Blocks.BEE_NEST, Blocks.BEEHIVE);
+        offerConversion(consumer, Blocks.GOLD_BLOCK, Blocks.BELL);
+    }
+
+    private static void swapRecipe(Consumer<RecipeJsonProvider> consumer) {
+        // Saplings
+        offerConversion(consumer, Blocks.OAK_SAPLING, Blocks.BIRCH_SAPLING);
+        offerConversion(consumer, Blocks.BIRCH_SAPLING, Blocks.SPRUCE_SAPLING);
+        offerConversion(consumer, Blocks.SPRUCE_SAPLING, Blocks.JUNGLE_SAPLING);
+        offerConversion(consumer, Blocks.JUNGLE_SAPLING, Blocks.ACACIA_SAPLING);
+        offerConversion(consumer, Blocks.ACACIA_SAPLING, Blocks.DARK_OAK_SAPLING);
+        offerConversion(consumer, Blocks.DARK_OAK_SAPLING, Blocks.MANGROVE_PROPAGULE);
+        offerConversion(consumer, Blocks.MANGROVE_PROPAGULE, Blocks.CHERRY_SAPLING);
+        offerConversion(consumer, Blocks.CHERRY_SAPLING, Blocks.OAK_SAPLING);
+
+        offerConversion(consumer, Blocks.AZALEA, Blocks.FLOWERING_AZALEA);
+        offerConversion(consumer, Blocks.FLOWERING_AZALEA, Blocks.AZALEA);
+
+        // Nether Fungus
+        offerConversion(consumer, Blocks.WARPED_FUNGUS, Blocks.CRIMSON_FUNGUS);
+        offerConversion(consumer, Blocks.CRIMSON_FUNGUS, Blocks.WARPED_FUNGUS);
+
+        // Mushroom
+        offerConversion(consumer, Blocks.RED_MUSHROOM, Blocks.BROWN_MUSHROOM);
+        offerConversion(consumer, Blocks.BROWN_MUSHROOM, Blocks.RED_MUSHROOM);
+
+        offerConversion(consumer, Blocks.RED_MUSHROOM_BLOCK, Blocks.BROWN_MUSHROOM_BLOCK);
+        offerConversion(consumer, Blocks.BROWN_MUSHROOM_BLOCK, Blocks.RED_MUSHROOM_BLOCK);
+
+        // Prismarine
+        offerConversion(consumer, Items.PRISMARINE_SHARD, Items.PRISMARINE_CRYSTALS);
+        offerConversion(consumer, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_SHARD);
+
+        // Gourd Seeds
+        offerConversion(consumer, Items.MELON_SEEDS, Items.PUMPKIN_SEEDS);
+        offerConversion(consumer, Items.PUMPKIN_SEEDS, Items.MELON_SEEDS);
     }
 
     private static void dye(Consumer<RecipeJsonProvider> consumer) {
@@ -343,6 +396,10 @@ public class ZeldaSpringWaterConversionDatagen {
         offerConversion(consumer, Blocks.ROOTED_DIRT, ZeldaBlocks.STRANGE_DIRT.base);
 
         offerConversion(consumer, ZeldaBlocks.STRANGE_DIRT.base, Blocks.DIRT);
+    }
+
+    private static void special(Consumer<RecipeJsonProvider> consumer) {
+        offerConversion(consumer, Items.IRON_SWORD, ZeldaItems.MAGIC_SWORD);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "legend_of_steve:mossy_brown_dungeoncite_brick_slab"
+    }
+  },
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "result": {
+    "item": "legend_of_steve:mossy_chiseled_brown_dungeoncite_bricks"
+  },
+  "show_notification": true
+}

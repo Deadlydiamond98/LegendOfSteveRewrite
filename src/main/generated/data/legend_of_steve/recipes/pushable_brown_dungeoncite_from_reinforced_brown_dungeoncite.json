@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "push_block",
+  "ingredients": [
+    {
+      "item": "legend_of_steve:reinforced_brown_dungeoncite"
+    }
+  ],
+  "result": {
+    "item": "legend_of_steve:pushable_brown_dungeoncite"
+  }
+}

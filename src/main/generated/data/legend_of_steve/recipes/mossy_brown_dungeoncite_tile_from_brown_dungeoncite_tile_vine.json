@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "building_blocks",
+  "ingredients": [
+    {
+      "item": "legend_of_steve:brown_dungeoncite_tile"
+    },
+    {
+      "item": "minecraft:vine"
+    }
+  ],
+  "result": {
+    "item": "legend_of_steve:mossy_brown_dungeoncite_tile"
+  }
+}

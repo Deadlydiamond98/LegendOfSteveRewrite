@@ -8,13 +8,16 @@ import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.util.Identifier;
 
 public class TektiteEntityRenderer extends MobEntityRenderer<TektiteEntity, TektiteEntityModel<TektiteEntity>> {
+    public static final Identifier TEXTURE = LegendOfSteve.id("textures/entity/tektite/blue_tektite.png");
+
     public TektiteEntityRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new TektiteEntityModel<>(ctx.getPart(TektiteEntityModel.LAYER_LOCATION)), 0.8f);
     }
 
+
     @Override
     public Identifier getTexture(TektiteEntity entity) {
-        return LegendOfSteve.id("textures/entity/tektite/blue_tektite.png");
+        return TEXTURE;
     }
 
     @Override

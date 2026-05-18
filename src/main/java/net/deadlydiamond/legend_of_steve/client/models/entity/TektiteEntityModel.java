@@ -45,6 +45,7 @@ public class TektiteEntityModel<T extends TektiteEntity> extends SinglePartEntit
 		this.FrontLeftLegEnd = this.FrontLeftLegLower.getChild("FrontLeftLegEnd");
 		this.eye = this.body.getChild("eye");
 	}
+
 	public static TexturedModelData getTexturedModelData() {
 		ModelData modelData = new ModelData();
 		ModelPartData modelPartData = modelData.getRoot();
@@ -102,9 +103,9 @@ public class TektiteEntityModel<T extends TektiteEntity> extends SinglePartEntit
 	@Override
 	public void setAngles(TektiteEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.getPart().traverse().forEach(ModelPart::resetTransform);
-
 		this.updateAnimation(entity.idleAnimationState, TektiteEntityAnimations.IDLE, ageInTicks);
-
+		this.updateAnimation(entity.jumpAnimationState, TektiteEntityAnimations.JUMPING, ageInTicks);
+		this.updateAnimation(entity.landAnimationState, TektiteEntityAnimations.LANDING, ageInTicks);
 		this.animateMovement(TektiteEntityAnimations.WALKING, limbSwing, limbSwingAmount, 2.0f, 2.5f);
 	}
 

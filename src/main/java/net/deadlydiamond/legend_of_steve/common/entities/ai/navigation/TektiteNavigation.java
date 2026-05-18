@@ -1,6 +1,6 @@
 package net.deadlydiamond.legend_of_steve.common.entities.ai.navigation;
 
-import net.deadlydiamond.legend_of_steve.common.entities.living.TektiteEntity;
+import net.deadlydiamond.legend_of_steve.common.entities.living.tektite.BaseTektiteEntity;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.ai.pathing.LandPathNodeMaker;
 import net.minecraft.entity.ai.pathing.MobNavigation;
@@ -10,7 +10,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class TektiteNavigation extends MobNavigation {
-    public TektiteNavigation(TektiteEntity entity, World world) {
+    public TektiteNavigation(BaseTektiteEntity entity, World world) {
         super(entity, world);
     }
 

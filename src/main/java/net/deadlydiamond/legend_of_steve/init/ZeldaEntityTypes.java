@@ -3,8 +3,10 @@ package net.deadlydiamond.legend_of_steve.init;
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.entities.block.CrateEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.block.PushableBlockEntity;
-import net.deadlydiamond.legend_of_steve.common.entities.living.TektiteEntity;
+import net.deadlydiamond.legend_of_steve.common.entities.living.tektite.BaseTektiteEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.living.fairy.FairyEntity;
+import net.deadlydiamond.legend_of_steve.common.entities.living.tektite.BlueTektiteEntity;
+import net.deadlydiamond.legend_of_steve.common.entities.living.tektite.RedTektiteEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.DekuNutProjectileEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.SwordBeamEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.ThrownPotEntity;
@@ -43,8 +45,12 @@ public class ZeldaEntityTypes {
             0xffffff, 0x5d8fc2
     );
     // TODO: CHANGE BLUE TEKTITE SPAWN PREDICATE!!!
-    public static final EntityType<TektiteEntity> BLUE_TEKTITE = registerMob("blue_tektite", TektiteEntity.class, 1,
-            SpawnGroup.MONSTER, TektiteEntity::attributes, ZeldaSpawn.ground((type, world, spawnReason, pos, random) -> true),
+    public static final EntityType<BlueTektiteEntity> BLUE_TEKTITE = registerMob("blue_tektite", BlueTektiteEntity.class, 0.9f,
+            SpawnGroup.MONSTER, BlueTektiteEntity::attributes, ZeldaSpawn.ground((type, world, spawnReason, pos, random) -> true),
+            0x2e55b2, 0xf76e24
+    );
+    public static final EntityType<RedTektiteEntity> RED_TEKTITE = registerMob("red_tektite", RedTektiteEntity.class, 0.9f,
+            SpawnGroup.MONSTER, RedTektiteEntity::attributes, ZeldaSpawn.ground((type, world, spawnReason, pos, random) -> true),
             0x2e55b2, 0xf76e24
     );
 

@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 2,
+                "min": 0
+              },
+              "function": "minecraft:set_count"
+            },
+            {
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 1,
+                "min": 0
+              },
+              "function": "minecraft:looting_enchant"
+            }
+          ],
+          "name": "legend_of_steve:red_tektite_chitin"
+        }
+      ],
+      "rolls": 1
+    }
+  ],
+  "random_sequence": "legend_of_steve:entities/red_tektite"
+}

@@ -1,6 +1,6 @@
 package net.deadlydiamond.legend_of_steve.common.entities.ai.goals;
 
-import net.deadlydiamond.legend_of_steve.common.entities.living.TektiteEntity;
+import net.deadlydiamond.legend_of_steve.common.entities.living.tektite.BaseTektiteEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.util.math.Vec3d;
@@ -8,7 +8,7 @@ import net.minecraft.util.math.Vec3d;
 import java.util.EnumSet;
 
 public class HopAtTargetGoal extends Goal {
-    private final TektiteEntity mob;
+    private final BaseTektiteEntity mob;
     private LivingEntity target;
 
     private final double range;
@@ -16,7 +16,7 @@ public class HopAtTargetGoal extends Goal {
     private final double hopHeight;
     private final int maxHoppingDelay;
 
-    public HopAtTargetGoal(TektiteEntity mob, double hopDistance, double hopHeight, int maxHoppingDelay, double range) {
+    public HopAtTargetGoal(BaseTektiteEntity mob, double hopDistance, double hopHeight, int maxHoppingDelay, double range) {
         this.mob = mob;
         this.hopDistance = hopDistance;
         this.hopHeight = hopHeight;

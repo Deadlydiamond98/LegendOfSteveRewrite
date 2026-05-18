@@ -2,14 +2,18 @@ package net.deadlydiamond.legend_of_steve.client.models.entity;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.client.animation.TektiteEntityAnimations;
-import net.deadlydiamond.legend_of_steve.common.entities.living.TektiteEntity;
+import net.deadlydiamond.legend_of_steve.common.entities.living.tektite.BaseTektiteEntity;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 
-public class TektiteEntityModel<T extends TektiteEntity> extends SinglePartEntityModel<T> {
+public class TektiteEntityModel<T extends BaseTektiteEntity> extends SinglePartEntityModel<T> {
 	public static final EntityModelLayer LAYER_LOCATION = new EntityModelLayer(LegendOfSteve.id("tektite"), "main");
 
 	private final ModelPart root;
@@ -101,12 +105,33 @@ public class TektiteEntityModel<T extends TektiteEntity> extends SinglePartEntit
 	}
 
 	@Override
-	public void setAngles(TektiteEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+	public void setAngles(BaseTektiteEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.getPart().traverse().forEach(ModelPart::resetTransform);
+
+		Entity target = MinecraftClient.getInstance().getCameraEntity();
+		if (target != null) {
+			Vec3d vec3d = target.getCameraPosVec(0.0F);
+			Vec3d vec3d2 = entity.getCameraPosVec(0.0F);
+			double d = vec3d.y - vec3d2.y;
+			if (d > 0.0) {
+				this.eye.pivotY = -0.75F;
+			} else {
+				this.eye.pivotY = -0.25F;
+			}
+
+			Vec3d vec3d3 = entity.getRotationVec(0.0F);
+			vec3d3 = new Vec3d(vec3d3.x, 0.0, vec3d3.z);
+			Vec3d vec3d4 = new Vec3d(vec3d2.x - vec3d.x, 0.0, vec3d2.z - vec3d.z).normalize().rotateY((float) (Math.PI / 2));
+			double e = vec3d3.dotProduct(vec3d4);
+			this.eye.pivotX = MathHelper.sqrt((float)Math.abs(e)) * 2.0F * (float)Math.signum(e);
+		}
+
 		this.updateAnimation(entity.idleAnimationState, TektiteEntityAnimations.IDLE, ageInTicks);
 		this.updateAnimation(entity.jumpAnimationState, TektiteEntityAnimations.JUMPING, ageInTicks);
 		this.updateAnimation(entity.landAnimationState, TektiteEntityAnimations.LANDING, ageInTicks);
-		this.animateMovement(TektiteEntityAnimations.WALKING, limbSwing, limbSwingAmount, 2.0f, 2.5f);
+		if (!entity.isTektiteJumping()) {
+			this.animateMovement(TektiteEntityAnimations.WALKING, limbSwing, limbSwingAmount, 2.0f, 2.5f);
+		}
 	}
 
 	@Override

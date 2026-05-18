@@ -1,26 +1,33 @@
 package net.deadlydiamond.legend_of_steve.mixin.common.entity.base;
 
 import com.google.common.collect.ImmutableList;
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
+import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
 import net.deadlydiamond.legend_of_steve.common.blocks.IJumpIntoAction;
+import net.deadlydiamond.legend_of_steve.init.ZeldaEffects;
 import net.deadlydiamond.legend_of_steve.networking.s2c.question_block.JumpIntoBlockS2CPacket;
 import net.deadlydiamond.legend_of_steve.util.mixinterfaces.IPushBlockMoving;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MovementType;
+import net.minecraft.fluid.Fluid;
+import net.minecraft.registry.tag.FluidTags;
+import net.minecraft.registry.tag.TagKey;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.RaycastContext;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -30,9 +37,22 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Entity.class)
 public abstract class EntityMixin implements IPushBlockMoving {
+
     @Shadow protected abstract Vec3d adjustMovementForCollisions(Vec3d movement);
+    @Shadow public abstract void playSound(SoundEvent sound, float volume, float pitch);
 
     @Unique private Vec3d legend_of_steve$pushBlockMovement = Vec3d.ZERO;
+
+    /*
+
+    This Mixin Handles The Following:
+        - Horizontal Collisions with Push Blocks
+        - Vertical Collisions with Hittable Container Blocks (Question Blocks, Bricks)
+
+     */
+
+
+    // Push Block Collision
 
     @WrapOperation(method = "move", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;adjustMovementForCollisions(Lnet/minecraft/util/math/Vec3d;)Lnet/minecraft/util/math/Vec3d;"))
     private Vec3d legend_of_steve$moveOnPushableBlock(Entity instance, Vec3d movement, Operation<Vec3d> original) {
@@ -46,7 +66,7 @@ public abstract class EntityMixin implements IPushBlockMoving {
         this.legend_of_steve$pushBlockMovement = movement;
     }
 
-    // Hit Blocks from Below
+    // Hitting Container Blocks
 
     @Inject(method = "move", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;setPosition(DDD)V", ordinal = 1))
     private void legend_of_steve$moveHitBlockBelow(MovementType movementType, Vec3d movement, CallbackInfo ci) {

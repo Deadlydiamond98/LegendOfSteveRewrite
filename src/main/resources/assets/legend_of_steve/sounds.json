@@ -1257,5 +1257,22 @@
       "legend_of_steve:block/sword_pedestal/deposit3"
     ],
     "subtitle": "subtitles.legend_of_steve.block.sword_pedestal.deposit"
+  },
+
+
+  "block.water.pondstriding.step": {
+    "sounds": [
+      "liquid/swim1",
+      "liquid/swim2",
+      "liquid/swim3",
+      "liquid/swim4"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.lava.hotstriding.step": {
+    "sounds": [
+      "liquid/lavapop"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
   }
 }

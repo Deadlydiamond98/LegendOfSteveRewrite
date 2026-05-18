@@ -387,6 +387,37 @@
 
   "tooltip.legend_of_steve.pushable": "Pushable",
 
+  "effect.legend_of_steve.pondstriding": "Pondstriding",
+  "effect.legend_of_steve.water_weight": "Water Weight",
+  "effect.legend_of_steve.hotstriding": "Hotstriding",
+
+  "item.minecraft.potion.effect.pondstriding": "Potion of Pondstriding",
+  "item.minecraft.splash_potion.effect.pondstriding": "Splash Potion of Pondstriding",
+  "item.minecraft.lingering_potion.effect.pondstriding": "Lingering Potion of Pondstriding",
+  "item.minecraft.tipped_arrow.effect.pondstriding": "Arrow of Pondstriding",
+  "item.minecraft.potion.effect.long_pondstriding": "Potion of Pondstriding",
+  "item.minecraft.splash_potion.effect.long_pondstriding": "Splash Potion of Pondstriding",
+  "item.minecraft.lingering_potion.effect.long_pondstriding": "Lingering Potion of Pondstriding",
+  "item.minecraft.tipped_arrow.effect.long_pondstriding": "Arrow of Pondstriding",
+
+  "item.minecraft.potion.effect.hotstriding": "Potion of Hotstriding",
+  "item.minecraft.splash_potion.effect.hotstriding": "Splash Potion of Hotstriding",
+  "item.minecraft.lingering_potion.effect.hotstriding": "Lingering Potion of Hotstriding",
+  "item.minecraft.tipped_arrow.effect.hotstriding": "Arrow of Hotstriding",
+  "item.minecraft.potion.effect.long_hotstriding": "Potion of Hotstriding",
+  "item.minecraft.splash_potion.effect.long_hotstriding": "Splash Potion of Hotstriding",
+  "item.minecraft.lingering_potion.effect.long_hotstriding": "Lingering Potion of Hotstriding",
+  "item.minecraft.tipped_arrow.effect.long_hotstriding": "Arrow of Hotstriding",
+
+  "item.minecraft.potion.effect.water_weight": "Potion of Water Weight",
+  "item.minecraft.splash_potion.effect.water_weight": "Splash Potion of Water Weight",
+  "item.minecraft.lingering_potion.effect.water_weight": "Lingering Potion of Water Weight",
+  "item.minecraft.tipped_arrow.effect.water_weight": "Arrow of Water Weight",
+  "item.minecraft.potion.effect.long_water_weight": "Potion of Water Weight",
+  "item.minecraft.splash_potion.effect.long_water_weight": "Splash Potion of Water Weight",
+  "item.minecraft.lingering_potion.effect.long_water_weight": "Lingering Potion of Water Weight",
+  "item.minecraft.tipped_arrow.effect.long_water_weight": "Arrow of Water Weight",
+
   "subtitles.legend_of_steve.block.bomb_flower.picked": "Bomb Flower Picked",
   "subtitles.legend_of_steve.entity.bomb.secret_jingle": "Secret room revealed",
   "subtitles.legend_of_steve.entity.bomb.pick_up": "Bomb plops",

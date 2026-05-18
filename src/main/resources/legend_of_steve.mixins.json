@@ -20,6 +20,8 @@
     "common.entity.mob.AbstractSkeletonEntityMixin",
     "common.entity.mob.MobEntityMixin",
     "common.entity.mob.piglin.PiglinEntityMixin",
+    "common.entity.potion_effects.EntityPondstridingMixin",
+    "common.entity.potion_effects.LivingEntityPondstridingMixin",
     "common.entity.stun.EntityNavigationStunMixin",
     "common.entity.stun.FlyingEntityStunMixin",
     "common.entity.stun.LivingEntityStunMixin",

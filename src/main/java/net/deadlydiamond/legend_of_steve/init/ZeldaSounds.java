@@ -55,6 +55,8 @@ public class ZeldaSounds {
     public static final BlockSoundGroup FAIRY_LAMP = registerGroup("fairy_lamp", 1, 1.2f);
     public static final BlockSoundGroup STARSTONE = registerGroup("starstone", 1, 1);
     public static final BlockSoundGroup TEKTILES = registerGroup("tektiles", 1, 1);
+    public static final SoundEvent PONDSTRIDING_STEP = register("block.water.pondstriding.step");
+    public static final SoundEvent HOTSTRIDING_STEP = register("block.lava.hotstriding.step");
     // Note Block
     public static final SoundEvent MALON = register("block.note_block.malon");
     public static final SoundEvent PIZZICATO_STRING = register("block.note_block.pizzicato_string");

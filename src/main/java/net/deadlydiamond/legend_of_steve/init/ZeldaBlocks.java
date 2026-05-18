@@ -104,8 +104,7 @@ public class ZeldaBlocks {
     public static final Block DEEPSLATE_MASTER_ORE = register("deepslate_master_ore", new ExperienceDroppingBlock(DEEPSLATE_MASTER_ORE_BLOCK_SETTINGS));
 
     public static final Block MASTER_SCRAP_BLOCK = register("master_scrap_block", new Block(MASTER_SCRAP_SETTINGS));
-    public static final Block MASTER_BLOCK = register("master_block", new Block(MASTER_BLOCK_SETTINGS), false);
-    public static final Item MASTER_BLOCK_ITEM = ZeldaItems.register("master_block", new BlockItem(MASTER_BLOCK, new FabricItemSettings().fireproof()));
+    public static final Block MASTER_BLOCK = registerNetherite("master_block", new Block(MASTER_BLOCK_SETTINGS));
     public static final BaseStairSlabBlockset MASTER_PLATE = new BaseStairSlabBlockset(LegendOfSteve.MOD_ID, "master_plate", MASTER_PLATE_SETTINGS);
     public static final BaseStairSlabBlockset MASTER_BRICK = new BaseStairSlabBlockset(LegendOfSteve.MOD_ID, "master_bricks", MASTER_SCRAP_SETTINGS);
     public static final BaseStairSlabBlockset MASTER_TILE = new BaseStairSlabBlockset(LegendOfSteve.MOD_ID, "master_tile", MASTER_SCRAP_SETTINGS);
@@ -178,7 +177,9 @@ public class ZeldaBlocks {
     public static final BrazierBlockset STRANGE_DIRT_BRAZIER_BLOCKSET = new BrazierBlockset(LegendOfSteve.MOD_ID, "strange_dirt", STRANGE_DIRT.base);
     public static final BrazierBlockset STRANGE_BLUE_DIRT_BRAZIER_BLOCKSET = new BrazierBlockset(LegendOfSteve.MOD_ID, "strange_blue_dirt", STRANGE_BLUE_DIRT.base);
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // REGISTRATION ////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public static Block register(String id, Block block) {
         return register(id, block, true);
@@ -188,6 +189,11 @@ public class ZeldaBlocks {
         if (withItem) {
             ZeldaItems.register(id, new BlockItem(block, new FabricItemSettings()));
         }
+        return Registry.register(Registries.BLOCK, LegendOfSteve.id(id), block);
+    }
+
+    public static Block registerNetherite(String id, Block block) {
+        ZeldaItems.register(id, new BlockItem(block, new FabricItemSettings().fireproof()));
         return Registry.register(Registries.BLOCK, LegendOfSteve.id(id), block);
     }
 

@@ -378,12 +378,15 @@
 
   "item.legend_of_steve.fairy_spawn_egg": "Fairy Spawn Egg",
   "item.legend_of_steve.blue_tektite_spawn_egg": "Blue Tektite Spawn Egg",
+  "item.legend_of_steve.red_tektite_spawn_egg": "Red Tektite Spawn Egg",
 
   "entity.legend_of_steve.bomb": "Bomb",
+  "entity.legend_of_steve.blue_tektite": "Blue Tektite",
   "entity.legend_of_steve.crate": "Crate",
   "entity.legend_of_steve.deku_nut": "Deku Nut",
   "entity.legend_of_steve.fairy": "Fairy",
   "entity.legend_of_steve.pushable_block": "Pushable Block",
+  "entity.legend_of_steve.red_tektite": "Red Tektite",
   "entity.legend_of_steve.thrown_pot": "Thrown Pot",
 
   "tooltip.legend_of_steve.pushable": "Pushable",

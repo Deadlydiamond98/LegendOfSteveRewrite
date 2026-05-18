@@ -1,6 +1,6 @@
 package net.deadlydiamond.legend_of_steve.common.blocks.deco.glowing;
 
-import net.deadlydiamond.legend_of_steve.common.entities.living.FairyColor;
+import net.deadlydiamond.legend_of_steve.common.entities.living.fairy.FairyColor;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;

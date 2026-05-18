@@ -1,7 +1,7 @@
 package net.deadlydiamond.legend_of_steve.init;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
-import net.deadlydiamond.legend_of_steve.common.entities.living.FairyColor;
+import net.deadlydiamond.legend_of_steve.common.entities.living.fairy.FairyColor;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemGroup;

@@ -2,7 +2,7 @@ package net.deadlydiamond.legend_of_steve.util.datagen.model;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import net.deadlydiamond.legend_of_steve.common.entities.living.FairyColor;
+import net.deadlydiamond.legend_of_steve.common.entities.living.fairy.FairyColor;
 import net.minecraft.data.client.*;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;

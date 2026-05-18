@@ -3,8 +3,6 @@ package net.deadlydiamond.legend_of_steve.common.entities.living.fairy;
 import net.deadlydiamond.legend_of_steve.common.entities.ai.goals.HealPlayerGoal;
 import net.deadlydiamond.legend_of_steve.common.entities.ai.goals.WanderAroundFlyingGoal;
 import net.deadlydiamond.legend_of_steve.common.entities.ai.navigation.FairyEntityNavigation;
-import net.deadlydiamond.legend_of_steve.common.entities.living.FairyColor;
-import net.deadlydiamond.legend_of_steve.common.entities.living.IBottleable;
 import net.deadlydiamond.legend_of_steve.init.ZeldaCustomTrackedData;
 import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
 import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;

@@ -1,6 +1,6 @@
 package net.deadlydiamond.legend_of_steve.init.client;
 
-import net.deadlydiamond.legend_of_steve.common.entities.living.FairyColor;
+import net.deadlydiamond.legend_of_steve.common.entities.living.fairy.FairyColor;
 import net.deadlydiamond.legend_of_steve.common.items.bag.BombBagItem;
 import net.deadlydiamond.legend_of_steve.common.items.bag.QuiverItem;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;

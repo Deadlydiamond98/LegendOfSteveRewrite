@@ -15,7 +15,7 @@ import net.deadlydiamond.legend_of_steve.common.blocksets.*;
 import net.deadlydiamond.legend_of_steve.common.blocksets.dungeoncite.DungeonciteBlockset;
 import net.deadlydiamond.legend_of_steve.common.blocksets.iridescent.IridescentStairSlabWallBlockset;
 import net.deadlydiamond.legend_of_steve.common.blocksets.iridescent.IridescentStoneBlockset;
-import net.deadlydiamond.legend_of_steve.common.entities.living.FairyColor;
+import net.deadlydiamond.legend_of_steve.common.entities.living.fairy.FairyColor;
 import net.deadlydiamond.legend_of_steve.common.items.block.CrateItem;
 import net.deadlydiamond.legend_of_steve.common.items.block.LootPotItem;
 import net.deadlydiamond.legend_of_steve.worldgen.sapling.DekuSaplingGenerator;

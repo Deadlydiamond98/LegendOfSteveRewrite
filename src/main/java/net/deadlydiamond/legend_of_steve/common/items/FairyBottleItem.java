@@ -1,7 +1,7 @@
 package net.deadlydiamond.legend_of_steve.common.items;
 
-import net.deadlydiamond.legend_of_steve.common.entities.living.FairyColor;
-import net.deadlydiamond.legend_of_steve.common.entities.living.IBottleable;
+import net.deadlydiamond.legend_of_steve.common.entities.living.fairy.FairyColor;
+import net.deadlydiamond.legend_of_steve.common.entities.living.fairy.IBottleable;
 import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.BlockState;

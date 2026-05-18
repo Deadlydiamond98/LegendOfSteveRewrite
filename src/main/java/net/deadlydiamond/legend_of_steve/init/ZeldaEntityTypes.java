@@ -3,6 +3,7 @@ package net.deadlydiamond.legend_of_steve.init;
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.entities.block.CrateEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.block.PushableBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.entities.living.TektiteEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.living.fairy.FairyEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.DekuNutProjectileEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.SwordBeamEntity;
@@ -40,6 +41,11 @@ public class ZeldaEntityTypes {
     public static final EntityType<FairyEntity> FAIRY = registerMob("fairy", FairyEntity.class, 0.4f,
             SpawnGroup.AMBIENT, FairyEntity::attributes, FairyEntity.spawnRestriction(),
             0xffffff, 0x5d8fc2
+    );
+    // TODO: CHANGE BLUE TEKTITE SPAWN PREDICATE!!!
+    public static final EntityType<TektiteEntity> BLUE_TEKTITE = registerMob("blue_tektite", TektiteEntity.class, 1,
+            SpawnGroup.MONSTER, TektiteEntity::attributes, ZeldaSpawn.ground((type, world, spawnReason, pos, random) -> true),
+            0x2e55b2, 0xf76e24
     );
 
     // MISC ENTITIES ///////////////////////////////////////////////////////////////////////////////////////////////////

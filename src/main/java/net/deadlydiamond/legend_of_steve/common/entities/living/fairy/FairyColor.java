@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.common.entities.living;
+package net.deadlydiamond.legend_of_steve.common.entities.living.fairy;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.particles.MagicSparkleParticleEffect;

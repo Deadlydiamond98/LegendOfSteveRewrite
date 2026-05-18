@@ -2,7 +2,6 @@ package net.deadlydiamond.legend_of_steve.client.rendering.entity.living;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.client.models.entity.FairyEntityModel;
-import net.deadlydiamond.legend_of_steve.common.entities.living.FairyColor;
 import net.deadlydiamond.legend_of_steve.common.entities.living.fairy.FairyEntity;
 import net.deadlydiamond.legend_of_steve.init.client.ZeldaRenderLayers;
 import net.minecraft.client.render.RenderLayer;

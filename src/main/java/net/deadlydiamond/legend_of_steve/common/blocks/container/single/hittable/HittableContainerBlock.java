@@ -23,4 +23,9 @@ public class HittableContainerBlock extends AbstractHittableContainerBlock {
     protected SoundEvent getEmptyingSound() {
         return ZeldaSounds.QUESTION_BLOCK_EMPTY_CONTENTS;
     }
+
+    @Override
+    protected boolean activatedByRedstone() {
+        return true;
+    }
 }

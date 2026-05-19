@@ -19,6 +19,9 @@ import org.joml.Matrix4f;
 public class SwordBeamEntityRenderer<T extends SwordBeamEntity> extends EntityRenderer<T>  {
     public static final Identifier TEXTURE = LegendOfSteve.id("textures/entity/sword_beam/sword_beam.png");
 
+    // TODO: This could probably be better, original code for this is a little dogshit.
+    //  Touch this up when working on Magic Projectile Swords
+
     public SwordBeamEntityRenderer(EntityRendererFactory.Context ctx) {
         super(ctx);
     }

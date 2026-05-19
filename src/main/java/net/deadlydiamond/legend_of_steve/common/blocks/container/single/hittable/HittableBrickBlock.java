@@ -28,6 +28,11 @@ public class HittableBrickBlock extends HittableContainerBlock {
     // HITTING /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
+    protected boolean activatedByRedstone() {
+        return false;
+    }
+
+    @Override
     public boolean canMineBlock(BlockState state, World world, BlockPos pos, PlayerEntity miner) {
         return true;
     }

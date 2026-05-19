@@ -32,6 +32,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
@@ -49,10 +50,11 @@ import org.jetbrains.annotations.Nullable;
 public abstract class AbstractHittableContainerBlock extends WaterloggableSingleSlotBlock implements IJumpIntoAction, IHitBlockAction, IExtraCanMine {
     public static final BooleanProperty BOUNCING = ZeldaProperties.BOUNCING;
     public static final BooleanProperty HIT = ZeldaProperties.HIT;
+    public static final BooleanProperty POWERED = Properties.POWERED;
 
     public AbstractHittableContainerBlock(Settings settings) {
         super(settings);
-        setDefaultState(getDefaultState().with(HIT, startHit()).with(BOUNCING, false));
+        setDefaultState(getDefaultState().with(HIT, startHit()).with(POWERED, false).with(BOUNCING, false));
     }
 
     protected boolean startHit() {
@@ -83,6 +85,25 @@ public abstract class AbstractHittableContainerBlock extends WaterloggableSingle
     }
 
     // Hitting Block ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    @Override
+    public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
+        if (activatedByRedstone()) {
+            if (!world.isClient()) {
+                boolean bl = world.isReceivingRedstonePower(pos);
+                boolean bl2 = state.get(POWERED);
+
+                world.setBlockState(pos, state.with(POWERED, bl), Block.NO_REDRAW);
+
+                if (bl && !bl2) {
+                    hitBlock(world, pos, state, null, Direction.UP, true);
+                }
+            }
+        }
+    }
+
+    protected abstract boolean activatedByRedstone();
 
     @Override
     public boolean canMineBlock(BlockState state, World world, BlockPos pos, PlayerEntity miner) {
@@ -266,7 +287,7 @@ public abstract class AbstractHittableContainerBlock extends WaterloggableSingle
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
-        builder.add(BOUNCING, HIT);
+        builder.add(BOUNCING, HIT, POWERED);
     }
 
     @Override

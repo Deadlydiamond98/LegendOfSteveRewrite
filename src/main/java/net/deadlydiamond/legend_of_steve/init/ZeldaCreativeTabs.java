@@ -16,7 +16,7 @@ public class ZeldaCreativeTabs {
     public static final ItemGroup ITEMS = registerTab("items", ZeldaItems.MAGIC_SWORD, (displayContext, entries) -> {
         add(entries,
                 // SWORDS
-                ZeldaItems.MAGIC_SWORD,
+//                ZeldaItems.MAGIC_SWORD,
 
                 // BOMBS
                 ZeldaItems.BOMB_FLOWER_SEEDS,

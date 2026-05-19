@@ -494,7 +494,7 @@ public class DungeonciteBlockset extends AbstractBlockset {
     }
 
     public static class DungeonciteTile extends TileBlock implements IAdvancementNeeded {
-        public static final BooleanProperty PLAYERMADE = KoalaLibBlockProperties.PLAYER_MADE_PROPERY;
+        public static final BooleanProperty PLAYERMADE = KoalaLibBlockProperties.PLAYER_MADE_PROPERTY;
         private final String advancementID;
 
         public DungeonciteTile(Settings settings, String advancementID) {

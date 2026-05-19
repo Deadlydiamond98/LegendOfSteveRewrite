@@ -399,7 +399,7 @@ public class ZeldaSpringWaterConversionDatagen {
     }
 
     private static void special(Consumer<RecipeJsonProvider> consumer) {
-        offerConversion(consumer, Items.IRON_SWORD, ZeldaItems.MAGIC_SWORD);
+//        offerConversion(consumer, Items.IRON_SWORD, ZeldaItems.MAGIC_SWORD);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

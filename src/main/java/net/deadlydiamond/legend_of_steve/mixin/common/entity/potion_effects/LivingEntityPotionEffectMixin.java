@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(LivingEntity.class)
-public abstract class LivingEntityPondstridingMixin {
+public abstract class LivingEntityPotionEffectMixin {
 
     @ModifyReturnValue(method = "canWalkOnFluid", at = @At(value = "RETURN"))
     private boolean legend_of_steve$canWalkOnFluid(boolean original, @Local(ordinal = 0, argsOnly = true) FluidState state) {

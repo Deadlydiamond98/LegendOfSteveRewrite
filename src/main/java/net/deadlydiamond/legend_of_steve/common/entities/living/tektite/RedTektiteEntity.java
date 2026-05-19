@@ -3,6 +3,7 @@ package net.deadlydiamond.legend_of_steve.common.entities.living.tektite;
 import net.deadlydiamond.legend_of_steve.common.entities.ai.goals.ApproachFromFarGoal;
 import net.deadlydiamond.legend_of_steve.common.entities.ai.goals.ApproachFromNearGoal;
 import net.deadlydiamond.legend_of_steve.common.entities.ai.goals.HopAtTargetGoal;
+import net.deadlydiamond.legend_of_steve.common.entities.ai.goals.RandomlyHopGoal;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -17,16 +18,18 @@ public class RedTektiteEntity extends BaseTektiteEntity {
 
     @Override
     protected void initGoals() {
-        this.goalSelector.add(3, new HopAtTargetGoal(this, 0.75, 0.6, 20, 5));
-        this.goalSelector.add(4, new ApproachFromNearGoal(this, 0.75, 5));
-        this.goalSelector.add(4, new ApproachFromFarGoal(this, 1.75, 5));
+        this.goalSelector.add(3, new HopAtTargetGoal(this, 0.3, 0.6, 20, 6));
+        this.goalSelector.add(4, new ApproachFromNearGoal(this, 0.5, 3));
+        this.goalSelector.add(4, new ApproachFromFarGoal(this, 1.5, 3));
+
+        this.goalSelector.add(7, new RandomlyHopGoal(this, 0.75, 0.6, 80));
         super.initGoals();
     }
 
     public static DefaultAttributeContainer.Builder attributes() {
         return MobEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 28)
-                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 6)
+                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 4)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.175);
     }
 }

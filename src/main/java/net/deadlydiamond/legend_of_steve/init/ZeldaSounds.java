@@ -51,12 +51,13 @@ public class ZeldaSounds {
     // CRATE
     public static final SoundEvent CRATE_OPEN = register("block.crate.open");
     public static final SoundEvent CRATE_CLOSE = register("block.crate.close");
+    // FLUID WALK SOUNDS
+    public static final SoundEvent WATER_STEP = register("block.water.pondstriding.step");
+    public static final SoundEvent LAVA_STEP = register("block.lava.hotstriding.step");
     // OTHER
     public static final BlockSoundGroup FAIRY_LAMP = registerGroup("fairy_lamp", 1, 1.2f);
     public static final BlockSoundGroup STARSTONE = registerGroup("starstone", 1, 1);
     public static final BlockSoundGroup TEKTILES = registerGroup("tektiles", 1, 1);
-    public static final SoundEvent PONDSTRIDING_STEP = register("block.water.pondstriding.step");
-    public static final SoundEvent HOTSTRIDING_STEP = register("block.lava.hotstriding.step");
     // Note Block
     public static final SoundEvent MALON = register("block.note_block.malon");
     public static final SoundEvent PIZZICATO_STRING = register("block.note_block.pizzicato_string");
@@ -97,6 +98,12 @@ public class ZeldaSounds {
     public static final SoundEvent FAIRY_HURT = register("entity.fairy.hurt");
     public static final SoundEvent FAIRY_AMBIENT = register("entity.fairy.ambient");
     public static final SoundEvent FAIRY_HEAL = register("entity.fairy.heal");
+    // Tektite
+    public static final SoundEvent TEKTITE_AMBIENT = register("entity.tektite.ambient");
+    public static final SoundEvent TEKTITE_DEATH = register("entity.tektite.death");
+    public static final SoundEvent TEKTITE_HURT = register("entity.tektite.hurt");
+    public static final SoundEvent TEKTITE_STEP = register("entity.tektite.step");
+    public static final SoundEvent TEKTITE_HOP = register("entity.tektite.hop");
 
     // HELPER METHODS //////////////////////////////////////////////////////////////////////////////////////////////////
 

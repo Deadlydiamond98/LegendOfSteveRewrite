@@ -12,13 +12,11 @@ public class TektiteEntityAnimations {
         public static final Animation JUMPING = jumping();
         public static final Animation LANDING = landing();
 
-
-
         // WATER
 //        public static final Animation WATER_IDLE = water_idle();
 
 
-        // ANIMATION METHODS (DONE THIS WAY SO I CAN ACTUALLY COLLAPSE STUFF FOR READABILITY)
+        // ANIMATION METHODS (DONE THIS WAY SO I CAN ACTUALLY SCROLL)
 
         private static Animation idle() {
                 return Animation.Builder.create(4.0F).looping()

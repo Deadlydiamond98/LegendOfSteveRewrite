@@ -18,6 +18,7 @@ public class TektiteNavigation extends MobNavigation {
     protected PathNodeNavigator createPathNodeNavigator(int range) {
         this.nodeMaker = new LandPathNodeMaker();
         this.nodeMaker.setCanEnterOpenDoors(true);
+        this.nodeMaker.setCanSwim(true);
         return new PathNodeNavigator(this.nodeMaker, range);
     }
 

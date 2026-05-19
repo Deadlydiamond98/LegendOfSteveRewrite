@@ -1,0 +1,11 @@
+{
+  "values": [
+    "#minecraft:is_jungle",
+    "minecraft:river",
+    "minecraft:swamp",
+    "minecraft:mangrove_swamp",
+    "minecraft:stony_shore",
+    "minecraft:beach",
+    "minecraft:dripstone_caves"
+  ]
+}

@@ -44,14 +44,13 @@ public class ZeldaEntityTypes {
             SpawnGroup.AMBIENT, FairyEntity::attributes, FairyEntity.spawnRestriction(),
             0xffffff, 0x5d8fc2
     );
-    // TODO: CHANGE BLUE TEKTITE SPAWN PREDICATE!!!
     public static final EntityType<BlueTektiteEntity> BLUE_TEKTITE = registerMob("blue_tektite", BlueTektiteEntity.class, 0.9f,
-            SpawnGroup.MONSTER, BlueTektiteEntity::attributes, ZeldaSpawn.ground((type, world, spawnReason, pos, random) -> true),
+            SpawnGroup.MONSTER, BlueTektiteEntity::attributes, BaseTektiteEntity.spawnRestriction(),
             0x2e55b2, 0xf76e24
     );
     public static final EntityType<RedTektiteEntity> RED_TEKTITE = registerMob("red_tektite", RedTektiteEntity.class, 0.9f,
-            SpawnGroup.MONSTER, RedTektiteEntity::attributes, ZeldaSpawn.ground((type, world, spawnReason, pos, random) -> true),
-            0x2e55b2, 0xf76e24
+            SpawnGroup.MONSTER, RedTektiteEntity::attributes, BaseTektiteEntity.spawnRestriction(),
+            0x831f4b, 0xf76e24
     );
 
     // MISC ENTITIES ///////////////////////////////////////////////////////////////////////////////////////////////////

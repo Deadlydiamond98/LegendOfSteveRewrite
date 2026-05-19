@@ -38,6 +38,8 @@ public class ZeldaTags {
 
     // BIOMES //////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static final TagKey<Biome> GENERATES_DEKU_TREES = biome("has_deku_trees");
+    public static final TagKey<Biome> SPAWNS_MORE_BLUE_TEKTITES = biome("spawns_more_blue_tektites");
+    public static final TagKey<Biome> SPAWNS_MORE_RED_TEKTITES = biome("spawns_more_red_tektites");
 
     // Registry ////////////////////////////////////////////////////////////////////////////////////////////////////////
 

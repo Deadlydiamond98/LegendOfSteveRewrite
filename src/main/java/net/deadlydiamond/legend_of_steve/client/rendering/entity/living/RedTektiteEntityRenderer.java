@@ -1,10 +1,8 @@
 package net.deadlydiamond.legend_of_steve.client.rendering.entity.living;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
-import net.deadlydiamond.legend_of_steve.client.models.entity.TektiteEntityModel;
 import net.deadlydiamond.legend_of_steve.common.entities.living.tektite.BaseTektiteEntity;
 import net.minecraft.client.render.entity.EntityRendererFactory;
-import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.util.Identifier;
 
 public class RedTektiteEntityRenderer extends BlueTektiteEntityRenderer {

@@ -24,7 +24,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Entity.class)
-public abstract class EntityPondstridingMixin {
+public abstract class EntityPotionEffectMixin {
     @Shadow public abstract void playSound(SoundEvent sound, float volume, float pitch);
     @Shadow protected Object2DoubleMap<TagKey<Fluid>> fluidHeight;
     @Shadow protected boolean firstUpdate;
@@ -36,10 +36,10 @@ public abstract class EntityPondstridingMixin {
     private void legend_of_steve$playStepSounds(BlockPos pos, BlockState state, CallbackInfo ci) {
         if (((Entity) (Object) this) instanceof LivingEntity living) {
             if (living.hasStatusEffect(ZeldaEffects.PONDSTRIDING) && state.isOf(Blocks.WATER)) {
-                this.playSound(ZeldaSounds.PONDSTRIDING_STEP, 0.05f, 1);
+                this.playSound(ZeldaSounds.WATER_STEP, 0.05f, 1);
             }
             if (living.hasStatusEffect(ZeldaEffects.HOTSTRIDING) && state.isOf(Blocks.LAVA)) {
-                this.playSound(ZeldaSounds.HOTSTRIDING_STEP, 0.1f, (this.random.nextFloat() - this.random.nextFloat()) * 0.2f + 1.0f);
+                this.playSound(ZeldaSounds.LAVA_STEP, 0.1f, (this.random.nextFloat() - this.random.nextFloat()) * 0.2f + 1.0f);
             }
         }
     }

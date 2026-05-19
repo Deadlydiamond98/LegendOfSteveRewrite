@@ -443,9 +443,14 @@
   "subtitles.legend_of_steve.entity.deku_nut.freeze": "Deku Nut stunning target",
 
   "subtitles.legend_of_steve.entity.fairy.death": "Fairy dies",
-  "subtitles.legend_of_steve.entity.fairy.hurt": "Fairy hurt",
+  "subtitles.legend_of_steve.entity.fairy.hurt": "Fairy dies",
   "subtitles.legend_of_steve.entity.fairy.ambient": "Fairy sparkles",
   "subtitles.legend_of_steve.entity.fairy.heal": "Fairy heals player",
+
+  "subtitles.legend_of_steve.entity.tektite.ambient": "Tektite clicks",
+  "subtitles.legend_of_steve.entity.tektite.hurt": "Tektite dies",
+  "subtitles.legend_of_steve.entity.tektite.death": "Tektite hisses",
+  "subtitles.legend_of_steve.entity.tektite.hop": "Tektite hops",
 
   "subtitles.legend_of_steve.block.question_block.deposit": "Item deposited into Container",
   "subtitles.legend_of_steve.block.question_block.bounce": "Container Block being hit",

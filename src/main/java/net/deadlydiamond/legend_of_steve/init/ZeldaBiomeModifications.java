@@ -51,6 +51,7 @@ public class ZeldaBiomeModifications {
     }
 
     private static void registerSpawns() {
+        // FAIRY
         BiomeModifications.addSpawn(
                 BiomeSelectors.foundInOverworld(),
                 SpawnGroup.AMBIENT,
@@ -58,6 +59,46 @@ public class ZeldaBiomeModifications {
                 2,
                 1,
                 2
+        );
+
+        // TEKTITES ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        // Common
+        BiomeModifications.addSpawn(
+                BiomeSelectors.tag(ZeldaTags.SPAWNS_MORE_BLUE_TEKTITES),
+                SpawnGroup.MONSTER,
+                ZeldaEntityTypes.BLUE_TEKTITE,
+                30,
+                2,
+                4
+        );
+
+        BiomeModifications.addSpawn(
+                BiomeSelectors.tag(ZeldaTags.SPAWNS_MORE_RED_TEKTITES),
+                SpawnGroup.MONSTER,
+                ZeldaEntityTypes.RED_TEKTITE,
+                30,
+                2,
+                4
+        );
+
+        // Uncommon
+        BiomeModifications.addSpawn(
+                BiomeSelectors.foundInOverworld(),
+                SpawnGroup.MONSTER,
+                ZeldaEntityTypes.BLUE_TEKTITE,
+                5,
+                1,
+                4
+        );
+
+        BiomeModifications.addSpawn(
+                BiomeSelectors.foundInOverworld(),
+                SpawnGroup.MONSTER,
+                ZeldaEntityTypes.RED_TEKTITE,
+                3,
+                1,
+                4
         );
     }
 }

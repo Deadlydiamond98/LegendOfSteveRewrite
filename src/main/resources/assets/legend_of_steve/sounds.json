@@ -169,6 +169,59 @@
     "subtitle": "subtitles.legend_of_steve.entity.fairy.heal"
   },
 
+  "entity.tektite.ambient": {
+    "sounds": [
+      "legend_of_steve:entity/tektite/ambient1",
+      "legend_of_steve:entity/tektite/ambient2",
+      "legend_of_steve:entity/tektite/ambient3",
+      "legend_of_steve:entity/tektite/ambient4",
+      "legend_of_steve:entity/tektite/ambient5"
+    ],
+    "subtitle": "subtitles.legend_of_steve.entity.tektite.ambient"
+  },
+  "entity.tektite.hurt": {
+    "sounds": [
+      "legend_of_steve:entity/tektite/hurt1",
+      "legend_of_steve:entity/tektite/hurt2",
+      "legend_of_steve:entity/tektite/hurt3",
+      "legend_of_steve:entity/tektite/hurt4"
+    ],
+    "subtitle": "subtitles.legend_of_steve.entity.tektite.hurt"
+  },
+  "entity.tektite.death": {
+    "sounds": [
+      "legend_of_steve:entity/tektite/death1",
+      "legend_of_steve:entity/tektite/death2",
+      "legend_of_steve:entity/tektite/death3",
+      "legend_of_steve:entity/tektite/death4",
+      "legend_of_steve:entity/tektite/death5",
+      "legend_of_steve:entity/tektite/death6"
+    ],
+    "subtitle": "subtitles.legend_of_steve.entity.tektite.death"
+  },
+  "entity.tektite.step": {
+    "sounds": [
+      "legend_of_steve:entity/tektite/step1",
+      "legend_of_steve:entity/tektite/step2",
+      "legend_of_steve:entity/tektite/step3",
+      "legend_of_steve:entity/tektite/step4",
+      "legend_of_steve:entity/tektite/step5",
+      "legend_of_steve:entity/tektite/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "entity.tektite.hop": {
+    "sounds": [
+      "legend_of_steve:entity/tektite/hop1",
+      "legend_of_steve:entity/tektite/hop2",
+      "legend_of_steve:entity/tektite/hop3",
+      "legend_of_steve:entity/tektite/hop4",
+      "legend_of_steve:entity/tektite/hop5",
+      "legend_of_steve:entity/tektite/hop6"
+    ],
+    "subtitle": "subtitles.legend_of_steve.entity.tektite.hop"
+  },
+
   "block.note_block.smw_piano": {
     "sounds": [
       "legend_of_steve:note/smw_piano"

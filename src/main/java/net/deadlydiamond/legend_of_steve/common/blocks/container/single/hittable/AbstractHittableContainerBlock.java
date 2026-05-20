@@ -86,7 +86,6 @@ public abstract class AbstractHittableContainerBlock extends WaterloggableSingle
 
     // Hitting Block ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-
     @Override
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
         if (activatedByRedstone()) {
@@ -274,6 +273,7 @@ public abstract class AbstractHittableContainerBlock extends WaterloggableSingle
         }
 
         blockEntity.clear();
+        blockEntity.markDirty();
     }
 
     @Override

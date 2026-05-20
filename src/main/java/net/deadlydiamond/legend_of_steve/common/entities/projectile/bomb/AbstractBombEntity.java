@@ -28,6 +28,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 public abstract class AbstractBombEntity extends PhysicsItemProjectile implements IZeldaBomb {
     private static final TrackedData<Boolean> PRIMED = DataTracker.registerData(AbstractBombEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
@@ -185,6 +186,12 @@ public abstract class AbstractBombEntity extends PhysicsItemProjectile implement
         return ZeldaItems.BOMB;
     }
 
+    @Nullable
+    @Override
+    public ItemStack getPickBlockStack() {
+        return getStack();
+    }
+
     // Fire Related Things /////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
@@ -287,8 +294,6 @@ public abstract class AbstractBombEntity extends PhysicsItemProjectile implement
         this.breakableBlocks = breakableBlocks;
     }
 
-
-    // TODO: THIS WILL BE REMOVED ONCE I PUSH FIX FOR KOALA LIB
     @Override
     protected void tickMovement() {
         this.velocityDirty = true;

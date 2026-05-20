@@ -1,7 +1,5 @@
 package net.deadlydiamond.legend_of_steve.common.entities.block;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
 import net.deadlydiamond.legend_of_steve.networking.s2c.pushable_block.AddBlockBreakCooldownS2CPacket;
 import net.deadlydiamond.legend_of_steve.networking.s2c.pushable_block.UpdatePushableBlockBreakProgressS2CPacket;
 import net.deadlydiamond.legend_of_steve.util.mixinterfaces.IPushBlockMoving;
@@ -33,6 +31,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -40,7 +39,7 @@ import java.util.function.Predicate;
 
 public class PushableBlockEntity extends LerpedMovmentEntity implements IHitEntityAction {
     private static final TrackedData<BlockState> BLOCK = DataTracker.registerData(PushableBlockEntity.class, TrackedDataHandlerRegistry.BLOCK_STATE);
-    private ItemStack itemStack = ItemStack.EMPTY;
+    private static final TrackedData<ItemStack> ITEM_STACK = DataTracker.registerData(PushableBlockEntity.class, TrackedDataHandlerRegistry.ITEM_STACK);
     public float blockBreakingSoundCooldown;
     public float breakingProgress;
     public int stopBreakingTimer;
@@ -49,6 +48,16 @@ public class PushableBlockEntity extends LerpedMovmentEntity implements IHitEnti
         super(type, world);
         this.intersectionChecked = true;
         this.refreshPosition();
+    }
+
+    @Nullable
+    @Override
+    public ItemStack getPickBlockStack() {
+        if (this.getItemStack().isEmpty()) {
+            return this.getBlock().getBlock().asItem().getDefaultStack();
+        } else {
+            return this.getItemStack();
+        }
     }
 
     // MOVING //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -249,10 +258,10 @@ public class PushableBlockEntity extends LerpedMovmentEntity implements IHitEnti
     }
 
     public void dropBlockItem() {
-        if (this.itemStack.isEmpty()) {
+        if (this.getItemStack().isEmpty()) {
             Block.dropStacks(getBlock(), getWorld(), getBlockPos());
         } else {
-            getWorld().spawnEntity(new ItemEntity(getWorld(), getX(), getY() + 0.5f, getZ(), this.itemStack));
+            getWorld().spawnEntity(new ItemEntity(getWorld(), getX(), getY() + 0.5f, getZ(), this.getItemStack()));
         }
     }
 
@@ -341,20 +350,21 @@ public class PushableBlockEntity extends LerpedMovmentEntity implements IHitEnti
     @Override
     protected void initDataTracker() {
         this.dataTracker.startTracking(BLOCK, Blocks.DIRT.getDefaultState());
+        this.dataTracker.startTracking(ITEM_STACK, ItemStack.EMPTY);
     }
 
     @Override
     protected void readCustomDataFromNbt(NbtCompound nbt) {
         this.setBlock(NbtHelper.toBlockState(this.getWorld().createCommandRegistryWrapper(RegistryKeys.BLOCK), nbt.getCompound("BlockState")));
         NbtCompound nbtCompound = nbt.getCompound("Item");
-        this.itemStack = ItemStack.fromNbt(nbtCompound);
+        setItemStack(ItemStack.fromNbt(nbtCompound));
     }
 
     @Override
     protected void writeCustomDataToNbt(NbtCompound nbt) {
         nbt.put("BlockState", NbtHelper.fromBlockState(getBlock()));
-        if (!this.itemStack.isEmpty()) {
-            nbt.put("Item", this.itemStack.writeNbt(new NbtCompound()));
+        if (!this.getItemStack().isEmpty()) {
+            nbt.put("Item", this.getItemStack().writeNbt(new NbtCompound()));
         }
     }
 
@@ -366,7 +376,11 @@ public class PushableBlockEntity extends LerpedMovmentEntity implements IHitEnti
         this.dataTracker.set(BLOCK, block);
     }
 
+    public ItemStack getItemStack() {
+        return this.dataTracker.get(ITEM_STACK);
+    }
+
     public void setItemStack(ItemStack itemStack) {
-        this.itemStack = itemStack;
+        this.dataTracker.set(ITEM_STACK, itemStack);
     }
 }

@@ -276,6 +276,12 @@
     ],
     "subtitle": "subtitles.block.note_block.note"
   },
+  "block.note_block.nylon_guitar": {
+    "sounds": [
+      "legend_of_steve:note/nylon_guitar"
+    ],
+    "subtitle": "subtitles.block.note_block.note"
+  },
 
   "block.bomb_flower.break": {
     "sounds": [
@@ -1311,7 +1317,6 @@
     ],
     "subtitle": "subtitles.legend_of_steve.block.sword_pedestal.deposit"
   },
-
 
   "block.water.pondstriding.step": {
     "sounds": [

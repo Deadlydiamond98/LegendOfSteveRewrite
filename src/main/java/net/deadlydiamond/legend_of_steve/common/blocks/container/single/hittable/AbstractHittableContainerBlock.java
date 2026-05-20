@@ -156,6 +156,10 @@ public abstract class AbstractHittableContainerBlock extends WaterloggableSingle
             world.getPlayers().forEach(player -> UpdateBlockHitS2CPacket.send(player, pos, direction, additionalHitSound));
         }
 
+        if (state.get(HIT)) {
+            return;
+        }
+
         if (world.getBlockEntity(pos) instanceof HittableContainerBlockEntity questionBlock) {
             questionBlock.setBounceDirection(direction);
 

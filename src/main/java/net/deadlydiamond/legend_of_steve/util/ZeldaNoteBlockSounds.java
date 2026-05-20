@@ -119,6 +119,10 @@ public class ZeldaNoteBlockSounds {
         registerNoteBlockSound(ZeldaSounds.PAAH,
                 ZeldaBlocks.QUESTION_BLOCK
         );
+        // LTTP TIMPANI ////////////////////////////////////////////////////////////////////////////////////////////////
+        registerNoteBlockSound(ZeldaSounds.NYLON_GUITAR,
+                ZeldaBlocks.BROWN_DUNGEONCITE
+        );
     }
 
 

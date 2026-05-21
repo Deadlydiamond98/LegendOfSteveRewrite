@@ -1,7 +1,9 @@
 package net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb;
 
 import net.deadlydiamond.legend_of_steve.common.particles.SparkParticleEffect;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
@@ -31,6 +33,25 @@ public class BombEntity extends AbstractBombEntity {
 
     public BombEntity(EntityType<? extends ProjectileEntity> entityType, World world) {
         super(entityType, world);
+    }
+
+    @Override
+    public boolean damage(DamageSource source, float amount) {
+        Entity attacker = source.getAttacker();
+        if (!this.isInvulnerableTo(source) && attacker != null) {
+            this.takeKnockback(0.33, attacker.getX() - this.getX(), attacker.getZ() - this.getZ());
+        }
+        return super.damage(source, amount);
+    }
+
+    // Copied from Living Entity
+    public void takeKnockback(double strength, double x, double z) {
+        if (!(strength <= 0.0)) {
+            this.velocityDirty = true;
+            Vec3d vec3d = this.getVelocity();
+            Vec3d vec3d2 = new Vec3d(x, 0.0, z).normalize().multiply(strength);
+            this.setVelocity(vec3d.x / 2.0 - vec3d2.x, this.isOnGround() ? Math.min(0.4, vec3d.y / 2.0 + strength) : vec3d.y, vec3d.z / 2.0 - vec3d2.z);
+        }
     }
 
     @Override

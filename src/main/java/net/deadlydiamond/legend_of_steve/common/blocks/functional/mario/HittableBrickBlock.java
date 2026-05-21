@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.common.blocks.container.single.hittable;
+package net.deadlydiamond.legend_of_steve.common.blocks.functional.mario;
 
 import net.deadlydiamond.legend_of_steve.common.bes.container.single.HittableContainerBlockEntity;
 import net.minecraft.block.BlockState;
@@ -26,6 +26,12 @@ public class HittableBrickBlock extends HittableContainerBlock {
     }
 
     // HITTING /////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    @Override
+    public boolean hasHopperInteraction() {
+        return false;
+    }
 
     @Override
     protected boolean activatedByRedstone() {

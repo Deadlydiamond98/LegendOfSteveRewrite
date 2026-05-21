@@ -1,7 +1,7 @@
 package net.deadlydiamond.legend_of_steve.util.datagen.model;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
-import net.deadlydiamond.legend_of_steve.common.blocks.container.single.hittable.AbstractHittableContainerBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.AbstractHittableContainerBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.ConnectedPillarBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.PillarType;
 import net.deadlydiamond.legend_of_steve.util.ZeldaModels;
@@ -14,9 +14,6 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 import org.jetbrains.annotations.Nullable;
-import org.w3c.dom.Text;
-
-import java.util.Optional;
 
 public class ZeldaBlockModelDatagenUtil {
 

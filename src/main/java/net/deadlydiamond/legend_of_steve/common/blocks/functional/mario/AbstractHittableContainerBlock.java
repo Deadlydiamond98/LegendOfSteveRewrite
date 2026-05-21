@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.common.blocks.container.single.hittable;
+package net.deadlydiamond.legend_of_steve.common.blocks.functional.mario;
 
 import net.deadlydiamond.legend_of_steve.common.bes.container.single.SingleSlotBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.single.HittableContainerBlockEntity;
@@ -22,6 +22,7 @@ import net.minecraft.entity.damage.DamageType;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
+import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SpawnEggItem;
 import net.minecraft.item.ToolItem;
@@ -82,6 +83,20 @@ public abstract class AbstractHittableContainerBlock extends WaterloggableSingle
     @Override
     protected SoundEvent getRemoveSound(ItemStack stack) {
         return null;
+    }
+
+    // Hopper Interaction //////////////////////////////////////////////////////////////////////////////////////////////
+
+    public boolean hasHopperInteraction() {
+        return true;
+    }
+
+    public boolean canInsertFromHopper(BlockState state, BlockPos pos, int slot, ItemStack stack) {
+        return !state.get(BOUNCING);
+    }
+
+    public boolean canTransferToHopper(BlockState state, BlockPos pos, Inventory hopperInventory, int slot, ItemStack stack) {
+        return !state.get(BOUNCING) && !state.get(HIT);
     }
 
     // Hitting Block ///////////////////////////////////////////////////////////////////////////////////////////////////

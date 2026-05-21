@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.common.blocks.container.single.hittable;
+package net.deadlydiamond.legend_of_steve.common.blocks.functional.mario;
 
 import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
 import net.minecraft.item.ItemStack;

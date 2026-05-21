@@ -1,6 +1,6 @@
 package net.deadlydiamond.legend_of_steve.common.bes.container.single;
 
-import net.deadlydiamond.legend_of_steve.common.blocks.container.single.hittable.AbstractHittableContainerBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.AbstractHittableContainerBlock;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlockEntities;
 import net.deadlydiamond.legend_of_steve.util.ZeldaProperties;
 import net.minecraft.block.BlockState;
@@ -98,18 +98,13 @@ public class HittableContainerBlockEntity extends SingleSlotBlockEntity {
     }
 
     @Override
-    public boolean insertStack(ItemStack stack) {
-        return super.insertStack(stack);
-    }
-
-    @Override
     public boolean isValid(int slot, ItemStack stack) {
-        return false;
+        return super.isValid(slot, stack) && getBlock().canInsertFromHopper(getCachedState(), getPos(), slot, stack) && getBlock().hasHopperInteraction();
     }
 
     @Override
     public boolean canTransferTo(Inventory hopperInventory, int slot, ItemStack stack) {
-        return false;
+        return getBlock().canTransferToHopper(getCachedState(), getPos(), hopperInventory, slot, stack) && getBlock().hasHopperInteraction();
     }
 
     @Override

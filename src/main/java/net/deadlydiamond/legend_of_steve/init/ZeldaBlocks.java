@@ -4,7 +4,7 @@ import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.blocks.container.MasterBarrelBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.container.single.LootPotBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.container.single.SwordPedestal;
-import net.deadlydiamond.legend_of_steve.common.blocks.container.single.hittable.HittableContainerBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.HittableContainerBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.ConnectedPillarBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.GirderBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.glowing.FairyLamp;

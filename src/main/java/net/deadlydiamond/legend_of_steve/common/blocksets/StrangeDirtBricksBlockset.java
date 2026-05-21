@@ -1,7 +1,7 @@
 package net.deadlydiamond.legend_of_steve.common.blocksets;
 
-import net.deadlydiamond.legend_of_steve.common.blocks.container.single.hittable.HittableBrickBlock;
-import net.deadlydiamond.legend_of_steve.common.blocks.container.single.hittable.HittableContainerBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.HittableBrickBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.HittableContainerBlock;
 import net.deadlydiamond.legend_of_steve.util.datagen.model.ZeldaBlockModelDatagenUtil;
 import net.deadlydiamond98.koalalib.common.blocksets.AbstractBlockset;
 import net.deadlydiamond98.koalalib.util.datagen.BlockModelDatagenUtil;

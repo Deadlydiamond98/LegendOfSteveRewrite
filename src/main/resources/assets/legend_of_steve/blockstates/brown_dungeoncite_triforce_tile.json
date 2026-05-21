@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "triforce_type=big_top_left": {
+      "model": "legend_of_steve:block/brown_dungeoncite_tile_ttl"
+    },
+    "triforce_type=big_top_right": {
+      "model": "legend_of_steve:block/brown_dungeoncite_tile_ttr"
+    },
+    "triforce_type=big_bottom_left": {
+      "model": "legend_of_steve:block/brown_dungeoncite_tile_tbl"
+    },
+    "triforce_type=big_bottom_right": {
+      "model": "legend_of_steve:block/brown_dungeoncite_tile_tbr"
+    }
+  }
+}

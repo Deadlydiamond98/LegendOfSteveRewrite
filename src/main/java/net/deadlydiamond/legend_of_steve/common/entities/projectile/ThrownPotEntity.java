@@ -124,7 +124,6 @@ public class ThrownPotEntity extends PhysicsItemProjectile {
         return ZeldaBlocks.LOOT_POT.asItem();
     }
 
-    // TODO: THIS WILL BE REMOVED ONCE I PUSH FIX FOR KOALA LIB
     @Override
     protected void tickMovement() {
         this.velocityDirty = true;

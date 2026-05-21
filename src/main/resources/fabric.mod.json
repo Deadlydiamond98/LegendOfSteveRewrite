@@ -3,15 +3,15 @@
 	"id": "legend_of_steve",
 	"version": "${version}",
 	"name": "The Legend of Steve",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "A mod themed around older Zelda and other Retro Games!",
 	"authors": [
-		"Me!"
+		"Deadlydiamond98"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://modrinth.com/mod/the-legend-of-steve",
+		"sources": "https://github.com/Deadlydiamond98/LegendOfSteveRewrite"
 	},
-	"license": "CC0-1.0",
+	"license": "Custom",
 	"icon": "assets/legend_of_steve/icon.png",
 	"environment": "*",
 	"entrypoints": {
@@ -34,6 +34,6 @@
 		"minecraft": "~1.20.1",
 		"java": ">=17",
 		"fabric-api": "*",
-		"koalalib": ">=1.2.12"
+		"koalalib": ">=1.2.14"
 	}
 }

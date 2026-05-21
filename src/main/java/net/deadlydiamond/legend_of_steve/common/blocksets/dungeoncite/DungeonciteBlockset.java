@@ -1,7 +1,8 @@
 package net.deadlydiamond.legend_of_steve.common.blocksets.dungeoncite;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
-import net.deadlydiamond.legend_of_steve.common.blocks.deco.TileBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.deco.dungeoncite.DungeonciteTileBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.deco.dungeoncite.TriforceTileBlock;
 import net.deadlydiamond.legend_of_steve.common.items.block.PushableBlockItem;
 import net.deadlydiamond.legend_of_steve.datagen.recipe.ZeldaRecipeDatagen;
 import net.deadlydiamond.legend_of_steve.datagen.recipe.spring_water.ZeldaSpringWaterConversionDatagen;
@@ -10,14 +11,12 @@ import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
 import net.deadlydiamond.legend_of_steve.util.datagen.model.ZeldaBlockModelDatagenUtil;
 import net.deadlydiamond98.koalalib.common.blocks.advancement.*;
 import net.deadlydiamond98.koalalib.common.blocksets.AbstractBlockset;
-import net.deadlydiamond98.koalalib.init.KoalaLibBlockProperties;
 import net.deadlydiamond98.koalalib.init.KoalaLibTags;
 import net.deadlydiamond98.koalalib.util.datagen.BlockModelDatagenUtil;
 import net.deadlydiamond98.koalalib.util.datagen.RecipeDatagenUtil;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.MapColor;
 import net.minecraft.client.item.TooltipContext;
@@ -26,17 +25,13 @@ import net.minecraft.data.client.ModelIds;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.RecipeProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
-import net.minecraft.state.StateManager;
-import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 import org.jetbrains.annotations.Nullable;
 
@@ -95,6 +90,8 @@ public class DungeonciteBlockset extends AbstractBlockset {
     public final Block tile;
     public final Block mossyTile;
     public final Block crackedTile;
+
+    public final Block triforce;
 
     public final Block tileTTL;
     public final Block tileTTR;
@@ -168,11 +165,13 @@ public class DungeonciteBlockset extends AbstractBlockset {
 
         // Tiles
 
-        this.tile = register(id() + "_tile", new DungeonciteTile(settingsTile, advancementID));
-        this.mossyTile = register("mossy_" + id() + "_tile", new DungeonciteTile(settingsTile, advancementID));
-        this.crackedTile = register("cracked_" + id() + "_tile", new DungeonciteTile(settingsTile, advancementID));
+        this.tile = register(id() + "_tile", new DungeonciteTileBlock(settingsTile, advancementID));
+        this.mossyTile = register("mossy_" + id() + "_tile", new DungeonciteTileBlock(settingsTile, advancementID));
+        this.crackedTile = register("cracked_" + id() + "_tile", new DungeonciteTileBlock(settingsTile, advancementID));
 
         // There's probably a better way of doing this, but it works for now
+        this.triforce = register(id() + "_triforce_tile", new TriforceTileBlock(settingsTile, advancementID));
+
         this.tileTTL = register(id() + "_tile_ttl", new DungeonciteTriforce(settingsTile, advancementID, id() + "_tile_triforce", "_ttl"));
         this.tileTTR = register(id() + "_tile_ttr", new DungeonciteTriforce(settingsTile, advancementID, id() + "_tile_triforce", "_ttr"));
         this.tileTBL = register(id() + "_tile_tbl", new DungeonciteTriforce(settingsTile, advancementID, id() + "_tile_triforce", "_tbl"));
@@ -493,33 +492,7 @@ public class DungeonciteBlockset extends AbstractBlockset {
         return register(LegendOfSteve.MOD_ID, id, block);
     }
 
-    public static class DungeonciteTile extends TileBlock implements IAdvancementNeeded {
-        public static final BooleanProperty PLAYERMADE = KoalaLibBlockProperties.PLAYER_MADE_PROPERTY;
-        private final String advancementID;
-
-        public DungeonciteTile(Settings settings, String advancementID) {
-            super(settings);
-            this.advancementID = advancementID;
-            setDefaultState(this.getDefaultState().with(PLAYERMADE, false));
-        }
-
-        public BlockState getPlacementState(ItemPlacementContext ctx) {
-            return super.getPlacementState(ctx).with(PLAYERMADE, this.isPlayerPlaced(ctx));
-        }
-
-        @Override
-        public float calcBlockBreakingDelta(BlockState state, PlayerEntity player, BlockView world, BlockPos pos) {
-            return !this.hasAdvancment(player, this.advancementID) && !(Boolean)state.get(PLAYERMADE) ? -1 : super.calcBlockBreakingDelta(state, player, world, pos);
-        }
-
-        @Override
-        protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-            super.appendProperties(builder);
-            builder.add(PLAYERMADE);
-        }
-    }
-
-    public static class DungeonciteTriforce extends DungeonciteTile {
+    public static class DungeonciteTriforce extends DungeonciteTileBlock {
 
         private final String baseKey;
         private final String piece;

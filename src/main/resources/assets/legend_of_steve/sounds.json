@@ -926,7 +926,8 @@
       "block/deepslate/step4",
       "block/deepslate/step5",
       "block/deepslate/step6"
-    ]
+    ],
+    "subtitle": "subtitles.block.generic.fall"
   },
   "block.dungeoncite.hit": {
     "sounds": [
@@ -997,7 +998,8 @@
       "block/deepslate_bricks/step3",
       "block/deepslate_bricks/step4",
       "block/deepslate_bricks/step5"
-    ]
+    ],
+    "subtitle": "subtitles.block.generic.fall"
   },
   "block.dungeoncite_bricks.hit": {
     "sounds": [
@@ -1121,7 +1123,8 @@
         "name": "block/deepslate_bricks/step5",
         "pitch": 1.3
       }
-    ]
+    ],
+    "subtitle": "subtitles.block.generic.fall"
   },
   "block.dungeoncite_tile.hit": {
     "sounds": [

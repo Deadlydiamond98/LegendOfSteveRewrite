@@ -97,6 +97,7 @@ public class ZeldaBlocks {
     public static final Block SMOOTH_FAIRY_MARBLE = register("smooth_fairy_marble", new Block(FAIRY_MARBLE_SETTINGS));
 
     // DUNGEONCITE
+    // TODO: Make this not use a debug achievement!
     public static final DungeonciteBlockset BROWN_DUNGEONCITE = new DungeonciteBlockset("brown", "story/mine_diamond", MapColor.SPRUCE_BROWN);
 
     // MASTER

@@ -37,16 +37,16 @@ public class TriforceTileBlock extends DungeonciteTileBlock {
             if (canConnect(stateCopy, leftBlock)) {
                 BlockState leftBlockChecked = connectDoubles(leftBlock, world, pos.offset(stateCopy.get(FACING).rotateYClockwise()), false);
 
-                if (!triforce(leftBlockChecked, TriforceType.SINGLE) && !leftBlock.get(TRIFORCE_TYPE).isRight()) {
+                if (!triforce(leftBlockChecked, TriforceType.SINGLE) && !leftBlock.get(TRIFORCE_TYPE).isRight() && !state.get(TRIFORCE_TYPE).isLeft()) {
                     if (triforce(stateCopy, TriforceType.DOUBLE_BOTTOM) && triforce(leftBlock, TriforceType.DOUBLE_BOTTOM)) {
                         return stateCopy.with(TRIFORCE_TYPE, TriforceType.BIG_BOTTOM_RIGHT);
-                    } else if (triforce(leftBlock, TriforceType.BIG_BOTTOM_LEFT)) {
+                    } else if (triforce(stateCopy, TriforceType.DOUBLE_BOTTOM) && triforce(leftBlock, TriforceType.BIG_BOTTOM_LEFT)) {
                         return stateCopy.with(TRIFORCE_TYPE, TriforceType.BIG_BOTTOM_RIGHT);
                     }
 
                     if (triforce(stateCopy, TriforceType.DOUBLE_TOP) && triforce(leftBlock, TriforceType.DOUBLE_TOP)) {
                         return stateCopy.with(TRIFORCE_TYPE, TriforceType.BIG_TOP_RIGHT);
-                    } else if (triforce(leftBlock, TriforceType.BIG_TOP_LEFT)) {
+                    } else if (triforce(stateCopy, TriforceType.DOUBLE_TOP) && triforce(leftBlock, TriforceType.BIG_TOP_LEFT)) {
                         return stateCopy.with(TRIFORCE_TYPE, TriforceType.BIG_TOP_RIGHT);
                     }
                 }
@@ -55,16 +55,16 @@ public class TriforceTileBlock extends DungeonciteTileBlock {
             if (canConnect(stateCopy, rightBlock)) {
                 BlockState rightBlockChecked = connectDoubles(rightBlock, world, pos.offset(stateCopy.get(FACING).rotateYCounterclockwise()), false);
 
-                if (!triforce(rightBlockChecked, TriforceType.SINGLE) && !rightBlock.get(TRIFORCE_TYPE).isLeft()) {
+                if (!triforce(rightBlockChecked, TriforceType.SINGLE) && !rightBlock.get(TRIFORCE_TYPE).isLeft() && !state.get(TRIFORCE_TYPE).isRight()) {
                     if (triforce(stateCopy, TriforceType.DOUBLE_BOTTOM) && triforce(rightBlock, TriforceType.DOUBLE_BOTTOM)) {
                         return stateCopy.with(TRIFORCE_TYPE, TriforceType.BIG_BOTTOM_LEFT);
-                    } else if (triforce(rightBlock, TriforceType.BIG_BOTTOM_RIGHT)) {
+                    } else if (triforce(stateCopy, TriforceType.DOUBLE_BOTTOM) && triforce(rightBlock, TriforceType.BIG_BOTTOM_RIGHT)) {
                         return stateCopy.with(TRIFORCE_TYPE, TriforceType.BIG_BOTTOM_LEFT);
                     }
 
                     if (triforce(stateCopy, TriforceType.DOUBLE_TOP) && triforce(rightBlock, TriforceType.DOUBLE_TOP)) {
                         return stateCopy.with(TRIFORCE_TYPE, TriforceType.BIG_TOP_LEFT);
-                    } else if (triforce(rightBlock, TriforceType.BIG_TOP_RIGHT)) {
+                    } else if (triforce(stateCopy, TriforceType.DOUBLE_TOP) && triforce(rightBlock, TriforceType.BIG_TOP_RIGHT)) {
                         return stateCopy.with(TRIFORCE_TYPE, TriforceType.BIG_TOP_LEFT);
                     }
                 }

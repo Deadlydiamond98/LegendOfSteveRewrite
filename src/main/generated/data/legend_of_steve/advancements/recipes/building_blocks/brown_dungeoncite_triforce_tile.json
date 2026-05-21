@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:brown_dungeoncite_tile_ttl_from_brown_dungeoncite_tile_stonecutting"
+        "recipe": "legend_of_steve:brown_dungeoncite_triforce_tile"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:brown_dungeoncite_tile_ttl_from_brown_dungeoncite_tile_stonecutting"
+      "legend_of_steve:brown_dungeoncite_triforce_tile"
     ]
   },
   "sends_telemetry_event": false

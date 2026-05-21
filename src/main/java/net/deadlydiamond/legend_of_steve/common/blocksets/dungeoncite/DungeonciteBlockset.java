@@ -90,13 +90,7 @@ public class DungeonciteBlockset extends AbstractBlockset {
     public final Block tile;
     public final Block mossyTile;
     public final Block crackedTile;
-
     public final Block triforce;
-
-    public final Block tileTTL;
-    public final Block tileTTR;
-    public final Block tileTBL;
-    public final Block tileTBR;
 
     public final Block reinforced;
     public final Item pushable;
@@ -171,11 +165,6 @@ public class DungeonciteBlockset extends AbstractBlockset {
 
         // There's probably a better way of doing this, but it works for now
         this.triforce = register(id() + "_triforce_tile", new TriforceTileBlock(settingsTile, advancementID));
-
-        this.tileTTL = register(id() + "_tile_ttl", new DungeonciteTriforce(settingsTile, advancementID, id() + "_tile_triforce", "_ttl"));
-        this.tileTTR = register(id() + "_tile_ttr", new DungeonciteTriforce(settingsTile, advancementID, id() + "_tile_triforce", "_ttr"));
-        this.tileTBL = register(id() + "_tile_tbl", new DungeonciteTriforce(settingsTile, advancementID, id() + "_tile_triforce", "_tbl"));
-        this.tileTBR = register(id() + "_tile_tbr", new DungeonciteTriforce(settingsTile, advancementID, id() + "_tile_triforce", "_tbr"));
 
         // Pillar
 //        this.pedestal = register(id() + "_pedestal", new AdvancementNeededFacingBlock(settings, advancementID));
@@ -263,12 +252,7 @@ public class DungeonciteBlockset extends AbstractBlockset {
         // Tiles
         offerTileRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, this.tile, this.base, this.baseSlab);
         offerTileRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, this.mossyTile, this.mossyBase, this.mossyBaseSlab);
-
-        ZeldaSpringWaterConversionDatagen.offerConversion(exporter, this.tile, this.tileTTL);
-        ZeldaSpringWaterConversionDatagen.offerConversion(exporter, this.tileTTL, this.tileTTR);
-        ZeldaSpringWaterConversionDatagen.offerConversion(exporter, this.tileTTR, this.tileTBL);
-        ZeldaSpringWaterConversionDatagen.offerConversion(exporter, this.tileTBL, this.tileTBR);
-        ZeldaSpringWaterConversionDatagen.offerConversion(exporter, this.tileTBR, this.tile);
+        offerTriforceTileRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, this.triforce, this.tile);
 
         RecipeDatagenUtil.createMossyRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, this.mossyTile, this.tile);
         RecipeProvider.offerCrackingRecipe(exporter, this.crackedTile, this.tile);
@@ -298,10 +282,7 @@ public class DungeonciteBlockset extends AbstractBlockset {
         cut(exporter, this.base, this.reinforced);
         cut(exporter, this.base, this.pushable);
         cut(exporter, this.base, this.tile);
-        cut(exporter, this.base, this.tileTBL);
-        cut(exporter, this.base, this.tileTBR);
-        cut(exporter, this.base, this.tileTTL);
-        cut(exporter, this.base, this.tileTTR);
+        cut(exporter, this.base, this.triforce);
 
         slab(exporter, this.brick, this.brickSlab);
         cut(exporter, this.brick, this.brickStair);
@@ -318,10 +299,7 @@ public class DungeonciteBlockset extends AbstractBlockset {
         slab(exporter, this.smallBrick, this.smallBrickSlab);
         cut(exporter, this.smallBrick, this.smallBrickStair);
 
-        cut(exporter, this.tile, this.tileTBL);
-        cut(exporter, this.tile, this.tileTBR);
-        cut(exporter, this.tile, this.tileTTL);
-        cut(exporter, this.tile, this.tileTTR);
+        cut(exporter, this.tile, this.triforce);
 
         cut(exporter, this.pushable, this.reinforced);
         cut(exporter, this.reinforced, this.pushable);
@@ -371,6 +349,15 @@ public class DungeonciteBlockset extends AbstractBlockset {
                 .pattern("ss")
                 .pattern("##")
                 .criterion(RecipeProvider.hasItem(base), RecipeProvider.conditionsFromItem(base))
+                .offerTo(exporter);
+    }
+
+    public static void offerTriforceTileRecipe(Consumer<RecipeJsonProvider> exporter, RecipeCategory category, ItemConvertible output, ItemConvertible tile) {
+        ShapedRecipeJsonBuilder.create(category, output, 4)
+                .input('#', tile)
+                .pattern(" # ")
+                .pattern("###")
+                .criterion(RecipeProvider.hasItem(tile), RecipeProvider.conditionsFromItem(tile))
                 .offerTo(exporter);
     }
 
@@ -463,9 +450,10 @@ public class DungeonciteBlockset extends AbstractBlockset {
         // Chiseled
         modelGen.registerSimpleCubeAll(this.chiseled);
         // Tile
-        ZeldaBlockModelDatagenUtil.registerTile(modelGen, this.tile, this.tileTTL, this.tileTTR, this.tileTBL, this.tileTBR);
+        ZeldaBlockModelDatagenUtil.registerTile(modelGen, this.tile);
         ZeldaBlockModelDatagenUtil.registerTile(modelGen, this.mossyTile);
         ZeldaBlockModelDatagenUtil.registerTile(modelGen, this.crackedTile);
+        ZeldaBlockModelDatagenUtil.registerTriforceTile(modelGen, this.tile, this.triforce);
         // Reinforced
         modelGen.registerSimpleCubeAll(this.reinforced);
         modelGen.registerParentedItemModel(this.pushable, ModelIds.getBlockModelId(this.reinforced));
@@ -486,32 +474,7 @@ public class DungeonciteBlockset extends AbstractBlockset {
         BlockModelDatagenUtil.registerStairs(blockStateModelGenerator, stair, base);
     }
 
-    // OTHER ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     private Block register(String id, Block block) {
         return register(LegendOfSteve.MOD_ID, id, block);
-    }
-
-    public static class DungeonciteTriforce extends DungeonciteTileBlock {
-
-        private final String baseKey;
-        private final String piece;
-
-        public DungeonciteTriforce(Settings settings, String advancementID, String baseKey, String piece) {
-            super(settings, advancementID);
-            this.baseKey = baseKey;
-            this.piece = piece;
-        }
-
-        @Override
-        public String getTranslationKey() {
-            return "block.legend_of_steve." + this.baseKey;
-        }
-
-        @Override
-        public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
-            super.appendTooltip(stack, world, tooltip, options);
-            tooltip.add(Text.translatable("block.legend_of_steve.dungeoncite_tile" + this.piece).formatted(Formatting.GRAY));
-        }
     }
 }

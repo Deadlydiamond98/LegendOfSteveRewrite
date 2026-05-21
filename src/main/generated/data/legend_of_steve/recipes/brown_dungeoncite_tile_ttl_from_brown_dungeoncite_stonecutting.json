@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "item": "legend_of_steve:brown_dungeoncite"
-  },
-  "result": "legend_of_steve:brown_dungeoncite_tile_ttl"
-}

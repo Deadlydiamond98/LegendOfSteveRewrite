@@ -1,9 +1,0 @@
-{
-  "type": "legend_of_steve:spring_water_conversion",
-  "input": {
-    "item": "legend_of_steve:brown_dungeoncite_tile_ttr"
-  },
-  "result": {
-    "item": "legend_of_steve:brown_dungeoncite_tile_tbl"
-  }
-}

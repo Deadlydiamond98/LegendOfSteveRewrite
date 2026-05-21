@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "legend_of_steve:brown_dungeoncite_tile"
+    }
+  },
+  "pattern": [
+    " # ",
+    "###"
+  ],
+  "result": {
+    "count": 4,
+    "item": "legend_of_steve:brown_dungeoncite_triforce_tile"
+  },
+  "show_notification": true
+}

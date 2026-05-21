@@ -1,6 +1,8 @@
 package net.deadlydiamond.legend_of_steve.util.datagen.model;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
+import net.deadlydiamond.legend_of_steve.common.blocks.deco.dungeoncite.TriforceTileBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.deco.dungeoncite.TriforceType;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.AbstractHittableBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.ConnectedPillarBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.PillarType;
@@ -41,29 +43,48 @@ public class ZeldaBlockModelDatagenUtil {
         registerBrazierParented(blockStateModelGenerator, block, block, fireTexture);
     }
 
-    public static void registerTile(BlockStateModelGenerator blockStateModelGenerator, Block init, Block... blocks) {
-        TextureMap textureMap = (new TextureMap()).put(TextureKey.TOP, TextureMap.getId(init))
-                .put(TextureKey.SIDE, TextureMap.getSubId(init, "_side"))
-                .put(TextureKey.FRONT, TextureMap.getSubId(init, "_side"))
-                .put(TextureKey.BOTTOM, TextureMap.getSubId(init, "_bottom"));
+    public static void registerTile(BlockStateModelGenerator blockStateModelGenerator, Block block) {
+        TextureMap textureMap = (new TextureMap()).put(TextureKey.TOP, TextureMap.getId(block))
+                .put(TextureKey.SIDE, TextureMap.getSubId(block, "_side"))
+                .put(TextureKey.FRONT, TextureMap.getSubId(block, "_side"))
+                .put(TextureKey.BOTTOM, TextureMap.getSubId(block, "_bottom"));
 
-        Identifier reg = Models.ORIENTABLE_WITH_BOTTOM.upload(init, textureMap, blockStateModelGenerator.modelCollector);
+        Identifier reg = Models.ORIENTABLE_WITH_BOTTOM.upload(block, textureMap, blockStateModelGenerator.modelCollector);
 
         blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier
-                .create(init, BlockStateVariant.create().put(VariantSettings.MODEL, reg))
+                .create(block, BlockStateVariant.create().put(VariantSettings.MODEL, reg))
                 .coordinate(BlockStateModelGenerator.createSouthDefaultHorizontalRotationStates())
         );
+    }
 
-        for (Block block : blocks) {
-            TextureMap textureMapVarient = textureMap.put(TextureKey.TOP, TextureMap.getId(block));
+    public static void registerTriforceTile(BlockStateModelGenerator blockStateModelGenerator, Block parent, Block block) {
+        Identifier single = getTriforceTileModel(parent, block, "single", blockStateModelGenerator);
+        Identifier doubleTop = getTriforceTileModel(parent, block, "double_top", blockStateModelGenerator);
+        Identifier doubleBottom = getTriforceTileModel(parent, block, "double_bottom", blockStateModelGenerator);
+        Identifier topLeft = getTriforceTileModel(parent, block, "top_left", blockStateModelGenerator);
+        Identifier topRight = getTriforceTileModel(parent, block, "top_right", blockStateModelGenerator);
+        Identifier bottomLeft = getTriforceTileModel(parent, block, "bottom_left", blockStateModelGenerator);
+        Identifier bottomRight = getTriforceTileModel(parent, block, "bottom_right", blockStateModelGenerator);
 
-            Identifier varient = Models.ORIENTABLE_WITH_BOTTOM.upload(block, textureMapVarient, blockStateModelGenerator.modelCollector);
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block)
+                .coordinate(BlockStateVariantMap.create(TriforceTileBlock.TRIFORCE_TYPE)
+                        .register(TriforceType.SINGLE, BlockStateVariant.create().put(VariantSettings.MODEL, single))
+                        .register(TriforceType.DOUBLE_TOP, BlockStateVariant.create().put(VariantSettings.MODEL, doubleTop))
+                        .register(TriforceType.DOUBLE_BOTTOM, BlockStateVariant.create().put(VariantSettings.MODEL, doubleBottom))
+                        .register(TriforceType.BIG_TOP_LEFT, BlockStateVariant.create().put(VariantSettings.MODEL, topLeft))
+                        .register(TriforceType.BIG_TOP_RIGHT, BlockStateVariant.create().put(VariantSettings.MODEL, topRight))
+                        .register(TriforceType.BIG_BOTTOM_LEFT, BlockStateVariant.create().put(VariantSettings.MODEL, bottomLeft))
+                        .register(TriforceType.BIG_BOTTOM_RIGHT, BlockStateVariant.create().put(VariantSettings.MODEL, bottomRight)))
+                .coordinate(BlockStateModelGenerator.createSouthDefaultHorizontalRotationStates()));
+        blockStateModelGenerator.registerParentedItemModel(block, single);
+    }
 
-            blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier
-                    .create(block, BlockStateVariant.create().put(VariantSettings.MODEL, varient))
-                    .coordinate(BlockStateModelGenerator.createSouthDefaultHorizontalRotationStates())
-            );
-        }
+    public static Identifier getTriforceTileModel(Block parent, Block block, String suffix, BlockStateModelGenerator blockStateModelGenerator) {
+        TextureMap textureMap = new TextureMap().put(TextureKey.TOP, TextureMap.getSubId(block, "_" + suffix))
+                .put(TextureKey.SIDE, TextureMap.getSubId(parent, "_side"))
+                .put(TextureKey.FRONT, TextureMap.getSubId(parent, "_side"))
+                .put(TextureKey.BOTTOM, TextureMap.getSubId(parent, "_bottom"));
+        return Models.ORIENTABLE_WITH_BOTTOM.upload(block, "_" + suffix, textureMap, blockStateModelGenerator.modelCollector);
     }
 
     public static void registerBrazierParented(BlockStateModelGenerator blockStateModelGenerator, Block block, Block parent, Identifier fireTexture) {

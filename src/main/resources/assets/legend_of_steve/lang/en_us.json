@@ -236,11 +236,6 @@
   "block.legend_of_steve.fairy_marble_tile_stairs": "Fairy Marble Tile Stairs",
   "block.legend_of_steve.fairy_marble_tile_wall": "Fairy Marble Tile Wall",
 
-  "block.legend_of_steve.dungeoncite_tile_ttl": "Top Left",
-  "block.legend_of_steve.dungeoncite_tile_ttr": "Top Right",
-  "block.legend_of_steve.dungeoncite_tile_tbl": "Bottom Left",
-  "block.legend_of_steve.dungeoncite_tile_tbr": "Bottom Right",
-
   "block.legend_of_steve.brown_dungeoncite": "Brown Dungeoncite",
   "block.legend_of_steve.brown_dungeoncite_slab": "Brown Dungeoncite Slab",
   "block.legend_of_steve.brown_dungeoncite_stairs": "Brown Dungeoncite Stairs",
@@ -292,7 +287,7 @@
   "block.legend_of_steve.brown_dungeoncite_tile": "Brown Dungeoncite Tile",
   "block.legend_of_steve.mossy_brown_dungeoncite_tile": "Mossy Brown Dungeoncite Tile",
   "block.legend_of_steve.cracked_brown_dungeoncite_tile": "Cracked Brown Dungeoncite Tile",
-  "block.legend_of_steve.brown_dungeoncite_tile_triforce": "Brown Dungeoncite Triforce Tile",
+  "block.legend_of_steve.brown_dungeoncite_triforce_tile": "Brown Dungeoncite Triforce Tile",
   "block.legend_of_steve.chiseled_brown_dungeoncite": "Chiseled Brown Dungeoncite",
   "block.legend_of_steve.brown_dungeoncite_pillar": "Brown Dungeoncite Pillar",
   "block.legend_of_steve.reinforced_brown_dungeoncite": "Reinforced Brown Dungeoncite",

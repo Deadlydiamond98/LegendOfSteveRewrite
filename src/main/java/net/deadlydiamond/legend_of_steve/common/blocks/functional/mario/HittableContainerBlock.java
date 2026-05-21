@@ -4,7 +4,7 @@ import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundEvent;
 
-public class HittableContainerBlock extends AbstractHittableContainerBlock {
+public class HittableContainerBlock extends AbstractHittableBlock {
     public HittableContainerBlock(Settings settings) {
         super(settings);
     }

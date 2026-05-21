@@ -7,6 +7,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 
 public class HittableBrickBlock extends HittableContainerBlock {
@@ -25,16 +26,10 @@ public class HittableBrickBlock extends HittableContainerBlock {
         return ActionResult.PASS;
     }
 
-    // HITTING /////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+// HITTING /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public boolean hasHopperInteraction() {
-        return false;
-    }
-
-    @Override
-    protected boolean activatedByRedstone() {
         return false;
     }
 
@@ -50,7 +45,7 @@ public class HittableBrickBlock extends HittableContainerBlock {
 
     @Override
     public void postBlockHit(World world, BlockPos pos, BlockState blockState, HittableContainerBlockEntity blockEntity) {
-        world.breakBlock(pos, false);
+        world.breakBlock(pos, world.getGameRules().getBoolean(GameRules.DO_TILE_DROPS));
     }
 
     @Override

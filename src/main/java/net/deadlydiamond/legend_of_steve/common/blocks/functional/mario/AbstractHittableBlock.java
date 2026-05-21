@@ -48,12 +48,12 @@ import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public abstract class AbstractHittableContainerBlock extends WaterloggableSingleSlotBlock implements IJumpIntoAction, IHitBlockAction, IExtraCanMine {
+public abstract class AbstractHittableBlock extends WaterloggableSingleSlotBlock implements IJumpIntoAction, IHitBlockAction, IExtraCanMine {
     public static final BooleanProperty BOUNCING = ZeldaProperties.BOUNCING;
     public static final BooleanProperty HIT = ZeldaProperties.HIT;
     public static final BooleanProperty POWERED = Properties.POWERED;
 
-    public AbstractHittableContainerBlock(Settings settings) {
+    public AbstractHittableBlock(Settings settings) {
         super(settings);
         setDefaultState(getDefaultState().with(HIT, startHit()).with(POWERED, false).with(BOUNCING, false));
     }
@@ -196,12 +196,12 @@ public abstract class AbstractHittableContainerBlock extends WaterloggableSingle
                     }
                 }
 
-                if (direction == Direction.UP && dealBounceDamage()) {
+                if (direction == Direction.UP && bouncePassengers()) {
                     world.getOtherEntities(null, new Box(pos).offset(0, 0.5, 0)).forEach(target -> {
                         target.setVelocity(target.getVelocity().add(0, 0.5, 0));
                         target.velocityDirty = true;
 
-                        if (target instanceof LivingEntity living) {
+                        if (target instanceof LivingEntity living && dealBounceDamage(entity, living)) {
                             living.damage(ZeldaDamageTypes.of(world, entity, getBounceDamageType()), 2);
                         }
                     });
@@ -210,8 +210,12 @@ public abstract class AbstractHittableContainerBlock extends WaterloggableSingle
         }
     }
 
-    protected boolean dealBounceDamage() {
+    protected boolean bouncePassengers() {
         return true;
+    }
+
+    protected boolean dealBounceDamage(Entity entity, LivingEntity living) {
+        return entity != null;
     }
 
     protected RegistryKey<DamageType> getBounceDamageType() {

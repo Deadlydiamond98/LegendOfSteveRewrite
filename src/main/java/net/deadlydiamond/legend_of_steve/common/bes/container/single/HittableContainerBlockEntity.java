@@ -1,6 +1,6 @@
 package net.deadlydiamond.legend_of_steve.common.bes.container.single;
 
-import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.AbstractHittableContainerBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.AbstractHittableBlock;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlockEntities;
 import net.deadlydiamond.legend_of_steve.util.ZeldaProperties;
 import net.minecraft.block.BlockState;
@@ -108,7 +108,7 @@ public class HittableContainerBlockEntity extends SingleSlotBlockEntity {
     }
 
     @Override
-    protected AbstractHittableContainerBlock getBlock() {
-        return (AbstractHittableContainerBlock) this.getCachedState().getBlock();
+    protected AbstractHittableBlock getBlock() {
+        return (AbstractHittableBlock) this.getCachedState().getBlock();
     }
 }

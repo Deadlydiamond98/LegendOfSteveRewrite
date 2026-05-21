@@ -39,13 +39,13 @@ public abstract class SingleSlotBlock extends BlockWithEntity {
                 player.setStackInHand(hand, blockEntity.getStack(0));
                 blockEntity.clear();
                 if (getRemoveSound(stack) != null) {
-                    player.playSound(getRemoveSound(stack), SoundCategory.BLOCKS, 1, 1);
+                    world.playSound(null, pos, getRemoveSound(stack), SoundCategory.BLOCKS, 1, 1);
                 }
                 blockEntity.markDirty();
                 return ActionResult.SUCCESS;
             } else if (canInsertItem(state, world, pos, player, hand, stack, blockEntity)) {
                 if (getInsertSound(stack) != null) {
-                    player.playSound(getInsertSound(stack), SoundCategory.BLOCKS, 1, 1);
+                    world.playSound(null, pos, getInsertSound(stack), SoundCategory.BLOCKS, 1, 1);
                 }
                 blockEntity.markDirty();
                 return ActionResult.SUCCESS;

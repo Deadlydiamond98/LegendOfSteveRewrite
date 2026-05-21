@@ -1,7 +1,7 @@
 package net.deadlydiamond.legend_of_steve.networking.s2c.question_block;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
-import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.AbstractHittableContainerBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.AbstractHittableBlock;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -35,7 +35,7 @@ public class UpdateBlockHitS2CPacket {
             client.execute(() -> {
                 if (client.world != null) {
                     BlockState blockState = client.world.getBlockState(pos);
-                    if (blockState.getBlock() instanceof AbstractHittableContainerBlock block) {
+                    if (blockState.getBlock() instanceof AbstractHittableBlock block) {
                         block.hitBlock(client.world, pos, blockState, null, direction, bl);
                     }
                 }

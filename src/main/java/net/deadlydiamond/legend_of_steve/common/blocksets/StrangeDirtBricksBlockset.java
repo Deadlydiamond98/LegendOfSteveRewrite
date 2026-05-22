@@ -23,6 +23,7 @@ import java.util.function.Consumer;
 
 public class StrangeDirtBricksBlockset extends AbstractBlockset {
     private final boolean stripEndS;
+
     public final Block base;
     public final Block container;
     public final Block slab;
@@ -45,7 +46,6 @@ public class StrangeDirtBricksBlockset extends AbstractBlockset {
 
     public void generateModels(BlockStateModelGenerator modelGen, @Nullable AbstractBlockset.@Nullable SharedModel sharedModel) {
         this.generateModels(modelGen, false);
-        BlockModelDatagenUtil.registerWall(modelGen, this.wall, this.base);
     }
 
     public void generateModels(BlockStateModelGenerator modelGen, boolean uniqueSlab) {
@@ -58,6 +58,7 @@ public class StrangeDirtBricksBlockset extends AbstractBlockset {
         }
 
         BlockModelDatagenUtil.registerStairs(modelGen, this.stair, this.base);
+        BlockModelDatagenUtil.registerWall(modelGen, this.wall, this.base);
     }
 
     public void generateRecipes(Consumer<RecipeJsonProvider> exporter) {

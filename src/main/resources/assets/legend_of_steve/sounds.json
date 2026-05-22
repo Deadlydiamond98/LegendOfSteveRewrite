@@ -1321,6 +1321,21 @@
     "subtitle": "subtitles.legend_of_steve.block.sword_pedestal.deposit"
   },
 
+  "block.sword_pedestal.withdraw_wooden": {
+    "sounds": [
+      "legend_of_steve:block/sword_pedestal/withdraw_wood1",
+      "legend_of_steve:block/sword_pedestal/withdraw_wood2"
+    ],
+    "subtitle": "subtitles.legend_of_steve.block.sword_pedestal.withdraw"
+  },
+  "block.sword_pedestal.deposit_wooden": {
+    "sounds": [
+      "legend_of_steve:block/sword_pedestal/deposit_wood1",
+      "legend_of_steve:block/sword_pedestal/deposit_wood2"
+    ],
+    "subtitle": "subtitles.legend_of_steve.block.sword_pedestal.deposit"
+  },
+
   "block.water.pondstriding.step": {
     "sounds": [
       "liquid/swim1",

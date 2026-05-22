@@ -8,6 +8,7 @@ import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.item.SwordItem;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.state.StateManager;
@@ -19,13 +20,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class SwordPedestal extends WaterloggableSingleSlotBlock {
     public static final VoxelShape SHAPE = Block.createCuboidShape(0, 0, 0, 16, 8, 16);
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
-
-    // TODO: Change the sound for Wooden Swords
 
     public SwordPedestal(Settings settings) {
         super(settings);
@@ -60,12 +60,12 @@ public class SwordPedestal extends WaterloggableSingleSlotBlock {
 
     @Override
     protected SoundEvent getInsertSound(ItemStack stack) {
-        return ZeldaSounds.SWORD_PEDESTAL_DEPOSIT;
+        return stack.isOf(Items.WOODEN_SWORD) ? ZeldaSounds.SWORD_PEDESTAL_DEPOSIT_WOODEN : ZeldaSounds.SWORD_PEDESTAL_DEPOSIT;
     }
 
     @Override
     protected SoundEvent getRemoveSound(ItemStack stack) {
-        return ZeldaSounds.SWORD_PEDESTAL_WITHDRAW;
+        return stack.isOf(Items.WOODEN_SWORD) ? ZeldaSounds.SWORD_PEDESTAL_WITHDRAW_WOODEN : ZeldaSounds.SWORD_PEDESTAL_WITHDRAW;
     }
 
     @Override
@@ -78,5 +78,16 @@ public class SwordPedestal extends WaterloggableSingleSlotBlock {
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new SwordPedestalBlockEntity(pos, state);
+    }
+
+    @Override
+    public int getComparatorOutput(BlockState state, World world, BlockPos pos) {
+        if (world.getBlockEntity(pos) instanceof SwordPedestalBlockEntity pedestal) {
+            ItemStack stack = pedestal.getStack(0);
+            if (stack.getItem() instanceof SwordItem sword) {
+                return (int) Math.min(15, (sword.getAttackDamage() - 2) * 2);
+            }
+        }
+        return 0;
     }
 }

@@ -36,10 +36,11 @@ public abstract class SingleSlotBlock extends BlockWithEntity {
         if (!world.isClient && world.getBlockEntity(pos) instanceof SingleSlotBlockEntity blockEntity) {
             blockEntity.checkLootInteraction(player);
             if (canRemoveItem(state, world, pos, player, hand, stack, blockEntity)) {
-                player.setStackInHand(hand, blockEntity.getStack(0));
+                ItemStack removedStack = blockEntity.getStack(0);
+                player.setStackInHand(hand, removedStack);
                 blockEntity.clear();
-                if (getRemoveSound(stack) != null) {
-                    world.playSound(null, pos, getRemoveSound(stack), SoundCategory.BLOCKS, 1, 1);
+                if (getRemoveSound(removedStack) != null) {
+                    world.playSound(null, pos, getRemoveSound(removedStack), SoundCategory.BLOCKS, 1, 1);
                 }
                 blockEntity.markDirty();
                 return ActionResult.SUCCESS;

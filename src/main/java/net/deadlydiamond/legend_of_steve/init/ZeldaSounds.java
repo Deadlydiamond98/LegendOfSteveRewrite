@@ -24,6 +24,8 @@ public class ZeldaSounds {
     // Sword Pedestal
     public static final SoundEvent SWORD_PEDESTAL_WITHDRAW = register("block.sword_pedestal.withdraw");
     public static final SoundEvent SWORD_PEDESTAL_DEPOSIT = register("block.sword_pedestal.deposit");
+    public static final SoundEvent SWORD_PEDESTAL_WITHDRAW_WOODEN = register("block.sword_pedestal.withdraw_wooden");
+    public static final SoundEvent SWORD_PEDESTAL_DEPOSIT_WOODEN = register("block.sword_pedestal.deposit_wooden");
     // Spring Water
     public static final SoundEvent SPRING_WATER_HEAL = register("block.spring_water.heal");
     public static final SoundEvent SPRING_WATER_TRANSFORM = register("block.spring_water.transform");

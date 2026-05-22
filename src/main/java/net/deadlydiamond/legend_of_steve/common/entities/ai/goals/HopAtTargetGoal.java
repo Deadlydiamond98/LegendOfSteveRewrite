@@ -38,7 +38,8 @@ public class HopAtTargetGoal extends Goal {
                 return false;
             } else {
                 double d = this.mob.squaredDistanceTo(this.target);
-                return d <= this.range && this.mob.isOnGround() && this.mob.attackHopDelay <= 0 && !this.isBlockedHorizontally() && this.mob.getRandom().nextInt(toGoalTicks(5)) == 0;
+                return d <= this.range && this.mob.isOnGround() && this.mob.attackHopDelay <= 0
+                        && !this.isBlockedHorizontally() && this.mob.getRandom().nextInt(toGoalTicks(5)) == 0;
             }
         }
     }
@@ -86,7 +87,9 @@ public class HopAtTargetGoal extends Goal {
         double angle = Math.atan2(direction.z, direction.x);
         this.mob.setYaw((float) Math.toDegrees(angle) - 90);
 
-        this.mob.setVelocity(direction.x, this.hopHeight, direction.z);
+        boolean canReach = Math.abs(this.target.getY() - this.mob.getY()) < 4 && this.mob.getY() >= this.target.getY();
+
+        this.mob.setVelocity(direction.x, canReach ? this.hopHeight : this.hopHeight * 2, direction.z);
         this.mob.setTektiteJumping(true);
         this.mob.playSound(ZeldaSounds.TEKTITE_HOP, 1, 1 + (this.mob.getRandom().nextFloat() * 0.25f) - 0.125f);
     }

@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.common.entities.ai.goals;
+package net.deadlydiamond.legend_of_steve.common.entities.ai.goals.tektite;
 
 import net.deadlydiamond.legend_of_steve.common.entities.living.tektite.BaseTektiteEntity;
 import net.minecraft.entity.ai.goal.Goal;

@@ -11,14 +11,14 @@ import net.minecraft.world.World;
 import java.util.EnumSet;
 
 public class HopAtTargetGoal extends Goal {
-    private final BaseTektiteEntity mob;
-    private LivingEntity target;
+    protected final BaseTektiteEntity mob;
+    protected LivingEntity target;
 
-    private final double range;
-    private final double hopDistance;
-    private final double hopHeight;
-    private final int maxHoppingDelay;
-    private final int jumpDifferenceModifier;
+    protected final double range;
+    protected final double hopDistance;
+    protected final double hopHeight;
+    protected final int maxHoppingDelay;
+    protected final int jumpDifferenceModifier;
 
     public HopAtTargetGoal(BaseTektiteEntity mob, double hopDistance, double hopHeight, int maxHoppingDelay, double range, int jumpDifferenceModifier) {
         this.mob = mob;
@@ -39,11 +39,16 @@ public class HopAtTargetGoal extends Goal {
             if (this.target == null) {
                 return false;
             } else {
-                double d = this.mob.squaredDistanceTo(this.target);
-                return d <= this.range && this.mob.isOnGround() && this.mob.attackHopDelay <= 0
+                return isInRange() && this.mob.isOnGround() && this.mob.attackHopDelay <= 0
                         && !this.isBlockedHorizontally() && this.mob.getRandom().nextInt(toGoalTicks(5)) == 0;
             }
         }
+    }
+
+    protected boolean isInRange() {
+        double d = this.mob.squaredDistanceTo(this.target);
+        double yDist = Math.max(1, this.target.getY() - this.mob.getY());
+        return d <= this.range || (yDist > 1 && this.mob.forcedHighHopCooldown <= 0);
     }
 
     protected boolean isBlockedHorizontally() {
@@ -86,6 +91,7 @@ public class HopAtTargetGoal extends Goal {
         ).normalize().multiply(this.hopDistance);
 
         this.mob.attackHopDelay = this.maxHoppingDelay + this.mob.getRandom().nextBetween(0, 3);
+        this.mob.forcedHighHopCooldown = BaseTektiteEntity.FORCED_HIGH_HOP_COOLDOWN;
         double angle = Math.atan2(direction.z, direction.x);
         this.mob.setYaw((float) Math.toDegrees(angle) - 90);
 
@@ -94,6 +100,6 @@ public class HopAtTargetGoal extends Goal {
 
         this.mob.setVelocity(direction.x, this.hopHeight * jumpMultiplier, direction.z);
         this.mob.setTektiteJumping(true);
-        this.mob.playSound(ZeldaSounds.TEKTITE_HOP, 1, 1 + (this.mob.getRandom().nextFloat() * 0.25f) - 0.125f);
+        this.mob.playSound(this.mob.getHopSound(), 1, 1 + (this.mob.getRandom().nextFloat() * 0.25f) - 0.125f);
     }
 }

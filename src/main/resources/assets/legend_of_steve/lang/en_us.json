@@ -371,10 +371,12 @@
   "block.legend_of_steve.red_tektile_brick_stairs": "Red Tektile Brick Stairs",
   "block.legend_of_steve.red_tektile_brick_wall": "Red Tektile Brick Wall",
 
+  "item.legend_of_steve.aruroda_spawn_egg": "Aruroda Spawn Egg",
   "item.legend_of_steve.fairy_spawn_egg": "Fairy Spawn Egg",
   "item.legend_of_steve.blue_tektite_spawn_egg": "Blue Tektite Spawn Egg",
   "item.legend_of_steve.red_tektite_spawn_egg": "Red Tektite Spawn Egg",
 
+  "entity.legend_of_steve.aruroda": "Aruroda",
   "entity.legend_of_steve.bomb": "Bomb",
   "entity.legend_of_steve.blue_tektite": "Blue Tektite",
   "entity.legend_of_steve.crate": "Crate",
@@ -436,6 +438,11 @@
 
   "subtitles.legend_of_steve.entity.deku_nut.snap": "Deku Nut colliding with object",
   "subtitles.legend_of_steve.entity.deku_nut.freeze": "Deku Nut stunning target",
+
+  "subtitles.legend_of_steve.entity.aruroda.ambient": "Aruroda clicks",
+  "subtitles.legend_of_steve.entity.aruroda.hurt": "Aruroda dies",
+  "subtitles.legend_of_steve.entity.aruroda.death": "Aruroda hisses",
+  "subtitles.legend_of_steve.entity.aruroda.hop": "Aruroda hops",
 
   "subtitles.legend_of_steve.entity.fairy.death": "Fairy dies",
   "subtitles.legend_of_steve.entity.fairy.hurt": "Fairy dies",

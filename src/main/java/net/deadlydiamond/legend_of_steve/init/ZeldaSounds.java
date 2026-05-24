@@ -90,6 +90,12 @@ public class ZeldaSounds {
     public static final SoundEvent SWORD_RECHARGE = register("item.magic_sword.recharge");
 
     // Entities ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Aruroda
+    public static final SoundEvent ARURODA_AMBIENT = register("entity.aruroda.ambient");
+    public static final SoundEvent ARURODA_DEATH = register("entity.aruroda.death");
+    public static final SoundEvent ARURODA_HURT = register("entity.aruroda.hurt");
+    public static final SoundEvent ARURODA_STEP = register("entity.aruroda.step");
+    public static final SoundEvent ARURODA_HOP = register("entity.aruroda.hop");
     // Bomb
     public static final SoundEvent SECRET_ROOM_JINGLE = register("entity.bomb.jingle");
     public static final SoundEvent BOMB_PICKED_UP = register("entity.bomb.pick_up");

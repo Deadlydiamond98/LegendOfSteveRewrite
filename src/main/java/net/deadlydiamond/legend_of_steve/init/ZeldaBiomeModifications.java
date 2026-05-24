@@ -100,5 +100,16 @@ public class ZeldaBiomeModifications {
                 1,
                 4
         );
+
+        // Aruroda /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        BiomeModifications.addSpawn(
+                BiomeSelectors.tag(ZeldaTags.SPAWNS_ARURODAS),
+                SpawnGroup.MONSTER,
+                ZeldaEntityTypes.ARURODA,
+                10,
+                1,
+                3
+        );
     }
 }

@@ -3,6 +3,7 @@ package net.deadlydiamond.legend_of_steve.init;
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.entities.block.CrateEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.block.PushableBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.entities.living.tektite.ArurodaEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.living.tektite.BaseTektiteEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.living.fairy.FairyEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.living.tektite.BlueTektiteEntity;
@@ -40,6 +41,10 @@ public class ZeldaEntityTypes {
     public static final EntityType<ThrownPotEntity> THROWN_POT = register("thrown_pot", ThrownPotEntity.class, 0.5f);
 
     // LIVING ENTITIES /////////////////////////////////////////////////////////////////////////////////////////////////
+    public static final EntityType<ArurodaEntity> ARURODA = registerMob("aruroda", ArurodaEntity.class, 0.9f,
+            SpawnGroup.MONSTER, ArurodaEntity::attributes, ArurodaEntity.spawnRestriction(),
+            0x0d0e25, 0x602182
+    );
     public static final EntityType<FairyEntity> FAIRY = registerMob("fairy", FairyEntity.class, 0.4f,
             SpawnGroup.AMBIENT, FairyEntity::attributes, FairyEntity.spawnRestriction(),
             0xffffff, 0x5d8fc2

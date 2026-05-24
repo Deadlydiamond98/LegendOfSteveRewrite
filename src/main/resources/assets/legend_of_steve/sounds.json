@@ -222,6 +222,141 @@
     "subtitle": "subtitles.legend_of_steve.entity.tektite.hop"
   },
 
+  "entity.aruroda.ambient": {
+    "sounds": [
+      {
+        "name": "legend_of_steve:entity/tektite/ambient1",
+        "pitch": 0.75
+      },
+      {
+        "name": "legend_of_steve:entity/tektite/ambient2",
+        "pitch": 0.75
+      },
+      {
+        "name": "legend_of_steve:entity/tektite/ambient3",
+        "pitch": 0.75
+      },
+      {
+        "name": "legend_of_steve:entity/tektite/ambient4",
+        "pitch": 0.75
+      },
+      {
+        "name": "legend_of_steve:entity/tektite/ambient5",
+        "pitch": 0.75
+      }
+    ],
+    "subtitle": "subtitles.legend_of_steve.entity.aruroda.ambient"
+  },
+  "entity.aruroda.hurt": {
+    "sounds": [
+      {
+        "name": "legend_of_steve:entity/tektite/hurt1",
+        "pitch": 0.75
+      },
+      {
+        "name": "legend_of_steve:entity/tektite/hurt2",
+        "pitch": 0.75
+      },
+      {
+        "name": "legend_of_steve:entity/tektite/hurt3",
+        "pitch": 0.75
+      },
+      {
+        "name": "legend_of_steve:entity/tektite/hurt4",
+        "pitch": 0.75
+      }
+    ],
+    "subtitle": "subtitles.legend_of_steve.entity.aruroda.hurt"
+  },
+  "entity.aruroda.death": {
+    "sounds": [
+      {
+        "name": "legend_of_steve:entity/tektite/death1",
+        "pitch": 0.75
+      },
+      {
+        "name": "legend_of_steve:entity/tektite/death2",
+        "pitch": 0.75
+      },
+      {
+        "name": "legend_of_steve:entity/tektite/death3",
+        "pitch": 0.75
+      },
+      {
+        "name": "legend_of_steve:entity/tektite/death4",
+        "pitch": 0.75
+      },
+      {
+        "name": "legend_of_steve:entity/tektite/death5",
+        "pitch": 0.75
+      },
+
+      {
+        "name": "legend_of_steve:entity/tektite/death6",
+        "pitch": 0.75
+      }
+    ],
+    "subtitle": "subtitles.legend_of_steve.entity.aruroda.death"
+  },
+  "entity.aruroda.step": {
+    "sounds": [
+      {
+        "name": "legend_of_steve:entity/tektite/step1",
+        "pitch": 0.75
+      },
+      {
+        "name": "legend_of_steve:entity/tektite/step2",
+        "pitch": 0.75
+      },
+      {
+        "name": "legend_of_steve:entity/tektite/step3",
+        "pitch": 0.75
+      },
+      {
+        "name": "legend_of_steve:entity/tektite/step4",
+        "pitch": 0.75
+      },
+      {
+        "name": "legend_of_steve:entity/tektite/step5",
+        "pitch": 0.75
+      },
+      {
+        "name": "legend_of_steve:entity/tektite/step6",
+        "pitch": 0.75
+      }
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "entity.aruroda.hop": {
+    "sounds": [
+      {
+        "name": "legend_of_steve:entity/tektite/hop1",
+        "pitch": 0.75
+      },
+      {
+        "name": "legend_of_steve:entity/tektite/hop2",
+        "pitch": 0.75
+      },
+      {
+        "name": "legend_of_steve:entity/tektite/hop3",
+        "pitch": 0.75
+      },
+      {
+        "name": "legend_of_steve:entity/tektite/hop4",
+        "pitch": 0.75
+      },
+      {
+        "name": "legend_of_steve:entity/tektite/hop5",
+        "pitch": 0.75
+      },
+      {
+        "name": "legend_of_steve:entity/tektite/hop6",
+        "pitch": 0.75
+      }
+    ],
+    "subtitle": "subtitles.legend_of_steve.entity.aruroda.hop"
+  },
+
   "block.note_block.smw_piano": {
     "sounds": [
       "legend_of_steve:note/smw_piano"
@@ -1320,7 +1455,6 @@
     ],
     "subtitle": "subtitles.legend_of_steve.block.sword_pedestal.deposit"
   },
-
   "block.sword_pedestal.withdraw_wooden": {
     "sounds": [
       "legend_of_steve:block/sword_pedestal/withdraw_wood1",

@@ -17,37 +17,11 @@ public class TektiteEntityModel<T extends BaseTektiteEntity> extends SinglePartE
 	public static final EntityModelLayer LAYER_LOCATION = new EntityModelLayer(LegendOfSteve.id("tektite"), "main");
 
 	private final ModelPart root;
-	private final ModelPart body;
-	private final ModelPart FrontRightLegUpper;
-	private final ModelPart FrontRightLegLower;
-	private final ModelPart FrontRightLegEnd;
-	private final ModelPart BackRightLegUpper;
-	private final ModelPart BackRightLegLower;
-	private final ModelPart BackRightLegEnd;
-	private final ModelPart BackLeftLegUpper;
-	private final ModelPart BackLeftLegLower;
-	private final ModelPart BackLeftLegEnd;
-	private final ModelPart FrontLeftLegUpper;
-	private final ModelPart FrontLeftLegLower;
-	private final ModelPart FrontLeftLegEnd;
 	private final ModelPart eye;
 
 	public TektiteEntityModel(ModelPart root) {
 		this.root = root;
-		this.body = root.getChild("body");
-		this.FrontRightLegUpper = this.body.getChild("FrontRightLegUpper");
-		this.FrontRightLegLower = this.FrontRightLegUpper.getChild("FrontRightLegLower");
-		this.FrontRightLegEnd = this.FrontRightLegLower.getChild("FrontRightLegEnd");
-		this.BackRightLegUpper = this.body.getChild("BackRightLegUpper");
-		this.BackRightLegLower = this.BackRightLegUpper.getChild("BackRightLegLower");
-		this.BackRightLegEnd = this.BackRightLegLower.getChild("BackRightLegEnd");
-		this.BackLeftLegUpper = this.body.getChild("BackLeftLegUpper");
-		this.BackLeftLegLower = this.BackLeftLegUpper.getChild("BackLeftLegLower");
-		this.BackLeftLegEnd = this.BackLeftLegLower.getChild("BackLeftLegEnd");
-		this.FrontLeftLegUpper = this.body.getChild("FrontLeftLegUpper");
-		this.FrontLeftLegLower = this.FrontLeftLegUpper.getChild("FrontLeftLegLower");
-		this.FrontLeftLegEnd = this.FrontLeftLegLower.getChild("FrontLeftLegEnd");
-		this.eye = this.body.getChild("eye");
+		this.eye = this.root.getChild("body").getChild("eye");
 	}
 
 	public static TexturedModelData getTexturedModelData() {

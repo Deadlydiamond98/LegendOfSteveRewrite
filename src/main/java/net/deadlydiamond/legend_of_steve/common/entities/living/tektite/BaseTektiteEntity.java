@@ -1,6 +1,6 @@
 package net.deadlydiamond.legend_of_steve.common.entities.living.tektite;
 
-import net.deadlydiamond.legend_of_steve.common.entities.ai.goals.TektiteSwimGoal;
+import net.deadlydiamond.legend_of_steve.common.entities.ai.goals.tektite.TektiteSwimGoal;
 import net.deadlydiamond.legend_of_steve.common.entities.ai.navigation.TektiteNavigation;
 import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
 import net.deadlydiamond.legend_of_steve.util.entity.ZeldaSpawn;
@@ -16,10 +16,8 @@ import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.HostileEntity;
-import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
-import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.math.BlockPos;
@@ -31,9 +29,13 @@ public class BaseTektiteEntity extends HostileEntity {
     private static final TrackedData<Boolean> JUMPING = DataTracker.registerData(BaseTektiteEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private static final TrackedData<Integer> LANDING_TIMER = DataTracker.registerData(BaseTektiteEntity.class, TrackedDataHandlerRegistry.INTEGER);
 
+    public static final int FORCED_HIGH_HOP_COOLDOWN = 40;
+
     public final AnimationState idleAnimationState = new AnimationState();
     public final AnimationState jumpAnimationState = new AnimationState();
     public final AnimationState landAnimationState = new AnimationState();
+
+    public int forcedHighHopCooldown;
     public int attackHopDelay;
     public int wanderingHopDelay;
     public boolean isTektiteSwimming;
@@ -87,15 +89,23 @@ public class BaseTektiteEntity extends HostileEntity {
 
         this.attackHopDelay--;
         this.wanderingHopDelay--;
+        this.forcedHighHopCooldown--;
         this.setLandingTimer(this.getLandingTimer() - 1);
     }
 
     protected void tryDamaging(LivingEntity target) {
         if (this.canSee(target) && target.damage(this.getDamageSources().mobAttack(this), (float) this.getAttributeValue(
                 EntityAttributes.GENERIC_ATTACK_DAMAGE)
-        )) {
+        ) && this.isTektiteJumping()) {
+            this.forcedHighHopCooldown = FORCED_HIGH_HOP_COOLDOWN;
             this.applyDamageEffects(this, target);
         }
+    }
+
+    @Override
+    public boolean tryAttack(Entity target) {
+        this.forcedHighHopCooldown = FORCED_HIGH_HOP_COOLDOWN;
+        return super.tryAttack(target);
     }
 
     @Override
@@ -133,7 +143,7 @@ public class BaseTektiteEntity extends HostileEntity {
         this.setTektiteJumping(true);
     }
 
-    private void updateAnimations() {
+    protected void updateAnimations() {
         this.jumpAnimationState.setRunning(isTektiteJumping(), this.age);
         this.landAnimationState.setRunning(!this.jumpAnimationState.isRunning() && this.getLandingTimer() > 0, this.age);
         this.idleAnimationState.setRunning(true, this.age);
@@ -179,6 +189,10 @@ public class BaseTektiteEntity extends HostileEntity {
     @Override
     protected SoundEvent getDeathSound() {
         return ZeldaSounds.TEKTITE_DEATH;
+    }
+
+    public SoundEvent getHopSound() {
+        return ZeldaSounds.TEKTITE_HOP;
     }
 
     @Override

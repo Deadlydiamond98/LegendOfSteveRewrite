@@ -116,7 +116,7 @@ public class BaseTektiteEntity extends HostileEntity {
             return (((world.getFluidState(blockPos).isIn(FluidTags.WATER) && world.getBlockState(blockPos.up()).isAir())
                     || world.getBlockState(blockPos).allowsSpawning(world, blockPos, type)) || spawnReason == SpawnReason.SPAWNER)
                     && world.getDifficulty() != Difficulty.PEACEFUL && isSpawnDark(world, pos, random)
-                    && pos.getY() > world.getSeaLevel() - 25;
+                    && (!random.nextBoolean() || pos.getY() > world.getSeaLevel() - 25);
         });
     }
 

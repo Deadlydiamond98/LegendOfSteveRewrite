@@ -18,7 +18,7 @@ public class RedTektiteEntity extends BaseTektiteEntity {
 
     @Override
     protected void initGoals() {
-        this.goalSelector.add(3, new HopAtTargetGoal(this, 0.3, 0.6, 20, 6));
+        this.goalSelector.add(3, new HopAtTargetGoal(this, 0.3, 0.6, 20, 6, 8));
         this.goalSelector.add(4, new ApproachFromNearGoal(this, 0.5, 3));
         this.goalSelector.add(4, new ApproachFromFarGoal(this, 1.5, 3));
 

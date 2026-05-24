@@ -18,13 +18,15 @@ public class HopAtTargetGoal extends Goal {
     private final double hopDistance;
     private final double hopHeight;
     private final int maxHoppingDelay;
+    private final int jumpDifferenceModifier;
 
-    public HopAtTargetGoal(BaseTektiteEntity mob, double hopDistance, double hopHeight, int maxHoppingDelay, double range) {
+    public HopAtTargetGoal(BaseTektiteEntity mob, double hopDistance, double hopHeight, int maxHoppingDelay, double range, int jumpDifferenceModifier) {
         this.mob = mob;
         this.hopDistance = hopDistance;
         this.hopHeight = hopHeight;
         this.maxHoppingDelay = maxHoppingDelay;
         this.range = range * range;
+        this.jumpDifferenceModifier = jumpDifferenceModifier;
         this.setControls(EnumSet.of(Goal.Control.JUMP, Goal.Control.MOVE, Goal.Control.LOOK));
     }
 
@@ -60,7 +62,7 @@ public class HopAtTargetGoal extends Goal {
                 endPos.x + 0.3, startPos.y + this.mob.getHeight(), endPos.z + 0.3
         );
 
-        return !world.isSpaceEmpty(this.mob, checkBox);
+        return this.mob.getRandom().nextFloat() < 0.1 || !world.isSpaceEmpty(this.mob, checkBox);
     }
 
     @Override
@@ -87,9 +89,10 @@ public class HopAtTargetGoal extends Goal {
         double angle = Math.atan2(direction.z, direction.x);
         this.mob.setYaw((float) Math.toDegrees(angle) - 90);
 
-        boolean canReach = Math.abs(this.target.getY() - this.mob.getY()) < 4 && this.mob.getY() >= this.target.getY();
+        double yDifference = this.target.getY() - this.mob.getY();
+        double jumpMultiplier = Math.min(Math.max(1.0, 1.0 + (yDifference / this.jumpDifferenceModifier)), 2.5);
 
-        this.mob.setVelocity(direction.x, canReach ? this.hopHeight : this.hopHeight * 2, direction.z);
+        this.mob.setVelocity(direction.x, this.hopHeight * jumpMultiplier, direction.z);
         this.mob.setTektiteJumping(true);
         this.mob.playSound(ZeldaSounds.TEKTITE_HOP, 1, 1 + (this.mob.getRandom().nextFloat() * 0.25f) - 0.125f);
     }

@@ -21,19 +21,19 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:golden_horse_armor",
-          "weight": 10
+          "name": "legend_of_steve:fairy_bottle",
+          "weight": 20
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:iron_horse_armor",
-          "weight": 15
+          "name": "legend_of_steve:enchanted_spring_water_bucket",
+          "weight": 20
         }
       ],
       "rolls": {
         "type": "minecraft:uniform",
-        "max": 3,
-        "min": 1
+        "max": 1,
+        "min": 0
       }
     },
     {
@@ -53,7 +53,7 @@
             }
           ],
           "name": "minecraft:iron_ingot",
-          "weight": 10
+          "weight": 30
         },
         {
           "type": "minecraft:item",
@@ -69,59 +69,6 @@
             }
           ],
           "name": "minecraft:emerald",
-          "weight": 5
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:bread",
-          "weight": 20
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 4,
-                "min": 1
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "minecraft:wheat",
-          "weight": 20
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 4,
-                "min": 1
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "minecraft:redstone",
-          "weight": 15
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 4,
-                "min": 2
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "minecraft:pumpkin_seeds",
           "weight": 10
         },
         {
@@ -131,14 +78,14 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 8,
-                "min": 1
+                "max": 16,
+                "min": 8
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "legend_of_steve:emerald_shard",
-          "weight": 15
+          "name": "minecraft:lapis_lazuli",
+          "weight": 30
         },
         {
           "type": "minecraft:item",
@@ -163,20 +110,68 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 5,
+                "max": 16,
+                "min": 4
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:amethyst_shard",
+          "weight": 30
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 3,
                 "min": 1
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:arrow",
+          "name": "minecraft:diamond",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 5,
+                "min": 3
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:gold_ingot",
           "weight": 20
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 5,
+                "min": 3
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:raw_gold",
+          "weight": 30
         }
       ],
       "rolls": {
         "type": "minecraft:uniform",
-        "max": 4,
-        "min": 1
+        "max": 5,
+        "min": 3
       }
     },
     {
@@ -189,14 +184,14 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 8,
-                "min": 1
+                "max": 15,
+                "min": 4
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:bone",
-          "weight": 10
+          "name": "minecraft:spectral_arrow",
+          "weight": 30
         },
         {
           "type": "minecraft:item",
@@ -205,118 +200,98 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 8,
+                "max": 12,
+                "min": 5
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:gold_nugget",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 25,
+                "min": 15
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "legend_of_steve:emerald_shard",
+          "weight": 30
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 4,
                 "min": 1
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:string",
-          "weight": 10
+          "name": "minecraft:glass_bottle",
+          "weight": 30
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:brick",
-          "weight": 10,
           "functions": [
             {
-              "function": "minecraft:set_count",
+              "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "min": 1,
-                "max": 8
-              }
+                "max": 6,
+                "min": 3
+              },
+              "function": "minecraft:set_count"
             }
-          ]
+          ],
+          "name": "legend_of_steve:bomb",
+          "weight": 20
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:spider_eye",
-          "weight": 4,
           "functions": [
             {
-              "function": "minecraft:set_count",
+              "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "min": 1,
-                "max": 2
-              }
+                "max": 7,
+                "min": 2
+              },
+              "function": "minecraft:set_count"
             }
-          ]
+          ],
+          "name": "minecraft:pink_candle",
+          "weight": 30
         },
         {
           "type": "minecraft:item",
-          "name": "legend_of_steve:deku_nut",
-          "weight": 2,
           "functions": [
             {
-              "function": "minecraft:set_count",
+              "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "min": 1,
-                "max": 2
-              }
+                "max": 7,
+                "min": 2
+              },
+              "function": "minecraft:set_count"
             }
-          ]
+          ],
+          "name": "minecraft:white_candle",
+          "weight": 30
         }
       ],
       "rolls": 3
-    },
-    {
-      "rolls": {
-        "type": "minecraft:uniform",
-        "min": 2,
-        "max": 3
-      },
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "legend_of_steve:deku_planks",
-          "weight": 105,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 4,
-                "max": 8
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "legend_of_steve:deku_log",
-          "weight": 100,
-          "conditions": [],
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 2,
-                "max": 8
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "legend_of_steve:deku_sapling",
-          "weight": 50,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 1,
-                "max": 4
-              }
-            }
-          ]
-        }
-      ]
     }
   ],
-  "random_sequence": "legend_of_steve:chests/deku_dungeon"
+  "random_sequence": "legend_of_steve:chests/fairy_fountain"
 }

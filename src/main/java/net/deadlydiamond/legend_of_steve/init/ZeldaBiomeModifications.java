@@ -107,9 +107,9 @@ public class ZeldaBiomeModifications {
                 BiomeSelectors.tag(ZeldaTags.SPAWNS_ARURODAS),
                 SpawnGroup.MONSTER,
                 ZeldaEntityTypes.ARURODA,
-                10,
+                15,
                 1,
-                3
+                4
         );
     }
 }

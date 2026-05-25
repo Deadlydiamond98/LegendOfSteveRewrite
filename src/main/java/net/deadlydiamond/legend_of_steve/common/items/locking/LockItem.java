@@ -19,7 +19,7 @@ public class LockItem extends ContainerModifyingItem {
     @Override
     public boolean modifyContainer(BlockState blockState, World world, BlockPos blockPos, PlayerEntity player, Hand hand, BlockHitResult hit, IBlockEntityLocking locking) {
         if (!world.isClient && LockUtil.getLockItemForBlock(world.getBlockEntity(blockPos), blockState, world, blockPos).isEmpty()) {
-            world.playSound(null, blockPos, ZeldaSounds.UNLOCK, SoundCategory.BLOCKS);
+            world.playSound(null, blockPos, ZeldaSounds.LOCK, SoundCategory.BLOCKS);
             if (!player.isCreative()) {
                 player.getStackInHand(hand).decrement(1);
             }

@@ -4,12 +4,14 @@ import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
+import net.deadlydiamond.legend_of_steve.init.ZeldaAdvancements;
 import net.deadlydiamond.legend_of_steve.init.ZeldaEffects;
 import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.registry.tag.TagKey;
@@ -32,13 +34,24 @@ public abstract class EntityPotionEffectMixin {
 
     // FLUID EFFECTS ///////////////////////////////////////////////////////////////////////////////////////////////////
 
+    @Inject(method = "tick", at = @At("HEAD"))
+    private void legend_of_steve$tick(CallbackInfo ci) {
+        if (((Entity) (Object) this) instanceof PlayerEntity player) {
+            if (player.hasStatusEffect(ZeldaEffects.PONDSTRIDING) && !player.isTouchingWater() &&
+                    player.getWorld().getFluidState(player.getLandingPos()).isIn(FluidTags.WATER)
+            ) {
+                ZeldaAdvancements.WATER_WALKING.trigger(player);
+            }
+        }
+    }
+
     @Inject(method = "playStepSounds", at = @At("HEAD"))
     private void legend_of_steve$playStepSounds(BlockPos pos, BlockState state, CallbackInfo ci) {
         if (((Entity) (Object) this) instanceof LivingEntity living) {
-            if (living.hasStatusEffect(ZeldaEffects.PONDSTRIDING) && state.isOf(Blocks.WATER)) {
+            if (living.hasStatusEffect(ZeldaEffects.PONDSTRIDING) && living.getWorld().getFluidState(pos).isIn(FluidTags.WATER)) {
                 this.playSound(ZeldaSounds.WATER_STEP, 0.05f, 1);
             }
-            if (living.hasStatusEffect(ZeldaEffects.HOTSTRIDING) && state.isOf(Blocks.LAVA)) {
+            if (living.hasStatusEffect(ZeldaEffects.HOTSTRIDING) && living.getWorld().getFluidState(pos).isIn(FluidTags.LAVA)) {
                 this.playSound(ZeldaSounds.LAVA_STEP, 0.1f, (this.random.nextFloat() - this.random.nextFloat()) * 0.2f + 1.0f);
             }
         }

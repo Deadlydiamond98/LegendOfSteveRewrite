@@ -514,5 +514,14 @@
   "advancements.legend_of_steve.mowing_the_lawn.description": "Cut fully grown Loot Grass using a Sword, and receive some goodies",
 
   "advancements.legend_of_steve.swordless_route": "Swordless Route",
-  "advancements.legend_of_steve.swordless_route.description": "Kill a creature using Pots"
+  "advancements.legend_of_steve.swordless_route.description": "Kill a creature using Pots",
+
+  "advancements.legend_of_steve.minor_concussion": "Minor Concussion",
+  "advancements.legend_of_steve.minor_concussion.description": "Hit Strange Bricks or a Question Block with your head!",
+
+  "advancements.legend_of_steve.water_walking": "Walkin' on Water",
+  "advancements.legend_of_steve.water_walking.description": "Walk on water while under the effects of Pondstriding",
+
+  "advancements.legend_of_steve.monsters_hunted_zelda": "Monsters Hunted (Legend of Steve)",
+  "advancements.legend_of_steve.monsters_hunted_zelda.description": "Defeat every Monster in The Legend of Steve"
 }

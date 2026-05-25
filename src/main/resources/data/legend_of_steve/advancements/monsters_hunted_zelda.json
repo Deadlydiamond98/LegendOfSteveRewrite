@@ -1,0 +1,62 @@
+{
+  "parent": "legend_of_steve:root",
+  "criteria": {
+    "legend_of_steve:aruroda": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "legend_of_steve:aruroda"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
+    "legend_of_steve:blue_tektite": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "legend_of_steve:blue_tektite"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
+    "legend_of_steve:red_tektite": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "legend_of_steve:red_tektite"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "title": {
+      "translate": "advancements.legend_of_steve.monsters_hunted_zelda"
+    },
+    "description": {
+      "translate": "advancements.legend_of_steve.monsters_hunted_zelda.description"
+    },
+    "icon": {
+      "item": "legend_of_steve:magic_sword"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  }
+}

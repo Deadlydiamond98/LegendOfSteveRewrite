@@ -9,6 +9,8 @@ public class ZeldaAdvancements {
     public static final CustomAdvancement RELAX_IN_SPRING_WATER = register("relax_in_spring_water");
     public static final CustomAdvancement TRANSMUTE_ITEM = register("transmute_item");
     public static final CustomAdvancement STUN_ENTITY_WITH_NUT = register("stun_entity_with_nut");
+    public static final CustomAdvancement MINOR_CONCUSSION = register("hit_block");
+    public static final CustomAdvancement WATER_WALKING = register("water_walking");
 
     public static CustomAdvancement register(String name) {
         return Criteria.register(new CustomAdvancement(LegendOfSteve.id(name)));

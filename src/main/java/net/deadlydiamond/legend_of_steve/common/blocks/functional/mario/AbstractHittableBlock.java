@@ -5,6 +5,7 @@ import net.deadlydiamond.legend_of_steve.common.bes.container.single.HittableCon
 import net.deadlydiamond.legend_of_steve.common.blocks.IJumpIntoAction;
 import net.deadlydiamond.legend_of_steve.common.blocks.container.single.WaterloggableSingleSlotBlock;
 import net.deadlydiamond.legend_of_steve.common.items.IExtraCanMine;
+import net.deadlydiamond.legend_of_steve.init.ZeldaAdvancements;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlockEntities;
 import net.deadlydiamond.legend_of_steve.init.ZeldaDamageTypes;
 import net.deadlydiamond.legend_of_steve.networking.s2c.question_block.UpdateBlockHitS2CPacket;
@@ -130,6 +131,10 @@ public abstract class AbstractHittableBlock extends WaterloggableSingleSlotBlock
     @Override
     public void jumpIntoBlock(World world, BlockPos pos, BlockState state, @Nullable Entity entity) {
         if (!world.isClient()) {
+            if (entity instanceof PlayerEntity player && !state.get(HIT) && !state.get(BOUNCING)) {
+                ZeldaAdvancements.MINOR_CONCUSSION.trigger(player);
+            }
+
             hitBlock(world, pos, state, entity, Direction.UP, true);
         }
     }

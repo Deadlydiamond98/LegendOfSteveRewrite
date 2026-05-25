@@ -1,0 +1,23 @@
+{
+  "parent": "legend_of_steve:root",
+  "criteria": {
+    "requirement": {
+      "trigger": "legend_of_steve:water_walking"
+    }
+  },
+  "display": {
+    "title": {
+      "translate": "advancements.legend_of_steve.water_walking"
+    },
+    "description": {
+      "translate": "advancements.legend_of_steve.water_walking.description"
+    },
+    "icon": {
+      "item": "minecraft:water_bucket"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  }
+}

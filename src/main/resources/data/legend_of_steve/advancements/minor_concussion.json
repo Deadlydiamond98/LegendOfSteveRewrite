@@ -1,0 +1,23 @@
+{
+  "parent": "legend_of_steve:blessing_from_the_great_fairy",
+  "criteria": {
+    "requirement": {
+      "trigger": "legend_of_steve:hit_block"
+    }
+  },
+  "display": {
+    "title": {
+      "translate": "advancements.legend_of_steve.minor_concussion"
+    },
+    "description": {
+      "translate": "advancements.legend_of_steve.minor_concussion.description"
+    },
+    "icon": {
+      "item": "legend_of_steve:question_block"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  }
+}

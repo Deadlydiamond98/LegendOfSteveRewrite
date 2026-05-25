@@ -417,6 +417,12 @@
     ],
     "subtitle": "subtitles.block.note_block.note"
   },
+  "block.note_block.tmnt4_orchestra_hit": {
+    "sounds": [
+      "legend_of_steve:note/tmnt4_orchestra_hit"
+    ],
+    "subtitle": "subtitles.block.note_block.note"
+  },
 
   "block.bomb_flower.break": {
     "sounds": [

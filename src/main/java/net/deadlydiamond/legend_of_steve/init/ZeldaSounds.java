@@ -71,6 +71,7 @@ public class ZeldaSounds {
     public static final SoundEvent HAND_PAN = register("block.note_block.hand_pan");
     public static final SoundEvent PAAH = register("block.note_block.paah");
     public static final SoundEvent NYLON_GUITAR = register("block.note_block.nylon_guitar");
+    public static final SoundEvent TMNT4_ORCHESTRA_HIT = register("block.note_block.tmnt4_orchestra_hit");
 
     // Items ///////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Emerald Shards

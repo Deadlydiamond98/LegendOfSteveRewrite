@@ -119,9 +119,18 @@ public class ZeldaNoteBlockSounds {
         registerNoteBlockSound(ZeldaSounds.PAAH,
                 ZeldaBlocks.QUESTION_BLOCK
         );
-        // LTTP TIMPANI ////////////////////////////////////////////////////////////////////////////////////////////////
+        // NYLON GUITAR ////////////////////////////////////////////////////////////////////////////////////////////////
         registerNoteBlockSound(ZeldaSounds.NYLON_GUITAR,
                 ZeldaBlocks.BROWN_DUNGEONCITE
+        );
+        // TMNT4 ORCHESTRA HIT /////////////////////////////////////////////////////////////////////////////////////////
+        registerNoteBlockSound(ZeldaSounds.TMNT4_ORCHESTRA_HIT,
+                ZeldaBlocks.BLUE_TEKTILES,
+                ZeldaBlocks.SMALL_BLUE_TEKTILES,
+                ZeldaBlocks.BLUE_TEKTILE_BRICKS,
+                ZeldaBlocks.RED_TEKTILES,
+                ZeldaBlocks.SMALL_RED_TEKTILES,
+                ZeldaBlocks.RED_TEKTILE_BRICKS
         );
     }
 

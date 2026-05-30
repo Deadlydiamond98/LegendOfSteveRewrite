@@ -30,7 +30,6 @@
   "item.legend_of_steve.gold_lock": "Gold Lock",
   "item.legend_of_steve.boss_lock": "Boss Lock",
 
-
   "item.legend_of_steve.emerald_shard": "Emerald Shard",
   "item.legend_of_steve.emerald_chunk": "Emerald Chunk",
 
@@ -38,6 +37,8 @@
   "item.legend_of_steve.blue_tektite_shell": "Blue Tektite Shell",
   "item.legend_of_steve.red_tektite_chitin": "Red Tektite Chitin",
   "item.legend_of_steve.red_tektite_shell": "Red Tektite Shell",
+
+  "item.legend_of_steve.switch_core": "Switch Core",
 
   "item.legend_of_steve.raw_master_ore": "Raw Master Ore",
   "item.legend_of_steve.master_scrap": "Master Scrap",

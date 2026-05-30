@@ -121,6 +121,10 @@ public class ZeldaItemTagDatagen extends FabricTagProvider.ItemTagProvider {
                 ZeldaItems.GILDED_QUIVER
         );
 
+        getOrCreateTagBuilder(ItemTags.BEACON_PAYMENT_ITEMS).add(
+                ZeldaItems.MASTER_INGOT
+        );
+
         getOrCreateTagBuilder(KoalaLibTags.PIGLIN_GOLD_ARMOR).add(
                 ZeldaItems.GILDED_QUIVER
         );

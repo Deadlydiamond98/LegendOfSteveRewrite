@@ -11,6 +11,7 @@
     "common.block.AbstractBlockStateMixin",
     "common.block.FluidBlockMixin",
     "common.block.NoteBlockMixin",
+    "common.block.ObserverBlockMixin",
     "common.block.PressurePlateBlockMixin",
     "common.entity.LightningEntityMixin",
     "common.entity.PersistentProjectileEntityMixin",

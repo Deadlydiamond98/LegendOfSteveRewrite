@@ -1,4 +1,4 @@
-// 1.20.1	2026-05-24T17:51:34.769777379	The Legend of Steve/Tags for minecraft:item
+// 1.20.1	2026-05-27T19:14:39.867255197	The Legend of Steve/Tags for minecraft:item
 27e718ec3cb3cbd6f948501a0ac0733406f25749 data/minecraft/tags/items/stairs.json
 b4d7faadc178039d6865f14eedd8edac04e8e1c3 data/minecraft/tags/items/wooden_trapdoors.json
 fba66bfc33c2dc3dfe13926359d5a3fba438019b data/minecraft/tags/items/signs.json
@@ -26,5 +26,6 @@ a62a7714809b9f9bc69ccf0667a2f9fafba2ea37 data/minecraft/tags/items/wooden_doors.
 bb16959c47f727d036e1b5e28ca142e62ad72efc data/minecraft/tags/items/saplings.json
 7b40d9ae3acf98c87dc01ed58d8be3691b14c27d data/minecraft/tags/items/planks.json
 6a598cf23b180c4c61e84b45dca5740038bdd490 data/legend_of_steve/tags/items/chiseled_planks.json
+bc87e1ac5a3a45aa856bfff6323953b1785888ef data/minecraft/tags/items/beacon_payment_items.json
 fda8f23bd1fec00cdacd17cfab7e68c81c42454b data/minecraft/tags/items/stone_buttons.json
 8f6bfc9dae81ba0f0645bef61907a07d64912c7e data/legend_of_steve/tags/items/bomb_bags.json

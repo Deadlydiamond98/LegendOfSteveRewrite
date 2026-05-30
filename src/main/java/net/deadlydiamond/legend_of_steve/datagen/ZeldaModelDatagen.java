@@ -161,6 +161,7 @@ public class ZeldaModelDatagen extends FabricModelProvider {
                 ZeldaItems.RAW_MASTER_ORE,
                 ZeldaItems.MASTER_SCRAP,
                 ZeldaItems.MASTER_INGOT,
+                ZeldaItems.SWITCH_CORE,
                 ZeldaItems.ENCHANTED_SPRING_WATER_BUCKET,
                 ZeldaItems.MUSIC_DISC_LEGEND,
                 ZeldaItems.DISC_FRAGMENT_LEGEND,

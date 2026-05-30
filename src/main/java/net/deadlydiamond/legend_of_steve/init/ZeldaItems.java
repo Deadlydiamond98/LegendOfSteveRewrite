@@ -73,6 +73,8 @@ public class ZeldaItems {
     public static final Item RAW_MASTER_ORE = register("raw_master_ore", new Item(new FabricItemSettings()));
     public static final Item MASTER_SCRAP = register("master_scrap", new Item(new FabricItemSettings()));
     public static final Item MASTER_INGOT = register("master_ingot", new Item(new FabricItemSettings().fireproof()));
+    // SWITCH CORE
+    public static final Item SWITCH_CORE = register("switch_core", new NetherStarItem(new FabricItemSettings().rarity(Rarity.RARE)));
     // FAIRY BOTTLE
     public static final Item FAIRY_BOTTLE = register("fairy_bottle", new FairyBottleItem(ZeldaEntityTypes.FAIRY));
 

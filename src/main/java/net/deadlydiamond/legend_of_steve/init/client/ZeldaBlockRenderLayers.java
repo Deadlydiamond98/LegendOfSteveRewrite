@@ -26,7 +26,8 @@ public class ZeldaBlockRenderLayers {
                 ZeldaBlocks.MASTER_TRAPDOOR,
                 ZeldaBlocks.MASTER_BARS,
                 ZeldaBlocks.MASTER_CHAIN,
-                ZeldaBlocks.MASTER_GIRDER
+                ZeldaBlocks.MASTER_GIRDER,
+                ZeldaBlocks.CRYSTAL_SWITCH
         );
 
         registerBlockset(RenderLayer.getCutout(),

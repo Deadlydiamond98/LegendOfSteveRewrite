@@ -8,6 +8,7 @@ import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.Hittable
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.ConnectedPillarBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.GirderBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.glowing.FairyLamp;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.switches.CrystalSwitchBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.BombFlowerBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.FruitingLeavesBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.LootGrassBlock;
@@ -161,6 +162,11 @@ public class ZeldaBlocks {
     public static final Block CRATE = register("crate", new Block(CRATE_SETTINGS), false);
     public static final Item CRATE_ITEM = ZeldaItems.register("crate", new CrateItem(new FabricItemSettings(), CRATE.getDefaultState()));
 
+    // SWITCH BLOCKS
+
+    public static final Block CRYSTAL_SWITCH = register("crystal_switch", new CrystalSwitchBlock(FabricBlockSettings.copyOf(Blocks.STONE)));
+
+    // SWORD PEDESTALS
     public static final Block STONE_SWORD_PEDESTAL = register("stone_sword_pedestal", new SwordPedestal(FabricBlockSettings.copyOf(Blocks.STONE)));
     public static final Block DEEPSLATE_SWORD_PEDESTAL = register("deepslate_sword_pedestal", new SwordPedestal(FabricBlockSettings.copyOf(Blocks.POLISHED_DEEPSLATE)));
     public static final Block BLACKSTONE_SWORD_PEDESTAL = register("blackstone_sword_pedestal", new SwordPedestal(FabricBlockSettings.copyOf(Blocks.POLISHED_BLACKSTONE)));

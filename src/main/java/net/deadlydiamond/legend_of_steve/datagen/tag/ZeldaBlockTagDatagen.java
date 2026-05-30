@@ -196,6 +196,10 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.COMBINATION_STEP_SOUND_BLOCKS).add(
                 ZeldaBlocks.BOMB_FLOWER
         );
+
+        getOrCreateTagBuilder(BlockTags.BEACON_BASE_BLOCKS).add(
+                ZeldaBlocks.MASTER_BLOCK
+        );
     }
 
 

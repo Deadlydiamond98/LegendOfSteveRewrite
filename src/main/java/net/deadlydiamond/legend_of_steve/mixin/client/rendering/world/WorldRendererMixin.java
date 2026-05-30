@@ -2,12 +2,20 @@ package net.deadlydiamond.legend_of_steve.mixin.client.rendering.world;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import net.deadlydiamond.legend_of_steve.common.blocks.IModifiedOutlineRender;
 import net.deadlydiamond.legend_of_steve.init.client.ZeldaRenderLayers;
 import net.deadlydiamond.legend_of_steve.init.client.ZeldaShaders;
 import net.deadlydiamond98.koalalib.client.PostProcessingRegistry;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.BlockView;
+import org.jetbrains.annotations.Nullable;
 import org.joml.Matrix4f;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -23,6 +31,8 @@ public abstract class WorldRendererMixin {
     @Shadow protected abstract void renderLayer(RenderLayer renderLayer, MatrixStack matrices, double cameraX, double cameraY, double cameraZ, Matrix4f positionMatrix);
 
     // Renders Iridescence & Bloom Blocks
+
+    @Shadow public abstract void playSong(@Nullable SoundEvent song, BlockPos songPosition);
 
     @WrapOperation(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/WorldRenderer;renderLayer(Lnet/minecraft/client/render/RenderLayer;Lnet/minecraft/client/util/math/MatrixStack;DDDLorg/joml/Matrix4f;)V"))
     private void legend_of_steve$renderRegularLayers(WorldRenderer instance, RenderLayer renderLayer, MatrixStack matrices, double cameraX, double cameraY, double cameraZ, Matrix4f positionMatrix, Operation<Void> original) {
@@ -54,5 +64,14 @@ public abstract class WorldRendererMixin {
     @Inject(method = "render", at = @At("TAIL"))
     private void legend_of_steve$renderFinish(MatrixStack matrices, float tickDelta, long limitTime, boolean renderBlockOutline, Camera camera, GameRenderer gameRenderer, LightmapTextureManager lightmapTextureManager, Matrix4f projectionMatrix, CallbackInfo ci) {
         this.legend_of_steve$renderGlowLayer = true;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    @WrapOperation(method = "drawBlockOutline", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;getOutlineShape(Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/ShapeContext;)Lnet/minecraft/util/shape/VoxelShape;"))
+    private VoxelShape legend_of_steve$drawBlockOutline(BlockState instance, BlockView blockView, BlockPos pos, ShapeContext shapeContext, Operation<VoxelShape> original) {
+        return instance.getBlock() instanceof IModifiedOutlineRender modified ?
+                modified.getRenderedOutlineShape(instance, blockView, pos, shapeContext) :
+                original.call(instance, blockView, pos, shapeContext);
     }
 }

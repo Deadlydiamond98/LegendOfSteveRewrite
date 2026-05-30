@@ -6,7 +6,7 @@
     "half=lower,lit=true": {
       "model": "legend_of_steve:block/tall_fairy_marble_brazier_bottom"
     },
-    "lit=false": {
+    "half=upper,lit=false": {
       "model": "legend_of_steve:block/fairy_marble_brazier"
     },
     "half=upper,lit=true": {

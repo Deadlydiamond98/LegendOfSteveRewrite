@@ -9,6 +9,7 @@ import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
@@ -71,13 +72,17 @@ public class TallBrazierBlock extends BrazierBlock {
 
     @Override
     public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
-        BlockState upState = this.getDefaultState().with(HALF, DoubleBlockHalf.UPPER);
-        BlockState waterloggedState = upState.contains(Properties.WATERLOGGED) ? upState.with(Properties.WATERLOGGED, world.isWater(pos)) : upState;
-        BlockPos blockPos = pos.up();
-        world.setBlockState(blockPos, waterloggedState, 3);
+        FluidState fluidState = world.getFluidState(pos.up());
+        boolean inWater = fluidState.getFluid() == Fluids.WATER;
+
+        BlockState upState = this.getDefaultState().with(HALF, DoubleBlockHalf.UPPER)
+                .with(WATERLOGGED, inWater);
+        upState = upState.with(LIT, !inWater && upState.get(LIT));
+
+        world.setBlockState(pos.up(), upState);
 
         this.updateNeighbors(world, pos);
-        this.updateNeighbors(world, blockPos);
+        this.updateNeighbors(world, pos.up());
     }
 
     @Override

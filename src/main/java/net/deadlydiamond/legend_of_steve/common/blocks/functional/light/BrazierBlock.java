@@ -14,6 +14,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
+import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
@@ -44,6 +45,19 @@ public class BrazierBlock extends Block implements IExtinguish, Waterloggable {
         super(settings);
         setDefaultState(this.stateManager.getDefaultState().with(LIT, true).with(WATERLOGGED, false));
         this.fireDamage = fireDamage;
+    }
+
+    @Nullable
+    @Override
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
+        BlockState state = super.getPlacementState(ctx);
+        if (state != null) {
+            boolean inWater = fluidState.getFluid() == Fluids.WATER;
+
+            state = state.with(WATERLOGGED, inWater).with(LIT, !inWater && state.get(LIT));
+        }
+        return state;
     }
 
     @Override

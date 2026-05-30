@@ -24,42 +24,36 @@ public class ZeldaCreativeTabs {
                 ZeldaItems.CHARGED_BOMB_FLOWER,
                 ZeldaItems.BOMB,
                 ZeldaItems.SUPER_BOMB,
-
+                // NUT
                 ZeldaItems.DEKU_NUT,
-
                 // BOMB BAGS
-
                 ZeldaItems.BOMB_BAG,
                 ZeldaItems.GILDED_BOMB_BAG,
                 ZeldaItems.NETHERITE_BOMB_BAG,
-
                 // QUIVERS
                 ZeldaItems.QUIVER,
                 ZeldaItems.GILDED_QUIVER,
                 ZeldaItems.NETHERITE_QUIVER,
-
                 // KEYS
                 ZeldaItems.COPPER_KEY,
                 ZeldaItems.IRON_KEY,
                 ZeldaItems.GOLD_KEY,
                 ZeldaItems.BOSS_KEY,
-
                 // LOCKS
                 ZeldaItems.COPPER_LOCK,
                 ZeldaItems.IRON_LOCK,
                 ZeldaItems.GOLD_LOCK,
                 ZeldaItems.BOSS_LOCK,
-
                 // EMERALD SHARDS
                 ZeldaItems.EMERALD_SHARD,
                 ZeldaItems.EMERALD_CHUNK,
-
                 // CHITIN
                 ZeldaItems.BLUE_TEKTITE_CHITIN,
                 ZeldaItems.BLUE_TEKTITE_SHELL,
                 ZeldaItems.RED_TEKTITE_CHITIN,
                 ZeldaItems.RED_TEKTITE_SHELL,
-
+                // SWITCH CORE
+                ZeldaItems.SWITCH_CORE,
                 // MASTER
                 ZeldaItems.RAW_MASTER_ORE,
                 ZeldaItems.MASTER_SCRAP,

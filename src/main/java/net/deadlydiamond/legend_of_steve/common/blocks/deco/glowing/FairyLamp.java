@@ -16,7 +16,6 @@ public class FairyLamp extends GlowingBlock {
 
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        super.randomDisplayTick(state, world, pos, random);
         if (random.nextBoolean()) {
             this.color.createMagicSparkleParticles(world, pos.toCenterPos().add(
                     (random.nextFloat() - 0.5f) * 1.25,

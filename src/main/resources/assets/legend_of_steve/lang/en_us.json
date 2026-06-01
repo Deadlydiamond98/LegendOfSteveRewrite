@@ -293,7 +293,6 @@
   "block.legend_of_steve.brown_dungeoncite_pillar": "Brown Dungeoncite Pillar",
   "block.legend_of_steve.reinforced_brown_dungeoncite": "Reinforced Brown Dungeoncite",
 
-
   "block.legend_of_steve.master_ore": "Master Ore",
   "block.legend_of_steve.deepslate_master_ore": "Deepslate Master Ore",
   "block.legend_of_steve.master_scrap_block": "Block of Master Scrap",
@@ -371,6 +370,8 @@
   "block.legend_of_steve.red_tektile_brick_slab": "Red Tektile Brick Slab",
   "block.legend_of_steve.red_tektile_brick_stairs": "Red Tektile Brick Stairs",
   "block.legend_of_steve.red_tektile_brick_wall": "Red Tektile Brick Wall",
+
+  "block.legend_of_steve.crystal_switch": "Crystal Switch",
 
   "item.legend_of_steve.aruroda_spawn_egg": "Aruroda Spawn Egg",
   "item.legend_of_steve.fairy_spawn_egg": "Fairy Spawn Egg",
@@ -471,6 +472,8 @@
   "subtitles.legend_of_steve.item.magic_sword.shoot": "Sword Beam Shot",
   "subtitles.legend_of_steve.item.magic_sword.recharge": "Magic Sword Recharged",
 
+  "subtitles.legend_of_steve.block.crystal_switch.toggle_on": "Crystal Switch toggles on",
+  "subtitles.legend_of_steve.block.crystal_switch.toggle_off": "Crystal Switch toggles off",
 
   "death.attack.legend_of_steve.loot_pot_projectile": "%1$s was pummeled to death by flying pottery",
   "death.attack.legend_of_steve.loot_pot_projectile.player": "%1$s was pummeled to death by %2$s's pottery",

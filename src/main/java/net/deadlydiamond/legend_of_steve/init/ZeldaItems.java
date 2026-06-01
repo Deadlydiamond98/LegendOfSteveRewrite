@@ -3,6 +3,7 @@ package net.deadlydiamond.legend_of_steve.init;
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.items.EmeraldShardItem;
 import net.deadlydiamond.legend_of_steve.common.items.FairyBottleItem;
+import net.deadlydiamond.legend_of_steve.common.items.SwitchCore;
 import net.deadlydiamond.legend_of_steve.common.items.bag.BombBagItem;
 import net.deadlydiamond.legend_of_steve.common.items.bag.QuiverItem;
 import net.deadlydiamond.legend_of_steve.common.items.locking.KeyItem;
@@ -74,7 +75,7 @@ public class ZeldaItems {
     public static final Item MASTER_SCRAP = register("master_scrap", new Item(new FabricItemSettings()));
     public static final Item MASTER_INGOT = register("master_ingot", new Item(new FabricItemSettings().fireproof()));
     // SWITCH CORE
-    public static final Item SWITCH_CORE = register("switch_core", new NetherStarItem(new FabricItemSettings().rarity(Rarity.RARE)));
+    public static final Item SWITCH_CORE = register("switch_core", new SwitchCore(new FabricItemSettings().rarity(Rarity.RARE)));
     // FAIRY BOTTLE
     public static final Item FAIRY_BOTTLE = register("fairy_bottle", new FairyBottleItem(ZeldaEntityTypes.FAIRY));
 

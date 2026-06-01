@@ -5,6 +5,7 @@ import net.deadlydiamond.legend_of_steve.networking.c2s.HudScrollItemActionC2SPa
 import net.deadlydiamond.legend_of_steve.networking.c2s.RequestChestLockedStateC2SPacket;
 import net.deadlydiamond.legend_of_steve.networking.s2c.ItemTransmutationPoofS2CPacket;
 import net.deadlydiamond.legend_of_steve.networking.s2c.UpdateChestLockedStateS2CPacket;
+import net.deadlydiamond.legend_of_steve.networking.s2c.UpdateCrystalSwitchHitS2CPacket;
 import net.deadlydiamond.legend_of_steve.networking.s2c.question_block.JumpIntoBlockS2CPacket;
 import net.deadlydiamond.legend_of_steve.networking.s2c.UpdateEntityStunS2CPacket;
 import net.deadlydiamond.legend_of_steve.networking.s2c.pushable_block.AddBlockBreakCooldownS2CPacket;
@@ -30,6 +31,7 @@ public class ZeldaNetworking {
             ClientPlayNetworking.registerGlobalReceiver(JumpIntoBlockS2CPacket.ID, JumpIntoBlockS2CPacket.Handler::receive);
             ClientPlayNetworking.registerGlobalReceiver(UpdateBlockHitS2CPacket.ID, UpdateBlockHitS2CPacket.Handler::receive);
             ClientPlayNetworking.registerGlobalReceiver(UpdateChestLockedStateS2CPacket.ID, UpdateChestLockedStateS2CPacket.Handler::receive);
+            ClientPlayNetworking.registerGlobalReceiver(UpdateCrystalSwitchHitS2CPacket.ID, UpdateCrystalSwitchHitS2CPacket.Handler::receive);
         }
     }
 }

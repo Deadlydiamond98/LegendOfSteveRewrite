@@ -2,6 +2,7 @@ package net.deadlydiamond.legend_of_steve.init;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.bes.BombFlowerBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.bes.CrystalSwitchBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.MasterBarrelBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.single.LootPotBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.single.HittableContainerBlockEntity;
@@ -48,6 +49,10 @@ public class ZeldaBlockEntities {
 
     public static final BlockEntityType<BombFlowerBlockEntity> BOMB_FLOWER = register("bomb_flower", BombFlowerBlockEntity::new,
             ZeldaBlocks.BOMB_FLOWER
+    );
+
+    public static final BlockEntityType<CrystalSwitchBlockEntity> CRYSTAL_SWITCH = register("crystal_switch", CrystalSwitchBlockEntity::new,
+            ZeldaBlocks.CRYSTAL_SWITCH
     );
 
     // HELPER METHODS //////////////////////////////////////////////////////////////////////////////////////////////////

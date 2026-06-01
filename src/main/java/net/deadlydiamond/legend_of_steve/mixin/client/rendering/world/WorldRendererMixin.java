@@ -1,5 +1,6 @@
 package net.deadlydiamond.legend_of_steve.mixin.client.rendering.world;
 
+import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.deadlydiamond.legend_of_steve.common.blocks.IModifiedOutlineRender;
@@ -10,6 +11,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.entity.Entity;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -68,10 +70,21 @@ public abstract class WorldRendererMixin {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    // Custom Block Outline
+
     @WrapOperation(method = "drawBlockOutline", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;getOutlineShape(Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/ShapeContext;)Lnet/minecraft/util/shape/VoxelShape;"))
     private VoxelShape legend_of_steve$drawBlockOutline(BlockState instance, BlockView blockView, BlockPos pos, ShapeContext shapeContext, Operation<VoxelShape> original) {
         return instance.getBlock() instanceof IModifiedOutlineRender modified ?
                 modified.getRenderedOutlineShape(instance, blockView, pos, shapeContext) :
                 original.call(instance, blockView, pos, shapeContext);
+    }
+
+    @WrapMethod(method = "drawBlockOutline")
+    private void legend_of_steve$drawBlockOutline(MatrixStack matrices, VertexConsumer vertexConsumer, Entity entity, double cameraX, double cameraY, double cameraZ, BlockPos pos, BlockState state, Operation<Void> original) {
+        if (state.getBlock() instanceof IModifiedOutlineRender modified) {
+            pos = pos.add(modified.getOffset(pos, state));
+        }
+
+        original.call(matrices, vertexConsumer, entity, cameraX, cameraY, cameraZ, pos, state);
     }
 }

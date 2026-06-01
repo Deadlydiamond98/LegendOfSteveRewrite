@@ -16,6 +16,8 @@ import java.util.function.Function;
 public class ZeldaParticleTypes {
     // REGULAR PARTICLES ///////////////////////////////////////////////////////////////////////////////////////////////
     public static final DefaultParticleType DEKU_NUT_FLASH = register("deku_nut_flash", true);
+    public static final DefaultParticleType CRYSTAL_SWITCH_ON_PARTICLE = register("crystal_switch_on", false);
+    public static final DefaultParticleType CRYSTAL_SWITCH_OFF_PARTICLE = register("crystal_switch_off", false);
 
     // COMPLEX PARTICLES ///////////////////////////////////////////////////////////////////////////////////////////////
     public static final ParticleType<SparkParticleEffect> SPARK = register(

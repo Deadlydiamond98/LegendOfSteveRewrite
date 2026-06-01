@@ -114,6 +114,8 @@ public class ZeldaBlockSettings {
     public static final FabricBlockSettings LOOT_POT_SETTINGS = FabricBlockSettings.copyOf(Blocks.DECORATED_POT)
             .sounds(BlockSoundGroup.DECORATED_POT_SHATTER);
 
+    public static final FabricBlockSettings CRYSTAL_SWITCH_SETTINGS = FabricBlockSettings.copyOf(Blocks.STONE).luminance(state -> 15);
+
     public static final FabricBlockSettings CRATE_SETTINGS = FabricBlockSettings.copyOf(Blocks.CHISELED_BOOKSHELF);
 
 

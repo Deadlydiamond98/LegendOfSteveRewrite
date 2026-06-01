@@ -1431,6 +1431,22 @@
     "subtitle": "subtitles.legend_of_steve.block.question_block.empty_content"
   },
 
+  "block.crystal_switch.toggle_on": {
+    "sounds": [
+      "legend_of_steve:block/crystal_switch/toggle"
+    ],
+    "subtitle": "subtitles.legend_of_steve.block.crystal_switch.toggle_on"
+  },
+  "block.crystal_switch.toggle_off": {
+    "sounds": [
+      {
+        "name": "legend_of_steve:block/crystal_switch/toggle",
+        "pitch": 0.75
+      }
+    ],
+    "subtitle": "subtitles.legend_of_steve.block.crystal_switch.toggle_off"
+  },
+
   "block.crate.open": {
     "sounds": [
       "block/barrel/open1",

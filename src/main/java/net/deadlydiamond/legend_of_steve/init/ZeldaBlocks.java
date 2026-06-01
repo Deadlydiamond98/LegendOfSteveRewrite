@@ -33,6 +33,8 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.util.Rarity;
+import org.jetbrains.annotations.Nullable;
 
 import static net.deadlydiamond.legend_of_steve.init.ZeldaBlockSettings.*;
 
@@ -106,7 +108,7 @@ public class ZeldaBlocks {
     public static final Block DEEPSLATE_MASTER_ORE = register("deepslate_master_ore", new ExperienceDroppingBlock(DEEPSLATE_MASTER_ORE_BLOCK_SETTINGS));
 
     public static final Block MASTER_SCRAP_BLOCK = register("master_scrap_block", new Block(MASTER_SCRAP_SETTINGS));
-    public static final Block MASTER_BLOCK = registerNetherite("master_block", new Block(MASTER_BLOCK_SETTINGS));
+    public static final Block MASTER_BLOCK = register("master_block", new Block(MASTER_BLOCK_SETTINGS), new FabricItemSettings().fireproof());
     public static final BaseStairSlabBlockset MASTER_PLATE = new BaseStairSlabBlockset(LegendOfSteve.MOD_ID, "master_plate", MASTER_PLATE_SETTINGS);
     public static final BaseStairSlabBlockset MASTER_BRICK = new BaseStairSlabBlockset(LegendOfSteve.MOD_ID, "master_bricks", MASTER_SCRAP_SETTINGS);
     public static final BaseStairSlabBlockset MASTER_TILE = new BaseStairSlabBlockset(LegendOfSteve.MOD_ID, "master_tile", MASTER_SCRAP_SETTINGS);
@@ -164,7 +166,8 @@ public class ZeldaBlocks {
 
     // SWITCH BLOCKS
 
-    public static final Block CRYSTAL_SWITCH = register("crystal_switch", new CrystalSwitchBlock(FabricBlockSettings.copyOf(Blocks.STONE)));
+    public static final Block CRYSTAL_SWITCH = register("crystal_switch", new CrystalSwitchBlock(CRYSTAL_SWITCH_SETTINGS), new FabricItemSettings().rarity(Rarity.RARE));
+    public static final Block ON_BLOCK = register("on_block", new Block(FabricBlockSettings.copyOf(Blocks.STONE)));
 
     // SWORD PEDESTALS
     public static final Block STONE_SWORD_PEDESTAL = register("stone_sword_pedestal", new SwordPedestal(FabricBlockSettings.copyOf(Blocks.STONE)));
@@ -193,14 +196,13 @@ public class ZeldaBlocks {
     }
 
     public static Block register(String id, Block block, boolean withItem) {
-        if (withItem) {
-            ZeldaItems.register(id, new BlockItem(block, new FabricItemSettings()));
-        }
-        return Registry.register(Registries.BLOCK, LegendOfSteve.id(id), block);
+        return register(id, block, withItem ? new FabricItemSettings() : null);
     }
 
-    public static Block registerNetherite(String id, Block block) {
-        ZeldaItems.register(id, new BlockItem(block, new FabricItemSettings().fireproof()));
+    public static Block register(String id, Block block, @Nullable FabricItemSettings settings) {
+        if (settings != null) {
+            ZeldaItems.register(id, new BlockItem(block, settings));
+        }
         return Registry.register(Registries.BLOCK, LegendOfSteve.id(id), block);
     }
 

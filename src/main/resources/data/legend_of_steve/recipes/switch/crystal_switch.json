@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "gOg",
+    "GGG",
+    "DDD"
+  ],
+  "key": {
+    "O": {
+      "item": "legend_of_steve:switch_core"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "g": {
+      "item": "minecraft:gold_nugget"
+    },
+    "D": {
+      "item": "minecraft:polished_deepslate"
+    }
+  },
+  "result": {
+    "item": "legend_of_steve:crystal_switch"
+  }
+}

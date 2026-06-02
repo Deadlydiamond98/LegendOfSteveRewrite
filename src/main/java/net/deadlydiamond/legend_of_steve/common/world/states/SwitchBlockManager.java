@@ -4,12 +4,13 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.PersistentState;
 import net.minecraft.world.PersistentStateManager;
+import net.minecraft.world.World;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class SwitchBlockManager extends PersistentState {
-    private static final Map<String, Boolean> SWITCH_GROUPS = new HashMap<>();
+    private final Map<String, Boolean> switchGroups = new HashMap<>();
 
     public SwitchBlockManager() {
         this.markDirty();
@@ -18,7 +19,7 @@ public class SwitchBlockManager extends PersistentState {
     @Override
     public NbtCompound writeNbt(NbtCompound nbt) {
         NbtCompound switchNBT = new NbtCompound();
-        for (Map.Entry<String, Boolean> entry : SWITCH_GROUPS.entrySet()) {
+        for (Map.Entry<String, Boolean> entry : switchGroups.entrySet()) {
             switchNBT.putBoolean(entry.getKey(), entry.getValue());
         }
         nbt.put("SwitchBlocks", switchNBT);
@@ -32,11 +33,30 @@ public class SwitchBlockManager extends PersistentState {
         if (nbt.contains("SwitchBlocks")) {
             NbtCompound switchNBT = nbt.getCompound("SwitchBlocks");
             for (String key : switchNBT.getKeys()) {
-                SWITCH_GROUPS.put(key, switchNBT.getBoolean(key));
+                states.switchGroups.put(key, switchNBT.getBoolean(key));
             }
         }
 
         return states;
+    }
+
+    public static boolean get(World world, String key) {
+        if (world instanceof ServerWorld serverWorld) {
+            return getManager(serverWorld).get(key);
+        }
+        return true;
+    }
+
+    public static void set(World world, String key, boolean bl) {
+        if (world instanceof ServerWorld serverWorld) {
+            getManager(serverWorld).set(key, bl);
+        }
+    }
+
+    public static void trigger(World world, String key) {
+        if (world instanceof ServerWorld serverWorld) {
+            getManager(serverWorld).trigger(key);
+        }
     }
 
     public static SwitchBlockManager getManager(ServerWorld world) {
@@ -46,12 +66,12 @@ public class SwitchBlockManager extends PersistentState {
     }
 
     public boolean get(String key) {
-        SWITCH_GROUPS.putIfAbsent(key, true);
-        return SWITCH_GROUPS.get(key);
+        switchGroups.putIfAbsent(key, true);
+        return switchGroups.get(key);
     }
 
     public void set(String key, boolean bl) {
-        SWITCH_GROUPS.put(key, bl);
+        switchGroups.put(key, bl);
         this.markDirty();
     }
 

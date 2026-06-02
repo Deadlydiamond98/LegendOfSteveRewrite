@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.common.blocks;
+package net.deadlydiamond.legend_of_steve.common.blocks.functional.mario;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;

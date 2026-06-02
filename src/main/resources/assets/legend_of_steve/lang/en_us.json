@@ -391,6 +391,7 @@
   "entity.legend_of_steve.thrown_pot": "Thrown Pot",
 
   "tooltip.legend_of_steve.pushable": "Pushable",
+  "tooltip.legend_of_steve.block_group": "Block Group:",
 
   "effect.legend_of_steve.pondstriding": "Pondstriding",
   "effect.legend_of_steve.water_weight": "Water Weight",

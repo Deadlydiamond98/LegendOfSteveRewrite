@@ -1,6 +1,6 @@
 package net.deadlydiamond.legend_of_steve.common.blocks.functional.switches;
 
-import net.deadlydiamond.legend_of_steve.common.bes.CrystalSwitchBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.bes.switches.CrystalSwitchBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.blocks.IExplodedInteraction;
 import net.deadlydiamond.legend_of_steve.common.blocks.IModifiedOutlineRender;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.AbstractBombEntity;
@@ -16,7 +16,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
-import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.BlockSoundGroup;
@@ -208,7 +207,7 @@ public class CrystalSwitchBlock extends AbstractSwitchBlock implements IHitBlock
                 world.getPlayers().forEach(player -> UpdateCrystalSwitchHitS2CPacket.send(player, pos, !switchBlock.isOn()));
                 newState = !switchBlock.isOn();
 
-                switchBlock.updateOnState(newState, true);
+                switchBlock.triggerSwitch();
                 world.playSound(null, pos,
                         newState ? ZeldaSounds.CRYSTAL_SWITCH_ON : ZeldaSounds.CRYSTAL_SWITCH_OFF,
                         SoundCategory.BLOCKS, 1, 1

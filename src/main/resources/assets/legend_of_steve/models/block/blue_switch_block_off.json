@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "legend_of_steve:block/blue_switch_block_off",
+    "particle": "legend_of_steve:block/blue_switch_block_on"
+  }
+}

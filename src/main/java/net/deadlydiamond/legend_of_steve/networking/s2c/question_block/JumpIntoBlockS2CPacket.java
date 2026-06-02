@@ -1,7 +1,7 @@
 package net.deadlydiamond.legend_of_steve.networking.s2c.question_block;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
-import net.deadlydiamond.legend_of_steve.common.blocks.IJumpIntoAction;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.IJumpIntoAction;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;

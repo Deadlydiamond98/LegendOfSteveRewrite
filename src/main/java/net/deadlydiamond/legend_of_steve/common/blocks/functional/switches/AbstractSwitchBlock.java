@@ -1,6 +1,7 @@
 package net.deadlydiamond.legend_of_steve.common.blocks.functional.switches;
 
-import net.deadlydiamond.legend_of_steve.common.bes.CrystalSwitchBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.bes.switches.CrystalSwitchBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.bes.switches.SwitchBlockEntity;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlockEntities;
 import net.deadlydiamond.legend_of_steve.init.ZeldaParticleTypes;
 import net.minecraft.block.*;
@@ -47,8 +48,8 @@ public class AbstractSwitchBlock extends BlockWithEntity implements Waterloggabl
 
     @Override
     public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
-        if (world.getBlockEntity(pos) instanceof CrystalSwitchBlockEntity switchBlock) {
-            switchBlock.syncOnState();
+        if (world.getBlockEntity(pos) instanceof SwitchBlockEntity switchBlock) {
+            switchBlock.init(world, pos, state);
         }
     }
 
@@ -86,7 +87,7 @@ public class AbstractSwitchBlock extends BlockWithEntity implements Waterloggabl
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, ZeldaBlockEntities.CRYSTAL_SWITCH, CrystalSwitchBlockEntity::tick);
+        return checkType(type, ZeldaBlockEntities.CRYSTAL_SWITCH, SwitchBlockEntity::tick);
     }
 
     @Override
@@ -102,7 +103,7 @@ public class AbstractSwitchBlock extends BlockWithEntity implements Waterloggabl
 
     @Override
     public int getComparatorOutput(BlockState state, World world, BlockPos pos) {
-        if (!world.isClient() && world.getBlockEntity(pos) instanceof CrystalSwitchBlockEntity switchBlock) {
+        if (!world.isClient() && world.getBlockEntity(pos) instanceof SwitchBlockEntity switchBlock) {
             return switchBlock.isOn() ? 15 : 0;
         }
         return 0;

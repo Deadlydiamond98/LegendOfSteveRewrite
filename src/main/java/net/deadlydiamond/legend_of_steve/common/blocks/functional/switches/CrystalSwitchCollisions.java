@@ -1,6 +1,6 @@
 package net.deadlydiamond.legend_of_steve.common.blocks.functional.switches;
 
-import net.deadlydiamond.legend_of_steve.common.bes.CrystalSwitchBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.bes.switches.CrystalSwitchBlockEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.util.shape.VoxelShape;

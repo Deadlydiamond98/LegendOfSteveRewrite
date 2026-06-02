@@ -2,7 +2,7 @@ package net.deadlydiamond.legend_of_steve.client.rendering.block;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.client.models.block.CrystalSwitchOrbModel;
-import net.deadlydiamond.legend_of_steve.common.bes.CrystalSwitchBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.bes.switches.CrystalSwitchBlockEntity;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;

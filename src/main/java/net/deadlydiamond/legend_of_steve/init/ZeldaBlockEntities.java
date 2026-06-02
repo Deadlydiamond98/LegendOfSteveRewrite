@@ -2,11 +2,12 @@ package net.deadlydiamond.legend_of_steve.init;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.bes.BombFlowerBlockEntity;
-import net.deadlydiamond.legend_of_steve.common.bes.CrystalSwitchBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.bes.switches.CrystalSwitchBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.MasterBarrelBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.single.LootPotBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.single.HittableContainerBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.single.SwordPedestalBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.bes.switches.SwitchBlockEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntity;
@@ -44,15 +45,21 @@ public class ZeldaBlockEntities {
             ZeldaBlocks.STRANGE_BLUE_DIRT_BRICKS.container
     );
 
+    // SWITCH BLOCK ENTITIES ///////////////////////////////////////////////////////////////////////////////////////////
+
+    public static final BlockEntityType<SwitchBlockEntity> SWITCH_BLOCK = register("switch_block", SwitchBlockEntity::new,
+            ZeldaBlocks.RED_SWITCH_BLOCK,
+            ZeldaBlocks.BLUE_SWITCH_BLOCK
+    );
+
+    public static final BlockEntityType<CrystalSwitchBlockEntity> CRYSTAL_SWITCH = register("crystal_switch", CrystalSwitchBlockEntity::new,
+            ZeldaBlocks.CRYSTAL_SWITCH
+    );
 
     // OTHER BLOCK ENTITIES ////////////////////////////////////////////////////////////////////////////////////////////
 
     public static final BlockEntityType<BombFlowerBlockEntity> BOMB_FLOWER = register("bomb_flower", BombFlowerBlockEntity::new,
             ZeldaBlocks.BOMB_FLOWER
-    );
-
-    public static final BlockEntityType<CrystalSwitchBlockEntity> CRYSTAL_SWITCH = register("crystal_switch", CrystalSwitchBlockEntity::new,
-            ZeldaBlocks.CRYSTAL_SWITCH
     );
 
     // HELPER METHODS //////////////////////////////////////////////////////////////////////////////////////////////////

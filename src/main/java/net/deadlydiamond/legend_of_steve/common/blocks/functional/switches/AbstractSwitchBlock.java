@@ -57,12 +57,12 @@ public class AbstractSwitchBlock extends BlockWithEntity implements Waterloggabl
         return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
     }
 
-    public void createSwitchParticles(World world, BlockPos blockPos, int amount, boolean isOn) {
+    public void createSwitchParticles(World world, BlockPos blockPos, int amount, float range, boolean isOn) {
         for (int i = 0; i < amount; i++) {
             Vec3d pos = blockPos.toCenterPos().add(0, 0.5625, 0).add(
-                    (world.random.nextFloat() * 0.375) * (world.random.nextBoolean() ? -1 : 1),
-                    (world.random.nextFloat() * 0.375) * (world.random.nextBoolean() ? -0.85 : 1),
-                    (world.random.nextFloat() * 0.375) * (world.random.nextBoolean() ? -1 : 1)
+                    (world.random.nextFloat() * range) * (world.random.nextBoolean() ? -1 : 1),
+                    (world.random.nextFloat() * range) * (world.random.nextBoolean() ? -0.85 : 1),
+                    (world.random.nextFloat() * range) * (world.random.nextBoolean() ? -1 : 1)
             );
 
             world.addParticle(
@@ -93,5 +93,18 @@ public class AbstractSwitchBlock extends BlockWithEntity implements Waterloggabl
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
         builder.add(WATERLOGGED);
+    }
+
+    @Override
+    public boolean hasComparatorOutput(BlockState state) {
+        return true;
+    }
+
+    @Override
+    public int getComparatorOutput(BlockState state, World world, BlockPos pos) {
+        if (!world.isClient() && world.getBlockEntity(pos) instanceof CrystalSwitchBlockEntity switchBlock) {
+            return switchBlock.isOn() ? 15 : 0;
+        }
+        return 0;
     }
 }

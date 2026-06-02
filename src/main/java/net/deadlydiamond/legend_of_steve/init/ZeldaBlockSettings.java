@@ -109,12 +109,23 @@ public class ZeldaBlockSettings {
             .sounds(ZeldaSounds.TEKTILES)
             .mapColor(MapColor.RED);
 
+    // SWITCH BLOCKS
+    public static final FabricBlockSettings CRYSTAL_SWITCH_SETTINGS = FabricBlockSettings.copyOf(Blocks.POLISHED_DEEPSLATE)
+            .sounds(ZeldaSounds.CRYSTAL_SWITCH)
+            .luminance(state -> 15);
+
+    public static final FabricBlockSettings ON_BLOCK_SETTINGS = FabricBlockSettings.copyOf(Blocks.CALCITE)
+            .mapColor(DyeColor.RED)
+            .sounds(ZeldaSounds.CRYSTAL_SWITCH)
+            .luminance(state -> 7);
+
+    public static final FabricBlockSettings OFF_BLOCK_SETTINGS = FabricBlockSettings.copyOf(ON_BLOCK_SETTINGS)
+            .mapColor(DyeColor.BLUE);
+
     // OTHER
 
     public static final FabricBlockSettings LOOT_POT_SETTINGS = FabricBlockSettings.copyOf(Blocks.DECORATED_POT)
             .sounds(BlockSoundGroup.DECORATED_POT_SHATTER);
-
-    public static final FabricBlockSettings CRYSTAL_SWITCH_SETTINGS = FabricBlockSettings.copyOf(Blocks.STONE).luminance(state -> 15);
 
     public static final FabricBlockSettings CRATE_SETTINGS = FabricBlockSettings.copyOf(Blocks.CHISELED_BOOKSHELF);
 

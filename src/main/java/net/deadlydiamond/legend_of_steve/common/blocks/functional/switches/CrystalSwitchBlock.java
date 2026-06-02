@@ -4,8 +4,6 @@ import net.deadlydiamond.legend_of_steve.common.bes.CrystalSwitchBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.blocks.IExplodedInteraction;
 import net.deadlydiamond.legend_of_steve.common.blocks.IModifiedOutlineRender;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.AbstractBombEntity;
-import net.deadlydiamond.legend_of_steve.common.items.IExtraCanMine;
-import net.deadlydiamond.legend_of_steve.common.particles.SparkParticleEffect;
 import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
 import net.deadlydiamond.legend_of_steve.networking.s2c.UpdateCrystalSwitchHitS2CPacket;
 import net.deadlydiamond98.koalalib.common.blocks.interaction.IHitBlockAction;
@@ -21,6 +19,7 @@ import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.EnumProperty;
@@ -37,7 +36,7 @@ import net.minecraft.world.*;
 import net.minecraft.world.explosion.Explosion;
 import org.jetbrains.annotations.Nullable;
 
-public class CrystalSwitchBlock extends AbstractSwitchBlock implements IHitBlockAction, IModifiedOutlineRender, IExtraCanMine, IExplodedInteraction {
+public class CrystalSwitchBlock extends AbstractSwitchBlock implements IHitBlockAction, IModifiedOutlineRender, IExplodedInteraction {
     public static final EnumProperty<DoubleBlockHalf> HALF = Properties.DOUBLE_BLOCK_HALF;
 
     public CrystalSwitchBlock(Settings settings) {
@@ -47,15 +46,24 @@ public class CrystalSwitchBlock extends AbstractSwitchBlock implements IHitBlock
 
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        if (isBottom(state) && world.random.nextBoolean()) {
+        if (isBottom(state) && random.nextBoolean()) {
             if (getBlockEntity(world, pos, state) instanceof CrystalSwitchBlockEntity switchBlock) {
-                createSwitchParticles(world, pos, 1, switchBlock.isOn());
+                createSwitchParticles(world, pos, 1, 0.375f, switchBlock.isOn());
             }
+        }
+
+        if (random.nextInt(750) == 0) {
+            world.playSoundAtBlockCenter(pos, ZeldaSounds.CRYSTAL_SWITCH_AMBIENT, SoundCategory.BLOCKS, 0.5f, 1, true);
         }
     }
 
     public boolean isBottom(BlockState state) {
         return state.get(HALF) == DoubleBlockHalf.LOWER;
+    }
+
+    @Override
+    public BlockSoundGroup getSoundGroup(BlockState state) {
+        return !isBottom(state) ? BlockSoundGroup.INTENTIONALLY_EMPTY : super.getSoundGroup(state);
     }
 
     // PLACEMENT ///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -104,13 +112,14 @@ public class CrystalSwitchBlock extends AbstractSwitchBlock implements IHitBlock
 
     @Override
     public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
-        if (!world.isClient && player.isCreative() && isBottom(state)) {
-            BlockPos blockPos = pos.down();
-            BlockState blockState = world.getBlockState(blockPos);
-            if (blockState.isOf(state.getBlock()) && blockState.get(HALF) == DoubleBlockHalf.LOWER) {
-                BlockState blockState2 = blockState.getFluidState().isOf(Fluids.WATER) ? Blocks.WATER.getDefaultState() : Blocks.AIR.getDefaultState();
-                world.setBlockState(blockPos, blockState2, Block.NOTIFY_ALL | Block.SKIP_DROPS);
-                world.syncWorldEvent(player, WorldEvents.BLOCK_BROKEN, blockPos, Block.getRawIdFromState(blockState));
+        if (!world.isClient && player.isCreative()) {
+            DoubleBlockHalf doubleBlockHalf = state.get(HALF);
+            if (doubleBlockHalf == DoubleBlockHalf.UPPER) {
+                BlockPos blockPos = pos.down();
+                BlockState blockState = world.getBlockState(blockPos);
+                if (blockState.isOf(state.getBlock()) && blockState.get(HALF) == DoubleBlockHalf.LOWER) {
+                    world.breakBlock(blockPos, false, player);
+                }
             }
         }
 
@@ -164,8 +173,8 @@ public class CrystalSwitchBlock extends AbstractSwitchBlock implements IHitBlock
     }
 
     @Override
-    public boolean canMineBlock(BlockState state, World world, BlockPos pos, PlayerEntity miner) {
-        return !hitOrb(state, miner);
+    public float calcBlockBreakingDelta(BlockState state, PlayerEntity player, BlockView world, BlockPos pos) {
+        return hitOrb(state, player) ? 0 : super.calcBlockBreakingDelta(state, player, world, pos);
     }
 
     @Override
@@ -206,11 +215,7 @@ public class CrystalSwitchBlock extends AbstractSwitchBlock implements IHitBlock
                 );
             } else {
                 BlockPos particlePos = isBottom(state) ? pos : pos.down();
-                createSwitchParticles(world, particlePos, world.random.nextBetween(10, 15), newState);
-                SparkParticleEffect.createSparks(
-                        world, newState ? new SparkParticleEffect(0xf8f8f8, 0xe6566f) : new SparkParticleEffect(0xf8f8f8, 0x509aee),
-                        particlePos.toCenterPos().add(0, 0.5625, 0), 10
-                );
+                createSwitchParticles(world, particlePos, world.random.nextBetween(12, 20), 0.4f, newState);
             }
             switchBlock.setTriggerCooldown(3);
         }
@@ -244,20 +249,5 @@ public class CrystalSwitchBlock extends AbstractSwitchBlock implements IHitBlock
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return CrystalSwitchCollisions.getOrbShape(getBlockEntity(world, pos, state), isBottom(state));
-    }
-
-    // OTHER ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    @Override
-    public boolean hasComparatorOutput(BlockState state) {
-        return true;
-    }
-
-    @Override
-    public int getComparatorOutput(BlockState state, World world, BlockPos pos) {
-        if (!world.isClient() && getBlockEntity(world, pos, state) instanceof CrystalSwitchBlockEntity switchBlock) {
-            return switchBlock.isOn() ? 15 : 0;
-        }
-        return 0;
     }
 }

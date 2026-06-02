@@ -97,7 +97,11 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
                 ZeldaBlocks.STRANGE_DIRT_PILLAR,
                 ZeldaBlocks.STRANGE_BLUE_DIRT_PILLAR,
                 ZeldaBlocks.QUESTION_BLOCK,
-                // Other
+                // Switch Blocks
+                ZeldaBlocks.CRYSTAL_SWITCH,
+                ZeldaBlocks.RED_SWITCH_BLOCK,
+                ZeldaBlocks.BLUE_SWITCH_BLOCK,
+                // Sword Pedestal
                 ZeldaBlocks.STONE_SWORD_PEDESTAL,
                 ZeldaBlocks.DEEPSLATE_SWORD_PEDESTAL,
                 ZeldaBlocks.BLACKSTONE_SWORD_PEDESTAL,

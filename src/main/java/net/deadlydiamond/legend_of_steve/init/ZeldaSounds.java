@@ -45,14 +45,16 @@ public class ZeldaSounds {
     // Strange Dirt
     public static final BlockSoundGroup STRANGE_DIRT = registerGroup("strange_dirt", 1, 1.25f);
     public static final BlockSoundGroup STRANGE_BLUE_DIRT = registerGroup("strange_blue_dirt", 1, 1);
-    public static final BlockSoundGroup QUESTION_BLOCK = registerGroup("question_block", 1, 1);
     // Question Block
+    public static final BlockSoundGroup QUESTION_BLOCK = registerGroup("question_block", 1, 1);
     public static final SoundEvent QUESTION_BLOCK_HIT = register("block.question_block.bounce");
     public static final SoundEvent QUESTION_BLOCK_EMPTY_CONTENTS = register("block.question_block.empty_content");
     public static final SoundEvent QUESTION_BLOCK_DEPOSIT = register("block.question_block.deposit");
     // Crystal Switch
+    public static final BlockSoundGroup CRYSTAL_SWITCH = registerGroup("crystal_switch", 1, 1);
     public static final SoundEvent CRYSTAL_SWITCH_ON = register("block.crystal_switch.toggle_on");
     public static final SoundEvent CRYSTAL_SWITCH_OFF = register("block.crystal_switch.toggle_off");
+    public static final SoundEvent CRYSTAL_SWITCH_AMBIENT = register("block.crystal_switch.ambient");
     // Crate
     public static final SoundEvent CRATE_OPEN = register("block.crate.open");
     public static final SoundEvent CRATE_CLOSE = register("block.crate.close");

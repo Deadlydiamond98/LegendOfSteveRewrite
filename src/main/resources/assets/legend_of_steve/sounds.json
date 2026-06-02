@@ -1431,6 +1431,61 @@
     "subtitle": "subtitles.legend_of_steve.block.question_block.empty_content"
   },
 
+  "block.crystal_switch.break": {
+    "sounds": [
+      "legend_of_steve:block/crystal_switch/break1",
+      "legend_of_steve:block/crystal_switch/break2",
+      "legend_of_steve:block/crystal_switch/break3",
+      "legend_of_steve:block/crystal_switch/break4",
+      "legend_of_steve:block/crystal_switch/break5",
+      "legend_of_steve:block/crystal_switch/break6"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.crystal_switch.fall": {
+    "sounds": [
+      "legend_of_steve:block/crystal_switch/step1",
+      "legend_of_steve:block/crystal_switch/step2",
+      "legend_of_steve:block/crystal_switch/step3",
+      "legend_of_steve:block/crystal_switch/step4",
+      "legend_of_steve:block/crystal_switch/step5",
+      "legend_of_steve:block/crystal_switch/step6"
+    ],
+    "subtitle": "subtitles.block.generic.fall"
+  },
+  "block.crystal_switch.hit": {
+    "sounds": [
+      "legend_of_steve:block/crystal_switch/step1",
+      "legend_of_steve:block/crystal_switch/step2",
+      "legend_of_steve:block/crystal_switch/step3",
+      "legend_of_steve:block/crystal_switch/step4",
+      "legend_of_steve:block/crystal_switch/step5",
+      "legend_of_steve:block/crystal_switch/step6"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.crystal_switch.place": {
+    "sounds": [
+      "legend_of_steve:block/crystal_switch/place1",
+      "legend_of_steve:block/crystal_switch/place2",
+      "legend_of_steve:block/crystal_switch/place3",
+      "legend_of_steve:block/crystal_switch/place4",
+      "legend_of_steve:block/crystal_switch/place5",
+      "legend_of_steve:block/crystal_switch/place6"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.crystal_switch.step": {
+    "sounds": [
+      "legend_of_steve:block/crystal_switch/step1",
+      "legend_of_steve:block/crystal_switch/step2",
+      "legend_of_steve:block/crystal_switch/step3",
+      "legend_of_steve:block/crystal_switch/step4",
+      "legend_of_steve:block/crystal_switch/step5",
+      "legend_of_steve:block/crystal_switch/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
   "block.crystal_switch.toggle_on": {
     "sounds": [
       "legend_of_steve:block/crystal_switch/toggle"
@@ -1445,6 +1500,34 @@
       }
     ],
     "subtitle": "subtitles.legend_of_steve.block.crystal_switch.toggle_off"
+  },
+  "block.crystal_switch.ambient": {
+    "sounds": [
+      {
+        "name": "legend_of_steve:block/crystal_switch/ambient",
+        "pitch": 0.875
+      },
+      {
+        "name": "legend_of_steve:block/crystal_switch/ambient"
+      },
+      {
+        "name": "legend_of_steve:block/crystal_switch/ambient",
+        "pitch": 1.125
+      },
+      {
+        "name": "legend_of_steve:block/crystal_switch/ambient",
+        "pitch": 1.25
+      },
+      {
+        "name": "legend_of_steve:block/crystal_switch/ambient",
+        "pitch": 1.375
+      },
+      {
+        "name": "legend_of_steve:block/crystal_switch/ambient",
+        "pitch": 1.5
+      }
+    ],
+    "subtitle": "subtitles.legend_of_steve.block.crystal_switch.ambient"
   },
 
   "block.crate.open": {

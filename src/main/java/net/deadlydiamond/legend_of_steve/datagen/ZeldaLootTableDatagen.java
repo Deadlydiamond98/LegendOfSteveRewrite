@@ -104,6 +104,10 @@ public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
                 ZeldaBlocks.STRANGE_DIRT_PILLAR,
                 ZeldaBlocks.STRANGE_BLUE_DIRT_PILLAR,
                 ZeldaBlocks.QUESTION_BLOCK,
+                // Switch
+                ZeldaBlocks.RED_SWITCH_BLOCK,
+                ZeldaBlocks.BLUE_SWITCH_BLOCK,
+
                 // Other
                 ZeldaBlocks.STONE_SWORD_PEDESTAL,
                 ZeldaBlocks.DEEPSLATE_SWORD_PEDESTAL,
@@ -140,6 +144,7 @@ public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
         addDropWithSilkTouch(ZeldaBlocks.DYED_LOOT_POTS.pink);
 
         addDrop(ZeldaBlocks.MASTER_DOOR, doorDrops(ZeldaBlocks.MASTER_DOOR));
+        addDrop(ZeldaBlocks.CRYSTAL_SWITCH, doorDrops(ZeldaBlocks.CRYSTAL_SWITCH));
     }
 
     private void generateLootTables(AbstractBlockset... blocksets) {

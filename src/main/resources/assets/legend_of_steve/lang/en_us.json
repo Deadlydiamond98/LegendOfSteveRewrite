@@ -372,6 +372,8 @@
   "block.legend_of_steve.red_tektile_brick_wall": "Red Tektile Brick Wall",
 
   "block.legend_of_steve.crystal_switch": "Crystal Switch",
+  "block.legend_of_steve.red_switch_block": "Red Switch Block",
+  "block.legend_of_steve.blue_switch_block": "Blue Switch Block",
 
   "item.legend_of_steve.aruroda_spawn_egg": "Aruroda Spawn Egg",
   "item.legend_of_steve.fairy_spawn_egg": "Fairy Spawn Egg",
@@ -474,6 +476,7 @@
 
   "subtitles.legend_of_steve.block.crystal_switch.toggle_on": "Crystal Switch toggles on",
   "subtitles.legend_of_steve.block.crystal_switch.toggle_off": "Crystal Switch toggles off",
+  "subtitles.legend_of_steve.block.crystal_switch.ambient": "Crystal Switch glistens",
 
   "death.attack.legend_of_steve.loot_pot_projectile": "%1$s was pummeled to death by flying pottery",
   "death.attack.legend_of_steve.loot_pot_projectile.player": "%1$s was pummeled to death by %2$s's pottery",

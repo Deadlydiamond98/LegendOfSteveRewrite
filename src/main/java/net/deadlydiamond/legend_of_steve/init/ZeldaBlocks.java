@@ -165,9 +165,9 @@ public class ZeldaBlocks {
     public static final Item CRATE_ITEM = ZeldaItems.register("crate", new CrateItem(new FabricItemSettings(), CRATE.getDefaultState()));
 
     // SWITCH BLOCKS
-
     public static final Block CRYSTAL_SWITCH = register("crystal_switch", new CrystalSwitchBlock(CRYSTAL_SWITCH_SETTINGS), new FabricItemSettings().rarity(Rarity.RARE));
-    public static final Block ON_BLOCK = register("on_block", new Block(FabricBlockSettings.copyOf(Blocks.STONE)));
+    public static final Block RED_SWITCH_BLOCK = register("red_switch_block", new Block(ON_BLOCK_SETTINGS));
+    public static final Block BLUE_SWITCH_BLOCK = register("blue_switch_block", new Block(OFF_BLOCK_SETTINGS));
 
     // SWORD PEDESTALS
     public static final Block STONE_SWORD_PEDESTAL = register("stone_sword_pedestal", new SwordPedestal(FabricBlockSettings.copyOf(Blocks.STONE)));

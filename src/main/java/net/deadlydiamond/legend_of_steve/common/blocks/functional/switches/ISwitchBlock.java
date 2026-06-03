@@ -45,10 +45,6 @@ public interface ISwitchBlock extends BlockEntityProvider {
     }
 
     default <T extends SwitchBlockEntity> void onSwitchTriggered(World world, BlockPos pos, BlockState state, T blockEntity, boolean newOnState) {
-        if (state.contains(ZeldaProperties.ON)) {
-            world.setBlockState(pos, state.with(ZeldaProperties.ON, newOnState));
-        }
-
         if (world.isClient()) {
             createCulledParticles(world, pos, state.getOutlineShape(world, pos), 10, 0.125f, startOn(), false);
         }

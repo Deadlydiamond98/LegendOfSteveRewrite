@@ -1,16 +1,14 @@
 package net.deadlydiamond.legend_of_steve.mixin.client.rendering.block;
 
-import net.deadlydiamond.legend_of_steve.LegendOfSteve;
-import net.deadlydiamond.legend_of_steve.client.models.block.lock.ChestLockLeftModel;
-import net.deadlydiamond.legend_of_steve.client.models.block.lock.ChestLockModel;
-import net.deadlydiamond.legend_of_steve.client.models.block.lock.ChestLockRightModel;
+import net.deadlydiamond.legend_of_steve.client.models.be.lock.ChestLockLeftModel;
+import net.deadlydiamond.legend_of_steve.client.models.be.lock.ChestLockModel;
+import net.deadlydiamond.legend_of_steve.client.models.be.lock.ChestLockRightModel;
 import net.deadlydiamond.legend_of_steve.util.LockUtil;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.LidOpenable;
 import net.minecraft.block.enums.ChestType;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.TexturedRenderLayers;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;

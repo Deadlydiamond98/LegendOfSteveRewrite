@@ -18,6 +18,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class SwitchBlockEntity extends BoundGroupBlockEntity {
     public boolean firstTick = true;
+    private boolean updateMesh = true;
     protected int triggerCooldown;
     private boolean isOn;
 
@@ -44,6 +45,14 @@ public class SwitchBlockEntity extends BoundGroupBlockEntity {
             init(world, pos, state);
             this.firstTick = false;
         }
+
+        if (this.updateMesh) {
+            if (getWorld().isClient()) {
+                world.updateListeners(pos, null, null, 0);
+            }
+            this.updateMesh = false;
+        }
+
         syncSwitchState();
         this.triggerCooldown--;
     }
@@ -55,12 +64,13 @@ public class SwitchBlockEntity extends BoundGroupBlockEntity {
             if (bl != isOn()) {
                 this.setIsOn(bl);
                 if (getCachedState().getBlock() instanceof ISwitchBlock switchBlock) {
+                    switchBlock.onSwitchTriggered(getWorld(), getPos(), getCachedState(), this, bl);
+
                     getWorld().getPlayers().forEach(player -> {
-                        if (player.squaredDistanceTo(getPos().toCenterPos()) < 100) {
+                        if (player.squaredDistanceTo(pos.toCenterPos()) <= 100) {
                             SwitchToggleS2CPacket.send(player, getPos(), bl);
                         }
                     });
-                    switchBlock.onSwitchTriggered(getWorld(), getPos(), getCachedState(), this, bl);
                 }
             }
         }
@@ -112,12 +122,14 @@ public class SwitchBlockEntity extends BoundGroupBlockEntity {
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
         this.isOn = nbt.getBoolean("IsCrystalSwitchOn");
+        this.updateMesh = nbt.getBoolean("UpdateMesh");
     }
 
     @Override
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
         nbt.putBoolean("IsCrystalSwitchOn", this.isOn);
+        nbt.putBoolean("UpdateMesh", this.updateMesh);
     }
 
     // MISC ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -134,7 +146,13 @@ public class SwitchBlockEntity extends BoundGroupBlockEntity {
     }
 
     protected void updateListeners() {
+        this.updateMesh = true;
         this.markDirty();
         this.getWorld().updateListeners(this.getPos(), this.getCachedState(), this.getCachedState(), Block.NOTIFY_ALL);
+    }
+
+    @Override
+    public @Nullable Object getRenderData() {
+        return this.isOn();
     }
 }

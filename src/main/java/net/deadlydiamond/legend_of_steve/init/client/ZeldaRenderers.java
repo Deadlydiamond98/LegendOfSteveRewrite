@@ -1,9 +1,9 @@
 package net.deadlydiamond.legend_of_steve.init.client;
 
-import net.deadlydiamond.legend_of_steve.client.models.block.CrystalSwitchOrbModel;
-import net.deadlydiamond.legend_of_steve.client.models.block.lock.ChestLockLeftModel;
-import net.deadlydiamond.legend_of_steve.client.models.block.lock.ChestLockModel;
-import net.deadlydiamond.legend_of_steve.client.models.block.lock.ChestLockRightModel;
+import net.deadlydiamond.legend_of_steve.client.models.be.CrystalSwitchOrbModel;
+import net.deadlydiamond.legend_of_steve.client.models.be.lock.ChestLockLeftModel;
+import net.deadlydiamond.legend_of_steve.client.models.be.lock.ChestLockModel;
+import net.deadlydiamond.legend_of_steve.client.models.be.lock.ChestLockRightModel;
 import net.deadlydiamond.legend_of_steve.client.models.entity.ArurodaEntityModel;
 import net.deadlydiamond.legend_of_steve.client.models.entity.BombEntityModel;
 import net.deadlydiamond.legend_of_steve.client.models.entity.FairyEntityModel;

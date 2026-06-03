@@ -9,6 +9,7 @@ import net.deadlydiamond.legend_of_steve.init.client.*;
 import net.deadlydiamond.legend_of_steve.networking.ZeldaNetworking;
 import net.deadlydiamond98.koalalib.client.SpriteIdentifierRegistry;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin;
 
 public class LegendOfSteveClient implements ClientModInitializer {
     @Override
@@ -21,6 +22,7 @@ public class LegendOfSteveClient implements ClientModInitializer {
         ZeldaModelPredicates.register();
         ZeldaParticleFactories.register();
         SpriteIdentifierRegistry.registerSigns(ZeldaBlocks.DEKU_WOOD);
+        ZeldaBlockModels.register();
 
         // Networking
         ZeldaNetworking.Client.registerS2CReceivers();

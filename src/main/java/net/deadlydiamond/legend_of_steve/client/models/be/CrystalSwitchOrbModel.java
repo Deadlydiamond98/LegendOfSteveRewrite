@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.client.models.block;
+package net.deadlydiamond.legend_of_steve.client.models.be;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.minecraft.client.model.*;

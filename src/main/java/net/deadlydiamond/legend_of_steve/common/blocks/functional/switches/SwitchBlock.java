@@ -19,13 +19,13 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class SwitchBlock extends Block implements ISwitchBlock {
-    protected static final BooleanProperty ON = ZeldaProperties.ON;
+//    protected static final BooleanProperty ON = ZeldaProperties.ON;
     private final boolean startOn;
 
     public SwitchBlock(Settings settings, boolean startsOn) {
         super(settings);
         this.startOn = startsOn;
-        this.setDefaultState(this.getDefaultState().with(ON, this.startOn));
+//        this.setDefaultState(this.getDefaultState().with(ON, this.startOn));
     }
 
 //    @Override
@@ -37,11 +37,11 @@ public class SwitchBlock extends Block implements ISwitchBlock {
 //        return state1;
 //    }
 
-    @Nullable
-    @Override
-    public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return super.getPlacementState(ctx).with(ON, getStartOnState(ctx.getWorld()));
-    }
+//    @Nullable
+//    @Override
+//    public BlockState getPlacementState(ItemPlacementContext ctx) {
+//        return super.getPlacementState(ctx).with(ON, getStartOnState(ctx.getWorld()));
+//    }
 
     @Override
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
@@ -69,7 +69,7 @@ public class SwitchBlock extends Block implements ISwitchBlock {
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
-        builder.add(ON);
+//        builder.add(ON);
     }
 
     @Override

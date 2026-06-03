@@ -1,9 +1,9 @@
-// 1.20.1	2026-06-02T04:20:55.577425991	The Legend of Steve/Tags for minecraft:item
+// 1.20.1	2026-06-03T08:36:38.041335725	The Legend of Steve/Tags for minecraft:item
 27e718ec3cb3cbd6f948501a0ac0733406f25749 data/minecraft/tags/items/stairs.json
 b4d7faadc178039d6865f14eedd8edac04e8e1c3 data/minecraft/tags/items/wooden_trapdoors.json
 fba66bfc33c2dc3dfe13926359d5a3fba438019b data/minecraft/tags/items/signs.json
 017256426ee55176f0fd67175039d052701437e7 data/minecraft/tags/items/leaves.json
-6caf7f254e022b1f41b92ce4269fb2f8d7ec1bff data/minecraft/tags/items/slabs.json
+a1fdb93e912dcd2a1ef6048241fa9eeb4a1617bf data/minecraft/tags/items/slabs.json
 02a628f45e0cb1aa5034ead020b4844474a34ae6 data/minecraft/tags/items/non_flammable_wood.json
 be91e7b9b5922fd920b1ddf1ec0f07728bff876e data/legend_of_steve/tags/items/quivers.json
 1a3705a704de01fbbf8531c48244f1d5da62f81c data/minecraft/tags/items/piglin_loved.json

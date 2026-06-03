@@ -1,10 +1,7 @@
 {
   "variants": {
-    "on=true": {
-      "model": "legend_of_steve:block/blue_switch_block_on"
-    },
-    "on=false": {
-      "model": "legend_of_steve:block/blue_switch_block_off"
+    "": {
+      "model": "legend_of_steve:block/blue_switch_block"
     }
   }
 }

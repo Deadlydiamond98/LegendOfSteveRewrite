@@ -4,7 +4,9 @@ import net.deadlydiamond.legend_of_steve.common.bes.grouping.BoundGroupBlockEnti
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.switches.ISwitchBlock;
 import net.deadlydiamond.legend_of_steve.common.world.states.SwitchBlockManager;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlockEntities;
+import net.deadlydiamond.legend_of_steve.networking.c2s.RequestSwitchBlockValuesS2CPacket;
 import net.deadlydiamond.legend_of_steve.networking.s2c.switches.SwitchToggleS2CPacket;
+import net.deadlydiamond.legend_of_steve.networking.s2c.switches.SyncSwitchBlocksS2CPacket;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntityType;
@@ -151,8 +153,9 @@ public class SwitchBlockEntity extends BoundGroupBlockEntity {
         this.getWorld().updateListeners(this.getPos(), this.getCachedState(), this.getCachedState(), Block.NOTIFY_ALL);
     }
 
+    @Nullable
     @Override
-    public @Nullable Object getRenderData() {
+    public Object getRenderData() {
         return this.isOn();
     }
 }

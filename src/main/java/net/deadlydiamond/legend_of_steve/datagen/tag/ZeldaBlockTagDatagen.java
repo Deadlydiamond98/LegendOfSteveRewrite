@@ -101,6 +101,8 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
                 ZeldaBlocks.CRYSTAL_SWITCH,
                 ZeldaBlocks.RED_SWITCH_BLOCK,
                 ZeldaBlocks.BLUE_SWITCH_BLOCK,
+                ZeldaBlocks.RED_SWITCH_SLAB,
+                ZeldaBlocks.BLUE_SWITCH_SLAB,
                 // Sword Pedestal
                 ZeldaBlocks.STONE_SWORD_PEDESTAL,
                 ZeldaBlocks.DEEPSLATE_SWORD_PEDESTAL,
@@ -187,6 +189,18 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
         );
 
         // OTHER ///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        getOrCreateTagBuilder(ZeldaTags.SWITCH_BLOCKS).add(
+                ZeldaBlocks.RED_SWITCH_BLOCK,
+                ZeldaBlocks.BLUE_SWITCH_BLOCK,
+                ZeldaBlocks.RED_SWITCH_SLAB,
+                ZeldaBlocks.BLUE_SWITCH_SLAB
+        );
+
+        getOrCreateTagBuilder(BlockTags.SLABS).add(
+                ZeldaBlocks.RED_SWITCH_SLAB,
+                ZeldaBlocks.BLUE_SWITCH_SLAB
+        );
 
         getOrCreateTagBuilder(KoalaLibTags.CRACKED_BRICKS).add(
                 ZeldaBlocks.CRACKED_FAIRY_MARBLE_BRICKS

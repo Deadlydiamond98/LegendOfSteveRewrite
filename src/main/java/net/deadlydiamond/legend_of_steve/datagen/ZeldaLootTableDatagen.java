@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.SlabBlock;
 
 public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
 
@@ -107,6 +108,8 @@ public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
                 // Switch
                 ZeldaBlocks.RED_SWITCH_BLOCK,
                 ZeldaBlocks.BLUE_SWITCH_BLOCK,
+                ZeldaBlocks.RED_SWITCH_SLAB,
+                ZeldaBlocks.BLUE_SWITCH_SLAB,
 
                 // Other
                 ZeldaBlocks.STONE_SWORD_PEDESTAL,
@@ -155,7 +158,11 @@ public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
 
     private void addSimpleBlockDrops(Block... blocks) {
         for (Block block : blocks) {
-            addDrop(block);
+            if (block instanceof SlabBlock) {
+                addDrop(block, slabDrops(block));
+            } else {
+                addDrop(block);
+            }
         }
     }
 }

@@ -1,5 +1,5 @@
 {
-  "parent": "legend_of_steve:block/off_block",
+  "parent": "legend_of_steve:block/switch/off_block",
   "textures": {
     "all": "legend_of_steve:block/red_switch_block_off",
     "particle": "legend_of_steve:block/red_switch_block_on"

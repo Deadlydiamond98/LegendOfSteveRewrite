@@ -29,7 +29,8 @@ public class ZeldaBlockRenderLayers {
                 ZeldaBlocks.MASTER_GIRDER,
                 ZeldaBlocks.CRYSTAL_SWITCH,
                 ZeldaBlocks.RED_SWITCH_BLOCK,
-                ZeldaBlocks.BLUE_SWITCH_BLOCK
+                ZeldaBlocks.BLUE_SWITCH_BLOCK,
+                ZeldaBlocks.RED_SWITCH_SLAB
         );
 
         registerBlockset(RenderLayer.getCutout(),

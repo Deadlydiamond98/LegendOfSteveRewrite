@@ -1,14 +1,10 @@
 package net.deadlydiamond.legend_of_steve.common.blocks.functional.switches;
 
-import net.deadlydiamond.legend_of_steve.common.world.states.SwitchBlockManager;
-import net.deadlydiamond.legend_of_steve.util.ZeldaProperties;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
-import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
@@ -16,32 +12,14 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 
 public class SwitchBlock extends Block implements ISwitchBlock {
-//    protected static final BooleanProperty ON = ZeldaProperties.ON;
     private final boolean startOn;
 
     public SwitchBlock(Settings settings, boolean startsOn) {
         super(settings);
         this.startOn = startsOn;
-//        this.setDefaultState(this.getDefaultState().with(ON, this.startOn));
     }
-
-//    @Override
-//    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-//        BlockState state1 = super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
-//        if (SwitchBlockManager.INSTANCE != null) {
-//            state1 = state1.with(ON, startOn() == SwitchBlockManager.INSTANCE.get("Global"));
-//        }
-//        return state1;
-//    }
-
-//    @Nullable
-//    @Override
-//    public BlockState getPlacementState(ItemPlacementContext ctx) {
-//        return super.getPlacementState(ctx).with(ON, getStartOnState(ctx.getWorld()));
-//    }
 
     @Override
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
@@ -69,7 +47,6 @@ public class SwitchBlock extends Block implements ISwitchBlock {
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
-//        builder.add(ON);
     }
 
     @Override

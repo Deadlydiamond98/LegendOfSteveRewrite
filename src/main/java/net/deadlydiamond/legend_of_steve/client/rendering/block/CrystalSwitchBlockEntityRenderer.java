@@ -39,7 +39,7 @@ public class CrystalSwitchBlockEntityRenderer implements BlockEntityRenderer<Cry
         matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(entity.OrbYaw + (0.5f * tickDelta)));
 
         VertexConsumer vertexConsumer = vertexConsumers.getBuffer(RenderLayer.getEntityTranslucent(
-                (entity.isInverted() != entity.getWorldOnState()) ? ON_TEXTURE : OFF_TEXTURE
+                entity.isOn() ? ON_TEXTURE : OFF_TEXTURE
         ));
         this.model.render(matrices, vertexConsumer, light, overlay, 1, 1, 1, 1);
 

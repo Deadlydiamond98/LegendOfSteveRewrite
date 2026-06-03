@@ -172,6 +172,7 @@ public class ZeldaBlocks {
     public static final Block RED_SWITCH_BLOCK = register("red_switch_block", new SwitchBlock(ON_BLOCK_SETTINGS, true));
     public static final Block BLUE_SWITCH_BLOCK = register("blue_switch_block", new SwitchBlock(OFF_BLOCK_SETTINGS, false));
     public static final Block RED_SWITCH_SLAB = register("red_switch_slab", new SwitchSlab(ON_BLOCK_SETTINGS, true));
+    public static final Block BLUE_SWITCH_SLAB = register("blue_switch_slab", new SwitchSlab(OFF_BLOCK_SETTINGS, false));
 
     // SWORD PEDESTALS
     public static final Block STONE_SWORD_PEDESTAL = register("stone_sword_pedestal", new SwordPedestal(FabricBlockSettings.copyOf(Blocks.STONE)));

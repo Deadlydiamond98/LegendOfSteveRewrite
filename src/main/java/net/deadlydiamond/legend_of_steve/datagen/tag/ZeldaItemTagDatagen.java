@@ -104,6 +104,11 @@ public class ZeldaItemTagDatagen extends FabricTagProvider.ItemTagProvider {
 
         // OTHER ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        getOrCreateTagBuilder(ItemTags.SLABS).add(
+                ZeldaBlocks.RED_SWITCH_SLAB.asItem(),
+                ZeldaBlocks.BLUE_SWITCH_SLAB.asItem()
+        );
+
         getOrCreateTagBuilder(ZeldaTags.IRIDESCENT_ITEM).add(
                 ZeldaBlocks.CRACKED_FAIRY_MARBLE_BRICKS.asItem(),
                 ZeldaBlocks.CHISELED_FAIRY_MARBLE.asItem(),

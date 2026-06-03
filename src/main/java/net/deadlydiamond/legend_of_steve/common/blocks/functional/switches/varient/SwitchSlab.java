@@ -1,6 +1,7 @@
 package net.deadlydiamond.legend_of_steve.common.blocks.functional.switches.varient;
 
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.switches.ISwitchBlock;
+import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
 import net.deadlydiamond.legend_of_steve.util.ZeldaProperties;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -11,27 +12,19 @@ import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 
 public class SwitchSlab extends SlabBlock implements ISwitchBlock {
-    protected static final BooleanProperty ON = ZeldaProperties.ON;
     private final boolean startOn;
 
     public SwitchSlab(Settings settings, boolean startOn) {
         super(settings);
         this.startOn = startOn;
-        this.setDefaultState(this.getDefaultState().with(ON, this.startOn));
-    }
-
-    @Nullable
-    @Override
-    public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return super.getPlacementState(ctx).with(ON, getStartOnState(ctx.getWorld()));
     }
 
     @Override
@@ -45,6 +38,11 @@ public class SwitchSlab extends SlabBlock implements ISwitchBlock {
     }
 
     @Override
+    public boolean isSideInvisible(BlockState state, BlockState stateFrom, Direction direction) {
+        return stateFrom.isOf(this) || super.isSideInvisible(state, stateFrom, direction);
+    }
+
+    @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
         super.randomDisplayTick(state, world, pos, random);
         if (isOn(world, pos) && random.nextFloat() < 0.25) {
@@ -55,7 +53,6 @@ public class SwitchSlab extends SlabBlock implements ISwitchBlock {
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
-        builder.add(ON);
     }
 
     @Override

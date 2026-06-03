@@ -49,7 +49,8 @@ public class ZeldaBlockEntities {
 
     public static final BlockEntityType<SwitchBlockEntity> SWITCH_BLOCK = register("switch_block", SwitchBlockEntity::new,
             ZeldaBlocks.RED_SWITCH_BLOCK,
-            ZeldaBlocks.BLUE_SWITCH_BLOCK
+            ZeldaBlocks.BLUE_SWITCH_BLOCK,
+            ZeldaBlocks.RED_SWITCH_SLAB
     );
 
     public static final BlockEntityType<CrystalSwitchBlockEntity> CRYSTAL_SWITCH = register("crystal_switch", CrystalSwitchBlockEntity::new,

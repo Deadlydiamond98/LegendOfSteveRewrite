@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.common.blocks.functional.switches;
+package net.deadlydiamond.legend_of_steve.common.blocks.functional.switches.toggle;
 
 import net.deadlydiamond.legend_of_steve.common.bes.switches.CrystalSwitchBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.switches.SwitchBlockEntity;
@@ -36,7 +36,6 @@ public class AbstractSwitchBlock extends BlockWithEntity implements Waterloggabl
         if (state.get(WATERLOGGED)) {
             world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
         }
-
         return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 

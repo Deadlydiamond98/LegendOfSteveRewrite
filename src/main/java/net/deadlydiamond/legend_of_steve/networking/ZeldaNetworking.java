@@ -3,9 +3,11 @@ package net.deadlydiamond.legend_of_steve.networking;
 import net.deadlydiamond.legend_of_steve.networking.c2s.GuiScrollItemActionC2SPacket;
 import net.deadlydiamond.legend_of_steve.networking.c2s.HudScrollItemActionC2SPacket;
 import net.deadlydiamond.legend_of_steve.networking.c2s.RequestChestLockedStateC2SPacket;
+import net.deadlydiamond.legend_of_steve.networking.c2s.RequestSwitchBlockValuesS2CPacket;
 import net.deadlydiamond.legend_of_steve.networking.s2c.ItemTransmutationPoofS2CPacket;
 import net.deadlydiamond.legend_of_steve.networking.s2c.UpdateChestLockedStateS2CPacket;
-import net.deadlydiamond.legend_of_steve.networking.s2c.UpdateCrystalSwitchHitS2CPacket;
+import net.deadlydiamond.legend_of_steve.networking.s2c.switches.SyncSwitchBlocksS2CPacket;
+import net.deadlydiamond.legend_of_steve.networking.s2c.switches.SwitchToggleS2CPacket;
 import net.deadlydiamond.legend_of_steve.networking.s2c.question_block.JumpIntoBlockS2CPacket;
 import net.deadlydiamond.legend_of_steve.networking.s2c.UpdateEntityStunS2CPacket;
 import net.deadlydiamond.legend_of_steve.networking.s2c.pushable_block.AddBlockBreakCooldownS2CPacket;
@@ -16,10 +18,13 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 
 public class ZeldaNetworking {
 
+    // TODO: Clean up Networking stuff (some of these packets could be organized better or perhaps even condensed?)
+
     public static void registerC2SReceivers() {
         ServerPlayNetworking.registerGlobalReceiver(GuiScrollItemActionC2SPacket.ID, GuiScrollItemActionC2SPacket.Handler::receive);
         ServerPlayNetworking.registerGlobalReceiver(HudScrollItemActionC2SPacket.ID, HudScrollItemActionC2SPacket.Handler::receive);
         ServerPlayNetworking.registerGlobalReceiver(RequestChestLockedStateC2SPacket.ID, RequestChestLockedStateC2SPacket.Handler::receive);
+        ServerPlayNetworking.registerGlobalReceiver(RequestSwitchBlockValuesS2CPacket.ID, RequestSwitchBlockValuesS2CPacket.Handler::receive);
     }
 
     public static class Client {
@@ -31,7 +36,8 @@ public class ZeldaNetworking {
             ClientPlayNetworking.registerGlobalReceiver(JumpIntoBlockS2CPacket.ID, JumpIntoBlockS2CPacket.Handler::receive);
             ClientPlayNetworking.registerGlobalReceiver(UpdateBlockHitS2CPacket.ID, UpdateBlockHitS2CPacket.Handler::receive);
             ClientPlayNetworking.registerGlobalReceiver(UpdateChestLockedStateS2CPacket.ID, UpdateChestLockedStateS2CPacket.Handler::receive);
-            ClientPlayNetworking.registerGlobalReceiver(UpdateCrystalSwitchHitS2CPacket.ID, UpdateCrystalSwitchHitS2CPacket.Handler::receive);
+            ClientPlayNetworking.registerGlobalReceiver(SwitchToggleS2CPacket.ID, SwitchToggleS2CPacket.Handler::receive);
+            ClientPlayNetworking.registerGlobalReceiver(SyncSwitchBlocksS2CPacket.ID, SyncSwitchBlocksS2CPacket.Handler::receive);
         }
     }
 }

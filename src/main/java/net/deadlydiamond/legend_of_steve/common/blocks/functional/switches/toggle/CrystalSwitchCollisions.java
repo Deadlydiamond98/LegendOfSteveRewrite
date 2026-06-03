@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.common.blocks.functional.switches;
+package net.deadlydiamond.legend_of_steve.common.blocks.functional.switches.toggle;
 
 import net.deadlydiamond.legend_of_steve.common.bes.switches.CrystalSwitchBlockEntity;
 import net.minecraft.block.Block;
@@ -28,8 +28,11 @@ public class CrystalSwitchCollisions {
         }
     }
 
-    // Projectile Bottom Collision Shape
+    // MISC SHAPES /////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Used for Projectile Collisions
     public static final VoxelShape PROJECTILE_COLLISION_BASE_SHAPE = VoxelShapes.union(BASE_SHAPE, BOTTOM_ORB_SHAPES[0]);
+    // Used for Sparkle Particles
+    public static final VoxelShape ENTIRE_ORB_SHAPE = Block.createCuboidShape(4, 13, 4, 12, 21, 12);
 
     // HELPER METHODS //////////////////////////////////////////////////////////////////////////////////////////////////
 

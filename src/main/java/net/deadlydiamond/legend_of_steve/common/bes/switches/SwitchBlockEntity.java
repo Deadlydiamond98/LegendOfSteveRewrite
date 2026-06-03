@@ -4,7 +4,7 @@ import net.deadlydiamond.legend_of_steve.common.bes.grouping.BoundGroupBlockEnti
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.switches.ISwitchBlock;
 import net.deadlydiamond.legend_of_steve.common.world.states.SwitchBlockManager;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlockEntities;
-import net.deadlydiamond.legend_of_steve.util.ZeldaProperties;
+import net.deadlydiamond.legend_of_steve.networking.s2c.switches.SwitchToggleS2CPacket;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntityType;
@@ -12,15 +12,11 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class SwitchBlockEntity extends BoundGroupBlockEntity {
-    private static final BooleanProperty ON = ZeldaProperties.ON;
-
     public boolean firstTick = true;
     protected int triggerCooldown;
     private boolean isOn;
@@ -59,6 +55,11 @@ public class SwitchBlockEntity extends BoundGroupBlockEntity {
             if (bl != isOn()) {
                 this.setIsOn(bl);
                 if (getCachedState().getBlock() instanceof ISwitchBlock switchBlock) {
+                    getWorld().getPlayers().forEach(player -> {
+                        if (player.squaredDistanceTo(getPos().toCenterPos()) < 100) {
+                            SwitchToggleS2CPacket.send(player, getPos(), bl);
+                        }
+                    });
                     switchBlock.onSwitchTriggered(getWorld(), getPos(), getCachedState(), this, bl);
                 }
             }
@@ -79,10 +80,7 @@ public class SwitchBlockEntity extends BoundGroupBlockEntity {
     }
 
     public boolean getWorldOnState() {
-        if (!getWorld().isClient) {
-            return SwitchBlockManager.get(getWorld(), getGroupID());
-        }
-        return isOn();
+        return SwitchBlockManager.get(getWorld(), getGroupID());
     }
 
     // Getters & Setters ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -96,7 +94,7 @@ public class SwitchBlockEntity extends BoundGroupBlockEntity {
         this.updateListeners();
     }
 
-    protected boolean isInverted() {
+    public boolean isInverted() {
         return getCachedState().getBlock() instanceof ISwitchBlock switchBlock && !switchBlock.startOn();
     }
 

@@ -1,5 +1,6 @@
 package net.deadlydiamond.legend_of_steve.common.world.states;
 
+import net.deadlydiamond.legend_of_steve.networking.s2c.switches.SyncSwitchBlocksS2CPacket;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.PersistentState;
@@ -10,10 +11,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SwitchBlockManager extends PersistentState {
-    private final Map<String, Boolean> switchGroups = new HashMap<>();
+    // This map is sent to the client for rendering (due to some de-syncing stuff)
+    public static final Map<String, Boolean> SYNCED_SWITCH_GROUPS = new HashMap<>();
 
-    public SwitchBlockManager() {
+    private final Map<String, Boolean> switchGroups = new HashMap<>();
+    private final ServerWorld world;
+
+    public SwitchBlockManager(ServerWorld world) {
         this.markDirty();
+        this.world = world;
     }
 
     @Override
@@ -27,24 +33,34 @@ public class SwitchBlockManager extends PersistentState {
         return nbt;
     }
 
-    private static SwitchBlockManager fromNbt(NbtCompound nbt) {
-        SwitchBlockManager states = new SwitchBlockManager();
+    private static SwitchBlockManager fromNbt(NbtCompound nbt, ServerWorld world) {
+        SwitchBlockManager states = new SwitchBlockManager(world);
 
         if (nbt.contains("SwitchBlocks")) {
             NbtCompound switchNBT = nbt.getCompound("SwitchBlocks");
             for (String key : switchNBT.getKeys()) {
-                states.switchGroups.put(key, switchNBT.getBoolean(key));
+                boolean val = switchNBT.getBoolean(key);
+                states.switchGroups.put(key, val);
             }
         }
 
         return states;
     }
 
+    // TODO: I don't need to create a new manager every time I want to access values here... Modify this later!
+    public static SwitchBlockManager getManager(ServerWorld world) {
+        PersistentStateManager manager = world.getServer().getOverworld().getPersistentStateManager();
+        String id = "legend_of_steve:switch_blocks";
+        return manager.getOrCreate(nbt -> SwitchBlockManager.fromNbt(nbt, world), () -> new SwitchBlockManager(world), id);
+    }
+
+    // STATIC GETTERS & SETTERS ////////////////////////////////////////////////////////////////////////////////////////
+
     public static boolean get(World world, String key) {
         if (world instanceof ServerWorld serverWorld) {
             return getManager(serverWorld).get(key);
         }
-        return true;
+        return SYNCED_SWITCH_GROUPS.getOrDefault(key, true);
     }
 
     public static void set(World world, String key, boolean bl) {
@@ -59,20 +75,18 @@ public class SwitchBlockManager extends PersistentState {
         }
     }
 
-    public static SwitchBlockManager getManager(ServerWorld world) {
-        PersistentStateManager manager = world.getServer().getOverworld().getPersistentStateManager();
-        String id = "legend_of_steve:switch_blocks";
-        return manager.getOrCreate(SwitchBlockManager::fromNbt, SwitchBlockManager::new, id);
-    }
+    // GETTERS & SETTERS ///////////////////////////////////////////////////////////////////////////////////////////////
 
     public boolean get(String key) {
-        switchGroups.putIfAbsent(key, true);
-        return switchGroups.get(key);
+        this.switchGroups.putIfAbsent(key, true);
+        return this.switchGroups.get(key);
     }
 
     public void set(String key, boolean bl) {
-        switchGroups.put(key, bl);
+        this.switchGroups.put(key, bl);
         this.markDirty();
+        // When set, the switch Group is also updated on the Synced Switch Groups
+        SyncSwitchBlocksS2CPacket.send(this.world, key, bl);
     }
 
     public void trigger(String key) {

@@ -1,11 +1,11 @@
-package net.deadlydiamond.legend_of_steve.common.blocks.functional.switches;
+package net.deadlydiamond.legend_of_steve.common.blocks.functional.switches.toggle;
 
 import net.deadlydiamond.legend_of_steve.common.bes.switches.CrystalSwitchBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.blocks.IExplodedInteraction;
 import net.deadlydiamond.legend_of_steve.common.blocks.IModifiedOutlineRender;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.AbstractBombEntity;
 import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
-import net.deadlydiamond.legend_of_steve.networking.s2c.UpdateCrystalSwitchHitS2CPacket;
+import net.deadlydiamond.legend_of_steve.networking.s2c.switches.SwitchToggleS2CPacket;
 import net.deadlydiamond98.koalalib.common.blocks.interaction.IHitBlockAction;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -35,10 +35,10 @@ import net.minecraft.world.*;
 import net.minecraft.world.explosion.Explosion;
 import org.jetbrains.annotations.Nullable;
 
-public class CrystalSwitchBlock extends AbstractSwitchBlock implements IHitBlockAction, IModifiedOutlineRender, IExplodedInteraction {
+public class CrystalSwitchBlockTemp extends AbstractSwitchBlock implements IHitBlockAction, IModifiedOutlineRender, IExplodedInteraction {
     public static final EnumProperty<DoubleBlockHalf> HALF = Properties.DOUBLE_BLOCK_HALF;
 
-    public CrystalSwitchBlock(Settings settings) {
+    public CrystalSwitchBlockTemp(Settings settings) {
         super(settings);
         this.setDefaultState(this.getDefaultState().with(HALF, DoubleBlockHalf.LOWER));
     }
@@ -204,7 +204,7 @@ public class CrystalSwitchBlock extends AbstractSwitchBlock implements IHitBlock
             }
 
             if (!world.isClient()) {
-                world.getPlayers().forEach(player -> UpdateCrystalSwitchHitS2CPacket.send(player, pos, !switchBlock.isOn()));
+                world.getPlayers().forEach(player -> SwitchToggleS2CPacket.send(player, pos, !switchBlock.isOn()));
                 newState = !switchBlock.isOn();
 
                 switchBlock.triggerSwitch();

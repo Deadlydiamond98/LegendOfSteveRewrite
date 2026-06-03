@@ -1,16 +1,16 @@
-package net.deadlydiamond.legend_of_steve.common.blocks.functional.switches;
+package net.deadlydiamond.legend_of_steve.common.blocks.functional.switches.varient;
 
-import net.deadlydiamond.legend_of_steve.common.world.states.SwitchBlockManager;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.switches.ISwitchBlock;
 import net.deadlydiamond.legend_of_steve.util.ZeldaProperties;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
+import net.minecraft.block.SlabBlock;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
@@ -18,24 +18,15 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class SwitchBlock extends Block implements ISwitchBlock {
+public class SwitchSlab extends SlabBlock implements ISwitchBlock {
     protected static final BooleanProperty ON = ZeldaProperties.ON;
     private final boolean startOn;
 
-    public SwitchBlock(Settings settings, boolean startsOn) {
+    public SwitchSlab(Settings settings, boolean startOn) {
         super(settings);
-        this.startOn = startsOn;
+        this.startOn = startOn;
         this.setDefaultState(this.getDefaultState().with(ON, this.startOn));
     }
-
-//    @Override
-//    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-//        BlockState state1 = super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
-//        if (SwitchBlockManager.INSTANCE != null) {
-//            state1 = state1.with(ON, startOn() == SwitchBlockManager.INSTANCE.get("Global"));
-//        }
-//        return state1;
-//    }
 
     @Nullable
     @Override
@@ -54,15 +45,10 @@ public class SwitchBlock extends Block implements ISwitchBlock {
     }
 
     @Override
-    public boolean isSideInvisible(BlockState state, BlockState stateFrom, Direction direction) {
-        return stateFrom.isOf(this) || super.isSideInvisible(state, stateFrom, direction);
-    }
-
-    @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
         super.randomDisplayTick(state, world, pos, random);
-        if (isOn(world, pos) && random.nextFloat() < 0.125) {
-            createCulledParticles(world, pos, state.getOutlineShape(world, pos), 1, 0.25f, startOn(), true);
+        if (isOn(world, pos) && random.nextFloat() < 0.25) {
+            createSwitchParticle(world, pos, state.getOutlineShape(world, pos), 0.125f, startOn(), true);
         }
     }
 

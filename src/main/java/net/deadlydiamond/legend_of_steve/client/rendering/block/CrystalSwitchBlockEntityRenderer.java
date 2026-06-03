@@ -3,6 +3,7 @@ package net.deadlydiamond.legend_of_steve.client.rendering.block;
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.client.models.be.CrystalSwitchOrbModel;
 import net.deadlydiamond.legend_of_steve.common.bes.switches.CrystalSwitchBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.world.states.SwitchBlockManager;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -39,7 +40,7 @@ public class CrystalSwitchBlockEntityRenderer implements BlockEntityRenderer<Cry
         matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(entity.OrbYaw + (0.5f * tickDelta)));
 
         VertexConsumer vertexConsumer = vertexConsumers.getBuffer(RenderLayer.getEntityTranslucent(
-                entity.isOn() ? ON_TEXTURE : OFF_TEXTURE
+                entity.getWorldOnState() ? ON_TEXTURE : OFF_TEXTURE
         ));
         this.model.render(matrices, vertexConsumer, light, overlay, 1, 1, 1, 1);
 

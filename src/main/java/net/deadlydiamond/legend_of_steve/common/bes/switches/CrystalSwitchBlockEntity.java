@@ -5,7 +5,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 
 public class CrystalSwitchBlockEntity extends SwitchBlockEntity {
     public float OrbYaw;
@@ -34,10 +33,5 @@ public class CrystalSwitchBlockEntity extends SwitchBlockEntity {
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
         nbt.putFloat("OrbYaw", this.OrbYaw);
-    }
-
-    @Override
-    public @Nullable Object getRenderData() {
-        return this.isOn();
     }
 }

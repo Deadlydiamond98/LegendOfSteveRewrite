@@ -24,7 +24,7 @@ public class RequestSwitchBlockValuesS2CPacket {
 
     public static class Handler {
         public static void receive(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
-            server.execute(() -> SyncSwitchBlocksS2CPacket.send(player, SwitchBlockManager.SYNCED_SWITCH_GROUPS));
+            server.execute(() -> SyncSwitchBlocksS2CPacket.send(player, SwitchBlockManager.getManager(server.getOverworld()).getAll()));
         }
     }
 }

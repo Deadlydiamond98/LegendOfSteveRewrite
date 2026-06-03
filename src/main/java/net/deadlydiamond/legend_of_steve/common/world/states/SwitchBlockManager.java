@@ -86,10 +86,15 @@ public class SwitchBlockManager extends PersistentState {
         this.switchGroups.put(key, bl);
         this.markDirty();
         // When set, the switch Group is also updated on the Synced Switch Groups
+        SYNCED_SWITCH_GROUPS.put(key, bl);
         SyncSwitchBlocksS2CPacket.send(this.world, key, bl);
     }
 
     public void trigger(String key) {
         this.set(key, !get(key));
+    }
+
+    public Map<String, Boolean> getAll() {
+        return this.switchGroups;
     }
 }

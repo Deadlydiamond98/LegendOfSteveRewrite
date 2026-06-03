@@ -4,9 +4,7 @@ import net.deadlydiamond.legend_of_steve.common.bes.grouping.BoundGroupBlockEnti
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.switches.ISwitchBlock;
 import net.deadlydiamond.legend_of_steve.common.world.states.SwitchBlockManager;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlockEntities;
-import net.deadlydiamond.legend_of_steve.networking.c2s.RequestSwitchBlockValuesS2CPacket;
 import net.deadlydiamond.legend_of_steve.networking.s2c.switches.SwitchToggleS2CPacket;
-import net.deadlydiamond.legend_of_steve.networking.s2c.switches.SyncSwitchBlocksS2CPacket;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntityType;
@@ -20,7 +18,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class SwitchBlockEntity extends BoundGroupBlockEntity {
     public boolean firstTick = true;
-    private boolean updateMesh = true;
+    private boolean updateChunk = true;
     protected int triggerCooldown;
     private boolean isOn;
 
@@ -48,11 +46,11 @@ public class SwitchBlockEntity extends BoundGroupBlockEntity {
             this.firstTick = false;
         }
 
-        if (this.updateMesh) {
+        if (this.updateChunk) {
             if (getWorld().isClient()) {
                 world.updateListeners(pos, null, null, 0);
             }
-            this.updateMesh = false;
+            this.updateChunk = false;
         }
 
         syncSwitchState();
@@ -124,14 +122,14 @@ public class SwitchBlockEntity extends BoundGroupBlockEntity {
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
         this.isOn = nbt.getBoolean("IsCrystalSwitchOn");
-        this.updateMesh = nbt.getBoolean("UpdateMesh");
+        this.updateChunk = nbt.getBoolean("UpdateChunk");
     }
 
     @Override
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
         nbt.putBoolean("IsCrystalSwitchOn", this.isOn);
-        nbt.putBoolean("UpdateMesh", this.updateMesh);
+        nbt.putBoolean("UpdateChunk", this.updateChunk);
     }
 
     // MISC ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -148,7 +146,7 @@ public class SwitchBlockEntity extends BoundGroupBlockEntity {
     }
 
     protected void updateListeners() {
-        this.updateMesh = true;
+        this.updateChunk = true;
         this.markDirty();
         this.getWorld().updateListeners(this.getPos(), this.getCachedState(), this.getCachedState(), Block.NOTIFY_ALL);
     }
@@ -156,6 +154,6 @@ public class SwitchBlockEntity extends BoundGroupBlockEntity {
     @Nullable
     @Override
     public Object getRenderData() {
-        return isInverted() != SwitchBlockManager.get(this.getWorld(), "Global");
+        return isInverted() != getWorldOnState();
     }
 }

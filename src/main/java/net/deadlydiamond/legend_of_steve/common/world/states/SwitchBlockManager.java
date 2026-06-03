@@ -47,7 +47,6 @@ public class SwitchBlockManager extends PersistentState {
         return states;
     }
 
-    // TODO: I don't need to create a new manager every time I want to access values here... Modify this later!
     public static SwitchBlockManager getManager(ServerWorld world) {
         PersistentStateManager manager = world.getServer().getOverworld().getPersistentStateManager();
         String id = "legend_of_steve:switch_blocks";

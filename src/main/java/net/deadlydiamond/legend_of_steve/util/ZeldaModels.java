@@ -13,6 +13,11 @@ public class ZeldaModels {
     public static final Model BRAZIER_LIT = template("brazier_lit", "_lit", TextureKey.TOP, TextureKey.BOTTOM, TextureKey.SIDE, TextureKey.FIRE);
     public static final Model TALL_BRAZIER_BOTTOM = template("tall_brazier_bottom", "_bottom", TextureKey.BOTTOM, TextureKey.SIDE);
 
+    public static final Model OFF_BLOCK = template("off_block", TextureKey.ALL, TextureKey.PARTICLE);
+    public static final Model OFF_SLAB = template("off_slab", TextureKey.SIDE, TextureKey.TOP, TextureKey.PARTICLE);
+    public static final Model OFF_SLAB_TOP = template("off_slab_top", TextureKey.SIDE, TextureKey.TOP, TextureKey.PARTICLE);
+    public static final Model OFF_SLAB_FULL = template("off_slab_full", TextureKey.SIDE, TextureKey.TOP, TextureKey.PARTICLE);
+
 
     private static Model template(String id, TextureKey... requiredTextureKeys) {
         return new Model(Optional.of(LegendOfSteve.id("block/template_" + id)), Optional.empty(), requiredTextureKeys);

@@ -1,8 +1,0 @@
-{
-  "parent": "legend_of_steve:block/switch/off_slab_top",
-  "textures": {
-    "top": "legend_of_steve:block/blue_switch_block_off",
-    "side": "legend_of_steve:block/blue_switch_slab_off",
-    "particle": "legend_of_steve:block/blue_switch_block_on"
-  }
-}

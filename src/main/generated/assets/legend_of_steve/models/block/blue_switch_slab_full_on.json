@@ -1,5 +1,5 @@
 {
-  "parent": "block/slab",
+  "parent": "minecraft:block/cube_bottom_top",
   "textures": {
     "bottom": "legend_of_steve:block/blue_switch_block_on",
     "side": "legend_of_steve:block/blue_switch_slab_on",

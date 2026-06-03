@@ -183,8 +183,8 @@ public class ZeldaCreativeTabs {
 
         // SWITCH BLOCKS
         entries.add(ZeldaBlocks.CRYSTAL_SWITCH);
-        entries.add(ZeldaBlocks.RED_SWITCH_BLOCK);
-        entries.add(ZeldaBlocks.BLUE_SWITCH_BLOCK);
+        ZeldaBlocks.RED_SWITCH_BLOCKS.addToCreative(entries);
+        ZeldaBlocks.BLUE_SWITCH_BLOCKS.addToCreative(entries);
 
         // SWORD PEDESTALS
         entries.add(ZeldaBlocks.STONE_SWORD_PEDESTAL);

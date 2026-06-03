@@ -125,6 +125,10 @@ public class ZeldaModelDatagen extends FabricModelProvider {
         ZeldaBlocks.SMALL_BLUE_TEKTILES.generateModels(generator);
         ZeldaBlocks.BLUE_TEKTILE_BRICKS.generateModels(generator);
 
+        // SWITCH BLOCKS ///////////////////////////////////////////////////////////////////////////////////////////////
+        ZeldaBlocks.RED_SWITCH_BLOCKS.generateModels(generator);
+        ZeldaBlocks.BLUE_SWITCH_BLOCKS.generateModels(generator);
+
         // WOOD ////////////////////////////////////////////////////////////////////////////////////////////////////////
         ZeldaBlocks.DEKU_WOOD.generateModels(generator);
         generator.registerFlowerPotPlant(ZeldaBlocks.DEKU_SAPLING, ZeldaBlocks.POTTED_DEKU_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);

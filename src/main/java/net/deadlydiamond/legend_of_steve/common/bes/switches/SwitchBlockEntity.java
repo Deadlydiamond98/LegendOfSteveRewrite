@@ -156,6 +156,10 @@ public class SwitchBlockEntity extends BoundGroupBlockEntity {
     @Nullable
     @Override
     public Object getRenderData() {
-        return this.isOn();
+        Boolean bl = SwitchBlockManager.SYNCED_SWITCH_GROUPS.get("Global");
+        if (bl != null) {
+            return isInverted() != bl;
+        }
+        return bl;
     }
 }

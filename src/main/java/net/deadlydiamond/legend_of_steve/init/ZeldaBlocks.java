@@ -10,7 +10,7 @@ import net.deadlydiamond.legend_of_steve.common.blocks.deco.GirderBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.glowing.FairyLamp;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.switches.toggle.CrystalSwitchBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.switches.SwitchBlock;
-import net.deadlydiamond.legend_of_steve.common.blocks.functional.switches.varient.SwitchSlab;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.switches.varient.SwitchSlabBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.BombFlowerBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.FruitingLeavesBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.LootGrassBlock;
@@ -169,10 +169,8 @@ public class ZeldaBlocks {
     // SWITCH BLOCKS
     public static final Block CRYSTAL_SWITCH = register("crystal_switch", new CrystalSwitchBlock(CRYSTAL_SWITCH_SETTINGS), new FabricItemSettings().rarity(Rarity.RARE));
 
-    public static final Block RED_SWITCH_BLOCK = register("red_switch_block", new SwitchBlock(ON_BLOCK_SETTINGS, true));
-    public static final Block BLUE_SWITCH_BLOCK = register("blue_switch_block", new SwitchBlock(OFF_BLOCK_SETTINGS, false));
-    public static final Block RED_SWITCH_SLAB = register("red_switch_slab", new SwitchSlab(ON_BLOCK_SETTINGS, true));
-    public static final Block BLUE_SWITCH_SLAB = register("blue_switch_slab", new SwitchSlab(OFF_BLOCK_SETTINGS, false));
+    public static final SwitchBlockset RED_SWITCH_BLOCKS = new SwitchBlockset(LegendOfSteve.MOD_ID, "red_switch", RED_SWITCH_BLOCK_SETTINGS, true);
+    public static final SwitchBlockset BLUE_SWITCH_BLOCKS = new SwitchBlockset(LegendOfSteve.MOD_ID, "blue_switch", BLUE_SWITCH_BLOCK_SETTINGS, false);
 
     // SWORD PEDESTALS
     public static final Block STONE_SWORD_PEDESTAL = register("stone_sword_pedestal", new SwordPedestal(FabricBlockSettings.copyOf(Blocks.STONE)));

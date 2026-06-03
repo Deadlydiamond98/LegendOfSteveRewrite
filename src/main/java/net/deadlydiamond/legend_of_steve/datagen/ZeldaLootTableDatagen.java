@@ -59,7 +59,10 @@ public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
                 ZeldaBlocks.SMALL_RED_TEKTILES,
                 ZeldaBlocks.RED_TEKTILE_BRICKS,
                 ZeldaBlocks.BLUE_TEKTILES,
-                ZeldaBlocks.BLUE_TEKTILE_BRICKS
+                ZeldaBlocks.BLUE_TEKTILE_BRICKS,
+                // SWITCH BLOCKS
+                ZeldaBlocks.RED_SWITCH_BLOCKS,
+                ZeldaBlocks.BLUE_SWITCH_BLOCKS
         );
 
         addSimpleBlockDrops(
@@ -105,11 +108,6 @@ public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
                 ZeldaBlocks.STRANGE_DIRT_PILLAR,
                 ZeldaBlocks.STRANGE_BLUE_DIRT_PILLAR,
                 ZeldaBlocks.QUESTION_BLOCK,
-                // Switch
-                ZeldaBlocks.RED_SWITCH_BLOCK,
-                ZeldaBlocks.BLUE_SWITCH_BLOCK,
-                ZeldaBlocks.RED_SWITCH_SLAB,
-                ZeldaBlocks.BLUE_SWITCH_SLAB,
 
                 // Other
                 ZeldaBlocks.STONE_SWORD_PEDESTAL,

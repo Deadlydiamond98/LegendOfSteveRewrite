@@ -1,8 +1,6 @@
 package net.deadlydiamond.legend_of_steve.init;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
-import net.deadlydiamond.legend_of_steve.common.blocks.functional.switches.SwitchBlock;
-import net.deadlydiamond.legend_of_steve.util.ZeldaProperties;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
 import net.minecraft.block.BlockSetType;
@@ -116,7 +114,7 @@ public class ZeldaBlockSettings {
             .sounds(ZeldaSounds.CRYSTAL_SWITCH)
             .luminance(state -> 15);
 
-    public static final FabricBlockSettings ON_BLOCK_SETTINGS = FabricBlockSettings.copyOf(Blocks.CALCITE)
+    public static final FabricBlockSettings RED_SWITCH_BLOCK_SETTINGS = FabricBlockSettings.copyOf(Blocks.CALCITE)
             .mapColor(DyeColor.RED)
             .sounds(ZeldaSounds.CRYSTAL_SWITCH)
             .luminance(state -> 7)
@@ -126,7 +124,7 @@ public class ZeldaBlockSettings {
             .suffocates(Blocks::never)
             .blockVision(Blocks::never);
 
-    public static final FabricBlockSettings OFF_BLOCK_SETTINGS = FabricBlockSettings.copyOf(ON_BLOCK_SETTINGS)
+    public static final FabricBlockSettings BLUE_SWITCH_BLOCK_SETTINGS = FabricBlockSettings.copyOf(RED_SWITCH_BLOCK_SETTINGS)
             .mapColor(DyeColor.BLUE);
 
     // OTHER

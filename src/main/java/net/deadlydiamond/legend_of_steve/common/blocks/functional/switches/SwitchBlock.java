@@ -1,9 +1,12 @@
 package net.deadlydiamond.legend_of_steve.common.blocks.functional.switches;
 
+import net.deadlydiamond.legend_of_steve.common.bes.switches.SwitchBlockEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateManager;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -12,6 +15,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 public class SwitchBlock extends Block implements ISwitchBlock {
     private final boolean startOn;
@@ -19,6 +23,13 @@ public class SwitchBlock extends Block implements ISwitchBlock {
     public SwitchBlock(Settings settings, boolean startsOn) {
         super(settings);
         this.startOn = startsOn;
+    }
+
+    @Override
+    public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
+        if (world.getBlockEntity(pos) instanceof SwitchBlockEntity switchBlock) {
+            switchBlock.init(world, pos, state);
+        }
     }
 
     @Override

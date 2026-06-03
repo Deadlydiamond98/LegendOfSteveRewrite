@@ -238,10 +238,7 @@ public class CrystalSwitchBlock extends Block implements Waterloggable, ISwitchB
 
     @Override
     public void onPlaced(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
-        if (world.getBlockEntity(pos) instanceof SwitchBlockEntity switchBlock) {
-            switchBlock.init(world, pos, state);
-        }
-
+        super.onPlaced(world, pos, state, placer, itemStack);
         BlockPos blockPos = pos.up();
         world.setBlockState(blockPos, this.getDefaultState().with(HALF, DoubleBlockHalf.UPPER), Block.NOTIFY_ALL);
     }

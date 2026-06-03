@@ -68,7 +68,10 @@ public class ZeldaItemTagDatagen extends FabricTagProvider.ItemTagProvider {
                 ZeldaBlocks.RED_TEKTILE_BRICKS,
                 ZeldaBlocks.BLUE_TEKTILES,
                 ZeldaBlocks.SMALL_BLUE_TEKTILES,
-                ZeldaBlocks.BLUE_TEKTILE_BRICKS
+                ZeldaBlocks.BLUE_TEKTILE_BRICKS,
+                // SWITCH BLOCKS
+                ZeldaBlocks.RED_SWITCH_BLOCKS,
+                ZeldaBlocks.BLUE_SWITCH_BLOCKS
         );
 
         // WOOD ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -104,10 +107,10 @@ public class ZeldaItemTagDatagen extends FabricTagProvider.ItemTagProvider {
 
         // OTHER ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        getOrCreateTagBuilder(ItemTags.SLABS).add(
-                ZeldaBlocks.RED_SWITCH_SLAB.asItem(),
-                ZeldaBlocks.BLUE_SWITCH_SLAB.asItem()
-        );
+//        getOrCreateTagBuilder(ItemTags.SLABS).add(
+//                ZeldaBlocks.RED_SWITCH_SLAB.asItem(),
+//                ZeldaBlocks.BLUE_SWITCH_SLAB.asItem()
+//        );
 
         getOrCreateTagBuilder(ZeldaTags.IRIDESCENT_ITEM).add(
                 ZeldaBlocks.CRACKED_FAIRY_MARBLE_BRICKS.asItem(),

@@ -62,7 +62,10 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
                 ZeldaBlocks.RED_TEKTILE_BRICKS,
                 ZeldaBlocks.BLUE_TEKTILES,
                 ZeldaBlocks.SMALL_BLUE_TEKTILES,
-                ZeldaBlocks.BLUE_TEKTILE_BRICKS
+                ZeldaBlocks.BLUE_TEKTILE_BRICKS,
+                // SWITCH BLOCKS
+                ZeldaBlocks.RED_SWITCH_BLOCKS,
+                ZeldaBlocks.BLUE_SWITCH_BLOCKS
         );
 
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(
@@ -99,10 +102,6 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
                 ZeldaBlocks.QUESTION_BLOCK,
                 // Switch Blocks
                 ZeldaBlocks.CRYSTAL_SWITCH,
-                ZeldaBlocks.RED_SWITCH_BLOCK,
-                ZeldaBlocks.BLUE_SWITCH_BLOCK,
-                ZeldaBlocks.RED_SWITCH_SLAB,
-                ZeldaBlocks.BLUE_SWITCH_SLAB,
                 // Sword Pedestal
                 ZeldaBlocks.STONE_SWORD_PEDESTAL,
                 ZeldaBlocks.DEEPSLATE_SWORD_PEDESTAL,
@@ -190,17 +189,20 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
 
         // OTHER ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        getOrCreateTagBuilder(ZeldaTags.SWITCH_BLOCKS).add(
-                ZeldaBlocks.RED_SWITCH_BLOCK,
-                ZeldaBlocks.BLUE_SWITCH_BLOCK,
-                ZeldaBlocks.RED_SWITCH_SLAB,
-                ZeldaBlocks.BLUE_SWITCH_SLAB
-        );
-
-        getOrCreateTagBuilder(BlockTags.SLABS).add(
-                ZeldaBlocks.RED_SWITCH_SLAB,
-                ZeldaBlocks.BLUE_SWITCH_SLAB
-        );
+//        getOrCreateTagBuilder(ZeldaTags.RED_SWITCH_BLOCKS).add(
+//                ZeldaBlocks.RED_SWITCH_BLOCK,
+//                ZeldaBlocks.RED_SWITCH_SLAB
+//        );
+//
+//        getOrCreateTagBuilder(ZeldaTags.BLUE_SWITCH_BLOCKS).add(
+//                ZeldaBlocks.BLUE_SWITCH_BLOCK,
+//                ZeldaBlocks.BLUE_SWITCH_SLAB
+//        );
+//
+//        getOrCreateTagBuilder(BlockTags.SLABS).add(
+//                ZeldaBlocks.RED_SWITCH_SLAB,
+//                ZeldaBlocks.BLUE_SWITCH_SLAB
+//        );
 
         getOrCreateTagBuilder(KoalaLibTags.CRACKED_BRICKS).add(
                 ZeldaBlocks.CRACKED_FAIRY_MARBLE_BRICKS

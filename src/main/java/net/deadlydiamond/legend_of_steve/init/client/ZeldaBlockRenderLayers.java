@@ -27,10 +27,7 @@ public class ZeldaBlockRenderLayers {
                 ZeldaBlocks.MASTER_BARS,
                 ZeldaBlocks.MASTER_CHAIN,
                 ZeldaBlocks.MASTER_GIRDER,
-                ZeldaBlocks.CRYSTAL_SWITCH,
-                ZeldaBlocks.RED_SWITCH_BLOCK,
-                ZeldaBlocks.BLUE_SWITCH_BLOCK,
-                ZeldaBlocks.RED_SWITCH_SLAB
+                ZeldaBlocks.CRYSTAL_SWITCH
         );
 
         registerBlockset(RenderLayer.getCutout(),
@@ -39,7 +36,10 @@ public class ZeldaBlockRenderLayers {
                 ZeldaBlocks.BLACKSTONE_BRAZIER_BLOCKSET,
                 ZeldaBlocks.QUARTZ_BRAZIER_BLOCKSET,
                 ZeldaBlocks.STRANGE_DIRT_BRAZIER_BLOCKSET,
-                ZeldaBlocks.STRANGE_BLUE_DIRT_BRAZIER_BLOCKSET
+                ZeldaBlocks.STRANGE_BLUE_DIRT_BRAZIER_BLOCKSET,
+
+                ZeldaBlocks.RED_SWITCH_BLOCKS,
+                ZeldaBlocks.BLUE_SWITCH_BLOCKS
         );
 
         // TRANSLUCENT /////////////////////////////////////////////////////////////////////////////////////////////////

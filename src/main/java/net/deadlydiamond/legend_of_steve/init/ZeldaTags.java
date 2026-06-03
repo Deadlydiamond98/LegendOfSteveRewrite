@@ -29,6 +29,9 @@ public class ZeldaTags {
     public static final TagKey<Block> BOMB_FLOWER_PLANTABLE = block("bomb_flower_plantable");
     public static final TagKey<Block> CHISELED_PLANKS_BLOCK = block("chiseled_planks");
     public static final TagKey<Block> LOCKABLE = block("lockable");
+
+    public static final TagKey<Block> RED_SWITCH_BLOCKS = block("red_switch_blocks");
+    public static final TagKey<Block> BLUE_SWITCH_BLOCKS = block("blue_switch_blocks");
     public static final TagKey<Block> SWITCH_BLOCKS = block("switch_blocks");
 
     // ENTITIES ////////////////////////////////////////////////////////////////////////////////////////////////////////

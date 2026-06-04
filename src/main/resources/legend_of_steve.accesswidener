@@ -7,3 +7,4 @@ accessible field net/minecraft/client/render/block/BlockModelRenderer colors Lne
 accessible method net/minecraft/client/gui/screen/ingame/HandledScreen getSlotAt (DD)Lnet/minecraft/screen/slot/Slot;
 accessible class net/minecraft/client/render/chunk/ChunkBuilder$BuiltChunk$RebuildTask
 accessible class net/minecraft/client/render/chunk/ChunkBuilder$BuiltChunk$RebuildTask$RenderData
+accessible method net/minecraft/client/render/WorldRenderer scheduleChunkRender (IIIZ)V

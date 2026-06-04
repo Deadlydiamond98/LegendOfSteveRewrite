@@ -24,6 +24,11 @@ public class CrystalSwitchBlockEntity extends SwitchBlockEntity {
     }
 
     @Override
+    public boolean isOn() {
+        return this.isOn;
+    }
+
+    @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
         this.OrbYaw = nbt.getFloat("OrbYaw");

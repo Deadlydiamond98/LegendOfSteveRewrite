@@ -11,6 +11,6 @@ public class ZeldaServerWorldEvents {
     }
 
     private static void onUnload(MinecraftServer server, ServerWorld serverWorld) {
-        SwitchBlockManager.SYNCED_SWITCH_GROUPS.clear();
+        SwitchBlockManager.reset();
     }
 }

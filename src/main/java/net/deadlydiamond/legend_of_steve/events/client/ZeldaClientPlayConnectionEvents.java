@@ -20,6 +20,6 @@ public class ZeldaClientPlayConnectionEvents {
     }
 
     private static void onLeave(ClientPlayNetworkHandler clientPlayNetworkHandler, MinecraftClient minecraftClient) {
-        SwitchBlockManager.SYNCED_SWITCH_GROUPS.clear();
+        SwitchBlockManager.reset();
     }
 }

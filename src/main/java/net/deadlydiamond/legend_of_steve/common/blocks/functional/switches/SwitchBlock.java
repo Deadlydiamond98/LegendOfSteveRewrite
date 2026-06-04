@@ -7,7 +7,6 @@ import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.state.StateManager;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
@@ -53,11 +52,6 @@ public class SwitchBlock extends Block implements ISwitchBlock {
         if (isOn(world, pos) && random.nextFloat() < 0.125) {
             createCulledParticles(world, pos, state.getOutlineShape(world, pos), 1, 0.25f, startOn(), true);
         }
-    }
-
-    @Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        super.appendProperties(builder);
     }
 
     @Override

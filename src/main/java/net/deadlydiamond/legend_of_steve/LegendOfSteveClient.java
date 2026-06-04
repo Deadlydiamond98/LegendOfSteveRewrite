@@ -2,6 +2,7 @@ package net.deadlydiamond.legend_of_steve;
 
 import net.deadlydiamond.legend_of_steve.client.rendering.player.ZeldaPlayerRendering;
 import net.deadlydiamond.legend_of_steve.events.client.ZeldaClientPlayConnectionEvents;
+import net.deadlydiamond.legend_of_steve.events.client.ZeldaClientTickEvents;
 import net.deadlydiamond.legend_of_steve.events.client.ZeldaScreenEvents;
 import net.deadlydiamond.legend_of_steve.events.client.ZeldaWorldRenderEvents;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
@@ -30,5 +31,6 @@ public class LegendOfSteveClient implements ClientModInitializer {
         ZeldaScreenEvents.register();
         ZeldaWorldRenderEvents.register();
         ZeldaClientPlayConnectionEvents.register();
+        ZeldaClientTickEvents.register();
     }
 }

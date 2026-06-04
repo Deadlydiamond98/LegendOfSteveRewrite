@@ -9,6 +9,7 @@
     "common.ExplosionMixin",
     "common.be.LockableContainerBlockEntityMixin",
     "common.block.AbstractBlockStateMixin",
+    "common.block.BlockMixin",
     "common.block.FluidBlockMixin",
     "common.block.NoteBlockMixin",
     "common.block.PressurePlateBlockMixin",

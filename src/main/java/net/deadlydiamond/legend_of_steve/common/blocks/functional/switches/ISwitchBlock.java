@@ -37,6 +37,7 @@ public interface ISwitchBlock extends BlockEntityProvider {
     default void triggerSwitch(World world, BlockPos pos) {
         if (getBlockEntity(world, pos) instanceof SwitchBlockEntity switchBlock) {
             switchBlock.triggerSwitch(getTriggerCooldown());
+//            world.
         }
     }
 
@@ -61,16 +62,6 @@ public interface ISwitchBlock extends BlockEntityProvider {
     @Override
     default BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new SwitchBlockEntity(pos, state);
-    }
-
-    @Nullable
-    @Override
-    default <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return (world1, pos, state1, entity) -> {
-            if (entity instanceof SwitchBlockEntity switchBlock) {
-                SwitchBlockEntity.tick(world, pos, state, switchBlock);
-            }
-        };
     }
 
     // PARTICLE STUFF //////////////////////////////////////////////////////////////////////////////////////////////////

@@ -3,16 +3,19 @@ package net.deadlydiamond.legend_of_steve.common.world.states;
 import net.deadlydiamond.legend_of_steve.networking.s2c.switches.SyncSwitchBlocksS2CPacket;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.PersistentState;
 import net.minecraft.world.PersistentStateManager;
 import net.minecraft.world.World;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class SwitchBlockManager extends PersistentState {
     // This map is sent to the client for rendering (due to some de-syncing stuff)
     public static final Map<String, Boolean> SYNCED_SWITCH_GROUPS = new HashMap<>();
+    public static final Set<BlockPos> SWITCH_BLOCK_POSITIONS = Collections.synchronizedSet(new HashSet<>());
+    public static final Set<String> SWITCH_BLOCK_STRINGS = new HashSet<>();
+    public static SwitchBlockManager INSTANCE = null;
 
     private final Map<String, Boolean> switchGroups = new HashMap<>();
     private final ServerWorld world;
@@ -44,13 +47,21 @@ public class SwitchBlockManager extends PersistentState {
             }
         }
 
+        SyncSwitchBlocksS2CPacket.send(world, states.switchGroups);
+
         return states;
     }
 
     public static SwitchBlockManager getManager(ServerWorld world) {
-        PersistentStateManager manager = world.getServer().getOverworld().getPersistentStateManager();
-        String id = "legend_of_steve:switch_blocks";
-        return manager.getOrCreate(nbt -> SwitchBlockManager.fromNbt(nbt, world), () -> new SwitchBlockManager(world), id);
+        if (INSTANCE == null) {
+            PersistentStateManager manager = world.getServer().getOverworld().getPersistentStateManager();
+            String id = "legend_of_steve:switch_blocks";
+            INSTANCE = manager.getOrCreate(
+                    nbt -> SwitchBlockManager.fromNbt(nbt, world),
+                    () -> new SwitchBlockManager(world), id
+            );
+        }
+        return INSTANCE;
     }
 
     // STATIC GETTERS & SETTERS ////////////////////////////////////////////////////////////////////////////////////////
@@ -95,5 +106,26 @@ public class SwitchBlockManager extends PersistentState {
 
     public Map<String, Boolean> getAll() {
         return this.switchGroups;
+    }
+
+    // BLOCK POS STUFF /////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public static void reset() {
+        SwitchBlockManager.SYNCED_SWITCH_GROUPS.clear();
+        SwitchBlockManager.SWITCH_BLOCK_POSITIONS.clear();
+        SwitchBlockManager.SWITCH_BLOCK_STRINGS.clear();
+        SwitchBlockManager.INSTANCE = null;
+    }
+
+    public static void saveBlockPos(BlockPos pos) {
+        if (!SWITCH_BLOCK_STRINGS.contains(pos.toString())) {
+            SWITCH_BLOCK_POSITIONS.add(pos);
+            SWITCH_BLOCK_STRINGS.add(pos.toString());
+        }
+    }
+
+    public static void removePos(BlockPos pos) {
+        SWITCH_BLOCK_POSITIONS.remove(pos);
+        SWITCH_BLOCK_STRINGS.remove(pos.toString());
     }
 }

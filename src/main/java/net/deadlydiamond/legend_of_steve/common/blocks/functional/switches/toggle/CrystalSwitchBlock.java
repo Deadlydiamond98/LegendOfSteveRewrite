@@ -6,6 +6,7 @@ import net.deadlydiamond.legend_of_steve.common.blocks.IExplodedInteraction;
 import net.deadlydiamond.legend_of_steve.common.blocks.IModifiedOutlineRender;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.switches.ISwitchBlock;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.AbstractBombEntity;
+import net.deadlydiamond.legend_of_steve.init.ZeldaBlockEntities;
 import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
 import net.deadlydiamond98.koalalib.common.blocks.interaction.IHitBlockAction;
 import net.minecraft.block.*;
@@ -192,7 +193,14 @@ public class CrystalSwitchBlock extends Block implements Waterloggable, ISwitchB
 
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return isBottom(state) ? ISwitchBlock.super.getTicker(world, state, type) : null;
+        return isBottom(state) ? checkType(type, ZeldaBlockEntities.CRYSTAL_SWITCH, SwitchBlockEntity::tick) : null;
+    }
+
+    @Nullable
+    protected static <E extends BlockEntity, A extends BlockEntity> BlockEntityTicker<A> checkType(
+            BlockEntityType<A> givenType, BlockEntityType<E> expectedType, BlockEntityTicker<? super E> ticker
+    ) {
+        return expectedType == givenType ? (BlockEntityTicker<A>) ticker : null;
     }
 
     @Override

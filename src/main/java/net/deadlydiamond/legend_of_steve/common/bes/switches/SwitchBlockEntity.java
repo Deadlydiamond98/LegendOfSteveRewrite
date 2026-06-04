@@ -20,7 +20,7 @@ public class SwitchBlockEntity extends BoundGroupBlockEntity {
     public boolean firstTick = true;
     private boolean updateChunk = true;
     protected int triggerCooldown;
-    private boolean isOn;
+    protected boolean isOn;
 
     public SwitchBlockEntity(BlockPos pos, BlockState state) {
         super(ZeldaBlockEntities.SWITCH_BLOCK, pos, state);
@@ -46,12 +46,12 @@ public class SwitchBlockEntity extends BoundGroupBlockEntity {
             this.firstTick = false;
         }
 
-        if (this.updateChunk) {
-            if (getWorld().isClient()) {
-                world.updateListeners(pos, null, null, 0);
-            }
-            this.updateChunk = false;
-        }
+//        if (this.updateChunk) {
+//            if (getWorld().isClient()) {
+//                world.updateListeners(pos, null, null, 0);
+//            }
+//            this.updateChunk = false;
+//        }
 
         syncSwitchState();
         this.triggerCooldown--;
@@ -96,7 +96,7 @@ public class SwitchBlockEntity extends BoundGroupBlockEntity {
     // Getters & Setters ///////////////////////////////////////////////////////////////////////////////////////////////
 
     public boolean isOn() {
-        return this.isOn;
+        return isInverted() != getWorldOnState();
     }
 
     protected void setIsOn(boolean isOn) {

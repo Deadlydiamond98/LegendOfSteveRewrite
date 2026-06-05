@@ -17,20 +17,13 @@ public class SwitchBlockRenderManager {
     public static void start(MinecraftClient client, BlockPos pos) {
         stop();
         thread = new Thread(() -> {
-            List<ChunkSectionPos> chunkSections = new ArrayList<>();
-            List<BlockPos> positionsToCheck;
+            List<ChunkSectionPos> chunkSections;
 
             synchronized (SwitchBlockManager.SWITCH_BLOCK_POSITIONS) {
-                positionsToCheck = new ArrayList<>(SwitchBlockManager.SWITCH_BLOCK_POSITIONS);
+                chunkSections = new ArrayList<>(SwitchBlockManager.SWITCH_BLOCK_POSITIONS);
                 SwitchBlockManager.clearPositions();
             }
 
-            positionsToCheck.forEach(pos1 -> {
-                ChunkSectionPos section = ChunkSectionPos.from(pos1);
-                if (!chunkSections.contains(section)) {
-                    chunkSections.add(section);
-                }
-            });
             chunkSections.sort(Comparator.comparingDouble(pos2 -> pos2.getSquaredDistance(ChunkSectionPos.from(pos))));
 
             for (int i = 0; i < chunkSections.size(); i += batchSize) {

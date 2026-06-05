@@ -4,6 +4,7 @@ import net.deadlydiamond.legend_of_steve.networking.s2c.switches.SyncSwitchBlock
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ChunkSectionPos;
 import net.minecraft.world.PersistentState;
 import net.minecraft.world.PersistentStateManager;
 import net.minecraft.world.World;
@@ -13,8 +14,7 @@ import java.util.*;
 public class SwitchBlockManager extends PersistentState {
     // This map is sent to the client for rendering (due to some de-syncing stuff)
     public static final Map<String, Boolean> SYNCED_SWITCH_GROUPS = new HashMap<>();
-    public static final Set<BlockPos> SWITCH_BLOCK_POSITIONS = Collections.synchronizedSet(new HashSet<>());
-    public static final Set<String> SWITCH_BLOCK_STRINGS = new HashSet<>();
+    public static final Set<ChunkSectionPos> SWITCH_BLOCK_POSITIONS = Collections.synchronizedSet(new HashSet<>());
     public static SwitchBlockManager INSTANCE = null;
 
     private final Map<String, Boolean> switchGroups = new HashMap<>();
@@ -113,24 +113,15 @@ public class SwitchBlockManager extends PersistentState {
     public static void reset() {
         SwitchBlockManager.SYNCED_SWITCH_GROUPS.clear();
         SwitchBlockManager.SWITCH_BLOCK_POSITIONS.clear();
-        SwitchBlockManager.SWITCH_BLOCK_STRINGS.clear();
         SwitchBlockManager.INSTANCE = null;
     }
 
     public static void saveBlockPos(BlockPos pos) {
-        if (!SWITCH_BLOCK_STRINGS.contains(pos.toString())) {
-            SWITCH_BLOCK_POSITIONS.add(pos);
-            SWITCH_BLOCK_STRINGS.add(pos.toString());
-        }
+        ChunkSectionPos chunkSectionPos = ChunkSectionPos.from(pos);
+        SWITCH_BLOCK_POSITIONS.add(chunkSectionPos);
     }
 
     public static void clearPositions() {
         SWITCH_BLOCK_POSITIONS.clear();
-        SWITCH_BLOCK_STRINGS.clear();
-    }
-
-    public static void removePos(BlockPos pos) {
-        SWITCH_BLOCK_POSITIONS.remove(pos);
-        SWITCH_BLOCK_STRINGS.remove(pos.toString());
     }
 }

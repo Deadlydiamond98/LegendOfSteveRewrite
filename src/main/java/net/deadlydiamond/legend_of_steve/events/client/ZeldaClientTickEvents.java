@@ -11,6 +11,5 @@ public class ZeldaClientTickEvents {
     }
 
     private static void tick(MinecraftClient minecraftClient) {
-        LegendOfSteve.LOGGER.info(SwitchBlockManager.SWITCH_BLOCK_POSITIONS.size() + "");
     }
 }

@@ -17,17 +17,17 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.chunk.Chunk;
 
 import java.util.*;
 
 public class SwitchToggleS2CPacket {
     public static final Identifier ID = LegendOfSteve.id("toggle_switch_event");
 
-    public static void send(PlayerEntity player, BlockPos pos, boolean bl) {
+    public static void send(PlayerEntity player, BlockPos pos, boolean newOnState, boolean triggerUpdates) {
         PacketByteBuf buf = PacketByteBufs.create();
         buf.writeBlockPos(pos);
-        buf.writeBoolean(bl);
+        buf.writeBoolean(newOnState);
+        buf.writeBoolean(triggerUpdates);
         ServerPlayNetworking.send((ServerPlayerEntity) player, ID, buf);
     }
 
@@ -35,6 +35,7 @@ public class SwitchToggleS2CPacket {
         public static void receive(MinecraftClient client, ClientPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
             BlockPos pos = buf.readBlockPos();
             boolean bl = buf.readBoolean();
+            boolean triggerUpdates = buf.readBoolean();
 
             client.execute(() -> {
                 World world = client.world;
@@ -44,35 +45,47 @@ public class SwitchToggleS2CPacket {
                     if (state.getBlock() instanceof ISwitchBlock switchBlock && switchBlock.getBlockEntity(world, pos) instanceof SwitchBlockEntity switchBlockEntity) {
                         switchBlock.onSwitchTriggered(world, pos, state, switchBlockEntity, bl);
 
+                        if (triggerUpdates) {
+                            new Thread(() -> {
+                                List<BlockPos> positionsToCheck;
 
-                        new Thread(() -> {
-                            List<BlockPos> positionsToCheck;
-                            synchronized (SwitchBlockManager.SWITCH_BLOCK_POSITIONS) {
-                                positionsToCheck = new ArrayList<>(SwitchBlockManager.SWITCH_BLOCK_POSITIONS);
-                            }
-
-                            List<BlockPos> toRemove = new ArrayList<>();
-
-                            for (BlockPos pos1 : positionsToCheck) {
-                                BlockState state1 = world.getBlockState(pos1);
-                                if (!(state1.getBlock() instanceof ISwitchBlock)) {
-                                    toRemove.add(pos1);
+                                synchronized (SwitchBlockManager.SWITCH_BLOCK_POSITIONS) {
+                                    positionsToCheck = new ArrayList<>(SwitchBlockManager.SWITCH_BLOCK_POSITIONS);
                                 }
-                            }
 
-                            client.execute(() -> {
-                                for (BlockPos pos1 : positionsToCheck) {
-                                    client.worldRenderer.scheduleBlockRenders(
-                                            pos1.getX(), pos1.getY(), pos1.getZ(),
-                                            pos1.getX(), pos1.getY(), pos1.getZ()
-                                    );
+                                positionsToCheck.sort(Comparator.comparingDouble(pos2 -> pos2.getSquaredDistance(pos)));
+
+                                List<BlockPos> toRemove = new ArrayList<>();
+                                int batchSize = 500;
+                                int intervalMs = 25;
+
+                                for (int i = 0; i < positionsToCheck.size(); i += batchSize) {
+                                    int end = Math.min(i + batchSize, positionsToCheck.size());
+
+                                    for (int j = i; j < end; j++) {
+                                        BlockPos pos1 = positionsToCheck.get(j);
+                                        client.worldRenderer.scheduleBlockRenders(
+                                                pos1.getX(), pos1.getY(), pos1.getZ(),
+                                                pos1.getX(), pos1.getY(), pos1.getZ()
+                                        );
+                                        toRemove.add(pos1);
+                                    }
+
+                                    if (i + batchSize < positionsToCheck.size()) {
+                                        try {
+                                            Thread.sleep(intervalMs);
+                                        } catch (InterruptedException e) {
+                                            Thread.currentThread().interrupt();
+                                            break;
+                                        }
+                                    }
                                 }
-                            });
 
-                            synchronized (SwitchBlockManager.SWITCH_BLOCK_POSITIONS) {
-                                toRemove.forEach(SwitchBlockManager::removePos);
-                            }
-                        }).start();
+                                synchronized (SwitchBlockManager.SWITCH_BLOCK_POSITIONS) {
+                                    toRemove.forEach(SwitchBlockManager::removePos);
+                                }
+                            }).start();
+                        }
                     }
                 }
             });

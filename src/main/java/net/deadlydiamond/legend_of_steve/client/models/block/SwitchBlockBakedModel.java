@@ -1,8 +1,5 @@
 package net.deadlydiamond.legend_of_steve.client.models.block;
 
-import net.deadlydiamond.legend_of_steve.LegendOfSteve;
-import net.deadlydiamond.legend_of_steve.common.blocks.functional.switches.ISwitchBlock;
-import net.deadlydiamond.legend_of_steve.common.world.states.SwitchBlockManager;
 import net.fabricmc.fabric.api.renderer.v1.model.ModelHelper;
 import net.fabricmc.fabric.api.renderer.v1.render.RenderContext;
 import net.minecraft.block.BlockState;
@@ -38,10 +35,6 @@ public class SwitchBlockBakedModel implements BakedModel {
 
     @Override
     public void emitBlockQuads(BlockRenderView blockView, BlockState state, BlockPos pos, Supplier<Random> randomSupplier, RenderContext context) {
-//        if (state.getBlock() instanceof ISwitchBlock) {
-//            SwitchBlockManager.saveBlockPos(pos);
-//        }
-
         if (blockView.getBlockEntityRenderData(pos) instanceof Boolean bl) {
             if (bl) {
                 onModel.emitBlockQuads(blockView, state, pos, randomSupplier, context);

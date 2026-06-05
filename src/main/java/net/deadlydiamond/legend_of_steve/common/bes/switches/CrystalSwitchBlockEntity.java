@@ -14,13 +14,23 @@ public class CrystalSwitchBlockEntity extends SwitchBlockEntity {
         super(ZeldaBlockEntities.CRYSTAL_SWITCH, pos, state);
     }
 
-    @Override
+    public static <T extends CrystalSwitchBlockEntity> void tick(World world, BlockPos pos, BlockState state, T entity) {
+        entity.tick(world, pos, state);
+    }
+
     protected void tick(World world, BlockPos pos, BlockState state) {
-        super.tick(world, pos, state);
+        if (this.firstTick) {
+            init(world, pos, state);
+            this.firstTick = false;
+        }
 
         this.OrbYaw += 0.5f;
         this.OrbYaw %= 360;
         this.ticks++;
+
+        syncSwitchState(this.updateChunk);
+        this.triggerCooldown--;
+        this.updateChunk = false;
     }
 
     @Override

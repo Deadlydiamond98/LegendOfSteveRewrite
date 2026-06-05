@@ -193,7 +193,7 @@ public class CrystalSwitchBlock extends Block implements Waterloggable, ISwitchB
 
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return isBottom(state) ? checkType(type, ZeldaBlockEntities.CRYSTAL_SWITCH, SwitchBlockEntity::tick) : null;
+        return isBottom(state) ? checkType(type, ZeldaBlockEntities.CRYSTAL_SWITCH, CrystalSwitchBlockEntity::tick) : null;
     }
 
     @Nullable

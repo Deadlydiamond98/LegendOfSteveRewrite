@@ -18,7 +18,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class SwitchBlockEntity extends BoundGroupBlockEntity {
     public boolean firstTick = true;
-    private boolean updateChunk = true;
+    protected boolean updateChunk = false;
     protected int triggerCooldown;
     protected boolean isOn;
 
@@ -30,34 +30,13 @@ public class SwitchBlockEntity extends BoundGroupBlockEntity {
         super(type, pos, state);
     }
 
-    public static <T extends SwitchBlockEntity> void tick(World world, BlockPos pos, BlockState state, T entity) {
-        entity.tick(world, pos, state);
-    }
-
     public void init(World world, BlockPos pos, BlockState state) {
-        syncSwitchState();
+        syncSwitchState(false);
         updateListeners();
         this.firstTick = false;
     }
 
-    protected void tick(World world, BlockPos pos, BlockState state) {
-        if (this.firstTick) {
-            init(world, pos, state);
-            this.firstTick = false;
-        }
-
-//        if (this.updateChunk) {
-//            if (getWorld().isClient()) {
-//                world.updateListeners(pos, null, null, 0);
-//            }
-//            this.updateChunk = false;
-//        }
-
-        syncSwitchState();
-        this.triggerCooldown--;
-    }
-
-    protected void syncSwitchState() {
+    protected void syncSwitchState(boolean triggerUpdate) {
         if (!getWorld().isClient()) {
             boolean bl = isInverted() != getWorldOnState();
 
@@ -67,9 +46,7 @@ public class SwitchBlockEntity extends BoundGroupBlockEntity {
                     switchBlock.onSwitchTriggered(getWorld(), getPos(), getCachedState(), this, bl);
 
                     getWorld().getPlayers().forEach(player -> {
-                        if (player.squaredDistanceTo(pos.toCenterPos()) <= 100) {
-                            SwitchToggleS2CPacket.send(player, getPos(), bl);
-                        }
+                        SwitchToggleS2CPacket.send(player, getPos(), bl, triggerUpdate);
                     });
                 }
             }
@@ -78,14 +55,11 @@ public class SwitchBlockEntity extends BoundGroupBlockEntity {
 
     // World On State //////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public void triggerSwitch() {
-        triggerSwitch(0);
-    }
-
     public void triggerSwitch(int cooldown) {
         if (getTriggerCooldown() <= 0) {
             SwitchBlockManager.trigger(getWorld(), getGroupID());
             setTriggerCooldown(cooldown);
+            this.updateChunk = true;
         }
     }
 

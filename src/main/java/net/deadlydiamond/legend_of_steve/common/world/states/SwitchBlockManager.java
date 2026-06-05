@@ -124,6 +124,11 @@ public class SwitchBlockManager extends PersistentState {
         }
     }
 
+    public static void clearPositions() {
+        SWITCH_BLOCK_POSITIONS.clear();
+        SWITCH_BLOCK_STRINGS.clear();
+    }
+
     public static void removePos(BlockPos pos) {
         SWITCH_BLOCK_POSITIONS.remove(pos);
         SWITCH_BLOCK_STRINGS.remove(pos.toString());

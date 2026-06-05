@@ -1,6 +1,7 @@
 package net.deadlydiamond.legend_of_steve.networking.s2c.switches;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
+import net.deadlydiamond.legend_of_steve.client.SwitchBlockRenderManager;
 import net.deadlydiamond.legend_of_steve.common.bes.switches.SwitchBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.switches.ISwitchBlock;
 import net.deadlydiamond.legend_of_steve.common.world.states.SwitchBlockManager;
@@ -46,45 +47,7 @@ public class SwitchToggleS2CPacket {
                         switchBlock.onSwitchTriggered(world, pos, state, switchBlockEntity, bl);
 
                         if (triggerUpdates) {
-                            new Thread(() -> {
-                                List<BlockPos> positionsToCheck;
-
-                                synchronized (SwitchBlockManager.SWITCH_BLOCK_POSITIONS) {
-                                    positionsToCheck = new ArrayList<>(SwitchBlockManager.SWITCH_BLOCK_POSITIONS);
-                                }
-
-                                positionsToCheck.sort(Comparator.comparingDouble(pos2 -> pos2.getSquaredDistance(pos)));
-
-                                List<BlockPos> toRemove = new ArrayList<>();
-                                int batchSize = 500;
-                                int intervalMs = 25;
-
-                                for (int i = 0; i < positionsToCheck.size(); i += batchSize) {
-                                    int end = Math.min(i + batchSize, positionsToCheck.size());
-
-                                    for (int j = i; j < end; j++) {
-                                        BlockPos pos1 = positionsToCheck.get(j);
-                                        client.worldRenderer.scheduleBlockRenders(
-                                                pos1.getX(), pos1.getY(), pos1.getZ(),
-                                                pos1.getX(), pos1.getY(), pos1.getZ()
-                                        );
-                                        toRemove.add(pos1);
-                                    }
-
-                                    if (i + batchSize < positionsToCheck.size()) {
-                                        try {
-                                            Thread.sleep(intervalMs);
-                                        } catch (InterruptedException e) {
-                                            Thread.currentThread().interrupt();
-                                            break;
-                                        }
-                                    }
-                                }
-
-                                synchronized (SwitchBlockManager.SWITCH_BLOCK_POSITIONS) {
-                                    toRemove.forEach(SwitchBlockManager::removePos);
-                                }
-                            }).start();
+                            SwitchBlockRenderManager.start(client, pos);
                         }
                     }
                 }

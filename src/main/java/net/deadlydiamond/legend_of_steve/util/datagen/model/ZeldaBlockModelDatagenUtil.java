@@ -1,9 +1,7 @@
 package net.deadlydiamond.legend_of_steve.util.datagen.model;
 
-import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.dungeoncite.TriforceTileBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.dungeoncite.TriforceType;
-import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.temp.AbstractHittableBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.ConnectedPillarBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.PillarType;
 import net.deadlydiamond.legend_of_steve.util.ZeldaModels;
@@ -15,7 +13,6 @@ import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
-import org.jetbrains.annotations.Nullable;
 
 public class ZeldaBlockModelDatagenUtil {
 
@@ -135,20 +132,20 @@ public class ZeldaBlockModelDatagenUtil {
         blockStateModelGenerator.registerItemModel(block.asItem());
     }
 
-    public static void registerHittableBlock(BlockStateModelGenerator blockStateModelGenerator, Block block, @Nullable Block base) {
-        boolean hasBase = base != null;
-        Identifier regular = hasBase ? ModelIds.getBlockModelId(base) : TexturedModel.CUBE_ALL.upload(block, blockStateModelGenerator.modelCollector);
-        Identifier empty = LegendOfSteve.id("block/empty_container_block");
-
-        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block).coordinate(
-                        BlockStateVariantMap.create(AbstractHittableBlock.HIT)
-                                .register(true, BlockStateVariant.create().put(VariantSettings.MODEL, empty))
-                                .register(false, BlockStateVariant.create().put(VariantSettings.MODEL, regular))
-        ));
-        if (hasBase) {
-            blockStateModelGenerator.registerParentedItemModel(block, regular);
-        }
-    }
+//    public static void registerHittableBlock(BlockStateModelGenerator blockStateModelGenerator, Block block, @Nullable Block base) {
+//        boolean hasBase = base != null;
+//        Identifier regular = hasBase ? ModelIds.getBlockModelId(base) : TexturedModel.CUBE_ALL.upload(block, blockStateModelGenerator.modelCollector);
+//        Identifier empty = LegendOfSteve.id("block/empty_container_block");
+//
+//        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block).coordinate(
+//                        BlockStateVariantMap.create(AbstractHittableBlock.HIT)
+//                                .register(true, BlockStateVariant.create().put(VariantSettings.MODEL, empty))
+//                                .register(false, BlockStateVariant.create().put(VariantSettings.MODEL, regular))
+//        ));
+//        if (hasBase) {
+//            blockStateModelGenerator.registerParentedItemModel(block, regular);
+//        }
+//    }
 
     public static void registerConnectedPillar(BlockStateModelGenerator blockStateModelGenerator, Block block, Block topBlock) {
         registerConnectedPillar(blockStateModelGenerator, block, TextureMap.getId(topBlock));

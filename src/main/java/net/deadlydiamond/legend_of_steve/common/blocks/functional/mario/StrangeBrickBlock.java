@@ -25,7 +25,7 @@ public class StrangeBrickBlock extends BouncableBlock {
 
     @Override
     public void afterBounce(World world, BlockPos pos, BlockState state, @Nullable Entity owner, Direction bouncedDirection, BounceType bounceType, @Nullable DefaultedList<ItemStack> inventory) {
-        if (!world.isClient()) {
+        if (!world.isClient() && world.getBlockState(pos).getBlock() instanceof StrangeBrickBlock) {
             world.breakBlock(pos, world.getGameRules().getBoolean(GameRules.DO_TILE_DROPS));
         }
     }

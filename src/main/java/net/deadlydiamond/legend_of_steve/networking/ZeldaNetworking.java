@@ -14,7 +14,6 @@ import net.deadlydiamond.legend_of_steve.networking.s2c.question_block.JumpIntoB
 import net.deadlydiamond.legend_of_steve.networking.s2c.UpdateEntityStunS2CPacket;
 import net.deadlydiamond.legend_of_steve.networking.s2c.pushable_block.AddBlockBreakCooldownS2CPacket;
 import net.deadlydiamond.legend_of_steve.networking.s2c.pushable_block.UpdatePushableBlockBreakProgressS2CPacket;
-import net.deadlydiamond.legend_of_steve.networking.s2c.question_block.UpdateBlockHitS2CPacketTemp;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 
@@ -41,10 +40,6 @@ public class ZeldaNetworking {
             ClientPlayNetworking.registerGlobalReceiver(UpdateChestLockedStateS2CPacket.ID, UpdateChestLockedStateS2CPacket.Handler::receive);
             ClientPlayNetworking.registerGlobalReceiver(SwitchToggleS2CPacket.ID, SwitchToggleS2CPacket.Handler::receive);
             ClientPlayNetworking.registerGlobalReceiver(SyncSwitchBlocksS2CPacket.ID, SyncSwitchBlocksS2CPacket.Handler::receive);
-
-
-
-            ClientPlayNetworking.registerGlobalReceiver(UpdateBlockHitS2CPacketTemp.ID, UpdateBlockHitS2CPacketTemp.Handler::receive);
         }
     }
 }

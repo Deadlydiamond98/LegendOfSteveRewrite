@@ -3,6 +3,7 @@ package net.deadlydiamond.legend_of_steve.init;
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.bes.BombFlowerBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.BouncingBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.bes.container.QuestionBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.single.*;
 import net.deadlydiamond.legend_of_steve.common.bes.switches.CrystalSwitchBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.MasterBarrelBlockEntity;
@@ -40,12 +41,6 @@ public class ZeldaBlockEntities {
             ZeldaBlocks.FAIRY_MARBLE_SWORD_PEDESTAL,
             ZeldaBlocks.STRANGE_DIRT_SWORD_PEDESTAL,
             ZeldaBlocks.STRANGE_BLUE_DIRT_SWORD_PEDESTAL
-    );
-
-    public static final BlockEntityType<HittableContainerBlockEntity> HITTABLE_CONTAINER_BLOCK = register("hittable_container_block", HittableContainerBlockEntity::new,
-            ZeldaBlocks.QUESTION_BLOCK,
-            ZeldaBlocks.STRANGE_DIRT_BRICKS.container,
-            ZeldaBlocks.STRANGE_BLUE_DIRT_BRICKS.container
     );
 
     // SWITCH BLOCK ENTITIES ///////////////////////////////////////////////////////////////////////////////////////////

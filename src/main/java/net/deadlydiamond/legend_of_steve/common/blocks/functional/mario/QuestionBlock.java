@@ -1,6 +1,6 @@
 package net.deadlydiamond.legend_of_steve.common.blocks.functional.mario;
 
-import net.deadlydiamond.legend_of_steve.common.bes.container.single.QuestionBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.bes.container.QuestionBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.single.SingleSlotBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.blocks.container.single.SingleSlotBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.BounceType;
@@ -12,9 +12,11 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SpawnEggItem;
 import net.minecraft.server.world.ServerWorld;
@@ -22,8 +24,10 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.Hand;
 import net.minecraft.util.collection.DefaultedList;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
@@ -31,17 +35,18 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class QuestionBlock extends SingleSlotBlock implements IBouncableBlock {
+    public static final BooleanProperty POWERED = Properties.POWERED;
     public static final BooleanProperty HIT = ZeldaProperties.HIT;
 
     public QuestionBlock(Settings settings) {
         super(settings);
-        this.setDefaultState(this.getDefaultState().with(HIT, true));
+        this.setDefaultState(this.getDefaultState().with(HIT, true).with(POWERED, false));
     }
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
-        builder.add(HIT);
+        builder.add(HIT, POWERED);
     }
 
     @Nullable @Override
@@ -51,19 +56,13 @@ public class QuestionBlock extends SingleSlotBlock implements IBouncableBlock {
 
     // PLACING /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//    @Override
-//    public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
-//        super.onBlockAdded(state, world, pos, oldState, notify);
-//    }
-
-//    @Override
-//    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
-//        super.onStateReplaced(state, world, pos, newState, moved);
-//        if (world.getBlockEntity(pos) instanceof QuestionBlockEntity entity) {
-//            LegendOfSteve.LOGGER.info("Added at {}", pos.toShortString());
-//            world.setBlockState(pos, state.with(HIT, entity.isHit()));
-//        }
-//    }
+    @Override
+    public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
+        super.onPlaced(world, pos, state, placer, itemStack);
+        if (world.getBlockEntity(pos) instanceof QuestionBlockEntity entity) {
+            world.setBlockState(pos, state.with(HIT, entity.isHit()));
+        }
+    }
 
     // FILLING /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -79,6 +78,60 @@ public class QuestionBlock extends SingleSlotBlock implements IBouncableBlock {
     @Override
     public boolean canRemoveItem(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, ItemStack stack, SingleSlotBlockEntity blockEntity) {
         return false;
+    }
+
+    // PROJECTILE INTERACTION //////////////////////////////////////////////////////////////////////////////////////////
+
+    protected boolean canProjectileTrigger(World world, BlockState state, BlockHitResult hit, ProjectileEntity projectile) {
+        return true;
+    }
+
+    @Override
+    public void onProjectileHit(World world, BlockState state, BlockHitResult hit, ProjectileEntity projectile) {
+        if (canProjectileTrigger(world, state, hit, projectile) && canBounceBlock(world, hit.getBlockPos(), state) && !world.isClient()) {
+            triggerBounce(world, hit.getBlockPos(), state, projectile, hit.getSide().getOpposite(), BounceType.PROJECTILE);
+        }
+    }
+
+    // REDSTONE INTERACTION ////////////////////////////////////////////////////////////////////////////////////////////
+
+    protected boolean canRedstoneTrigger(World world, BlockState state, BlockPos pos) {
+        return true;
+    }
+
+    @Override
+    public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
+        if (canRedstoneTrigger(world, state, pos) && canBounceBlock(world, pos, state)) {
+            if (!world.isClient()) {
+                boolean bl = world.isReceivingRedstonePower(pos);
+                boolean bl2 = state.get(POWERED);
+
+                world.setBlockState(pos, state.with(POWERED, bl), Block.NO_REDRAW);
+
+                if (bl && !bl2) {
+                    triggerBounce(world, pos, state.with(POWERED, true), null, getRedstoneInputDirection(world, pos).getOpposite(), BounceType.REDSTONE);
+                }
+            }
+        }
+    }
+
+    public Direction getRedstoneInputDirection(World world, BlockPos pos) {
+        Direction recievedDirection = Direction.UP;
+        int i = 0;
+
+        for (Direction direction : DIRECTIONS) {
+            int j = world.getEmittedRedstonePower(pos.offset(direction), direction);
+            if (j >= 15) {
+                return direction;
+            }
+
+            if (j > i) {
+                i = j;
+                recievedDirection = direction;
+            }
+        }
+
+        return recievedDirection;
     }
 
     // HITTING /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -174,7 +227,6 @@ public class QuestionBlock extends SingleSlotBlock implements IBouncableBlock {
     }
 
     // SOUNDS //////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
     @Nullable
     protected SoundEvent getEmptyingSound() {

@@ -16,13 +16,12 @@ public class ZeldaClientPlayConnectionEvents {
     }
 
     private static void onInit(ClientPlayNetworkHandler clientPlayNetworkHandler, MinecraftClient client) {
+    }
+
+    private static void onJoin(ClientPlayNetworkHandler clientPlayNetworkHandler, PacketSender packetSender, MinecraftClient client) {
         if (client.player != null) {
             RequestSwitchBlockValuesS2CPacket.send(client.player);
         }
-    }
-
-    private static void onJoin(ClientPlayNetworkHandler clientPlayNetworkHandler, PacketSender packetSender, MinecraftClient minecraftClient) {
-
     }
 
     private static void onLeave(ClientPlayNetworkHandler clientPlayNetworkHandler, MinecraftClient minecraftClient) {

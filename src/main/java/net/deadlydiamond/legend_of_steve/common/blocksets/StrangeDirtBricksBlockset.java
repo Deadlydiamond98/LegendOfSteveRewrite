@@ -50,7 +50,7 @@ public class StrangeDirtBricksBlockset extends AbstractBlockset {
 
     public void generateModels(BlockStateModelGenerator modelGen, boolean uniqueSlab) {
         modelGen.registerSimpleCubeAll(this.base);
-        ZeldaBlockModelDatagenUtil.registerHittableBlock(modelGen, this.container, this.base);
+//        ZeldaBlockModelDatagenUtil.registerHittableBlock(modelGen, this.container, this.base);
         if (uniqueSlab) {
             BlockModelDatagenUtil.registerSlabUnique(modelGen, this.slab, this.base);
         } else {

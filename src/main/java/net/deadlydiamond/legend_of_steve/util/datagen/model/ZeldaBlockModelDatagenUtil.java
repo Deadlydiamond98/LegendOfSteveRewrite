@@ -3,7 +3,7 @@ package net.deadlydiamond.legend_of_steve.util.datagen.model;
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.dungeoncite.TriforceTileBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.dungeoncite.TriforceType;
-import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.AbstractHittableBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.temp.AbstractHittableBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.ConnectedPillarBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.PillarType;
 import net.deadlydiamond.legend_of_steve.util.ZeldaModels;

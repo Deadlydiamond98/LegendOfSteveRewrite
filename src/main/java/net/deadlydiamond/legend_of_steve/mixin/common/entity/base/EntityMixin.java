@@ -2,7 +2,7 @@ package net.deadlydiamond.legend_of_steve.mixin.common.entity.base;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.IJumpIntoAction;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.temp.IJumpIntoAction;
 import net.deadlydiamond.legend_of_steve.networking.s2c.question_block.JumpIntoBlockS2CPacket;
 import net.deadlydiamond.legend_of_steve.util.mixinterfaces.IPushBlockMoving;
 import net.minecraft.block.BlockState;

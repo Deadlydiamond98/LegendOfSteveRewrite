@@ -1,6 +1,6 @@
 package net.deadlydiamond.legend_of_steve.common.bes.container.single;
 
-import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.AbstractHittableBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.temp.AbstractHittableBlock;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlockEntities;
 import net.deadlydiamond.legend_of_steve.util.ZeldaProperties;
 import net.minecraft.block.BlockState;

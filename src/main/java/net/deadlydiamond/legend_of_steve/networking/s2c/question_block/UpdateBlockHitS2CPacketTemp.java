@@ -1,7 +1,7 @@
 package net.deadlydiamond.legend_of_steve.networking.s2c.question_block;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
-import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.AbstractHittableBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.temp.AbstractHittableBlock;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -15,7 +15,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 
-public class UpdateBlockHitS2CPacket {
+public class UpdateBlockHitS2CPacketTemp {
     public static final Identifier ID = LegendOfSteve.id("update_hit_question_block");
 
     public static void send(PlayerEntity player, BlockPos pos, Direction direction, boolean bl) {

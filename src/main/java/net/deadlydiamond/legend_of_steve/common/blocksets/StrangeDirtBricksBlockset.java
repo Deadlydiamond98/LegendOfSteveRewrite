@@ -1,7 +1,7 @@
 package net.deadlydiamond.legend_of_steve.common.blocksets;
 
-import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.HittableBrickBlock;
-import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.HittableContainerBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.StrangeBrickBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.temp.HittableContainerBlock;
 import net.deadlydiamond.legend_of_steve.util.datagen.model.ZeldaBlockModelDatagenUtil;
 import net.deadlydiamond98.koalalib.common.blocksets.AbstractBlockset;
 import net.deadlydiamond98.koalalib.util.datagen.BlockModelDatagenUtil;
@@ -37,7 +37,7 @@ public class StrangeDirtBricksBlockset extends AbstractBlockset {
     public StrangeDirtBricksBlockset(String modID, String id, AbstractBlock.Settings settings, boolean stripEndS) {
         super(modID, id);
         this.stripEndS = stripEndS;
-        this.base = this.register(modID, this.id(), new HittableBrickBlock(settings));
+        this.base = this.register(modID, this.id(), new StrangeBrickBlock(settings));
         this.container = this.register(modID, this.id() + "_container", new HittableContainerBlock(settings));
         this.stair = this.register(modID, this.id(this.stripEndS()) + "_stairs", new StairsBlock(this.base.getDefaultState(), settings));
         this.slab = this.register(modID, this.id(this.stripEndS()) + "_slab", new SlabBlock(settings));

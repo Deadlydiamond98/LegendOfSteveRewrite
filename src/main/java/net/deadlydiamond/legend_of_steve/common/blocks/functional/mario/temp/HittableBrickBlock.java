@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.common.blocks.functional.mario;
+package net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.temp;
 
 import net.deadlydiamond.legend_of_steve.common.bes.container.single.HittableContainerBlockEntity;
 import net.minecraft.block.BlockState;

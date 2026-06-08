@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.common.blocks.functional.mario;
+package net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.temp;
 
 import net.deadlydiamond.legend_of_steve.common.bes.container.single.SingleSlotBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.single.HittableContainerBlockEntity;
@@ -7,7 +7,7 @@ import net.deadlydiamond.legend_of_steve.common.items.IExtraCanMine;
 import net.deadlydiamond.legend_of_steve.init.ZeldaAdvancements;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlockEntities;
 import net.deadlydiamond.legend_of_steve.init.ZeldaDamageTypes;
-import net.deadlydiamond.legend_of_steve.networking.s2c.question_block.UpdateBlockHitS2CPacket;
+import net.deadlydiamond.legend_of_steve.networking.s2c.question_block.UpdateBlockHitS2CPacketTemp;
 import net.deadlydiamond.legend_of_steve.util.ZeldaProperties;
 import net.deadlydiamond98.koalalib.common.blocks.interaction.IHitBlockAction;
 import net.minecraft.block.Block;
@@ -171,7 +171,7 @@ public abstract class AbstractHittableBlock extends WaterloggableSingleSlotBlock
         }
 
         if (!world.isClient()) {
-            world.getPlayers().forEach(player -> UpdateBlockHitS2CPacket.send(player, pos, direction, additionalHitSound));
+            world.getPlayers().forEach(player -> UpdateBlockHitS2CPacketTemp.send(player, pos, direction, additionalHitSound));
         }
 
         if (state.get(HIT)) {

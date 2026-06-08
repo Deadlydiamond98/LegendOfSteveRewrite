@@ -2,6 +2,7 @@ package net.deadlydiamond.legend_of_steve.events.common;
 
 import net.deadlydiamond.legend_of_steve.common.world.states.SwitchBlockManager;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerWorldEvents;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.world.ServerWorld;
 

@@ -5,6 +5,8 @@ import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.base.Bou
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.GameRules;
@@ -17,18 +19,12 @@ public class StrangeBrickBlock extends BouncableBlock {
     }
 
     @Override
-    public boolean canMineBlock(BlockState state, World world, BlockPos pos, PlayerEntity miner) {
-        return true;
-    }
-
-    @Override
-    public boolean canPunch(World world, BlockPos blockPos, BlockState blockState, PlayerEntity playerEntity) {
+    public boolean canPunchTrigger(World world, BlockPos blockPos, BlockState blockState, PlayerEntity playerEntity) {
         return false;
     }
 
     @Override
-    public void afterBounce(World world, BlockPos pos, BlockState state, @Nullable Entity owner, Direction bouncedDirection, BounceType bounceType) {
-        super.afterBounce(world, pos, state, owner, bouncedDirection, bounceType);
+    public void afterBounce(World world, BlockPos pos, BlockState state, @Nullable Entity owner, Direction bouncedDirection, BounceType bounceType, @Nullable DefaultedList<ItemStack> inventory) {
         if (!world.isClient()) {
             world.breakBlock(pos, world.getGameRules().getBoolean(GameRules.DO_TILE_DROPS));
         }

@@ -1,13 +1,12 @@
 package net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.base;
 
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.BounceType;
-import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.projectile.ProjectileEntity;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvent;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -19,12 +18,8 @@ public class BouncableBlock extends Block implements IBouncableBlock {
         super(settings);
     }
 
-    protected SoundEvent getHittingSound() {
-        return ZeldaSounds.QUESTION_BLOCK_HIT;
-    }
-
     @Override
-    public boolean canBounceBlock() {
+    public boolean canBounceBlock(World world, BlockPos pos, BlockState state) {
         return true;
     }
 
@@ -39,21 +34,16 @@ public class BouncableBlock extends Block implements IBouncableBlock {
 
     @Override
     public void onProjectileHit(World world, BlockState state, BlockHitResult hit, ProjectileEntity projectile) {
-        if (canProjectileTrigger(world, state, hit, projectile) && canBounceBlock() && !world.isClient()) {
-            bounceBlock(world, hit.getBlockPos(), state, projectile, hit.getSide().getOpposite(), BounceType.PROJECTILE);
+        if (canProjectileTrigger(world, state, hit, projectile) && canBounceBlock(world, hit.getBlockPos(), state) && !world.isClient()) {
+            triggerBounce(world, hit.getBlockPos(), state, projectile, hit.getSide().getOpposite(), BounceType.PROJECTILE);
         }
     }
 
     @Override
-    public void bounceBlock(World world, BlockPos pos, BlockState state, @Nullable Entity owner, Direction direction, BounceType type) {
-        IBouncableBlock.super.bounceBlock(world, pos, state, owner, direction, type);
-        if (getHittingSound() != null) {
-            world.playSound(null, pos, getHittingSound(), SoundCategory.BLOCKS, 1.5f, 1);
-        }
-    }
+    public void beforeBounce(World world, BlockPos pos, BlockState state, @Nullable Entity owner, Direction direction, BounceType type) {}
 
     @Override
-    public void afterBounce(World world, BlockPos pos, BlockState state, @Nullable Entity owner, Direction bouncedDirection, BounceType bounceType) {
+    public void afterBounce(World world, BlockPos pos, BlockState state, @Nullable Entity owner, Direction bouncedDirection, BounceType bounceType, @Nullable DefaultedList<ItemStack> inventory) {
 
     }
 }

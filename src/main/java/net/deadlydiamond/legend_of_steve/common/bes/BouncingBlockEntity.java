@@ -3,6 +3,7 @@ package net.deadlydiamond.legend_of_steve.common.bes;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.BounceType;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.base.IBouncableBlock;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlockEntities;
+import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
 import net.deadlydiamond.legend_of_steve.networking.s2c.question_block.UpdateBounceBlockPostHitS2CPacket;
 import net.deadlydiamond98.koalalib.util.KoalaNbtHelper;
 import net.minecraft.block.Block;
@@ -10,6 +11,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
+import net.minecraft.inventory.Inventories;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtHelper;
@@ -32,19 +34,20 @@ public class BouncingBlockEntity extends BlockEntity {
     public static final float BOUNCE = 0.25f;
     public static final int BOUNCE_TIME = 5;
 
+    @Nullable private DefaultedList<ItemStack> inventory;
+    @Nullable private UUID ownerUuid;
+    @Nullable private Entity owner;
+    protected BounceType bounceType;
+
+    protected BlockState startState, endState;
+
     private Vec3d bouncePos = Vec3d.ZERO;
     private Vec3d prevBouncePos = Vec3d.ZERO;
     private Vec3d bounceDirection;
     private int bounceTimer, bounceTimerMax;
     private float bounceMoveSpeed = BOUNCE;
-    protected BlockState startState, endState;
 
-    @Nullable private UUID ownerUuid;
-    @Nullable private Entity owner;
-
-    protected BounceType bounceType;
-
-    public BouncingBlockEntity(BlockPos pos, BlockState state, BlockState startState, BlockState endState,
+    protected BouncingBlockEntity(BlockPos pos, BlockState state, BlockState startState, BlockState endState,
                                Direction direction, int bounceTimer, @Nullable Entity owner, BounceType type) {
         super(ZeldaBlockEntities.BOUNCING_BLOCK, pos, state);
         setBounceDirection(direction);
@@ -63,6 +66,22 @@ public class BouncingBlockEntity extends BlockEntity {
         this(pos, state, Blocks.AIR.getDefaultState(), Blocks.AIR.getDefaultState(), Direction.UP, BOUNCE_TIME, null, BounceType.UNKNOWN);
     }
 
+    // CREATION ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // With Inventory
+    public static void create(World world, BlockPos pos, BlockState startState, BlockState endState,
+                              Direction direction, int bounceTime, @Nullable Entity owner, BounceType type,
+                              @Nullable DefaultedList<ItemStack> inventory) {
+        world.setBlockState(pos, ZeldaBlocks.BOUNCING_BLOCK.getDefaultState());
+        BouncingBlockEntity blockEntity = new BouncingBlockEntity(
+                pos, world.getBlockState(pos), startState, endState, direction, bounceTime, owner, type
+        );
+        blockEntity.setInventory(inventory);
+        world.addBlockEntity(blockEntity);
+    }
+
+    // TICKING /////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public static void tick(World world, BlockPos pos, BlockState state, BouncingBlockEntity entity) {
         entity.tick(world, pos, state);
     }
@@ -72,19 +91,7 @@ public class BouncingBlockEntity extends BlockEntity {
 
         if (this.bounceTimer-- <= 0) {
             if (!world.isClient() && this.bounceTimer < -1) {
-                world.setBlockState(pos, this.endState);
-                if (this.startState.getBlock() instanceof IBouncableBlock block) {
-                    Direction direction = Direction.fromVector(
-                            (int) this.bounceDirection.x,
-                            (int) this.bounceDirection.y,
-                            (int) this.bounceDirection.z
-                    );
-
-                    world.getPlayers().forEach(player -> UpdateBounceBlockPostHitS2CPacket.send(
-                            player, pos, this.startState, this.endState, getOwner(), direction, this.bounceType
-                    ));
-                    block.afterBounce(world, pos, this.endState, getOwner(), direction, this.bounceType);
-                }
+                finishBouncing(world, pos, state);
             }
             this.bouncePos = Vec3d.ZERO;
             this.bounceMoveSpeed = 0;
@@ -94,6 +101,24 @@ public class BouncingBlockEntity extends BlockEntity {
         }
         markDirty();
     }
+
+    protected void finishBouncing(World world, BlockPos pos, BlockState state) {
+        world.setBlockState(pos, this.endState);
+        if (this.startState.getBlock() instanceof IBouncableBlock block) {
+            Direction direction = Direction.fromVector(
+                    (int) this.bounceDirection.x,
+                    (int) this.bounceDirection.y,
+                    (int) this.bounceDirection.z
+            );
+
+            world.getPlayers().forEach(player -> UpdateBounceBlockPostHitS2CPacket.send(
+                    player, pos, this.startState, this.endState, getOwner(), direction, this.bounceType
+            ));
+            block.afterBounce(world, pos, this.endState, getOwner(), direction, this.bounceType, this.inventory);
+        }
+    }
+
+    // GETTERS & SETTERS ///////////////////////////////////////////////////////////////////////////////////////////////
 
     public VoxelShape getCollision(BlockView world, BlockPos pos) {
         VoxelShape voxelShape = getRenderedBlock().getCollisionShape(world, pos);
@@ -120,6 +145,7 @@ public class BouncingBlockEntity extends BlockEntity {
         if (entity != null) {
             this.ownerUuid = entity.getUuid();
             this.owner = entity;
+            markDirty();
         }
     }
 
@@ -134,6 +160,17 @@ public class BouncingBlockEntity extends BlockEntity {
             return null;
         }
     }
+
+    public void setInventory(@Nullable DefaultedList<ItemStack> inventory) {
+        this.inventory = inventory;
+        markDirty();
+    }
+
+    public @Nullable DefaultedList<ItemStack> getInventory() {
+        return this.inventory;
+    }
+
+    // NBT & ETC ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public void readNbt(NbtCompound nbt) {
@@ -157,6 +194,10 @@ public class BouncingBlockEntity extends BlockEntity {
             this.ownerUuid = nbt.getUuid("Owner");
             this.owner = null;
         }
+
+        if (nbt.contains("Items")) {
+            Inventories.readNbt(nbt, this.inventory);
+        }
     }
 
     @Override
@@ -175,6 +216,10 @@ public class BouncingBlockEntity extends BlockEntity {
 
         if (this.ownerUuid != null) {
             nbt.putUuid("Owner", this.ownerUuid);
+        }
+
+        if (this.inventory != null) {
+            Inventories.writeNbt(nbt, this.inventory);
         }
     }
 

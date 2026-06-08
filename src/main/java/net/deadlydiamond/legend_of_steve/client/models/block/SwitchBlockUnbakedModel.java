@@ -28,8 +28,7 @@ public class SwitchBlockUnbakedModel implements UnbakedModel {
     }
 
     @Override
-    public void setParents(Function<Identifier, UnbakedModel> modelLoader) {
-    }
+    public void setParents(Function<Identifier, UnbakedModel> modelLoader) {}
 
     @Nullable
     @Override

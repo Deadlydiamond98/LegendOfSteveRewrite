@@ -8,6 +8,7 @@
   "mixins": [
     "common.ExplosionMixin",
     "common.be.LockableContainerBlockEntityMixin",
+    "common.be.LootableContainerBlockEntityInvoker",
     "common.block.AbstractBlockStateMixin",
     "common.block.BlockMixin",
     "common.block.FluidBlockMixin",

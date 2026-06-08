@@ -3,6 +3,7 @@ package net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.temp;
 import net.deadlydiamond.legend_of_steve.common.bes.container.single.SingleSlotBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.single.HittableContainerBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.blocks.container.single.WaterloggableSingleSlotBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.base.IJumpIntoAction;
 import net.deadlydiamond.legend_of_steve.common.items.IExtraCanMine;
 import net.deadlydiamond.legend_of_steve.init.ZeldaAdvancements;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlockEntities;

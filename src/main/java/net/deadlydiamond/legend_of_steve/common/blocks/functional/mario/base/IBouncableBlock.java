@@ -1,18 +1,25 @@
 package net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.base;
 
+import net.deadlydiamond.legend_of_steve.common.bes.BouncingBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.BounceType;
-import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.temp.IJumpIntoAction;
 import net.deadlydiamond.legend_of_steve.common.items.IExtraCanMine;
 import net.deadlydiamond.legend_of_steve.init.ZeldaDamageTypes;
+import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
+import net.deadlydiamond.legend_of_steve.mixin.common.be.LootableContainerBlockEntityInvoker;
 import net.deadlydiamond.legend_of_steve.networking.s2c.question_block.UpdateBounceBlockHitS2CPacket;
 import net.deadlydiamond98.koalalib.common.blocks.interaction.IHitBlockAction;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.entity.LootableContainerBlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageType;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolItem;
 import net.minecraft.registry.RegistryKey;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
@@ -23,46 +30,60 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public interface IBouncableBlock extends IJumpIntoAction, IHitBlockAction, IExtraCanMine {
-    boolean canBounceBlock();
+
+    // Getters /////////////////////////////////////////////////////////////////////////////////////////////////////////
     BlockState getPostBounceState(BlockState originalState);
-
-    default boolean canJumpInto(World world, BlockPos blockPos, BlockState blockState, @Nullable Entity entity) {
-        return true;
-    }
-
-    default boolean canPunch(World world, BlockPos blockPos, BlockState blockState, PlayerEntity playerEntity) {
-        return true;
-    }
-
-    void afterBounce(World world, BlockPos pos, BlockState state, @Nullable Entity owner, Direction bouncedDirection, BounceType bounceType);
 
     default int getBounceTime() {
         return 5;
     }
 
-    @Override
-    default boolean canMineBlock(BlockState state, World world, BlockPos pos, PlayerEntity miner) {
-        return !(miner.getMainHandStack().getItem() instanceof ToolItem);
+    @Nullable
+    default SoundEvent getHittingSound() {
+        return ZeldaSounds.QUESTION_BLOCK_HIT;
     }
 
-    @Override
-    default void jumpIntoBlock(World world, BlockPos pos, BlockState state, @Nullable Entity entity) {
-        if (canJumpInto(world, pos, state, entity) && canBounceBlock() && !world.isClient()) {
-            bounceBlock(world, pos, state, entity, Direction.UP, BounceType.JUMP);
+    @Nullable
+    default DefaultedList<ItemStack> getInventory(World world, BlockPos pos, @Nullable PlayerEntity player) {
+        if (world.getBlockEntity(pos) instanceof LootableContainerBlockEntity container) {
+            container.checkLootInteraction(player);
+            return ((LootableContainerBlockEntityInvoker) container).legend_of_steve$getInvStackList();
         }
+        return null;
     }
 
-    @Override
-    default void attack(BlockState blockState, BlockPos blockPos, World world, PlayerEntity playerEntity) {
-        if (canPunch(world, blockPos, blockState, playerEntity) && canBounceBlock() && !world.isClient()) {
-            HitResult hitResult = playerEntity.raycast(8, 0, false);
-            if (hitResult instanceof BlockHitResult blockHitResult) {
-                bounceBlock(world, blockPos, blockState, playerEntity, blockHitResult.getSide().getOpposite(), BounceType.ATTACK);
-            }
-        }
+    // Configuration ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+    boolean canBounceBlock(World world, BlockPos pos, BlockState state);
+
+    default boolean canJumpInto(World world, BlockPos blockPos, BlockState blockState, @Nullable Entity entity) {
+        return true;
     }
 
-    default void bounceBlock(World world, BlockPos pos, BlockState state, @Nullable Entity owner, Direction direction, BounceType type) {
+    default boolean canPunchTrigger(World world, BlockPos blockPos, BlockState blockState, PlayerEntity playerEntity) {
+        return true;
+    }
+
+    // Passenger Damage & Velocity /////////////////////////////////////////////////////////////////////////////////////
+
+    default boolean bouncePassengers() {
+        return true;
+    }
+
+    default boolean dealBounceDamage(Entity entity, LivingEntity living) {
+        return entity != null;
+    }
+
+    default RegistryKey<DamageType> getBounceDamageType() {
+        return ZeldaDamageTypes.QUESTION_BLOCK;
+    }
+
+    // Bounce & Post Bounce Actions ////////////////////////////////////////////////////////////////////////////////////
+
+    void beforeBounce(World world, BlockPos pos, BlockState state, @Nullable Entity owner, Direction direction, BounceType type);
+    void afterBounce(World world, BlockPos pos, BlockState state, @Nullable Entity owner, Direction bouncedDirection, BounceType bounceType, @Nullable DefaultedList<ItemStack> inventory);
+
+    default void triggerBounce(World world, BlockPos pos, BlockState state, @Nullable Entity owner, Direction direction, BounceType type) {
         if (!world.isClient()) {
             world.getPlayers().forEach(player -> UpdateBounceBlockHitS2CPacket.send(player, pos, owner, direction, type));
         }
@@ -80,23 +101,45 @@ public interface IBouncableBlock extends IJumpIntoAction, IHitBlockAction, IExtr
             });
         }
 
+        if (getHittingSound() != null) {
+            world.playSound(null, pos, getHittingSound(), SoundCategory.BLOCKS, 1.5f, 1);
+        }
+
+        beforeBounce(world, pos, state, owner, direction, type);
         createBouncingBlock(world, pos, state, direction, owner, type);
     }
 
-    default boolean bouncePassengers() {
-        return true;
-    }
-
-    default boolean dealBounceDamage(Entity entity, LivingEntity living) {
-        return entity != null;
-    }
-
-    default RegistryKey<DamageType> getBounceDamageType() {
-        return ZeldaDamageTypes.QUESTION_BLOCK;
-    }
-
     default void createBouncingBlock(World world, BlockPos pos, BlockState state, Direction direction, @Nullable Entity owner, BounceType type) {
-        BouncingTransitionBlock.create(world, pos, state, getPostBounceState(state), direction, getBounceTime(), owner, type);
+        DefaultedList<ItemStack> inventory = getInventory(world, pos, owner instanceof PlayerEntity player ? player : null);
+        BouncingBlockEntity.create(world, pos, state, getPostBounceState(state), direction, getBounceTime(), owner, type, inventory);
+    }
+
+    // Overridden //////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // Jumping
+
+    @Override
+    default void jumpIntoBlock(World world, BlockPos pos, BlockState state, @Nullable Entity entity) {
+        if (canJumpInto(world, pos, state, entity) && canBounceBlock(world, pos, state) && !world.isClient()) {
+            triggerBounce(world, pos, state, entity, Direction.UP, BounceType.JUMP);
+        }
+    }
+
+    // Attacking
+
+    @Override
+    default boolean canMineBlock(BlockState state, World world, BlockPos pos, PlayerEntity miner) {
+        return !canPunchTrigger(world, pos, state, miner) || miner.getMainHandStack().getItem() instanceof ToolItem;
+    }
+
+    @Override
+    default void attack(BlockState state, BlockPos pos, World world, PlayerEntity playerEntity) {
+        if (canPunchTrigger(world, pos, state, playerEntity) && canBounceBlock(world, pos, state) && !world.isClient()) {
+            HitResult hitResult = playerEntity.raycast(8, 0, false);
+            if (hitResult instanceof BlockHitResult blockHitResult) {
+                triggerBounce(world, pos, state, playerEntity, blockHitResult.getSide().getOpposite(), BounceType.ATTACK);
+            }
+        }
     }
 
     @Override

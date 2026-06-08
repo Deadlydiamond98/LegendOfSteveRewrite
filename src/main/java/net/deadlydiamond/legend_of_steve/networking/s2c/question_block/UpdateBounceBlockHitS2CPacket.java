@@ -42,7 +42,7 @@ public class UpdateBounceBlockHitS2CPacket {
                 if (client.world != null) {
                     BlockState blockState = client.world.getBlockState(pos);
                     if (blockState.getBlock() instanceof IBouncableBlock block) {
-                        block.bounceBlock(client.world, pos, blockState, entityID != null ? client.world.getEntityById(entityID) : null, direction, type);
+                        block.triggerBounce(client.world, pos, blockState, entityID != null ? client.world.getEntityById(entityID) : null, direction, type);
                     }
                 }
             });

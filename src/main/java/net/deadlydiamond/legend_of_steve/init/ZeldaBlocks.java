@@ -4,8 +4,8 @@ import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.blocks.container.MasterBarrelBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.container.single.LootPotBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.container.single.SwordPedestal;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.QuestionBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.base.BouncingTransitionBlock;
-import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.base.BouncableBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.temp.HittableContainerBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.ConnectedPillarBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.GirderBlock;
@@ -164,11 +164,10 @@ public class ZeldaBlocks {
     public static final Block CRATE = register("crate", new Block(CRATE_SETTINGS), false);
     public static final Item CRATE_ITEM = ZeldaItems.register("crate", new CrateItem(new FabricItemSettings(), CRATE.getDefaultState()));
 
-    // BOUNCE ABLE BLOCKS
+    // BOUNCE-ABLE BLOCKS
     public static final Block BOUNCING_BLOCK = register("bouncing_block", new BouncingTransitionBlock(FabricBlockSettings.copyOf(Blocks.MOVING_PISTON)), false);
-    public static final Block DEBUG_BOUNCE = register("debug_bounce", new BouncableBlock(QUESTION_BLOCK_SETTINGS));
 
-    public static final Block QUESTION_BLOCK = register("question_block", new HittableContainerBlock(QUESTION_BLOCK_SETTINGS));
+    public static final Block QUESTION_BLOCK = register("question_block", new QuestionBlock(QUESTION_BLOCK_SETTINGS));
 
     // SWITCH BLOCKS
     public static final Block CRYSTAL_SWITCH = register("crystal_switch", new CrystalSwitchBlock(CRYSTAL_SWITCH_SETTINGS), new FabricItemSettings().rarity(Rarity.RARE));

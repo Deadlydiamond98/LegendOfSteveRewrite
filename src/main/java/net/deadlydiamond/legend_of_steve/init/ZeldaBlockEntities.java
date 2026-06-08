@@ -3,11 +3,9 @@ package net.deadlydiamond.legend_of_steve.init;
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.bes.BombFlowerBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.BouncingBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.bes.container.single.*;
 import net.deadlydiamond.legend_of_steve.common.bes.switches.CrystalSwitchBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.MasterBarrelBlockEntity;
-import net.deadlydiamond.legend_of_steve.common.bes.container.single.LootPotBlockEntity;
-import net.deadlydiamond.legend_of_steve.common.bes.container.single.HittableContainerBlockEntity;
-import net.deadlydiamond.legend_of_steve.common.bes.container.single.SwordPedestalBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.switches.SwitchBlockEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.Block;
@@ -22,6 +20,12 @@ public class ZeldaBlockEntities {
 
     public static final BlockEntityType<MasterBarrelBlockEntity> MASTER_BARREL = register("master_barrel", MasterBarrelBlockEntity::new,
             ZeldaBlocks.MASTER_BARREL
+    );
+
+    public static final BlockEntityType<QuestionBlockEntity> QUESTION_BLOCK = register("question_block", QuestionBlockEntity::new,
+            ZeldaBlocks.QUESTION_BLOCK,
+            ZeldaBlocks.STRANGE_DIRT_BRICKS.container,
+            ZeldaBlocks.STRANGE_BLUE_DIRT_BRICKS.container
     );
 
     public static final BlockEntityType<LootPotBlockEntity> LOOT_POT = register("loot_pot", LootPotBlockEntity::new,
@@ -40,9 +44,7 @@ public class ZeldaBlockEntities {
 
     public static final BlockEntityType<HittableContainerBlockEntity> HITTABLE_CONTAINER_BLOCK = register("hittable_container_block", HittableContainerBlockEntity::new,
             ZeldaBlocks.QUESTION_BLOCK,
-            ZeldaBlocks.STRANGE_DIRT_BRICKS.base,
             ZeldaBlocks.STRANGE_DIRT_BRICKS.container,
-            ZeldaBlocks.STRANGE_BLUE_DIRT_BRICKS.base,
             ZeldaBlocks.STRANGE_BLUE_DIRT_BRICKS.container
     );
 
@@ -58,13 +60,9 @@ public class ZeldaBlockEntities {
 
     // OTHER BLOCK ENTITIES ////////////////////////////////////////////////////////////////////////////////////////////
 
-    public static final BlockEntityType<BombFlowerBlockEntity> BOMB_FLOWER = register("bomb_flower", BombFlowerBlockEntity::new,
-            ZeldaBlocks.BOMB_FLOWER
-    );
+    public static final BlockEntityType<BombFlowerBlockEntity> BOMB_FLOWER = register("bomb_flower", BombFlowerBlockEntity::new, ZeldaBlocks.BOMB_FLOWER);
 
-    public static final BlockEntityType<BouncingBlockEntity> BOUNCING_BLOCK = register("bouncing_block", BouncingBlockEntity::new,
-            ZeldaBlocks.BOUNCING_BLOCK
-    );
+    public static final BlockEntityType<BouncingBlockEntity> BOUNCING_BLOCK = register("bouncing_block", BouncingBlockEntity::new, ZeldaBlocks.BOUNCING_BLOCK);
 
     // HELPER METHODS //////////////////////////////////////////////////////////////////////////////////////////////////
 

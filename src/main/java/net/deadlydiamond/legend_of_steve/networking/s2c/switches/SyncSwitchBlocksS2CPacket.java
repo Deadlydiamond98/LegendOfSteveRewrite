@@ -1,6 +1,7 @@
 package net.deadlydiamond.legend_of_steve.networking.s2c.switches;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
+import net.deadlydiamond.legend_of_steve.client.SwitchBlockAtlasBackup;
 import net.deadlydiamond.legend_of_steve.common.world.states.SwitchBlockManager;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
@@ -38,7 +39,12 @@ public class SyncSwitchBlocksS2CPacket {
     public static class Handler {
         public static void receive(MinecraftClient client, ClientPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
             Map<String, Boolean> values = buf.readMap(PacketByteBuf::readString, PacketByteBuf::readBoolean);
-            client.execute(() -> SwitchBlockManager.SYNCED_SWITCH_GROUPS.putAll(values));
+            client.execute(() -> {
+                values.forEach((s, aBoolean) -> {
+                    SwitchBlockManager.SYNCED_SWITCH_GROUPS.put(s, aBoolean);
+                    SwitchBlockAtlasBackup.updateSwitchSprites("global", aBoolean);
+                });
+            });
         }
     }
 }

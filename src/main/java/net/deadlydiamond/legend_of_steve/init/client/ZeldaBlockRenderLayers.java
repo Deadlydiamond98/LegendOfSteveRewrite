@@ -36,8 +36,12 @@ public class ZeldaBlockRenderLayers {
                 ZeldaBlocks.BLACKSTONE_BRAZIER_BLOCKSET,
                 ZeldaBlocks.QUARTZ_BRAZIER_BLOCKSET,
                 ZeldaBlocks.STRANGE_DIRT_BRAZIER_BLOCKSET,
-                ZeldaBlocks.STRANGE_BLUE_DIRT_BRAZIER_BLOCKSET,
+                ZeldaBlocks.STRANGE_BLUE_DIRT_BRAZIER_BLOCKSET
+        );
 
+        // SWITCH BLOCKS ///////////////////////////////////////////////////////////////////////////////////////////////
+
+        registerBlockset(ZeldaRenderLayers.SWITCH_BLOCK,
                 ZeldaBlocks.RED_SWITCH_BLOCKS,
                 ZeldaBlocks.BLUE_SWITCH_BLOCKS
         );

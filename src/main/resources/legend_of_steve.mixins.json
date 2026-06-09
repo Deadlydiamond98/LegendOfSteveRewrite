@@ -65,6 +65,7 @@
     "client.rendering.entity.PlayerEntityRendererMixin",
     "client.rendering.entity.stun.LivingEntityRendererStunMixin",
     "client.rendering.world.ChunkBuilderMixin",
+    "client.rendering.world.GameRendererMixin",
     "client.rendering.world.RenderLayerMixin",
     "client.rendering.world.RenderLayersMixin",
     "client.rendering.world.WorldRendererMixin",

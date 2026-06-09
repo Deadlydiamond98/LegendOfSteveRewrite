@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.client.models.block;
+package net.deadlydiamond.legend_of_steve.client.models.block.temp;
 
 import net.minecraft.client.render.model.BakedModel;
 import net.minecraft.client.render.model.Baker;
@@ -10,19 +10,21 @@ import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
-import java.util.List;
+import java.util.Collections;
 import java.util.function.Function;
 
-public class SwitchBlockUnbakedModel implements UnbakedModel {
+public class SwitchBlockUnbakedModelTemp implements UnbakedModel {
     private final Identifier onModelID;
+    private final Identifier offModelID;
 
-    public SwitchBlockUnbakedModel(Identifier id) {
+    public SwitchBlockUnbakedModelTemp(Identifier id) {
         this.onModelID = id.withSuffixedPath("_on");
+        this.offModelID = id.withSuffixedPath("_off");
     }
 
     @Override
     public Collection<Identifier> getModelDependencies() {
-        return List.of();
+        return Collections.emptySet();
     }
 
     @Override
@@ -31,6 +33,8 @@ public class SwitchBlockUnbakedModel implements UnbakedModel {
     @Nullable
     @Override
     public BakedModel bake(Baker baker, Function<SpriteIdentifier, Sprite> textureGetter, ModelBakeSettings rotationContainer, Identifier modelId) {
-        return new SwitchBlockBakedModel(baker.bake(this.onModelID, rotationContainer));
+        BakedModel onModel = baker.bake(this.onModelID, rotationContainer);
+        BakedModel offModel = baker.bake(this.offModelID, rotationContainer);
+        return new SwitchBlockBakedModelTemp(onModel, offModel);
     }
 }

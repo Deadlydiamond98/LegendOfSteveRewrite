@@ -1,7 +1,7 @@
 {
   "parent": "legend_of_steve:block/template_off_block",
   "textures": {
-    "all": "legend_of_steve:block/blue_switch_block_off",
+    "all": "legend_of_steve:block/blue_switch_block",
     "particle": "legend_of_steve:block/blue_switch_block_on"
   }
 }

@@ -12,12 +12,10 @@ import net.minecraft.block.ShapeContext;
 import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
-import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
-import org.jetbrains.annotations.Nullable;
 import org.joml.Matrix4f;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -34,12 +32,11 @@ public abstract class WorldRendererMixin {
 
     // Renders Iridescence & Bloom Blocks
 
-    @Shadow public abstract void playSong(@Nullable SoundEvent song, BlockPos songPosition);
-
     @WrapOperation(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/WorldRenderer;renderLayer(Lnet/minecraft/client/render/RenderLayer;Lnet/minecraft/client/util/math/MatrixStack;DDDLorg/joml/Matrix4f;)V"))
     private void legend_of_steve$renderRegularLayers(WorldRenderer instance, RenderLayer renderLayer, MatrixStack matrices, double cameraX, double cameraY, double cameraZ, Matrix4f positionMatrix, Operation<Void> original) {
         if (renderLayer == RenderLayer.getCutout()) {
             renderLayer(ZeldaRenderLayers.IRIDESCENCE, matrices, cameraX, cameraY, cameraZ, positionMatrix);
+            renderLayer(ZeldaRenderLayers.SWITCH_BLOCK, matrices, cameraX, cameraY, cameraZ, positionMatrix);
         }
         original.call(instance, renderLayer, matrices, cameraX, cameraY, cameraZ, positionMatrix);
     }

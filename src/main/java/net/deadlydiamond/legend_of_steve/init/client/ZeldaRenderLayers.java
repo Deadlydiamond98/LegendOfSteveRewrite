@@ -1,6 +1,7 @@
 package net.deadlydiamond.legend_of_steve.init.client;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
+import net.deadlydiamond.legend_of_steve.client.SwitchBlockAtlasBackup;
 import net.deadlydiamond98.koalalib.client.PostProcessingRegistry;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gl.Framebuffer;
@@ -8,6 +9,7 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.RenderPhase;
 import net.minecraft.client.render.VertexFormat;
 import net.minecraft.client.render.VertexFormats;
+import net.minecraft.client.texture.SpriteAtlasTexture;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 
@@ -132,6 +134,20 @@ public class ZeldaRenderLayers extends RenderLayer {
                     .transparency(GLINT_TRANSPARENCY)
                     .texturing(GLINT_TEXTURING)
                     .build(false)
+    );
+
+    public static final RenderLayer SWITCH_BLOCK = of(
+            "cutout_mipped",
+            VertexFormats.POSITION_COLOR_TEXTURE_LIGHT_NORMAL,
+            VertexFormat.DrawMode.QUADS,
+            131072,
+            true,
+            false,
+            RenderLayer.MultiPhaseParameters.builder()
+                    .lightmap(ENABLE_LIGHTMAP)
+                    .program(CUTOUT_MIPPED_PROGRAM)
+                    .texture(new RenderPhase.Texture(SwitchBlockAtlasBackup.SWITCH_ATLAS, false, true))
+                    .build(true)
     );
 
     public static final RenderLayer IRIDESCENCE = of(

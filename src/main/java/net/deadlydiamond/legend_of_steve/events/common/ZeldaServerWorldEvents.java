@@ -11,7 +11,5 @@ public class ZeldaServerWorldEvents {
         ServerWorldEvents.UNLOAD.register(ZeldaServerWorldEvents::onUnload);
     }
 
-    private static void onUnload(MinecraftServer server, ServerWorld serverWorld) {
-        SwitchBlockManager.reset();
-    }
+    private static void onUnload(MinecraftServer server, ServerWorld serverWorld) {}
 }

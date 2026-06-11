@@ -1,6 +1,6 @@
 package net.deadlydiamond.legend_of_steve.events.client;
 
-import net.deadlydiamond.legend_of_steve.common.world.states.SwitchBlockManager;
+import net.deadlydiamond.legend_of_steve.client.switches.SwitchBlockAtlas;
 import net.deadlydiamond.legend_of_steve.networking.c2s.RequestSwitchBlockValuesS2CPacket;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
@@ -24,6 +24,6 @@ public class ZeldaClientPlayConnectionEvents {
     }
 
     private static void onLeave(ClientPlayNetworkHandler clientPlayNetworkHandler, MinecraftClient minecraftClient) {
-        SwitchBlockManager.reset();
+        SwitchBlockAtlas.reset();
     }
 }

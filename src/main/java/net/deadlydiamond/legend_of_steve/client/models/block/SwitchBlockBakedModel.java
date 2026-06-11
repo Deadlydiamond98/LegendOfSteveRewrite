@@ -36,7 +36,7 @@ public class SwitchBlockBakedModel extends ForwardingBakedModel {
         if (blockView.getBlockEntityRenderData(pos) instanceof String beGroupID) {
             groupID = beGroupID;
         } else {
-            groupID = "global";
+            groupID = "Global";
         }
 
         context.pushTransform(quad -> {
@@ -44,8 +44,9 @@ public class SwitchBlockBakedModel extends ForwardingBakedModel {
 
             if (SwitchBlockAtlas.INSTANCE != null) {
                 Sprite switchSprite = SwitchBlockAtlas.INSTANCE.getSprite(groupID, sprite.getContents().getId());
-                LegendOfSteve.LOGGER.info("{} -- {}, {}", switchSprite.getContents().getId(), switchSprite.getX(), switchSprite.getY());
-                quad.spriteBake(switchSprite, MutableQuadView.BAKE_LOCK_UV);
+                if (switchSprite != null) {
+                    quad.spriteBake(switchSprite, MutableQuadView.BAKE_LOCK_UV);
+                }
             }
 
             return true;

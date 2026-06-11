@@ -28,7 +28,7 @@ public class CrystalSwitchBlockEntity extends SwitchBlockEntity {
         this.OrbYaw %= 360;
         this.ticks++;
 
-        syncSwitchState(this.updateChunk);
+        syncSwitchState();
         this.triggerCooldown--;
         this.updateChunk = false;
     }

@@ -20,8 +20,8 @@ public class SwitchBlockAtlas extends AbstractTexture implements DynamicTexture 
     @Nullable public static SwitchBlockAtlas INSTANCE;
 
     private Map<String, Map<Identifier, SwitchSprite>> sprites = Map.of();
-    private boolean shouldReload = false;
     private final MinecraftClient client;
+    private boolean shouldReload;
     private int height = 0;
 
     public SwitchBlockAtlas(MinecraftClient client) {
@@ -37,7 +37,13 @@ public class SwitchBlockAtlas extends AbstractTexture implements DynamicTexture 
                 return spriteGroup.get(block);
             }
         }
-        return this.sprites.get(group).get(SwitchTextures.FALLBACK.id());
+        return null;
+    }
+
+    public static void reset() {
+        if (INSTANCE != null) {
+            INSTANCE.sprites = Map.of();
+        }
     }
 
     // Sprite Creation & Updating //////////////////////////////////////////////////////////////////////////////////////

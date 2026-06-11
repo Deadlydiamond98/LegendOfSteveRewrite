@@ -1,5 +1,6 @@
 package net.deadlydiamond.legend_of_steve.common.bes.switches;
 
+import net.deadlydiamond.legend_of_steve.common.bes.ILoadEvent;
 import net.deadlydiamond.legend_of_steve.common.bes.grouping.BoundGroupBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.switches.ISwitchBlock;
 import net.deadlydiamond.legend_of_steve.common.world.states.SwitchBlockManager;
@@ -16,7 +17,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class SwitchBlockEntity extends BoundGroupBlockEntity {
+public class SwitchBlockEntity extends BoundGroupBlockEntity implements ILoadEvent {
     public boolean firstTick = true;
     protected boolean updateChunk = false;
     protected int triggerCooldown;
@@ -31,12 +32,13 @@ public class SwitchBlockEntity extends BoundGroupBlockEntity {
     }
 
     public void init(World world, BlockPos pos, BlockState state) {
-        syncSwitchState(false);
+        syncSwitchState();
         updateListeners();
+        SwitchBlockManager.sync(world, this.getGroupID());
         this.firstTick = false;
     }
 
-    protected void syncSwitchState(boolean triggerUpdate) {
+    protected void syncSwitchState() {
         if (!getWorld().isClient()) {
             boolean bl = isInverted() != getWorldOnState();
 
@@ -46,7 +48,7 @@ public class SwitchBlockEntity extends BoundGroupBlockEntity {
                     switchBlock.onSwitchTriggered(getWorld(), getPos(), getCachedState(), this, bl);
 
                     getWorld().getPlayers().forEach(player -> {
-                        SwitchToggleS2CPacket.send(player, getPos(), bl, triggerUpdate);
+                        SwitchToggleS2CPacket.send(player, getPos(), bl);
                     });
                 }
             }
@@ -88,6 +90,13 @@ public class SwitchBlockEntity extends BoundGroupBlockEntity {
 
     public int getTriggerCooldown() {
         return this.triggerCooldown;
+    }
+
+    // GROUP ID ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    @Override
+    public void onLoad(World world) {
+        SwitchBlockManager.sync(world, getGroupID());
     }
 
     // NBT /////////////////////////////////////////////////////////////////////////////////////////////////////////////

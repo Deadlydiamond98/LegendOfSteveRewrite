@@ -19,11 +19,10 @@ import net.minecraft.world.World;
 public class SwitchToggleS2CPacket {
     public static final Identifier ID = LegendOfSteve.id("toggle_switch_event");
 
-    public static void send(PlayerEntity player, BlockPos pos, boolean newOnState, boolean triggerUpdates) {
+    public static void send(PlayerEntity player, BlockPos pos, boolean newOnState) {
         PacketByteBuf buf = PacketByteBufs.create();
         buf.writeBlockPos(pos);
         buf.writeBoolean(newOnState);
-        buf.writeBoolean(triggerUpdates);
         ServerPlayNetworking.send((ServerPlayerEntity) player, ID, buf);
     }
 
@@ -31,7 +30,6 @@ public class SwitchToggleS2CPacket {
         public static void receive(MinecraftClient client, ClientPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
             BlockPos pos = buf.readBlockPos();
             boolean bl = buf.readBoolean();
-            boolean triggerUpdates = buf.readBoolean();
 
             client.execute(() -> {
                 World world = client.world;
@@ -40,10 +38,6 @@ public class SwitchToggleS2CPacket {
                     BlockState state = world.getBlockState(pos);
                     if (state.getBlock() instanceof ISwitchBlock switchBlock && switchBlock.getBlockEntity(world, pos) instanceof SwitchBlockEntity switchBlockEntity) {
                         switchBlock.onSwitchTriggered(world, pos, state, switchBlockEntity, bl);
-
-//                        if (triggerUpdates) {
-//                            SwitchBlockRenderManager.start(client, pos);
-//                        }
                     }
                 }
             });

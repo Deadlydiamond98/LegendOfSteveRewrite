@@ -14,7 +14,6 @@ import java.util.*;
 public class SwitchBlockManager extends PersistentState {
     // This map is sent to the client for rendering (due to some de-syncing stuff)
     public static final Map<String, Boolean> SYNCED_SWITCH_GROUPS = new HashMap<>();
-    public static final Set<ChunkSectionPos> SWITCH_BLOCK_POSITIONS = Collections.synchronizedSet(new HashSet<>());
     public static SwitchBlockManager INSTANCE = null;
 
     private final Map<String, Boolean> switchGroups = new HashMap<>();
@@ -85,6 +84,12 @@ public class SwitchBlockManager extends PersistentState {
         }
     }
 
+    public static void sync(World world, String key) {
+        if (world instanceof ServerWorld serverWorld) {
+            getManager(serverWorld).sync(key);
+        }
+    }
+
     // GETTERS & SETTERS ///////////////////////////////////////////////////////////////////////////////////////////////
 
     public boolean get(String key) {
@@ -104,24 +109,13 @@ public class SwitchBlockManager extends PersistentState {
         this.set(key, !get(key));
     }
 
+    public void sync(String key) {
+        if (!SYNCED_SWITCH_GROUPS.containsKey(key)) {
+            this.set(key, this.get(key));
+        }
+    }
+
     public Map<String, Boolean> getAll() {
         return this.switchGroups;
-    }
-
-    // BLOCK POS STUFF /////////////////////////////////////////////////////////////////////////////////////////////////
-
-    public static void reset() {
-        SwitchBlockManager.SYNCED_SWITCH_GROUPS.clear();
-        SwitchBlockManager.SWITCH_BLOCK_POSITIONS.clear();
-        SwitchBlockManager.INSTANCE = null;
-    }
-
-    public static void saveBlockPos(BlockPos pos) {
-        ChunkSectionPos chunkSectionPos = ChunkSectionPos.from(pos);
-        SWITCH_BLOCK_POSITIONS.add(chunkSectionPos);
-    }
-
-    public static void clearPositions() {
-        SWITCH_BLOCK_POSITIONS.clear();
     }
 }

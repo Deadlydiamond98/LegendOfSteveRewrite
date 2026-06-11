@@ -14,10 +14,10 @@ import java.util.List;
 import java.util.function.Function;
 
 public class SwitchBlockUnbakedModel implements UnbakedModel {
-    private final Identifier onModelID;
+    private final Identifier model;
 
     public SwitchBlockUnbakedModel(Identifier id) {
-        this.onModelID = id.withSuffixedPath("_on");
+        this.model = id.withSuffixedPath("_off");
     }
 
     @Override
@@ -31,6 +31,6 @@ public class SwitchBlockUnbakedModel implements UnbakedModel {
     @Nullable
     @Override
     public BakedModel bake(Baker baker, Function<SpriteIdentifier, Sprite> textureGetter, ModelBakeSettings rotationContainer, Identifier modelId) {
-        return new SwitchBlockBakedModel(baker.bake(this.onModelID, rotationContainer));
+        return new SwitchBlockBakedModel(baker.bake(this.model, rotationContainer));
     }
 }

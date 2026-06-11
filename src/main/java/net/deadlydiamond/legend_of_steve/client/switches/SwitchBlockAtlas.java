@@ -28,21 +28,15 @@ public class SwitchBlockAtlas extends AbstractTexture implements DynamicTexture 
     }
 
     public Sprite getSprite(String group, Identifier block) {
-        Map<Identifier, SwitchSprite> sprites = this.sprites.get(group);
+        Map<Identifier, SwitchSprite> spriteGroup = this.sprites.get(group);
 
-        if (sprites != null) {
-            return sprites.get(block);
+        if (spriteGroup != null) {
+            Sprite sprite = spriteGroup.get(block);
+            if (sprite != null) {
+                return spriteGroup.get(block);
+            }
         }
-
         return this.sprites.get(group).get(SwitchTextures.FALLBACK.id());
-    }
-
-    private int getHeight() {
-        return this.height;
-    }
-
-    private int getWidth() {
-        return SwitchTextures.TEXTURES.size() * 16;
     }
 
     // Sprite Creation & Updating //////////////////////////////////////////////////////////////////////////////////////
@@ -79,7 +73,7 @@ public class SwitchBlockAtlas extends AbstractTexture implements DynamicTexture 
             try {
                 NativeImage textureImage = NativeImage.read(
                         this.client.getResourceManager().getResource(
-                                switchTexture.getTexture(preparedSprite.isOn())
+                                switchTexture.texture(preparedSprite.isOn())
                         ).get().getInputStream()
                 );
 
@@ -105,8 +99,22 @@ public class SwitchBlockAtlas extends AbstractTexture implements DynamicTexture 
                 return sprite.getY();
             }
         }
+        return updateHeight();
+    }
+
+    // Atlas Size Stuff ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    private int updateHeight() {
         this.height += 16;
         return this.height - 16;
+    }
+
+    private int getHeight() {
+        return this.height;
+    }
+
+    private int getWidth() {
+        return SwitchTextures.TEXTURES.size() * 16;
     }
 
     // Debug Saving Stuff //////////////////////////////////////////////////////////////////////////////////////////////
@@ -177,6 +185,6 @@ public class SwitchBlockAtlas extends AbstractTexture implements DynamicTexture 
         }
     }
 
-    // Stores information when updating sprites so that new sprites go on a new row
+    // Stores information when updating/creating sprites so that new sprites go on a new row
     private record PreparedSwitchSprite(String group, boolean isOn, int yPos) {}
 }

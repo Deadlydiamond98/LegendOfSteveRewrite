@@ -42,10 +42,8 @@ public class SwitchBlockBakedModel extends ForwardingBakedModel {
             Sprite sprite = finder.find(quad);
 
             if (SwitchBlockAtlas.INSTANCE != null) {
-                quad.spriteBake(SwitchBlockAtlas.INSTANCE.getSprite(
-                        groupID, sprite.getContents().getId()
-                        ), MutableQuadView.BAKE_LOCK_UV
-                );
+                Sprite switchSprite = SwitchBlockAtlas.INSTANCE.getSprite(groupID, sprite.getContents().getId());
+                quad.spriteBake(switchSprite, MutableQuadView.BAKE_LOCK_UV);
             }
 
             return true;

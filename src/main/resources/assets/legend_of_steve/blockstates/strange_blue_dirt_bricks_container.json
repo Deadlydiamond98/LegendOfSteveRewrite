@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hit=false": {
+      "model": "legend_of_steve:block/strange_blue_dirt_bricks"
+    },
+    "hit=true": {
+      "model": "legend_of_steve:block/empty_blue_question_block"
+    }
+  }
+}

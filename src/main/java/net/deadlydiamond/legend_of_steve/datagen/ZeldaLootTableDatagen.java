@@ -108,6 +108,7 @@ public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
                 ZeldaBlocks.STRANGE_DIRT_PILLAR,
                 ZeldaBlocks.STRANGE_BLUE_DIRT_PILLAR,
                 ZeldaBlocks.QUESTION_BLOCK,
+                ZeldaBlocks.BLUE_QUESTION_BLOCK,
 
                 // Other
                 ZeldaBlocks.STONE_SWORD_PEDESTAL,

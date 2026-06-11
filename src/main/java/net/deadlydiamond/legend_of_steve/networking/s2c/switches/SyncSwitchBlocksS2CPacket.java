@@ -39,7 +39,8 @@ public class SyncSwitchBlocksS2CPacket {
     public static class Handler {
         public static void receive(MinecraftClient client, ClientPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
             Map<String, Boolean> values = buf.readMap(PacketByteBuf::readString, PacketByteBuf::readBoolean);
-            client.execute(() -> SwitchBlockAtlas.updateSwitchSprites(values));
+//            client.execute(() -> SwitchBlockAtlas.updateSprites(values));
+            client.execute(() -> values.forEach(SwitchBlockAtlas::updateSwitchSprites));
         }
     }
 }

@@ -145,7 +145,7 @@ public class ZeldaRenderLayers extends RenderLayer {
             RenderLayer.MultiPhaseParameters.builder()
                     .lightmap(ENABLE_LIGHTMAP)
                     .program(CUTOUT_MIPPED_PROGRAM)
-                    .texture(new RenderPhase.Texture(SwitchBlockAtlas.SWITCH_ATLAS, false, true))
+                    .texture(new RenderPhase.Texture(SwitchBlockAtlas.SWITCH_ATLAS_TEXTURE, false, true))
                     .build(true)
     );
 

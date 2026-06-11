@@ -1,0 +1,8 @@
+{
+  "parent": "legend_of_steve:block/switch/switch_slab_full",
+  "textures": {
+    "particle": "legend_of_steve:block/switch/red_switch_block",
+    "side": "legend_of_steve:block/switch/red_switch_slab",
+    "top": "legend_of_steve:block/switch/red_switch_block"
+  }
+}

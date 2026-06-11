@@ -51,18 +51,18 @@ public class SwitchBlockset extends AbstractBlockset {
     public void generateModels(BlockStateModelGenerator modelGen, @Nullable AbstractBlockset.SharedModel sharedModel) {
         super.generateModels(modelGen, sharedModel);
         registerBaseModel(modelGen, this.base);
+        registerSlabModel(modelGen, this.slab);
     }
 
     public void registerBaseModel(BlockStateModelGenerator modelGen, Block block) {
         Identifier identifier = LegendOfSteve.id("block/" + id() + "_block");
+        Identifier texture = LegendOfSteve.id("block/switch/" + id() + "_block");
 
         Identifier base = identifier.withSuffixedPath("_base");
-        Identifier on = identifier.withSuffixedPath(this.isOn ? "_on" : "_off");
 
-        ZeldaModels.SWITCH_BLOCK.upload(base, TextureMap.all(identifier).put(TextureKey.PARTICLE, on), modelGen.modelCollector);
+        ZeldaModels.SWITCH_BLOCK.upload(base, TextureMap.all(texture).put(TextureKey.PARTICLE, texture), modelGen.modelCollector);
 
-        Models.CUBE_ALL.upload(on, TextureMap.all(on), modelGen.modelCollector);
-        modelGen.registerParentedItemModel(block, on);
+        modelGen.registerParentedItemModel(block, base);
 
         modelGen.blockStateCollector.accept(VariantsBlockStateSupplier.create(block, BlockStateVariant.create().put(VariantSettings.MODEL, identifier)));
     }
@@ -77,31 +77,18 @@ public class SwitchBlockset extends AbstractBlockset {
                 identifier.withSuffixedPath("_full")
         ));
 
-        uploadSlabModels(modelGen, id());
-        modelGen.registerParentedItemModel(block, identifier.withSuffixedPath("_on"));
+        ZeldaModels.SWITCH_SLAB.upload(identifier.withSuffixedPath("_base"), getSlabTextureMap(), modelGen.modelCollector);
+        ZeldaModels.SWITCH_SLAB_FULL.upload(identifier.withSuffixedPath("_full_base"), getSlabTextureMap(), modelGen.modelCollector);
+        ZeldaModels.SWITCH_SLAB_TOP.upload(identifier.withSuffixedPath("_top_base"), getSlabTextureMap(), modelGen.modelCollector);
+
+        modelGen.registerParentedItemModel(block, identifier.withSuffixedPath("_base"));
     }
 
-    public static void uploadSlabModels(BlockStateModelGenerator modelGen, String id) {
-        uploadSlabModel(Models.SLAB, id, "_slab", modelGen, true);
-        uploadSlabModel(Models.SLAB_TOP, id, "_slab_top", modelGen, true);
-        uploadSlabModel(Models.CUBE_BOTTOM_TOP, id, "_slab_full", modelGen, true);
-
-        uploadSlabModel(ZeldaModels.OFF_SLAB, id, "_slab", modelGen, false);
-        uploadSlabModel(ZeldaModels.OFF_SLAB_TOP, id, "_slab_top", modelGen, false);
-        uploadSlabModel(ZeldaModels.OFF_SLAB_FULL, id, "_slab_full", modelGen, false);
-    }
-
-    public static void uploadSlabModel(Model model, String id, String suffix, BlockStateModelGenerator modelGen, boolean isOn) {
-        String type = isOn ? "_on" : "_off";
-        Identifier modelID = LegendOfSteve.id("block/" + id);
-        model.upload(modelID.withSuffixedPath(suffix + type), getSlabTextureMap(id, type), modelGen.modelCollector);
-    }
-
-    public static TextureMap getSlabTextureMap(String id, String type) {
-        Identifier block = LegendOfSteve.id("block/" + id + "_block" + type);
-        Identifier slab = LegendOfSteve.id("block/" + id + "_slab" + type);
+    public TextureMap getSlabTextureMap() {
+        Identifier block = LegendOfSteve.id("block/switch/" + id() + "_block");
+        Identifier slab = LegendOfSteve.id("block/switch/" + id() + "_slab");
         return TextureMap.of(TextureKey.TOP, block).put(TextureKey.BOTTOM, block).put(TextureKey.SIDE, slab)
-                .put(TextureKey.PARTICLE, LegendOfSteve.id("block/" + id + "_block_on"));
+                .put(TextureKey.PARTICLE, block);
     }
 
     // TAGS ////////////////////////////////////////////////////////////////////////////////////////////////////////////

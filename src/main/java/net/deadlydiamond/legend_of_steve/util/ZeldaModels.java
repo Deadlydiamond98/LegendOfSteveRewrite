@@ -14,14 +14,9 @@ public class ZeldaModels {
     public static final Model TALL_BRAZIER_BOTTOM = template("tall_brazier_bottom", "_bottom", TextureKey.BOTTOM, TextureKey.SIDE);
 
     public static final Model SWITCH_BLOCK = switchBlock("switch_block", TextureKey.ALL, TextureKey.PARTICLE);
-    public static final Model SWITCH_SLAB = template("switch_slab", TextureKey.SIDE, TextureKey.TOP, TextureKey.PARTICLE);
-    public static final Model SWITCH_SLAB_TOP = template("switch_slab_top", TextureKey.SIDE, TextureKey.TOP, TextureKey.PARTICLE);
-    public static final Model SWITCH_SLAB_FULL = template("switch_slab_full", TextureKey.SIDE, TextureKey.TOP, TextureKey.PARTICLE);
-
-    public static final Model OFF_BLOCK = template("off_block", TextureKey.ALL, TextureKey.PARTICLE);
-    public static final Model OFF_SLAB = template("off_slab", TextureKey.SIDE, TextureKey.TOP, TextureKey.PARTICLE);
-    public static final Model OFF_SLAB_TOP = template("off_slab_top", TextureKey.SIDE, TextureKey.TOP, TextureKey.PARTICLE);
-    public static final Model OFF_SLAB_FULL = template("off_slab_full", TextureKey.SIDE, TextureKey.TOP, TextureKey.PARTICLE);
+    public static final Model SWITCH_SLAB = switchBlock("switch_slab", TextureKey.SIDE, TextureKey.TOP, TextureKey.PARTICLE);
+    public static final Model SWITCH_SLAB_TOP = switchBlock("switch_slab_top", TextureKey.SIDE, TextureKey.TOP, TextureKey.PARTICLE);
+    public static final Model SWITCH_SLAB_FULL = switchBlock("switch_slab_full", TextureKey.SIDE, TextureKey.TOP, TextureKey.PARTICLE);
 
 
     private static Model template(String id, TextureKey... requiredTextureKeys) {
@@ -33,6 +28,6 @@ public class ZeldaModels {
     }
 
     private static Model switchBlock(String id, TextureKey... requiredTextureKeys) {
-        return new Model(Optional.of(LegendOfSteve.id("block/switch/template_" + id)), Optional.empty(), requiredTextureKeys);
+        return new Model(Optional.of(LegendOfSteve.id("block/switch/" + id)), Optional.empty(), requiredTextureKeys);
     }
 }

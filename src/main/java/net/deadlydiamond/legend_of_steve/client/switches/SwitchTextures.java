@@ -23,7 +23,7 @@ public class SwitchTextures {
     }
 
     private static SwitchTexture create(String id) {
-        return new SwitchTexture(LegendOfSteve.id("block/" + id));
+        return new SwitchTexture(LegendOfSteve.id("block/switch/" + id));
     }
 
     public record SwitchTexture(Identifier id) {

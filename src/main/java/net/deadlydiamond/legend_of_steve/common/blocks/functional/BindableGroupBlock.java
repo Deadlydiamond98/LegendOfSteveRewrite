@@ -27,7 +27,7 @@ public abstract class BindableGroupBlock extends BlockWithEntity {
 
     protected String getBlockGroup(ItemStack stack) {
         NbtCompound nbt = stack.getOrCreateNbt();
-        return nbt.contains("blockGroupID") ? nbt.getString("blockGroupID") : "Global";
+        return nbt.contains("blockGroupID") ? nbt.getString("blockGroupID") : "global";
     }
 
     protected void putBlockGroup(ItemStack stack, String blockGroup) {

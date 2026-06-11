@@ -1,6 +1,6 @@
 package net.deadlydiamond.legend_of_steve.mixin.client.rendering.world;
 
-import net.deadlydiamond.legend_of_steve.client.SwitchBlockAtlasBackup;
+import net.deadlydiamond.legend_of_steve.client.switches.SwitchBlockAtlas;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.BufferBuilderStorage;
 import net.minecraft.client.render.GameRenderer;
@@ -16,14 +16,14 @@ public class GameRendererMixin {
 
     @Inject(method = "<init>", at = @At("RETURN"))
     private void legend_of_steve$init(MinecraftClient client, HeldItemRenderer heldItemRenderer, ResourceManager resourceManager, BufferBuilderStorage buffers, CallbackInfo ci) {
-        SwitchBlockAtlasBackup.INSTANCE = new SwitchBlockAtlasBackup(client);
+        SwitchBlockAtlas.INSTANCE = new SwitchBlockAtlas(client);
     }
 
 
     @Inject(method = "close", at = @At("RETURN"))
     private void legend_of_steve$close(CallbackInfo ci) {
-        if (SwitchBlockAtlasBackup.INSTANCE != null) {
-            SwitchBlockAtlasBackup.INSTANCE.close();
+        if (SwitchBlockAtlas.INSTANCE != null) {
+            SwitchBlockAtlas.INSTANCE.close();
         }
     }
 }

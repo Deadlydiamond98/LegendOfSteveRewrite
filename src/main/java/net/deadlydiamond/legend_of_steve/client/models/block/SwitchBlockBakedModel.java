@@ -1,7 +1,6 @@
 package net.deadlydiamond.legend_of_steve.client.models.block;
 
-import net.deadlydiamond.legend_of_steve.LegendOfSteve;
-import net.deadlydiamond.legend_of_steve.client.SwitchBlockAtlasBackup;
+import net.deadlydiamond.legend_of_steve.client.switches.SwitchBlockAtlas;
 import net.fabricmc.fabric.api.renderer.v1.mesh.MutableQuadView;
 import net.fabricmc.fabric.api.renderer.v1.model.ForwardingBakedModel;
 import net.fabricmc.fabric.api.renderer.v1.model.SpriteFinder;
@@ -11,8 +10,6 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.model.BakedModel;
 import net.minecraft.client.texture.Sprite;
 import net.minecraft.client.texture.SpriteAtlasTexture;
-import net.minecraft.registry.Registries;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.BlockRenderView;
@@ -34,12 +31,19 @@ public class SwitchBlockBakedModel extends ForwardingBakedModel {
     public void emitBlockQuads(BlockRenderView blockView, BlockState state, BlockPos pos, Supplier<Random> randomSupplier, RenderContext context) {
         SpriteFinder finder = SpriteFinder.get(MinecraftClient.getInstance().getBakedModelManager().getAtlas(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE));
 
+        String groupID;
+        if (blockView.getBlockEntityRenderData(pos) instanceof String beGroupID) {
+            groupID = beGroupID;
+        } else {
+            groupID = "global";
+        }
+
         context.pushTransform(quad -> {
             Sprite sprite = finder.find(quad);
 
-            if (SwitchBlockAtlasBackup.INSTANCE != null) {
-                quad.spriteBake(SwitchBlockAtlasBackup.INSTANCE.getSprite(
-                        "global", sprite.getContents().getId()
+            if (SwitchBlockAtlas.INSTANCE != null) {
+                quad.spriteBake(SwitchBlockAtlas.INSTANCE.getSprite(
+                        groupID, sprite.getContents().getId()
                         ), MutableQuadView.BAKE_LOCK_UV
                 );
             }

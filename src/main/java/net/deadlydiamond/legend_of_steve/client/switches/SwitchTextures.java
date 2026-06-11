@@ -11,12 +11,9 @@ public class SwitchTextures {
             create("blue_switch_block")
     );
 
-
-
     private static SwitchTexture create(String id) {
         return new SwitchTexture(LegendOfSteve.id("block/" + id));
     }
-
 
     public record SwitchTexture(Identifier id) {
         public Identifier getID(String group) {

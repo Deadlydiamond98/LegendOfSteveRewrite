@@ -1,6 +1,7 @@
 package net.deadlydiamond.legend_of_steve.init;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
+import net.deadlydiamond.legend_of_steve.common.items.DebugSwitchItem;
 import net.deadlydiamond.legend_of_steve.common.items.EmeraldShardItem;
 import net.deadlydiamond.legend_of_steve.common.items.FairyBottleItem;
 import net.deadlydiamond.legend_of_steve.common.items.SwitchCore;
@@ -85,10 +86,13 @@ public class ZeldaItems {
     );
 
     // MUSIC DISCS /////////////////////////////////////////////////////////////////////////////////////////////////////
-    public static final Item DISC_FRAGMENT_LEGEND = register("disc_fragment_legend", new DiscFragmentItem(new Item.Settings()));
+    public static final Item DISC_FRAGMENT_LEGEND = register("disc_fragment_legend", new DiscFragmentItem(new FabricItemSettings()));
     public static final Item MUSIC_DISC_LEGEND = register("music_disc_legend", new MusicDiscItem(
             16, ZeldaSounds.MUSIC_DISC_LEGEND, new FabricItemSettings().rarity(Rarity.RARE).maxCount(1), 86
     ));
+
+
+    public static final Item DEBUG_SWITCH = register("aaa_debug_switch", new DebugSwitchItem(new FabricItemSettings()));
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // REGISTRATION ////////////////////////////////////////////////////////////////////////////////////////////////////

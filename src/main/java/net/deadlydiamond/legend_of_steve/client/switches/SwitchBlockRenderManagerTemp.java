@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.client;
+package net.deadlydiamond.legend_of_steve.client.switches;
 
 import net.deadlydiamond.legend_of_steve.common.world.states.SwitchBlockManager;
 import net.minecraft.client.MinecraftClient;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class SwitchBlockRenderManager {
+public class SwitchBlockRenderManagerTemp {
     private static int batchSize = 25;
     private static int intervalMs = 50;
     public static Thread thread;

@@ -47,8 +47,6 @@ public class SwitchBlockManager extends PersistentState {
             }
         }
 
-        SyncSwitchBlocksS2CPacket.send(world, states.switchGroups);
-
         return states;
     }
 
@@ -60,6 +58,7 @@ public class SwitchBlockManager extends PersistentState {
                     nbt -> SwitchBlockManager.fromNbt(nbt, world),
                     () -> new SwitchBlockManager(world), id
             );
+            SyncSwitchBlocksS2CPacket.send(world, INSTANCE.switchGroups);
         }
         return INSTANCE;
     }

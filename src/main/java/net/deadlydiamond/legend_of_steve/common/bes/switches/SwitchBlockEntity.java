@@ -128,6 +128,6 @@ public class SwitchBlockEntity extends BoundGroupBlockEntity {
     @Nullable
     @Override
     public Object getRenderData() {
-        return isInverted() != getWorldOnState();
+        return getGroupID();
     }
 }

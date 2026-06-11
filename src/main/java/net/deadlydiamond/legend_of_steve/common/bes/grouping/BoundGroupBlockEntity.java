@@ -7,7 +7,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.BlockPos;
 
 public class BoundGroupBlockEntity extends BlockEntity implements IGroupBlockEntity {
-    public static final String DEFAULT_GROUP = "Global";
+    public static final String DEFAULT_GROUP = "global";
     protected String groupID = DEFAULT_GROUP;
 
     public BoundGroupBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {

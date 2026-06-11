@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CGC",
+    "GDG",
+    "CGC"
+  ],
+  "key": {
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "C": {
+      "item": "minecraft:copper_ingot"
+    },
+    "D": {
+      "item": "legend_of_steve:strange_blue_dirt_bricks"
+    }
+  },
+  "result": {
+    "item": "legend_of_steve:blue_question_block",
+    "count": 3
+  }
+}

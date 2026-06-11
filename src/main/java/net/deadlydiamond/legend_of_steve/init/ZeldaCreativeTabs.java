@@ -160,6 +160,7 @@ public class ZeldaCreativeTabs {
 
         // STRANGE DIRT
         entries.add(ZeldaBlocks.QUESTION_BLOCK);
+        entries.add(ZeldaBlocks.BLUE_QUESTION_BLOCK);
 
         ZeldaBlocks.STRANGE_DIRT.addToCreative(entries);
         ZeldaBlocks.POLISHED_STRANGE_DIRT.addToCreative(entries);

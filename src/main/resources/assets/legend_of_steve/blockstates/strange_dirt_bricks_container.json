@@ -1,7 +1,7 @@
 {
   "variants": {
     "hit=false": {
-      "model": "legend_of_steve:block/question_block"
+      "model": "legend_of_steve:block/strange_dirt_bricks"
     },
     "hit=true": {
       "model": "legend_of_steve:block/empty_question_block"

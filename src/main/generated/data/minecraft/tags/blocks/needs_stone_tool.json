@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "legend_of_steve:question_block"
+    "legend_of_steve:question_block",
+    "legend_of_steve:blue_question_block"
   ]
 }

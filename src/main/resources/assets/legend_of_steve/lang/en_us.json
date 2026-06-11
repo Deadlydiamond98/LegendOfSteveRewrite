@@ -348,6 +348,7 @@
   "block.legend_of_steve.strange_blue_dirt_pillar": "Strange Blue Dirt Pillar",
 
   "block.legend_of_steve.question_block": "Question Block",
+  "block.legend_of_steve.blue_question_block": "Blue Question Block",
 
   "block.legend_of_steve.blue_tektiles": "Blue Tektiles",
   "block.legend_of_steve.blue_tektile_slab": "Blue Tektile Slab",
@@ -374,6 +375,8 @@
   "block.legend_of_steve.crystal_switch": "Crystal Switch",
   "block.legend_of_steve.red_switch_block": "Red Switch Block",
   "block.legend_of_steve.blue_switch_block": "Blue Switch Block",
+  "block.legend_of_steve.red_switch_slab": "Red Switch Slab",
+  "block.legend_of_steve.blue_switch_slab": "Blue Switch Slab",
 
   "item.legend_of_steve.aruroda_spawn_egg": "Aruroda Spawn Egg",
   "item.legend_of_steve.fairy_spawn_egg": "Fairy Spawn Egg",

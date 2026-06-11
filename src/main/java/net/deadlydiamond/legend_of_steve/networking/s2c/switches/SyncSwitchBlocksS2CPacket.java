@@ -39,6 +39,8 @@ public class SyncSwitchBlocksS2CPacket {
         public static void receive(MinecraftClient client, ClientPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
             Map<String, Boolean> values = buf.readMap(PacketByteBuf::readString, PacketByteBuf::readBoolean);
             SwitchBlockManager.SYNCED_SWITCH_GROUPS.putAll(values);
+            // Rebuilding the whole thing is probably not the greatest way to go about it, but it doesn't seem to have
+            // that significant of a performance impact...
             client.execute(() -> SwitchBlockAtlas.updateSprites(SwitchBlockManager.SYNCED_SWITCH_GROUPS));
         }
     }

@@ -20,6 +20,7 @@ public class SwitchBlockAtlas extends AbstractTexture implements DynamicTexture 
     @Nullable public static SwitchBlockAtlas INSTANCE;
 
     private Map<String, Map<Identifier, SwitchSprite>> sprites = Map.of();
+    private boolean shouldReload = false;
     private final MinecraftClient client;
     private int height = 0;
 
@@ -51,6 +52,11 @@ public class SwitchBlockAtlas extends AbstractTexture implements DynamicTexture 
         List<PreparedSwitchSprite> preparedSprites = new ArrayList<>();
         values.forEach((group, isOn) -> preparedSprites.add(new PreparedSwitchSprite(group, isOn, getSpriteY(group))));
         updateSprites(preparedSprites);
+
+        if (this.shouldReload) {
+            this.shouldReload = false;
+            this.client.worldRenderer.reload();
+        }
     }
 
     private void updateSprites(List<PreparedSwitchSprite> preparedSprites) {
@@ -105,6 +111,7 @@ public class SwitchBlockAtlas extends AbstractTexture implements DynamicTexture 
     // Atlas Size Stuff ////////////////////////////////////////////////////////////////////////////////////////////////
 
     private int updateHeight() {
+        this.shouldReload = true;
         this.height += 16;
         return this.height - 16;
     }

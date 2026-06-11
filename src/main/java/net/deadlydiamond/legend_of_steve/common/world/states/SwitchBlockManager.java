@@ -23,6 +23,7 @@ public class SwitchBlockManager extends PersistentState {
     public SwitchBlockManager(ServerWorld world) {
         this.markDirty();
         this.world = world;
+        this.switchGroups.put("Global", true);
     }
 
     @Override

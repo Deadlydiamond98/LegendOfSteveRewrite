@@ -1,5 +1,6 @@
 package net.deadlydiamond.legend_of_steve.client.models.block;
 
+import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.client.switches.SwitchBlockAtlas;
 import net.fabricmc.fabric.api.renderer.v1.mesh.MutableQuadView;
 import net.fabricmc.fabric.api.renderer.v1.model.ForwardingBakedModel;
@@ -43,6 +44,7 @@ public class SwitchBlockBakedModel extends ForwardingBakedModel {
 
             if (SwitchBlockAtlas.INSTANCE != null) {
                 Sprite switchSprite = SwitchBlockAtlas.INSTANCE.getSprite(groupID, sprite.getContents().getId());
+                LegendOfSteve.LOGGER.info("{} -- {}, {}", switchSprite.getContents().getId(), switchSprite.getX(), switchSprite.getY());
                 quad.spriteBake(switchSprite, MutableQuadView.BAKE_LOCK_UV);
             }
 

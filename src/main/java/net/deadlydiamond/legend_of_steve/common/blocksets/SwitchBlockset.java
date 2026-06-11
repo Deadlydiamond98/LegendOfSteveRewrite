@@ -51,16 +51,16 @@ public class SwitchBlockset extends AbstractBlockset {
     public void generateModels(BlockStateModelGenerator modelGen, @Nullable AbstractBlockset.SharedModel sharedModel) {
         super.generateModels(modelGen, sharedModel);
         registerBaseModel(modelGen, this.base);
-        registerSlabModel(modelGen, this.slab);
     }
 
     public void registerBaseModel(BlockStateModelGenerator modelGen, Block block) {
         Identifier identifier = LegendOfSteve.id("block/" + id() + "_block");
 
-        Identifier off = identifier.withSuffixedPath("_off");
-        Identifier on = identifier.withSuffixedPath("_on");
+        Identifier base = identifier.withSuffixedPath("_base");
+        Identifier on = identifier.withSuffixedPath(this.isOn ? "_on" : "_off");
 
-        ZeldaModels.OFF_BLOCK.upload(off, TextureMap.all(off).put(TextureKey.PARTICLE, on), modelGen.modelCollector);
+        ZeldaModels.SWITCH_BLOCK.upload(base, TextureMap.all(identifier).put(TextureKey.PARTICLE, on), modelGen.modelCollector);
+
         Models.CUBE_ALL.upload(on, TextureMap.all(on), modelGen.modelCollector);
         modelGen.registerParentedItemModel(block, on);
 

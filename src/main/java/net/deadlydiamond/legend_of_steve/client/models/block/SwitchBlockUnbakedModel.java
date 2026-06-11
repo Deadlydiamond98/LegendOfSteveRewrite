@@ -17,7 +17,7 @@ public class SwitchBlockUnbakedModel implements UnbakedModel {
     private final Identifier model;
 
     public SwitchBlockUnbakedModel(Identifier id) {
-        this.model = id.withSuffixedPath("_off");
+        this.model = id.withSuffixedPath("_base");
     }
 
     @Override

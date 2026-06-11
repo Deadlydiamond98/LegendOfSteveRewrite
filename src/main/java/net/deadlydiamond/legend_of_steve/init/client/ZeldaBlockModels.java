@@ -14,8 +14,7 @@ public class ZeldaBlockModels {
 
     private static void switchBlocks(ModelLoadingPlugin.Context context) {
         for (Identifier id : SwitchBlockset.MODEL_LOCATIONS) {
-            context.addModels(id.withSuffixedPath("_on"));
-            context.addModels(id.withSuffixedPath("_off"));
+            context.addModels(id.withSuffixedPath("_base"));
         }
 
         context.resolveModel().register(context1 -> {

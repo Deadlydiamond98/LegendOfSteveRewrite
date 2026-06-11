@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "legend_of_steve:block/red_switch_block_on",
-    "side": "legend_of_steve:block/red_switch_slab_on",
-    "top": "legend_of_steve:block/red_switch_block_on"
-  }
-}

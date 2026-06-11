@@ -20,8 +20,6 @@ public class SwitchBlockAtlas extends AbstractTexture implements DynamicTexture 
     @Nullable public static SwitchBlockAtlas INSTANCE;
 
     private Map<String, Map<Identifier, SwitchSprite>> sprites = Map.of();
-
-    private Map<Identifier, SwitchSprite> spritesTemp = Map.of();
     private final MinecraftClient client;
     private int height = 0;
 
@@ -29,68 +27,65 @@ public class SwitchBlockAtlas extends AbstractTexture implements DynamicTexture 
         this.client = client;
     }
 
-//    public static void updateSprites(Map<String, Boolean> values) {
-//        if (INSTANCE != null) {
-//            INSTANCE.prepareSprites(values);
-//        }
-//    }
-//
-//    public void prepareSprites(Map<String, Boolean> values) {
-//        List<String> newValues = new ArrayList<>();
-//        int prevHeight = this.height;
-//
-//        values.forEach((s, aBoolean) -> {
-//            if (!this.sprites.containsKey(s)) {
-//                newValues.add(s);
-//            }
-//        });
-//        this.height += 16 * newValues.size();
-//        updateSprites(values,  newValues, prevHeight);
-//    }
-//
-//    public void updateSprites(Map<String, Boolean> values, List<String> newValues, int prevHeight) {
-//        TextureUtil.prepareImage(this.getGlId(), 0, getWidth(), getHeight());
-//        Map<String, Map<Identifier, SwitchSprite>> updatedSprites = new HashMap<>(this.sprites);
-//
-//        values.forEach((switchID, isOn) -> {
-//
-//        });
-//
-//        this.sprites = Collections.unmodifiableMap(updatedSprites);
-//        this.client.getTextureManager().registerTexture(SWITCH_ATLAS_TEXTURE, this);
-//    }
-//
-//    public SwitchSprite createSprite(SwitchTextures.SwitchTexture texture) {
-//
-//    }
+    public Sprite getSprite(String group, Identifier block) {
+        Map<Identifier, SwitchSprite> sprites = this.sprites.get(group);
 
-    @Override
-    public void load(ResourceManager manager) {}
+        if (sprites != null) {
+            return sprites.get(block);
+        }
 
-    public static void updateSwitchSprites(String group, boolean bl) {
+        return this.sprites.get(group).get(SwitchTextures.FALLBACK.id());
+    }
+
+    private int getHeight() {
+        return this.height;
+    }
+
+    private int getWidth() {
+        return SwitchTextures.TEXTURES.size() * 16;
+    }
+
+    // Sprite Creation & Updating //////////////////////////////////////////////////////////////////////////////////////
+    
+    public static void updateSprites(Map<String, Boolean> values) {
         if (INSTANCE != null) {
-            INSTANCE.updateSprites(group, bl);
+            INSTANCE.prepareSprites(values);
         }
     }
-    
-    public void updateSprites(String group, boolean bl) {
-        int atlasY = getAtlasY(group);
+
+    public void prepareSprites(Map<String, Boolean> values) {
+        List<PreparedSwitchSprite> preparedSprites = new ArrayList<>();
+        values.forEach((group, isOn) -> preparedSprites.add(new PreparedSwitchSprite(group, isOn, getSpriteY(group))));
+        updateSprites(preparedSprites);
+    }
+
+    private void updateSprites(List<PreparedSwitchSprite> preparedSprites) {
         TextureUtil.prepareImage(this.getGlId(), 0, getWidth(), getHeight());
         Map<String, Map<Identifier, SwitchSprite>> updatedSprites = new HashMap<>(this.sprites);
+
+        preparedSprites.forEach(sprites -> updatedSprites.put(sprites.group(), getGroupSprites(sprites)));
+
+        this.sprites = Collections.unmodifiableMap(updatedSprites);
+        this.client.getTextureManager().registerTexture(SWITCH_ATLAS_TEXTURE, this);
+    }
+
+    private Map<Identifier, SwitchSprite> getGroupSprites(PreparedSwitchSprite preparedSprite) {
         Map<Identifier, SwitchSprite> groupSprites = new HashMap<>();
 
         for (int i = 0; i < SwitchTextures.TEXTURES.size(); i++) {
             SwitchTextures.SwitchTexture switchTexture = SwitchTextures.TEXTURES.get(i);
-            Identifier spriteId = switchTexture.getID(group);
-            
+            Identifier spriteId = switchTexture.id();
+
             try {
                 NativeImage textureImage = NativeImage.read(
-                        this.client.getResourceManager().getResource(switchTexture.getTexture(bl)).get().getInputStream()
+                        this.client.getResourceManager().getResource(
+                                switchTexture.getTexture(preparedSprite.isOn())
+                        ).get().getInputStream()
                 );
 
                 SpriteDimensions dimensions = new SpriteDimensions(textureImage.getWidth(), textureImage.getHeight());
                 SpriteContents contents = new SpriteContents(spriteId, dimensions, textureImage, AnimationResourceMetadata.EMPTY);
-                SwitchSprite sprite = new SwitchSprite(SWITCH_ATLAS_TEXTURE, contents, getWidth(), getHeight(), i * 16, atlasY);
+                SwitchSprite sprite = new SwitchSprite(SWITCH_ATLAS_TEXTURE, contents, getWidth(), getHeight(), i * 16, preparedSprite.yPos());
 
                 sprite.upload();
                 groupSprites.put(spriteId, sprite);
@@ -99,56 +94,19 @@ public class SwitchBlockAtlas extends AbstractTexture implements DynamicTexture 
                 throw new RuntimeException(e);
             }
         }
-        updatedSprites.put(group, groupSprites);
-
-        this.sprites = Collections.unmodifiableMap(updatedSprites);
-        this.client.getTextureManager().registerTexture(SWITCH_ATLAS_TEXTURE, this);
+        return groupSprites;
     }
 
-    public int getAtlasY(String group) {
-        SwitchTextures.SwitchTexture potentialTexture = SwitchTextures.TEXTURES.get(0);
-        Map<Identifier, SwitchSprite> sprites = this.sprites.get(group);
-        if (sprites == null) {
-            this.height += 16;
-            return this.height - 16;
+    public int getSpriteY(String group) {
+        Map<Identifier, SwitchSprite> spriteGroup = this.sprites.get(group);
+        if (spriteGroup != null) {
+            SwitchSprite sprite = spriteGroup.get(SwitchTextures.FALLBACK.id());
+            if (sprite != null) {
+                return sprite.getY();
+            }
         }
-        Sprite possibleSprite = sprites.get(potentialTexture.getID(group));
-        if (possibleSprite == null) {
-            this.height += 16;
-            return this.height - 16;
-        }
-        return possibleSprite.getY();
-    }
-
-    public Sprite getSprite(String group, Identifier block) {
-        Map<Identifier, SwitchSprite> sprites = this.sprites.get(group);
-
-        if (sprites != null) {
-            return sprites.get(block.withSuffixedPath("_" + group));
-        }
-
-        return this.sprites.get(group).get(LegendOfSteve.id("block/red_switch_block_global"));
-
-//        return this.spritesTemp.getOrDefault(block.withSuffixedPath("_" + group), this.spritesTemp.get(LegendOfSteve.id("block/red_switch_block_global")));
-    }
-    
-    private int getHeight() {
-        return this.height;
-    }
-    
-    private int getWidth() {
-        return SwitchTextures.TEXTURES.size() * 16;
-    }
-
-    @Override
-    public void close() {
-        this.sprites = Map.of();
-    }
-
-    protected static class SwitchSprite extends Sprite {
-        public SwitchSprite(Identifier atlasId, SpriteContents contents, int atlasWidth, int atlasHeight, int x, int y) {
-            super(atlasId, contents, atlasWidth, atlasHeight, x, y);
-        }
+        this.height += 16;
+        return this.height - 16;
     }
 
     // Debug Saving Stuff //////////////////////////////////////////////////////////////////////////////////////////////
@@ -201,4 +159,24 @@ public class SwitchBlockAtlas extends AbstractTexture implements DynamicTexture 
             LegendOfSteve.LOGGER.warn("Failed to write file {}", path2, var10);
         }
     }
+    
+    // MISC ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    @Override
+    public void load(ResourceManager manager) {}
+
+    @Override
+    public void close() {
+        this.sprites = Map.of();
+    }
+
+    // new class extending Sprite b/c it's protected, functions no differently
+    protected static class SwitchSprite extends Sprite {
+        public SwitchSprite(Identifier atlasId, SpriteContents contents, int atlasWidth, int atlasHeight, int x, int y) {
+            super(atlasId, contents, atlasWidth, atlasHeight, x, y);
+        }
+    }
+
+    // Stores information when updating sprites so that new sprites go on a new row
+    private record PreparedSwitchSprite(String group, boolean isOn, int yPos) {}
 }

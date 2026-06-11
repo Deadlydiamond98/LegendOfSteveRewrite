@@ -16,7 +16,6 @@ import net.minecraft.util.Identifier;
 import java.util.Map;
 
 public class SyncSwitchBlocksS2CPacket {
-
     public static final Identifier ID = LegendOfSteve.id("sync_crystal_switches");
 
     public static void send(ServerWorld serverWorld, String key, Boolean val) {
@@ -39,7 +38,8 @@ public class SyncSwitchBlocksS2CPacket {
     public static class Handler {
         public static void receive(MinecraftClient client, ClientPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
             Map<String, Boolean> values = buf.readMap(PacketByteBuf::readString, PacketByteBuf::readBoolean);
-            client.execute(() -> SwitchBlockAtlas.updateSprites(values));
+            SwitchBlockManager.SYNCED_SWITCH_GROUPS.putAll(values);
+            client.execute(() -> SwitchBlockAtlas.updateSprites(SwitchBlockManager.SYNCED_SWITCH_GROUPS));
         }
     }
 }

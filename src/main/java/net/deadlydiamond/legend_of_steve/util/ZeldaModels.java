@@ -12,6 +12,7 @@ public class ZeldaModels {
     public static final Model BRAZIER = template("brazier", TextureKey.TOP, TextureKey.BOTTOM, TextureKey.SIDE);
     public static final Model BRAZIER_LIT = template("brazier_lit", "_lit", TextureKey.TOP, TextureKey.BOTTOM, TextureKey.SIDE, TextureKey.FIRE);
     public static final Model TALL_BRAZIER_BOTTOM = template("tall_brazier_bottom", "_bottom", TextureKey.BOTTOM, TextureKey.SIDE);
+    public static final Model TILE = template("tile", TextureKey.TOP, TextureKey.BOTTOM, TextureKey.SIDE);
 
     public static final Model SWITCH_BLOCK = switchBlock("switch_block", TextureKey.ALL, TextureKey.PARTICLE);
     public static final Model SWITCH_SLAB = switchBlock("switch_slab", TextureKey.SIDE, TextureKey.TOP, TextureKey.PARTICLE);

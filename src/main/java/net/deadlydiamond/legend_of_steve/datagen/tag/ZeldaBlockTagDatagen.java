@@ -40,6 +40,8 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
         createMinables(
                 // DUNGEONCITE
                 ZeldaBlocks.BROWN_DUNGEONCITE,
+                // TILES
+                ZeldaBlocks.STONE_TILES,
                 // FAIRY MARBLE
                 ZeldaBlocks.FAIRY_MARBLE,
                 ZeldaBlocks.COBBLED_FAIRY_MARBLE,

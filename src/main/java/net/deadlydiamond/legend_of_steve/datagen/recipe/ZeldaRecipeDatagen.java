@@ -1,5 +1,6 @@
 package net.deadlydiamond.legend_of_steve.datagen.recipe;
 
+import net.deadlydiamond.legend_of_steve.common.blocksets.dungeoncite.DungeonciteBlockset;
 import net.deadlydiamond.legend_of_steve.datagen.recipe.spring_water.ZeldaSpringWaterConversionDatagen;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
 import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
@@ -56,6 +57,7 @@ public class ZeldaRecipeDatagen extends FabricRecipeProvider {
         strangeDirt(consumer);
         lootpots(consumer);
         braziers(consumer);
+        tiles(consumer);
 
         ZeldaSpringWaterConversionDatagen.generate(consumer);
 
@@ -224,7 +226,13 @@ public class ZeldaRecipeDatagen extends FabricRecipeProvider {
         ZeldaBlocks.STRANGE_BLUE_DIRT_BRAZIER_BLOCKSET.generateRecipes(consumer, ZeldaBlocks.POLISHED_BLUE_STRANGE_DIRT.base, ZeldaBlocks.POLISHED_BLUE_STRANGE_DIRT.slab, Items.IRON_NUGGET);
     }
 
-
+    private void tiles(Consumer<RecipeJsonProvider> consumer) {
+        // STONE
+        DungeonciteBlockset.offerTileRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.STONE_TILES.tile, Blocks.STONE, Blocks.STONE_SLAB);
+        offerStonecuttingRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.STONE_TILES.tile, Blocks.STONE);
+        offerStonecuttingRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.STONE_TILES.triforce, Blocks.STONE);
+        ZeldaBlocks.STONE_TILES.generateRecipes(consumer);
+    }
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

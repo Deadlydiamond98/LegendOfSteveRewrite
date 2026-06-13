@@ -3,8 +3,8 @@ package net.deadlydiamond.legend_of_steve.common.blocksets.dungeoncite;
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.dungeoncite.ChiseledDungeoncitePillar;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.dungeoncite.DungeonciteTileBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.deco.dungeoncite.DungeonciteTriforceTile;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.dungeoncite.DungeonciteWallBlock;
-import net.deadlydiamond.legend_of_steve.common.blocks.deco.connected.temp.TriforceTileBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.DungeoncitePressurePlate;
 import net.deadlydiamond.legend_of_steve.common.items.block.PushableBlockItem;
 import net.deadlydiamond.legend_of_steve.datagen.recipe.ZeldaRecipeDatagen;
@@ -182,7 +182,7 @@ public class DungeonciteBlockset extends AbstractBlockset {
         this.crackedTile = register("cracked_" + id() + "_tile", new DungeonciteTileBlock(settingsTile, advancementID));
 
         // There's probably a better way of doing this, but it works for now
-        this.triforce = register(id() + "_triforce_tile", new TriforceTileBlock(settingsTile, advancementID));
+        this.triforce = register(id() + "_triforce_tile", new DungeonciteTriforceTile(settingsTile, advancementID));
 
         // REDSTONE
         this.pressurePlate =  register(id() + "_pressure_plate", new DungeoncitePressurePlate(FabricBlockSettings.copyOf(this.tile)
@@ -391,7 +391,7 @@ public class DungeonciteBlockset extends AbstractBlockset {
         cut(exporter, this.mossySmallBrick, this.mossySmallBrickWall);
     }
 
-    private static void cut(Consumer<RecipeJsonProvider> exporter, ItemConvertible input, ItemConvertible output) {
+    public static void cut(Consumer<RecipeJsonProvider> exporter, ItemConvertible input, ItemConvertible output) {
         RecipeProvider.offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, output, input);
     }
 

@@ -138,6 +138,9 @@ public class ZeldaCreativeTabs {
         entries.add(ZeldaBlocks.SMOOTH_FAIRY_MARBLE);
         ZeldaBlocks.FAIRY_MARBLE_TILES.addToCreative(entries);
 
+        // TILES
+        ZeldaBlocks.STONE_TILES.addToCreative(entries);
+
         // DUNGEONCITE
         ZeldaBlocks.BROWN_DUNGEONCITE.addToCreative(entries);
 

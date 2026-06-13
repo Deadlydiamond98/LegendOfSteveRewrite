@@ -1,8 +1,7 @@
 {
-  "parent": "minecraft:block/orientable_with_bottom",
+  "parent": "legend_of_steve:block/template_tile",
   "textures": {
     "bottom": "legend_of_steve:block/brown_dungeoncite_tile_bottom",
-    "front": "legend_of_steve:block/brown_dungeoncite_tile_side",
     "side": "legend_of_steve:block/brown_dungeoncite_tile_side",
     "top": "legend_of_steve:block/brown_dungeoncite_tile"
   }

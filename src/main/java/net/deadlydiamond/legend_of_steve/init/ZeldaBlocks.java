@@ -70,6 +70,8 @@ public class ZeldaBlocks {
     public static final Block CHISELED_DEKU_PLANKS = register("chiseled_deku_planks", new Block(FabricBlockSettings.copyOf(DEKU_WOOD_SETTINGS)));
     public static final ChiseledWoodBrickBlockset CHISELED_DEKU_BRICKS = new ChiseledWoodBrickBlockset(LegendOfSteve.MOD_ID, "chiseled_deku_bricks", DEKU_WOOD_SETTINGS, true);
 
+    public static final TileBlockset STONE_TILES = new TileBlockset(LegendOfSteve.MOD_ID, "stone", FabricBlockSettings.copyOf(Blocks.STONE_BRICKS));
+
     // DEKU WOOD
     public static final WoodBlockset DEKU_WOOD = new WoodBlockset(LegendOfSteve.MOD_ID, "deku", DEKU_WOOD_SETTINGS, BlockSetType.CHERRY);
 

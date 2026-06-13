@@ -1,7 +1,7 @@
 package net.deadlydiamond.legend_of_steve.util.datagen.model;
 
-import net.deadlydiamond.legend_of_steve.common.blocks.deco.connected.temp.TriforceTileBlock;
-import net.deadlydiamond.legend_of_steve.common.blocks.deco.connected.temp.TriforceType;
+import net.deadlydiamond.legend_of_steve.common.blocks.deco.connected.TriforceTileBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.deco.connected.TriforceType;
 import net.deadlydiamond.legend_of_steve.util.ZeldaModels;
 import net.minecraft.block.Block;
 import net.minecraft.block.enums.DoubleBlockHalf;
@@ -39,10 +39,9 @@ public class ZeldaBlockModelDatagenUtil {
     public static void registerTile(BlockStateModelGenerator blockStateModelGenerator, Block block) {
         TextureMap textureMap = (new TextureMap()).put(TextureKey.TOP, TextureMap.getId(block))
                 .put(TextureKey.SIDE, TextureMap.getSubId(block, "_side"))
-                .put(TextureKey.FRONT, TextureMap.getSubId(block, "_side"))
                 .put(TextureKey.BOTTOM, TextureMap.getSubId(block, "_bottom"));
 
-        Identifier reg = Models.ORIENTABLE_WITH_BOTTOM.upload(block, textureMap, blockStateModelGenerator.modelCollector);
+        Identifier reg = ZeldaModels.TILE.upload(block, textureMap, blockStateModelGenerator.modelCollector);
 
         blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier
                 .create(block, BlockStateVariant.create().put(VariantSettings.MODEL, reg))
@@ -73,9 +72,8 @@ public class ZeldaBlockModelDatagenUtil {
     public static Identifier getTriforceTileModel(Block parent, Block block, String suffix, BlockStateModelGenerator blockStateModelGenerator) {
         TextureMap textureMap = new TextureMap().put(TextureKey.TOP, TextureMap.getSubId(block, "_" + suffix))
                 .put(TextureKey.SIDE, TextureMap.getSubId(parent, "_side"))
-                .put(TextureKey.FRONT, TextureMap.getSubId(parent, "_side"))
                 .put(TextureKey.BOTTOM, TextureMap.getSubId(parent, "_bottom"));
-        return Models.ORIENTABLE_WITH_BOTTOM.upload(block, "_" + suffix, textureMap, blockStateModelGenerator.modelCollector);
+        return ZeldaModels.TILE.upload(block, "_" + suffix, textureMap, blockStateModelGenerator.modelCollector);
     }
 
     public static void registerBrazierParented(BlockStateModelGenerator blockStateModelGenerator, Block block, Block parent, Identifier fireTexture) {

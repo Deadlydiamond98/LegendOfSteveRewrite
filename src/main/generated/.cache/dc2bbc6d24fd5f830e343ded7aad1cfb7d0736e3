@@ -1,13 +1,13 @@
-// 1.20.1	2026-06-13T07:41:07.869256894	The Legend of Steve/Tags for minecraft:block
+// 1.20.1	2026-06-13T08:46:30.057018745	The Legend of Steve/Tags for minecraft:block
 5ddffc8c235a15168b2697608bf84519c8ceb535 data/legend_of_steve/tags/blocks/blue_switch_blocks.json
-7b40d9ae3acf98c87dc01ed58d8be3691b14c27d data/minecraft/tags/blocks/planks.json
 b1b30bb2abdedbb91f205051e0328152f1d21607 data/minecraft/tags/blocks/mineable/axe.json
+7b40d9ae3acf98c87dc01ed58d8be3691b14c27d data/minecraft/tags/blocks/planks.json
 b3145b4f2c99c1360c5c31d9110f223193ca0a62 data/minecraft/tags/blocks/stairs.json
 901f64f708c730f4d91d1bafdaf7647aecf116f6 data/minecraft/tags/blocks/wall_hanging_signs.json
 52582474718cec7318b44f492778fbab6eb6b65c data/minecraft/tags/blocks/wall_signs.json
 017256426ee55176f0fd67175039d052701437e7 data/minecraft/tags/blocks/leaves.json
 6a598cf23b180c4c61e84b45dca5740038bdd490 data/legend_of_steve/tags/blocks/chiseled_planks.json
-d95707a31214fa1acbccba29b284996093cb6d59 data/minecraft/tags/blocks/mineable/pickaxe.json
+f92e7ecdc859b3132c20d0e6c187683dc2244982 data/minecraft/tags/blocks/mineable/pickaxe.json
 2d98bcdf40cdf8396bb9ae00983b7fb2f36a07e5 data/minecraft/tags/blocks/walls.json
 78e421ba75d9d839368eb80f51dc3bb54125ee35 data/minecraft/tags/blocks/wooden_buttons.json
 b4d7faadc178039d6865f14eedd8edac04e8e1c3 data/minecraft/tags/blocks/trapdoors.json
@@ -22,7 +22,7 @@ a62a7714809b9f9bc69ccf0667a2f9fafba2ea37 data/minecraft/tags/blocks/wooden_doors
 2c351bcaac8f9e1ccf33bf9ff6b9de2f2082f907 data/minecraft/tags/blocks/fence_gates.json
 e411795487384e84ef7bd2fc9673545b29bf48e7 data/minecraft/tags/blocks/needs_stone_tool.json
 a9f3ab7c1b23ba9a13d0a9034a380193343376b3 data/minecraft/tags/blocks/wooden_slabs.json
-e431d5cb3b55e42347c1cb58b9eea0c7f7dfc48c data/koalalib/tags/blocks/cracked_bricks.json
+4952d44bbb845d2ed6062ab9c1549c2cad9636b5 data/koalalib/tags/blocks/cracked_bricks.json
 c3d9bfa84d88ef5deea5ad1f9b37fafb31297dad data/legend_of_steve/tags/blocks/lockable.json
 e86ea83105d3f43723be5d06b9e71f24a96276b7 data/minecraft/tags/blocks/logs_that_burn.json
 e36dcfbfc78c88662c4c076157a1a53a9d98988e data/minecraft/tags/blocks/ceiling_hanging_signs.json

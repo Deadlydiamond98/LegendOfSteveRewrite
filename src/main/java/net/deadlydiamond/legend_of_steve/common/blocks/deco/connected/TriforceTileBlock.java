@@ -1,6 +1,6 @@
-package net.deadlydiamond.legend_of_steve.common.blocks.deco.connected.temp;
+package net.deadlydiamond.legend_of_steve.common.blocks.deco.connected;
 
-import net.deadlydiamond.legend_of_steve.common.blocks.deco.dungeoncite.DungeonciteTileBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.deco.oriented.TileBlock;
 import net.deadlydiamond.legend_of_steve.util.ZeldaProperties;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -13,12 +13,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.WorldAccess;
 
-public class TriforceTileBlock extends DungeonciteTileBlock {
+public class TriforceTileBlock extends TileBlock {
     public static final EnumProperty<TriforceType> TRIFORCE_TYPE = EnumProperty.of("triforce_type", TriforceType.class);
     public static final BooleanProperty CONNECTS = ZeldaProperties.CONNECTS;
 
-    public TriforceTileBlock(Settings settings, String advancementID) {
-        super(settings, advancementID);
+    public TriforceTileBlock(Settings settings) {
+        super(settings);
         this.setDefaultState(getDefaultState().with(TRIFORCE_TYPE, TriforceType.SINGLE).with(CONNECTS, true));
     }
 

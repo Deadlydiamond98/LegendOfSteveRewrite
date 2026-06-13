@@ -44,6 +44,8 @@ public class ZeldaItemTagDatagen extends FabricTagProvider.ItemTagProvider {
                 ZeldaBlocks.CHISELED_BAMBOO_BRICKS,
                 ZeldaBlocks.CHISELED_CHERRY_BRICKS,
                 ZeldaBlocks.CHISELED_DEKU_BRICKS,
+                // TILES
+                ZeldaBlocks.STONE_TILES,
                 // FAIRY MARBLE
                 ZeldaBlocks.FAIRY_MARBLE,
                 ZeldaBlocks.COBBLED_FAIRY_MARBLE,

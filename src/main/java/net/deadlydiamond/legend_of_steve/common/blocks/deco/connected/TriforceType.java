@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.common.blocks.deco.connected.temp;
+package net.deadlydiamond.legend_of_steve.common.blocks.deco.connected;
 
 import net.minecraft.util.StringIdentifiable;
 

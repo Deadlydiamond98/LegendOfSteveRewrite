@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:stone"
+    },
+    "s": {
+      "item": "minecraft:stone_slab"
+    }
+  },
+  "pattern": [
+    "ss",
+    "##"
+  ],
+  "result": {
+    "count": 4,
+    "item": "legend_of_steve:stone_tile"
+  },
+  "show_notification": true
+}

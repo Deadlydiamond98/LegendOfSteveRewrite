@@ -5,8 +5,8 @@ import net.minecraft.util.StringIdentifiable;
 public enum TriforceType implements StringIdentifiable {
     SINGLE("single"),
 
-    DOUBLE_TOP("double_top"),
-    DOUBLE_BOTTOM("double_bottom"),
+    DOUBLE_LEFT("double_left"),
+    DOUBLE_RIGHT("double_right"),
 
     BIG_TOP_LEFT("big_top_left"),
     BIG_TOP_RIGHT("big_top_right"),
@@ -25,18 +25,18 @@ public enum TriforceType implements StringIdentifiable {
     }
 
     public boolean isTop() {
-        return this == DOUBLE_TOP || this == BIG_TOP_LEFT || this == BIG_TOP_RIGHT;
+        return this == BIG_TOP_LEFT || this == BIG_TOP_RIGHT;
     }
 
     public boolean isBottom() {
-        return this == DOUBLE_BOTTOM || this == BIG_BOTTOM_LEFT || this == BIG_BOTTOM_RIGHT;
+        return this == BIG_BOTTOM_LEFT || this == BIG_BOTTOM_RIGHT;
     }
 
     public boolean isLeft() {
-        return this == BIG_TOP_LEFT || this == BIG_BOTTOM_LEFT;
+        return this == DOUBLE_LEFT || this == BIG_TOP_LEFT || this == BIG_BOTTOM_LEFT;
     }
 
     public boolean isRight() {
-        return this == BIG_TOP_RIGHT || this == BIG_BOTTOM_RIGHT;
+        return this == DOUBLE_RIGHT || this == BIG_TOP_RIGHT || this == BIG_BOTTOM_RIGHT;
     }
 }

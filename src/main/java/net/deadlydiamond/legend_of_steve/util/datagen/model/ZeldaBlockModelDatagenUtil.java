@@ -52,8 +52,6 @@ public class ZeldaBlockModelDatagenUtil {
 
     public static void registerTriforceTile(BlockStateModelGenerator blockStateModelGenerator, Block parent, Block block) {
         Identifier single = getTriforceTileModel(parent, block, "single", blockStateModelGenerator);
-        Identifier doubleTop = getTriforceTileModel(parent, block, "double_top", blockStateModelGenerator);
-        Identifier doubleBottom = getTriforceTileModel(parent, block, "double_bottom", blockStateModelGenerator);
         Identifier topLeft = getTriforceTileModel(parent, block, "top_left", blockStateModelGenerator);
         Identifier topRight = getTriforceTileModel(parent, block, "top_right", blockStateModelGenerator);
         Identifier bottomLeft = getTriforceTileModel(parent, block, "bottom_left", blockStateModelGenerator);
@@ -62,8 +60,8 @@ public class ZeldaBlockModelDatagenUtil {
         blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block)
                 .coordinate(BlockStateVariantMap.create(TriforceTileBlock.TRIFORCE_TYPE)
                         .register(TriforceType.SINGLE, BlockStateVariant.create().put(VariantSettings.MODEL, single))
-                        .register(TriforceType.DOUBLE_TOP, BlockStateVariant.create().put(VariantSettings.MODEL, doubleTop))
-                        .register(TriforceType.DOUBLE_BOTTOM, BlockStateVariant.create().put(VariantSettings.MODEL, doubleBottom))
+                        .register(TriforceType.DOUBLE_LEFT, BlockStateVariant.create().put(VariantSettings.MODEL, topLeft))
+                        .register(TriforceType.DOUBLE_RIGHT, BlockStateVariant.create().put(VariantSettings.MODEL, topRight))
                         .register(TriforceType.BIG_TOP_LEFT, BlockStateVariant.create().put(VariantSettings.MODEL, topLeft))
                         .register(TriforceType.BIG_TOP_RIGHT, BlockStateVariant.create().put(VariantSettings.MODEL, topRight))
                         .register(TriforceType.BIG_BOTTOM_LEFT, BlockStateVariant.create().put(VariantSettings.MODEL, bottomLeft))

@@ -16,12 +16,12 @@
       "model": "legend_of_steve:block/brown_dungeoncite_triforce_tile_top_right",
       "y": 270
     },
-    "facing=east,triforce_type=double_bottom": {
-      "model": "legend_of_steve:block/brown_dungeoncite_triforce_tile_double_bottom",
+    "facing=east,triforce_type=double_left": {
+      "model": "legend_of_steve:block/brown_dungeoncite_triforce_tile_top_left",
       "y": 270
     },
-    "facing=east,triforce_type=double_top": {
-      "model": "legend_of_steve:block/brown_dungeoncite_triforce_tile_double_top",
+    "facing=east,triforce_type=double_right": {
+      "model": "legend_of_steve:block/brown_dungeoncite_triforce_tile_top_right",
       "y": 270
     },
     "facing=east,triforce_type=single": {
@@ -44,12 +44,12 @@
       "model": "legend_of_steve:block/brown_dungeoncite_triforce_tile_top_right",
       "y": 180
     },
-    "facing=north,triforce_type=double_bottom": {
-      "model": "legend_of_steve:block/brown_dungeoncite_triforce_tile_double_bottom",
+    "facing=north,triforce_type=double_left": {
+      "model": "legend_of_steve:block/brown_dungeoncite_triforce_tile_top_left",
       "y": 180
     },
-    "facing=north,triforce_type=double_top": {
-      "model": "legend_of_steve:block/brown_dungeoncite_triforce_tile_double_top",
+    "facing=north,triforce_type=double_right": {
+      "model": "legend_of_steve:block/brown_dungeoncite_triforce_tile_top_right",
       "y": 180
     },
     "facing=north,triforce_type=single": {
@@ -68,11 +68,11 @@
     "facing=south,triforce_type=big_top_right": {
       "model": "legend_of_steve:block/brown_dungeoncite_triforce_tile_top_right"
     },
-    "facing=south,triforce_type=double_bottom": {
-      "model": "legend_of_steve:block/brown_dungeoncite_triforce_tile_double_bottom"
+    "facing=south,triforce_type=double_left": {
+      "model": "legend_of_steve:block/brown_dungeoncite_triforce_tile_top_left"
     },
-    "facing=south,triforce_type=double_top": {
-      "model": "legend_of_steve:block/brown_dungeoncite_triforce_tile_double_top"
+    "facing=south,triforce_type=double_right": {
+      "model": "legend_of_steve:block/brown_dungeoncite_triforce_tile_top_right"
     },
     "facing=south,triforce_type=single": {
       "model": "legend_of_steve:block/brown_dungeoncite_triforce_tile_single"
@@ -93,12 +93,12 @@
       "model": "legend_of_steve:block/brown_dungeoncite_triforce_tile_top_right",
       "y": 90
     },
-    "facing=west,triforce_type=double_bottom": {
-      "model": "legend_of_steve:block/brown_dungeoncite_triforce_tile_double_bottom",
+    "facing=west,triforce_type=double_left": {
+      "model": "legend_of_steve:block/brown_dungeoncite_triforce_tile_top_left",
       "y": 90
     },
-    "facing=west,triforce_type=double_top": {
-      "model": "legend_of_steve:block/brown_dungeoncite_triforce_tile_double_top",
+    "facing=west,triforce_type=double_right": {
+      "model": "legend_of_steve:block/brown_dungeoncite_triforce_tile_top_right",
       "y": 90
     },
     "facing=west,triforce_type=single": {

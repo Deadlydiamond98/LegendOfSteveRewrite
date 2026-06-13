@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "legend_of_steve:block/polished_strange_blue_dirt",
-    "side": "legend_of_steve:block/strange_blue_dirt_pillar_middle"
-  }
-}

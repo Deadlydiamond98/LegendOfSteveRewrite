@@ -1,5 +1,6 @@
-package net.deadlydiamond.legend_of_steve.common.blocks.deco.dungeoncite;
+package net.deadlydiamond.legend_of_steve.common.blocks.deco.connected.temp;
 
+import net.deadlydiamond.legend_of_steve.common.blocks.deco.dungeoncite.DungeonciteTileBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemPlacementContext;

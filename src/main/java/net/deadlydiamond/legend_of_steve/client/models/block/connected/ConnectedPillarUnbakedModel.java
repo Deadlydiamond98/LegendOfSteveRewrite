@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.client.models.block.temp;
+package net.deadlydiamond.legend_of_steve.client.models.block.connected;
 
 import net.minecraft.client.render.model.BakedModel;
 import net.minecraft.client.render.model.Baker;
@@ -10,31 +10,34 @@ import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
-import java.util.Collections;
+import java.util.List;
 import java.util.function.Function;
 
-public class SwitchBlockUnbakedModelTemp implements UnbakedModel {
-    private final Identifier onModelID;
-    private final Identifier offModelID;
+public class ConnectedPillarUnbakedModel implements UnbakedModel {
+    private final List<SpriteIdentifier> sprites;
 
-    public SwitchBlockUnbakedModelTemp(Identifier id) {
-        this.onModelID = id.withSuffixedPath("_on");
-        this.offModelID = id.withSuffixedPath("_off");
+    public ConnectedPillarUnbakedModel(Identifier block) {
+        this.sprites = ConnectedTextureTypes.getSprites(block, ConnectedTextureTypes.Pillar.class);
     }
 
     @Override
     public Collection<Identifier> getModelDependencies() {
-        return Collections.emptySet();
+        return List.of();
     }
 
     @Override
-    public void setParents(Function<Identifier, UnbakedModel> modelLoader) {}
+    public void setParents(Function<Identifier, UnbakedModel> modelLoader) {
+
+    }
 
     @Nullable
     @Override
     public BakedModel bake(Baker baker, Function<SpriteIdentifier, Sprite> textureGetter, ModelBakeSettings rotationContainer, Identifier modelId) {
-        BakedModel onModel = baker.bake(this.onModelID, rotationContainer);
-        BakedModel offModel = baker.bake(this.offModelID, rotationContainer);
-        return new SwitchBlockBakedModelTemp(onModel, offModel);
+        Sprite[] sprites = new Sprite[this.sprites.size()];
+
+        for (int i = 0; i < sprites.length; ++i) {
+            sprites[i] = textureGetter.apply(this.sprites.get(i));
+        }
+        return new ConnectedPillarBakedModel(sprites);
     }
 }

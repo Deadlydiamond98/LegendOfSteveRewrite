@@ -4,7 +4,7 @@ import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.dungeoncite.ChiseledDungeoncitePillar;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.dungeoncite.DungeonciteTileBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.dungeoncite.DungeonciteWallBlock;
-import net.deadlydiamond.legend_of_steve.common.blocks.deco.dungeoncite.TriforceTileBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.deco.connected.temp.TriforceTileBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.DungeoncitePressurePlate;
 import net.deadlydiamond.legend_of_steve.common.items.block.PushableBlockItem;
 import net.deadlydiamond.legend_of_steve.datagen.recipe.ZeldaRecipeDatagen;
@@ -41,7 +41,6 @@ import java.util.function.Consumer;
 public class DungeonciteBlockset extends AbstractBlockset {
 
     // TODO:
-    //  - Re-Add Pedestal Block
     //  - Maybe add Button & Plate Variants?
 
     public final Block base;
@@ -100,7 +99,7 @@ public class DungeonciteBlockset extends AbstractBlockset {
     public final Block reinforced;
     public final Item pushable;
 
-//    public final Block chiseledPillar;
+    public final Block chiseledPillar;
     public final Block pillar;
 
     public final Block chiseled;
@@ -135,12 +134,12 @@ public class DungeonciteBlockset extends AbstractBlockset {
         this.brick = register(id() + "_bricks", new AdvancementNeededBlock(settingsBrick, advancementID));
         this.brickSlab = register(id() + "_brick_slab", new AdvancementNeededSlab(settingsBrick, advancementID));
         this.brickStair = register(id() + "_brick_stairs", new AdvancementNeededStairs(this.brick.getDefaultState(), settingsBrick, advancementID));
-        this.brickWall = register(id() + "_brick_wall", new DungeonciteWallBlock(settings, advancementID));
+        this.brickWall = register(id() + "_brick_wall", new DungeonciteWallBlock(settingsBrick, advancementID));
 
         this.mossyBrick = register("mossy_" + id() + "_bricks", new AdvancementNeededBlock(settingsBrick, advancementID));
         this.mossyBrickSlab = register("mossy_" + id() + "_brick_slab", new AdvancementNeededSlab(settingsBrick, advancementID));
         this.mossyBrickStair = register("mossy_" + id() + "_brick_stairs", new AdvancementNeededStairs(this.mossyBrick.getDefaultState(), settingsBrick, advancementID));
-        this.mossyBrickWall = register("mossy_" + id() + "_brick_wall", new DungeonciteWallBlock(settings, advancementID));
+        this.mossyBrickWall = register("mossy_" + id() + "_brick_wall", new DungeonciteWallBlock(settingsBrick, advancementID));
 
         this.crackedBrick = register("cracked_" + id() + "_bricks", new AdvancementNeededBlock(settingsBrick, advancementID));
 
@@ -149,12 +148,12 @@ public class DungeonciteBlockset extends AbstractBlockset {
         this.chiseledBrick = register("chiseled_" + id() + "_bricks", new AdvancementNeededBlock(settingsBrick, advancementID));
         this.chiseledBrickSlab = register("chiseled_" + id() + "_brick_slab", new AdvancementNeededSlab(settingsBrick, advancementID));
         this.chiseledBrickStair = register("chiseled_" + id() + "_brick_stairs", new AdvancementNeededStairs(this.chiseledBrick.getDefaultState(), settingsBrick, advancementID));
-        this.chiseledBrickWall = register("chiseled_" + id() + "_brick_wall", new DungeonciteWallBlock(settings, advancementID));
+        this.chiseledBrickWall = register("chiseled_" + id() + "_brick_wall", new DungeonciteWallBlock(settingsBrick, advancementID));
 
         this.mossyChiseledBrick = register("mossy_chiseled_" + id() + "_bricks", new AdvancementNeededBlock(settingsBrick, advancementID));
         this.mossyChiseledBrickSlab = register("mossy_chiseled_" + id() + "_brick_slab", new AdvancementNeededSlab(settingsBrick, advancementID));
         this.mossyChiseledBrickStair = register("mossy_chiseled_" + id() + "_brick_stairs", new AdvancementNeededStairs(this.mossyChiseledBrick.getDefaultState(), settingsBrick, advancementID));
-        this.mossyChiseledBrickWall = register("mossy_chiseled_" + id() + "_brick_wall", new DungeonciteWallBlock(settings, advancementID));
+        this.mossyChiseledBrickWall = register("mossy_chiseled_" + id() + "_brick_wall", new DungeonciteWallBlock(settingsBrick, advancementID));
 
         this.crackedChiseledBrick = register("cracked_chiseled_" + id() + "_bricks", new AdvancementNeededBlock(settingsBrick, advancementID));
 
@@ -163,12 +162,12 @@ public class DungeonciteBlockset extends AbstractBlockset {
         this.smallBrick = register("small_" + id() + "_bricks", new AdvancementNeededBlock(settingsBrick, advancementID));
         this.smallBrickSlab = register("small_" + id() + "_brick_slab", new AdvancementNeededSlab(settingsBrick, advancementID));
         this.smallBrickStair = register("small_" + id() + "_brick_stairs", new AdvancementNeededStairs(this.smallBrick.getDefaultState(), settingsBrick, advancementID));
-        this.smallBrickWall = register("small_" + id() + "_brick_wall", new DungeonciteWallBlock(settings, advancementID));
+        this.smallBrickWall = register("small_" + id() + "_brick_wall", new DungeonciteWallBlock(settingsBrick, advancementID));
 
         this.mossySmallBrick = register("small_mossy_" + id() + "_bricks", new AdvancementNeededBlock(settingsBrick, advancementID));
         this.mossySmallBrickSlab = register("small_mossy_" + id() + "_brick_slab", new AdvancementNeededSlab(settingsBrick, advancementID));
         this.mossySmallBrickStair = register("small_mossy_" + id() + "_brick_stairs", new AdvancementNeededStairs(this.smallBrick.getDefaultState(), settingsBrick, advancementID));
-        this.mossySmallBrickWall = register("small_mossy_" + id() + "_brick_wall", new DungeonciteWallBlock(settings, advancementID));
+        this.mossySmallBrickWall = register("small_mossy_" + id() + "_brick_wall", new DungeonciteWallBlock(settingsBrick, advancementID));
 
         this.crackedSmallBrick = register("small_cracked_" + id() + "_bricks", new AdvancementNeededBlock(settingsBrick, advancementID));
 
@@ -191,11 +190,10 @@ public class DungeonciteBlockset extends AbstractBlockset {
         ));
 
         // Pillar
-//        this.chiseledPillar = register("chiseled_" + id() + "_pillar", new ChiseledDungeoncitePillar(settings, advancementID));
         this.pillar = register(id() + "_pillar", new AdvancementNeededPillarBlock(settings, advancementID));
+        this.chiseledPillar = register("chiseled_" + id() + "_pillar", new ChiseledDungeoncitePillar(settingsTile, advancementID));
 
         // Reinforced Dungeoncite
-
         this.reinforced = register("reinforced_" + id(), new AdvancementNeededBlock(settings, advancementID));
         this.pushable = ZeldaItems.register("pushable_" + id(), new PushableBlockItem(new FabricItemSettings(), this.reinforced.getDefaultState()));
     }
@@ -296,7 +294,7 @@ public class DungeonciteBlockset extends AbstractBlockset {
         // MISC
         RecipeProvider.offerChiseledBlockRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, this.chiseled, this.baseSlab);
         RecipeProvider.offerChiseledBlockRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, this.pillar, this.base);
-//        RecipeProvider.offerChiseledBlockRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, this.chiseledPillar, this.pillar);
+        RecipeProvider.offerChiseledBlockRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, this.chiseledPillar, this.pillar);
         RecipeProvider.offerPressurePlateRecipe(exporter, this.pressurePlate, this.tile);
 
         ZeldaRecipeDatagen.offerReinforcedRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, this.reinforced, this.base);
@@ -321,7 +319,7 @@ public class DungeonciteBlockset extends AbstractBlockset {
         cut(exporter, this.base, this.smallBrickWall);
         cut(exporter, this.base, this.chiseled);
         cut(exporter, this.base, this.pillar);
-//        cut(exporter, this.base, this.chiseledPillar);
+        cut(exporter, this.base, this.chiseledPillar);
         cut(exporter, this.base, this.reinforced);
         cut(exporter, this.base, this.pushable);
         cut(exporter, this.base, this.tile);
@@ -541,7 +539,7 @@ public class DungeonciteBlockset extends AbstractBlockset {
         modelGen.registerParentedItemModel(this.pushable, ModelIds.getBlockModelId(this.reinforced));
         // Pillar
         BlockModelDatagenUtil.registerPillar(modelGen, this.pillar);
-//        ZeldaBlockModelDatagenUtil.registerConnectedPillar(modelGen, this.chiseledPillar, this.tile);
+        ZeldaBlockModelDatagenUtil.registerConnectedPillar(modelGen, this.chiseledPillar);
 
         dungeoncitePlate(modelGen, this.pressurePlate, this.tile);
     }

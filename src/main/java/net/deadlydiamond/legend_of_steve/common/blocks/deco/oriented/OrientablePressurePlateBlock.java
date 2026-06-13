@@ -1,8 +1,6 @@
-package net.deadlydiamond.legend_of_steve.common.blocks.deco;
+package net.deadlydiamond.legend_of_steve.common.blocks.deco.oriented;
 
-import net.deadlydiamond.legend_of_steve.common.entities.block.PushableBlockEntity;
 import net.minecraft.block.*;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
@@ -10,8 +8,6 @@ import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 
 public abstract class OrientablePressurePlateBlock extends AbstractPressurePlateBlock implements IMimicDirection {
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;

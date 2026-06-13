@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "legend_of_steve:brown_dungeoncite_pillar"
+    }
+  },
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "result": {
+    "item": "legend_of_steve:chiseled_brown_dungeoncite_pillar"
+  },
+  "show_notification": true
+}

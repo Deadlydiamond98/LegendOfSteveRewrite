@@ -1,6 +1,6 @@
 package net.deadlydiamond.legend_of_steve.common.blocks.functional;
 
-import net.deadlydiamond.legend_of_steve.common.blocks.deco.OrientablePressurePlateBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.deco.oriented.OrientablePressurePlateBlock;
 import net.deadlydiamond.legend_of_steve.common.entities.block.PushableBlockEntity;
 import net.deadlydiamond98.koalalib.common.blocks.advancement.IAdvancementNeeded;
 import net.deadlydiamond98.koalalib.init.KoalaLibBlockProperties;

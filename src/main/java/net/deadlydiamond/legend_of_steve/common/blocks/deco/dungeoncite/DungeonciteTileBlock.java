@@ -1,6 +1,6 @@
 package net.deadlydiamond.legend_of_steve.common.blocks.deco.dungeoncite;
 
-import net.deadlydiamond.legend_of_steve.common.blocks.deco.TileBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.deco.oriented.TileBlock;
 import net.deadlydiamond98.koalalib.common.blocks.advancement.IAdvancementNeeded;
 import net.deadlydiamond98.koalalib.init.KoalaLibBlockProperties;
 import net.minecraft.block.AbstractBlock;

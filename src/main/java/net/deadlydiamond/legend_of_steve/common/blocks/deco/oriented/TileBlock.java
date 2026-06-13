@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.common.blocks.deco;
+package net.deadlydiamond.legend_of_steve.common.blocks.deco.oriented;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.GlazedTerracottaBlock;

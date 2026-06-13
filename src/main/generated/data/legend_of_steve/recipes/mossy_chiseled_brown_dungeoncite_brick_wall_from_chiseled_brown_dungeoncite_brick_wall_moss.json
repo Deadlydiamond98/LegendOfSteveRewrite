@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "building_blocks",
+  "ingredients": [
+    {
+      "item": "legend_of_steve:chiseled_brown_dungeoncite_brick_wall"
+    },
+    {
+      "item": "minecraft:moss_block"
+    }
+  ],
+  "result": {
+    "item": "legend_of_steve:mossy_chiseled_brown_dungeoncite_brick_wall"
+  }
+}

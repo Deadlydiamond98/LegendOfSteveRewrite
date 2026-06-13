@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": {
+      "item": "legend_of_steve:brown_dungeoncite_tile"
+    }
+  },
+  "pattern": [
+    "##"
+  ],
+  "result": {
+    "item": "legend_of_steve:brown_dungeoncite_pressure_plate"
+  },
+  "show_notification": true
+}

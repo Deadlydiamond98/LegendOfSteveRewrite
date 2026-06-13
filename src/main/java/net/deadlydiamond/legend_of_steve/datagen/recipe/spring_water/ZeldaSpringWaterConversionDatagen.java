@@ -1,7 +1,6 @@
 package net.deadlydiamond.legend_of_steve.datagen.recipe.spring_water;
 
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
-import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.item.ItemConvertible;
@@ -18,8 +17,7 @@ public class ZeldaSpringWaterConversionDatagen {
         swapRecipe(consumer);
         dye(consumer);
         fairyMarble(consumer);
-        strangeDirt(consumer);
-        special(consumer);
+        unique(consumer);
     }
 
     private static void vanillaItem(Consumer<RecipeJsonProvider> consumer) {
@@ -387,7 +385,19 @@ public class ZeldaSpringWaterConversionDatagen {
         offerConversion(consumer, ZeldaBlocks.STONE_SWORD_PEDESTAL, ZeldaBlocks.FAIRY_MARBLE_SWORD_PEDESTAL);
     }
 
-    private static void strangeDirt(Consumer<RecipeJsonProvider> consumer) {
+    private static void unique(Consumer<RecipeJsonProvider> consumer) {
+
+
+        // Dungeoncite /////////////////////////////////////////////////////////////////////////////////////////////////
+
+        // These Recipes might be removed in the future!!!
+        offerConversion(consumer, Blocks.PACKED_MUD, ZeldaBlocks.BROWN_DUNGEONCITE.base);
+
+        offerConversion(consumer, Blocks.MUD_BRICKS, ZeldaBlocks.BROWN_DUNGEONCITE.brick);
+        offerConversion(consumer, Blocks.MUD_BRICK_SLAB, ZeldaBlocks.BROWN_DUNGEONCITE.brickSlab);
+        offerConversion(consumer, Blocks.MUD_BRICK_STAIRS, ZeldaBlocks.BROWN_DUNGEONCITE.brickStair);
+
+        // Strange Dirt ////////////////////////////////////////////////////////////////////////////////////////////////
         offerConversion(consumer, Blocks.DIRT, ZeldaBlocks.STRANGE_DIRT.base);
         offerConversion(consumer, Blocks.GRASS_BLOCK, ZeldaBlocks.STRANGE_DIRT.base);
         offerConversion(consumer, Blocks.MYCELIUM, ZeldaBlocks.STRANGE_DIRT.base);
@@ -396,10 +406,6 @@ public class ZeldaSpringWaterConversionDatagen {
         offerConversion(consumer, Blocks.ROOTED_DIRT, ZeldaBlocks.STRANGE_DIRT.base);
 
         offerConversion(consumer, ZeldaBlocks.STRANGE_DIRT.base, Blocks.DIRT);
-    }
-
-    private static void special(Consumer<RecipeJsonProvider> consumer) {
-//        offerConversion(consumer, Items.IRON_SWORD, ZeldaItems.MAGIC_SWORD);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

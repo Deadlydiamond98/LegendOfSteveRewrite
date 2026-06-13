@@ -1,0 +1,9 @@
+{
+  "type": "legend_of_steve:spring_water_conversion",
+  "input": {
+    "item": "minecraft:mud_brick_slab"
+  },
+  "result": {
+    "item": "legend_of_steve:brown_dungeoncite_brick_slab"
+  }
+}

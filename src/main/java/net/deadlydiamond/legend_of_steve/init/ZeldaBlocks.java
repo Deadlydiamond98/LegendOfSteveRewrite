@@ -102,7 +102,9 @@ public class ZeldaBlocks {
 
     // DUNGEONCITE
     // TODO: Make this not use a debug achievement!
-    public static final DungeonciteBlockset BROWN_DUNGEONCITE = new DungeonciteBlockset("brown", "story/mine_diamond", MapColor.SPRUCE_BROWN);
+    public static final DungeonciteBlockset BROWN_DUNGEONCITE = new DungeonciteBlockset(
+            "brown", "minecraft:story/mine_diamond", MapColor.SPRUCE_BROWN
+    );
 
     // MASTER
     public static final Block MASTER_ORE = register("master_ore", new ExperienceDroppingBlock(MASTER_ORE_BLOCK_SETTINGS));

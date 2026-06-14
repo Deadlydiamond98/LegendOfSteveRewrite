@@ -136,7 +136,7 @@ public class ZeldaRenderLayers extends RenderLayer {
     );
 
     public static final RenderLayer SWITCH_BLOCK = of(
-            "cutout_mipped",
+            "legend_of_steve$switch_block",
             VertexFormats.POSITION_COLOR_TEXTURE_LIGHT_NORMAL,
             VertexFormat.DrawMode.QUADS,
             131072,

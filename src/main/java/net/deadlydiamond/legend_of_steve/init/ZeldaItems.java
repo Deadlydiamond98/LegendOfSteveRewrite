@@ -81,7 +81,7 @@ public class ZeldaItems {
     public static final Item FAIRY_BOTTLE = register("fairy_bottle", new FairyBottleItem(ZeldaEntityTypes.FAIRY));
 
     // FLUIDS //////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public static final Item ENCHANTED_SPRING_WATER_BUCKET = register("enchanted_spring_water_bucket", new BucketItem(
+    public static final Item SPRING_WATER_BUCKET = register("enchanted_spring_water_bucket", new BucketItem(
             ZeldaFluids.ENCHANTED_SPRING_WATER, new Item.Settings().recipeRemainder(Items.BUCKET).maxCount(1))
     );
 

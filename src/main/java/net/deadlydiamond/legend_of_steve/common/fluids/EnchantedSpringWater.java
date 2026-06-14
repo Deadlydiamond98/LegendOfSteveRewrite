@@ -126,7 +126,7 @@ public class EnchantedSpringWater extends FlowableFluid {
 
     @Override
     public Item getBucketItem() {
-        return ZeldaItems.ENCHANTED_SPRING_WATER_BUCKET;
+        return ZeldaItems.SPRING_WATER_BUCKET;
     }
 
     @Override

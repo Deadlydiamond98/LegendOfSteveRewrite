@@ -9,10 +9,10 @@ import net.minecraft.util.Identifier;
 
 public class ZeldaShaders {
 
-    // POST
+    // POST ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static final Identifier BLOOM_GLOWING_SHADER_ID = LegendOfSteve.id(post("bloom_glow"));
 
-    // CORE
+    // CORE ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static ShaderProgram bombFuseShader;
     public static ShaderProgram iridescenceShader;
     public static ShaderProgram entityIridescenceShader;

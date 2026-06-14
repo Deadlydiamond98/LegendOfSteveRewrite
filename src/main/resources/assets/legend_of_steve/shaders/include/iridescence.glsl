@@ -2,10 +2,10 @@
 // THIS SHADER IS FROM OPERATION STARCLEAVE, WHICH IS LICENSED UNDER MIT
 // https://github.com/Phanastrae/operation_starcleave
 
-vec4 getShineColor(float dot, float shineStrength, sampler2D gradientTexture) {
+vec4 getShineColor(float dot, float shineStrength, sampler2D gradientTexture, float iridescentID) {
     float f = 0.5 * (1. + dot); // dot = -1 => f = 0, dot = +1 => f = 1
 
-    int id = int(1);
+    int id = int(iridescentID);
     float iridescenceTx = f * textureSize(gradientTexture, 0).x;
 
     vec4 texColorFloor = texelFetch(gradientTexture, ivec2(int(floor(iridescenceTx)), id), 0);
@@ -15,7 +15,7 @@ vec4 getShineColor(float dot, float shineStrength, sampler2D gradientTexture) {
     return vec4(texColor.rgb, texColor.a * shineStrength);
 }
 
-vec4 shineCol(sampler2D normalsTexture, sampler2D gradientTexture, vec3 iridescenceOffset) {
+vec4 shineCol(sampler2D normalsTexture, sampler2D gradientTexture, vec3 iridescenceOffset, float iridescentID) {
     vec2 s = vec2(textureSize(Sampler0, 0));
 
     vec2 scaledUV = texCoord0 * s;
@@ -57,7 +57,7 @@ vec4 shineCol(sampler2D normalsTexture, sampler2D gradientTexture, vec3 iridesce
     float dot = dot(viewDir, finalNormal);
 
     float shineStrength = normalMap.a;
-    vec4 shineColor = getShineColor(dot, shineStrength, gradientTexture);
+    vec4 shineColor = getShineColor(dot, shineStrength, gradientTexture, iridescentID);
 
     return shineColor;
 }

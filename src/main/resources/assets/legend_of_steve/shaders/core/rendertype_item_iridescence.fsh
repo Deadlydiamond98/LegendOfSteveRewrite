@@ -29,7 +29,7 @@ void main() {
     vec4 colorTex = texture(Sampler0, texCoord0);
     if (colorTex.a <= 0.1) discard;
 
-    vec4 shineColor = shineCol(Sampler3, Sampler4, LegendOfSteveIridescenceItemOffset);
+    vec4 shineColor = shineCol(Sampler3, Sampler4, LegendOfSteveIridescenceItemOffset, 1);
 
     vec4 color = vec4(
     shineColor.rgb * shineColor.a + colorTex.rgb * (1 - shineColor.a), 1) * vertexColor * ColorModulator;

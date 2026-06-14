@@ -115,7 +115,7 @@ public class ZeldaCreativeTabs {
         entries.add(ZeldaBlocks.FRUITING_DEKU_LEAVES);
 
         // SPRING WATER
-        entries.add(ZeldaItems.ENCHANTED_SPRING_WATER_BUCKET);
+        entries.add(ZeldaItems.SPRING_WATER_BUCKET);
 
         // FAIRY LAMPS
         entries.add(ZeldaBlocks.RED_FAIRY_LAMP);

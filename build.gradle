@@ -12,6 +12,14 @@ base {
 
 repositories {
 	maven { url = "https://api.modrinth.com/maven" }
+	maven {
+		name = "Jared's maven"
+		url = "https://maven.blamejared.com/"
+	}
+	maven {
+		name = "ModMaven"
+		url = "https://modmaven.dev"
+	}
 }
 
 fabricApi {
@@ -27,7 +35,8 @@ dependencies {
 
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 	modImplementation "maven.modrinth:koala_lib:${koala_lib_version}"
-	
+
+	modCompileOnlyApi("mezz.jei:jei-${minecraft_version}-fabric-api:${jei_version}")
 }
 loom {
 	accessWidenerPath = file("src/main/resources/legend_of_steve.accesswidener")

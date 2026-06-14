@@ -23,6 +23,9 @@
 		],
 		"fabric-datagen": [
 			"net.deadlydiamond.legend_of_steve.LegendOfSteveDatagen"
+		],
+		"jei_mod_plugin": [
+			"net.deadlydiamond.legend_of_steve.compat.jei.LegendOfSteveJEI"
 		]
 	},
 	"mixins": [

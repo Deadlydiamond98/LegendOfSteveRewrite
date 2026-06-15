@@ -24,8 +24,8 @@ public class RenderLayersMixin {
     @Expression("renderLayer == getTranslucent()")
     @Inject(method = "getEntityBlockLayer", at = @At("MIXINEXTRAS:EXPRESSION"), cancellable = true)
     private static void legend_of_steve$getEntityBlockLayer(BlockState state, boolean direct, CallbackInfoReturnable<RenderLayer> cir, @Local RenderLayer blockLayer) {
-        if (blockLayer == ZeldaRenderLayers.IRIDESCENCE) {
-            cir.setReturnValue(ZeldaRenderLayers.ENTITY_IRIDESCENCE_TEXTURED);
+        if (blockLayer == ZeldaRenderLayers.getIridescence()) {
+            cir.setReturnValue(ZeldaRenderLayers.getEntityIridescenceTextured());
         }
     }
 

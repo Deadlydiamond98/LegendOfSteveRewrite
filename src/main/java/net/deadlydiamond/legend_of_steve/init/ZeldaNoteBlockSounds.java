@@ -1,7 +1,5 @@
-package net.deadlydiamond.legend_of_steve.util;
+package net.deadlydiamond.legend_of_steve.init;
 
-import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
-import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
 import net.deadlydiamond98.koalalib.common.blocksets.AbstractBlockset;
 import net.minecraft.block.Block;
 import net.minecraft.sound.SoundEvent;

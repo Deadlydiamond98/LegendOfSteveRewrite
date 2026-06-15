@@ -1,17 +1,10 @@
 package net.deadlydiamond.legend_of_steve.common.blocks.functional.switches;
 
 import net.deadlydiamond.legend_of_steve.common.bes.switches.SwitchBlockEntity;
-import net.deadlydiamond.legend_of_steve.common.world.states.SwitchBlockManager;
 import net.deadlydiamond.legend_of_steve.init.ZeldaParticleTypes;
-import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
-import net.deadlydiamond.legend_of_steve.util.ZeldaProperties;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityTicker;
-import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.block.enums.SlabType;
 import net.minecraft.particle.ParticleEffect;
-import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;

@@ -15,7 +15,5 @@ public class ZeldaFluids {
         return Registry.register(Registries.FLUID, LegendOfSteve.id(id), fluid);
     }
 
-    public static void register() {
-
-    }
+    public static void register() {}
 }

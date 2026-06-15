@@ -17,9 +17,9 @@ public class RenderLayerMixin {
     private static ImmutableList<RenderLayer> addLayers(ImmutableList<RenderLayer> original) {
         List<RenderLayer> list = new ArrayList<>(original);
 
-        list.add(ZeldaRenderLayers.IRIDESCENCE);
-        list.add(ZeldaRenderLayers.SWITCH_BLOCK);
-        list.add(ZeldaRenderLayers.BLOOM_GLOW);
+        list.add(ZeldaRenderLayers.getIridescence());
+        list.add(ZeldaRenderLayers.getSwitchBlock());
+        list.add(ZeldaRenderLayers.getBloomGlow());
 
         return ImmutableList.copyOf(list);
     }

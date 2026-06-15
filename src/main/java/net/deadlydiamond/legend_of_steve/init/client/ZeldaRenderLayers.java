@@ -16,12 +16,8 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class ZeldaRenderLayers extends RenderLayer {
-
-    // TODO: This Class could perhaps use some better organization
-
     // TEXTURES ////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static final Identifier IRIDESCENT_GRADIENT_TEXTURE = LegendOfSteve.id("textures/misc/iridescence_gradient.png");
-
     public static final Identifier IRIDESCENT_ATLAS_TEXTURE = LegendOfSteve.id("textures/atlas/iridescent.png");
     public static final Identifier NORMAL_MAPS_ATLAS_TEXTURE = LegendOfSteve.id("textures/atlas/normal_maps.png");
 
@@ -42,12 +38,11 @@ public class ZeldaRenderLayers extends RenderLayer {
         }
     }, () -> MinecraftClient.getInstance().getFramebuffer().beginWrite(false));
 
-    public ZeldaRenderLayers(String name, VertexFormat vertexFormat, VertexFormat.DrawMode drawMode, int expectedBufferSize, boolean hasCrumbling, boolean translucent, Runnable startAction, Runnable endAction) {
-        super(name, vertexFormat, drawMode, expectedBufferSize, hasCrumbling, translucent, startAction, endAction);
-    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // RENDER LAYERS ///////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-    public static final Function<Identifier, RenderLayer> FULLBRIGHT_ENTITY = Util.memoize(texture -> {
+    private static final Function<Identifier, RenderLayer> FULLBRIGHT_ENTITY = Util.memoize(texture -> {
         MultiPhaseParameters multiPhaseParameters = MultiPhaseParameters.builder()
                 .program(FULLBRIGHT_ENTITY_PROGRAM)
                 .texture(new Texture(texture, false, false))
@@ -55,7 +50,7 @@ public class ZeldaRenderLayers extends RenderLayer {
                 .cull(DISABLE_CULLING)
                 .build(true);
         return of(
-                "legend_of_steve$fullbright",
+                getName("fullbright"),
                 VertexFormats.POSITION_COLOR_TEXTURE,
                 VertexFormat.DrawMode.QUADS,
                 256,
@@ -65,45 +60,8 @@ public class ZeldaRenderLayers extends RenderLayer {
         );
     });
 
-    public static final RenderLayer BLOOM_GLOW = of(
-            "legend_of_steve$bloom_glow",
-            VertexFormats.POSITION_COLOR_TEXTURE_LIGHT_NORMAL,
-            VertexFormat.DrawMode.QUADS,
-            131072,
-            true,
-            false,
-            MultiPhaseParameters.builder()
-                    .program(BLOOM_PROGRAM)
-                    .lightmap(ENABLE_LIGHTMAP)
-                    .texture(RenderPhase.MIPMAP_BLOCK_ATLAS_TEXTURE)
-                    .transparency(TRANSLUCENT_TRANSPARENCY)
-                    .depthTest(LEQUAL_DEPTH_TEST)
-                    .target(BLOOM_TARGET)
-                    .build(false)
-    );
-
-    public static final Function<Identifier, RenderLayer> ENTITY_BLOOM_GLOW = Util.memoize(texture -> {
-        MultiPhaseParameters multiPhaseParameters = MultiPhaseParameters.builder()
-                .program(RenderPhase.POSITION_COLOR_TEXTURE_PROGRAM)
-                .texture(new Texture(texture, false, false))
-                .transparency(TRANSLUCENT_TRANSPARENCY)
-                .cull(DISABLE_CULLING)
-                .depthTest(LEQUAL_DEPTH_TEST)
-                .target(BLOOM_TARGET)
-                .build(false);
-        return of(
-                "legend_of_steve$entity_bloom_glow",
-                VertexFormats.POSITION_COLOR_TEXTURE,
-                VertexFormat.DrawMode.QUADS,
-                256,
-                true,
-                true,
-                multiPhaseParameters
-        );
-    });
-
     private static final Function<Identifier, RenderLayer> BOMB_FUSE = Util.memoize(texture -> of(
-            "legend_of_steve$bomb_fuse",
+            getName("bomb_fuse"),
             VertexFormats.POSITION_COLOR_TEXTURE_OVERLAY_LIGHT_NORMAL,
             VertexFormat.DrawMode.QUADS,
             256,
@@ -119,24 +77,8 @@ public class ZeldaRenderLayers extends RenderLayer {
                     .build(true))
     );
 
-    private static final BiFunction<Identifier, Boolean, RenderLayer> CUSTOM_GLINT = (identifier, blur) -> of(
-            "legend_of_steve$custom_glint",
-            VertexFormats.POSITION_TEXTURE,
-            VertexFormat.DrawMode.QUADS,
-            256,
-            MultiPhaseParameters.builder()
-                    .program(GLINT_PROGRAM)
-                    .texture(new Texture(identifier, blur, false))
-                    .writeMaskState(COLOR_MASK)
-                    .cull(DISABLE_CULLING)
-                    .depthTest(EQUAL_DEPTH_TEST)
-                    .transparency(GLINT_TRANSPARENCY)
-                    .texturing(GLINT_TEXTURING)
-                    .build(false)
-    );
-
-    public static final RenderLayer SWITCH_BLOCK = of(
-            "legend_of_steve$switch_block",
+    private static final RenderLayer SWITCH_BLOCK = of(
+            getName("switch_block"),
             VertexFormats.POSITION_COLOR_TEXTURE_LIGHT_NORMAL,
             VertexFormat.DrawMode.QUADS,
             131072,
@@ -145,12 +87,53 @@ public class ZeldaRenderLayers extends RenderLayer {
             RenderLayer.MultiPhaseParameters.builder()
                     .lightmap(ENABLE_LIGHTMAP)
                     .program(CUTOUT_MIPPED_PROGRAM)
-                    .texture(new RenderPhase.Texture(SwitchBlockAtlas.SWITCH_ATLAS_TEXTURE, false, true))
+                    .texture(new Texture(SwitchBlockAtlas.SWITCH_ATLAS_TEXTURE, false, true))
                     .build(true)
     );
 
-    public static final RenderLayer IRIDESCENCE = of(
-            "legend_of_steve$iridescence",
+    // BLOOM GLOW LAYERS ///////////////////////////////////////////////////////////////////////////////////////////////
+
+    private static final RenderLayer BLOOM_GLOW = of(
+            getName("bloom_glow"),
+            VertexFormats.POSITION_COLOR_TEXTURE_LIGHT_NORMAL,
+            VertexFormat.DrawMode.QUADS,
+            131072,
+            true,
+            false,
+            MultiPhaseParameters.builder()
+                    .program(BLOOM_PROGRAM)
+                    .lightmap(ENABLE_LIGHTMAP)
+                    .texture(RenderPhase.MIPMAP_BLOCK_ATLAS_TEXTURE)
+                    .transparency(TRANSLUCENT_TRANSPARENCY)
+                    .depthTest(LEQUAL_DEPTH_TEST)
+                    .target(BLOOM_TARGET)
+                    .build(false)
+    );
+
+    private static final Function<Identifier, RenderLayer> ENTITY_BLOOM_GLOW = Util.memoize(texture -> {
+        MultiPhaseParameters multiPhaseParameters = MultiPhaseParameters.builder()
+                .program(RenderPhase.POSITION_COLOR_TEXTURE_PROGRAM)
+                .texture(new Texture(texture, false, false))
+                .transparency(TRANSLUCENT_TRANSPARENCY)
+                .cull(DISABLE_CULLING)
+                .depthTest(LEQUAL_DEPTH_TEST)
+                .target(BLOOM_TARGET)
+                .build(false);
+        return of(
+                getName("entity_bloom_glow"),
+                VertexFormats.POSITION_COLOR_TEXTURE,
+                VertexFormat.DrawMode.QUADS,
+                256,
+                true,
+                true,
+                multiPhaseParameters
+        );
+    });
+
+    // IRIDESCENCE LAYERS //////////////////////////////////////////////////////////////////////////////////////////////
+
+    private static final RenderLayer IRIDESCENCE = of(
+            getName("iridescence"),
             VertexFormats.POSITION_COLOR_TEXTURE_LIGHT_NORMAL,
             VertexFormat.DrawMode.QUADS,
             1 << 12,
@@ -159,7 +142,7 @@ public class ZeldaRenderLayers extends RenderLayer {
             RenderLayer.MultiPhaseParameters.builder()
                     .lightmap(ENABLE_LIGHTMAP)
                     .program(IRIDESCENCE_PROGRAM).texture(
-                            RenderPhase.Textures.create()
+                            Textures.create()
                                     .add(IRIDESCENT_ATLAS_TEXTURE, false, true)
                                     .add(NORMAL_MAPS_ATLAS_TEXTURE, false, true)
                                     .add(IRIDESCENT_GRADIENT_TEXTURE, false, false)
@@ -168,8 +151,8 @@ public class ZeldaRenderLayers extends RenderLayer {
                     ).build(true)
     );
 
-    public static final BiFunction<Identifier, Identifier, RenderLayer> ENTITY_IRIDESCENCE = Util.memoize(((texture, normal) ->
-            of("legend_of_steve$entity_iridescence",
+    private static final BiFunction<Identifier, Identifier, RenderLayer> ENTITY_IRIDESCENCE = Util.memoize(((texture, normal) ->
+            of(getName("entity_iridescence"),
                     VertexFormats.POSITION_COLOR_TEXTURE_OVERLAY_LIGHT_NORMAL,
                     VertexFormat.DrawMode.QUADS,
                     256,
@@ -190,7 +173,7 @@ public class ZeldaRenderLayers extends RenderLayer {
                             .build(true))
     ));
 
-    public static final RenderLayer GUI_ITEM_IRIDESCENCE = of("legend_of_steve$item_gui_iridescence",
+    private static final RenderLayer GUI_ITEM_IRIDESCENCE = of(getName("item_gui_iridescence"),
             VertexFormats.POSITION_COLOR_TEXTURE_OVERLAY_LIGHT_NORMAL,
             VertexFormat.DrawMode.QUADS,
             256,
@@ -208,30 +191,96 @@ public class ZeldaRenderLayers extends RenderLayer {
                     .cull(DISABLE_CULLING)
                     .lightmap(ENABLE_LIGHTMAP)
                     .overlay(ENABLE_OVERLAY_COLOR)
-                    .build(false));
+                    .build(false)
+    );
 
 
-    public static final RenderLayer ENTITY_IRIDESCENCE_TEXTURED = ENTITY_IRIDESCENCE.apply(
+    private static final RenderLayer ENTITY_IRIDESCENCE_TEXTURED = ENTITY_IRIDESCENCE.apply(
             IRIDESCENT_ATLAS_TEXTURE,
             NORMAL_MAPS_ATLAS_TEXTURE
     );
 
+    // GLINTS //////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    private static final BiFunction<Identifier, Boolean, RenderLayer> CUSTOM_GLINT = (identifier, blur) -> of(
+            getName("custom_glint"),
+            VertexFormats.POSITION_TEXTURE,
+            VertexFormat.DrawMode.QUADS,
+            256,
+            MultiPhaseParameters.builder()
+                    .program(GLINT_PROGRAM)
+                    .texture(new Texture(identifier, blur, false))
+                    .writeMaskState(COLOR_MASK)
+                    .cull(DISABLE_CULLING)
+                    .depthTest(EQUAL_DEPTH_TEST)
+                    .transparency(GLINT_TRANSPARENCY)
+                    .texturing(GLINT_TEXTURING)
+                    .build(false)
+    );
+
     private static final RenderLayer CHARGED_GLINT = CUSTOM_GLINT.apply(LegendOfSteve.id("textures/misc/charge_glint.png"), false);
 
-    public static RenderLayer getChargedGlint() {
-        return CHARGED_GLINT;
-    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // GETTER METHODS //////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public static RenderLayer getBombFuse(Identifier texture) {
         return BOMB_FUSE.apply(texture);
     }
 
-    public static RenderLayer getEntityUnlit(Identifier texture) {
+    public static RenderLayer getEntityFullbright(Identifier texture) {
         return FULLBRIGHT_ENTITY.apply(texture);
     }
 
-    public static RenderLayer getGlowing(Identifier texture) {
+    public static RenderLayer getSwitchBlock() {
+        return SWITCH_BLOCK;
+    }
+
+    // BLOOM GLOW //////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public static RenderLayer getBloomGlow() {
+        return BLOOM_GLOW;
+    }
+
+    public static RenderLayer getEntityBloomGlow(Identifier texture) {
         PostProcessingRegistry.renderEffectForNextTick(ZeldaShaders.BLOOM_GLOWING_SHADER_ID);
         return ENTITY_BLOOM_GLOW.apply(texture);
+    }
+
+    // IRIDESCENT //////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public static RenderLayer getIridescence() {
+        return IRIDESCENCE;
+    }
+
+    public static RenderLayer getEntityIridescence(Identifier texture, Identifier normalTexture) {
+        return ENTITY_IRIDESCENCE.apply(texture, normalTexture);
+    }
+
+    public static RenderLayer getGUIItemIridescence() {
+        return GUI_ITEM_IRIDESCENCE;
+    }
+
+    public static RenderLayer getEntityIridescenceTextured() {
+        return ENTITY_IRIDESCENCE_TEXTURED;
+    }
+
+    // GLINTS //////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public static RenderLayer getChargedGlint() {
+        return CHARGED_GLINT;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // HELPER METHODS //////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    private static String getName(String name) {
+        return "legend_of_steve$" + name;
+    }
+
+    // Constructor, this is never really used so it's getting shoved to the bottom
+    public ZeldaRenderLayers(String name, VertexFormat vertexFormat, VertexFormat.DrawMode drawMode, int expectedBufferSize, boolean hasCrumbling, boolean translucent, Runnable startAction, Runnable endAction) {
+        super(name, vertexFormat, drawMode, expectedBufferSize, hasCrumbling, translucent, startAction, endAction);
     }
 }

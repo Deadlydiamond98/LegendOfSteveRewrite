@@ -1,7 +1,7 @@
 package net.deadlydiamond.legend_of_steve.common.blocks.deco.connected;
 
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.oriented.TileBlock;
-import net.deadlydiamond.legend_of_steve.util.ZeldaProperties;
+import net.deadlydiamond.legend_of_steve.common.ZeldaProperties;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;

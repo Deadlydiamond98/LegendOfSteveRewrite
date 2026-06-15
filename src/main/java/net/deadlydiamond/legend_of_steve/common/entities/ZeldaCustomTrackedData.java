@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.init;
+package net.deadlydiamond.legend_of_steve.common.entities;
 
 import net.deadlydiamond.legend_of_steve.common.entities.living.fairy.FairyColor;
 import net.minecraft.entity.data.TrackedDataHandler;

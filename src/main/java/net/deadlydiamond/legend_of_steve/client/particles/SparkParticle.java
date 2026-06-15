@@ -62,7 +62,7 @@ public class SparkParticle extends AbstractTrailParticle {
 
     @Override
     protected VertexConsumer getVertexConsumer(VertexConsumerProvider.Immediate vertexConsumerProvider) {
-        return vertexConsumerProvider.getBuffer(ZeldaRenderLayers.getEntityUnlit(getTrailTexture()));
+        return vertexConsumerProvider.getBuffer(ZeldaRenderLayers.getEntityFullbright(getTrailTexture()));
     }
 
     protected void setTrailHex(int hex) {

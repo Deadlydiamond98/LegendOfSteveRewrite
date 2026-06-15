@@ -29,10 +29,10 @@ public class FairyEntityRenderer extends MobEntityRenderer<FairyEntity, FairyEnt
             Identifier center = mobEntity.getColor().getTexture();
 
             float pulse = (float) (Math.sin((mobEntity.age + tickDelta) * 0.025) * 0.015 + 0.015);
-            VertexConsumer glowVCon = vertexConsumerProvider.getBuffer(ZeldaRenderLayers.getGlowing(center));
+            VertexConsumer glowVCon = vertexConsumerProvider.getBuffer(ZeldaRenderLayers.getEntityBloomGlow(center));
             this.model.renderCenterPart(matrixStack, glowVCon, 0.17f + pulse, i, getAlpha(mobEntity, tickDelta));
 
-            VertexConsumer mainVCon = vertexConsumerProvider.getBuffer(ZeldaRenderLayers.getEntityUnlit(center));
+            VertexConsumer mainVCon = vertexConsumerProvider.getBuffer(ZeldaRenderLayers.getEntityFullbright(center));
             this.model.renderCenterPart(matrixStack, mainVCon, 0.15f, i, 255);
         }
     }
@@ -70,7 +70,7 @@ public class FairyEntityRenderer extends MobEntityRenderer<FairyEntity, FairyEnt
     @Nullable
     @Override
     protected RenderLayer getRenderLayer(FairyEntity entity, boolean showBody, boolean translucent, boolean showOutline) {
-        return ZeldaRenderLayers.getEntityUnlit(this.getTexture(entity));
+        return ZeldaRenderLayers.getEntityFullbright(this.getTexture(entity));
     }
 
     @Override

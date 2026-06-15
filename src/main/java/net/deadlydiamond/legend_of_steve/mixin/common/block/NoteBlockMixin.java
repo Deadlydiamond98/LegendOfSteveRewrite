@@ -3,7 +3,7 @@ package net.deadlydiamond.legend_of_steve.mixin.common.block;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
-import net.deadlydiamond.legend_of_steve.util.ZeldaNoteBlockSounds;
+import net.deadlydiamond.legend_of_steve.init.ZeldaNoteBlockSounds;
 import net.minecraft.block.NoteBlock;
 import net.minecraft.block.enums.Instrument;
 import net.minecraft.entity.player.PlayerEntity;

@@ -7,7 +7,7 @@ import net.deadlydiamond.legend_of_steve.events.common.ZeldaServerWorldEvents;
 import net.deadlydiamond.legend_of_steve.init.*;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBiomeModifications;
 import net.deadlydiamond.legend_of_steve.networking.ZeldaNetworking;
-import net.deadlydiamond.legend_of_steve.util.ZeldaNoteBlockSounds;
+import net.deadlydiamond.legend_of_steve.init.ZeldaNoteBlockSounds;
 import net.deadlydiamond.legend_of_steve.worldgen.ZeldaFeatures;
 import net.deadlydiamond.legend_of_steve.worldgen.ZeldaStructures;
 import net.fabricmc.api.ModInitializer;

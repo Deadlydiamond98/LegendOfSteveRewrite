@@ -35,8 +35,8 @@ public abstract class WorldRendererMixin {
     @WrapOperation(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/WorldRenderer;renderLayer(Lnet/minecraft/client/render/RenderLayer;Lnet/minecraft/client/util/math/MatrixStack;DDDLorg/joml/Matrix4f;)V"))
     private void legend_of_steve$renderRegularLayers(WorldRenderer instance, RenderLayer renderLayer, MatrixStack matrices, double cameraX, double cameraY, double cameraZ, Matrix4f positionMatrix, Operation<Void> original) {
         if (renderLayer == RenderLayer.getCutout()) {
-            renderLayer(ZeldaRenderLayers.IRIDESCENCE, matrices, cameraX, cameraY, cameraZ, positionMatrix);
-            renderLayer(ZeldaRenderLayers.SWITCH_BLOCK, matrices, cameraX, cameraY, cameraZ, positionMatrix);
+            renderLayer(ZeldaRenderLayers.getIridescence(), matrices, cameraX, cameraY, cameraZ, positionMatrix);
+            renderLayer(ZeldaRenderLayers.getSwitchBlock(), matrices, cameraX, cameraY, cameraZ, positionMatrix);
         }
         original.call(instance, renderLayer, matrices, cameraX, cameraY, cameraZ, positionMatrix);
     }
@@ -44,7 +44,7 @@ public abstract class WorldRendererMixin {
     @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/OutlineVertexConsumerProvider;draw()V", shift = At.Shift.BEFORE), order = 900)
     private void legend_of_steve$renderPostLayers(MatrixStack matrices, float tickDelta, long limitTime, boolean renderBlockOutline, Camera camera, GameRenderer gameRenderer, LightmapTextureManager lightmapTextureManager, Matrix4f projectionMatrix, CallbackInfo ci) {
         Vec3d cameraPos = camera.getPos();
-        renderLayer(ZeldaRenderLayers.BLOOM_GLOW, matrices, cameraPos.x, cameraPos.y, cameraPos.z, projectionMatrix);
+        renderLayer(ZeldaRenderLayers.getBloomGlow(), matrices, cameraPos.x, cameraPos.y, cameraPos.z, projectionMatrix);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -54,7 +54,7 @@ public abstract class WorldRendererMixin {
 
     @Inject(method = "renderLayer", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/chunk/ChunkBuilder$BuiltChunk;getBuffer(Lnet/minecraft/client/render/RenderLayer;)Lnet/minecraft/client/gl/VertexBuffer;"))
     private void legend_of_steve$renderLayer(RenderLayer renderLayer, MatrixStack matrices, double cameraX, double cameraY, double cameraZ, Matrix4f positionMatrix, CallbackInfo ci) {
-        if (renderLayer == ZeldaRenderLayers.BLOOM_GLOW && this.legend_of_steve$renderGlowLayer) {
+        if (renderLayer == ZeldaRenderLayers.getBloomGlow() && this.legend_of_steve$renderGlowLayer) {
             PostProcessingRegistry.renderEffectForNextTick(ZeldaShaders.BLOOM_GLOWING_SHADER_ID);
             this.legend_of_steve$renderGlowLayer = false;
         }

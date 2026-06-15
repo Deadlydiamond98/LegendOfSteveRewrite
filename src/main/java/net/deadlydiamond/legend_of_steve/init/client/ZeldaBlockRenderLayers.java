@@ -41,7 +41,7 @@ public class ZeldaBlockRenderLayers {
 
         // SWITCH BLOCKS ///////////////////////////////////////////////////////////////////////////////////////////////
 
-        registerBlockset(ZeldaRenderLayers.SWITCH_BLOCK,
+        registerBlockset(ZeldaRenderLayers.getSwitchBlock(),
                 ZeldaBlocks.RED_SWITCH_BLOCKS,
                 ZeldaBlocks.BLUE_SWITCH_BLOCKS
         );
@@ -55,7 +55,7 @@ public class ZeldaBlockRenderLayers {
 
         // BLOOM ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        BlockRenderLayerMap.INSTANCE.putBlocks(ZeldaRenderLayers.BLOOM_GLOW,
+        BlockRenderLayerMap.INSTANCE.putBlocks(ZeldaRenderLayers.getBloomGlow(),
                 ZeldaBlocks.PINK_FAIRY_LAMP,
                 ZeldaBlocks.RED_FAIRY_LAMP,
                 ZeldaBlocks.ORANGE_FAIRY_LAMP,
@@ -67,7 +67,7 @@ public class ZeldaBlockRenderLayers {
 
         // IRIDESCENT //////////////////////////////////////////////////////////////////////////////////////////////////
 
-        registerBlockset(ZeldaRenderLayers.IRIDESCENCE,
+        registerBlockset(ZeldaRenderLayers.getIridescence(),
                 ZeldaBlocks.FAIRY_MARBLE,
                 ZeldaBlocks.COBBLED_FAIRY_MARBLE,
                 ZeldaBlocks.POLISHED_FAIRY_MARBLE,
@@ -77,7 +77,7 @@ public class ZeldaBlockRenderLayers {
                 ZeldaBlocks.FAIRY_MARBLE_BRAZIER_BLOCKSET
         );
 
-        BlockRenderLayerMap.INSTANCE.putBlocks(ZeldaRenderLayers.IRIDESCENCE,
+        BlockRenderLayerMap.INSTANCE.putBlocks(ZeldaRenderLayers.getIridescence(),
                 ZeldaBlocks.SMOOTH_FAIRY_MARBLE,
                 ZeldaBlocks.CHISELED_FAIRY_MARBLE,
                 ZeldaBlocks.FAIRY_MARBLE_PILLAR,
@@ -87,7 +87,7 @@ public class ZeldaBlockRenderLayers {
 
         // FLUIDS //////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        BlockRenderLayerMap.INSTANCE.putFluids(ZeldaRenderLayers.BLOOM_GLOW,
+        BlockRenderLayerMap.INSTANCE.putFluids(ZeldaRenderLayers.getBloomGlow(),
                 ZeldaFluids.ENCHANTED_SPRING_WATER,
                 ZeldaFluids.FLOWING_ENCHANTED_SPRING_WATER
         );

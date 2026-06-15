@@ -35,7 +35,7 @@ public abstract class ItemRendererMixin {
     private RenderLayer legend_of_steve$renderItem(ItemStack stack, boolean direct, Operation<RenderLayer> original, @Local ModelTransformationMode renderMode) {
         // Renders the Iridescence Layer on Iridescent Items
         if (stack.isIn(ZeldaTags.IRIDESCENT_ITEM)) {
-            return renderMode == ModelTransformationMode.GUI ? ZeldaRenderLayers.GUI_ITEM_IRIDESCENCE : ZeldaRenderLayers.ENTITY_IRIDESCENCE_TEXTURED;
+            return renderMode == ModelTransformationMode.GUI ? ZeldaRenderLayers.getGUIItemIridescence() : ZeldaRenderLayers.getEntityIridescenceTextured();
         }
 
         return original.call(stack, direct);

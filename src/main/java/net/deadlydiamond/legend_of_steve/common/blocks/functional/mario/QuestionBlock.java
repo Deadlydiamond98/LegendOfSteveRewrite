@@ -6,7 +6,7 @@ import net.deadlydiamond.legend_of_steve.common.blocks.container.single.SingleSl
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.BounceType;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.base.IBouncableBlock;
 import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
-import net.deadlydiamond.legend_of_steve.util.ZeldaProperties;
+import net.deadlydiamond.legend_of_steve.common.ZeldaProperties;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;

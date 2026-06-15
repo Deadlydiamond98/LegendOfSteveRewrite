@@ -37,7 +37,7 @@ public class SwordBeamEntityRenderer<T extends SwordBeamEntity> extends EntityRe
         matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-yawAngle));
         matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(pitchAngle + 45));
 
-        VertexConsumer vertexConsumer = vertexConsumers.getBuffer(ZeldaRenderLayers.getEntityUnlit(getTexture(entity)));
+        VertexConsumer vertexConsumer = vertexConsumers.getBuffer(ZeldaRenderLayers.getEntityFullbright(getTexture(entity)));
         MatrixStack.Entry matrixEntry = matrices.peek();
         Matrix4f modelMatrix = matrixEntry.getPositionMatrix();
         Matrix3f normalMatrix = matrixEntry.getNormalMatrix();

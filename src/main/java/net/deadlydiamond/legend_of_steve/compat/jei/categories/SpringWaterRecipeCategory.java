@@ -3,6 +3,7 @@ package net.deadlydiamond.legend_of_steve.compat.jei.categories;
 import mezz.jei.api.gui.ITickTimer;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
@@ -20,7 +21,7 @@ import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
 public class SpringWaterRecipeCategory implements IRecipeCategory<SpringWaterRecipe> {
-    private static final Identifier BACKGROUND = LegendOfSteve.id("textures/gui/jei/spring_water/spring_water_transmutation.png");
+    private static final Identifier TEXTURE = LegendOfSteve.id("textures/gui/jei/spring_water/spring_water_transmutation.png");
     private static final Identifier WATER = LegendOfSteve.id("textures/gui/jei/spring_water/spring_water.png");
 
     private static final int WIDTH = 113;
@@ -28,19 +29,24 @@ public class SpringWaterRecipeCategory implements IRecipeCategory<SpringWaterRec
 
     private final ITickTimer waterAnimationTimer;
     private final IDrawable icon;
+    private final IDrawableAnimated arrow;
 
     public SpringWaterRecipeCategory(IGuiHelper guiHelper) {
         this.icon = guiHelper.createDrawableItemStack(new ItemStack(ZeldaItems.SPRING_WATER_BUCKET));
         this.waterAnimationTimer = guiHelper.createTickTimer(32, 32, false);
+
+        this.arrow = guiHelper.drawableBuilder(TEXTURE, 113, 0, 24, 18)
+                .buildAnimated(140, IDrawableAnimated.StartDirection.LEFT, false);
     }
 
     @Override
     public void draw(SpringWaterRecipe recipe, IRecipeSlotsView recipeSlotsView, DrawContext guiGraphics, double mouseX, double mouseY) {
         drawWater(guiGraphics, 49, 0, 4, 4);
-        guiGraphics.drawTexture(BACKGROUND, 0, 0, 0, 0, 113, 64);
+        guiGraphics.drawTexture(TEXTURE, 0, 0, 0, 0, 113, 64);
+        this.arrow.draw(guiGraphics, 21, 23);
     }
 
-    public void drawWater(DrawContext guiGraphics, int startX, int startY, int xCount, int yCount) {
+    private void drawWater(DrawContext guiGraphics, int startX, int startY, int xCount, int yCount) {
         float v = this.waterAnimationTimer.getValue() * 16;
         for (int x = 0; x < xCount; x++) {
             for (int y = 0; y < yCount; y++) {

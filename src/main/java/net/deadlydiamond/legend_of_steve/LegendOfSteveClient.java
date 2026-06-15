@@ -23,6 +23,7 @@ public class LegendOfSteveClient implements ClientModInitializer {
         ZeldaParticleFactories.register();
         SpriteIdentifierRegistry.registerSigns(ZeldaBlocks.DEKU_WOOD);
         ZeldaBlockModels.register();
+        ZeldaScreens.register();
 
         // Networking
         ZeldaNetworking.Client.registerS2CReceivers();

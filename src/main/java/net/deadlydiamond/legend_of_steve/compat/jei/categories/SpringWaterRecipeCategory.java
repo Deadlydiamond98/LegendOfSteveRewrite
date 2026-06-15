@@ -42,7 +42,7 @@ public class SpringWaterRecipeCategory implements IRecipeCategory<SpringWaterRec
     @Override
     public void draw(SpringWaterRecipe recipe, IRecipeSlotsView recipeSlotsView, DrawContext guiGraphics, double mouseX, double mouseY) {
         drawWater(guiGraphics, 49, 0, 4, 4);
-        guiGraphics.drawTexture(TEXTURE, 0, 0, 0, 0, 113, 64);
+        guiGraphics.drawTexture(TEXTURE, 0, 0, 0, 0, WIDTH, HEIGHT);
         this.arrow.draw(guiGraphics, 21, 23);
     }
 

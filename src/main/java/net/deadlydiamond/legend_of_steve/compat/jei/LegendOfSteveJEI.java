@@ -8,8 +8,11 @@ import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
+import net.deadlydiamond.legend_of_steve.common.recipes.DungeonTableRecipe;
 import net.deadlydiamond.legend_of_steve.common.recipes.SpringWaterRecipe;
+import net.deadlydiamond.legend_of_steve.compat.jei.categories.DungeonTableRecipeCategory;
 import net.deadlydiamond.legend_of_steve.compat.jei.categories.SpringWaterRecipeCategory;
+import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
 import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.inventory.Inventory;
@@ -31,16 +34,19 @@ public class LegendOfSteveJEI implements IModPlugin {
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         registration.addRecipeCatalyst(ZeldaItems.SPRING_WATER_BUCKET, ZeldaJEIRecipeTypes.SPRING_WATER);
+        registration.addRecipeCatalyst(ZeldaBlocks.DUNGEON_TABLE, ZeldaJEIRecipeTypes.DUNGEON_TABLE);
     }
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registration) {
         category(registration, SpringWaterRecipeCategory::new);
+        category(registration, DungeonTableRecipeCategory::new);
     }
 
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
         registration.addRecipes(ZeldaJEIRecipeTypes.SPRING_WATER, getRecipes(SpringWaterRecipe.Type.INSTANCE));
+        registration.addRecipes(ZeldaJEIRecipeTypes.DUNGEON_TABLE, getRecipes(DungeonTableRecipe.Type.INSTANCE));
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

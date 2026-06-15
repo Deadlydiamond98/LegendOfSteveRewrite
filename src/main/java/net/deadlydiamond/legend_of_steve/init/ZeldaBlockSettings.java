@@ -132,6 +132,9 @@ public class ZeldaBlockSettings {
     public static final FabricBlockSettings LOOT_POT_SETTINGS = FabricBlockSettings.copyOf(Blocks.DECORATED_POT)
             .sounds(BlockSoundGroup.DECORATED_POT_SHATTER);
 
+    public static final FabricBlockSettings DUNGEON_TABLE_SETTINGS = FabricBlockSettings.copyOf(Blocks.SMITHING_TABLE)
+            .sounds(ZeldaSounds.DUNGEON_TABLE);
+
     public static final FabricBlockSettings CRATE_SETTINGS = FabricBlockSettings.copyOf(Blocks.CHISELED_BOOKSHELF);
 
 

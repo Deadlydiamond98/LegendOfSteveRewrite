@@ -153,6 +153,8 @@ public class ZeldaBlocks {
     // FUNCTIONAL BLOCKS ///////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    public static final Block DUNGEON_TABLE = register("dungeon_table", new Block(DUNGEON_TABLE_SETTINGS));
+
     // PLANTS
     public static final Block BOMB_FLOWER = register("bomb_flower", new BombFlowerBlock(BOMB_FLOWER_SETTINGS), false);
     public static final Block LOOT_GRASS = register("loot_grass", new LootGrassBlock(LOOT_GRASS_SETTINGS));

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "wew",
+    "lwl",
+    "lsl"
+  ],
+  "key": {
+    "w": {
+      "tag": "minecraft:wool"
+    },
+    "l": {
+      "tag": "minecraft:logs"
+    },
+    "s": {
+      "item": "minecraft:stone"
+    },
+    "e": {
+      "item": "legend_of_steve:emerald_chunk"
+    }
+  },
+  "result": {
+    "item": "legend_of_steve:dungeon_table"
+  }
+}

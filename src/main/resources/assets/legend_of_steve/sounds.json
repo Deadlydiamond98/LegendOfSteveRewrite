@@ -1530,6 +1530,58 @@
     "subtitle": "subtitles.legend_of_steve.block.crystal_switch.ambient"
   },
 
+  "block.dungeon_table.break": {
+    "sounds": [
+      "legend_of_steve:block/dungeon_table/break1",
+      "legend_of_steve:block/dungeon_table/break2",
+      "legend_of_steve:block/dungeon_table/break3",
+      "legend_of_steve:block/dungeon_table/break4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.dungeon_table.fall": {
+    "sounds": [
+      "legend_of_steve:block/dungeon_table/step1",
+      "legend_of_steve:block/dungeon_table/step2",
+      "legend_of_steve:block/dungeon_table/step3",
+      "legend_of_steve:block/dungeon_table/step4",
+      "legend_of_steve:block/dungeon_table/step5",
+      "legend_of_steve:block/dungeon_table/step6"
+    ],
+    "subtitle": "subtitles.block.generic.fall"
+  },
+  "block.dungeon_table.hit": {
+    "sounds": [
+      "legend_of_steve:block/dungeon_table/step1",
+      "legend_of_steve:block/dungeon_table/step2",
+      "legend_of_steve:block/dungeon_table/step3",
+      "legend_of_steve:block/dungeon_table/step4",
+      "legend_of_steve:block/dungeon_table/step5",
+      "legend_of_steve:block/dungeon_table/step6"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.dungeon_table.place": {
+    "sounds": [
+      "legend_of_steve:block/dungeon_table/break1",
+      "legend_of_steve:block/dungeon_table/break2",
+      "legend_of_steve:block/dungeon_table/break3",
+      "legend_of_steve:block/dungeon_table/break4"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.dungeon_table.step": {
+    "sounds": [
+      "legend_of_steve:block/dungeon_table/step1",
+      "legend_of_steve:block/dungeon_table/step2",
+      "legend_of_steve:block/dungeon_table/step3",
+      "legend_of_steve:block/dungeon_table/step4",
+      "legend_of_steve:block/dungeon_table/step5",
+      "legend_of_steve:block/dungeon_table/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+
   "block.crate.open": {
     "sounds": [
       "block/barrel/open1",

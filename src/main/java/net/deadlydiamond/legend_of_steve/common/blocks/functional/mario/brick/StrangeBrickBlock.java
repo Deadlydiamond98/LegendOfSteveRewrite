@@ -1,7 +1,8 @@
-package net.deadlydiamond.legend_of_steve.common.blocks.functional.mario;
+package net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.brick;
 
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.BounceType;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.base.BouncableBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.base.IBouncableBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -25,7 +26,11 @@ public class StrangeBrickBlock extends BouncableBlock {
 
     @Override
     public void afterBounce(World world, BlockPos pos, BlockState state, @Nullable Entity owner, Direction bouncedDirection, BounceType bounceType, @Nullable DefaultedList<ItemStack> inventory) {
-        if (!world.isClient() && world.getBlockState(pos).getBlock() instanceof StrangeBrickBlock) {
+        breakBricks(world, pos, bounceType);
+    }
+
+    public static void breakBricks(World world, BlockPos pos, BounceType bounceType) {
+        if (!world.isClient() && world.getBlockState(pos).getBlock() instanceof IBouncableBlock) {
             world.breakBlock(pos, world.getGameRules().getBoolean(GameRules.DO_TILE_DROPS));
         }
     }

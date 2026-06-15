@@ -1,11 +1,14 @@
 package net.deadlydiamond.legend_of_steve.common.blocksets;
 
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.QuestionBlock;
-import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.StrangeBrickBlock;
-import net.deadlydiamond.legend_of_steve.util.datagen.model.ZeldaBlockModelDatagenUtil;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.brick.StrangeBrickBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.brick.StrangeBrickSlabBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.brick.StrangeBrickStairsBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.brick.StrangeBrickWallBlock;
 import net.deadlydiamond98.koalalib.common.blocksets.AbstractBlockset;
 import net.deadlydiamond98.koalalib.util.datagen.BlockModelDatagenUtil;
 import net.deadlydiamond98.koalalib.util.datagen.RecipeDatagenUtil;
+import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.minecraft.block.*;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
@@ -25,10 +28,16 @@ public class StrangeDirtBricksBlockset extends AbstractBlockset {
     private final boolean stripEndS;
 
     public final Block base;
-    public final Block container;
     public final Block slab;
     public final Block stair;
     public final Block wall;
+
+    public final Block waxedBase;
+    public final Block waxedSlab;
+    public final Block waxedStair;
+    public final Block waxedWall;
+
+    public final Block container;
 
     public StrangeDirtBricksBlockset(String modID, String id, AbstractBlock.Settings settings) {
         this(modID, id, settings, true);
@@ -37,11 +46,23 @@ public class StrangeDirtBricksBlockset extends AbstractBlockset {
     public StrangeDirtBricksBlockset(String modID, String id, AbstractBlock.Settings settings, boolean stripEndS) {
         super(modID, id);
         this.stripEndS = stripEndS;
+
         this.base = this.register(modID, this.id(), new StrangeBrickBlock(settings));
+        this.stair = this.register(modID, this.id(this.stripEndS()) + "_stairs", new StrangeBrickStairsBlock(this.base.getDefaultState(), settings));
+        this.slab = this.register(modID, this.id(this.stripEndS()) + "_slab", new StrangeBrickSlabBlock(settings));
+        this.wall = this.register(modID, this.id(this.stripEndS()) + "_wall", new StrangeBrickWallBlock(settings));
+
+        this.waxedBase = this.register(modID, "waxed_" + this.id(), new Block(settings));
+        this.waxedStair = this.register(modID, "waxed_" + this.id(this.stripEndS()) + "_stairs", new StairsBlock(this.waxedBase.getDefaultState(), settings));
+        this.waxedSlab = this.register(modID, "waxed_" + this.id(this.stripEndS()) + "_slab", new SlabBlock(settings));
+        this.waxedWall = this.register(modID, "waxed_" + this.id(this.stripEndS()) + "_wall", new WallBlock(settings));
+
         this.container = this.register(modID, this.id() + "_container", new QuestionBlock(settings));
-        this.stair = this.register(modID, this.id(this.stripEndS()) + "_stairs", new StairsBlock(this.base.getDefaultState(), settings));
-        this.slab = this.register(modID, this.id(this.stripEndS()) + "_slab", new SlabBlock(settings));
-        this.wall = this.register(modID, this.id(this.stripEndS()) + "_wall", new WallBlock(settings));
+
+        OxidizableBlocksRegistry.registerWaxableBlockPair(this.base, this.waxedBase);
+        OxidizableBlocksRegistry.registerWaxableBlockPair(this.stair, this.waxedStair);
+        OxidizableBlocksRegistry.registerWaxableBlockPair(this.slab, this.waxedSlab);
+        OxidizableBlocksRegistry.registerWaxableBlockPair(this.wall, this.waxedWall);
     }
 
     public void generateModels(BlockStateModelGenerator modelGen, @Nullable AbstractBlockset.@Nullable SharedModel sharedModel) {
@@ -51,6 +72,7 @@ public class StrangeDirtBricksBlockset extends AbstractBlockset {
     public void generateModels(BlockStateModelGenerator modelGen, boolean uniqueSlab) {
         modelGen.registerSimpleCubeAll(this.base);
 //        ZeldaBlockModelDatagenUtil.registerHittableBlock(modelGen, this.container, this.base);
+
         if (uniqueSlab) {
             BlockModelDatagenUtil.registerSlabUnique(modelGen, this.slab, this.base);
         } else {
@@ -59,6 +81,11 @@ public class StrangeDirtBricksBlockset extends AbstractBlockset {
 
         BlockModelDatagenUtil.registerStairs(modelGen, this.stair, this.base);
         BlockModelDatagenUtil.registerWall(modelGen, this.wall, this.base);
+
+        modelGen.registerParented(this.base, this.waxedBase);
+        modelGen.registerParented(this.stair, this.waxedStair);
+        modelGen.registerParented(this.slab, this.waxedSlab);
+        modelGen.registerParented(this.wall, this.waxedWall);
     }
 
     public void generateRecipes(Consumer<RecipeJsonProvider> exporter) {
@@ -93,15 +120,21 @@ public class StrangeDirtBricksBlockset extends AbstractBlockset {
     public void generateBlockTags(BiConsumer<TagKey<Block>, Block> tagConsumer, TagKey<Block>... mineableTags) {
         super.generateBlockTags(tagConsumer, mineableTags);
         tagConsumer.accept(BlockTags.SLABS, this.slab);
+        tagConsumer.accept(BlockTags.SLABS, this.waxedSlab);
         tagConsumer.accept(BlockTags.STAIRS, this.stair);
+        tagConsumer.accept(BlockTags.STAIRS, this.waxedStair);
         tagConsumer.accept(BlockTags.WALLS, this.wall);
+        tagConsumer.accept(BlockTags.WALLS, this.waxedWall);
     }
 
     public void generateItemTags(BiConsumer<TagKey<Item>, ItemConvertible> tagConsumer) {
         super.generateItemTags(tagConsumer);
         tagConsumer.accept(ItemTags.SLABS, this.slab);
+        tagConsumer.accept(ItemTags.SLABS, this.waxedSlab);
         tagConsumer.accept(ItemTags.STAIRS, this.stair);
+        tagConsumer.accept(ItemTags.STAIRS, this.waxedStair);
         tagConsumer.accept(ItemTags.WALLS, this.wall);
+        tagConsumer.accept(ItemTags.WALLS, this.waxedWall);
     }
 
     protected String stripEndS() {

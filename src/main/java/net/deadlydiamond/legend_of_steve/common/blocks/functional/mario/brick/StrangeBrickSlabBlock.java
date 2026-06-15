@@ -1,8 +1,10 @@
-package net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.base;
+package net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.brick;
 
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.BounceType;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.base.IBouncableBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.SlabBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
@@ -17,12 +19,17 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class BouncableBlock extends Block implements IBouncableBlock {
+public class StrangeBrickSlabBlock extends SlabBlock implements IBouncableBlock {
     public static final BooleanProperty POWERED = Properties.POWERED;
 
-    public BouncableBlock(Settings settings) {
+    public StrangeBrickSlabBlock(Settings settings) {
         super(settings);
         setDefaultState(getDefaultState().with(POWERED, false));
+    }
+
+    @Override
+    public boolean canPunchTrigger(World world, BlockPos blockPos, BlockState blockState, PlayerEntity playerEntity) {
+        return false;
     }
 
     // BOUNCING ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -41,7 +48,9 @@ public class BouncableBlock extends Block implements IBouncableBlock {
     public void beforeBounce(World world, BlockPos pos, BlockState state, @Nullable Entity owner, Direction direction, BounceType type) {}
 
     @Override
-    public void afterBounce(World world, BlockPos pos, BlockState state, @Nullable Entity owner, Direction bouncedDirection, BounceType bounceType, @Nullable DefaultedList<ItemStack> inventory) {}
+    public void afterBounce(World world, BlockPos pos, BlockState state, @Nullable Entity owner, Direction bouncedDirection, BounceType bounceType, @Nullable DefaultedList<ItemStack> inventory) {
+        StrangeBrickBlock.breakBricks(world, pos, bounceType);
+    }
 
     // PROJECTILE INTERACTION //////////////////////////////////////////////////////////////////////////////////////////
 

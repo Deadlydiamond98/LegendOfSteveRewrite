@@ -1,9 +1,6 @@
 package net.deadlydiamond.legend_of_steve.init.client;
 
-import net.deadlydiamond.legend_of_steve.client.particles.CrystalSwitchShineParticle;
-import net.deadlydiamond.legend_of_steve.client.particles.DekuNutFlashParticle;
-import net.deadlydiamond.legend_of_steve.client.particles.MagicSparkleParticle;
-import net.deadlydiamond.legend_of_steve.client.particles.SparkParticle;
+import net.deadlydiamond.legend_of_steve.client.particles.*;
 import net.deadlydiamond.legend_of_steve.init.ZeldaParticleTypes;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.minecraft.client.particle.ParticleFactory;
@@ -14,6 +11,7 @@ public class ZeldaParticleFactories {
 
     public static void register() {
         register(ZeldaParticleTypes.DEKU_NUT_FLASH, DekuNutFlashParticle.Factory::new);
+
         register(ZeldaParticleTypes.CRYSTAL_SWITCH_ON_PARTICLE, CrystalSwitchShineParticle.Factory::new);
         register(ZeldaParticleTypes.CRYSTAL_SWITCH_OFF_PARTICLE, CrystalSwitchShineParticle.Factory::new);
 

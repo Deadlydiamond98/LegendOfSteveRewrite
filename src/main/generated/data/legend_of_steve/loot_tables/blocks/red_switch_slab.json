@@ -3,10 +3,26 @@
   "pools": [
     {
       "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
       "entries": [
         {
           "type": "minecraft:item",
           "functions": [
+            {
+              "function": "minecraft:copy_nbt",
+              "ops": [
+                {
+                  "op": "replace",
+                  "source": "blockGroupID",
+                  "target": "BlockEntityTag.blockGroupID"
+                }
+              ],
+              "source": "block_entity"
+            },
             {
               "add": false,
               "conditions": [
@@ -20,9 +36,6 @@
               ],
               "count": 2.0,
               "function": "minecraft:set_count"
-            },
-            {
-              "function": "minecraft:explosion_decay"
             }
           ],
           "name": "legend_of_steve:red_switch_slab"

@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "legend_of_steve:dungeoncrafting",
   "pattern": [
     "gOg",
     "GGG",

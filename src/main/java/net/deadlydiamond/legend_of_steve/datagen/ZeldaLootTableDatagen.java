@@ -1,5 +1,6 @@
 package net.deadlydiamond.legend_of_steve.datagen;
 
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.bindable.BoundBlockUtil;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
 import net.deadlydiamond98.koalalib.common.blocksets.AbstractBlockset;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -149,7 +150,6 @@ public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
         addDropWithSilkTouch(ZeldaBlocks.DYED_LOOT_POTS.pink);
 
         addDrop(ZeldaBlocks.MASTER_DOOR, doorDrops(ZeldaBlocks.MASTER_DOOR));
-        addDrop(ZeldaBlocks.CRYSTAL_SWITCH, doorDrops(ZeldaBlocks.CRYSTAL_SWITCH));
     }
 
     private void generateLootTables(AbstractBlockset... blocksets) {

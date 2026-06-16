@@ -1,12 +1,19 @@
-package net.deadlydiamond.legend_of_steve.common.blocks.functional.switches;
+package net.deadlydiamond.legend_of_steve.common.blocks.functional.bindable.switches;
 
 import net.deadlydiamond.legend_of_steve.common.bes.switches.SwitchBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.bindable.BoundBlockUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.ShulkerBoxBlockEntity;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.loot.context.LootContextParameterSet;
+import net.minecraft.loot.context.LootContextParameters;
+import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
@@ -15,6 +22,8 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class SwitchBlock extends Block implements ISwitchBlock {
     private final boolean startOn;
@@ -44,6 +53,17 @@ public class SwitchBlock extends Block implements ISwitchBlock {
     @Override
     public boolean isSideInvisible(BlockState state, BlockState stateFrom, Direction direction) {
         return stateFrom.isOf(this) || super.isSideInvisible(state, stateFrom, direction);
+    }
+
+    @Override
+    public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
+        return BoundBlockUtil.applyGroupOnPickStack(super.getPickStack(world, pos, state), world, pos);
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
+        super.appendTooltip(stack, world, tooltip, options);
+        BoundBlockUtil.addTooltip(stack, tooltip);
     }
 
     @Override

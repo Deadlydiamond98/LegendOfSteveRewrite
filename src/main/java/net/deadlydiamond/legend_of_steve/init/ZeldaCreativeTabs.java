@@ -1,6 +1,7 @@
 package net.deadlydiamond.legend_of_steve.init;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.bindable.BoundBlockUtil;
 import net.deadlydiamond.legend_of_steve.common.entities.living.fairy.FairyColor;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemConvertible;
@@ -189,9 +190,9 @@ public class ZeldaCreativeTabs {
         ZeldaBlocks.RED_TEKTILE_BRICKS.addToCreative(entries);
 
         // SWITCH BLOCKS
-        entries.add(ZeldaBlocks.CRYSTAL_SWITCH);
-        ZeldaBlocks.RED_SWITCH_BLOCKS.addToCreative(entries);
-        ZeldaBlocks.BLUE_SWITCH_BLOCKS.addToCreative(entries);
+        entries.add(BoundBlockUtil.getCreativeEntry(ZeldaBlocks.CRYSTAL_SWITCH.asItem().getDefaultStack()));
+        ZeldaBlocks.RED_SWITCH_BLOCKS.addSwitchesToCreative(entries);
+        ZeldaBlocks.BLUE_SWITCH_BLOCKS.addSwitchesToCreative(entries);
 
         // SWORD PEDESTALS
         entries.add(ZeldaBlocks.STONE_SWORD_PEDESTAL);

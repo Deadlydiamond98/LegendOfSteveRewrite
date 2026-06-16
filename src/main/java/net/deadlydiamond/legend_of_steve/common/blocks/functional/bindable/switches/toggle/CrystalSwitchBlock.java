@@ -1,10 +1,11 @@
-package net.deadlydiamond.legend_of_steve.common.blocks.functional.switches.toggle;
+package net.deadlydiamond.legend_of_steve.common.blocks.functional.bindable.switches.toggle;
 
 import net.deadlydiamond.legend_of_steve.common.bes.switches.CrystalSwitchBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.switches.SwitchBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.blocks.IExplodedInteraction;
 import net.deadlydiamond.legend_of_steve.common.blocks.IModifiedOutlineRender;
-import net.deadlydiamond.legend_of_steve.common.blocks.functional.switches.ISwitchBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.bindable.BoundBlockUtil;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.bindable.switches.ISwitchBlock;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.AbstractBombEntity;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlockEntities;
 import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
@@ -14,6 +15,7 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.enums.DoubleBlockHalf;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -28,6 +30,7 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
+import net.minecraft.text.Text;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
@@ -42,6 +45,8 @@ import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.explosion.Explosion;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class CrystalSwitchBlock extends Block implements Waterloggable, ISwitchBlock, IModifiedOutlineRender, IExplodedInteraction, IHitBlockAction {
     public static final EnumProperty<DoubleBlockHalf> HALF = Properties.DOUBLE_BLOCK_HALF;
@@ -80,6 +85,17 @@ public class CrystalSwitchBlock extends Block implements Waterloggable, ISwitchB
     @Override
     public boolean startOn() {
         return true;
+    }
+
+    @Override
+    public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
+        return BoundBlockUtil.applyGroupOnPickStack(super.getPickStack(world, pos, state), world, pos);
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
+        super.appendTooltip(stack, world, tooltip, options);
+        BoundBlockUtil.addTooltip(stack, tooltip);
     }
 
     @Override

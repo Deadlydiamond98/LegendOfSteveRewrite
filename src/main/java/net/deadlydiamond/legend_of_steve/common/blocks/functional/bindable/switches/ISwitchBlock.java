@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.common.blocks.functional.switches;
+package net.deadlydiamond.legend_of_steve.common.blocks.functional.bindable.switches;
 
 import net.deadlydiamond.legend_of_steve.common.bes.switches.SwitchBlockEntity;
 import net.deadlydiamond.legend_of_steve.init.ZeldaParticleTypes;

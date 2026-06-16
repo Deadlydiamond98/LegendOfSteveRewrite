@@ -1,0 +1,45 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "legend_of_steve:crystal_switch",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "half": "lower"
+              }
+            }
+          ],
+          "name": "legend_of_steve:crystal_switch",
+          "functions": [
+            {
+              "function": "minecraft:copy_nbt",
+              "source": {
+                "type": "minecraft:context",
+                "target": "block_entity"
+              },
+              "ops": [
+                {
+                  "source": "blockGroupID",
+                  "target": "BlockEntityTag.blockGroupID",
+                  "op": "replace"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "rolls": 1
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.common.blocks.functional.switches.toggle;
+package net.deadlydiamond.legend_of_steve.common.blocks.functional.bindable.switches.toggle;
 
 import net.deadlydiamond.legend_of_steve.common.bes.switches.CrystalSwitchBlockEntity;
 import net.minecraft.block.Block;

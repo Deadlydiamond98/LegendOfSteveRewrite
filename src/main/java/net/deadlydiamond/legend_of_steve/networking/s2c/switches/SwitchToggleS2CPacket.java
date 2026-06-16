@@ -2,7 +2,7 @@ package net.deadlydiamond.legend_of_steve.networking.s2c.switches;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.bes.switches.SwitchBlockEntity;
-import net.deadlydiamond.legend_of_steve.common.blocks.functional.switches.ISwitchBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.bindable.switches.ISwitchBlock;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;

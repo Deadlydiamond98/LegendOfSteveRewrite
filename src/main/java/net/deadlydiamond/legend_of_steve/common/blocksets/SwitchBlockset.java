@@ -1,16 +1,30 @@
 package net.deadlydiamond.legend_of_steve.common.blocksets;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
-import net.deadlydiamond.legend_of_steve.common.blocks.functional.switches.SwitchBlock;
-import net.deadlydiamond.legend_of_steve.common.blocks.functional.switches.varient.SwitchSlabBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.bindable.BoundBlockUtil;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.bindable.switches.SwitchBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.bindable.switches.varient.SwitchSlabBlock;
 import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
 import net.deadlydiamond.legend_of_steve.util.ZeldaModels;
 import net.deadlydiamond98.koalalib.common.blocksets.AbstractBlockset;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.ShulkerBoxBlock;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.data.client.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.loot.LootPool;
+import net.minecraft.loot.LootTable;
+import net.minecraft.loot.entry.DynamicEntry;
+import net.minecraft.loot.entry.ItemEntry;
+import net.minecraft.loot.function.CopyNameLootFunction;
+import net.minecraft.loot.function.CopyNbtLootFunction;
+import net.minecraft.loot.function.SetContentsLootFunction;
+import net.minecraft.loot.provider.nbt.ContextLootNbtProvider;
+import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
@@ -41,6 +55,10 @@ public class SwitchBlockset extends AbstractBlockset {
         addModel("slab_full");
     }
 
+    public void addSwitchesToCreative(ItemGroup.Entries entry) {
+        this.blocks.forEach(block -> entry.add(BoundBlockUtil.getCreativeEntry(block.asItem().getDefaultStack())));
+    }
+
     private void addModel(String type) {
         MODEL_LOCATIONS.add(LegendOfSteve.id("block/" + id() + "_" + type));
     }
@@ -67,7 +85,7 @@ public class SwitchBlockset extends AbstractBlockset {
         modelGen.blockStateCollector.accept(VariantsBlockStateSupplier.create(block, BlockStateVariant.create().put(VariantSettings.MODEL, identifier)));
     }
 
-    // SLAB ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // SLAB MODEL //////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public void registerSlabModel(BlockStateModelGenerator modelGen, Block block) {
         Identifier identifier = LegendOfSteve.id("block/" + id() + "_slab");
@@ -109,6 +127,13 @@ public class SwitchBlockset extends AbstractBlockset {
         }
 
         tagConsumer.accept(BlockTags.SLABS, this.slab);
+    }
 
+    // LOOT TABLES /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    @Override
+    protected void generateLootTable(FabricBlockLootTableProvider lootTableProvider, Block block) {
+        lootTableProvider.addDrop(block, BoundBlockUtil.lootTable(lootTableProvider, block));
     }
 }

@@ -11,6 +11,19 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:copy_nbt",
+              "ops": [
+                {
+                  "op": "replace",
+                  "source": "blockGroupID",
+                  "target": "BlockEntityTag.blockGroupID"
+                }
+              ],
+              "source": "block_entity"
+            }
+          ],
           "name": "legend_of_steve:blue_switch_block"
         }
       ],

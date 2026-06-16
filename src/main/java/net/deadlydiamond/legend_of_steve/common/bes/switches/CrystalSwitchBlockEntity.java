@@ -30,7 +30,6 @@ public class CrystalSwitchBlockEntity extends SwitchBlockEntity {
 
         syncSwitchState();
         this.triggerCooldown--;
-        this.updateChunk = false;
     }
 
     @Override

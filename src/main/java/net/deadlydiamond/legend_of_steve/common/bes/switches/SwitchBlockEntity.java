@@ -2,7 +2,7 @@ package net.deadlydiamond.legend_of_steve.common.bes.switches;
 
 import net.deadlydiamond.legend_of_steve.common.bes.ILoadEvent;
 import net.deadlydiamond.legend_of_steve.common.bes.grouping.BoundGroupBlockEntity;
-import net.deadlydiamond.legend_of_steve.common.blocks.functional.switches.ISwitchBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.bindable.switches.ISwitchBlock;
 import net.deadlydiamond.legend_of_steve.common.world.states.SwitchBlockManager;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlockEntities;
 import net.deadlydiamond.legend_of_steve.networking.s2c.switches.SwitchToggleS2CPacket;
@@ -19,7 +19,6 @@ import org.jetbrains.annotations.Nullable;
 
 public class SwitchBlockEntity extends BoundGroupBlockEntity implements ILoadEvent {
     public boolean firstTick = true;
-    protected boolean updateChunk = false;
     protected int triggerCooldown;
     protected boolean isOn;
 
@@ -32,9 +31,9 @@ public class SwitchBlockEntity extends BoundGroupBlockEntity implements ILoadEve
     }
 
     public void init(World world, BlockPos pos, BlockState state) {
+        SwitchBlockManager.sync(world, this.getGroupID());
         syncSwitchState();
         updateListeners();
-        SwitchBlockManager.sync(world, this.getGroupID());
         this.firstTick = false;
     }
 
@@ -61,7 +60,6 @@ public class SwitchBlockEntity extends BoundGroupBlockEntity implements ILoadEve
         if (getTriggerCooldown() <= 0) {
             SwitchBlockManager.trigger(getWorld(), getGroupID());
             setTriggerCooldown(cooldown);
-            this.updateChunk = true;
         }
     }
 
@@ -105,14 +103,12 @@ public class SwitchBlockEntity extends BoundGroupBlockEntity implements ILoadEve
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
         this.isOn = nbt.getBoolean("IsCrystalSwitchOn");
-        this.updateChunk = nbt.getBoolean("UpdateChunk");
     }
 
     @Override
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
         nbt.putBoolean("IsCrystalSwitchOn", this.isOn);
-        nbt.putBoolean("UpdateChunk", this.updateChunk);
     }
 
     // MISC ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -129,7 +125,6 @@ public class SwitchBlockEntity extends BoundGroupBlockEntity implements ILoadEve
     }
 
     protected void updateListeners() {
-        this.updateChunk = true;
         this.markDirty();
         this.getWorld().updateListeners(this.getPos(), this.getCachedState(), this.getCachedState(), Block.NOTIFY_ALL);
     }

@@ -10,7 +10,7 @@ import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.Question
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.base.BouncingTransitionBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.GirderBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.glowing.FairyLamp;
-import net.deadlydiamond.legend_of_steve.common.blocks.functional.switches.toggle.CrystalSwitchBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.bindable.switches.toggle.CrystalSwitchBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.BombFlowerBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.FruitingLeavesBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.LootGrassBlock;

@@ -1,15 +1,18 @@
-package net.deadlydiamond.legend_of_steve.common.blocks.functional.switches.varient;
+package net.deadlydiamond.legend_of_steve.common.blocks.functional.bindable.switches.varient;
 
 import net.deadlydiamond.legend_of_steve.common.bes.switches.SwitchBlockEntity;
-import net.deadlydiamond.legend_of_steve.common.blocks.functional.switches.ISwitchBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.bindable.BoundBlockUtil;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.bindable.switches.ISwitchBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateManager;
+import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
@@ -17,6 +20,8 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class SwitchSlabBlock extends SlabBlock implements ISwitchBlock {
     private final boolean startOn;
@@ -41,6 +46,17 @@ public class SwitchSlabBlock extends SlabBlock implements ISwitchBlock {
     @Override
     public float getAmbientOcclusionLightLevel(BlockState state, BlockView world, BlockPos pos) {
         return isOn(world, pos) ? super.getAmbientOcclusionLightLevel(state, world, pos) : 1;
+    }
+
+    @Override
+    public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
+        return BoundBlockUtil.applyGroupOnPickStack(super.getPickStack(world, pos, state), world, pos);
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
+        super.appendTooltip(stack, world, tooltip, options);
+        BoundBlockUtil.addTooltip(stack, tooltip);
     }
 
     @Override

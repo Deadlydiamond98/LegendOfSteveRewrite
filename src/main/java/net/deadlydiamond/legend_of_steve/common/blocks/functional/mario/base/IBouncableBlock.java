@@ -3,6 +3,7 @@ package net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.base;
 import net.deadlydiamond.legend_of_steve.common.bes.BouncingBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.BounceType;
 import net.deadlydiamond.legend_of_steve.common.items.IExtraCanMine;
+import net.deadlydiamond.legend_of_steve.init.ZeldaAdvancements;
 import net.deadlydiamond.legend_of_steve.init.ZeldaDamageTypes;
 import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
 import net.deadlydiamond.legend_of_steve.mixin.common.be.LootableContainerBlockEntityInvoker;
@@ -64,6 +65,10 @@ public interface IBouncableBlock extends IJumpIntoAction, IHitBlockAction, IExtr
         return true;
     }
 
+    default boolean triggersConcussionAdvancement(World world, BlockPos blockPos, BlockState blockState) {
+        return true;
+    }
+
     // Passenger Damage & Velocity /////////////////////////////////////////////////////////////////////////////////////
 
     default boolean bouncePassengers() {
@@ -86,8 +91,14 @@ public interface IBouncableBlock extends IJumpIntoAction, IHitBlockAction, IExtr
     default void triggerBounce(World world, BlockPos pos, BlockState state, @Nullable Entity owner, Direction direction, BounceType type) {
         if (!world.isClient()) {
             world.getPlayers().forEach(player -> UpdateBounceBlockHitS2CPacket.send(player, pos, owner, direction, type));
+
+            // Trigger Concussion Advancement
+            if (owner instanceof PlayerEntity player && triggersConcussionAdvancement(world, pos, state) && type == BounceType.JUMP) {
+                ZeldaAdvancements.MINOR_CONCUSSION.trigger(player);
+            }
         }
 
+        // Bounce Mobs on other end of bounce Direction
         if (bouncePassengers()) {
             Vec3d bounceDirection = Vec3d.of(direction.getVector());
 

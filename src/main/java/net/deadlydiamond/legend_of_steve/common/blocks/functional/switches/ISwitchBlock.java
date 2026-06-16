@@ -24,13 +24,12 @@ public interface ISwitchBlock extends BlockEntityProvider {
         if (getBlockEntity(world, pos) instanceof SwitchBlockEntity switchBlock) {
             return switchBlock.isOn();
         }
-        return false;
+        return true;
     }
 
     default void triggerSwitch(World world, BlockPos pos) {
         if (getBlockEntity(world, pos) instanceof SwitchBlockEntity switchBlock) {
             switchBlock.triggerSwitch(getTriggerCooldown());
-//            world.
         }
     }
 

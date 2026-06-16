@@ -133,9 +133,12 @@ public class ZeldaBlockSettings {
             .sounds(BlockSoundGroup.DECORATED_POT_SHATTER);
 
     public static final FabricBlockSettings DUNGEON_TABLE_SETTINGS = FabricBlockSettings.copyOf(Blocks.SMITHING_TABLE)
-            .sounds(ZeldaSounds.DUNGEON_TABLE);
+            .mapColor(MapColor.EMERALD_GREEN)
+            .sounds(ZeldaSounds.DUNGEON_TABLE)
+            .strength(2.75f);
 
-    public static final FabricBlockSettings CRATE_SETTINGS = FabricBlockSettings.copyOf(Blocks.CHISELED_BOOKSHELF);
+    public static final FabricBlockSettings CRATE_SETTINGS = FabricBlockSettings.copyOf(Blocks.CHISELED_BOOKSHELF)
+            .strength(2.5F);
 
 
     // HELPER METHODS //////////////////////////////////////////////////////////////////////////////////////////////////

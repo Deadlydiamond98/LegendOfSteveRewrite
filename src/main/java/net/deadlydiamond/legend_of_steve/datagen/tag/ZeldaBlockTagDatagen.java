@@ -128,7 +128,8 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
                 ZeldaBlocks.CHISELED_BAMBOO_PLANKS,
                 ZeldaBlocks.CHISELED_CHERRY_PLANKS,
                 ZeldaBlocks.CHISELED_DEKU_PLANKS,
-                ZeldaBlocks.CRATE
+                ZeldaBlocks.CRATE,
+                ZeldaBlocks.DUNGEON_TABLE
         );
 
         // MINING LEVEL ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -192,21 +193,6 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
         );
 
         // OTHER ///////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//        getOrCreateTagBuilder(ZeldaTags.RED_SWITCH_BLOCKS).add(
-//                ZeldaBlocks.RED_SWITCH_BLOCK,
-//                ZeldaBlocks.RED_SWITCH_SLAB
-//        );
-//
-//        getOrCreateTagBuilder(ZeldaTags.BLUE_SWITCH_BLOCKS).add(
-//                ZeldaBlocks.BLUE_SWITCH_BLOCK,
-//                ZeldaBlocks.BLUE_SWITCH_SLAB
-//        );
-//
-//        getOrCreateTagBuilder(BlockTags.SLABS).add(
-//                ZeldaBlocks.RED_SWITCH_SLAB,
-//                ZeldaBlocks.BLUE_SWITCH_SLAB
-//        );
 
         getOrCreateTagBuilder(KoalaLibTags.CRACKED_BRICKS).add(
                 ZeldaBlocks.CRACKED_FAIRY_MARBLE_BRICKS

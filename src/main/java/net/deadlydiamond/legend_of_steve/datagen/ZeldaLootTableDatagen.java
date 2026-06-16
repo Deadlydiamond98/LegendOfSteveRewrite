@@ -68,6 +68,7 @@ public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
         );
 
         addSimpleBlockDrops(
+                ZeldaBlocks.DUNGEON_TABLE,
                 ZeldaBlocks.CRATE,
                 // CHISELED PLANKS
                 ZeldaBlocks.CHISELED_OAK_PLANKS,

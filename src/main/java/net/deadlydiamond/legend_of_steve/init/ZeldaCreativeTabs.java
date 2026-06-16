@@ -73,6 +73,9 @@ public class ZeldaCreativeTabs {
     });
 
     public static final ItemGroup BLOCKS = registerTab("blocks", ZeldaBlocks.LOOT_POT, (displayContext, entries) -> {
+        // CRAFTING STATIONS
+        entries.add(ZeldaBlocks.DUNGEON_TABLE);
+
         // LOOT GRASS
         entries.add(ZeldaBlocks.LOOT_GRASS);
 

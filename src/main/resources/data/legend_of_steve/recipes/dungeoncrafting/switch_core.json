@@ -1,0 +1,28 @@
+{
+  "type": "legend_of_steve:dungeoncrafting",
+  "pattern": [
+    "geg",
+    "rsb",
+    "geg"
+  ],
+  "key": {
+    "g": {
+      "item": "minecraft:glass"
+    },
+    "s": {
+      "item": "minecraft:nether_star"
+    },
+    "e": {
+      "item": "minecraft:echo_shard"
+    },
+    "r": {
+      "item": "legend_of_steve:red_tektite_shell"
+    },
+    "b": {
+      "item": "legend_of_steve:blue_tektite_shell"
+    }
+  },
+  "result": {
+    "item": "legend_of_steve:switch_core"
+  }
+}

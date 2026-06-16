@@ -11,6 +11,8 @@ public class ZeldaAdvancements {
     public static final CustomAdvancement STUN_ENTITY_WITH_NUT = register("stun_entity_with_nut");
     public static final CustomAdvancement MINOR_CONCUSSION = register("hit_block");
     public static final CustomAdvancement WATER_WALKING = register("water_walking");
+    public static final CustomAdvancement SWITCH_ON = register("switch_on");
+    public static final CustomAdvancement SWITCH_OFF = register("switch_off");
 
     public static CustomAdvancement register(String name) {
         return Criteria.register(new CustomAdvancement(LegendOfSteve.id(name)));

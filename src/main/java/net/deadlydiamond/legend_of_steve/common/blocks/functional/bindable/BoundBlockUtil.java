@@ -27,6 +27,8 @@ import net.minecraft.world.BlockView;
 import java.util.List;
 
 public class BoundBlockUtil {
+    public static final String DEFAULT = "Global";
+
     public static void addTooltip(ItemStack stack, List<Text> tooltip) {
         tooltip.add(ScreenTexts.SPACE);
         tooltip.add(Text.translatable("tooltip.legend_of_steve.block_group").formatted(Formatting.GRAY));
@@ -41,7 +43,7 @@ public class BoundBlockUtil {
                 return entityTag.getString("blockGroupID");
             }
         }
-        return "Global";
+        return DEFAULT;
     }
 
     public static void putBlockGroup(ItemStack stack, String blockGroup) {
@@ -55,7 +57,7 @@ public class BoundBlockUtil {
     // APPLYING TO ITEM ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public static ItemStack getCreativeEntry(ItemStack stack) {
-        putBlockGroup(stack, "Global");
+        putBlockGroup(stack, DEFAULT);
         return stack;
     }
 

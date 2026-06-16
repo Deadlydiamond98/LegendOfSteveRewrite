@@ -2,7 +2,9 @@ package net.deadlydiamond.legend_of_steve.client.screens;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.client.screens.widgets.DungeonTableTextFieldWidget;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.bindable.BoundBlockUtil;
 import net.deadlydiamond.legend_of_steve.common.screen_handlers.DungeonTableScreenHandler;
+import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
 import net.deadlydiamond.legend_of_steve.networking.c2s.UpdateDungeonTableScreenC2SPacket;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
@@ -17,6 +19,7 @@ public class DungeonTableScreen extends HandledScreen<DungeonTableScreenHandler>
 
     private boolean narrow;
     private DungeonTableTextFieldWidget switchIdField;
+    private int timer;
 
     public DungeonTableScreen(DungeonTableScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
@@ -42,16 +45,27 @@ public class DungeonTableScreen extends HandledScreen<DungeonTableScreenHandler>
     }
 
     private void onIDFieldChanged(String text) {
-
+        if (this.switchIdField.isVisible()) {
+            if (text.contains(" ")) {
+                this.switchIdField.setText(text.replaceAll(" ", ""));
+            } else {
+                UpdateDungeonTableScreenC2SPacket.send(text.isBlank() ? BoundBlockUtil.DEFAULT : text);
+            }
+        }
     }
 
     @Override
     protected void handledScreenTick() {
         this.switchIdField.tick();
-        this.switchIdField.setVisible(!this.handler.getOutput().isEmpty());
+        this.switchIdField.setVisible(this.handler.getOutput().isIn(ZeldaTags.SWITCH_BLOCKS_ITEM));
 
         if (!this.switchIdField.isVisible()) {
-            this.switchIdField.setText("Global");
+            if (this.timer++ > 2) {
+                this.timer = 0;
+                this.switchIdField.setText(BoundBlockUtil.DEFAULT);
+            }
+        } else {
+            this.timer = 0;
         }
     }
 

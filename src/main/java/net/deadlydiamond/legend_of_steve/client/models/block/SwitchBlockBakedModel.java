@@ -1,6 +1,7 @@
 package net.deadlydiamond.legend_of_steve.client.models.block;
 
 import net.deadlydiamond.legend_of_steve.client.switches.SwitchBlockAtlas;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.bindable.BoundBlockUtil;
 import net.fabricmc.fabric.api.renderer.v1.mesh.MutableQuadView;
 import net.fabricmc.fabric.api.renderer.v1.model.ForwardingBakedModel;
 import net.fabricmc.fabric.api.renderer.v1.model.SpriteFinder;
@@ -35,7 +36,7 @@ public class SwitchBlockBakedModel extends ForwardingBakedModel {
         if (blockView.getBlockEntityRenderData(pos) instanceof String beGroupID) {
             groupID = beGroupID;
         } else {
-            groupID = "Global";
+            groupID = BoundBlockUtil.DEFAULT;
         }
 
         context.pushTransform(quad -> {

@@ -103,6 +103,11 @@ public class SwitchBlockset extends AbstractBlockset {
     @Override
     public void generateItemTags(BiConsumer<TagKey<Item>, ItemConvertible> tagConsumer) {
         super.generateItemTags(tagConsumer);
+
+        for (Block block : getAll()) {
+            tagConsumer.accept(ZeldaTags.SWITCH_BLOCKS_ITEM, block);
+        }
+
         tagConsumer.accept(ItemTags.SLABS, this.slab);
     }
 

@@ -1,9 +1,11 @@
 package net.deadlydiamond.legend_of_steve.common.screen_handlers;
 
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.bindable.BoundBlockUtil;
 import net.deadlydiamond.legend_of_steve.common.recipes.DungeonTableRecipe;
 import net.deadlydiamond.legend_of_steve.common.screen_handlers.slot.DungeonTableResultSlot;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
 import net.deadlydiamond.legend_of_steve.init.ZeldaScreenHandlers;
+import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.CraftingInventory;
@@ -27,6 +29,7 @@ public class DungeonTableScreenHandler extends ScreenHandler {
     private final CraftingResultInventory result = new CraftingResultInventory();
     private final ScreenHandlerContext context;
     private final PlayerEntity player;
+    public String blockGroupID = BoundBlockUtil.DEFAULT;
 
     public DungeonTableScreenHandler(int syncId, PlayerInventory playerInventory) {
         this(syncId, playerInventory, ScreenHandlerContext.EMPTY);
@@ -92,6 +95,14 @@ public class DungeonTableScreenHandler extends ScreenHandler {
                         itemStack = itemStack2;
                     }
                 }
+
+                if (itemStack.isIn(ZeldaTags.SWITCH_BLOCKS_ITEM)) {
+                    BoundBlockUtil.putBlockGroup(itemStack, handler.blockGroupID);
+                }
+            }
+
+            if (itemStack.isEmpty()) {
+                handler.blockGroupID = BoundBlockUtil.DEFAULT;
             }
 
             resultInventory.setStack(0, itemStack);
@@ -102,6 +113,11 @@ public class DungeonTableScreenHandler extends ScreenHandler {
 
     public ItemStack getOutput() {
         return this.result.getStack(0);
+    }
+
+    public void updateResult(String id) {
+        this.blockGroupID = id;
+        updateResult(this, this.player.getWorld(), this.player, this.input, this.result);
     }
 
     @Override

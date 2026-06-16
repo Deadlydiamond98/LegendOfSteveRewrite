@@ -3,7 +3,7 @@ package net.deadlydiamond.legend_of_steve.mixin.player;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import net.deadlydiamond.legend_of_steve.common.items.IScrollAction;
-import net.deadlydiamond.legend_of_steve.networking.c2s.HudScrollItemActionC2SPacket;
+import net.deadlydiamond.legend_of_steve.networking.c2s.scrolling.HudScrollItemActionC2SPacket;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;

@@ -1,9 +1,10 @@
 package net.deadlydiamond.legend_of_steve.networking;
 
-import net.deadlydiamond.legend_of_steve.networking.c2s.GuiScrollItemActionC2SPacket;
-import net.deadlydiamond.legend_of_steve.networking.c2s.HudScrollItemActionC2SPacket;
+import net.deadlydiamond.legend_of_steve.networking.c2s.UpdateDungeonTableScreenC2SPacket;
+import net.deadlydiamond.legend_of_steve.networking.c2s.scrolling.GuiScrollItemActionC2SPacket;
+import net.deadlydiamond.legend_of_steve.networking.c2s.scrolling.HudScrollItemActionC2SPacket;
 import net.deadlydiamond.legend_of_steve.networking.c2s.RequestChestLockedStateC2SPacket;
-import net.deadlydiamond.legend_of_steve.networking.c2s.RequestSwitchBlockValuesS2CPacket;
+import net.deadlydiamond.legend_of_steve.networking.c2s.RequestSwitchBlockValuesC2SPacket;
 import net.deadlydiamond.legend_of_steve.networking.s2c.ItemTransmutationPoofS2CPacket;
 import net.deadlydiamond.legend_of_steve.networking.s2c.UpdateChestLockedStateS2CPacket;
 import net.deadlydiamond.legend_of_steve.networking.s2c.question_block.UpdateBounceBlockHitS2CPacket;
@@ -25,7 +26,8 @@ public class ZeldaNetworking {
         ServerPlayNetworking.registerGlobalReceiver(GuiScrollItemActionC2SPacket.ID, GuiScrollItemActionC2SPacket.Handler::receive);
         ServerPlayNetworking.registerGlobalReceiver(HudScrollItemActionC2SPacket.ID, HudScrollItemActionC2SPacket.Handler::receive);
         ServerPlayNetworking.registerGlobalReceiver(RequestChestLockedStateC2SPacket.ID, RequestChestLockedStateC2SPacket.Handler::receive);
-        ServerPlayNetworking.registerGlobalReceiver(RequestSwitchBlockValuesS2CPacket.ID, RequestSwitchBlockValuesS2CPacket.Handler::receive);
+        ServerPlayNetworking.registerGlobalReceiver(RequestSwitchBlockValuesC2SPacket.ID, RequestSwitchBlockValuesC2SPacket.Handler::receive);
+        ServerPlayNetworking.registerGlobalReceiver(UpdateDungeonTableScreenC2SPacket.ID, UpdateDungeonTableScreenC2SPacket.Handler::receive);
     }
 
     public static class Client {

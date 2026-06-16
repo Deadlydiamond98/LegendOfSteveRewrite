@@ -104,6 +104,10 @@ public class CrystalSwitchBlock extends Block implements Waterloggable, ISwitchB
         if (isBottom(state) && random.nextFloat() < 0.25) {
             createSwitchParticle(world, pos, CrystalSwitchCollisions.ENTIRE_ORB_SHAPE, 0.125f, isOn(world, pos), true);
         }
+
+        if (random.nextInt(750) == 0) {
+            world.playSoundAtBlockCenter(pos, ZeldaSounds.CRYSTAL_SWITCH_AMBIENT, SoundCategory.BLOCKS, 0.5f, 1, true);
+        }
     }
 
     // Comparator Interaction //////////////////////////////////////////////////////////////////////////////////////////

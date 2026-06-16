@@ -1,5 +1,6 @@
 package net.deadlydiamond.legend_of_steve.common.world.states;
 
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.bindable.BoundBlockUtil;
 import net.deadlydiamond.legend_of_steve.networking.s2c.switches.SyncSwitchBlocksS2CPacket;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
@@ -20,7 +21,7 @@ public class SwitchBlockManager extends PersistentState {
     public SwitchBlockManager(ServerWorld world) {
         this.markDirty();
         this.world = world;
-        this.switchGroups.put("Global", true);
+        this.switchGroups.put(BoundBlockUtil.DEFAULT, true);
     }
 
     @Override

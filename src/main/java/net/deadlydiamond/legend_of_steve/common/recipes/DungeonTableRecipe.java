@@ -34,6 +34,14 @@ public class DungeonTableRecipe implements Recipe<RecipeInputInventory> {
         return this.id;
     }
 
+    public int getWidth() {
+        return this.width;
+    }
+
+    public int getHeight() {
+        return this.height;
+    }
+
     @Override
     public boolean matches(RecipeInputInventory inventory, World world) {
         return GridRecipeUtil.matches(inventory, world, this.width, this.height, this.input);

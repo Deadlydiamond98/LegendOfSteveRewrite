@@ -1,0 +1,15 @@
+{
+  "type": "legend_of_steve:dungeoncrafting",
+  "pattern": [
+    "bbb"
+  ],
+  "key": {
+    "b": {
+      "item": "legend_of_steve:red_switch_block"
+    }
+  },
+  "result": {
+    "item": "legend_of_steve:red_switch_slab",
+    "count": 6
+  }
+}

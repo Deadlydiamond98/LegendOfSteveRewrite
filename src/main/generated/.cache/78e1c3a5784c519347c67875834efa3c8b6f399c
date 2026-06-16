@@ -1,4 +1,4 @@
-// 1.20.1	2026-06-16T01:46:00.393472923	The Legend of Steve/Tags for minecraft:item
+// 1.20.1	2026-06-16T03:59:05.860101604	The Legend of Steve/Tags for minecraft:item
 f1a57d71afa923fc3b787757de2977d590e825cd data/minecraft/tags/items/stairs.json
 b4d7faadc178039d6865f14eedd8edac04e8e1c3 data/minecraft/tags/items/wooden_trapdoors.json
 fba66bfc33c2dc3dfe13926359d5a3fba438019b data/minecraft/tags/items/signs.json
@@ -19,6 +19,7 @@ a9f3ab7c1b23ba9a13d0a9034a380193343376b3 data/minecraft/tags/items/wooden_slabs.
 ac147bba5a12528c56d5515c7313fae1019ab380 data/minecraft/tags/items/wooden_fences.json
 e375cb37433e73cf00e6e4b1946b87cba8b55dfc data/legend_of_steve/tags/items/strange_blue_dirt.json
 a62a7714809b9f9bc69ccf0667a2f9fafba2ea37 data/minecraft/tags/items/wooden_doors.json
+b34a3194429d91739b3a61e754435f647849b730 data/legend_of_steve/tags/items/switch_blocks.json
 af18386df70ec463342c26cf13e1409a16530662 data/minecraft/tags/items/walls.json
 2c351bcaac8f9e1ccf33bf9ff6b9de2f2082f907 data/minecraft/tags/items/fence_gates.json
 6bc44fea24dc2e7427b11af9d2a81d7e1aba4e8a data/minecraft/tags/items/wooden_stairs.json

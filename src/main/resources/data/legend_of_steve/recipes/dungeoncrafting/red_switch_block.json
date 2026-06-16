@@ -1,0 +1,20 @@
+{
+  "type": "legend_of_steve:dungeoncrafting",
+  "pattern": [
+    "ggg",
+    "gcg",
+    "ggg"
+  ],
+  "key": {
+    "g": {
+      "item": "minecraft:glass"
+    },
+    "c": {
+      "item": "legend_of_steve:red_tektite_chitin"
+    }
+  },
+  "result": {
+    "item": "legend_of_steve:red_switch_block",
+    "count": 8
+  }
+}

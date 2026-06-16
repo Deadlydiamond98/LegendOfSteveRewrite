@@ -1,7 +1,7 @@
 package net.deadlydiamond.legend_of_steve.events.client;
 
 import net.deadlydiamond.legend_of_steve.common.items.IScrollAction;
-import net.deadlydiamond.legend_of_steve.networking.c2s.GuiScrollItemActionC2SPacket;
+import net.deadlydiamond.legend_of_steve.networking.c2s.scrolling.GuiScrollItemActionC2SPacket;
 import net.fabricmc.fabric.api.client.screen.v1.ScreenEvents;
 import net.fabricmc.fabric.api.client.screen.v1.ScreenMouseEvents;
 import net.minecraft.client.MinecraftClient;

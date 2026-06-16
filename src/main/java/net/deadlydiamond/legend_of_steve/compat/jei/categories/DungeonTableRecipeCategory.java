@@ -2,6 +2,7 @@ package net.deadlydiamond.legend_of_steve.compat.jei.categories;
 
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.gui.ingredient.ICraftingGridHelper;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
@@ -17,6 +18,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
+
 
 public class DungeonTableRecipeCategory implements IRecipeCategory<DungeonTableRecipe> {
     private static final Identifier TEXTURE = LegendOfSteve.id("textures/gui/jei/dungeon_table.png");
@@ -36,9 +38,12 @@ public class DungeonTableRecipeCategory implements IRecipeCategory<DungeonTableR
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, DungeonTableRecipe recipe, IFocusGroup focuses) {
-        for (int x = 0; x < 3; x++) {
-            for (int y = 0; y < 3; y++) {
-                builder.addInputSlot((x * 19) + 7, (y * 19) + 6).addIngredients(recipe.getIngredients().get(x + y * 3));
+        int xOffset = recipe.getWidth() == 1 ? 1 : 0;
+        int yOffset = recipe.getHeight() == 1 ? 1 : 0;
+
+        for (int x = 0; x < recipe.getWidth(); x++) {
+            for (int y = 0; y < recipe.getHeight(); y++) {
+                builder.addInputSlot(((x + xOffset) * 19) + 7, ((y + yOffset) * 19) + 6).addIngredients(recipe.getIngredients().get(x + y * 3));
             }
         }
 

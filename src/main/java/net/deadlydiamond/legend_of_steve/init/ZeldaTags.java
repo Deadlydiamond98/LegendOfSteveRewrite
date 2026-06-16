@@ -24,6 +24,8 @@ public class ZeldaTags {
     public static final TagKey<Item> STRANGE_DIRT = item("strange_dirt");
     public static final TagKey<Item> STRANGE_BLUE_DIRT = item("strange_blue_dirt");
 
+    public static final TagKey<Item> SWITCH_BLOCKS_ITEM = item("switch_blocks");
+
     // BLOCKS //////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static final TagKey<Block> BOMB_BREAKABLE = block("bomb_breakable");
     public static final TagKey<Block> BOMB_FLOWER_PLANTABLE = block("bomb_flower_plantable");

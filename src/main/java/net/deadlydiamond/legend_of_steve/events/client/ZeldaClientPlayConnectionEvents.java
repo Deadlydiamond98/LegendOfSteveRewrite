@@ -1,7 +1,7 @@
 package net.deadlydiamond.legend_of_steve.events.client;
 
 import net.deadlydiamond.legend_of_steve.client.switches.SwitchBlockAtlas;
-import net.deadlydiamond.legend_of_steve.networking.c2s.RequestSwitchBlockValuesS2CPacket;
+import net.deadlydiamond.legend_of_steve.networking.c2s.RequestSwitchBlockValuesC2SPacket;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
 import net.minecraft.client.MinecraftClient;
@@ -19,7 +19,7 @@ public class ZeldaClientPlayConnectionEvents {
 
     private static void onJoin(ClientPlayNetworkHandler clientPlayNetworkHandler, PacketSender packetSender, MinecraftClient client) {
         if (client.player != null) {
-            RequestSwitchBlockValuesS2CPacket.send(client.player);
+            RequestSwitchBlockValuesC2SPacket.send(client.player);
         }
     }
 

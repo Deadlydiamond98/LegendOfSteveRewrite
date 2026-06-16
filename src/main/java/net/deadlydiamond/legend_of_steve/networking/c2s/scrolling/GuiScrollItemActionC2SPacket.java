@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.networking.c2s;
+package net.deadlydiamond.legend_of_steve.networking.c2s.scrolling;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.items.IScrollAction;

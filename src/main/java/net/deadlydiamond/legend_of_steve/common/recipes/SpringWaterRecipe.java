@@ -55,10 +55,6 @@ public class SpringWaterRecipe implements Recipe<Inventory> {
         return this.output;
     }
 
-    public ItemStack getOutput() {
-        return this.output;
-    }
-
     public ItemStack getOutput(int count) {
         return new ItemStack(this.output.getItem(), this.output.getCount() * count);
     }
@@ -71,6 +67,8 @@ public class SpringWaterRecipe implements Recipe<Inventory> {
     public boolean isIgnoredInRecipeBook() {
         return true;
     }
+
+    // TYPE & SERIALIZER ///////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public RecipeSerializer<?> getSerializer() {

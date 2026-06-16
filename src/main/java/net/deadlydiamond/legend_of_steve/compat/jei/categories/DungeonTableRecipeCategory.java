@@ -20,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class DungeonTableRecipeCategory implements IRecipeCategory<DungeonTableRecipe> {
     private static final Identifier TEXTURE = LegendOfSteve.id("textures/gui/jei/dungeon_table.png");
-    private static final int WIDTH = 164;
+    private static final int WIDTH = 129;
     private static final int HEIGHT = 66;
 
     private final IDrawable icon;
@@ -38,11 +38,11 @@ public class DungeonTableRecipeCategory implements IRecipeCategory<DungeonTableR
     public void setRecipe(IRecipeLayoutBuilder builder, DungeonTableRecipe recipe, IFocusGroup focuses) {
         for (int x = 0; x < 3; x++) {
             for (int y = 0; y < 3; y++) {
-                builder.addInputSlot((x * 19) + 23, (y * 19) + 6).addIngredients(recipe.getIngredients().get(x + y * 3));
+                builder.addInputSlot((x * 19) + 7, (y * 19) + 6).addIngredients(recipe.getIngredients().get(x + y * 3));
             }
         }
 
-        builder.addOutputSlot(118, 25).addItemStack(recipe.getOutput());
+        builder.addOutputSlot(102, 25).addItemStack(LegendOfSteveJEI.getOutput(recipe));
     }
 
     @Override

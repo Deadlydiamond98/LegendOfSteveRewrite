@@ -7,7 +7,9 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
+import mezz.jei.api.registration.ISubtypeRegistration;
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
+import net.deadlydiamond.legend_of_steve.common.entities.living.fairy.FairyColor;
 import net.deadlydiamond.legend_of_steve.common.recipes.DungeonTableRecipe;
 import net.deadlydiamond.legend_of_steve.common.recipes.SpringWaterRecipe;
 import net.deadlydiamond.legend_of_steve.compat.jei.categories.DungeonTableRecipeCategory;
@@ -16,6 +18,7 @@ import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
 import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.inventory.Inventory;
+import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.Recipe;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
@@ -49,6 +52,11 @@ public class LegendOfSteveJEI implements IModPlugin {
         registration.addRecipes(ZeldaJEIRecipeTypes.DUNGEON_TABLE, getRecipes(DungeonTableRecipe.Type.INSTANCE));
     }
 
+    @Override
+    public void registerItemSubtypes(ISubtypeRegistration registration) {
+        registration.useNbtForSubtypes(ZeldaItems.FAIRY_BOTTLE);
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // HELPER METHODS //////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -63,5 +71,13 @@ public class LegendOfSteveJEI implements IModPlugin {
 
     public static Text getTitle(String name) {
         return LegendOfSteve.lang("jei", name);
+    }
+
+    public static ItemStack getOutput(Recipe<?> recipe) {
+        MinecraftClient client = MinecraftClient.getInstance();
+        if (client.world == null) {
+            throw new NullPointerException("tried to access the World but it was null.");
+        }
+        return recipe.getOutput(client.world.getRegistryManager());
     }
 }

@@ -12,7 +12,7 @@ public class ZeldaRecipes {
 
     public static void register() {
         register("spring_water_conversion", SpringWaterRecipe.Serializer.INSTANCE, SpringWaterRecipe.Type.INSTANCE);
-        register("dungeoncrafting_table", DungeonTableRecipe.Serializer.INSTANCE, DungeonTableRecipe.Type.INSTANCE);
+        register("dungeoncrafting", DungeonTableRecipe.Serializer.INSTANCE, DungeonTableRecipe.Type.INSTANCE);
     }
 
     private static void register(String id, RecipeSerializer<?> serializer, RecipeType<?> type) {

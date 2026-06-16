@@ -5,7 +5,7 @@ import net.deadlydiamond.legend_of_steve.common.blocks.container.MasterBarrelBlo
 import net.deadlydiamond.legend_of_steve.common.blocks.container.single.LootPotBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.container.single.SwordPedestal;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.connected.ConnectedPillarBlock;
-import net.deadlydiamond.legend_of_steve.common.blocks.functional.crafting.DungeonTable;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.crafting.DungeonTableBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.QuestionBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.base.BouncingTransitionBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.GirderBlock;
@@ -154,7 +154,7 @@ public class ZeldaBlocks {
     // FUNCTIONAL BLOCKS ///////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public static final Block DUNGEON_TABLE = register("dungeon_table", new DungeonTable(DUNGEON_TABLE_SETTINGS));
+    public static final Block DUNGEON_TABLE = register("dungeon_table", new DungeonTableBlock(DUNGEON_TABLE_SETTINGS));
 
     // PLANTS
     public static final Block BOMB_FLOWER = register("bomb_flower", new BombFlowerBlock(BOMB_FLOWER_SETTINGS), false);

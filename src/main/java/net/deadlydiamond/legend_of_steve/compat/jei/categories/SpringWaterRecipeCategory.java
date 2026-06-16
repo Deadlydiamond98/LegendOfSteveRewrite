@@ -5,6 +5,9 @@ import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
+import mezz.jei.api.gui.placement.HorizontalAlignment;
+import mezz.jei.api.gui.placement.VerticalAlignment;
+import mezz.jei.api.gui.widgets.IRecipeExtrasBuilder;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeType;
@@ -14,6 +17,8 @@ import net.deadlydiamond.legend_of_steve.common.recipes.SpringWaterRecipe;
 import net.deadlydiamond.legend_of_steve.compat.jei.LegendOfSteveJEI;
 import net.deadlydiamond.legend_of_steve.compat.jei.ZeldaJEIRecipeTypes;
 import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
@@ -28,22 +33,33 @@ public class SpringWaterRecipeCategory implements IRecipeCategory<SpringWaterRec
     private static final int HEIGHT = 64;
 
     private final ITickTimer waterAnimationTimer;
+    private final IGuiHelper guiHelper;
     private final IDrawable icon;
-    private final IDrawableAnimated arrow;
 
     public SpringWaterRecipeCategory(IGuiHelper guiHelper) {
         this.icon = guiHelper.createDrawableItemStack(new ItemStack(ZeldaItems.SPRING_WATER_BUCKET));
         this.waterAnimationTimer = guiHelper.createTickTimer(32, 32, false);
+        this.guiHelper = guiHelper;
+    }
 
-        this.arrow = guiHelper.drawableBuilder(TEXTURE, 113, 0, 24, 18)
-                .buildAnimated(140, IDrawableAnimated.StartDirection.LEFT, false);
+    @Override
+    public void createRecipeExtras(IRecipeExtrasBuilder builder, SpringWaterRecipe recipe, IFocusGroup focuses) {
+        int transmuteTime = recipe.getTime();
+
+        IDrawableAnimated arrow = this.guiHelper.drawableBuilder(TEXTURE, 113, 0, 24, 18)
+                        .buildAnimated(transmuteTime, IDrawableAnimated.StartDirection.LEFT, false);
+
+        builder.addDrawable(arrow, 21, 23);
+
+        builder.addText(Text.literal(transmuteTime / 20 + "s"), getWidth() - 20, 10)
+                .setPosition(0, 0, getWidth(), getHeight(), HorizontalAlignment.LEFT, VerticalAlignment.BOTTOM)
+                .setColor(0xFF808080);
     }
 
     @Override
     public void draw(SpringWaterRecipe recipe, IRecipeSlotsView recipeSlotsView, DrawContext guiGraphics, double mouseX, double mouseY) {
         drawWater(guiGraphics, 49, 0, 4, 4);
         guiGraphics.drawTexture(TEXTURE, 0, 0, 0, 0, WIDTH, HEIGHT);
-        this.arrow.draw(guiGraphics, 21, 23);
     }
 
     private void drawWater(DrawContext guiGraphics, int startX, int startY, int xCount, int yCount) {
@@ -64,7 +80,7 @@ public class SpringWaterRecipeCategory implements IRecipeCategory<SpringWaterRec
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, SpringWaterRecipe recipe, IFocusGroup focuses) {
         builder.addInputSlot(1, 24).addIngredients(recipe.getIngredients().get(0));
-        builder.addOutputSlot(73, 24).addItemStack(recipe.getOutput());
+        builder.addOutputSlot(73, 24).addItemStack(LegendOfSteveJEI.getOutput(recipe));
     }
 
     @Override

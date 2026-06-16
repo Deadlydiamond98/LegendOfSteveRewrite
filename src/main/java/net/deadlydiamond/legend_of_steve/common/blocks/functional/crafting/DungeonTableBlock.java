@@ -1,5 +1,6 @@
 package net.deadlydiamond.legend_of_steve.common.blocks.functional.crafting;
 
+import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.screen_handlers.DungeonTableScreenHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -28,7 +29,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
-public class DungeonTable extends Block implements Waterloggable {
+public class DungeonTableBlock extends Block implements Waterloggable {
     protected static final VoxelShape SHAPE = VoxelShapes.union(
             Block.createCuboidShape(0, 0, 0, 3, 16, 3),
             Block.createCuboidShape(13, 0, 0, 16, 16, 3),
@@ -40,7 +41,7 @@ public class DungeonTable extends Block implements Waterloggable {
 
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
-    public DungeonTable(Settings settings) {
+    public DungeonTableBlock(Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState().with(WATERLOGGED, false));
     }
@@ -58,7 +59,6 @@ public class DungeonTable extends Block implements Waterloggable {
         if (state.get(WATERLOGGED)) {
             world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
         }
-
         return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 
@@ -87,7 +87,7 @@ public class DungeonTable extends Block implements Waterloggable {
     public NamedScreenHandlerFactory createScreenHandlerFactory(BlockState state, World world, BlockPos pos) {
         return new SimpleNamedScreenHandlerFactory((syncId, playerInventory, player) ->
                 new DungeonTableScreenHandler(syncId, playerInventory, ScreenHandlerContext.create(world, pos)),
-                Text.empty()
+                LegendOfSteve.lang("gui", "dungeon_table")
         );
     }
 

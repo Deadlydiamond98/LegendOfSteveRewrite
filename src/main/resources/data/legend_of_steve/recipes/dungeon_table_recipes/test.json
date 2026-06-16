@@ -1,5 +1,5 @@
 {
-  "type": "legend_of_steve:dungeoncrafting_table",
+  "type": "legend_of_steve:dungeoncrafting",
   "pattern": [
     "###",
     "#Z#",
@@ -16,7 +16,5 @@
   "result": {
     "item": "minecraft:diamond",
     "count": 8
-  },
-  "bindable_id": true,
-  "mana_cost": 0
+  }
 }

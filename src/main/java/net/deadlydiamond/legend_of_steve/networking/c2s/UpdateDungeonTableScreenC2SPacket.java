@@ -1,7 +1,6 @@
 package net.deadlydiamond.legend_of_steve.networking.c2s;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
-import net.deadlydiamond.legend_of_steve.common.screen_handlers.DungeonTableScreenHandler;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
@@ -25,9 +24,9 @@ public class UpdateDungeonTableScreenC2SPacket {
             String switchId = buf.readString();
 
             server.execute(() -> {
-                if (player.currentScreenHandler instanceof DungeonTableScreenHandler screenHandler) {
-                    screenHandler.setSwitchId(switchId);
-                }
+//                if (player.currentScreenHandler instanceof DungeonTableScreenHandlerTemp screenHandler) {
+//                    screenHandler.setSwitchId(switchId);
+//                }
             });
         }
     }

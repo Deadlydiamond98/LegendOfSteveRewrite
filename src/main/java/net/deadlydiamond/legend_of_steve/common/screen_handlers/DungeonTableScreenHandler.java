@@ -12,12 +12,7 @@ import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.RecipeInputInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.s2c.play.ScreenHandlerSlotUpdateS2CPacket;
-import net.minecraft.recipe.CraftingRecipe;
-import net.minecraft.recipe.Recipe;
-import net.minecraft.recipe.RecipeMatcher;
-import net.minecraft.recipe.RecipeType;
-import net.minecraft.recipe.book.RecipeBookCategory;
-import net.minecraft.screen.AbstractRecipeScreenHandler;
+import net.minecraft.recipe.RecipeManager;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.screen.slot.Slot;
@@ -26,22 +21,12 @@ import net.minecraft.world.World;
 
 import java.util.Optional;
 
-public class DungeonTableScreenHandler extends AbstractRecipeScreenHandler<RecipeInputInventory> {
-    public static final int RESULT_X = 126;
-    public static final int RESULT_Y = 49;
+public class DungeonTableScreenHandler extends ScreenHandler {
 
-    public static final int GRID_X = 29;
-    public static final int GRID_Y = 30;
-
-    public static final int INVENTORY_X = 8;
-    public static final int INVENTORY_Y = 126;
-
-    private final RecipeInputInventory input;
-    private final CraftingResultInventory result;
+    private final RecipeInputInventory input = new CraftingInventory(this, 3, 3);
+    private final CraftingResultInventory result = new CraftingResultInventory();
     private final ScreenHandlerContext context;
     private final PlayerEntity player;
-    private String switchId = "";
-    private boolean showTextBox;
 
     public DungeonTableScreenHandler(int syncId, PlayerInventory playerInventory) {
         this(syncId, playerInventory, ScreenHandlerContext.EMPTY);
@@ -49,102 +34,74 @@ public class DungeonTableScreenHandler extends AbstractRecipeScreenHandler<Recip
 
     public DungeonTableScreenHandler(int syncId, PlayerInventory playerInventory, ScreenHandlerContext context) {
         super(ZeldaScreenHandlers.DUNGEON_TABLE, syncId);
-        this.input = new CraftingInventory(this, 3, 3);
-        this.result = new CraftingResultInventory();
         this.context = context;
         this.player = playerInventory.player;
 
-        this.addSlot(new DungeonTableResultSlot(playerInventory.player, this.input, this.result, 0, RESULT_X, RESULT_Y));
+        createSlots(playerInventory);
+        createInventory(playerInventory, 8, 113);
+    }
+
+    // SLOTS ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    private void createSlots(PlayerInventory playerInventory) {
+        int resultX = 119;
+        int resultY = 49;
+        int gridX = 21;
+        int gridY = 30;
+
+        this.addSlot(new DungeonTableResultSlot(playerInventory.player, this.input, this.result, 0, resultX, resultY));
 
         for(int i = 0; i < 3; ++i) {
             for(int j = 0; j < 3; ++j) {
-                this.addSlot(new Slot(this.input, j + i * 3, GRID_X + j * 19, GRID_Y + i * 19));
+                this.addSlot(new Slot(this.input, j + i * 3, gridX + j * 19, gridY + i * 19));
             }
         }
-
-        createInventory(playerInventory, INVENTORY_X, INVENTORY_Y);
     }
 
     public void createInventory(PlayerInventory playerInventory, int startX, int startY) {
-        // Inventory Slots
         for(int i = 0; i < 3; ++i) {
             for(int j = 0; j < 9; ++j) {
                 this.addSlot(new Slot(playerInventory, j + i * 9 + 9, startX + j * 18, startY + i * 18));
             }
         }
-        // Hotbar Slots
+
         for(int i = 0; i < 9; ++i) {
             this.addSlot(new Slot(playerInventory, i, startX + i * 18, startY + 58));
         }
     }
 
-    public void setSwitchId(String switchId) {
-        this.switchId = switchId;
-        updateResult(this, this.player.getWorld(), this.player, this.input, this.result);
-    }
+    // RECIPE CRAFTING /////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public boolean shouldShowTextBox() {
-        return this.showTextBox;
-    }
-
-    public void showTextbox(boolean bl) {
-        this.showTextBox = bl;
-    }
-
-    protected static void updateResult(ScreenHandler handler, World world, PlayerEntity player, RecipeInputInventory craftingInventory, CraftingResultInventory resultInventory) {
-        DungeonTableScreenHandler screenHandler = (DungeonTableScreenHandler) handler;
-
-        if (!world.isClient) {
-            ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity)player;
+    protected static void updateResult(DungeonTableScreenHandler handler, World world, PlayerEntity playerEntity, RecipeInputInventory craftingInventory, CraftingResultInventory resultInventory) {
+        if (!world.isClient()) {
+            ServerPlayerEntity player = (ServerPlayerEntity) playerEntity;
+            RecipeManager recipeManager = world.getRecipeManager();
             ItemStack itemStack = ItemStack.EMPTY;
 
-            Optional<DungeonTableRecipe> dungeonRecipe = world.getServer().getRecipeManager().getFirstMatch(DungeonTableRecipe.Type.INSTANCE, craftingInventory, world);
+            Optional<DungeonTableRecipe> dungeonTableRecipe = recipeManager.getFirstMatch(
+                    DungeonTableRecipe.Type.INSTANCE, craftingInventory, world
+            );
 
-            Optional<CraftingRecipe> vanillaRecipe = world.getServer().getRecipeManager().getFirstMatch(RecipeType.CRAFTING, craftingInventory, world);
+            if (dungeonTableRecipe.isPresent()) {
+                DungeonTableRecipe recipe = dungeonTableRecipe.get();
 
-            if (dungeonRecipe.isPresent()) {
-
-                DungeonTableRecipe recipe = dungeonRecipe.get();
-
-                if (resultInventory.shouldCraftRecipe(world, serverPlayerEntity, recipe)) {
-
+                if (resultInventory.shouldCraftRecipe(world, player, recipe)) {
                     ItemStack itemStack2 = recipe.craft(craftingInventory, world.getRegistryManager());
 
                     if (itemStack2.isItemEnabled(world.getEnabledFeatures())) {
                         itemStack = itemStack2;
                     }
                 }
-
-                if (recipe.hasBindableId()) {
-                    screenHandler.showTextBox = true;
-
-                    if (!screenHandler.switchId.isEmpty()) {
-                        itemStack.getOrCreateNbt().putString("switchId", screenHandler.switchId);
-                    } else {
-                        itemStack.getOrCreateNbt().putString("switchId", "global");
-                    }
-                }
-            } else if (vanillaRecipe.isPresent()) {
-
-                CraftingRecipe craftingRecipe = vanillaRecipe.get();
-
-                if (resultInventory.shouldCraftRecipe(world, serverPlayerEntity, craftingRecipe)) {
-
-                    ItemStack itemStack2 = craftingRecipe.craft(craftingInventory, world.getRegistryManager());
-
-                    if (itemStack2.isItemEnabled(world.getEnabledFeatures())) {
-                        itemStack = itemStack2;
-                    }
-                }
-                screenHandler.showTextBox = false;
-            } else {
-                screenHandler.showTextBox = false;
             }
 
             resultInventory.setStack(0, itemStack);
             handler.setPreviousTrackedSlot(0, itemStack);
-            serverPlayerEntity.networkHandler.sendPacket(new ScreenHandlerSlotUpdateS2CPacket(handler.syncId, handler.nextRevision(), 0, itemStack));
+            player.networkHandler.sendPacket(new ScreenHandlerSlotUpdateS2CPacket(handler.syncId, handler.nextRevision(), 0, itemStack));
         }
+    }
+
+    public ItemStack getOutput() {
+        return this.result.getStack(0);
     }
 
     @Override
@@ -153,33 +110,13 @@ public class DungeonTableScreenHandler extends AbstractRecipeScreenHandler<Recip
     }
 
     @Override
-    public void populateRecipeFinder(RecipeMatcher finder) {
-        this.input.provideRecipeInputs(finder);
-    }
-
-    @Override
-    public void clearCraftingSlots() {
-        this.input.clear();
-        this.result.clear();
-    }
-
-    @Override
-    public boolean matches(Recipe<? super RecipeInputInventory> recipe) {
-        return recipe.matches(this.input, this.player.getWorld());
-    }
-
-    @Override
     public void onClosed(PlayerEntity player) {
         super.onClosed(player);
-        this.context.run((world, pos) -> {
-            this.dropInventory(player, this.input);
-        });
+        this.context.run((world, pos) -> this.dropInventory(player, this.input));
     }
 
-    @Override
-    public boolean canUse(PlayerEntity player) {
-        return canUse(this.context, player, ZeldaBlocks.DUNGEON_TABLE);
-    }
+
+    // SLOT INSERTION //////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public ItemStack quickMove(PlayerEntity player, int slot) {
@@ -236,32 +173,7 @@ public class DungeonTableScreenHandler extends AbstractRecipeScreenHandler<Recip
     }
 
     @Override
-    public int getCraftingResultSlotIndex() {
-        return 0;
-    }
-
-    @Override
-    public int getCraftingWidth() {
-        return this.input.getWidth();
-    }
-
-    @Override
-    public int getCraftingHeight() {
-        return this.input.getHeight();
-    }
-
-    @Override
-    public int getCraftingSlotCount() {
-        return 10;
-    }
-
-    @Override
-    public RecipeBookCategory getCategory() {
-        return RecipeBookCategory.CRAFTING;
-    }
-
-    @Override
-    public boolean canInsertIntoSlot(int index) {
-        return index != this.getCraftingResultSlotIndex();
+    public boolean canUse(PlayerEntity player) {
+        return canUse(this.context, player, ZeldaBlocks.DUNGEON_TABLE);
     }
 }

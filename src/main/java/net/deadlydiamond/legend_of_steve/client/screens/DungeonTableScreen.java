@@ -1,11 +1,11 @@
 package net.deadlydiamond.legend_of_steve.client.screens;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
+import net.deadlydiamond.legend_of_steve.client.screens.widgets.DungeonTableTextFieldWidget;
 import net.deadlydiamond.legend_of_steve.common.screen_handlers.DungeonTableScreenHandler;
 import net.deadlydiamond.legend_of_steve.networking.c2s.UpdateDungeonTableScreenC2SPacket;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
-import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.screen.slot.SlotActionType;
@@ -16,34 +16,43 @@ public class DungeonTableScreen extends HandledScreen<DungeonTableScreenHandler>
     private static final Identifier TEXTURE = LegendOfSteve.id("textures/gui/dungeon_table.png");
 
     private boolean narrow;
-    private TextFieldWidget switchIdField;
+    private DungeonTableTextFieldWidget switchIdField;
 
     public DungeonTableScreen(DungeonTableScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
         this.backgroundWidth = 176;
-        this.backgroundHeight = 208;
+        this.backgroundHeight = 195;
+        this.titleX = 8;
+        this.playerInventoryTitleY = 100;
     }
 
     protected void init() {
         super.init();
         this.narrow = this.width < 379;
-        this.x = (width - backgroundWidth) / 2;
-        this.titleX = 29;
+        this.x = (this.width - this.backgroundWidth) / 2;
 
         int i = this.x;
         int j = (this.height - this.backgroundHeight) / 2;
 
-        this.switchIdField = new TextFieldWidget(this.textRenderer, i + 101, j + 27, 58, 16, Text.literal("ID"));
-        this.switchIdField.setMaxLength(20);
+        this.switchIdField = new DungeonTableTextFieldWidget(this.textRenderer, i + 95, j + 73, 64, 12, Text.empty());
         this.switchIdField.setVisible(false);
-        this.switchIdField.setChangedListener(this::onSwitchIdChanged);
+        this.switchIdField.setMaxLength(10);
+        this.switchIdField.setChangedListener(this::onIDFieldChanged);
         this.addDrawableChild(this.switchIdField);
+    }
+
+    private void onIDFieldChanged(String text) {
+
     }
 
     @Override
     protected void handledScreenTick() {
         this.switchIdField.tick();
-        this.switchIdField.setVisible(this.handler.shouldShowTextBox());
+        this.switchIdField.setVisible(!this.handler.getOutput().isEmpty());
+
+        if (!this.switchIdField.isVisible()) {
+            this.switchIdField.setText("Global");
+        }
     }
 
     @Override
@@ -51,11 +60,6 @@ public class DungeonTableScreen extends HandledScreen<DungeonTableScreenHandler>
         this.renderBackground(context);
         super.render(context, mouseX, mouseY, delta);
         this.drawMouseoverTooltip(context, mouseX, mouseY);
-
-        if (this.switchIdField.isVisible()) {
-            this.switchIdField.render(context, mouseX, mouseY, delta);
-            UpdateDungeonTableScreenC2SPacket.send(this.switchIdField.getText());
-        }
     }
 
     @Override
@@ -65,9 +69,8 @@ public class DungeonTableScreen extends HandledScreen<DungeonTableScreenHandler>
         context.drawTexture(TEXTURE, i, j, 0, 0, this.backgroundWidth, this.backgroundHeight);
     }
 
-    private void onSwitchIdChanged(String newText) {
-        this.handler.setSwitchId(newText);
-    }
+
+    // Input Stuff /////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
@@ -79,15 +82,15 @@ public class DungeonTableScreen extends HandledScreen<DungeonTableScreenHandler>
     }
 
     @Override
-    protected void drawForeground(DrawContext context, int mouseX, int mouseY) {}
-
-    @Override
     protected boolean isPointWithinBounds(int x, int y, int width, int height, double pointX, double pointY) {
         return (!this.narrow) && super.isPointWithinBounds(x, y, width, height, pointX, pointY);
     }
 
     @Override
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
+        if (!this.switchIdField.isMouseOver(mouseX, mouseY)) {
+            this.switchIdField.setFocused(false);
+        }
         return this.narrow || super.mouseClicked(mouseX, mouseY, button);
     }
 

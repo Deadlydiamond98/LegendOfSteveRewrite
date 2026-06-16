@@ -197,7 +197,7 @@
 
   "item.legend_of_steve.enchanted_spring_water_bucket": "Enchanted Spring Water Bucket",
   "block.legend_of_steve.enchanted_spring_water": "Enchanted Spring Water",
-  "jei.legend_of_steve.enchanted_spring_water": "Spring Water Transmutation",
+  "jei.legend_of_steve.enchanted_spring_water": "Spring Water Transmuting",
 
   "block.legend_of_steve.pink_fairy_lamp": "Pink Fairy Light",
   "block.legend_of_steve.red_fairy_lamp": "Red Fairy Light",
@@ -389,6 +389,7 @@
   "block.legend_of_steve.red_tektile_brick_wall": "Red Tektile Brick Wall",
 
   "jei.legend_of_steve.dungeon_table": "Dungeoncrafting",
+  "gui.legend_of_steve.dungeon_table": "Dungeoncrafting",
   "block.legend_of_steve.dungeon_table": "Dungeoncrafting Table",
 
   "block.legend_of_steve.crystal_switch": "Crystal Switch",
@@ -552,6 +553,6 @@
   "advancements.legend_of_steve.water_walking": "Walkin' on Water",
   "advancements.legend_of_steve.water_walking.description": "Walk on water while under the effects of Pondstriding",
 
-  "advancements.legend_of_steve.monsters_hunted_zelda": "Monsters Hunted (Legend of Steve)",
+  "advancements.legend_of_steve.monsters_hunted_zelda": "Monsters Hunted (LoS)",
   "advancements.legend_of_steve.monsters_hunted_zelda.description": "Defeat every Monster in The Legend of Steve"
 }

@@ -34,7 +34,7 @@ public class SwitchSlabBlock extends SlabBlock implements ISwitchBlock {
     @Override
     public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
         if (world.getBlockEntity(pos) instanceof SwitchBlockEntity switchBlock) {
-            switchBlock.init(world, pos, state);
+            switchBlock.init(world, pos, state, itemStack);
         }
     }
 
@@ -45,7 +45,7 @@ public class SwitchSlabBlock extends SlabBlock implements ISwitchBlock {
 
     @Override
     public float getAmbientOcclusionLightLevel(BlockState state, BlockView world, BlockPos pos) {
-        return isOn(world, pos) ? super.getAmbientOcclusionLightLevel(state, world, pos) : 1;
+        return 1;
     }
 
     @Override

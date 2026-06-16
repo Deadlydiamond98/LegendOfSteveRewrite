@@ -2,6 +2,7 @@ package net.deadlydiamond.legend_of_steve.common.bes.switches;
 
 import net.deadlydiamond.legend_of_steve.common.bes.ILoadEvent;
 import net.deadlydiamond.legend_of_steve.common.bes.grouping.BoundGroupBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.bindable.BoundBlockUtil;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.bindable.switches.ISwitchBlock;
 import net.deadlydiamond.legend_of_steve.common.world.states.SwitchBlockManager;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlockEntities;
@@ -9,6 +10,7 @@ import net.deadlydiamond.legend_of_steve.networking.s2c.switches.SwitchToggleS2C
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
@@ -30,7 +32,12 @@ public class SwitchBlockEntity extends BoundGroupBlockEntity implements ILoadEve
         super(type, pos, state);
     }
 
-    public void init(World world, BlockPos pos, BlockState state) {
+    public void init(World world, BlockPos pos, BlockState state, @Nullable ItemStack stack) {
+        if (stack != null) {
+            String groupID = BoundBlockUtil.getBlockGroup(stack);
+            setGroupID(groupID);
+        }
+
         SwitchBlockManager.sync(world, this.getGroupID());
         syncSwitchState();
         updateListeners();

@@ -20,7 +20,7 @@ public class CrystalSwitchBlockEntity extends SwitchBlockEntity {
 
     protected void tick(World world, BlockPos pos, BlockState state) {
         if (this.firstTick) {
-            init(world, pos, state);
+            init(world, pos, state, null);
             this.firstTick = false;
         }
 

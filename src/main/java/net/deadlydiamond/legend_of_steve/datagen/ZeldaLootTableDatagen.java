@@ -1,12 +1,10 @@
 package net.deadlydiamond.legend_of_steve.datagen;
 
-import net.deadlydiamond.legend_of_steve.common.blocks.functional.bindable.BoundBlockUtil;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
 import net.deadlydiamond98.koalalib.common.blocksets.AbstractBlockset;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.SlabBlock;
 
 public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
@@ -44,6 +42,7 @@ public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
                 ZeldaBlocks.FAIRY_MARBLE_BRICKS,
                 ZeldaBlocks.MOSSY_FAIRY_MARBLE_BRICKS,
                 ZeldaBlocks.FAIRY_MARBLE_TILES,
+                ZeldaBlocks.PERLITE_BRICKS,
                 // MASTER
                 ZeldaBlocks.MASTER_PLATE,
                 ZeldaBlocks.MASTER_BRICK,
@@ -97,6 +96,8 @@ public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
                 ZeldaBlocks.CHISELED_FAIRY_MARBLE,
                 ZeldaBlocks.FAIRY_MARBLE_PILLAR,
                 ZeldaBlocks.SMOOTH_FAIRY_MARBLE,
+                ZeldaBlocks.PERLITE,
+                ZeldaBlocks.PERLITE_PILLAR,
                 // MASTER BLOCK
                 ZeldaBlocks.MASTER_SCRAP_BLOCK,
                 ZeldaBlocks.MASTER_BLOCK,

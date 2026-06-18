@@ -41,6 +41,7 @@ public class ZeldaSpringWaterConversionDatagen {
         offerConversion(consumer, Blocks.NETHERRACK, Blocks.COBBLESTONE);
         offerConversion(consumer, Blocks.WARPED_WART_BLOCK, Blocks.NETHER_WART_BLOCK);
         offerConversion(consumer, Blocks.CRYING_OBSIDIAN, Blocks.OBSIDIAN);
+        offerConversion(consumer, Blocks.OBSIDIAN, ZeldaBlocks.PERLITE);
         offerConversion(consumer, Blocks.DEEPSLATE, Blocks.TUFF);
         offerConversion(consumer, Blocks.TUFF, Blocks.STONE);
         offerConversion(consumer, Blocks.DEAD_BUSH, Blocks.OAK_SAPLING);

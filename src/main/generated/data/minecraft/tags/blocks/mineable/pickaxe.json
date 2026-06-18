@@ -76,6 +76,10 @@
     "legend_of_steve:fairy_marble_tile_stairs",
     "legend_of_steve:fairy_marble_tile_slab",
     "legend_of_steve:fairy_marble_tile_wall",
+    "legend_of_steve:perlite_bricks",
+    "legend_of_steve:perlite_brick_stairs",
+    "legend_of_steve:perlite_brick_slab",
+    "legend_of_steve:perlite_brick_wall",
     "legend_of_steve:strange_dirt",
     "legend_of_steve:strange_dirt_stairs",
     "legend_of_steve:strange_dirt_slab",
@@ -147,6 +151,8 @@
     "legend_of_steve:chiseled_fairy_marble",
     "legend_of_steve:fairy_marble_pillar",
     "legend_of_steve:smooth_fairy_marble",
+    "legend_of_steve:perlite",
+    "legend_of_steve:perlite_pillar",
     "legend_of_steve:master_ore",
     "legend_of_steve:deepslate_master_ore",
     "legend_of_steve:master_scrap_block",
@@ -179,6 +185,10 @@
     "legend_of_steve:master_brick_slab",
     "legend_of_steve:master_tile",
     "legend_of_steve:master_tile_stairs",
-    "legend_of_steve:master_tile_slab"
+    "legend_of_steve:master_tile_slab",
+    "legend_of_steve:perlite_bricks",
+    "legend_of_steve:perlite_brick_stairs",
+    "legend_of_steve:perlite_brick_slab",
+    "legend_of_steve:perlite_brick_wall"
   ]
 }

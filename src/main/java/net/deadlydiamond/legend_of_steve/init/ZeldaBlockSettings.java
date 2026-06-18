@@ -49,6 +49,12 @@ public class ZeldaBlockSettings {
             .mapColor(MapColor.WHITE)
             .instrument(Instrument.BELL);
 
+    // PEARLITE
+    public static final FabricBlockSettings PEARLITE_SETTINGS = FabricBlockSettings.copyOf(Blocks.OBSIDIAN)
+            .sounds(ZeldaSounds.PERLITE)
+            .mapColor(MapColor.PINK)
+            .instrument(Instrument.BELL);
+
     // DEKU WOOD
     public static final FabricBlockSettings DEKU_WOOD_SETTINGS = FabricBlockSettings.copyOf(Blocks.CHERRY_PLANKS)
             .mapColor(MapColor.BROWN);

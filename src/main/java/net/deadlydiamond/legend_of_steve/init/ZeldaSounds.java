@@ -55,6 +55,10 @@ public class ZeldaSounds {
     public static final SoundEvent CRYSTAL_SWITCH_ON = register("block.crystal_switch.toggle_on");
     public static final SoundEvent CRYSTAL_SWITCH_OFF = register("block.crystal_switch.toggle_off");
     public static final SoundEvent CRYSTAL_SWITCH_AMBIENT = register("block.crystal_switch.ambient");
+    // FAIRY BLOCKS
+    public static final BlockSoundGroup FAIRY_LAMP = registerGroup("fairy_lamp", 1, 1.2f);
+    public static final BlockSoundGroup STARSTONE = registerGroup("starstone", 1, 1);
+    public static final BlockSoundGroup PERLITE = registerGroup("perlite", 1, 1);
     // Crate
     public static final SoundEvent CRATE_OPEN = register("block.crate.open");
     public static final SoundEvent CRATE_CLOSE = register("block.crate.close");
@@ -62,8 +66,6 @@ public class ZeldaSounds {
     public static final SoundEvent WATER_STEP = register("block.water.pondstriding.step");
     public static final SoundEvent LAVA_STEP = register("block.lava.hotstriding.step");
     // Other
-    public static final BlockSoundGroup FAIRY_LAMP = registerGroup("fairy_lamp", 1, 1.2f);
-    public static final BlockSoundGroup STARSTONE = registerGroup("starstone", 1, 1);
     public static final BlockSoundGroup TEKTILES = registerGroup("tektiles", 1, 1);
     public static final BlockSoundGroup DUNGEON_TABLE = registerGroup("dungeon_table", 1, 1);
     // Note Block

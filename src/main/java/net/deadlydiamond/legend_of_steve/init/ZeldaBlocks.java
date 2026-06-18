@@ -4,6 +4,7 @@ import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.blocks.container.MasterBarrelBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.container.single.LootPotBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.container.single.SwordPedestal;
+import net.deadlydiamond.legend_of_steve.common.blocks.deco.MasterOreBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.connected.ConnectedPillarBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.crafting.DungeonTableBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.QuestionBlock;
@@ -103,6 +104,10 @@ public class ZeldaBlocks {
     public static final Block FAIRY_MARBLE_PILLAR = register("fairy_marble_pillar", new PillarBlock(FAIRY_MARBLE_SETTINGS));
     public static final Block SMOOTH_FAIRY_MARBLE = register("smooth_fairy_marble", new Block(FAIRY_MARBLE_SETTINGS));
 
+    public static final Block PERLITE = register("perlite", new Block(FabricBlockSettings.copyOf(PEARLITE_SETTINGS)));
+    public static final IridescentStairSlabWallBlockset PERLITE_BRICKS = new IridescentStairSlabWallBlockset(LegendOfSteve.MOD_ID, "perlite_bricks", PEARLITE_SETTINGS);
+    public static final Block PERLITE_PILLAR = register("perlite_pillar", new PillarBlock(FabricBlockSettings.copyOf(PEARLITE_SETTINGS)));
+
     // DUNGEONCITE
     // TODO: Make this not use a debug achievement!
     public static final DungeonciteBlockset BROWN_DUNGEONCITE = new DungeonciteBlockset(
@@ -110,8 +115,8 @@ public class ZeldaBlocks {
     );
 
     // MASTER
-    public static final Block MASTER_ORE = register("master_ore", new ExperienceDroppingBlock(MASTER_ORE_BLOCK_SETTINGS));
-    public static final Block DEEPSLATE_MASTER_ORE = register("deepslate_master_ore", new ExperienceDroppingBlock(DEEPSLATE_MASTER_ORE_BLOCK_SETTINGS));
+    public static final Block MASTER_ORE = register("master_ore", new MasterOreBlock(MASTER_ORE_BLOCK_SETTINGS));
+    public static final Block DEEPSLATE_MASTER_ORE = register("deepslate_master_ore", new MasterOreBlock(DEEPSLATE_MASTER_ORE_BLOCK_SETTINGS));
 
     public static final Block MASTER_SCRAP_BLOCK = register("master_scrap_block", new Block(MASTER_SCRAP_SETTINGS));
     public static final Block MASTER_BLOCK = register("master_block", new Block(MASTER_BLOCK_SETTINGS), new FabricItemSettings().fireproof());

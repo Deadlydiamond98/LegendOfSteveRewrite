@@ -7,7 +7,6 @@ import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
 import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.FluidBlock;
 import net.minecraft.fluid.FlowableFluid;
 import net.minecraft.registry.tag.FluidTags;
@@ -33,7 +32,7 @@ public abstract class FluidBlockMixin {
             for (Direction direction : FLOW_DIRECTIONS) {
                 BlockPos blockPos = pos.offset(direction.getOpposite());
                 if (world.getFluidState(blockPos).isIn(ZeldaTags.ENCHANTED_SPRING_WATER)) {
-                    Block block = world.getFluidState(pos).isStill() ? Blocks.CRYING_OBSIDIAN : ZeldaBlocks.COBBLED_FAIRY_MARBLE.base;
+                    Block block = world.getFluidState(pos).isStill() ? ZeldaBlocks.PERLITE : ZeldaBlocks.COBBLED_FAIRY_MARBLE.base;
                     world.setBlockState(pos, block.getDefaultState());
                     this.playExtinguishSound(world, pos);
                     return false;

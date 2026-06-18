@@ -75,10 +75,13 @@ public class ZeldaBlockRenderLayers {
                 ZeldaBlocks.FAIRY_MARBLE_BRICKS,
                 ZeldaBlocks.MOSSY_FAIRY_MARBLE_BRICKS,
                 ZeldaBlocks.FAIRY_MARBLE_TILES,
-                ZeldaBlocks.FAIRY_MARBLE_BRAZIER_BLOCKSET
+                ZeldaBlocks.FAIRY_MARBLE_BRAZIER_BLOCKSET,
+                ZeldaBlocks.PERLITE_BRICKS
         );
 
         BlockRenderLayerMap.INSTANCE.putBlocks(ZeldaRenderLayers.getIridescence(),
+                ZeldaBlocks.PERLITE,
+                ZeldaBlocks.PERLITE_PILLAR,
                 ZeldaBlocks.SMOOTH_FAIRY_MARBLE,
                 ZeldaBlocks.CHISELED_FAIRY_MARBLE,
                 ZeldaBlocks.FAIRY_MARBLE_PILLAR,

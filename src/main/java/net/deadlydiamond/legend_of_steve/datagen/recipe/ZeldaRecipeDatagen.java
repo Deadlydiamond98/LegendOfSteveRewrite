@@ -132,6 +132,12 @@ public class ZeldaRecipeDatagen extends FabricRecipeProvider {
 
         offerPillarRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.FAIRY_MARBLE_PILLAR, ZeldaBlocks.FAIRY_MARBLE_BRICKS.base);
         offerStoneCuttingRecipes(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.FAIRY_MARBLE_PILLAR, ZeldaBlocks.FAIRY_MARBLE.base, ZeldaBlocks.POLISHED_FAIRY_MARBLE.base, ZeldaBlocks.FAIRY_MARBLE_BRICKS.base);
+
+
+        // Perlite
+        offerPolishedStoneRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.PERLITE_BRICKS.base, ZeldaBlocks.PERLITE);
+        offerPillarRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.PERLITE_PILLAR, ZeldaBlocks.PERLITE);
+        ZeldaBlocks.PERLITE_BRICKS.generateRecipesStone(consumer, ZeldaBlocks.PERLITE);
     }
 
     private void masterOre(Consumer<RecipeJsonProvider> consumer) {

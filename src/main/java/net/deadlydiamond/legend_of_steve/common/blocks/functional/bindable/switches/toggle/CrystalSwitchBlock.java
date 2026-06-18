@@ -7,6 +7,7 @@ import net.deadlydiamond.legend_of_steve.common.blocks.IModifiedOutlineRender;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.bindable.BoundBlockUtil;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.bindable.switches.ISwitchBlock;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.AbstractBombEntity;
+import net.deadlydiamond.legend_of_steve.init.ZeldaAdvancements;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlockEntities;
 import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
 import net.deadlydiamond98.koalalib.common.blocks.interaction.IHitBlockAction;
@@ -100,7 +101,6 @@ public class CrystalSwitchBlock extends Block implements Waterloggable, ISwitchB
 
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        super.randomDisplayTick(state, world, pos, random);
         if (isBottom(state) && random.nextFloat() < 0.25) {
             createSwitchParticle(world, pos, CrystalSwitchCollisions.ENTIRE_ORB_SHAPE, 0.125f, isOn(world, pos), true);
         }
@@ -149,11 +149,18 @@ public class CrystalSwitchBlock extends Block implements Waterloggable, ISwitchB
         return hitOrb(state, player) ? 0 : super.calcBlockBreakingDelta(state, player, world, pos);
     }
 
+    private void triggerAdvancement(@Nullable Entity entity) {
+        if (entity instanceof PlayerEntity player) {
+            ZeldaAdvancements.TRIGGER_CRYSTAL_SWITCH.trigger(player);
+        }
+    }
+
     // Attack //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public void attack(BlockState blockState, BlockPos blockPos, World world, PlayerEntity playerEntity) {
         if (hitOrb(blockState, playerEntity) && !world.isClient()) {
+            triggerAdvancement(playerEntity);
             triggerSwitch(world, blockPos);
         }
     }
@@ -168,6 +175,7 @@ public class CrystalSwitchBlock extends Block implements Waterloggable, ISwitchB
     @Override
     public void onBombExploded(World world, BlockPos blockPos, Explosion explosion) {
         if (!world.isClient()) {
+            triggerAdvancement(explosion.getCausingEntity());
             triggerSwitch(world, blockPos);
         }
     }
@@ -177,6 +185,7 @@ public class CrystalSwitchBlock extends Block implements Waterloggable, ISwitchB
     @Override
     public void onProjectileHit(World world, BlockState state, BlockHitResult hit, ProjectileEntity projectile) {
         if (hitOrb(state, hit) && !world.isClient()) {
+            triggerAdvancement(projectile.getOwner());
             triggerSwitch(world, hit.getBlockPos());
         }
     }

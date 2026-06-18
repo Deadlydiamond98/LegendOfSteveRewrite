@@ -142,6 +142,11 @@ public class ZeldaCreativeTabs {
         entries.add(ZeldaBlocks.SMOOTH_FAIRY_MARBLE);
         ZeldaBlocks.FAIRY_MARBLE_TILES.addToCreative(entries);
 
+        // PERLITE
+        entries.add(ZeldaBlocks.PERLITE);
+        ZeldaBlocks.PERLITE_BRICKS.addToCreative(entries);
+        entries.add(ZeldaBlocks.PERLITE_PILLAR);
+
         // TILES
         ZeldaBlocks.STONE_TILES.addToCreative(entries);
 

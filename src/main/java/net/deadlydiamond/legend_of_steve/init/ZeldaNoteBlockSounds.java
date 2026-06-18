@@ -51,13 +51,16 @@ public class ZeldaNoteBlockSounds {
                 ZeldaBlocks.COBBLED_FAIRY_MARBLE,
                 ZeldaBlocks.FAIRY_MARBLE_BRICKS,
                 ZeldaBlocks.MOSSY_FAIRY_MARBLE_BRICKS,
-                ZeldaBlocks.FAIRY_MARBLE_TILES
+                ZeldaBlocks.FAIRY_MARBLE_TILES,
+                ZeldaBlocks.PERLITE_BRICKS
         );
         registerNoteBlockSound(ZeldaSounds.PIZZICATO_STRING,
                 ZeldaBlocks.CRACKED_FAIRY_MARBLE_BRICKS,
                 ZeldaBlocks.CHISELED_FAIRY_MARBLE,
                 ZeldaBlocks.FAIRY_MARBLE_PILLAR,
-                ZeldaBlocks.SMOOTH_FAIRY_MARBLE
+                ZeldaBlocks.SMOOTH_FAIRY_MARBLE,
+                ZeldaBlocks.PERLITE,
+                ZeldaBlocks.PERLITE_PILLAR
         );
         // OCARINA /////////////////////////////////////////////////////////////////////////////////////////////////////
         registerNoteBlockSound(ZeldaSounds.OCARINA,

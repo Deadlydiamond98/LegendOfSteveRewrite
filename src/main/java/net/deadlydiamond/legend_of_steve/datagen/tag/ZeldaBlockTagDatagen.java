@@ -49,6 +49,8 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
                 ZeldaBlocks.FAIRY_MARBLE_BRICKS,
                 ZeldaBlocks.MOSSY_FAIRY_MARBLE_BRICKS,
                 ZeldaBlocks.FAIRY_MARBLE_TILES,
+                // Perlite
+                ZeldaBlocks.PERLITE_BRICKS,
                 // STRANGE DIRT
                 ZeldaBlocks.STRANGE_DIRT,
                 ZeldaBlocks.STRANGE_DIRT_BRICKS,
@@ -84,6 +86,9 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
                 ZeldaBlocks.CHISELED_FAIRY_MARBLE,
                 ZeldaBlocks.FAIRY_MARBLE_PILLAR,
                 ZeldaBlocks.SMOOTH_FAIRY_MARBLE,
+                // Perlite
+                ZeldaBlocks.PERLITE,
+                ZeldaBlocks.PERLITE_PILLAR,
                 // Master
                 ZeldaBlocks.MASTER_ORE,
                 ZeldaBlocks.DEEPSLATE_MASTER_ORE,
@@ -138,10 +143,13 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
                 // MASTER
                 ZeldaBlocks.MASTER_PLATE,
                 ZeldaBlocks.MASTER_BRICK,
-                ZeldaBlocks.MASTER_TILE
+                ZeldaBlocks.MASTER_TILE,
+                // Perlite
+                ZeldaBlocks.PERLITE_BRICKS
         );
 
         getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL).add(
+                // MASTER
                 ZeldaBlocks.MASTER_ORE,
                 ZeldaBlocks.DEEPSLATE_MASTER_ORE,
                 ZeldaBlocks.MASTER_SCRAP_BLOCK,
@@ -154,7 +162,11 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
                 ZeldaBlocks.MASTER_DOOR,
                 ZeldaBlocks.MASTER_TRAPDOOR,
                 ZeldaBlocks.MASTER_GIRDER,
-                ZeldaBlocks.MASTER_BARREL
+                ZeldaBlocks.MASTER_BARREL,
+
+                // PERLITE
+                ZeldaBlocks.PERLITE,
+                ZeldaBlocks.PERLITE_PILLAR
         );
 
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL).add(

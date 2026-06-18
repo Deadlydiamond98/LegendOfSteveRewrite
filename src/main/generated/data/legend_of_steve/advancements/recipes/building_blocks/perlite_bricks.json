@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_perlite": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "legend_of_steve:perlite"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "legend_of_steve:perlite_bricks"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_perlite",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "legend_of_steve:perlite_bricks"
+    ]
+  },
+  "sends_telemetry_event": false
+}

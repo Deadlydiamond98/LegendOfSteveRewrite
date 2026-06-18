@@ -27,6 +27,7 @@
     "legend_of_steve:fairy_marble_brick_stairs",
     "legend_of_steve:mossy_fairy_marble_brick_stairs",
     "legend_of_steve:fairy_marble_tile_stairs",
+    "legend_of_steve:perlite_brick_stairs",
     "legend_of_steve:strange_dirt_stairs",
     "legend_of_steve:strange_dirt_brick_stairs",
     "legend_of_steve:waxed_strange_dirt_brick_stairs",
@@ -43,6 +44,7 @@
     "legend_of_steve:blue_tektile_brick_stairs",
     "legend_of_steve:master_plate_stairs",
     "legend_of_steve:master_brick_stairs",
-    "legend_of_steve:master_tile_stairs"
+    "legend_of_steve:master_tile_stairs",
+    "legend_of_steve:perlite_brick_stairs"
   ]
 }

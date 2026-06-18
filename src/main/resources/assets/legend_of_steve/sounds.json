@@ -1582,6 +1582,56 @@
     "subtitle": "subtitles.block.generic.footsteps"
   },
 
+  "block.perlite.break": {
+    "sounds": [
+      "legend_of_steve:block/perlite/break1",
+      "legend_of_steve:block/perlite/break2",
+      "legend_of_steve:block/perlite/break3"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.perlite.fall": {
+    "sounds": [
+      "legend_of_steve:block/perlite/step1",
+      "legend_of_steve:block/perlite/step2",
+      "legend_of_steve:block/perlite/step3",
+      "legend_of_steve:block/perlite/step4",
+      "legend_of_steve:block/perlite/step5",
+      "legend_of_steve:block/perlite/step6"
+    ],
+    "subtitle": "subtitles.block.generic.fall"
+  },
+  "block.perlite.hit": {
+    "sounds": [
+      "legend_of_steve:block/perlite/step1",
+      "legend_of_steve:block/perlite/step2",
+      "legend_of_steve:block/perlite/step3",
+      "legend_of_steve:block/perlite/step4",
+      "legend_of_steve:block/perlite/step5",
+      "legend_of_steve:block/perlite/step6"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.perlite.place": {
+    "sounds": [
+      "legend_of_steve:block/perlite/break1",
+      "legend_of_steve:block/perlite/break2",
+      "legend_of_steve:block/perlite/break3"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.perlite.step": {
+    "sounds": [
+      "legend_of_steve:block/perlite/step1",
+      "legend_of_steve:block/perlite/step2",
+      "legend_of_steve:block/perlite/step3",
+      "legend_of_steve:block/perlite/step4",
+      "legend_of_steve:block/perlite/step5",
+      "legend_of_steve:block/perlite/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+
   "block.crate.open": {
     "sounds": [
       "block/barrel/open1",

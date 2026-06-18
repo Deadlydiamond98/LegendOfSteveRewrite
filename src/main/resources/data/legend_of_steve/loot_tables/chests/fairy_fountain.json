@@ -166,6 +166,22 @@
           ],
           "name": "minecraft:raw_gold",
           "weight": 30
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 10,
+                "min": 3
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "legend_of_steve:perlite",
+          "weight": 30
         }
       ],
       "rolls": {

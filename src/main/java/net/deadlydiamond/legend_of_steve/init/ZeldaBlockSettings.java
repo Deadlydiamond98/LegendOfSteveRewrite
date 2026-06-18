@@ -123,6 +123,7 @@ public class ZeldaBlockSettings {
     public static final FabricBlockSettings RED_SWITCH_BLOCK_SETTINGS = FabricBlockSettings.copyOf(Blocks.CALCITE)
             .mapColor(DyeColor.RED)
             .sounds(ZeldaSounds.CRYSTAL_SWITCH)
+            .instrument(Instrument.BELL)
             .luminance(state -> 7)
             .nonOpaque()
             .allowsSpawning(Blocks::never)

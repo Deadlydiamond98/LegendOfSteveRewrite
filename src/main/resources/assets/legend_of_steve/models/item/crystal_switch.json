@@ -1,3 +1,6 @@
 {
-  "parent": "legend_of_steve:block/crystal_switch"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "legend_of_steve:item/crystal_switch"
+  }
 }

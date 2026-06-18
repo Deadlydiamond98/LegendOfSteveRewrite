@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "legend_of_steve:perlite"
+  },
+  "result": "legend_of_steve:perlite_pillar"
+}

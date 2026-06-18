@@ -41,7 +41,7 @@ public class ZeldaSpringWaterConversionDatagen {
         offerConversion(consumer, Blocks.NETHERRACK, Blocks.COBBLESTONE);
         offerConversion(consumer, Blocks.WARPED_WART_BLOCK, Blocks.NETHER_WART_BLOCK);
         offerConversion(consumer, Blocks.CRYING_OBSIDIAN, Blocks.OBSIDIAN);
-        offerConversion(consumer, Blocks.OBSIDIAN, ZeldaBlocks.PERLITE);
+        offerConversion(consumer, Blocks.OBSIDIAN, ZeldaBlocks.PERLITE, 280);
         offerConversion(consumer, Blocks.DEEPSLATE, Blocks.TUFF);
         offerConversion(consumer, Blocks.TUFF, Blocks.STONE);
         offerConversion(consumer, Blocks.DEAD_BUSH, Blocks.OAK_SAPLING);
@@ -417,11 +417,19 @@ public class ZeldaSpringWaterConversionDatagen {
         offerConversion(exporter, input, new ItemStack(output), "conversion");
     }
 
+    public static void offerConversion(Consumer<RecipeJsonProvider> exporter, ItemConvertible input, ItemConvertible output, int time) {
+        offerConversion(exporter, input, new ItemStack(output), "conversion", time);
+    }
+
     public static void offerDyeConversion(Consumer<RecipeJsonProvider> exporter, ItemConvertible input, ItemConvertible output) {
         offerConversion(exporter, input, new ItemStack(output), "undye");
     }
 
     public static void offerConversion(Consumer<RecipeJsonProvider> exporter, ItemConvertible input, ItemStack output, String type) {
-        SpringWaterRecipeJsonBuilder.offerSpringWaterConversion(exporter, output, input.asItem(), 140, type);
+        offerConversion(exporter, input, output, type, 140);
+    }
+
+    public static void offerConversion(Consumer<RecipeJsonProvider> exporter, ItemConvertible input, ItemStack output, String type, int time) {
+        SpringWaterRecipeJsonBuilder.offerSpringWaterConversion(exporter, output, input.asItem(), time, type);
     }
 }

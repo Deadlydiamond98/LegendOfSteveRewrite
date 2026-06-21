@@ -107,6 +107,7 @@ public class ZeldaBlocks {
     public static final Block PERLITE = register("perlite", new Block(FabricBlockSettings.copyOf(PEARLITE_SETTINGS)));
     public static final IridescentStairSlabWallBlockset PERLITE_BRICKS = new IridescentStairSlabWallBlockset(LegendOfSteve.MOD_ID, "perlite_bricks", PEARLITE_SETTINGS);
     public static final Block PERLITE_PILLAR = register("perlite_pillar", new PillarBlock(FabricBlockSettings.copyOf(PEARLITE_SETTINGS)));
+    public static final Block CHISELED_PERLITE = register("chiseled_perlite", new Block(FabricBlockSettings.copyOf(PEARLITE_SETTINGS)));
 
     // DUNGEONCITE
     // TODO: Make this not use a debug achievement!

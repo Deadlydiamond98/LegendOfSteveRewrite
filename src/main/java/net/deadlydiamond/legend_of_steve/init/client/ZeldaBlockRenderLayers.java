@@ -82,6 +82,7 @@ public class ZeldaBlockRenderLayers {
         BlockRenderLayerMap.INSTANCE.putBlocks(ZeldaRenderLayers.getIridescence(),
                 ZeldaBlocks.PERLITE,
                 ZeldaBlocks.PERLITE_PILLAR,
+                ZeldaBlocks.CHISELED_PERLITE,
                 ZeldaBlocks.SMOOTH_FAIRY_MARBLE,
                 ZeldaBlocks.CHISELED_FAIRY_MARBLE,
                 ZeldaBlocks.FAIRY_MARBLE_PILLAR,

@@ -60,7 +60,8 @@ public class ZeldaNoteBlockSounds {
                 ZeldaBlocks.FAIRY_MARBLE_PILLAR,
                 ZeldaBlocks.SMOOTH_FAIRY_MARBLE,
                 ZeldaBlocks.PERLITE,
-                ZeldaBlocks.PERLITE_PILLAR
+                ZeldaBlocks.PERLITE_PILLAR,
+                ZeldaBlocks.CHISELED_PERLITE
         );
         // OCARINA /////////////////////////////////////////////////////////////////////////////////////////////////////
         registerNoteBlockSound(ZeldaSounds.OCARINA,

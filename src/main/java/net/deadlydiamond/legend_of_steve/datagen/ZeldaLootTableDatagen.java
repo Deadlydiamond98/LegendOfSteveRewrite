@@ -98,6 +98,7 @@ public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
                 ZeldaBlocks.SMOOTH_FAIRY_MARBLE,
                 ZeldaBlocks.PERLITE,
                 ZeldaBlocks.PERLITE_PILLAR,
+                ZeldaBlocks.CHISELED_PERLITE,
                 // MASTER BLOCK
                 ZeldaBlocks.MASTER_SCRAP_BLOCK,
                 ZeldaBlocks.MASTER_BLOCK,

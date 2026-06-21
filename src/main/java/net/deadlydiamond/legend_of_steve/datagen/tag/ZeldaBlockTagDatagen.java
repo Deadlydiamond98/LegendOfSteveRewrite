@@ -89,6 +89,7 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
                 // Perlite
                 ZeldaBlocks.PERLITE,
                 ZeldaBlocks.PERLITE_PILLAR,
+                ZeldaBlocks.CHISELED_PERLITE,
                 // Master
                 ZeldaBlocks.MASTER_ORE,
                 ZeldaBlocks.DEEPSLATE_MASTER_ORE,
@@ -166,7 +167,8 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
 
                 // PERLITE
                 ZeldaBlocks.PERLITE,
-                ZeldaBlocks.PERLITE_PILLAR
+                ZeldaBlocks.PERLITE_PILLAR,
+                ZeldaBlocks.CHISELED_PERLITE
         );
 
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL).add(

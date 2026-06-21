@@ -146,6 +146,7 @@ public class ZeldaCreativeTabs {
         entries.add(ZeldaBlocks.PERLITE);
         ZeldaBlocks.PERLITE_BRICKS.addToCreative(entries);
         entries.add(ZeldaBlocks.PERLITE_PILLAR);
+        entries.add(ZeldaBlocks.CHISELED_PERLITE);
 
         // TILES
         ZeldaBlocks.STONE_TILES.addToCreative(entries);

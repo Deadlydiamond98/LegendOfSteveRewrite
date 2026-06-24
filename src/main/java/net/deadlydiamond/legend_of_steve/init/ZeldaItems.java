@@ -14,6 +14,7 @@ import net.deadlydiamond.legend_of_steve.common.items.projectile.explosive.BombI
 import net.deadlydiamond.legend_of_steve.common.items.projectile.explosive.ChargedBombItem;
 import net.deadlydiamond.legend_of_steve.common.items.sword.BeamSwordItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -108,5 +109,6 @@ public class ZeldaItems {
     }
 
     public static void register() {
+        CompostingChanceRegistry.INSTANCE.add(ZeldaItems.BOMB_FLOWER_SEEDS, 0.85f);
     }
 }

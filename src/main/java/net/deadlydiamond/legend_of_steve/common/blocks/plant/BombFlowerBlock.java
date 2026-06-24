@@ -90,7 +90,15 @@ public class BombFlowerBlock extends HorizontalFacingBlock implements IExplodedI
             }
         }
 
-        return isInNether(world);
+        return false;
+    }
+
+    @Override
+    public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
+        if (world.isReceivingRedstonePower(pos) && state.get(AGE) == 3) {
+            playPrimedSound(world, pos);
+            igniteBomb(world, pos, 1, null);
+        }
     }
 
     @Override
@@ -108,7 +116,7 @@ public class BombFlowerBlock extends HorizontalFacingBlock implements IExplodedI
     private float getGrowChance(ServerWorld world, BlockPos pos) {
         // More Likely to grow if in the nether, less likely to grow with more skylight outside Nether
         float modifier = (world.getLightLevel(LightType.SKY, pos) - 8) / 250.0f;
-        return isInNether(world) ? 0.2f : 0.1f - modifier;
+        return 0.1f - modifier + (isInNether(world) ? 0.05f : 0);
     }
 
     @Override

@@ -6,6 +6,8 @@
     "minecraft:calcite",
     "minecraft:dripstone_block",
     "minecraft:smooth_basalt",
-    "#c:ores"
+    "#c:ores",
+    "legend_of_steve:fairy_marble",
+    "legend_of_steve:brown_dungeoncite"
   ]
 }

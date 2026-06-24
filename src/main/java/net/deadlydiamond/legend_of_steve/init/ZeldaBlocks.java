@@ -241,7 +241,7 @@ public class ZeldaBlocks {
 
         CompostingChanceRegistry.INSTANCE.add(DEKU_SAPLING, 0.3f);
         CompostingChanceRegistry.INSTANCE.add(DEKU_LEAVES, 0.3f);
-        CompostingChanceRegistry.INSTANCE.add(FRUITING_DEKU_LEAVES, 0.3f);
-        CompostingChanceRegistry.INSTANCE.add(LOOT_GRASS, 0.3f);
+        CompostingChanceRegistry.INSTANCE.add(FRUITING_DEKU_LEAVES, 0.65f);
+        CompostingChanceRegistry.INSTANCE.add(LOOT_GRASS, 0.65f);
     }
 }

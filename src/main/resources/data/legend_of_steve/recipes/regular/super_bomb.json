@@ -6,9 +6,14 @@
     "GBG"
   ],
   "key": {
-    "i": {
-      "item": "legend_of_steve:bomb"
-    },
+    "i": [
+      {
+        "item": "legend_of_steve:bomb"
+      },
+      {
+        "item": "legend_of_steve:bomb_flower"
+      }
+    ],
     "B": {
       "item": "legend_of_steve:red_tektite_chitin"
     },

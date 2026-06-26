@@ -13,6 +13,7 @@ public class ZeldaLootTableEvents {
             if (identifier.equals(lootTable)) {
                 builder.modifyPools(builder1 -> {
                     builder1.with(ItemEntry.builder(ZeldaItems.BOMB_FLOWER_SEEDS));
+                    builder1.with(ItemEntry.builder(ZeldaItems.SILENT_PRINCESS_BULB));
                 });
             }
         });

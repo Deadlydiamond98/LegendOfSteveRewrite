@@ -153,6 +153,9 @@ public class ZeldaModelDatagen extends FabricModelProvider {
         ZeldaBlocks.CHISELED_BAMBOO_BRICKS.generateModels(generator);
         ZeldaBlocks.CHISELED_CHERRY_BRICKS.generateModels(generator);
         ZeldaBlocks.CHISELED_DEKU_BRICKS.generateModels(generator);
+
+        // PLANTS //////////////////////////////////////////////////////////////////////////////////////////////////////
+        generator.registerFlowerPotPlant(ZeldaBlocks.SILENT_PRINCESS, ZeldaBlocks.POTTED_SILENT_PRINCESS, BlockStateModelGenerator.TintType.NOT_TINTED);
     }
 
     @Override
@@ -184,7 +187,8 @@ public class ZeldaModelDatagen extends FabricModelProvider {
                 ZeldaItems.COPPER_LOCK,
                 ZeldaItems.IRON_LOCK,
                 ZeldaItems.GOLD_LOCK,
-                ZeldaItems.BOSS_LOCK
+                ZeldaItems.BOSS_LOCK,
+                ZeldaItems.SILENT_PRINCESS_BULB
         );
 
         ItemModelDatagenUtil.registerHandheld(

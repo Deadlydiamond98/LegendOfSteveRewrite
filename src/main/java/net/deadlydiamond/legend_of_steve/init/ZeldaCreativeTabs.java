@@ -61,7 +61,9 @@ public class ZeldaCreativeTabs {
                 ZeldaItems.MASTER_INGOT,
                 // MUSIC DISCS
                 ZeldaItems.DISC_FRAGMENT_LEGEND,
-                ZeldaItems.MUSIC_DISC_LEGEND
+                ZeldaItems.MUSIC_DISC_LEGEND,
+                // PLANTS
+                ZeldaItems.SILENT_PRINCESS_BULB
         );
 
         for (FairyColor value : FairyColor.values()) {
@@ -77,8 +79,9 @@ public class ZeldaCreativeTabs {
         // CRAFTING STATIONS
         entries.add(ZeldaBlocks.DUNGEON_TABLE);
 
-        // LOOT GRASS
+        // PLANTS
         entries.add(ZeldaBlocks.LOOT_GRASS);
+        entries.add(ZeldaBlocks.SILENT_PRINCESS);
 
         // LOOT POTS
         entries.add(ZeldaBlocks.LOOT_POT);

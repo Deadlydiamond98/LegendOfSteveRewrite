@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "legend_of_steve:block/silent_princess_crop_stage1"
+  }
+}

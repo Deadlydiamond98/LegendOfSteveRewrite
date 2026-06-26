@@ -202,8 +202,13 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
                 ZeldaBlocks.DEKU_SAPLING
         );
 
+        getOrCreateTagBuilder(BlockTags.FLOWERS).add(
+                ZeldaBlocks.SILENT_PRINCESS
+        );
+
         getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(
-                ZeldaBlocks.POTTED_DEKU_SAPLING
+                ZeldaBlocks.POTTED_DEKU_SAPLING,
+                ZeldaBlocks.POTTED_SILENT_PRINCESS
         );
 
         // OTHER ///////////////////////////////////////////////////////////////////////////////////////////////////////

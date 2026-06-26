@@ -1,7 +1,6 @@
 package net.deadlydiamond.legend_of_steve.init;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
-import net.deadlydiamond.legend_of_steve.common.items.DebugSwitchItem;
 import net.deadlydiamond.legend_of_steve.common.items.EmeraldShardItem;
 import net.deadlydiamond.legend_of_steve.common.items.FairyBottleItem;
 import net.deadlydiamond.legend_of_steve.common.items.SwitchCore;
@@ -92,8 +91,8 @@ public class ZeldaItems {
             16, ZeldaSounds.MUSIC_DISC_LEGEND, new FabricItemSettings().rarity(Rarity.RARE).maxCount(1), 86
     ));
 
-
-    public static final Item DEBUG_SWITCH = register("aaa_debug_switch", new DebugSwitchItem(new FabricItemSettings()));
+    // PLANTS //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static final Item SILENT_PRINCESS_BULB = register("silent_princess_bulb", new AliasedBlockItem(ZeldaBlocks.SILENT_PRINCESS_CROP, new FabricItemSettings()));
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // REGISTRATION ////////////////////////////////////////////////////////////////////////////////////////////////////

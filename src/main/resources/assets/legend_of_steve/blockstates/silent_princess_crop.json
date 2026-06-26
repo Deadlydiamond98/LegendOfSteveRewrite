@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "legend_of_steve:block/silent_princess_crop_stage0"
+    },
+    "age=1": {
+      "model": "legend_of_steve:block/silent_princess_crop_stage1"
+    },
+    "age=2": {
+      "model": "legend_of_steve:block/silent_princess_crop_stage2"
+    }
+  }
+}

@@ -28,7 +28,10 @@ public class ZeldaBlockRenderLayers {
                 ZeldaBlocks.MASTER_CHAIN,
                 ZeldaBlocks.MASTER_GIRDER,
                 ZeldaBlocks.CRYSTAL_SWITCH,
-                ZeldaBlocks.DUNGEON_TABLE
+                ZeldaBlocks.DUNGEON_TABLE,
+                ZeldaBlocks.SILENT_PRINCESS,
+                ZeldaBlocks.POTTED_SILENT_PRINCESS,
+                ZeldaBlocks.SILENT_PRINCESS_CROP
         );
 
         registerBlockset(RenderLayer.getCutout(),

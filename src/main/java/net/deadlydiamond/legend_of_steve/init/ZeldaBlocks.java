@@ -15,6 +15,7 @@ import net.deadlydiamond.legend_of_steve.common.blocks.functional.bindable.switc
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.BombFlowerBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.FruitingLeavesBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.plant.LootGrassBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.plant.SilentPrincessBlock;
 import net.deadlydiamond.legend_of_steve.common.blocksets.*;
 import net.deadlydiamond.legend_of_steve.common.blocksets.dungeoncite.DungeonciteBlockset;
 import net.deadlydiamond.legend_of_steve.common.blocksets.iridescent.IridescentStairSlabWallBlockset;
@@ -32,6 +33,7 @@ import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.*;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -165,6 +167,11 @@ public class ZeldaBlocks {
     // PLANTS
     public static final Block BOMB_FLOWER = register("bomb_flower", new BombFlowerBlock(BOMB_FLOWER_SETTINGS), false);
     public static final Block LOOT_GRASS = register("loot_grass", new LootGrassBlock(LOOT_GRASS_SETTINGS));
+
+    public static final Block SILENT_PRINCESS_CROP = register("silent_princess_crop", new SilentPrincessBlock(SILENT_PRINCESS_CROP_SETTINGS), false);
+    public static final Block SILENT_PRINCESS = register("silent_princess", new FlowerBlock(StatusEffects.NIGHT_VISION, 5, SILENT_PRINCESS_SETTINGS));
+    public static final Block POTTED_SILENT_PRINCESS = register("potted_silent_princess", Blocks.createFlowerPotBlock(SILENT_PRINCESS), false);
+
     // FLUIDS
     public static final Block ENCHANTED_SPRING_WATER = register("enchanted_spring_water", new FluidBlock(
             ZeldaFluids.ENCHANTED_SPRING_WATER, FabricBlockSettings.copyOf(Blocks.WATER).luminance(state -> 10)), false

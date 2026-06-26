@@ -135,6 +135,13 @@ public class ZeldaBlockSettings {
     public static final FabricBlockSettings BLUE_SWITCH_BLOCK_SETTINGS = FabricBlockSettings.copyOf(RED_SWITCH_BLOCK_SETTINGS)
             .mapColor(DyeColor.BLUE);
 
+    // PLANTS
+
+    public static final FabricBlockSettings SILENT_PRINCESS_SETTINGS = FabricBlockSettings.copyOf(Blocks.TORCHFLOWER)
+            .mapColor(MapColor.BLUE);
+    public static final FabricBlockSettings SILENT_PRINCESS_CROP_SETTINGS = FabricBlockSettings.copyOf(Blocks.TORCHFLOWER_CROP)
+            .mapColor(MapColor.BLUE);
+
     // OTHER
 
     public static final FabricBlockSettings LOOT_POT_SETTINGS = FabricBlockSettings.copyOf(Blocks.DECORATED_POT)

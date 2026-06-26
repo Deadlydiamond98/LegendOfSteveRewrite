@@ -1,6 +1,7 @@
 package net.deadlydiamond.legend_of_steve.datagen.recipe.spring_water;
 
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
+import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.item.ItemConvertible;

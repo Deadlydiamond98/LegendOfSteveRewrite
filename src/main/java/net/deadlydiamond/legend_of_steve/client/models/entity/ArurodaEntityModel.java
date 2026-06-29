@@ -2,7 +2,6 @@ package net.deadlydiamond.legend_of_steve.client.models.entity;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.client.animation.ArurodaEntityAnimations;
-import net.deadlydiamond.legend_of_steve.client.animation.TektiteEntityAnimations;
 import net.deadlydiamond.legend_of_steve.common.entities.living.tektite.ArurodaEntity;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.model.*;

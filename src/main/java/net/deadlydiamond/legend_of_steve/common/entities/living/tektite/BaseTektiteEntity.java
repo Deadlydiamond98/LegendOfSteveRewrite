@@ -7,6 +7,7 @@ import net.deadlydiamond.legend_of_steve.util.entity.ZeldaSpawn;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
+import net.minecraft.entity.ai.control.YawAdjustingLookControl;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.ai.pathing.EntityNavigation;
 import net.minecraft.entity.ai.pathing.PathNodeType;
@@ -44,6 +45,7 @@ public class BaseTektiteEntity extends HostileEntity {
         super(entityType, world);
         this.setPathfindingPenalty(PathNodeType.WATER, 0);
         this.wanderingHopDelay = getRandom().nextBetween(0, 600);
+        this.lookControl = new YawAdjustingLookControl(this, 10);
     }
 
     @Override

@@ -67,7 +67,7 @@ public class LootGrassBlock extends PlantBlock implements IExtendedLootTable, IH
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         super.randomTick(state, world, pos, random);
-        if (random.nextInt(32) == 0) {
+        if (random.nextInt(500) == 0) {
             world.setBlockState(pos, state.with(AGE, 1));
         }
     }

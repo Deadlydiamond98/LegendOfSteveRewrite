@@ -152,6 +152,10 @@ public class ZeldaItemTagDatagen extends FabricTagProvider.ItemTagProvider {
                 ZeldaItems.MUSIC_DISC_LEGEND
         );
 
+        getOrCreateTagBuilder(ItemTags.SMALL_FLOWERS).add(
+                ZeldaBlocks.SILENT_PRINCESS.asItem()
+        );
+
         // LOOT POTS
 
         addBlocksetsToTag(ZeldaTags.LOOT_POTS, ZeldaBlocks.DYED_LOOT_POTS);

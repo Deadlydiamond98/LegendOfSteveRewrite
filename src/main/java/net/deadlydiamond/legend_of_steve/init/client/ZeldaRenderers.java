@@ -4,20 +4,15 @@ import net.deadlydiamond.legend_of_steve.client.models.be.CrystalSwitchOrbModel;
 import net.deadlydiamond.legend_of_steve.client.models.be.lock.ChestLockLeftModel;
 import net.deadlydiamond.legend_of_steve.client.models.be.lock.ChestLockModel;
 import net.deadlydiamond.legend_of_steve.client.models.be.lock.ChestLockRightModel;
-import net.deadlydiamond.legend_of_steve.client.models.entity.ArurodaEntityModel;
-import net.deadlydiamond.legend_of_steve.client.models.entity.BombEntityModel;
-import net.deadlydiamond.legend_of_steve.client.models.entity.FairyEntityModel;
-import net.deadlydiamond.legend_of_steve.client.models.entity.TektiteEntityModel;
+import net.deadlydiamond.legend_of_steve.client.models.entity.*;
 import net.deadlydiamond.legend_of_steve.client.models.feature.QuiverModel;
 import net.deadlydiamond.legend_of_steve.client.rendering.block.*;
 import net.deadlydiamond.legend_of_steve.client.rendering.entity.PushableBlockEntityRenderer;
-import net.deadlydiamond.legend_of_steve.client.rendering.entity.living.ArurodaEntityRenderer;
-import net.deadlydiamond.legend_of_steve.client.rendering.entity.living.BlueTektiteEntityRenderer;
-import net.deadlydiamond.legend_of_steve.client.rendering.entity.living.RedTektiteEntityRenderer;
+import net.deadlydiamond.legend_of_steve.client.rendering.entity.living.*;
+import net.deadlydiamond.legend_of_steve.client.rendering.entity.living.bombfish.BombfishEntityRenderer;
 import net.deadlydiamond.legend_of_steve.client.rendering.entity.projectile.BombEntityRenderer;
 import net.deadlydiamond.legend_of_steve.client.rendering.entity.projectile.SwordBeamEntityRenderer;
 import net.deadlydiamond.legend_of_steve.client.rendering.entity.projectile.ThrownPotEntityRenderer;
-import net.deadlydiamond.legend_of_steve.client.rendering.entity.living.FairyEntityRenderer;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlockEntities;
 import net.deadlydiamond.legend_of_steve.init.ZeldaEntityTypes;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
@@ -33,6 +28,7 @@ public class ZeldaRenderers {
     }
 
     private static void registerEntityRenderers() {
+        EntityRendererRegistry.register(ZeldaEntityTypes.BOMBFISH, BombfishEntityRenderer::new);
         EntityRendererRegistry.register(ZeldaEntityTypes.BOMB, BombEntityRenderer::new);
         EntityRendererRegistry.register(ZeldaEntityTypes.CRATE, PushableBlockEntityRenderer::new);
         EntityRendererRegistry.register(ZeldaEntityTypes.DEKU_NUT, FlyingItemEntityRenderer::new);
@@ -54,6 +50,7 @@ public class ZeldaRenderers {
 
     private static void registerModelLayers() {
         EntityModelLayerRegistry.registerModelLayer(ArurodaEntityModel.LAYER_LOCATION, ArurodaEntityModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(BombfishEntityModel.LAYER_LOCATION, BombfishEntityModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(BombEntityModel.LAYER_LOCATION, BombEntityModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(FairyEntityModel.LAYER_LOCATION, FairyEntityModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(TektiteEntityModel.LAYER_LOCATION, TektiteEntityModel::getTexturedModelData);

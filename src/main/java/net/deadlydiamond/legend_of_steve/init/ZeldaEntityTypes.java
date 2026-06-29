@@ -3,6 +3,7 @@ package net.deadlydiamond.legend_of_steve.init;
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.entities.block.CrateEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.block.PushableBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.entities.living.fish.BombfishEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.living.tektite.ArurodaEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.living.tektite.BaseTektiteEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.living.fairy.FairyEntity;
@@ -45,6 +46,10 @@ public class ZeldaEntityTypes {
             SpawnGroup.MONSTER, ArurodaEntity::attributes, ArurodaEntity.spawnRestriction(),
             0x0d0e25, 0x602182
     );
+    public static final EntityType<BombfishEntity> BOMBFISH = registerMob("bombfish", BombfishEntity.class, 0.85f, 0.6f,
+            SpawnGroup.MONSTER, BombfishEntity::attributes, BombfishEntity.spawnRestriction(),
+            0x03747a, 0xbb2e2e
+    );
     public static final EntityType<FairyEntity> FAIRY = registerMob("fairy", FairyEntity.class, 0.4f,
             SpawnGroup.AMBIENT, FairyEntity::attributes, FairyEntity.spawnRestriction(),
             0xffffff, 0x5d8fc2
@@ -70,7 +75,14 @@ public class ZeldaEntityTypes {
             String name, Class<T> entityClass, float size, SpawnGroup spawnGroup, Supplier<DefaultAttributeContainer.Builder> attributes,
             ZeldaSpawn spawn, int primaryColor, int secondaryColor
     ) {
-        EntityType<T> type = register(name, builder(entityClass, size).spawnGroup(spawnGroup).defaultAttributes(attributes).spawnRestriction(spawn));
+        return registerMob(name, entityClass, size, size, spawnGroup, attributes, spawn, primaryColor, secondaryColor);
+    }
+
+    public static <T extends MobEntity> EntityType<T> registerMob(
+            String name, Class<T> entityClass, float x, float y, SpawnGroup spawnGroup, Supplier<DefaultAttributeContainer.Builder> attributes,
+            ZeldaSpawn spawn, int primaryColor, int secondaryColor
+    ) {
+        EntityType<T> type = register(name, builder(entityClass, x).dimensions(x, y).spawnGroup(spawnGroup).defaultAttributes(attributes).spawnRestriction(spawn));
         registerEgg(name, type, primaryColor, secondaryColor);
         return type;
     }

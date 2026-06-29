@@ -409,11 +409,13 @@
   "block.legend_of_steve.blue_switch_slab": "Blue Switch Slab",
 
   "item.legend_of_steve.aruroda_spawn_egg": "Aruroda Spawn Egg",
+  "item.legend_of_steve.bombfish_spawn_egg": "Bombfish Spawn Egg",
   "item.legend_of_steve.fairy_spawn_egg": "Fairy Spawn Egg",
   "item.legend_of_steve.blue_tektite_spawn_egg": "Blue Tektite Spawn Egg",
   "item.legend_of_steve.red_tektite_spawn_egg": "Red Tektite Spawn Egg",
 
   "entity.legend_of_steve.aruroda": "Aruroda",
+  "entity.legend_of_steve.bombfish": "Bombfish",
   "entity.legend_of_steve.bomb": "Bomb",
   "entity.legend_of_steve.blue_tektite": "Blue Tektite",
   "entity.legend_of_steve.crate": "Crate",

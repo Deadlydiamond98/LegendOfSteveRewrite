@@ -4,14 +4,13 @@ import net.deadlydiamond.legend_of_steve.client.models.entity.BombEntityModel;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.BombEntity;
 import net.deadlydiamond.legend_of_steve.common.items.bag.BombBagItem;
 import net.deadlydiamond.legend_of_steve.common.items.projectile.explosive.ICharged;
-import net.deadlydiamond.legend_of_steve.util.rendering.BombRenderHelper;
+import net.deadlydiamond.legend_of_steve.client.rendering.entity.projectile.bomb.BombRenderHelper;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.feature.HeadFeatureRenderer;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
-import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.client.render.item.HeldItemRenderer;
 import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.util.math.MatrixStack;
@@ -29,7 +28,8 @@ public class BombHeldItemRenderer extends CustomHeldItemRenderer {
         if (entity instanceof PlayerEntity player) {
             cooldown = player.getItemCooldownManager().isCoolingDown(itemStack.getItem());
         }
-        return BombRenderHelper.canShowNicerBombModel(itemStack, entity) && !entity.isInSwimmingPose() && !entity.isUsingItem() && !cooldown;
+        return BombRenderHelper.canShowNicerBombModel(itemStack, entity) &&
+                !entity.isInSwimmingPose() && !entity.isUsingItem() && !cooldown;
     }
 
     @Override

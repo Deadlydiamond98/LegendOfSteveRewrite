@@ -17,7 +17,8 @@ public class BombfishIgniteGoal extends Goal {
     @Override
     public boolean canStart() {
         LivingEntity livingEntity = this.bombfish.getTarget();
-        return this.bombfish.chasingTarget && !this.bombfish.isPrimed() && livingEntity != null && this.bombfish.squaredDistanceTo(livingEntity) < 9.0;
+        boolean canTarget = this.bombfish.chasingTarget || !this.bombfish.isTouchingWater();
+        return canTarget && !this.bombfish.isPrimed() && livingEntity != null && this.bombfish.squaredDistanceTo(livingEntity) < 9.0;
     }
 
     @Override

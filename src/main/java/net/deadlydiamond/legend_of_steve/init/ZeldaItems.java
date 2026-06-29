@@ -11,6 +11,7 @@ import net.deadlydiamond.legend_of_steve.common.items.locking.LockItem;
 import net.deadlydiamond.legend_of_steve.common.items.projectile.DekuNutItem;
 import net.deadlydiamond.legend_of_steve.common.items.projectile.explosive.BombItem;
 import net.deadlydiamond.legend_of_steve.common.items.projectile.explosive.ChargedBombItem;
+import net.deadlydiamond.legend_of_steve.common.items.projectile.explosive.WaterBombItem;
 import net.deadlydiamond.legend_of_steve.common.items.sword.BeamSwordItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
@@ -28,12 +29,11 @@ public class ZeldaItems {
     public static final Item MAGIC_SWORD = register("magic_sword", new BeamSwordItem(ZeldaToolMaterials.MAGIC_SWORD, 3, -2.4F, new FabricItemSettings()));
 
     // BOMB ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public static final Item BOMB_FLOWER_SEEDS = register("bomb_flower_seeds", new BlockItem(ZeldaBlocks.BOMB_FLOWER, new FabricItemSettings()));
-
     public static final Item BOMB_FLOWER = register("bomb_flower", new BombItem(new FabricItemSettings().maxCount(16), ZeldaEntityTypes.BOMB,  50, 3));
     public static final Item CHARGED_BOMB_FLOWER = register("charged_bomb_flower", new ChargedBombItem(new FabricItemSettings().rarity(Rarity.RARE).maxCount(16), ZeldaEntityTypes.BOMB,  50, 5));
     public static final Item BOMB = register("bomb", new BombItem(new FabricItemSettings().maxCount(16), ZeldaEntityTypes.BOMB,  50, 3));
     public static final Item SUPER_BOMB = register("super_bomb", new BombItem(new FabricItemSettings().maxCount(16), ZeldaEntityTypes.BOMB,  85, 5));
+    public static final Item WATER_BOMB = register("bombfish", new WaterBombItem(new FabricItemSettings().maxCount(16)));
 
     public static final Item DEKU_NUT = register("deku_nut", new DekuNutItem(new FabricItemSettings().maxCount(16)));
 
@@ -92,11 +92,16 @@ public class ZeldaItems {
     ));
 
     // PLANTS //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static final Item BOMB_FLOWER_SEEDS = register("bomb_flower_seeds", new BlockItem(ZeldaBlocks.BOMB_FLOWER, new FabricItemSettings()));
     public static final Item SILENT_PRINCESS_BULB = register("silent_princess_bulb", new AliasedBlockItem(ZeldaBlocks.SILENT_PRINCESS_CROP, new FabricItemSettings()));
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // REGISTRATION ////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public static Item registerBomb(String id, int fuse, float power) {
+        return register(id, new BombItem(new FabricItemSettings().maxCount(16), ZeldaEntityTypes.BOMB, fuse, power));
+    }
 
     public static Item registerQuiver(String id, int maxStorage, ArmorMaterial material, SoundEvent equipSound) {
         FabricItemSettings settings = new FabricItemSettings();
@@ -109,5 +114,6 @@ public class ZeldaItems {
 
     public static void register() {
         CompostingChanceRegistry.INSTANCE.add(ZeldaItems.BOMB_FLOWER_SEEDS, 0.85f);
+        CompostingChanceRegistry.INSTANCE.add(ZeldaItems.BOMB_FLOWER, 0.3f);
     }
 }

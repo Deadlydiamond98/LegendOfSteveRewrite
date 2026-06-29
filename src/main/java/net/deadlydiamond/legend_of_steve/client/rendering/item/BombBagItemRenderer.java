@@ -1,12 +1,11 @@
 package net.deadlydiamond.legend_of_steve.client.rendering.item;
 
 import net.deadlydiamond.legend_of_steve.common.items.bag.BombBagItem;
-import net.deadlydiamond.legend_of_steve.common.items.projectile.explosive.IGuiRotation;
+import net.deadlydiamond.legend_of_steve.common.items.projectile.explosive.IBombBagDisplay;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
-import net.minecraft.client.render.VertexConsumers;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.render.model.BakedModel;
 import net.minecraft.client.render.model.json.ModelTransformationMode;
@@ -40,9 +39,12 @@ public class BombBagItemRenderer {
         matrices.push();
 
         matrices.translate(0.5, 0.5 + (0.0625 * 1), 0);
+        if (bombStack.getItem() instanceof IBombBagDisplay display) {
+            matrices.translate(display.bagXOffset() * 0.0625, display.bagYOffset() * 0.0625, 0);
+        }
         
-        if (bombStack.getItem() instanceof IGuiRotation guiRotation) {
-            matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(guiRotation.getGUIRotation()));
+        if (bombStack.getItem() instanceof IBombBagDisplay display) {
+            matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(display.bagGUIRotation()));
         }
         
         client.getItemRenderer().renderItem(

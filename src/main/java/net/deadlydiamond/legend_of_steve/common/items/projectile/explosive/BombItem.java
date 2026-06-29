@@ -34,16 +34,17 @@ import org.jetbrains.annotations.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BombItem extends CustomProjectileItem implements IAdvancedItemProperties, IZeldaBomb, IGuiRotation {
+public class BombItem extends CustomProjectileItem implements IAdvancedItemProperties, IZeldaBomb, IBombBagDisplay {
     public static final Map<Item, Integer> COOLDOWNS = new HashMap<>();
     private final TagKey<Block> breakable;
-    private final int fuse, power;
+    private final int fuse;
+    private final float power;
 
-    public BombItem(Settings settings, EntityType<?> type, int fuse, int power) {
+    public BombItem(Settings settings, EntityType<?> type, int fuse, float power) {
         this(settings, type, ZeldaTags.BOMB_BREAKABLE, fuse, power);
     }
 
-    public BombItem(Settings settings, EntityType<?> type, TagKey<Block> breakable, int fuse, int power) {
+    public BombItem(Settings settings, EntityType<?> type, TagKey<Block> breakable, int fuse, float power) {
         super(settings, type);
         this.breakable = breakable;
         this.fuse = fuse;

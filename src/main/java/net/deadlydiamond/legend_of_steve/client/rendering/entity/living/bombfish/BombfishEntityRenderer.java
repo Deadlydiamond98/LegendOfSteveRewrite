@@ -10,9 +10,16 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RotationAxis;
 
+import java.util.List;
+
 public class BombfishEntityRenderer extends MobEntityRenderer<BombfishEntity, BombfishEntityModel<BombfishEntity>> {
 
-    private static final Identifier TEXTURE = LegendOfSteve.id("textures/entity/bombfish/teal_red_bombfish.png");
+    private static final List<Identifier> TEXTURES = List.of(
+            addTexture("teal_red"), addTexture("teal_orange"),
+            addTexture("cyan_red"), addTexture("cyan_orange"),
+            addTexture("blue_red"), addTexture("blue_orange"),
+            addTexture("green_red"), addTexture("green_orange")
+    );
 
     public BombfishEntityRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new BombfishEntityModel<>(ctx.getPart(BombfishEntityModel.LAYER_LOCATION)), 0.15f);
@@ -46,6 +53,10 @@ public class BombfishEntityRenderer extends MobEntityRenderer<BombfishEntity, Bo
 
     @Override
     public Identifier getTexture(BombfishEntity entity) {
-        return TEXTURE;
+        return TEXTURES.get(entity.getColor());
+    }
+
+    private static Identifier addTexture(String type) {
+        return LegendOfSteve.id("textures/entity/bombfish/" + type + "_bombfish.png");
     }
 }

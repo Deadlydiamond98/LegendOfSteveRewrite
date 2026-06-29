@@ -1,10 +1,9 @@
-package net.deadlydiamond.legend_of_steve.client.rendering.entity.projectile;
+package net.deadlydiamond.legend_of_steve.client.rendering.entity.projectile.bomb;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.client.models.entity.BombEntityModel;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.BombEntity;
 import net.deadlydiamond.legend_of_steve.init.client.ZeldaRenderLayers;
-import net.deadlydiamond.legend_of_steve.util.rendering.BombRenderHelper;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;

@@ -25,6 +25,7 @@ public class ZeldaCreativeTabs {
                 ZeldaItems.CHARGED_BOMB_FLOWER,
                 ZeldaItems.BOMB,
                 ZeldaItems.SUPER_BOMB,
+                ZeldaItems.WATER_BOMB,
                 // NUT
                 ZeldaItems.DEKU_NUT,
                 // BOMB BAGS

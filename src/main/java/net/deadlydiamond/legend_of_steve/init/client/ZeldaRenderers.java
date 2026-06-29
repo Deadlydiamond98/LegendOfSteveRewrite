@@ -10,7 +10,7 @@ import net.deadlydiamond.legend_of_steve.client.rendering.block.*;
 import net.deadlydiamond.legend_of_steve.client.rendering.entity.PushableBlockEntityRenderer;
 import net.deadlydiamond.legend_of_steve.client.rendering.entity.living.*;
 import net.deadlydiamond.legend_of_steve.client.rendering.entity.living.bombfish.BombfishEntityRenderer;
-import net.deadlydiamond.legend_of_steve.client.rendering.entity.projectile.BombEntityRenderer;
+import net.deadlydiamond.legend_of_steve.client.rendering.entity.projectile.bomb.BombEntityRenderer;
 import net.deadlydiamond.legend_of_steve.client.rendering.entity.projectile.SwordBeamEntityRenderer;
 import net.deadlydiamond.legend_of_steve.client.rendering.entity.projectile.ThrownPotEntityRenderer;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlockEntities;
@@ -39,6 +39,7 @@ public class ZeldaRenderers {
         EntityRendererRegistry.register(ZeldaEntityTypes.PUSHABLE_BLOCK, PushableBlockEntityRenderer::new);
         EntityRendererRegistry.register(ZeldaEntityTypes.SWORD_BEAM, SwordBeamEntityRenderer::new);
         EntityRendererRegistry.register(ZeldaEntityTypes.THROWN_POT, ThrownPotEntityRenderer::new);
+        EntityRendererRegistry.register(ZeldaEntityTypes.WATER_BOMB, BombEntityRenderer::new);
     }
 
     private static void registerBlockEntityRenderers() {

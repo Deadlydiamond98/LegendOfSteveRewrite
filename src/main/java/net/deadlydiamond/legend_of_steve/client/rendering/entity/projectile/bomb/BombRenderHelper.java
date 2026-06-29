@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.util.rendering;
+package net.deadlydiamond.legend_of_steve.client.rendering.entity.projectile.bomb;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.AbstractBombEntity;
@@ -57,17 +57,17 @@ public class BombRenderHelper {
     }
 
     public static boolean isBombTypeItem(ItemStack itemStack) {
-        return isBomb(itemStack) || isBombBagWithBomb(itemStack);
+        return isValidBomb(itemStack) || isBombBagWithValidBomb(itemStack);
     }
 
-    public static boolean isBomb(ItemStack itemStack) {
-        return itemStack.getItem() instanceof BombItem && itemStack.isIn(ZeldaTags.BOMBS);
+    public static boolean isValidBomb(ItemStack itemStack) {
+        return itemStack.getItem() instanceof BombItem && itemStack.isIn(ZeldaTags.BOMBS) && itemStack.isIn(ZeldaTags.HELD_OVER_HEAD);
     }
 
-    public static boolean isBombBagWithBomb(ItemStack itemStack) {
+    public static boolean isBombBagWithValidBomb(ItemStack itemStack) {
         if (itemStack.getItem() instanceof BombBagItem) {
             ItemStack bombStack = BombBagItem.getFirstStack(itemStack);
-            return isBomb(bombStack);
+            return isValidBomb(bombStack);
         }
         return false;
     }

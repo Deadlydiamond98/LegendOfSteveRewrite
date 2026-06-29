@@ -1,12 +1,11 @@
 package net.deadlydiamond.legend_of_steve.client.rendering.player.armpos;
 
 import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
-import net.deadlydiamond.legend_of_steve.util.rendering.BombRenderHelper;
+import net.deadlydiamond.legend_of_steve.client.rendering.entity.projectile.bomb.BombRenderHelper;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.ZombieEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
 

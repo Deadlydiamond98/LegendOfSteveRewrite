@@ -36,6 +36,7 @@ public class BombfishEntity extends HostileFishEntity implements IZeldaBomb {
     private static final TrackedData<Boolean> PRIMED = DataTracker.registerData(BombfishEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private static final TrackedData<Integer> FUSE = DataTracker.registerData(BombfishEntity.class, TrackedDataHandlerRegistry.INTEGER);
     private static final TrackedData<Integer> LIT_TIME = DataTracker.registerData(BombfishEntity.class, TrackedDataHandlerRegistry.INTEGER);
+    private static final TrackedData<Integer> COLOR = DataTracker.registerData(BombfishEntity.class, TrackedDataHandlerRegistry.INTEGER);
     public static final int MAX_FUSE = 60;
 
     public boolean chasingTarget;
@@ -81,6 +82,7 @@ public class BombfishEntity extends HostileFishEntity implements IZeldaBomb {
     @Override
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
         setPitch(0);
+        setColor(world.getRandom().nextInt(8));
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
     }
 
@@ -132,18 +134,29 @@ public class BombfishEntity extends HostileFishEntity implements IZeldaBomb {
         this.dataTracker.startTracking(FUSE, MAX_FUSE);
         this.dataTracker.startTracking(PRIMED, false);
         this.dataTracker.startTracking(LIT_TIME, 0);
+        this.dataTracker.startTracking(COLOR, 0);
     }
 
     public void writeCustomDataToNbt(NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);
         nbt.putInt("Fuse", getFuse());
         nbt.putBoolean("Primed", isPrimed());
+        nbt.putInt("Color", getColor());
     }
 
     public void readCustomDataFromNbt(NbtCompound nbt) {
         super.readCustomDataFromNbt(nbt);
         setFuse(nbt.getInt("Fuse"));
         setPrimed(nbt.getBoolean("Primed"));
+        setColor(nbt.getInt("Color"));
+    }
+
+    public int getColor() {
+        return this.dataTracker.get(COLOR);
+    }
+
+    public void setColor(int color) {
+        this.dataTracker.set(COLOR, color);
     }
 
     @Override

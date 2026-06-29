@@ -13,6 +13,7 @@ import net.deadlydiamond.legend_of_steve.common.entities.projectile.DekuNutProje
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.SwordBeamEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.ThrownPotEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.BombEntity;
+import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.WaterBombEntity;
 import net.deadlydiamond.legend_of_steve.util.entity.ZeldaEntityTypeBuilder;
 import net.deadlydiamond.legend_of_steve.util.entity.ZeldaSpawn;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -40,6 +41,7 @@ public class ZeldaEntityTypes {
     public static final EntityType<DekuNutProjectileEntity> DEKU_NUT = register("deku_nut", DekuNutProjectileEntity.class, 0.5f);
     public static final EntityType<SwordBeamEntity> SWORD_BEAM = register("sword_beam", SwordBeamEntity.class, 0.5f);
     public static final EntityType<ThrownPotEntity> THROWN_POT = register("thrown_pot", ThrownPotEntity.class, 0.5f);
+    public static final EntityType<WaterBombEntity> WATER_BOMB = register("water_bomb", WaterBombEntity.class, 0.5f);
 
     // LIVING ENTITIES /////////////////////////////////////////////////////////////////////////////////////////////////
     public static final EntityType<ArurodaEntity> ARURODA = registerMob("aruroda", ArurodaEntity.class, 0.9f,

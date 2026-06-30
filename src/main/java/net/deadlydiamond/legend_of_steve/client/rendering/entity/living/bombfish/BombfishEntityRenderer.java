@@ -1,8 +1,8 @@
 package net.deadlydiamond.legend_of_steve.client.rendering.entity.living.bombfish;
 
-import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.client.models.entity.BombfishEntityModel;
 import net.deadlydiamond.legend_of_steve.common.entities.living.fish.BombfishEntity;
+import net.deadlydiamond.legend_of_steve.common.entities.living.fish.BombfishVarients;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.util.math.MatrixStack;
@@ -10,21 +10,13 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RotationAxis;
 
-import java.util.List;
-
 public class BombfishEntityRenderer extends MobEntityRenderer<BombfishEntity, BombfishEntityModel<BombfishEntity>> {
-
-    private static final List<Identifier> TEXTURES = List.of(
-            addTexture("teal_red"), addTexture("teal_orange"),
-            addTexture("cyan_red"), addTexture("cyan_orange"),
-            addTexture("blue_red"), addTexture("blue_orange"),
-            addTexture("green_red"), addTexture("green_orange")
-    );
 
     public BombfishEntityRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new BombfishEntityModel<>(ctx.getPart(BombfishEntityModel.LAYER_LOCATION)), 0.15f);
         this.addFeature(new BombfishEyesFeatureRenderer<>(this));
         this.addFeature(new BombfishWarningFlashRenderer(this));
+        this.addFeature(new BombfishChargeFeatureRenderer(this, ctx.getModelLoader()));
     }
 
     @Override
@@ -53,10 +45,6 @@ public class BombfishEntityRenderer extends MobEntityRenderer<BombfishEntity, Bo
 
     @Override
     public Identifier getTexture(BombfishEntity entity) {
-        return TEXTURES.get(entity.getColor());
-    }
-
-    private static Identifier addTexture(String type) {
-        return LegendOfSteve.id("textures/entity/bombfish/" + type + "_bombfish.png");
+        return BombfishVarients.TEXTURES.get(entity.getColor());
     }
 }

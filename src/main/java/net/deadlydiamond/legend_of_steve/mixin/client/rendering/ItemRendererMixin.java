@@ -6,14 +6,10 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.deadlydiamond.legend_of_steve.client.rendering.item.BombBagItemRenderer;
-import net.deadlydiamond.legend_of_steve.common.blocks.deco.glowing.IGlowingBlock;
-import net.deadlydiamond.legend_of_steve.common.items.projectile.explosive.ICharged;
+import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.ICharged;
 import net.deadlydiamond.legend_of_steve.common.items.bag.BombBagItem;
-import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
 import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
 import net.deadlydiamond.legend_of_steve.init.client.ZeldaRenderLayers;
-import net.deadlydiamond.legend_of_steve.init.client.ZeldaShaders;
-import net.deadlydiamond98.koalalib.client.PostProcessingRegistry;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.*;
 import net.minecraft.client.render.item.ItemRenderer;
@@ -62,7 +58,7 @@ public abstract class ItemRendererMixin {
     private boolean legend_of_steve$renderItem(ItemRenderer instance, BakedModel model, ItemStack stack, int light, int overlay, MatrixStack matrices, VertexConsumer vertices, @Local(argsOnly = true) VertexConsumerProvider vertexConsumers, @Local ModelTransformationMode renderMode) {
 
         // RENDERS CHARGED OVERLAY
-        if (stack.getItem() instanceof ICharged) {
+        if (stack.getItem() instanceof ICharged iCharged && iCharged.isCharged()) {
             matrices.push();
             VertexConsumer vertexConsumer = VertexConsumers.union(vertexConsumers.getBuffer(ZeldaRenderLayers.getChargedGlint()), vertices);
             this.renderBakedItemModel(model, stack, light, overlay, matrices, vertexConsumer);

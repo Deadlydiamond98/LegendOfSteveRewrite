@@ -111,6 +111,8 @@ public class ZeldaSounds {
     public static final SoundEvent BOMB_EXTINGUISH = register("entity.bomb.extinguish");
     public static final SoundEvent BOMB_PRIMED = register("entity.bomb.primed");
     public static final SoundEvent BOMB_THROWN = register("entity.bomb.thrown");
+    // Bombfish
+    public static final SoundEvent BOMBFISH_FLOP = register("entity.bombfish.flop");
     // Fairy
     public static final SoundEvent FAIRY_DEATH = register("entity.fairy.death");
     public static final SoundEvent FAIRY_HURT = register("entity.fairy.hurt");

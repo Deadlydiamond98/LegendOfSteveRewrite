@@ -41,7 +41,7 @@ public class ZeldaEntityTypes {
     public static final EntityType<DekuNutProjectileEntity> DEKU_NUT = register("deku_nut", DekuNutProjectileEntity.class, 0.5f);
     public static final EntityType<SwordBeamEntity> SWORD_BEAM = register("sword_beam", SwordBeamEntity.class, 0.5f);
     public static final EntityType<ThrownPotEntity> THROWN_POT = register("thrown_pot", ThrownPotEntity.class, 0.5f);
-    public static final EntityType<WaterBombEntity> WATER_BOMB = register("water_bomb", WaterBombEntity.class, 0.5f);
+    public static final EntityType<WaterBombEntity> WATER_BOMB = register("water_bomb", WaterBombEntity.class, 0.85f, 0.5f);
 
     // LIVING ENTITIES /////////////////////////////////////////////////////////////////////////////////////////////////
     public static final EntityType<ArurodaEntity> ARURODA = registerMob("aruroda", ArurodaEntity.class, 0.9f,
@@ -90,7 +90,11 @@ public class ZeldaEntityTypes {
     }
 
     public static <T extends Entity> EntityType<T> register(String name, Class<T> entityClass, float size) {
-        return register(name, builder(entityClass, size));
+        return register(name, entityClass, size, size);
+    }
+
+    public static <T extends Entity> EntityType<T> register(String name, Class<T> entityClass, float x, float y) {
+        return register(name, builder(entityClass, x).dimensions(x, y));
     }
 
     public static <T extends Entity> EntityType<T> register(String name, ZeldaEntityTypeBuilder<T> builder) {

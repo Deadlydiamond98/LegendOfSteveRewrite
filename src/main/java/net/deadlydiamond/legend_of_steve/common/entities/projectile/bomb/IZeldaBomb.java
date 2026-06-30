@@ -11,19 +11,23 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
 import net.minecraft.world.explosion.ExplosionBehavior;
 
-public interface IZeldaBomb {
+public interface IZeldaBomb extends ICharged {
     float getPower();
+
+    default World.ExplosionSourceType getExplosionType() {
+        return World.ExplosionSourceType.TNT;
+    }
 
     default void explode(Entity entity) {
         World world = entity.getWorld();
-        float power = getPower();
+        float power = isCharged() ? getPower() + 3 : getPower();
 
-        if (world instanceof ServerWorld server) {
+        if (world instanceof ServerWorld) {
             world.createExplosion(
                     entity, null,
                     getExplosionBehavior(world),
                     entity.getX(), entity.getY(), entity.getZ(), power,
-                    false, World.ExplosionSourceType.TNT
+                    false, getExplosionType()
             );
 
             // TODO: Add Text Particle
@@ -31,7 +35,7 @@ public interface IZeldaBomb {
     }
 
     default ExplosionBehavior getExplosionBehavior(World world) {
-        return new BombExplosionBehavior(world, this::canBreakBlock);
+        return this.isCharged() ? null : new BombExplosionBehavior(world, this::canBreakBlock);
     }
 
     default TagKey<Block> getBreakableBlocks() {

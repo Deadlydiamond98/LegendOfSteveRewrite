@@ -33,7 +33,8 @@ public class ZeldaItems {
     public static final Item CHARGED_BOMB_FLOWER = register("charged_bomb_flower", new ChargedBombItem(new FabricItemSettings().rarity(Rarity.RARE).maxCount(16), ZeldaEntityTypes.BOMB,  50, 5));
     public static final Item BOMB = register("bomb", new BombItem(new FabricItemSettings().maxCount(16), ZeldaEntityTypes.BOMB,  50, 3));
     public static final Item SUPER_BOMB = register("super_bomb", new BombItem(new FabricItemSettings().maxCount(16), ZeldaEntityTypes.BOMB,  85, 5));
-    public static final Item WATER_BOMB = register("bombfish", new WaterBombItem(new FabricItemSettings().maxCount(16)));
+    public static final Item WATER_BOMB = register("bombfish", new WaterBombItem(new FabricItemSettings().maxCount(16), false));
+    public static final Item CHARGED_WATER_BOMB = register("charged_bombfish", new WaterBombItem(new FabricItemSettings().rarity(Rarity.RARE).maxCount(16), true));
 
     public static final Item DEKU_NUT = register("deku_nut", new DekuNutItem(new FabricItemSettings().maxCount(16)));
 

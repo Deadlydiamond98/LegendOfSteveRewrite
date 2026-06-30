@@ -1,6 +1,6 @@
 package net.deadlydiamond.legend_of_steve.mixin.common.entity.mob;
 
-import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.BombEntity;
+import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.IZeldaBomb;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.*;
 import net.minecraft.item.Items;
@@ -15,7 +15,7 @@ public class MobEntityMixin {
     private void legend_of_steve$dropEquipment(DamageSource source, int lootingMultiplier, boolean allowDrops, CallbackInfo ci) {
         MobEntity entity = (MobEntity) (Object) this;
 
-        if (source.getSource() instanceof BombEntity bomb && bomb.isCharged()) {
+        if (source.getSource() instanceof IZeldaBomb chargedEntity && chargedEntity.isCharged()) {
             if (entity instanceof CreeperEntity) {
                 entity.dropItem(Items.CREEPER_HEAD);
             } else if (entity instanceof ZombieEntity) {

@@ -34,9 +34,6 @@ public class ScrollableBag extends CustomBundleItem implements IScrollAction {
     @Override
     public void onItemScrolledHotbar(ItemStack stack, int slot, PlayerEntity player, double direction) {
         onItemScrolled(stack, slot, player, direction);
-        if (player.getWorld().isClient() && direction != 0) {
-            player.sendMessage(getFirstStack(stack).getName(), true);
-        }
     }
 
     @Override

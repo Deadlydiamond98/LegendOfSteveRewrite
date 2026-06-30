@@ -88,24 +88,26 @@ public class BombEntity extends AbstractBombEntity {
         return sparkPos.add(offset);
     }
 
-    @Override
-    public float getPower() {
-        return this.isCharged() ? super.getPower() + 3 : super.getPower();
-    }
-
-    @Override
-    public ExplosionBehavior getExplosionBehavior(World world) {
-        return this.isCharged() ? null : super.getExplosionBehavior(world);
-    }
+//    @Override
+//    public float getPower() {
+//        return this.isCharged() ? super.getPower() + 3 : super.getPower();
+//    }
+//
+//    @Override
+//    public ExplosionBehavior getExplosionBehavior(World world) {
+//        return this.isCharged() ? null : super.getExplosionBehavior(world);
+//    }
 
     public void writeCustomDataToNbt(NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);
         nbt.putInt("BombType", getBombType().ordinal());
+        nbt.putBoolean("Charged", isCharged());
     }
 
     public void readCustomDataFromNbt(NbtCompound nbt) {
         super.readCustomDataFromNbt(nbt);
         setBombType(BombType.values()[nbt.getInt("BombType")]);
+        setCharged(nbt.getBoolean("Charged"));
     }
 
     @Override
@@ -123,6 +125,7 @@ public class BombEntity extends AbstractBombEntity {
         this.dataTracker.set(BOMB_TYPE, bombType.ordinal());
     }
 
+    @Override
     public boolean isCharged() {
         return this.dataTracker.get(CHARGED);
     }

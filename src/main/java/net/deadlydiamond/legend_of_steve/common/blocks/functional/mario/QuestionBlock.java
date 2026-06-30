@@ -1,6 +1,6 @@
 package net.deadlydiamond.legend_of_steve.common.blocks.functional.mario;
 
-import net.deadlydiamond.legend_of_steve.common.bes.container.QuestionBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.bes.container.single.QuestionBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.single.SingleSlotBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.blocks.container.single.SingleSlotBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.BounceType;

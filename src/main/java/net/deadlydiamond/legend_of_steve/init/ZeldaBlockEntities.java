@@ -3,7 +3,7 @@ package net.deadlydiamond.legend_of_steve.init;
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.bes.BombFlowerBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.BouncingBlockEntity;
-import net.deadlydiamond.legend_of_steve.common.bes.container.QuestionBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.bes.container.single.QuestionBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.single.*;
 import net.deadlydiamond.legend_of_steve.common.bes.switches.CrystalSwitchBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.MasterBarrelBlockEntity;

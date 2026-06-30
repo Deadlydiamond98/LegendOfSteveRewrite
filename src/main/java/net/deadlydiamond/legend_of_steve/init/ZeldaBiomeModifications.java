@@ -51,6 +51,17 @@ public class ZeldaBiomeModifications {
     }
 
     private static void registerSpawns() {
+
+        // BOMBFISH
+        BiomeModifications.addSpawn(
+                BiomeSelectors.foundInOverworld(),
+                SpawnGroup.MONSTER,
+                ZeldaEntityTypes.BOMBFISH,
+                10,
+                1,
+                3
+        );
+
         // FAIRY
         BiomeModifications.addSpawn(
                 BiomeSelectors.foundInOverworld(),

@@ -2,9 +2,10 @@ package net.deadlydiamond.legend_of_steve.client.rendering.player.itemmodel;
 
 import net.deadlydiamond.legend_of_steve.client.models.entity.BombEntityModel;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.BombEntity;
+import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.ICharged;
 import net.deadlydiamond.legend_of_steve.common.items.bag.BombBagItem;
-import net.deadlydiamond.legend_of_steve.common.items.projectile.explosive.ICharged;
 import net.deadlydiamond.legend_of_steve.client.rendering.entity.projectile.bomb.BombRenderHelper;
+import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumer;
@@ -81,7 +82,7 @@ public class BombHeldItemRenderer extends CustomHeldItemRenderer {
         bombModel.render(matrices, vCon, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
         bombModel.renderFuse(matrices, vCon, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
 
-        if (stack.getItem() instanceof ICharged) {
+        if (stack.getItem() instanceof ICharged iCharged && iCharged.isCharged()) {
             matrices.push();
             matrices.translate(0, -0.25 - 0.0625, 0);
             matrices.scale(1.25f, 1.25f, 1.25f);

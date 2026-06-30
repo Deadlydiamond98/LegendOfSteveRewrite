@@ -50,8 +50,8 @@ public abstract class AbstractBombEntity extends PhysicsItemProjectile implement
         this.setGravity(0.05f);
         this.setDrag(0.95f);
         this.setBounciness(0.4f);
-        this.setWaterDrag(0.6f);
-        this.setBuoyancy(0);
+        this.setWaterDrag(0.75f);
+        this.setBuoyancy(0.01f);
     }
 
     @Override
@@ -193,6 +193,20 @@ public abstract class AbstractBombEntity extends PhysicsItemProjectile implement
         return getStack();
     }
 
+    @Override
+    protected void hitWall(boolean hitXAxis, boolean hitZAxis) {
+        super.hitWall(hitXAxis, hitZAxis);
+        hitSurface();
+    }
+
+    @Override
+    protected void hitFloor(Block block) {
+        super.hitFloor(block);
+        hitSurface();
+    }
+
+    protected void hitSurface() {}
+
     // Fire Related Things /////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
@@ -284,6 +298,11 @@ public abstract class AbstractBombEntity extends PhysicsItemProjectile implement
 
     public void setLitTime(int time) {
         this.dataTracker.set(LIT_TIME, time);
+    }
+
+    @Override
+    public boolean isCharged() {
+        return false;
     }
 
     @Override

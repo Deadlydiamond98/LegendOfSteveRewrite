@@ -1,5 +1,6 @@
 package net.deadlydiamond.legend_of_steve.common.entities.living.fish;
 
+import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.entities.ai.goals.bombfish.BombfishAttackGoal;
 import net.deadlydiamond.legend_of_steve.common.entities.ai.goals.bombfish.BombfishIgniteGoal;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.IZeldaBomb;
@@ -7,6 +8,7 @@ import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
 import net.deadlydiamond.legend_of_steve.util.entity.ZeldaSpawn;
 import net.deadlydiamond98.koalalib.util.IgnitionHelper;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.render.entity.feature.SkinOverlayOwner;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.control.AquaticMoveControl;
 import net.minecraft.entity.ai.control.YawAdjustingLookControl;
@@ -22,17 +24,21 @@ import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.tag.DamageTypeTags;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class BombfishEntity extends HostileFishEntity implements IZeldaBomb {
+public class BombfishEntity extends HostileFishEntity implements IZeldaBomb, SkinOverlayOwner {
+    public static final Identifier CHARGED_LOOT_TABLE = LegendOfSteve.id("entities/charged_bombfish");
+
+    private static final TrackedData<Boolean> CHARGED = DataTracker.registerData(BombfishEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private static final TrackedData<Boolean> PRIMED = DataTracker.registerData(BombfishEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private static final TrackedData<Integer> FUSE = DataTracker.registerData(BombfishEntity.class, TrackedDataHandlerRegistry.INTEGER);
     private static final TrackedData<Integer> LIT_TIME = DataTracker.registerData(BombfishEntity.class, TrackedDataHandlerRegistry.INTEGER);
@@ -82,14 +88,14 @@ public class BombfishEntity extends HostileFishEntity implements IZeldaBomb {
     @Override
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
         setPitch(0);
-        setColor(world.getRandom().nextInt(8));
+        setColor(BombfishVarients.getRandom(world));
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
     }
 
     @Override
     public void tick() {
         if (this.isAlive()) {
-            int fuse = this.isOnFire() ? 0 : this.getFuse();
+            int fuse = this.isInLava() ? 0 : this.getFuse();
             boolean lit = isPrimed();
 
             if (lit) {
@@ -125,7 +131,7 @@ public class BombfishEntity extends HostileFishEntity implements IZeldaBomb {
     }
 
     public static ZeldaSpawn spawnRestriction() {
-        return ZeldaSpawn.ground((type, world, spawnReason, pos, random) -> pos.getY() <= world.getSeaLevel() - 33 && world.getBaseLightLevel(pos, 0) == 0 && world.getBlockState(pos).isOf(Blocks.WATER));
+        return ZeldaSpawn.water((type, world, spawnReason, pos, random) -> pos.getY() <= world.getSeaLevel() - 33 && world.getBaseLightLevel(pos, 0) == 0 && world.getBlockState(pos).isOf(Blocks.WATER));
     }
 
     @Override
@@ -135,20 +141,31 @@ public class BombfishEntity extends HostileFishEntity implements IZeldaBomb {
         this.dataTracker.startTracking(PRIMED, false);
         this.dataTracker.startTracking(LIT_TIME, 0);
         this.dataTracker.startTracking(COLOR, 0);
+        this.dataTracker.startTracking(CHARGED, false);
     }
 
     public void writeCustomDataToNbt(NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);
-        nbt.putInt("Fuse", getFuse());
         nbt.putBoolean("Primed", isPrimed());
+        nbt.putInt("Fuse", getFuse());
         nbt.putInt("Color", getColor());
+        nbt.putBoolean("Charged", isCharged());
     }
 
     public void readCustomDataFromNbt(NbtCompound nbt) {
         super.readCustomDataFromNbt(nbt);
-        setFuse(nbt.getInt("Fuse"));
-        setPrimed(nbt.getBoolean("Primed"));
+        if (nbt.contains("Primed")) {
+            setPrimed(nbt.getBoolean("Primed"));
+        } else {
+            setPrimed(false);
+        }
+        if (nbt.contains("Fuse")) {
+            setFuse(nbt.getInt("Fuse"));
+        } else {
+            setFuse(60);
+        }
         setColor(nbt.getInt("Color"));
+        setCharged(nbt.getBoolean("Charged"));
     }
 
     public int getColor() {
@@ -185,6 +202,17 @@ public class BombfishEntity extends HostileFishEntity implements IZeldaBomb {
         return super.damage(source, amount);
     }
 
+    @Override
+    public void onStruckByLightning(ServerWorld world, LightningEntity lightning) {
+        this.damage(this.getDamageSources().lightningBolt(), 3);
+        this.setCharged(true);
+    }
+
+    @Override
+    protected Identifier getLootTableId() {
+        return this.isCharged() ? CHARGED_LOOT_TABLE : super.getLootTableId();
+    }
+
     // BOMB STUFF //////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public void triggerChainExplode() {
@@ -217,6 +245,25 @@ public class BombfishEntity extends HostileFishEntity implements IZeldaBomb {
     }
 
     @Override
+    public boolean isCharged() {
+        return this.dataTracker.get(CHARGED);
+    }
+
+    public void setCharged(boolean bl) {
+        this.dataTracker.set(CHARGED, bl);
+    }
+
+    @Override
+    public boolean shouldRenderOverlay() {
+        return this.isCharged();
+    }
+
+    @Override
+    public World.ExplosionSourceType getExplosionType() {
+        return World.ExplosionSourceType.MOB;
+    }
+
+    @Override
     public float getPower() {
         return 3.5f;
     }
@@ -225,8 +272,7 @@ public class BombfishEntity extends HostileFishEntity implements IZeldaBomb {
 
     @Override
     protected SoundEvent getFlopSound() {
-        // TODO: REPLACE THIS
-        return SoundEvents.ENTITY_TROPICAL_FISH_FLOP;
+        return ZeldaSounds.BOMBFISH_FLOP;
     }
 
     public void playPrimedSound() {

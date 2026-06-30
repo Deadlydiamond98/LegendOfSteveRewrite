@@ -136,6 +136,11 @@ public class BombItem extends CustomProjectileItem implements IAdvancedItemPrope
     }
 
     @Override
+    public boolean isCharged() {
+        return false;
+    }
+
+    @Override
     protected SoundEvent getThrowSound() {
         return ZeldaSounds.BOMB_THROWN;
     }

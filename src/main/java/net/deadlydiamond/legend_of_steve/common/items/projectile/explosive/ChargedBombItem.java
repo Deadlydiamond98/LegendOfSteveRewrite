@@ -5,9 +5,14 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 
-public class ChargedBombItem extends BombItem implements ICharged {
+public class ChargedBombItem extends BombItem {
     public ChargedBombItem(Settings settings, EntityType<?> type, int fuse, int power) {
         super(settings, type, fuse, power);
+    }
+
+    @Override
+    public boolean isCharged() {
+        return true;
     }
 
     @Override

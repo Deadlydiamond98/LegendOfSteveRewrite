@@ -133,6 +133,8 @@ public class ZeldaSpringWaterConversionDatagen {
         // Gourd Seeds
         offerConversion(consumer, Items.MELON_SEEDS, Items.PUMPKIN_SEEDS);
         offerConversion(consumer, Items.PUMPKIN_SEEDS, Items.MELON_SEEDS);
+
+        offerConversion(consumer, ZeldaItems.WATER_BOMB, ZeldaItems.BOMB);
     }
 
     private static void dye(Consumer<RecipeJsonProvider> consumer) {
@@ -388,7 +390,6 @@ public class ZeldaSpringWaterConversionDatagen {
     }
 
     private static void unique(Consumer<RecipeJsonProvider> consumer) {
-
 
         // Dungeoncite /////////////////////////////////////////////////////////////////////////////////////////////////
 

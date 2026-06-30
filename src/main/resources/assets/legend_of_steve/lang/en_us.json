@@ -10,6 +10,7 @@
   "item.legend_of_steve.bomb": "Bomb",
   "item.legend_of_steve.super_bomb": "Super Bomb",
   "item.legend_of_steve.bombfish": "Bombfish",
+  "item.legend_of_steve.charged_bombfish": "Charged Bombfish",
 
   "item.legend_of_steve.deku_nut": "Deku Nut",
 
@@ -494,6 +495,8 @@
   "subtitles.legend_of_steve.entity.tektite.hurt": "Tektite dies",
   "subtitles.legend_of_steve.entity.tektite.death": "Tektite hisses",
   "subtitles.legend_of_steve.entity.tektite.hop": "Tektite hops",
+
+  "subtitles.legend_of_steve.entity.bombfish.flop": "Bombfish flops",
 
   "subtitles.legend_of_steve.block.question_block.deposit": "Item deposited into Container",
   "subtitles.legend_of_steve.block.question_block.bounce": "Container Block being hit",

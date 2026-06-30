@@ -1,14 +1,21 @@
 package net.deadlydiamond.legend_of_steve.mixin.client.gui;
 
 import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.deadlydiamond.legend_of_steve.common.items.bag.BombBagItem;
+import net.deadlydiamond.legend_of_steve.common.items.bag.ScrollableBag;
+import net.deadlydiamond98.koalalib.common.items.vanillamodified.CustomBundleItem;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.text.Text;
+import net.minecraft.util.Rarity;
 import net.minecraft.util.math.MathHelper;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -19,6 +26,24 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(InGameHud.class)
 public class InGameHudMixin {
     @Shadow @Final private MinecraftClient client;
+
+    // Bag Display Name ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    @WrapOperation(method = "tick()V", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerInventory;getMainHandStack()Lnet/minecraft/item/ItemStack;"))
+    private ItemStack temp(PlayerInventory instance, Operation<ItemStack> original) {
+        ItemStack stack = original.call(instance);
+
+        if (stack.getItem() instanceof ScrollableBag) {
+            ItemStack item = CustomBundleItem.getFirstStack(stack);
+            if (!item.isEmpty()) {
+                return item;
+            }
+        }
+
+        return stack;
+    }
+
+    // Bomb Bag Rendering //////////////////////////////////////////////////////////////////////////////////////////////
 
     @WrapWithCondition(method = "renderHotbarItem", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawItemInSlot(Lnet/minecraft/client/font/TextRenderer;Lnet/minecraft/item/ItemStack;II)V"))
     private boolean legend_of_steve$renderHotbarItem(DrawContext instance, TextRenderer textRenderer, ItemStack stack, int x, int y) {

@@ -12,7 +12,7 @@ import net.minecraft.util.Identifier;
 
 public class BombfishWarningFlashRenderer extends FeatureRenderer<BombfishEntity, BombfishEntityModel<BombfishEntity>> {
 
-    private static final Identifier LOW_FUSE_OVERLAY = LegendOfSteve.id("textures/entity/bomb/fuse_overlay.png");
+    private static final Identifier FUSE_OVERLAY = LegendOfSteve.id("textures/entity/bombfish/bombfish_fuse_overlay.png");
 
     public BombfishWarningFlashRenderer(FeatureRendererContext<BombfishEntity, BombfishEntityModel<BombfishEntity>> context) {
         super(context);
@@ -27,10 +27,10 @@ public class BombfishWarningFlashRenderer extends FeatureRenderer<BombfishEntity
         if (fuse <= startFlash && entity.isPrimed()) {
             float lowFuseFlash = (float) Math.abs(Math.sin(fuse * 0.4) * 0.5);
 
-            VertexConsumer warningFlashVCon = vertexConsumers.getBuffer(RenderLayer.getBeaconBeam(LOW_FUSE_OVERLAY, true));
+            VertexConsumer warningFlashVCon = vertexConsumers.getBuffer(RenderLayer.getBeaconBeam(FUSE_OVERLAY, true));
             this.getContextModel().render(matrices, warningFlashVCon, 15728640, OverlayTexture.DEFAULT_UV, 1, 1, 1, lowFuseFlash);
 
-            VertexConsumer glow = vertexConsumers.getBuffer(ZeldaRenderLayers.getEntityBloomGlow(LOW_FUSE_OVERLAY));
+            VertexConsumer glow = vertexConsumers.getBuffer(ZeldaRenderLayers.getEntityBloomGlow(FUSE_OVERLAY));
             this.getContextModel().render(matrices, glow, 15728640, OverlayTexture.DEFAULT_UV, 1, 1, 1,
                     Math.max(0, lowFuseFlash - 0.15f));
         }

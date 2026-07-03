@@ -189,6 +189,7 @@ public class ZeldaBlocks {
     public static final Block COPPER_LOCK_BLOCK = register("copper_locked_block", new LockBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)), false);
     public static final Block IRON_LOCK_BLOCK = register("iron_locked_block", new LockBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)), false);
     public static final Block GOLD_LOCK_BLOCK = register("gold_locked_block", new LockBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)), false);
+    public static final Block BOSS_LOCK_BLOCK = register("boss_locked_block", new LockBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)), false);
 
     // BOUNCE-ABLE BLOCKS
     public static final Block BOUNCING_BLOCK = register("bouncing_block", new BouncingTransitionBlock(FabricBlockSettings.copyOf(Blocks.MOVING_PISTON)), false);

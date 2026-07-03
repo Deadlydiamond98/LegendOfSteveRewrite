@@ -3,6 +3,7 @@ package net.deadlydiamond.legend_of_steve.common.blocks.functional;
 import net.deadlydiamond.legend_of_steve.common.bes.LockedBlockEntity;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemStack;
@@ -24,6 +25,18 @@ public class LockBlock extends BlockWithEntity implements Waterloggable {
     public LockBlock(Settings settings) {
         super(settings);
         setDefaultState(getDefaultState().with(FACING, Direction.NORTH).with(WATERLOGGED, false));
+    }
+
+    @Override
+    public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
+        BlockState state1 = getLockedBlock(world, pos);
+        return state1.getBlock().getPickStack(world, pos, state1);
+    }
+
+    @Override
+    public float calcBlockBreakingDelta(BlockState state, PlayerEntity player, BlockView world, BlockPos pos) {
+        BlockState state1 = getLockedBlock(world, pos);
+        return state1.getBlock().calcBlockBreakingDelta(state1, player, world, pos);
     }
 
     @Override

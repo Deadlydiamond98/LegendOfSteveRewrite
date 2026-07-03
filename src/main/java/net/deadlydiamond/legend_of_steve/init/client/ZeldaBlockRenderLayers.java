@@ -35,7 +35,8 @@ public class ZeldaBlockRenderLayers {
 
                 ZeldaBlocks.COPPER_LOCK_BLOCK,
                 ZeldaBlocks.IRON_LOCK_BLOCK,
-                ZeldaBlocks.GOLD_LOCK_BLOCK
+                ZeldaBlocks.GOLD_LOCK_BLOCK,
+                ZeldaBlocks.BOSS_LOCK_BLOCK
         );
 
         registerBlockset(RenderLayer.getCutout(),

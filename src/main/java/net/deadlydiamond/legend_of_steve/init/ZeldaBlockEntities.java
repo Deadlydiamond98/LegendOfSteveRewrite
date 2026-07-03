@@ -49,7 +49,8 @@ public class ZeldaBlockEntities {
     public static final BlockEntityType<LockedBlockEntity> LOCKED_BLOCK = register("locked_block", LockedBlockEntity::new,
             ZeldaBlocks.COPPER_LOCK_BLOCK,
             ZeldaBlocks.IRON_LOCK_BLOCK,
-            ZeldaBlocks.GOLD_LOCK_BLOCK
+            ZeldaBlocks.GOLD_LOCK_BLOCK,
+            ZeldaBlocks.BOSS_LOCK_BLOCK
     );
 
     // SWITCH BLOCK ENTITIES ///////////////////////////////////////////////////////////////////////////////////////////

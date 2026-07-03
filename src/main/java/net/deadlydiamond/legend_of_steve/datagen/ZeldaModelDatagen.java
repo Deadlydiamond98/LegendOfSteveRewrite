@@ -3,6 +3,7 @@ package net.deadlydiamond.legend_of_steve.datagen;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
 import net.deadlydiamond.legend_of_steve.init.ZeldaEntityTypes;
 import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
+import net.deadlydiamond.legend_of_steve.util.ZeldaModels;
 import net.deadlydiamond.legend_of_steve.util.datagen.model.IridescentBlockModelDatagenUtil;
 import net.deadlydiamond.legend_of_steve.util.datagen.model.ZeldaBlockModelDatagenUtil;
 import net.deadlydiamond.legend_of_steve.util.datagen.model.ZeldaItemModelDatagenUtil;
@@ -180,10 +181,6 @@ public class ZeldaModelDatagen extends FabricModelProvider {
                 ZeldaItems.SPRING_WATER_BUCKET,
                 ZeldaItems.MUSIC_DISC_LEGEND,
                 ZeldaItems.DISC_FRAGMENT_LEGEND,
-                ZeldaItems.COPPER_KEY,
-                ZeldaItems.IRON_KEY,
-                ZeldaItems.GOLD_KEY,
-                ZeldaItems.BOSS_KEY,
                 ZeldaItems.COPPER_LOCK,
                 ZeldaItems.IRON_LOCK,
                 ZeldaItems.GOLD_LOCK,
@@ -191,6 +188,13 @@ public class ZeldaModelDatagen extends FabricModelProvider {
                 ZeldaItems.SILENT_PRINCESS_BULB,
                 ZeldaItems.WATER_BOMB,
                 ZeldaItems.PUMPKIN_SOUP
+        );
+
+        registerKeys(itemModelGenerator,
+                ZeldaItems.COPPER_KEY,
+                ZeldaItems.IRON_KEY,
+                ZeldaItems.GOLD_KEY,
+                ZeldaItems.BOSS_KEY
         );
 
         ItemModelDatagenUtil.registerHandheld(
@@ -209,5 +213,9 @@ public class ZeldaModelDatagen extends FabricModelProvider {
         ZeldaItemModelDatagenUtil.registerBombBag(itemModelGenerator, ZeldaItems.BOMB_BAG);
         ZeldaItemModelDatagenUtil.registerBombBag(itemModelGenerator, ZeldaItems.GILDED_BOMB_BAG);
         ZeldaItemModelDatagenUtil.registerBombBag(itemModelGenerator, ZeldaItems.NETHERITE_BOMB_BAG);
+    }
+
+    private static void registerKeys(ItemModelGenerator itemModelGenerator, Item... items) {
+        ItemModelDatagenUtil.bulkItemModelRegister(itemModelGenerator, ZeldaModels.KEY, items);
     }
 }

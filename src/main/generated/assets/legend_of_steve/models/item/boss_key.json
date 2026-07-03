@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:item/generated",
+  "parent": "legend_of_steve:item/key",
   "textures": {
     "layer0": "legend_of_steve:item/boss_key"
   }

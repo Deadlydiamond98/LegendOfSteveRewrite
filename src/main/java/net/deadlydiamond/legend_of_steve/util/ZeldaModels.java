@@ -7,6 +7,13 @@ import net.minecraft.data.client.TextureKey;
 import java.util.Optional;
 
 public class ZeldaModels {
+
+    // ITEMS ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public static final Model KEY = item("key", TextureKey.LAYER0);
+
+    // BLOCKS //////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public static final Model LOOT_POT = template("loot_pot", TextureKey.ALL, TextureKey.PARTICLE);
     public static final Model SWORD_PEDESTAL = template("sword_pedestal", TextureKey.TOP, TextureKey.BOTTOM, TextureKey.SIDE, TextureKey.FRONT);
     public static final Model BRAZIER = template("brazier", TextureKey.TOP, TextureKey.BOTTOM, TextureKey.SIDE);
@@ -21,6 +28,8 @@ public class ZeldaModels {
 
     public static final Model DUNGEONCITE_PRESSURE_PLATE = model("dungeoncite_pressure_plate_up", TextureKey.TOP, TextureKey.BOTTOM, TextureKey.SIDE);
     public static final Model DUNGEONCITE_PRESSURE_PLATE_DOWN = model("dungeoncite_pressure_plate_down", "_down", TextureKey.TOP, TextureKey.BOTTOM, TextureKey.SIDE);
+
+    // HELPER METHODS //////////////////////////////////////////////////////////////////////////////////////////////////
 
     private static Model template(String id, TextureKey... requiredTextureKeys) {
         return new Model(Optional.of(LegendOfSteve.id("block/template_" + id)), Optional.empty(), requiredTextureKeys);
@@ -40,5 +49,9 @@ public class ZeldaModels {
 
     private static Model switchBlock(String id, TextureKey... requiredTextureKeys) {
         return new Model(Optional.of(LegendOfSteve.id("block/switch/" + id)), Optional.empty(), requiredTextureKeys);
+    }
+
+    private static Model item(String parent, TextureKey... requiredTextureKeys) {
+        return new Model(Optional.of(LegendOfSteve.id("item/" + parent)), Optional.empty(), requiredTextureKeys);
     }
 }

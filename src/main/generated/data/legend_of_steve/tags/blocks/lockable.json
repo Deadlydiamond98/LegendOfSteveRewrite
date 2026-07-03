@@ -2,6 +2,22 @@
   "replace": false,
   "values": [
     "minecraft:chest",
-    "minecraft:trapped_chest"
+    "minecraft:trapped_chest",
+    "minecraft:ender_chest",
+    "minecraft:barrel",
+    "minecraft:crafting_table",
+    "minecraft:furnace",
+    "minecraft:blast_furnace",
+    "minecraft:smoker",
+    "minecraft:smithing_table",
+    "minecraft:cartography_table",
+    "minecraft:chiseled_bookshelf",
+    "minecraft:dispenser",
+    "minecraft:dropper",
+    "minecraft:loom",
+    "legend_of_steve:question_block",
+    "legend_of_steve:blue_question_block",
+    "legend_of_steve:master_barrel",
+    "legend_of_steve:dungeon_table"
   ]
 }

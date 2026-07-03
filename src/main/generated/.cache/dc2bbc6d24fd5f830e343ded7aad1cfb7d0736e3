@@ -1,4 +1,4 @@
-// 1.20.1	2026-07-02T23:34:18.933522478	The Legend of Steve/Tags for minecraft:block
+// 1.20.1	2026-07-03T03:14:07.01362011	The Legend of Steve/Tags for minecraft:block
 4acf3971dd81bc6374ae98c31266bb07d1892907 data/minecraft/tags/blocks/flowers.json
 5ddffc8c235a15168b2697608bf84519c8ceb535 data/legend_of_steve/tags/blocks/blue_switch_blocks.json
 7b40d9ae3acf98c87dc01ed58d8be3691b14c27d data/minecraft/tags/blocks/planks.json
@@ -24,7 +24,7 @@ a62a7714809b9f9bc69ccf0667a2f9fafba2ea37 data/minecraft/tags/blocks/wooden_doors
 0917b2fe3eb300009fb23878d4cc9312d7cdf008 data/minecraft/tags/blocks/needs_stone_tool.json
 a9f3ab7c1b23ba9a13d0a9034a380193343376b3 data/minecraft/tags/blocks/wooden_slabs.json
 4952d44bbb845d2ed6062ab9c1549c2cad9636b5 data/koalalib/tags/blocks/cracked_bricks.json
-c3d9bfa84d88ef5deea5ad1f9b37fafb31297dad data/legend_of_steve/tags/blocks/lockable.json
+608e06d4063bc9f841aad9777239000dc5ade355 data/legend_of_steve/tags/blocks/lockable.json
 e86ea83105d3f43723be5d06b9e71f24a96276b7 data/minecraft/tags/blocks/logs_that_burn.json
 e36dcfbfc78c88662c4c076157a1a53a9d98988e data/minecraft/tags/blocks/ceiling_hanging_signs.json
 fda8f23bd1fec00cdacd17cfab7e68c81c42454b data/minecraft/tags/blocks/stone_buttons.json

@@ -4,10 +4,12 @@ import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.items.EmeraldShardItem;
 import net.deadlydiamond.legend_of_steve.common.items.FairyBottleItem;
 import net.deadlydiamond.legend_of_steve.common.items.SwitchCore;
-import net.deadlydiamond.legend_of_steve.common.items.bag.BombBagItem;
-import net.deadlydiamond.legend_of_steve.common.items.bag.QuiverItem;
 import net.deadlydiamond.legend_of_steve.common.items.locking.KeyItem;
 import net.deadlydiamond.legend_of_steve.common.items.locking.LockItem;
+import net.deadlydiamond.legend_of_steve.common.items.bag.BombBagItem;
+import net.deadlydiamond.legend_of_steve.common.items.bag.QuiverItem;
+import net.deadlydiamond.legend_of_steve.common.items.locking.OldKeyItem;
+import net.deadlydiamond.legend_of_steve.common.items.locking.OldLockItem;
 import net.deadlydiamond.legend_of_steve.common.items.projectile.DekuNutItem;
 import net.deadlydiamond.legend_of_steve.common.items.projectile.explosive.BombItem;
 import net.deadlydiamond.legend_of_steve.common.items.projectile.explosive.ChargedBombItem;
@@ -50,14 +52,15 @@ public class ZeldaItems {
     public static final Item NETHERITE_QUIVER = registerQuiver("netherite_quiver", 160, ArmorMaterials.NETHERITE, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE);
 
     // LOCKS & KEYS ////////////////////////////////////////////////////////////////////////////////////////////////////
-    public static final Item COPPER_LOCK = register("copper_lock", new LockItem(new FabricItemSettings()));
-    public static final Item COPPER_KEY = register("copper_key", new KeyItem(new FabricItemSettings(), COPPER_LOCK, Blocks.COPPER_BLOCK));
-    public static final Item IRON_LOCK = register("iron_lock", new LockItem(new FabricItemSettings()));
-    public static final Item IRON_KEY = register("iron_key", new KeyItem(new FabricItemSettings(), IRON_LOCK, Blocks.IRON_BLOCK));
-    public static final Item GOLD_LOCK = register("gold_lock", new LockItem(new FabricItemSettings()));
-    public static final Item GOLD_KEY = register("gold_key", new KeyItem(new FabricItemSettings(), GOLD_LOCK, Blocks.GOLD_BLOCK));
-    public static final Item BOSS_LOCK = register("boss_lock", new LockItem(new FabricItemSettings()));
-    public static final Item BOSS_KEY = register("boss_key", new KeyItem(new FabricItemSettings(), BOSS_LOCK, Blocks.GOLD_BLOCK));
+    public static final Item COPPER_LOCK = register("copper_lock", new LockItem(new FabricItemSettings(), ZeldaBlocks.COPPER_LOCK_BLOCK));
+    public static final Item COPPER_KEY = register("copper_key", new KeyItem(new FabricItemSettings(), ZeldaBlocks.COPPER_LOCK_BLOCK));
+    public static final Item IRON_LOCK = register("iron_lock", new LockItem(new FabricItemSettings(), ZeldaBlocks.IRON_LOCK_BLOCK));
+    public static final Item IRON_KEY = register("iron_key", new KeyItem(new FabricItemSettings(), ZeldaBlocks.IRON_LOCK_BLOCK));
+    public static final Item GOLD_LOCK = register("gold_lock", new LockItem(new FabricItemSettings(), ZeldaBlocks.GOLD_LOCK_BLOCK));
+    public static final Item GOLD_KEY = register("gold_key", new KeyItem(new FabricItemSettings(), ZeldaBlocks.GOLD_LOCK_BLOCK));
+
+    public static final Item BOSS_LOCK = register("boss_lock", new OldLockItem(new FabricItemSettings()));
+    public static final Item BOSS_KEY = register("boss_key", new OldKeyItem(new FabricItemSettings(), BOSS_LOCK, Blocks.GOLD_BLOCK));
 
     // FOODS ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 

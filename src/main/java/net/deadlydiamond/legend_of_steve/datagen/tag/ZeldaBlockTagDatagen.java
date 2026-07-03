@@ -221,7 +221,23 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
 
         getOrCreateTagBuilder(ZeldaTags.LOCKABLE).add(
                 Blocks.CHEST,
-                Blocks.TRAPPED_CHEST
+                Blocks.TRAPPED_CHEST,
+                Blocks.ENDER_CHEST,
+                Blocks.BARREL,
+                Blocks.CRAFTING_TABLE,
+                Blocks.FURNACE,
+                Blocks.BLAST_FURNACE,
+                Blocks.SMOKER,
+                Blocks.SMITHING_TABLE,
+                Blocks.CARTOGRAPHY_TABLE,
+                Blocks.CHISELED_BOOKSHELF,
+                Blocks.DISPENSER,
+                Blocks.DROPPER,
+                Blocks.LOOM,
+                ZeldaBlocks.QUESTION_BLOCK,
+                ZeldaBlocks.BLUE_QUESTION_BLOCK,
+                ZeldaBlocks.MASTER_BARREL,
+                ZeldaBlocks.DUNGEON_TABLE
         );
 
         getOrCreateTagBuilder(BlockTags.COMBINATION_STEP_SOUND_BLOCKS).add(

@@ -31,7 +31,11 @@ public class ZeldaBlockRenderLayers {
                 ZeldaBlocks.DUNGEON_TABLE,
                 ZeldaBlocks.SILENT_PRINCESS,
                 ZeldaBlocks.POTTED_SILENT_PRINCESS,
-                ZeldaBlocks.SILENT_PRINCESS_CROP
+                ZeldaBlocks.SILENT_PRINCESS_CROP,
+
+                ZeldaBlocks.COPPER_LOCK_BLOCK,
+                ZeldaBlocks.IRON_LOCK_BLOCK,
+                ZeldaBlocks.GOLD_LOCK_BLOCK
         );
 
         registerBlockset(RenderLayer.getCutout(),

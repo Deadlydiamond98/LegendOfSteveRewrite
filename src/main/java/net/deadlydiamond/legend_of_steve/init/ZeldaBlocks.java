@@ -6,6 +6,7 @@ import net.deadlydiamond.legend_of_steve.common.blocks.container.single.LootPotB
 import net.deadlydiamond.legend_of_steve.common.blocks.container.single.SwordPedestal;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.MasterOreBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.connected.ConnectedPillarBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.LockBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.crafting.DungeonTableBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.InvisibleQuestionBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.QuestionBlock;
@@ -183,6 +184,11 @@ public class ZeldaBlocks {
 
     public static final Block CRATE = register("crate", new Block(CRATE_SETTINGS), false);
     public static final Item CRATE_ITEM = ZeldaItems.register("crate", new CrateItem(new FabricItemSettings(), CRATE.getDefaultState()));
+
+    // LOCKED BLOCKS
+    public static final Block COPPER_LOCK_BLOCK = register("copper_locked_block", new LockBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)), false);
+    public static final Block IRON_LOCK_BLOCK = register("iron_locked_block", new LockBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)), false);
+    public static final Block GOLD_LOCK_BLOCK = register("gold_locked_block", new LockBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)), false);
 
     // BOUNCE-ABLE BLOCKS
     public static final Block BOUNCING_BLOCK = register("bouncing_block", new BouncingTransitionBlock(FabricBlockSettings.copyOf(Blocks.MOVING_PISTON)), false);

@@ -26,6 +26,7 @@ public class ZeldaBlockEntities {
     public static final BlockEntityType<QuestionBlockEntity> QUESTION_BLOCK = register("question_block", QuestionBlockEntity::new,
             ZeldaBlocks.QUESTION_BLOCK,
             ZeldaBlocks.BLUE_QUESTION_BLOCK,
+            ZeldaBlocks.INVISIBLE_QUESTION_BLOCK,
             ZeldaBlocks.STRANGE_DIRT_BRICKS.container,
             ZeldaBlocks.STRANGE_BLUE_DIRT_BRICKS.container
     );

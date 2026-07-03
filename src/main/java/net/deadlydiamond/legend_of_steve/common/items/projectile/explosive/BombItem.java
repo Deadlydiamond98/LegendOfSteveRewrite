@@ -13,6 +13,7 @@ import net.deadlydiamond98.koalalib.init.KoalaLibSounds;
 import net.deadlydiamond98.koalalib.util.IgnitionHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.DispenserBlock;
+import net.minecraft.block.dispenser.DispenserBehavior;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
@@ -50,7 +51,12 @@ public class BombItem extends CustomProjectileItem implements IAdvancedItemPrope
         this.fuse = fuse;
         this.power = power;
         COOLDOWNS.put(this, 20);
-        DispenserBlock.registerBehavior(this, ZeldaDispenserBehaviors.bomb());
+        DispenserBlock.registerBehavior(this, getDispenserBehavior());
+
+    }
+
+    protected DispenserBehavior getDispenserBehavior() {
+        return ZeldaDispenserBehaviors.bomb();
     }
 
     @Override

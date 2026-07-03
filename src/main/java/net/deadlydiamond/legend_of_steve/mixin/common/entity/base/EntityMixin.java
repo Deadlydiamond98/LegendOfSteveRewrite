@@ -23,6 +23,9 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Mixin(Entity.class)
 public abstract class EntityMixin implements IPushBlockMoving {
 
@@ -65,23 +68,41 @@ public abstract class EntityMixin implements IPushBlockMoving {
 
         if (!world.isClient() && vec3d != null && vec3d.getY() > 0) {
             Vec3d entityTopPos = entity.getPos().add(0, entity.getHeight(), 0);
+            double width = entity.getWidth() / 2;
 
-            BlockHitResult hit = world.raycast(
-                    new RaycastContext(
-                            entityTopPos,
-                            entityTopPos.add(vec3d).add(0, 0.001, 0),
-                            RaycastContext.ShapeType.COLLIDER,
-                            RaycastContext.FluidHandling.NONE,
-                            entity
-                    )
-            );
+            Vec3d[] tests = new Vec3d[] {
+                    entityTopPos.add(vec3d).add(width, 0.001, width),
+                    entityTopPos.add(vec3d).add(-width, 0.001, -width),
+                    entityTopPos.add(vec3d).add(-width, 0.001, width),
+                    entityTopPos.add(vec3d).add(width, 0.001, -width)
+            };
 
-            if (hit.getType() == HitResult.Type.BLOCK && hit.getSide() == Direction.DOWN) {
-                BlockPos pos = hit.getBlockPos();
-                BlockState state = world.getBlockState(pos);
-                if (state.getBlock() instanceof IJumpIntoAction block && block.canHitBlockWithHead(world, pos, state, entity)) {
-                    world.getPlayers().forEach(player -> JumpIntoBlockS2CPacket.send(player, pos, entity));
-                    block.jumpIntoBlock(world, pos, state, entity);
+            List<BlockPos> hitPositions = new ArrayList<>();
+
+            for (Vec3d testPos : tests) {
+                BlockHitResult hit = world.raycast(
+                        new RaycastContext(
+                                entityTopPos,
+                                testPos,
+                                RaycastContext.ShapeType.COLLIDER,
+                                RaycastContext.FluidHandling.NONE,
+                                entity
+                        )
+                );
+
+                if (hit.getType() == HitResult.Type.BLOCK && hit.getSide() == Direction.DOWN) {
+                    BlockPos pos = hit.getBlockPos();
+
+                    if (hitPositions.contains(pos)) {
+                        continue;
+                    }
+                    hitPositions.add(pos);
+
+                    BlockState state = world.getBlockState(pos);
+                    if (state.getBlock() instanceof IJumpIntoAction block && block.canHitBlockWithHead(world, pos, state, entity)) {
+                        world.getPlayers().forEach(player -> JumpIntoBlockS2CPacket.send(player, pos, entity));
+                        block.jumpIntoBlock(world, pos, state, entity);
+                    }
                 }
             }
         }

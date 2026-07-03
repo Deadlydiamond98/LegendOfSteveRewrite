@@ -409,6 +409,8 @@ public class ZeldaSpringWaterConversionDatagen {
         offerConversion(consumer, Blocks.ROOTED_DIRT, ZeldaBlocks.STRANGE_DIRT.base);
 
         offerConversion(consumer, ZeldaBlocks.STRANGE_DIRT.base, Blocks.DIRT);
+        offerConversion(consumer, ZeldaBlocks.QUESTION_BLOCK, ZeldaBlocks.INVISIBLE_QUESTION_BLOCK);
+        offerConversion(consumer, ZeldaBlocks.BLUE_QUESTION_BLOCK, ZeldaBlocks.INVISIBLE_QUESTION_BLOCK);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

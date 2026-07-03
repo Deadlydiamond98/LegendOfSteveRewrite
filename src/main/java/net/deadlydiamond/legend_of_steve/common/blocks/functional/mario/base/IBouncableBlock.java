@@ -122,7 +122,7 @@ public interface IBouncableBlock extends IJumpIntoAction, IHitBlockAction, IExtr
 
     default void createBouncingBlock(World world, BlockPos pos, BlockState state, Direction direction, @Nullable Entity owner, BounceType type) {
         DefaultedList<ItemStack> inventory = getInventory(world, pos, owner instanceof PlayerEntity player ? player : null);
-        BouncingBlockEntity.create(world, pos, state, getPostBounceState(state), direction, getBounceTime(), owner, type, inventory);
+        BouncingBlockEntity.create(world, pos, world.getBlockState(pos), getPostBounceState(state), direction, getBounceTime(), owner, type, inventory);
     }
 
     // Overridden //////////////////////////////////////////////////////////////////////////////////////////////////////

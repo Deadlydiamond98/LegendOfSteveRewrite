@@ -47,6 +47,8 @@ public class ZeldaCreativeTabs {
                 ZeldaItems.IRON_LOCK,
                 ZeldaItems.GOLD_LOCK,
                 ZeldaItems.BOSS_LOCK,
+                // FOOD
+                ZeldaItems.PUMPKIN_SOUP,
                 // EMERALD SHARDS
                 ZeldaItems.EMERALD_SHARD,
                 ZeldaItems.EMERALD_CHUNK,
@@ -179,6 +181,7 @@ public class ZeldaCreativeTabs {
         // STRANGE DIRT
         entries.add(ZeldaBlocks.QUESTION_BLOCK);
         entries.add(ZeldaBlocks.BLUE_QUESTION_BLOCK);
+        entries.add(ZeldaBlocks.INVISIBLE_QUESTION_BLOCK);
 
         ZeldaBlocks.STRANGE_DIRT.addToCreative(entries);
         ZeldaBlocks.POLISHED_STRANGE_DIRT.addToCreative(entries);

@@ -1,0 +1,9 @@
+{
+  "type": "legend_of_steve:spring_water_conversion",
+  "input": {
+    "item": "legend_of_steve:question_block"
+  },
+  "result": {
+    "item": "legend_of_steve:invisible_question_block"
+  }
+}

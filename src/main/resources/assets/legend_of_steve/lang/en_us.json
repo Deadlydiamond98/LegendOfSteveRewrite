@@ -377,6 +377,7 @@
 
   "block.legend_of_steve.question_block": "Question Block",
   "block.legend_of_steve.blue_question_block": "Blue Question Block",
+  "block.legend_of_steve.invisible_question_block": "Invisible Question Block",
 
   "block.legend_of_steve.blue_tektiles": "Blue Tektiles",
   "block.legend_of_steve.blue_tektile_slab": "Blue Tektile Slab",
@@ -549,7 +550,7 @@
   "advancements.legend_of_steve.nothing_beats_a_dip.description": "Recover Health and Magic by Relaxing in Enchanted Spring Water",
 
   "advancements.legend_of_steve.decorative_imprisonment": "Decorative Imprisonment",
-  "advancements.legend_of_steve.decorative_imprisonment.description": "Obtain every variant of Fairy Light and ignore the Questionable Ethics behind them...",
+  "advancements.legend_of_steve.decorative_imprisonment.description": "Carry every variant of Fairy Light and ignore the Questionable Ethics behind them...",
 
   "advancements.legend_of_steve.quiver": "Arrows++",
   "advancements.legend_of_steve.quiver.description": "Obtain a Quiver",
@@ -573,5 +574,11 @@
   "advancements.legend_of_steve.monsters_hunted_zelda.description": "Defeat every Monster in The Legend of Steve",
 
   "advancements.legend_of_steve.trigger_crystal_switch": "Switch On! Switch Off!",
-  "advancements.legend_of_steve.trigger_crystal_switch.description": "Trigger a Crystal Switch"
+  "advancements.legend_of_steve.trigger_crystal_switch.description": "Trigger a Crystal Switch",
+
+  "advancements.legend_of_steve.kaizo_trap": "Kaizo Trap",
+  "advancements.legend_of_steve.kaizo_trap.description": "Hit an Invisible Block when attempting to jump over a pit!",
+
+  "advancements.legend_of_steve.meet_the_demonman": "Meet the Demoman",
+  "advancements.legend_of_steve.meet_the_demonman.description": "Carry one of every type of bomb"
 }

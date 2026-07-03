@@ -109,6 +109,7 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
                 ZeldaBlocks.STRANGE_BLUE_DIRT_PILLAR,
                 ZeldaBlocks.QUESTION_BLOCK,
                 ZeldaBlocks.BLUE_QUESTION_BLOCK,
+                ZeldaBlocks.INVISIBLE_QUESTION_BLOCK,
                 // Switch Blocks
                 ZeldaBlocks.CRYSTAL_SWITCH,
                 // Sword Pedestal
@@ -173,7 +174,8 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
 
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL).add(
                 ZeldaBlocks.QUESTION_BLOCK,
-                ZeldaBlocks.BLUE_QUESTION_BLOCK
+                ZeldaBlocks.BLUE_QUESTION_BLOCK,
+                ZeldaBlocks.INVISIBLE_QUESTION_BLOCK
         );
 
         // TREE RELATED ////////////////////////////////////////////////////////////////////////////////////////////////

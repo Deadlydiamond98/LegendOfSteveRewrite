@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "legend_of_steve:block/invisible_question_block_top"
+  }
+}

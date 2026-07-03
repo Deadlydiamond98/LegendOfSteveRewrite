@@ -7,6 +7,7 @@ import net.deadlydiamond.legend_of_steve.common.blocks.container.single.SwordPed
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.MasterOreBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.connected.ConnectedPillarBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.crafting.DungeonTableBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.InvisibleQuestionBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.QuestionBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.base.BouncingTransitionBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.GirderBlock;
@@ -188,6 +189,9 @@ public class ZeldaBlocks {
 
     public static final Block QUESTION_BLOCK = register("question_block", new QuestionBlock(QUESTION_BLOCK_SETTINGS));
     public static final Block BLUE_QUESTION_BLOCK = register("blue_question_block", new QuestionBlock(QUESTION_BLOCK_SETTINGS));
+    public static final Block INVISIBLE_QUESTION_BLOCK = register("invisible_question_block", new InvisibleQuestionBlock(
+            FabricBlockSettings.copyOf(QUESTION_BLOCK_SETTINGS).nonOpaque().dynamicBounds()
+    ));
 
     // SWITCH BLOCKS
     public static final Block CRYSTAL_SWITCH = register("crystal_switch", new CrystalSwitchBlock(CRYSTAL_SWITCH_SETTINGS), new FabricItemSettings().rarity(Rarity.RARE));

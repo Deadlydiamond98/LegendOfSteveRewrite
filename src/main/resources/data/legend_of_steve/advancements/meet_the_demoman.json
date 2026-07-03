@@ -1,0 +1,57 @@
+{
+  "parent": "legend_of_steve:extremely_explosive_harvest",
+  "criteria": {
+    "get_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "legend_of_steve:bomb_flower"
+            ]
+          },
+          {
+            "items": [
+              "legend_of_steve:bomb"
+            ]
+          },
+          {
+            "items": [
+              "legend_of_steve:charged_bomb_flower"
+            ]
+          },
+          {
+            "items": [
+              "legend_of_steve:super_bomb"
+            ]
+          },
+          {
+            "items": [
+              "legend_of_steve:bombfish"
+            ]
+          },
+          {
+            "items": [
+              "legend_of_steve:charged_bombfish"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "title": {
+      "translate": "advancements.legend_of_steve.meet_the_demonman"
+    },
+    "description": {
+      "translate": "advancements.legend_of_steve.meet_the_demonman.description"
+    },
+    "icon": {
+      "item": "legend_of_steve:charged_bomb_flower"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  }
+}

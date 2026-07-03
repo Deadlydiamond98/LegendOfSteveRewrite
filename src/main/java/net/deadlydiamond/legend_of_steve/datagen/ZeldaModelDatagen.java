@@ -189,7 +189,8 @@ public class ZeldaModelDatagen extends FabricModelProvider {
                 ZeldaItems.GOLD_LOCK,
                 ZeldaItems.BOSS_LOCK,
                 ZeldaItems.SILENT_PRINCESS_BULB,
-                ZeldaItems.WATER_BOMB
+                ZeldaItems.WATER_BOMB,
+                ZeldaItems.PUMPKIN_SOUP
         );
 
         ItemModelDatagenUtil.registerHandheld(

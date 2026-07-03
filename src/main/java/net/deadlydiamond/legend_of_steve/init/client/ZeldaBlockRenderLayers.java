@@ -54,7 +54,8 @@ public class ZeldaBlockRenderLayers {
 
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(),
                 ZeldaBlocks.DEKU_WOOD.door,
-                ZeldaBlocks.DEKU_WOOD.trapdoor
+                ZeldaBlocks.DEKU_WOOD.trapdoor,
+                ZeldaBlocks.INVISIBLE_QUESTION_BLOCK
         );
 
         // BLOOM ///////////////////////////////////////////////////////////////////////////////////////////////////////

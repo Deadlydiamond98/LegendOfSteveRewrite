@@ -80,7 +80,7 @@ public class SingleSlotBlockEntity extends LootableContainerBlockEntity {
 
     public boolean insertStack(ItemStack stack) {
         ItemStack currentStack = getStack(0);
-        int i = Math.min(stack.getCount(), stack.getMaxCount() - currentStack.getCount());
+        int i = Math.min(stack.getCount(), getMaxAmount(stack) - currentStack.getCount());
 
         if (i <= 0) {
             return false;
@@ -98,8 +98,19 @@ public class SingleSlotBlockEntity extends LootableContainerBlockEntity {
         return false;
     }
 
+    protected int getMaxAmount(ItemStack stack) {
+        return stack.getMaxCount();
+    }
+
     @Override
     public boolean isValid(int slot, ItemStack stack) {
+        ItemStack currentStack = getStack(0);
+        int i = Math.min(stack.getCount(), getMaxAmount(stack) - currentStack.getCount());
+
+        if (i <= 0) {
+            return false;
+        }
+
         return slot == 0 && getBlock().isValid(stack);
     }
 

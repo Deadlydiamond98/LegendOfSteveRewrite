@@ -120,7 +120,8 @@ public class ZeldaNoteBlockSounds {
         // PAAH ////////////////////////////////////////////////////////////////////////////////////////////////////////
         registerNoteBlockSound(ZeldaSounds.PAAH,
                 ZeldaBlocks.QUESTION_BLOCK,
-                ZeldaBlocks.BLUE_QUESTION_BLOCK
+                ZeldaBlocks.BLUE_QUESTION_BLOCK,
+                ZeldaBlocks.INVISIBLE_QUESTION_BLOCK
         );
         // NYLON GUITAR ////////////////////////////////////////////////////////////////////////////////////////////////
         registerNoteBlockSound(ZeldaSounds.NYLON_GUITAR,

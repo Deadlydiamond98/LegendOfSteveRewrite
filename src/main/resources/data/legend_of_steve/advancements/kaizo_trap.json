@@ -1,0 +1,23 @@
+{
+  "parent": "legend_of_steve:minor_concussion",
+  "criteria": {
+    "requirement": {
+      "trigger": "legend_of_steve:kaizo_trap"
+    }
+  },
+  "display": {
+    "title": {
+      "translate": "advancements.legend_of_steve.kaizo_trap"
+    },
+    "description": {
+      "translate": "advancements.legend_of_steve.kaizo_trap.description"
+    },
+    "icon": {
+      "item": "legend_of_steve:invisible_question_block"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  }
+}

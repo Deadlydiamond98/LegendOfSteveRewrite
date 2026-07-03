@@ -59,6 +59,12 @@ public class ZeldaItems {
     public static final Item BOSS_LOCK = register("boss_lock", new LockItem(new FabricItemSettings()));
     public static final Item BOSS_KEY = register("boss_key", new KeyItem(new FabricItemSettings(), BOSS_LOCK, Blocks.GOLD_BLOCK));
 
+    // FOODS ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public static final Item PUMPKIN_SOUP = register("pumpkin_soup", new StewItem(new FabricItemSettings().maxCount(1).food(
+            new FoodComponent.Builder().hunger(8).saturationModifier(0.6f).build()
+    )));
+
     // MATERIALS ///////////////////////////////////////////////////////////////////////////////////////////////////////
     // EMERALD SHARD
     public static final Item EMERALD_CHUNK = register("emerald_chunk", new EmeraldShardItem(

@@ -1,6 +1,5 @@
 package net.deadlydiamond.legend_of_steve.common.blocksets;
 
-import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
 import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
 import net.deadlydiamond98.koalalib.common.blocksets.BaseStairSlabBlockset;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;

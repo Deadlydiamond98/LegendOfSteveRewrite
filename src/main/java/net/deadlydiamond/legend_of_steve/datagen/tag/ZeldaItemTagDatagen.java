@@ -1,5 +1,6 @@
 package net.deadlydiamond.legend_of_steve.datagen.tag;
 
+import net.deadlydiamond.legend_of_steve.common.blocksets.LockBlockset;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
 import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
 import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
@@ -183,6 +184,9 @@ public class ZeldaItemTagDatagen extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(ZeldaTags.SWITCH_BLOCKS_ITEM).add(
                 ZeldaBlocks.CRYSTAL_SWITCH.asItem()
         );
+
+        // LOCKS
+        createItemTags(ZeldaBlocks.LOCKS.toArray(LockBlockset[]::new));
     }
 
     private void addBlocksetsToTag(TagKey<Item> tag, AbstractBlockset... blocksets) {

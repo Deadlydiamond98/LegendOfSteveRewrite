@@ -1,5 +1,6 @@
 package net.deadlydiamond.legend_of_steve.datagen.tag;
 
+import net.deadlydiamond.legend_of_steve.common.blocksets.LockBlockset;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
 import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
 import net.deadlydiamond98.koalalib.common.blocksets.AbstractBlockset;
@@ -14,6 +15,7 @@ import net.minecraft.registry.tag.TagKey;
 
 import java.util.concurrent.CompletableFuture;
 
+@SuppressWarnings("unchecked")
 public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
 
     public ZeldaBlockTagDatagen(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
@@ -22,20 +24,26 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-        ZeldaBlocks.DEKU_WOOD.generateBlockTags((blockTagKey, block) -> getOrCreateTagBuilder(blockTagKey).add(block));
+        generateBlockTags(
+                ZeldaBlocks.DEKU_WOOD,
 
-        ZeldaBlocks.CHISELED_OAK_BRICKS.generateBlockTags((blockTagKey, block) -> getOrCreateTagBuilder(blockTagKey).add(block));
-        ZeldaBlocks.CHISELED_BIRCH_BRICKS.generateBlockTags((blockTagKey, block) -> getOrCreateTagBuilder(blockTagKey).add(block));
-        ZeldaBlocks.CHISELED_SPRUCE_BRICKS.generateBlockTags((blockTagKey, block) -> getOrCreateTagBuilder(blockTagKey).add(block));
-        ZeldaBlocks.CHISELED_JUNGLE_BRICKS.generateBlockTags((blockTagKey, block) -> getOrCreateTagBuilder(blockTagKey).add(block));
-        ZeldaBlocks.CHISELED_ACACIA_BRICKS.generateBlockTags((blockTagKey, block) -> getOrCreateTagBuilder(blockTagKey).add(block));
-        ZeldaBlocks.CHISELED_DARK_OAK_BRICKS.generateBlockTags((blockTagKey, block) -> getOrCreateTagBuilder(blockTagKey).add(block));
-        ZeldaBlocks.CHISELED_CRIMSON_BRICKS.generateBlockTags((blockTagKey, block) -> getOrCreateTagBuilder(blockTagKey).add(block));
-        ZeldaBlocks.CHISELED_WARPED_BRICKS.generateBlockTags((blockTagKey, block) -> getOrCreateTagBuilder(blockTagKey).add(block));
-        ZeldaBlocks.CHISELED_MANGROVE_BRICKS.generateBlockTags((blockTagKey, block) -> getOrCreateTagBuilder(blockTagKey).add(block));
-        ZeldaBlocks.CHISELED_BAMBOO_BRICKS.generateBlockTags((blockTagKey, block) -> getOrCreateTagBuilder(blockTagKey).add(block));
-        ZeldaBlocks.CHISELED_CHERRY_BRICKS.generateBlockTags((blockTagKey, block) -> getOrCreateTagBuilder(blockTagKey).add(block));
-        ZeldaBlocks.CHISELED_DEKU_BRICKS.generateBlockTags((blockTagKey, block) -> getOrCreateTagBuilder(blockTagKey).add(block));
+                // Chiseled Wood
+                ZeldaBlocks.CHISELED_OAK_BRICKS,
+                ZeldaBlocks.CHISELED_BIRCH_BRICKS,
+                ZeldaBlocks.CHISELED_SPRUCE_BRICKS,
+                ZeldaBlocks.CHISELED_JUNGLE_BRICKS,
+                ZeldaBlocks.CHISELED_ACACIA_BRICKS,
+                ZeldaBlocks.CHISELED_DARK_OAK_BRICKS,
+                ZeldaBlocks.CHISELED_CRIMSON_BRICKS,
+                ZeldaBlocks.CHISELED_WARPED_BRICKS,
+                ZeldaBlocks.CHISELED_MANGROVE_BRICKS,
+                ZeldaBlocks.CHISELED_BAMBOO_BRICKS,
+                ZeldaBlocks.CHISELED_CHERRY_BRICKS,
+                ZeldaBlocks.CHISELED_DEKU_BRICKS
+        );
+
+        // LOCKS
+        generateBlockTags(ZeldaBlocks.LOCKS.toArray(LockBlockset[]::new));
 
         createMinables(
                 // DUNGEONCITE
@@ -249,6 +257,11 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
         );
     }
 
+    private void generateBlockTags(AbstractBlockset... abstractBlocksets) {
+        for (AbstractBlockset blockset : abstractBlocksets) {
+            blockset.generateBlockTags((blockTagKey, block) -> getOrCreateTagBuilder(blockTagKey).add(block));
+        }
+    }
 
     private void createMinables(AbstractBlockset... abstractBlocksets) {
         for (AbstractBlockset abstractBlockset : abstractBlocksets) {

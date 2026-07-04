@@ -3,7 +3,7 @@ package net.deadlydiamond.legend_of_steve.common.blocksets;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.LockBlock;
 import net.deadlydiamond.legend_of_steve.common.items.locking.KeyItem;
 import net.deadlydiamond.legend_of_steve.common.items.locking.LockItem;
-import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
+import net.deadlydiamond.legend_of_steve.util.datagen.model.ZeldaBlockModelDatagenUtil;
 import net.deadlydiamond98.koalalib.common.blocksets.AbstractBlockset;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -24,18 +24,18 @@ public class LockBlockset extends AbstractBlockset {
 
     public final Block lockBlock;
 
-    public LockBlockset(String modID, String id) {
-        super(modID, id);
+    public LockBlockset(String modID, String material) {
+        super(modID, material);
 
-        this.lockBlock = register(modID, id() + "_locked_block", new LockBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
+        this.lockBlock = registerNoItem(modID, id() + "_lock", new LockBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
 
-        this.lockItem = registerItem(Identifier.of(modID, id() +  "_lock"), new LockItem(new FabricItemSettings(), this.lockBlock));
-        this.keyItem = registerItem(Identifier.of(modID, id() +  "_key"), new KeyItem(new FabricItemSettings(), this.lockBlock));
+        this.lockItem = registerItem(Identifier.of(modID, id() + "_lock"), new LockItem(new FabricItemSettings(), this.lockBlock));
+        this.keyItem = registerItem(Identifier.of(modID, id() + "_key"), new KeyItem(new FabricItemSettings(), this.lockBlock));
     }
 
     @Override
     public void generateModels(BlockStateModelGenerator modelGen, @Nullable AbstractBlockset.SharedModel sharedModel) {
-        super.generateModels(modelGen, sharedModel);
+        ZeldaBlockModelDatagenUtil.registerLockBlock(modelGen, this.lockBlock);
     }
 
     @Override

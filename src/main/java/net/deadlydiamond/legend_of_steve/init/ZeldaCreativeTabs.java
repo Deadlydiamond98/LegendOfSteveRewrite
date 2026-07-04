@@ -2,8 +2,10 @@ package net.deadlydiamond.legend_of_steve.init;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.bindable.BoundBlockUtil;
+import net.deadlydiamond.legend_of_steve.common.blocksets.LockBlockset;
 import net.deadlydiamond.legend_of_steve.common.entities.living.fairy.FairyColor;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -11,6 +13,9 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ZeldaCreativeTabs {
 
@@ -36,17 +41,20 @@ public class ZeldaCreativeTabs {
                 // QUIVERS
                 ZeldaItems.QUIVER,
                 ZeldaItems.GILDED_QUIVER,
-                ZeldaItems.NETHERITE_QUIVER,
-                // KEYS
-                ZeldaItems.COPPER_KEY,
-                ZeldaItems.IRON_KEY,
-                ZeldaItems.GOLD_KEY,
-                ZeldaItems.BOSS_KEY,
-                // LOCKS
-                ZeldaItems.COPPER_LOCK,
-                ZeldaItems.IRON_LOCK,
-                ZeldaItems.GOLD_LOCK,
-                ZeldaItems.BOSS_LOCK,
+                ZeldaItems.NETHERITE_QUIVER
+        );
+
+        // LOCKS & KEYS
+        List<Item> locks = new ArrayList<>();
+        for (LockBlockset lock : ZeldaBlocks.LOCKS) {
+            entries.add(lock.keyItem);
+            locks.add(lock.lockItem);
+        }
+        add(entries, locks.toArray(Item[]::new));
+
+        // Items continued
+
+        add(entries,
                 // FOOD
                 ZeldaItems.PUMPKIN_SOUP,
                 // EMERALD SHARDS

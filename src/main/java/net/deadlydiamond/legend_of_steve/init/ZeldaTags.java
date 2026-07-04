@@ -50,23 +50,23 @@ public class ZeldaTags {
 
     // Registry ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    private static TagKey<Item> item(String name) {
+    public static TagKey<Item> item(String name) {
         return getTag(RegistryKeys.ITEM, name);
     }
 
-    private static TagKey<Block> block(String name) {
+    public static TagKey<Block> block(String name) {
         return getTag(RegistryKeys.BLOCK, name);
     }
 
-    private static TagKey<Fluid> fluid(String name) {
+    public static TagKey<Fluid> fluid(String name) {
         return getTag(RegistryKeys.FLUID, name);
     }
 
-    private static TagKey<Biome> biome(String name) {
+    public static TagKey<Biome> biome(String name) {
         return getTag(RegistryKeys.BIOME, name);
     }
 
-    private static TagKey<EntityType<?>> entity(String name) {
+    public static TagKey<EntityType<?>> entity(String name) {
         return getTag(RegistryKeys.ENTITY_TYPE, name);
     }
 

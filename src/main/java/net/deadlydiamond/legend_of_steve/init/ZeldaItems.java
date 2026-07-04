@@ -51,16 +51,6 @@ public class ZeldaItems {
     public static final Item GILDED_QUIVER = registerQuiver("gilded_quiver", 320, ArmorMaterials.LEATHER, SoundEvents.ITEM_ARMOR_EQUIP_GOLD);
     public static final Item NETHERITE_QUIVER = registerQuiver("netherite_quiver", 160, ArmorMaterials.NETHERITE, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE);
 
-    // LOCKS & KEYS ////////////////////////////////////////////////////////////////////////////////////////////////////
-    public static final Item COPPER_LOCK = register("copper_lock", new LockItem(new FabricItemSettings(), ZeldaBlocks.COPPER_LOCK_BLOCK));
-    public static final Item COPPER_KEY = register("copper_key", new KeyItem(new FabricItemSettings(), ZeldaBlocks.COPPER_LOCK_BLOCK));
-    public static final Item IRON_LOCK = register("iron_lock", new LockItem(new FabricItemSettings(), ZeldaBlocks.IRON_LOCK_BLOCK));
-    public static final Item IRON_KEY = register("iron_key", new KeyItem(new FabricItemSettings(), ZeldaBlocks.IRON_LOCK_BLOCK));
-    public static final Item GOLD_LOCK = register("gold_lock", new LockItem(new FabricItemSettings(), ZeldaBlocks.GOLD_LOCK_BLOCK));
-    public static final Item GOLD_KEY = register("gold_key", new KeyItem(new FabricItemSettings(), ZeldaBlocks.GOLD_LOCK_BLOCK));
-    public static final Item BOSS_LOCK = register("boss_lock", new LockItem(new FabricItemSettings(), ZeldaBlocks.BOSS_LOCK_BLOCK));
-    public static final Item BOSS_KEY = register("boss_key", new KeyItem(new FabricItemSettings(), ZeldaBlocks.BOSS_LOCK_BLOCK));
-
     // FOODS ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public static final Item PUMPKIN_SOUP = register("pumpkin_soup", new StewItem(new FabricItemSettings().maxCount(1).food(

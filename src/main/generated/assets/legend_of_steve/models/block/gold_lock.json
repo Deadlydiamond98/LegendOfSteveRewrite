@@ -1,6 +1,6 @@
 {
   "parent": "legend_of_steve:block/locks/lock_block",
   "textures": {
-    "lock": "legend_of_steve:block/locks/iron_lock"
+    "all": "legend_of_steve:block/locks/gold_lock"
   }
 }

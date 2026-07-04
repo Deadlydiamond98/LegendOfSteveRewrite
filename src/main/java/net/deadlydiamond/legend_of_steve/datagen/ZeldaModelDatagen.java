@@ -1,5 +1,6 @@
 package net.deadlydiamond.legend_of_steve.datagen;
 
+import net.deadlydiamond.legend_of_steve.common.blocksets.LockBlockset;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
 import net.deadlydiamond.legend_of_steve.init.ZeldaEntityTypes;
 import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
@@ -15,6 +16,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.client.ModelIds;
+import net.minecraft.data.client.Models;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
@@ -155,6 +157,11 @@ public class ZeldaModelDatagen extends FabricModelProvider {
         ZeldaBlocks.CHISELED_CHERRY_BRICKS.generateModels(generator);
         ZeldaBlocks.CHISELED_DEKU_BRICKS.generateModels(generator);
 
+        // LOCKS ///////////////////////////////////////////////////////////////////////////////////////////////////////
+        for (LockBlockset lock : ZeldaBlocks.LOCKS) {
+            lock.generateModels(generator);
+        }
+
         // PLANTS //////////////////////////////////////////////////////////////////////////////////////////////////////
         generator.registerFlowerPotPlant(ZeldaBlocks.SILENT_PRINCESS, ZeldaBlocks.POTTED_SILENT_PRINCESS, BlockStateModelGenerator.TintType.NOT_TINTED);
     }
@@ -181,26 +188,20 @@ public class ZeldaModelDatagen extends FabricModelProvider {
                 ZeldaItems.SPRING_WATER_BUCKET,
                 ZeldaItems.MUSIC_DISC_LEGEND,
                 ZeldaItems.DISC_FRAGMENT_LEGEND,
-                ZeldaItems.COPPER_LOCK,
-                ZeldaItems.IRON_LOCK,
-                ZeldaItems.GOLD_LOCK,
-                ZeldaItems.BOSS_LOCK,
                 ZeldaItems.SILENT_PRINCESS_BULB,
                 ZeldaItems.WATER_BOMB,
                 ZeldaItems.PUMPKIN_SOUP
-        );
-
-        registerKeys(itemModelGenerator,
-                ZeldaItems.COPPER_KEY,
-                ZeldaItems.IRON_KEY,
-                ZeldaItems.GOLD_KEY,
-                ZeldaItems.BOSS_KEY
         );
 
         ItemModelDatagenUtil.registerHandheld(
                 itemModelGenerator,
                 ZeldaItems.MAGIC_SWORD
         );
+
+        for (LockBlockset lock : ZeldaBlocks.LOCKS) {
+            itemModelGenerator.register(lock.keyItem, ZeldaModels.KEY);
+            itemModelGenerator.register(lock.lockItem, Models.GENERATED);
+        }
 
         ItemModelDatagenUtil.registerSpawnEggs(itemModelGenerator, ZeldaEntityTypes.SPAWN_EGGS.toArray(Item[]::new));
 

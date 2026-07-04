@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "legend_of_steve:block/copper_lock",
+      "x": 90
+    },
+    "facing=east": {
+      "model": "legend_of_steve:block/copper_lock",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "legend_of_steve:block/copper_lock"
+    },
+    "facing=south": {
+      "model": "legend_of_steve:block/copper_lock",
+      "y": 180
+    },
+    "facing=up": {
+      "model": "legend_of_steve:block/copper_lock",
+      "x": 270
+    },
+    "facing=west": {
+      "model": "legend_of_steve:block/copper_lock",
+      "y": 270
+    }
+  }
+}

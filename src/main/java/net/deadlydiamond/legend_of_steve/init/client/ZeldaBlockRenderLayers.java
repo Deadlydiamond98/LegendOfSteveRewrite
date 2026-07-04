@@ -1,5 +1,6 @@
 package net.deadlydiamond.legend_of_steve.init.client;
 
+import net.deadlydiamond.legend_of_steve.common.blocksets.LockBlockset;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
 import net.deadlydiamond.legend_of_steve.init.ZeldaFluids;
 import net.deadlydiamond98.koalalib.common.blocksets.AbstractBlockset;
@@ -31,12 +32,7 @@ public class ZeldaBlockRenderLayers {
                 ZeldaBlocks.DUNGEON_TABLE,
                 ZeldaBlocks.SILENT_PRINCESS,
                 ZeldaBlocks.POTTED_SILENT_PRINCESS,
-                ZeldaBlocks.SILENT_PRINCESS_CROP,
-
-                ZeldaBlocks.COPPER_LOCK_BLOCK,
-                ZeldaBlocks.IRON_LOCK_BLOCK,
-                ZeldaBlocks.GOLD_LOCK_BLOCK,
-                ZeldaBlocks.BOSS_LOCK_BLOCK
+                ZeldaBlocks.SILENT_PRINCESS_CROP
         );
 
         registerBlockset(RenderLayer.getCutout(),
@@ -47,6 +43,13 @@ public class ZeldaBlockRenderLayers {
                 ZeldaBlocks.STRANGE_DIRT_BRAZIER_BLOCKSET,
                 ZeldaBlocks.STRANGE_BLUE_DIRT_BRAZIER_BLOCKSET
         );
+
+        // Locks
+        for (LockBlockset lock : ZeldaBlocks.LOCKS) {
+            BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
+                    lock.lockBlock
+            );
+        }
 
         // SWITCH BLOCKS ///////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -6,7 +6,6 @@ import net.deadlydiamond.legend_of_steve.common.blocks.container.single.LootPotB
 import net.deadlydiamond.legend_of_steve.common.blocks.container.single.SwordPedestal;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.MasterOreBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.connected.ConnectedPillarBlock;
-import net.deadlydiamond.legend_of_steve.common.blocks.functional.LockBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.crafting.DungeonTableBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.InvisibleQuestionBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.QuestionBlock;
@@ -43,9 +42,15 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Rarity;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static net.deadlydiamond.legend_of_steve.init.ZeldaBlockSettings.*;
 
 public class ZeldaBlocks {
+    // HELPER LISTS
+    public static final List<LockBlockset> LOCKS = new ArrayList<>();
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // DECORATIVE BLOCKS ///////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -186,10 +191,10 @@ public class ZeldaBlocks {
     public static final Item CRATE_ITEM = ZeldaItems.register("crate", new CrateItem(new FabricItemSettings(), CRATE.getDefaultState()));
 
     // LOCKED BLOCKS
-    public static final Block COPPER_LOCK_BLOCK = register("copper_locked_block", new LockBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)), false);
-    public static final Block IRON_LOCK_BLOCK = register("iron_locked_block", new LockBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)), false);
-    public static final Block GOLD_LOCK_BLOCK = register("gold_locked_block", new LockBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)), false);
-    public static final Block BOSS_LOCK_BLOCK = register("boss_locked_block", new LockBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)), false);
+    public static final LockBlockset COPPER_LOCK = registerLock("copper");
+    public static final LockBlockset IRON_LOCK = registerLock("iron");
+    public static final LockBlockset GOLD_LOCK = registerLock("gold");
+    public static final LockBlockset BOSS_LOCK = registerLock("boss");
 
     // BOUNCE-ABLE BLOCKS
     public static final Block BOUNCING_BLOCK = register("bouncing_block", new BouncingTransitionBlock(FabricBlockSettings.copyOf(Blocks.MOVING_PISTON)), false);
@@ -246,6 +251,12 @@ public class ZeldaBlocks {
     public static Block registerPot(String id, Block block) {
         ZeldaItems.register(id, new LootPotItem(block, new FabricItemSettings()));
         return register(id, block, false);
+    }
+
+    public static LockBlockset registerLock(String material) {
+        LockBlockset lockBlockset = new LockBlockset(LegendOfSteve.MOD_ID, material);
+        LOCKS.add(lockBlockset);
+        return lockBlockset;
     }
 
     public static void register() {

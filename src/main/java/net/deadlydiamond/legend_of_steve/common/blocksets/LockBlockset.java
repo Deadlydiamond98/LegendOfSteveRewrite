@@ -9,6 +9,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.enums.Instrument;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
@@ -30,7 +31,9 @@ public class LockBlockset extends AbstractBlockset {
         super(modID, material);
         this.keyTag = keyTag;
 
-        this.lockBlock = registerNoItem(modID, id() + "_lock", new LockedBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK), this.keyTag));
+        this.lockBlock = registerNoItem(modID, id() + "_lock", new LockedBlock(
+                FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).instrument(Instrument.SNARE), this.keyTag)
+        );
 
         this.lockItem = registerItem(Identifier.of(modID, id() + "_lock"), new LockItem(new FabricItemSettings(), this.lockBlock));
         this.keyItem = registerItem(Identifier.of(modID, id() + "_key"), new Item(settings));

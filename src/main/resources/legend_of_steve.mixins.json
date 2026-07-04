@@ -10,6 +10,7 @@
     "common.be.LockableContainerBlockEntityMixin",
     "common.be.LootableContainerBlockEntityInvoker",
     "common.block.AbstractBlockStateMixin",
+    "common.block.DispenserBlockMixin",
     "common.block.FluidBlockMixin",
     "common.block.NoteBlockMixin",
     "common.block.PressurePlateBlockMixin",

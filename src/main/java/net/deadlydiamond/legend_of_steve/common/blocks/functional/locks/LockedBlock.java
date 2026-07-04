@@ -40,9 +40,8 @@ public class LockedBlock extends BlockWithEntity implements Waterloggable {
         this.keyTag = keyTag;
     }
 
-    @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        ItemStack key = player.getStackInHand(hand);
+    public boolean removeLock(World world, BlockPos pos, ItemStack key) {
+        BlockState state = world.getBlockState(pos);
 
         if (key.isIn(this.keyTag) || key.isOf(ZeldaItems.CREATIVE_KEY)) {
             world.addBlockBreakParticles(pos, state);
@@ -59,13 +58,22 @@ public class LockedBlock extends BlockWithEntity implements Waterloggable {
 
             if (!world.isClient) {
                 world.playSound(null, pos, ZeldaSounds.UNLOCK, SoundCategory.BLOCKS);
-                if (!player.isCreative()) {
-                    key.decrement(1);
-                }
+            }
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        ItemStack key = player.getStackInHand(hand);
+
+        if (removeLock(world, pos, key)) {
+            if (!world.isClient && !player.isCreative()) {
+                key.decrement(1);
             }
 
             ZeldaAdvancements.LOCKE_AND_KEY.trigger(player);
-
             return ActionResult.SUCCESS;
         }
 

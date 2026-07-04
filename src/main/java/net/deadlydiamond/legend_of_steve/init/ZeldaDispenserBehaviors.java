@@ -1,13 +1,19 @@
 package net.deadlydiamond.legend_of_steve.init;
 
 import net.deadlydiamond.legend_of_steve.common.ZeldaDispenserBehavior;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.locks.LockedBlock;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.ThrownPotEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.BombEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.WaterBombEntity;
+import net.deadlydiamond.legend_of_steve.common.items.locking.LockItem;
 import net.deadlydiamond.legend_of_steve.common.items.projectile.explosive.BombItem;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.DispenserBlock;
 import net.minecraft.block.dispenser.DispenserBehavior;
+import net.minecraft.block.dispenser.ItemDispenserBehavior;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.*;
 import net.minecraft.world.World;
@@ -72,6 +78,42 @@ public class ZeldaDispenserBehaviors {
                     entity.setPosition(position.getX(), position.getY(), position.getZ());
                     entity.setYaw(direction.asRotation());
                 });
+            }
+        };
+    }
+
+    public static DispenserBehavior key(DispenserBehavior fallback) {
+        return new ItemDispenserBehavior() {
+            @Override
+            protected ItemStack dispenseSilently(BlockPointer pointer, ItemStack stack) {
+                World world = pointer.getWorld();
+                Direction facing = world.getBlockState(pointer.getPos()).get(Properties.FACING);
+                BlockPos pos = pointer.getPos().offset(facing);
+                BlockState state = world.getBlockState(pos);
+
+                if (state.getBlock() instanceof LockedBlock lock) {
+                    if (lock.removeLock(world, pos, stack)) {
+                        stack.decrement(1);
+                        return stack;
+                    }
+                }
+                return fallback.dispense(pointer, stack);
+            }
+        };
+    }
+
+    public static DispenserBehavior lock() {
+        return new ItemDispenserBehavior() {
+            @Override
+            protected ItemStack dispenseSilently(BlockPointer pointer, ItemStack stack) {
+                if (stack.getItem() instanceof LockItem lock) {
+                    Direction facing = pointer.getBlockState().get(DispenserBlock.FACING);
+                    if (lock.tryLockBlock(pointer.getWorld(), pointer.getPos().offset(facing), facing)) {
+                        stack.decrement(1);
+                        return stack;
+                    }
+                }
+                return super.dispenseSilently(pointer, stack);
             }
         };
     }

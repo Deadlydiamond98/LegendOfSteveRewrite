@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.common.bes;
+package net.deadlydiamond.legend_of_steve.common.bes.locks;
 
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.locks.LockedBlock;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlockEntities;
@@ -15,7 +15,7 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.Nullable;
 
-public class LockedBlockEntity extends BlockEntity {
+public class LockedBlockEntity extends BlockEntity implements ILockedBlockEntity {
     protected BlockState lockedBlock = Blocks.AIR.getDefaultState();
     protected NbtCompound wrappedNBT = new NbtCompound();
 
@@ -23,6 +23,7 @@ public class LockedBlockEntity extends BlockEntity {
         super(ZeldaBlockEntities.LOCKED_BLOCK, pos, state);
     }
 
+    @Override
     public BlockState getLockedBlock() {
         if (this.lockedBlock.getBlock() instanceof LockedBlock) {
             return Blocks.AIR.getDefaultState();
@@ -31,15 +32,18 @@ public class LockedBlockEntity extends BlockEntity {
         return this.lockedBlock;
     }
 
+    @Override
     public void setLockedBlock(BlockState lockedBlock) {
         this.lockedBlock = lockedBlock;
         markDirty();
     }
 
+    @Override
     public NbtCompound getWrappedNBT() {
         return this.wrappedNBT;
     }
 
+    @Override
     public void setWrappedNBT(NbtCompound nbt) {
         this.wrappedNBT = nbt;
         markDirty();

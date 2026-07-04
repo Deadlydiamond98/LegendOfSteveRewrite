@@ -7,10 +7,7 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "common.ExplosionMixin",
-    "common.be.LockableContainerBlockEntityMixin",
     "common.be.LootableContainerBlockEntityInvoker",
-    "common.block.AbstractBlockStateMixin",
-    "common.block.ChestBlockMixin",
     "common.block.DispenserBlockMixin",
     "common.block.FluidBlockMixin",
     "common.block.NoteBlockMixin",
@@ -60,7 +57,6 @@
     "client.model.JsonUnbakedModelMixin",
     "client.model.JsonUnbakedModelMixin$DeserializerMixin",
     "client.rendering.ItemRendererMixin",
-    "client.rendering.block.ChestBlockEntityRendererMixin",
     "client.rendering.entity.ArmorStandEntityRendererMixin",
     "client.rendering.entity.BipedEntityRendererMixin",
     "client.rendering.entity.PlayerEntityRendererMixin",

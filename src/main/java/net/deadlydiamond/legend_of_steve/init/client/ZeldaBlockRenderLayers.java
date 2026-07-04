@@ -47,7 +47,8 @@ public class ZeldaBlockRenderLayers {
         // Locks
         for (LockBlockset lock : ZeldaBlocks.LOCKS) {
             BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
-                    lock.lockBlock
+                    lock.lockedBlock,
+                    lock.lockedChest
             );
         }
 

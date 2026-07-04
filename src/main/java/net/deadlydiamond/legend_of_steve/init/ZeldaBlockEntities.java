@@ -3,21 +3,19 @@ package net.deadlydiamond.legend_of_steve.init;
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.bes.BombFlowerBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.BouncingBlockEntity;
-import net.deadlydiamond.legend_of_steve.common.bes.LockedBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.bes.locks.LockedBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.single.QuestionBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.single.*;
+import net.deadlydiamond.legend_of_steve.common.bes.locks.LockedChestBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.switches.CrystalSwitchBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.MasterBarrelBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.switches.SwitchBlockEntity;
-import net.deadlydiamond.legend_of_steve.common.blocksets.LockBlockset;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-
-import java.util.ArrayList;
 
 public class ZeldaBlockEntities {
 
@@ -52,10 +50,17 @@ public class ZeldaBlockEntities {
     // LOCK BLOCKS /////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public static final BlockEntityType<LockedBlockEntity> LOCKED_BLOCK = register("locked_block", LockedBlockEntity::new,
-            ZeldaBlocks.COPPER_LOCK.lockBlock,
-            ZeldaBlocks.IRON_LOCK.lockBlock,
-            ZeldaBlocks.GOLD_LOCK.lockBlock,
-            ZeldaBlocks.BOSS_LOCK.lockBlock
+            ZeldaBlocks.COPPER_LOCK.lockedBlock,
+            ZeldaBlocks.IRON_LOCK.lockedBlock,
+            ZeldaBlocks.GOLD_LOCK.lockedBlock,
+            ZeldaBlocks.BOSS_LOCK.lockedBlock
+    );
+
+    public static final BlockEntityType<LockedChestBlockEntity> LOCKED_CHEST = register("locked_chest", LockedChestBlockEntity::new,
+            ZeldaBlocks.COPPER_LOCK.lockedChest,
+            ZeldaBlocks.IRON_LOCK.lockedChest,
+            ZeldaBlocks.GOLD_LOCK.lockedChest,
+            ZeldaBlocks.BOSS_LOCK.lockedChest
     );
 
     // SWITCH BLOCK ENTITIES ///////////////////////////////////////////////////////////////////////////////////////////

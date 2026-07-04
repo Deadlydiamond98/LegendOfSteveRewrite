@@ -86,8 +86,8 @@ public class ZeldaItems {
     public static final Item BOMB_FLOWER_SEEDS = register("bomb_flower_seeds", new BlockItem(ZeldaBlocks.BOMB_FLOWER, new FabricItemSettings()));
     public static final Item SILENT_PRINCESS_BULB = register("silent_princess_bulb", new AliasedBlockItem(ZeldaBlocks.SILENT_PRINCESS_CROP, new FabricItemSettings()));
 
-    // CREATIVE or Debug
-    public static final Item CREATIVE_KEY = register("creative_key", new EnchantedGlintItem(new FabricItemSettings().rarity(Rarity.EPIC)));
+    // CREATIVE OR DEBUG ///////////////////////////////////////////////////////////////////////////////////////////////
+    public static final Item CREATIVE_KEY = register("creative_key", new EnchantedGlintItem(new FabricItemSettings().rarity(Rarity.EPIC).maxCount(1)));
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // REGISTRATION ////////////////////////////////////////////////////////////////////////////////////////////////////

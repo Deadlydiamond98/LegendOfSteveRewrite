@@ -1,7 +1,7 @@
 package net.deadlydiamond.legend_of_steve.init;
 
 import net.deadlydiamond.legend_of_steve.common.ZeldaDispenserBehavior;
-import net.deadlydiamond.legend_of_steve.common.blocks.functional.locks.LockedBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.locks.ILockedBlock;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.ThrownPotEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.BombEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.WaterBombEntity;
@@ -91,9 +91,11 @@ public class ZeldaDispenserBehaviors {
                 BlockPos pos = pointer.getPos().offset(facing);
                 BlockState state = world.getBlockState(pos);
 
-                if (state.getBlock() instanceof LockedBlock lock) {
-                    if (lock.removeLock(world, pos, stack)) {
-                        stack.decrement(1);
+                if (state.getBlock() instanceof ILockedBlock lock) {
+                    if (lock.removeLock(world, pos, stack, false)) {
+                        if (!stack.isOf(ZeldaItems.CREATIVE_KEY)) {
+                            stack.decrement(1);
+                        }
                         return stack;
                     }
                 }
@@ -108,7 +110,7 @@ public class ZeldaDispenserBehaviors {
             protected ItemStack dispenseSilently(BlockPointer pointer, ItemStack stack) {
                 if (stack.getItem() instanceof LockItem lock) {
                     Direction facing = pointer.getBlockState().get(DispenserBlock.FACING);
-                    if (lock.tryLockBlock(pointer.getWorld(), pointer.getPos().offset(facing), facing)) {
+                    if (lock.tryLockBlock(pointer.getWorld(), pointer.getPos().offset(facing), facing, false)) {
                         stack.decrement(1);
                         return stack;
                     }

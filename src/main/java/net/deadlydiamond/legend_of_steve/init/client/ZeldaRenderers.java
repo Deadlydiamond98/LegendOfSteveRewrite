@@ -1,12 +1,10 @@
 package net.deadlydiamond.legend_of_steve.init.client;
 
 import net.deadlydiamond.legend_of_steve.client.models.be.CrystalSwitchOrbModel;
-import net.deadlydiamond.legend_of_steve.client.models.be.lock.ChestLockLeftModel;
-import net.deadlydiamond.legend_of_steve.client.models.be.lock.ChestLockModel;
-import net.deadlydiamond.legend_of_steve.client.models.be.lock.ChestLockRightModel;
 import net.deadlydiamond.legend_of_steve.client.models.entity.*;
 import net.deadlydiamond.legend_of_steve.client.models.feature.QuiverModel;
 import net.deadlydiamond.legend_of_steve.client.rendering.block.*;
+import net.deadlydiamond.legend_of_steve.client.rendering.block.chest.LockedChestBlockEntityRenderer;
 import net.deadlydiamond.legend_of_steve.client.rendering.entity.PushableBlockEntityRenderer;
 import net.deadlydiamond.legend_of_steve.client.rendering.entity.living.*;
 import net.deadlydiamond.legend_of_steve.client.rendering.entity.living.bombfish.BombfishEntityRenderer;
@@ -47,6 +45,7 @@ public class ZeldaRenderers {
         BlockEntityRendererFactories.register(ZeldaBlockEntities.BOMB_FLOWER, BombFlowerBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ZeldaBlockEntities.BOUNCING_BLOCK, BouncingBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ZeldaBlockEntities.CRYSTAL_SWITCH, CrystalSwitchBlockEntityRenderer::new);
+        BlockEntityRendererFactories.register(ZeldaBlockEntities.LOCKED_CHEST, LockedChestBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ZeldaBlockEntities.SWORD_PEDESTAL, SwordPedestalBlockEntityRenderer::new);
     }
 
@@ -57,9 +56,6 @@ public class ZeldaRenderers {
         EntityModelLayerRegistry.registerModelLayer(FairyEntityModel.LAYER_LOCATION, FairyEntityModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(TektiteEntityModel.LAYER_LOCATION, TektiteEntityModel::getTexturedModelData);
 
-        EntityModelLayerRegistry.registerModelLayer(ChestLockLeftModel.LAYER_LOCATION, ChestLockLeftModel::getTexturedModelData);
-        EntityModelLayerRegistry.registerModelLayer(ChestLockModel.LAYER_LOCATION, ChestLockModel::getTexturedModelData);
-        EntityModelLayerRegistry.registerModelLayer(ChestLockRightModel.LAYER_LOCATION, ChestLockRightModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(CrystalSwitchOrbModel.LAYER_LOCATION, CrystalSwitchOrbModel::getTexturedModelData);
 
         EntityModelLayerRegistry.registerModelLayer(QuiverModel.LAYER_LOCATION, QuiverModel::getTexturedModelData);

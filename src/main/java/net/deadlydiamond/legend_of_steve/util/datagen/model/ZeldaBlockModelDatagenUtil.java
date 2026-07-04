@@ -4,6 +4,7 @@ import net.deadlydiamond.legend_of_steve.common.blocks.deco.connected.TriforceTi
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.connected.TriforceType;
 import net.deadlydiamond.legend_of_steve.util.ZeldaModels;
 import net.minecraft.block.Block;
+import net.minecraft.block.enums.ChestType;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.data.client.*;
 import net.minecraft.registry.Registries;
@@ -43,6 +44,22 @@ public class ZeldaBlockModelDatagenUtil {
         blockStateModelGenerator.blockStateCollector.accept(
                 VariantsBlockStateSupplier.create(block, BlockStateVariant.create().put(VariantSettings.MODEL, lock))
                         .coordinate(BlockStateModelGenerator.createNorthDefaultRotationStates())
+        );
+    }
+
+    public static void registerChestLockBlock(BlockStateModelGenerator blockStateModelGenerator, Block block, Block textureSource) {
+        TextureMap textureMap = TextureMap.of(TextureKey.ALL, getPrefixedId(textureSource, "locks"));
+
+        Identifier single = ZeldaModels.CHEST_LOCK_BLOCK.upload(block, textureMap, blockStateModelGenerator.modelCollector);
+        Identifier left = ZeldaModels.LEFT_CHEST_LOCK_BLOCK.upload(block, textureMap, blockStateModelGenerator.modelCollector);
+        Identifier right = ZeldaModels.RIGHT_CHEST_LOCK_BLOCK.upload(block, textureMap, blockStateModelGenerator.modelCollector);
+
+        blockStateModelGenerator.blockStateCollector.accept(
+                VariantsBlockStateSupplier.create(block).coordinate(BlockStateVariantMap.create(Properties.CHEST_TYPE)
+                                .register(ChestType.SINGLE, BlockStateVariant.create().put(VariantSettings.MODEL, single))
+                                .register(ChestType.RIGHT, BlockStateVariant.create().put(VariantSettings.MODEL, left))
+                                .register(ChestType.LEFT, BlockStateVariant.create().put(VariantSettings.MODEL, right))
+                        ).coordinate(BlockStateModelGenerator.createNorthDefaultHorizontalRotationStates())
         );
     }
 

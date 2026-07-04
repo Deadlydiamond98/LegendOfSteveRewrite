@@ -1,0 +1,6 @@
+{
+  "parent": "legend_of_steve:block/locks/chest_lock_block_double_left",
+  "textures": {
+    "all": "legend_of_steve:block/locks/gold_lock"
+  }
+}

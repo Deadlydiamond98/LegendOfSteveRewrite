@@ -1,39 +1,31 @@
 package net.deadlydiamond.legend_of_steve.common.blocks.functional.locks;
 
-import net.deadlydiamond.legend_of_steve.common.bes.locks.LockedBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.bes.locks.LockedChestBlockEntity;
 import net.deadlydiamond.legend_of_steve.init.ZeldaAdvancements;
+import net.deadlydiamond.legend_of_steve.init.ZeldaBlockEntities;
 import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
-import net.minecraft.block.*;
+import net.minecraft.block.BlockRenderType;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.ChestBlock;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.fluid.Fluids;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.tag.TagKey;
-import net.minecraft.state.StateManager;
-import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.state.property.DirectionProperty;
-import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 
-public class LockedBlock extends BlockWithEntity implements Waterloggable, ILockedBlock {
-    public static final DirectionProperty FACING = Properties.FACING;
-    private static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
-
+public class LockedChestBlock extends ChestBlock implements ILockedBlock {
     private final TagKey<Item> keyTag;
 
-    public LockedBlock(Settings settings, TagKey<Item> keyTag) {
-        super(settings);
-        setDefaultState(getDefaultState().with(FACING, Direction.NORTH).with(WATERLOGGED, false));
+    public LockedChestBlock(Settings settings, TagKey<Item> keyTag) {
+        super(settings, () -> ZeldaBlockEntities.LOCKED_CHEST);
         this.keyTag = keyTag;
     }
 
@@ -55,7 +47,7 @@ public class LockedBlock extends BlockWithEntity implements Waterloggable, ILock
             return ActionResult.SUCCESS;
         }
 
-        return super.onUse(state, world, pos, player, hand, hit);
+        return ActionResult.PASS;
     }
 
     @Override
@@ -105,19 +97,8 @@ public class LockedBlock extends BlockWithEntity implements Waterloggable, ILock
         return BlockRenderType.MODEL;
     }
 
-    @Nullable @Override
+    @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new LockedBlockEntity(pos, state);
-    }
-
-    @Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        super.appendProperties(builder);
-        builder.add(FACING, WATERLOGGED);
-    }
-
-    @Override
-    public FluidState getFluidState(BlockState state) {
-        return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
+        return new LockedChestBlockEntity(pos, state);
     }
 }

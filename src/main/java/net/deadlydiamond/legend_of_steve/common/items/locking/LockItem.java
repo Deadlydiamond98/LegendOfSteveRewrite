@@ -5,10 +5,9 @@ import net.deadlydiamond.legend_of_steve.common.blocks.functional.locks.LockedBl
 import net.deadlydiamond.legend_of_steve.init.ZeldaDispenserBehaviors;
 import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
 import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.DispenserBlock;
-import net.minecraft.block.PistonBlock;
+import net.deadlydiamond.legend_of_steve.util.ChestLockUtil;
+import net.deadlydiamond.legend_of_steve.util.mixinterfaces.IBlockEntityLocking;
+import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -29,6 +28,10 @@ public class LockItem extends Item {
         DispenserBlock.registerBehavior(this, ZeldaDispenserBehaviors.lock());
     }
 
+    public Block getLockBlock() {
+        return this.lock;
+    }
+
     @Override
     public String getTranslationKey() {
         return this.lock.getTranslationKey();
@@ -43,6 +46,10 @@ public class LockItem extends Item {
 
         if (state.getBlock() instanceof PistonBlock && state.get(Properties.EXTENDED)) {
             return false;
+        }
+
+        if (state.isOf(Blocks.CHEST) || state.isOf(Blocks.TRAPPED_CHEST)) {
+            return tryLockChest(world, pos, state);
         }
 
         boolean waterlogged = false;
@@ -81,6 +88,18 @@ public class LockItem extends Item {
             world.playSound(null, pos, ZeldaSounds.LOCK, SoundCategory.BLOCKS);
         }
         return true;
+    }
+
+    private boolean tryLockChest(World world, BlockPos pos, BlockState state) {
+        if (world.getBlockEntity(pos) instanceof IBlockEntityLocking locking) {
+            if (!world.isClient && ChestLockUtil.getLockItemForBlock(world.getBlockEntity(pos), state, world, pos).isEmpty()) {
+                world.playSound(null, pos, ZeldaSounds.LOCK, SoundCategory.BLOCKS);
+                ChestLockUtil.setLockItemForBlock(world.getBlockEntity(pos), state, world, pos, this.getDefaultStack());
+                locking.legend_of_steve$setLockItem(this.getDefaultStack());
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override

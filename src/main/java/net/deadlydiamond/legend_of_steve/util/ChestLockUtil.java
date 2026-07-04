@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class LockUtil {
+public class ChestLockUtil {
 
     public static void setLockItemForBlock(BlockEntity entity, BlockState blockState, World world, BlockPos blockPos, ItemStack stack) {
         if (blockState.getBlock() instanceof AbstractChestBlock<?> abstractChestBlock) {

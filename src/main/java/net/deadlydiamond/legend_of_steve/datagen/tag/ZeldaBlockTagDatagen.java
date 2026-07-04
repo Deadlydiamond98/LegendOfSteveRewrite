@@ -200,7 +200,6 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(ZeldaTags.LOCKABLE).add(
                 Blocks.CHEST,
                 Blocks.TRAPPED_CHEST,
-                Blocks.ENDER_CHEST,
                 Blocks.BARREL,
                 Blocks.CRAFTING_TABLE,
                 Blocks.FURNACE,

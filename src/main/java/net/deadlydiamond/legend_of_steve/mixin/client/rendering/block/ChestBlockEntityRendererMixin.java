@@ -3,7 +3,7 @@ package net.deadlydiamond.legend_of_steve.mixin.client.rendering.block;
 import net.deadlydiamond.legend_of_steve.client.models.be.lock.ChestLockLeftModel;
 import net.deadlydiamond.legend_of_steve.client.models.be.lock.ChestLockModel;
 import net.deadlydiamond.legend_of_steve.client.models.be.lock.ChestLockRightModel;
-import net.deadlydiamond.legend_of_steve.util.LockUtil;
+import net.deadlydiamond.legend_of_steve.util.ChestLockUtil;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.LidOpenable;
@@ -45,7 +45,7 @@ public class ChestBlockEntityRendererMixin<T extends BlockEntity & LidOpenable> 
         if (world != null) {
             matrices.push();
 
-            ItemStack lock = LockUtil.getLockItemForBlock(entity, blockState, world, entity.getPos());
+            ItemStack lock = ChestLockUtil.getLockItemForBlock(entity, blockState, world, entity.getPos());
 
             if (!lock.isEmpty()) {
                 matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180));

@@ -40,6 +40,10 @@ public class LockedBlock extends BlockWithEntity implements Waterloggable {
         this.keyTag = keyTag;
     }
 
+    public TagKey<Item> getKeyTag() {
+        return this.keyTag;
+    }
+
     public boolean removeLock(World world, BlockPos pos, ItemStack key) {
         BlockState state = world.getBlockState(pos);
 

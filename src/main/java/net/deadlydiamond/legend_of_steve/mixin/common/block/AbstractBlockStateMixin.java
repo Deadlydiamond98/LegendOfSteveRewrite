@@ -36,21 +36,6 @@ public abstract class AbstractBlockStateMixin {
                 return -1;
             }
         }
-
         return original.call(player, world, pos);
-    }
-
-    @WrapMethod(method = "onUse")
-    private ActionResult legend_of_steve$onUse(World world, PlayerEntity player, Hand hand, BlockHitResult hit, Operation<ActionResult> original) {
-        if (this.asBlockState().isIn(ZeldaTags.LOCKABLE) && world.getBlockEntity(hit.getBlockPos()) instanceof IBlockEntityLocking locking) {
-            ItemStack stack = player.getStackInHand(hand);
-            if (stack.getItem() instanceof ContainerModifyingItem item) {
-                if (item.modifyContainer(this.asBlockState(), world, hit.getBlockPos(), player, hand, hit, locking)) {
-                    return ActionResult.PASS;
-                }
-            }
-        }
-
-        return original.call(world, player, hand, hit);
     }
 }

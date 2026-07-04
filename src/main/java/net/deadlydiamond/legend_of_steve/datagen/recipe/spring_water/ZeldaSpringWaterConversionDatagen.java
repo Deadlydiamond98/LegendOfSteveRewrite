@@ -390,6 +390,22 @@ public class ZeldaSpringWaterConversionDatagen {
     }
 
     private static void unique(Consumer<RecipeJsonProvider> consumer) {
+        offerConversion(consumer, Items.MUSIC_DISC_13, ZeldaItems.MUSIC_DISC_ODD_SANCTUARY);
+        offerConversion(consumer, Items.MUSIC_DISC_CAT, ZeldaItems.MUSIC_DISC_ODD_SANCTUARY);
+        offerConversion(consumer, Items.MUSIC_DISC_BLOCKS, ZeldaItems.MUSIC_DISC_ODD_SANCTUARY);
+        offerConversion(consumer, Items.MUSIC_DISC_CHIRP, ZeldaItems.MUSIC_DISC_ODD_SANCTUARY);
+        offerConversion(consumer, Items.MUSIC_DISC_FAR, ZeldaItems.MUSIC_DISC_ODD_SANCTUARY);
+        offerConversion(consumer, Items.MUSIC_DISC_MALL, ZeldaItems.MUSIC_DISC_ODD_SANCTUARY);
+        offerConversion(consumer, Items.MUSIC_DISC_MELLOHI, ZeldaItems.MUSIC_DISC_ODD_SANCTUARY);
+        offerConversion(consumer, Items.MUSIC_DISC_STAL, ZeldaItems.MUSIC_DISC_ODD_SANCTUARY);
+        offerConversion(consumer, Items.MUSIC_DISC_STRAD, ZeldaItems.MUSIC_DISC_ODD_SANCTUARY);
+        offerConversion(consumer, Items.MUSIC_DISC_WARD, ZeldaItems.MUSIC_DISC_ODD_SANCTUARY);
+        offerConversion(consumer, Items.MUSIC_DISC_WAIT, ZeldaItems.MUSIC_DISC_ODD_SANCTUARY);
+        offerConversion(consumer, Items.MUSIC_DISC_OTHERSIDE, ZeldaItems.MUSIC_DISC_ODD_SANCTUARY);
+        offerConversion(consumer, Items.MUSIC_DISC_RELIC, ZeldaItems.MUSIC_DISC_ODD_SANCTUARY);
+        offerConversion(consumer, Items.MUSIC_DISC_5, ZeldaItems.MUSIC_DISC_ODD_SANCTUARY);
+        offerConversion(consumer, Items.MUSIC_DISC_PIGSTEP, ZeldaItems.MUSIC_DISC_ODD_SANCTUARY);
+        offerConversion(consumer, ZeldaItems.MUSIC_DISC_LEGEND, ZeldaItems.MUSIC_DISC_ODD_SANCTUARY);
 
         // Dungeoncite /////////////////////////////////////////////////////////////////////////////////////////////////
 

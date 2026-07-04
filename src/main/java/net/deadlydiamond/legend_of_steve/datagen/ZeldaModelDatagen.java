@@ -26,7 +26,6 @@ import net.minecraft.util.Identifier;
 
 import java.util.Map;
 import java.util.function.Consumer;
-import java.util.function.Function;
 
 public class ZeldaModelDatagen extends FabricModelProvider {
 
@@ -170,10 +169,10 @@ public class ZeldaModelDatagen extends FabricModelProvider {
                 ZeldaItems.SWITCH_CORE,
                 ZeldaItems.SPRING_WATER_BUCKET,
                 ZeldaItems.MUSIC_DISC_LEGEND,
+                ZeldaItems.MUSIC_DISC_ODD_SANCTUARY,
                 ZeldaItems.DISC_FRAGMENT_LEGEND,
                 ZeldaItems.SILENT_PRINCESS_BULB,
-                ZeldaItems.WATER_BOMB,
-                ZeldaItems.PUMPKIN_SOUP
+                ZeldaItems.WATER_BOMB
         );
 
         ItemModelDatagenUtil.registerHandheld(
@@ -181,22 +180,39 @@ public class ZeldaModelDatagen extends FabricModelProvider {
                 ZeldaItems.MAGIC_SWORD
         );
 
+        registerQuivers(itemModelGenerator,
+                ZeldaItems.QUIVER,
+                ZeldaItems.GILDED_QUIVER,
+                ZeldaItems.NETHERITE_QUIVER
+        );
+
+        registerBombBags(itemModelGenerator,
+                ZeldaItems.BOMB_BAG,
+                ZeldaItems.GILDED_BOMB_BAG,
+                ZeldaItems.NETHERITE_BOMB_BAG
+        );
+
         for (LockBlockset lock : ZeldaBlocks.LOCKS) {
             itemModelGenerator.register(lock.keyItem, ZeldaModels.KEY);
             itemModelGenerator.register(lock.lockItem, Models.GENERATED);
         }
+        itemModelGenerator.register(ZeldaItems.CREATIVE_KEY, ZeldaModels.KEY);
 
         ItemModelDatagenUtil.registerSpawnEggs(itemModelGenerator, ZeldaEntityTypes.SPAWN_EGGS.toArray(Item[]::new));
 
         ZeldaItemModelDatagenUtil.registerFairyBottle(itemModelGenerator, ZeldaItems.FAIRY_BOTTLE);
+    }
 
-        ZeldaItemModelDatagenUtil.registerQuiver(itemModelGenerator, ZeldaItems.QUIVER);
-        ZeldaItemModelDatagenUtil.registerQuiver(itemModelGenerator, ZeldaItems.GILDED_QUIVER);
-        ZeldaItemModelDatagenUtil.registerQuiver(itemModelGenerator, ZeldaItems.NETHERITE_QUIVER);
+    private void registerBombBags(ItemModelGenerator generator, Item... bombBags) {
+        for (Item bombBag : bombBags) {
+            ZeldaItemModelDatagenUtil.registerBombBag(generator, bombBag);
+        }
+    }
 
-        ZeldaItemModelDatagenUtil.registerBombBag(itemModelGenerator, ZeldaItems.BOMB_BAG);
-        ZeldaItemModelDatagenUtil.registerBombBag(itemModelGenerator, ZeldaItems.GILDED_BOMB_BAG);
-        ZeldaItemModelDatagenUtil.registerBombBag(itemModelGenerator, ZeldaItems.NETHERITE_BOMB_BAG);
+    private void registerQuivers(ItemModelGenerator generator, Item... quivers) {
+        for (Item quiver : quivers) {
+            ZeldaItemModelDatagenUtil.registerQuiver(generator, quiver);
+        }
     }
 
     @SafeVarargs

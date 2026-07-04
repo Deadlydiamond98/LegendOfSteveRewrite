@@ -26,6 +26,7 @@
   "item.legend_of_steve.iron_key": "Iron Key",
   "item.legend_of_steve.gold_key": "Gold Key",
   "item.legend_of_steve.boss_key": "Boss Key",
+  "item.legend_of_steve.creative_key": "Creative Key",
 
   "block.legend_of_steve.copper_lock": "Copper Lock",
   "block.legend_of_steve.iron_lock": "Iron Lock",
@@ -50,6 +51,8 @@
   "item.legend_of_steve.disc_fragment_legend.desc": "Music Disc - Legend",
   "item.legend_of_steve.music_disc_legend": "Music Disc",
   "item.legend_of_steve.music_disc_legend.desc": "Deadlydiamond98 - Legend",
+  "item.legend_of_steve.music_disc_odd_sanctuary": "Music Disc",
+  "item.legend_of_steve.music_disc_odd_sanctuary.desc": "LudoCrypt - Odd Sanctuary",
 
   "item.legend_of_steve.fairy_bottle": "Bottled Fairy",
 
@@ -411,6 +414,8 @@
   "block.legend_of_steve.red_switch_slab": "Red Switch Slab",
   "block.legend_of_steve.blue_switch_slab": "Blue Switch Slab",
 
+  "block.legend_of_steve.redstone_lock_block": "Redstone Lock",
+
   "item.legend_of_steve.aruroda_spawn_egg": "Aruroda Spawn Egg",
   "item.legend_of_steve.bombfish_spawn_egg": "Bombfish Spawn Egg",
   "item.legend_of_steve.fairy_spawn_egg": "Fairy Spawn Egg",
@@ -506,6 +511,9 @@
   "subtitles.legend_of_steve.block.crate.open": "Crate opened",
   "subtitles.legend_of_steve.block.crate.close": "Crate closed",
 
+  "subtitles.legend_of_steve.block.redstone_lock_block.unlock": "Redstone Lock triggered",
+  "subtitles.legend_of_steve.block.redstone_lock_block.lock": "Redstone Lock disables",
+
   "subtitles.legend_of_steve.block.sword_pedestal.withdraw": "Sword withdrawn from Pedestal",
   "subtitles.legend_of_steve.block.sword_pedestal.deposit": "Sword slides into Pedestal",
 
@@ -580,5 +588,8 @@
   "advancements.legend_of_steve.kaizo_trap.description": "Hit an Invisible Block when attempting to jump over a pit!",
 
   "advancements.legend_of_steve.meet_the_demonman": "Meet the Demoman",
-  "advancements.legend_of_steve.meet_the_demonman.description": "Carry one of every type of bomb"
+  "advancements.legend_of_steve.meet_the_demonman.description": "Carry one of every type of bomb",
+
+  "advancements.legend_of_steve.locke_and_key": "Locke and Key",
+  "advancements.legend_of_steve.locke_and_key.description": "Unlock a Block using a Key"
 }

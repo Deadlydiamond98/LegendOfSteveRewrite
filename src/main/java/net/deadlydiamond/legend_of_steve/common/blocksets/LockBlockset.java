@@ -1,8 +1,8 @@
 package net.deadlydiamond.legend_of_steve.common.blocksets;
 
-import net.deadlydiamond.legend_of_steve.common.blocks.functional.LockBlock;
-import net.deadlydiamond.legend_of_steve.common.items.locking.KeyItem;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.locks.LockedBlock;
 import net.deadlydiamond.legend_of_steve.common.items.locking.LockItem;
+import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
 import net.deadlydiamond.legend_of_steve.util.datagen.model.ZeldaBlockModelDatagenUtil;
 import net.deadlydiamond98.koalalib.common.blocksets.AbstractBlockset;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -19,18 +19,21 @@ import org.jetbrains.annotations.Nullable;
 import java.util.function.BiConsumer;
 
 public class LockBlockset extends AbstractBlockset {
+    private final TagKey<Item> keyTag;
+
     public final Item lockItem;
     public final Item keyItem;
 
     public final Block lockBlock;
 
-    public LockBlockset(String modID, String material) {
+    public LockBlockset(String modID, String material, TagKey<Item> keyTag, Item.Settings settings) {
         super(modID, material);
+        this.keyTag = keyTag;
 
-        this.lockBlock = registerNoItem(modID, id() + "_lock", new LockBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
+        this.lockBlock = registerNoItem(modID, id() + "_lock", new LockedBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK), this.keyTag));
 
         this.lockItem = registerItem(Identifier.of(modID, id() + "_lock"), new LockItem(new FabricItemSettings(), this.lockBlock));
-        this.keyItem = registerItem(Identifier.of(modID, id() + "_key"), new KeyItem(new FabricItemSettings(), this.lockBlock));
+        this.keyItem = registerItem(Identifier.of(modID, id() + "_key"), new Item(settings));
     }
 
     @Override
@@ -45,6 +48,7 @@ public class LockBlockset extends AbstractBlockset {
 
     @Override
     public void generateItemTags(BiConsumer<TagKey<Item>, ItemConvertible> tagConsumer) {
-
+        tagConsumer.accept(this.keyTag, this.keyItem);
+        tagConsumer.accept(ZeldaTags.LOCKS, this.lockItem);
     }
 }

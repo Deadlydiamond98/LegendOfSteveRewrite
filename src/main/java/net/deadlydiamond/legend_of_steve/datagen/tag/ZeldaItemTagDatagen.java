@@ -11,6 +11,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
@@ -139,7 +140,8 @@ public class ZeldaItemTagDatagen extends FabricTagProvider.ItemTagProvider {
         );
 
         getOrCreateTagBuilder(ItemTags.MUSIC_DISCS).add(
-                ZeldaItems.MUSIC_DISC_LEGEND
+                ZeldaItems.MUSIC_DISC_LEGEND,
+                ZeldaItems.MUSIC_DISC_ODD_SANCTUARY
         );
 
         getOrCreateTagBuilder(ItemTags.SMALL_FLOWERS).add(
@@ -147,7 +149,6 @@ public class ZeldaItemTagDatagen extends FabricTagProvider.ItemTagProvider {
         );
 
         // LOOT POTS
-
         addBlocksetsToTag(ZeldaTags.LOOT_POTS, ZeldaBlocks.DYED_LOOT_POTS);
         getOrCreateTagBuilder(ZeldaTags.LOOT_POTS).add(ZeldaBlocks.LOOT_POT.asItem());
 
@@ -174,8 +175,18 @@ public class ZeldaItemTagDatagen extends FabricTagProvider.ItemTagProvider {
                 ZeldaBlocks.CRYSTAL_SWITCH.asItem()
         );
 
-        // LOCKS
+        // LOCKS & KEYS
         createItemTags(ZeldaBlocks.LOCKS.toArray(LockBlockset[]::new));
+        getOrCreateTagBuilder(ZeldaTags.KEYS)
+                .addTag(ZeldaTags.COPPER_KEYS)
+                .addTag(ZeldaTags.IRON_KEYS)
+                .addTag(ZeldaTags.GOLD_KEYS)
+                .addTag(ZeldaTags.BOSS_KEYS);
+
+        getOrCreateTagBuilder(ZeldaTags.KEYS).add(
+                ZeldaItems.CREATIVE_KEY,
+                Items.TRIPWIRE_HOOK
+        );
     }
 
     private void addBlocksetsToTag(TagKey<Item> tag, AbstractBlockset... blocksets) {

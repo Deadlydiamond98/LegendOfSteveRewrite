@@ -1,0 +1,9 @@
+{
+  "type": "legend_of_steve:spring_water_conversion",
+  "input": {
+    "item": "minecraft:music_disc_cat"
+  },
+  "result": {
+    "item": "legend_of_steve:music_disc_odd_sanctuary"
+  }
+}

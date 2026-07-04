@@ -11,6 +11,7 @@ public class ZeldaSounds {
 
     // Music ///////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static final SoundEvent MUSIC_DISC_LEGEND = register("music_disc.legend");
+    public static final SoundEvent MUSIC_DISC_ODD_SANCTUARY = register("music_disc.odd_sanctuary");
 
     // Blocks //////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Bomb Flower
@@ -62,6 +63,9 @@ public class ZeldaSounds {
     // Crate
     public static final SoundEvent CRATE_OPEN = register("block.crate.open");
     public static final SoundEvent CRATE_CLOSE = register("block.crate.close");
+    // Redstone Lock
+    public static final SoundEvent REDSTONE_LOCK_UNLOCK = register("block.redstone_lock_block.unlock");
+    public static final SoundEvent REDSTONE_LOCK_LOCK = register("block.redstone_lock_block.lock");
     // Fluid Walk Sounds
     public static final SoundEvent WATER_STEP = register("block.water.pondstriding.step");
     public static final SoundEvent LAVA_STEP = register("block.lava.hotstriding.step");

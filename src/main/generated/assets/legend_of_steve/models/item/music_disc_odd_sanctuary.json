@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "legend_of_steve:item/pumpkin_soup"
+    "layer0": "legend_of_steve:item/music_disc_odd_sanctuary"
   }
 }

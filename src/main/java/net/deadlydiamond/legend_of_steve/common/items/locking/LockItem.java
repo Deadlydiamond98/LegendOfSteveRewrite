@@ -1,7 +1,7 @@
 package net.deadlydiamond.legend_of_steve.common.items.locking;
 
 import net.deadlydiamond.legend_of_steve.common.bes.LockedBlockEntity;
-import net.deadlydiamond.legend_of_steve.common.blocks.functional.LockBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.locks.LockedBlock;
 import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
 import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
 import net.minecraft.block.Block;
@@ -37,7 +37,7 @@ public class LockItem extends Item {
         BlockState state = world.getBlockState(pos);
         PlayerEntity player = context.getPlayer();
 
-        if (!(this.lock instanceof LockBlock) || state.getBlock() instanceof LockBlock || !state.isIn(ZeldaTags.LOCKABLE)) {
+        if (!(this.lock instanceof LockedBlock) || state.getBlock() instanceof LockedBlock || !state.isIn(ZeldaTags.LOCKABLE)) {
             return ActionResult.PASS;
         }
 

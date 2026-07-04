@@ -1,6 +1,6 @@
 package net.deadlydiamond.legend_of_steve.common.bes;
 
-import net.deadlydiamond.legend_of_steve.common.blocks.functional.LockBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.locks.LockedBlock;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlockEntities;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -24,7 +24,7 @@ public class LockedBlockEntity extends BlockEntity {
     }
 
     public BlockState getLockedBlock() {
-        if (this.lockedBlock.getBlock() instanceof LockBlock) {
+        if (this.lockedBlock.getBlock() instanceof LockedBlock) {
             return Blocks.AIR.getDefaultState();
         }
 

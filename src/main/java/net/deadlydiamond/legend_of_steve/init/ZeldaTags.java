@@ -24,6 +24,14 @@ public class ZeldaTags {
     public static final TagKey<Item> STRANGE_DIRT = item("strange_dirt");
     public static final TagKey<Item> STRANGE_BLUE_DIRT = item("strange_blue_dirt");
 
+    public static final TagKey<Item> COPPER_KEYS = item("copper_keys");
+    public static final TagKey<Item> IRON_KEYS = item("iron_keys");
+    public static final TagKey<Item> GOLD_KEYS = item("gold_keys");
+    public static final TagKey<Item> BOSS_KEYS = item("boss_keys");
+    public static final TagKey<Item> KEYS = item("keys");
+
+    public static final TagKey<Item> LOCKS = item("locks");
+
     public static final TagKey<Item> SWITCH_BLOCKS_ITEM = item("switch_blocks");
 
     // BLOCKS //////////////////////////////////////////////////////////////////////////////////////////////////////////

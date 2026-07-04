@@ -1,6 +1,6 @@
 package net.deadlydiamond.legend_of_steve.common.items.locking;
 
-import net.deadlydiamond.legend_of_steve.common.blocks.functional.LockBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.locks.LockedBlock;
 import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -29,7 +29,7 @@ public class KeyItem extends Item {
         BlockState state = world.getBlockState(pos);
         PlayerEntity player = context.getPlayer();
 
-        if (state.getBlock() instanceof LockBlock lockBlock && state.isOf(this.lock)) {
+        if (state.getBlock() instanceof LockedBlock lockBlock && state.isOf(this.lock)) {
             world.addBlockBreakParticles(pos, state);
             BlockState lockedBlock = lockBlock.getLockedBlock(world, pos);
             NbtCompound nbt = lockBlock.getWrappedNBT(world, pos);

@@ -1,0 +1,6 @@
+{
+  "parent": "legend_of_steve:item/key",
+  "textures": {
+    "layer0": "legend_of_steve:item/creative_key"
+  }
+}

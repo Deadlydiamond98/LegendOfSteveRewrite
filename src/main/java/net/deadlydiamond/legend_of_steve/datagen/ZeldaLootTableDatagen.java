@@ -96,6 +96,7 @@ public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
                 ZeldaBlocks.INVISIBLE_QUESTION_BLOCK,
 
                 // Other
+                ZeldaBlocks.REDSTONE_LOCK_BLOCK,
                 ZeldaBlocks.STONE_SWORD_PEDESTAL,
                 ZeldaBlocks.DEEPSLATE_SWORD_PEDESTAL,
                 ZeldaBlocks.BLACKSTONE_SWORD_PEDESTAL,

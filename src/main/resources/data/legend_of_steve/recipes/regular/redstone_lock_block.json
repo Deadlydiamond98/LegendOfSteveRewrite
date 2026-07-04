@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CCC",
+    "CKC",
+    "CRC"
+  ],
+  "key": {
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "C": {
+      "item": "minecraft:cobblestone"
+    },
+    "K": {
+      "tag": "legend_of_steve:locks"
+    }
+  },
+  "result": {
+    "item": "legend_of_steve:redstone_lock_block"
+  }
+}

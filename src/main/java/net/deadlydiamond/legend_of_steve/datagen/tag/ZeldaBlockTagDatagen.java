@@ -122,7 +122,9 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
                 ZeldaBlocks.QUARTZ_SWORD_PEDESTAL,
                 ZeldaBlocks.FAIRY_MARBLE_SWORD_PEDESTAL,
                 ZeldaBlocks.STRANGE_DIRT_SWORD_PEDESTAL,
-                ZeldaBlocks.STRANGE_BLUE_DIRT_SWORD_PEDESTAL
+                ZeldaBlocks.STRANGE_BLUE_DIRT_SWORD_PEDESTAL,
+                // Other
+                ZeldaBlocks.REDSTONE_LOCK_BLOCK
         );
 
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(

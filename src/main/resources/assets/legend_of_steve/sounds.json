@@ -85,6 +85,14 @@
         }
       ]
   },
+  "music_disc.odd_sanctuary": {
+      "sounds": [
+        {
+          "name": "legend_of_steve:music/odd_sanctuary",
+          "stream": true
+        }
+      ]
+  },
 
   "entity.bomb.jingle": {
     "sounds": [
@@ -1666,6 +1674,49 @@
       "block/barrel/close"
     ],
     "subtitle": "subtitles.legend_of_steve.block.crate.close"
+  },
+
+  "block.redstone_lock_block.unlock": {
+    "sounds": [
+      {
+        "name": "block/iron_trapdoor/close1",
+        "volume": 0.9
+      },
+      {
+        "name": "block/iron_trapdoor/close2",
+        "volume": 0.9
+      },
+      {
+        "name": "block/iron_trapdoor/close3",
+        "volume": 0.9
+      },
+      {
+        "name": "block/iron_trapdoor/close4",
+        "volume": 0.9
+      }
+    ],
+    "subtitle": "subtitles.legend_of_steve.block.redstone_lock_block.unlock"
+  },
+  "block.redstone_lock_block.lock": {
+    "sounds": [
+      {
+        "name": "block/iron_trapdoor/open1",
+        "volume": 0.9
+      },
+      {
+        "name": "block/iron_trapdoor/open2",
+        "volume": 0.9
+      },
+      {
+        "name": "block/iron_trapdoor/open3",
+        "volume": 0.9
+      },
+      {
+        "name": "block/iron_trapdoor/open4",
+        "volume": 0.9
+      }
+    ],
+    "subtitle": "subtitles.legend_of_steve.block.redstone_lock_block.lock"
   },
 
   "block.sword_pedestal.withdraw": {

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "legend_of_steve:copper_lock",
+    "legend_of_steve:iron_lock",
+    "legend_of_steve:gold_lock",
+    "legend_of_steve:boss_lock"
+  ]
+}

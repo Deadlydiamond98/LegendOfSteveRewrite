@@ -45,19 +45,17 @@ public class ZeldaCreativeTabs {
                 ZeldaItems.NETHERITE_QUIVER
         );
 
-        // LOCKS & KEYS
+        // LOCKS & KEYS ////////////////////////////////////////////////////////////////////////////////////////////////
         List<Item> locks = new ArrayList<>();
         for (LockBlockset lock : ZeldaBlocks.LOCKS) {
             entries.add(lock.keyItem);
             locks.add(lock.lockItem);
         }
+        entries.add(ZeldaItems.CREATIVE_KEY);
         add(entries, locks.toArray(Item[]::new));
 
-        // Items continued
-
+        // Items Continued /////////////////////////////////////////////////////////////////////////////////////////////
         add(entries,
-                // FOOD
-                ZeldaItems.PUMPKIN_SOUP,
                 // EMERALD SHARDS
                 ZeldaItems.EMERALD_SHARD,
                 ZeldaItems.EMERALD_CHUNK,
@@ -75,6 +73,7 @@ public class ZeldaCreativeTabs {
                 // MUSIC DISCS
                 ZeldaItems.DISC_FRAGMENT_LEGEND,
                 ZeldaItems.MUSIC_DISC_LEGEND,
+                ZeldaItems.MUSIC_DISC_ODD_SANCTUARY,
                 // PLANTS
                 ZeldaItems.SILENT_PRINCESS_BULB
         );
@@ -193,6 +192,9 @@ public class ZeldaCreativeTabs {
         entries.add(BoundBlockUtil.getCreativeEntry(ZeldaBlocks.CRYSTAL_SWITCH.asItem().getDefaultStack()));
         ZeldaBlocks.RED_SWITCH_BLOCKS.addSwitchesToCreative(entries);
         ZeldaBlocks.BLUE_SWITCH_BLOCKS.addSwitchesToCreative(entries);
+
+        // Lock Block
+        entries.add(ZeldaBlocks.REDSTONE_LOCK_BLOCK);
 
         // SWORD PEDESTALS
         entries.add(ZeldaBlocks.STONE_SWORD_PEDESTAL);

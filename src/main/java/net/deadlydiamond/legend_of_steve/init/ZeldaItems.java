@@ -3,7 +3,7 @@ package net.deadlydiamond.legend_of_steve.init;
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.items.EmeraldShardItem;
 import net.deadlydiamond.legend_of_steve.common.items.FairyBottleItem;
-import net.deadlydiamond.legend_of_steve.common.items.SwitchCore;
+import net.deadlydiamond.legend_of_steve.common.items.EnchantedGlintItem;
 import net.deadlydiamond.legend_of_steve.common.items.bag.BombBagItem;
 import net.deadlydiamond.legend_of_steve.common.items.bag.QuiverItem;
 import net.deadlydiamond.legend_of_steve.common.items.projectile.DekuNutItem;
@@ -46,12 +46,6 @@ public class ZeldaItems {
     public static final Item GILDED_QUIVER = registerQuiver("gilded_quiver", 320, ArmorMaterials.LEATHER, SoundEvents.ITEM_ARMOR_EQUIP_GOLD);
     public static final Item NETHERITE_QUIVER = registerQuiver("netherite_quiver", 160, ArmorMaterials.NETHERITE, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE);
 
-    // FOODS ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    public static final Item PUMPKIN_SOUP = register("pumpkin_soup", new StewItem(new FabricItemSettings().maxCount(1).food(
-            new FoodComponent.Builder().hunger(8).saturationModifier(0.6f).build()
-    )));
-
     // MATERIALS ///////////////////////////////////////////////////////////////////////////////////////////////////////
     // EMERALD SHARD
     public static final Item EMERALD_CHUNK = register("emerald_chunk", new EmeraldShardItem(
@@ -70,7 +64,7 @@ public class ZeldaItems {
     public static final Item MASTER_SCRAP = register("master_scrap", new Item(new FabricItemSettings()));
     public static final Item MASTER_INGOT = register("master_ingot", new Item(new FabricItemSettings().fireproof()));
     // SWITCH CORE
-    public static final Item SWITCH_CORE = register("switch_core", new SwitchCore(new FabricItemSettings().rarity(Rarity.RARE)));
+    public static final Item SWITCH_CORE = register("switch_core", new EnchantedGlintItem(new FabricItemSettings().rarity(Rarity.RARE)));
     // FAIRY BOTTLE
     public static final Item FAIRY_BOTTLE = register("fairy_bottle", new FairyBottleItem(ZeldaEntityTypes.FAIRY));
 
@@ -82,12 +76,18 @@ public class ZeldaItems {
     // MUSIC DISCS /////////////////////////////////////////////////////////////////////////////////////////////////////
     public static final Item DISC_FRAGMENT_LEGEND = register("disc_fragment_legend", new DiscFragmentItem(new FabricItemSettings()));
     public static final Item MUSIC_DISC_LEGEND = register("music_disc_legend", new MusicDiscItem(
-            16, ZeldaSounds.MUSIC_DISC_LEGEND, new FabricItemSettings().rarity(Rarity.RARE).maxCount(1), 86
+            15, ZeldaSounds.MUSIC_DISC_LEGEND, new FabricItemSettings().rarity(Rarity.RARE).maxCount(1), 86
+    ));
+    public static final Item MUSIC_DISC_ODD_SANCTUARY = register("music_disc_odd_sanctuary", new MusicDiscItem(
+            15, ZeldaSounds.MUSIC_DISC_ODD_SANCTUARY, new FabricItemSettings().rarity(Rarity.RARE).maxCount(1), 174
     ));
 
     // PLANTS //////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static final Item BOMB_FLOWER_SEEDS = register("bomb_flower_seeds", new BlockItem(ZeldaBlocks.BOMB_FLOWER, new FabricItemSettings()));
     public static final Item SILENT_PRINCESS_BULB = register("silent_princess_bulb", new AliasedBlockItem(ZeldaBlocks.SILENT_PRINCESS_CROP, new FabricItemSettings()));
+
+    // CREATIVE or Debug
+    public static final Item CREATIVE_KEY = register("creative_key", new EnchantedGlintItem(new FabricItemSettings().rarity(Rarity.EPIC)));
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // REGISTRATION ////////////////////////////////////////////////////////////////////////////////////////////////////

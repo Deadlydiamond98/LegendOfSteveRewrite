@@ -7,6 +7,7 @@ import net.deadlydiamond.legend_of_steve.common.blocks.container.single.SwordPed
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.MasterOreBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.connected.ConnectedPillarBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.crafting.DungeonTableBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.locks.RedstoneLockBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.InvisibleQuestionBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.QuestionBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.base.BouncingTransitionBlock;
@@ -41,6 +42,7 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Rarity;
 import org.jetbrains.annotations.Nullable;
 
@@ -152,6 +154,7 @@ public class ZeldaBlocks {
     public static final BaseStairSlabBlockset RED_TEKTILES = new BaseStairSlabBlockset(LegendOfSteve.MOD_ID, "red_tektiles", RED_TEKTILES_SETTINGS);
     public static final BaseStairSlabBlockset SMALL_RED_TEKTILES = new BaseStairSlabBlockset(LegendOfSteve.MOD_ID, "small_red_tektiles", RED_TEKTILES_SETTINGS);
     public static final BaseStairSlabWallBlockset RED_TEKTILE_BRICKS = new BaseStairSlabWallBlockset(LegendOfSteve.MOD_ID, "red_tektile_bricks", RED_TEKTILES_SETTINGS);
+
     public static final BaseStairSlabBlockset BLUE_TEKTILES = new BaseStairSlabBlockset(LegendOfSteve.MOD_ID, "blue_tektiles", BLUE_TEKTILES_SETTINGS);
     public static final BaseStairSlabBlockset SMALL_BLUE_TEKTILES = new BaseStairSlabBlockset(LegendOfSteve.MOD_ID, "small_blue_tektiles", BLUE_TEKTILES_SETTINGS);
     public static final BaseStairSlabWallBlockset BLUE_TEKTILE_BRICKS = new BaseStairSlabWallBlockset(LegendOfSteve.MOD_ID, "blue_tektile_bricks", BLUE_TEKTILES_SETTINGS);
@@ -182,10 +185,12 @@ public class ZeldaBlocks {
     public static final Item CRATE_ITEM = ZeldaItems.register("crate", new CrateItem(new FabricItemSettings(), CRATE.getDefaultState()));
 
     // LOCKED BLOCKS
-    public static final LockBlockset COPPER_LOCK = registerLock("copper");
-    public static final LockBlockset IRON_LOCK = registerLock("iron");
-    public static final LockBlockset GOLD_LOCK = registerLock("gold");
-    public static final LockBlockset BOSS_LOCK = registerLock("boss");
+    public static final LockBlockset COPPER_LOCK = registerLock("copper", ZeldaTags.COPPER_KEYS);
+    public static final LockBlockset IRON_LOCK = registerLock("iron", ZeldaTags.IRON_KEYS);
+    public static final LockBlockset GOLD_LOCK = registerLock("gold", ZeldaTags.GOLD_KEYS);
+    public static final LockBlockset BOSS_LOCK = registerLock("boss", ZeldaTags.BOSS_KEYS);
+
+    public static final Block REDSTONE_LOCK_BLOCK = register("redstone_lock_block", new RedstoneLockBlock(FabricBlockSettings.copyOf(Blocks.OBSERVER)));
 
     // BOUNCE-ABLE BLOCKS
     public static final Block BOUNCING_BLOCK = register("bouncing_block", new BouncingTransitionBlock(FabricBlockSettings.copyOf(Blocks.MOVING_PISTON)), false);
@@ -244,8 +249,12 @@ public class ZeldaBlocks {
         return register(id, block, false);
     }
 
-    public static LockBlockset registerLock(String material) {
-        LockBlockset lockBlockset = new LockBlockset(LegendOfSteve.MOD_ID, material);
+    public static LockBlockset registerLock(String material, TagKey<Item> tag) {
+        FabricItemSettings settings = tag.id() == ZeldaTags.BOSS_KEYS.id() ?
+                new FabricItemSettings().rarity(Rarity.RARE) :
+                new FabricItemSettings();
+
+        LockBlockset lockBlockset = new LockBlockset(LegendOfSteve.MOD_ID, material, tag, settings);
         LOCKS.add(lockBlockset);
         return lockBlockset;
     }

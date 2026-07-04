@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "#legend_of_steve:copper_keys",
+    "#legend_of_steve:iron_keys",
+    "#legend_of_steve:gold_keys",
+    "#legend_of_steve:boss_keys",
+    "legend_of_steve:creative_key",
+    "minecraft:tripwire_hook"
+  ]
+}

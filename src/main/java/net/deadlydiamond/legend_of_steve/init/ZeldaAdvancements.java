@@ -13,6 +13,7 @@ public class ZeldaAdvancements {
     public static final CustomAdvancement WATER_WALKING = register("water_walking");
     public static final CustomAdvancement TRIGGER_CRYSTAL_SWITCH = register("trigger_crystal_switch");
     public static final CustomAdvancement KAIZO_TRAP = register("kaizo_trap");
+    public static final CustomAdvancement LOCKE_AND_KEY = register("locke_and_key");
 
     public static CustomAdvancement register(String name) {
         return Criteria.register(new CustomAdvancement(LegendOfSteve.id(name)));

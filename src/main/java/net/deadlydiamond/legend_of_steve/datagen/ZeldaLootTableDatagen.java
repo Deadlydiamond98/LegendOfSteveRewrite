@@ -113,22 +113,7 @@ public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
         addDrop(ZeldaBlocks.FAIRY_MARBLE.plate);
 
         addDropWithSilkTouch(ZeldaBlocks.LOOT_POT);
-        addDropWithSilkTouch(ZeldaBlocks.DYED_LOOT_POTS.white);
-        addDropWithSilkTouch(ZeldaBlocks.DYED_LOOT_POTS.light_gray);
-        addDropWithSilkTouch(ZeldaBlocks.DYED_LOOT_POTS.gray);
-        addDropWithSilkTouch(ZeldaBlocks.DYED_LOOT_POTS.black);
-        addDropWithSilkTouch(ZeldaBlocks.DYED_LOOT_POTS.brown);
-        addDropWithSilkTouch(ZeldaBlocks.DYED_LOOT_POTS.red);
-        addDropWithSilkTouch(ZeldaBlocks.DYED_LOOT_POTS.orange);
-        addDropWithSilkTouch(ZeldaBlocks.DYED_LOOT_POTS.yellow);
-        addDropWithSilkTouch(ZeldaBlocks.DYED_LOOT_POTS.lime);
-        addDropWithSilkTouch(ZeldaBlocks.DYED_LOOT_POTS.green);
-        addDropWithSilkTouch(ZeldaBlocks.DYED_LOOT_POTS.cyan);
-        addDropWithSilkTouch(ZeldaBlocks.DYED_LOOT_POTS.light_blue);
-        addDropWithSilkTouch(ZeldaBlocks.DYED_LOOT_POTS.blue);
-        addDropWithSilkTouch(ZeldaBlocks.DYED_LOOT_POTS.purple);
-        addDropWithSilkTouch(ZeldaBlocks.DYED_LOOT_POTS.magenta);
-        addDropWithSilkTouch(ZeldaBlocks.DYED_LOOT_POTS.pink);
+        ZeldaBlocks.DYED_LOOT_POTS.generateLootTables(this);
 
         addDrop(ZeldaBlocks.MASTER_DOOR, doorDrops(ZeldaBlocks.MASTER_DOOR));
 

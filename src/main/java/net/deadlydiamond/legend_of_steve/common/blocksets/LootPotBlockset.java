@@ -3,6 +3,7 @@ package net.deadlydiamond.legend_of_steve.common.blocksets;
 import net.deadlydiamond.legend_of_steve.common.blocks.container.single.LootPotBlock;
 import net.deadlydiamond.legend_of_steve.common.items.block.LootPotItem;
 import net.deadlydiamond98.koalalib.common.blocksets.AbstractBlockset;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
@@ -57,6 +58,11 @@ public class LootPotBlockset extends AbstractBlockset {
             String color = this.getColor(block);
             sharedModel.registerSharedModel(modelGen, block, color);
         });
+    }
+
+    @Override
+    protected void generateLootTable(FabricBlockLootTableProvider lootTableProvider, Block block) {
+        lootTableProvider.addDropWithSilkTouch(block);
     }
 
     private String getColor(Block block) {

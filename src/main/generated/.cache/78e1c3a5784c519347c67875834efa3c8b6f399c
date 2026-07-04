@@ -1,9 +1,9 @@
-// 1.20.1	2026-07-03T20:42:04.889347066	The Legend of Steve/Tags for minecraft:item
-1f1029e838735a9fc399f23a2f475ec78cbacf63 data/minecraft/tags/items/stairs.json
+// 1.20.1	2026-07-03T23:45:58.876998651	The Legend of Steve/Tags for minecraft:item
+74c01d9f30deb4d22179a61f3662806588518f65 data/minecraft/tags/items/stairs.json
 b4d7faadc178039d6865f14eedd8edac04e8e1c3 data/minecraft/tags/items/wooden_trapdoors.json
 fba66bfc33c2dc3dfe13926359d5a3fba438019b data/minecraft/tags/items/signs.json
 017256426ee55176f0fd67175039d052701437e7 data/minecraft/tags/items/leaves.json
-5f3ee26e46944e5321b0198d62bbf17a770a84d5 data/minecraft/tags/items/slabs.json
+419548110fca8190a7d32e38bec2641015ec82e5 data/minecraft/tags/items/slabs.json
 02a628f45e0cb1aa5034ead020b4844474a34ae6 data/minecraft/tags/items/non_flammable_wood.json
 be91e7b9b5922fd920b1ddf1ec0f07728bff876e data/legend_of_steve/tags/items/quivers.json
 1a3705a704de01fbbf8531c48244f1d5da62f81c data/minecraft/tags/items/piglin_loved.json
@@ -27,7 +27,7 @@ b34a3194429d91739b3a61e754435f647849b730 data/legend_of_steve/tags/items/switch_
 78e421ba75d9d839368eb80f51dc3bb54125ee35 data/minecraft/tags/items/wooden_buttons.json
 bb16959c47f727d036e1b5e28ca142e62ad72efc data/minecraft/tags/items/saplings.json
 7b40d9ae3acf98c87dc01ed58d8be3691b14c27d data/minecraft/tags/items/planks.json
-6a598cf23b180c4c61e84b45dca5740038bdd490 data/legend_of_steve/tags/items/chiseled_planks.json
 bc87e1ac5a3a45aa856bfff6323953b1785888ef data/minecraft/tags/items/beacon_payment_items.json
+32e895b93d12256748b0cde148190fa799ebb5ea data/legend_of_steve/tags/items/chiseled_planks.json
 fda8f23bd1fec00cdacd17cfab7e68c81c42454b data/minecraft/tags/items/stone_buttons.json
 8f6bfc9dae81ba0f0645bef61907a07d64912c7e data/legend_of_steve/tags/items/bomb_bags.json

@@ -26,6 +26,11 @@ public class LockItem extends Item {
     }
 
     @Override
+    public String getTranslationKey() {
+        return this.lock.getTranslationKey();
+    }
+
+    @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
         World world = context.getWorld();
         BlockPos pos = context.getBlockPos();

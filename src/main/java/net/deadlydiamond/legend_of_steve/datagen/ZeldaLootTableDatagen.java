@@ -2,6 +2,7 @@ package net.deadlydiamond.legend_of_steve.datagen;
 
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
 import net.deadlydiamond.legend_of_steve.init.ZeldaItems;
+import net.deadlydiamond.legend_of_steve.util.wood.WoodVariantUtil;
 import net.deadlydiamond98.koalalib.common.blocksets.AbstractBlockset;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
@@ -17,24 +18,13 @@ public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
     @Override
     public void generate() {
 
+        WoodVariantUtil.generateLootTables(this);
+
         generateLootTables(
                 // DEKU WOOD
                 ZeldaBlocks.DEKU_WOOD,
                 // DUNGEONCITE
                 ZeldaBlocks.BROWN_DUNGEONCITE,
-                // CHISELED PLANK BRICKS
-                ZeldaBlocks.CHISELED_OAK_BRICKS,
-                ZeldaBlocks.CHISELED_BIRCH_BRICKS,
-                ZeldaBlocks.CHISELED_SPRUCE_BRICKS,
-                ZeldaBlocks.CHISELED_JUNGLE_BRICKS,
-                ZeldaBlocks.CHISELED_ACACIA_BRICKS,
-                ZeldaBlocks.CHISELED_DARK_OAK_BRICKS,
-                ZeldaBlocks.CHISELED_CRIMSON_BRICKS,
-                ZeldaBlocks.CHISELED_WARPED_BRICKS,
-                ZeldaBlocks.CHISELED_MANGROVE_BRICKS,
-                ZeldaBlocks.CHISELED_BAMBOO_BRICKS,
-                ZeldaBlocks.CHISELED_CHERRY_BRICKS,
-                ZeldaBlocks.CHISELED_DEKU_BRICKS,
                 // TILES
                 ZeldaBlocks.STONE_TILES,
                 // FAIRY MARBLE
@@ -71,19 +61,6 @@ public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
         addSimpleBlockDrops(
                 ZeldaBlocks.DUNGEON_TABLE,
                 ZeldaBlocks.CRATE,
-                // CHISELED PLANKS
-                ZeldaBlocks.CHISELED_OAK_PLANKS,
-                ZeldaBlocks.CHISELED_BIRCH_PLANKS,
-                ZeldaBlocks.CHISELED_SPRUCE_PLANKS,
-                ZeldaBlocks.CHISELED_JUNGLE_PLANKS,
-                ZeldaBlocks.CHISELED_ACACIA_PLANKS,
-                ZeldaBlocks.CHISELED_DARK_OAK_PLANKS,
-                ZeldaBlocks.CHISELED_CRIMSON_PLANKS,
-                ZeldaBlocks.CHISELED_WARPED_PLANKS,
-                ZeldaBlocks.CHISELED_MANGROVE_PLANKS,
-                ZeldaBlocks.CHISELED_BAMBOO_PLANKS,
-                ZeldaBlocks.CHISELED_CHERRY_PLANKS,
-                ZeldaBlocks.CHISELED_DEKU_PLANKS,
                 // FAIRY LIGHTS
                 ZeldaBlocks.PINK_FAIRY_LAMP,
                 ZeldaBlocks.RED_FAIRY_LAMP,

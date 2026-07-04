@@ -4,6 +4,7 @@ import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.bindable.BoundBlockUtil;
 import net.deadlydiamond.legend_of_steve.common.blocksets.LockBlockset;
 import net.deadlydiamond.legend_of_steve.common.entities.living.fairy.FairyColor;
+import net.deadlydiamond.legend_of_steve.util.wood.WoodVariantUtil;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
@@ -102,30 +103,7 @@ public class ZeldaCreativeTabs {
         // CRATE
         entries.add(ZeldaBlocks.CRATE_ITEM);
 
-        entries.add(ZeldaBlocks.CHISELED_OAK_PLANKS);
-        ZeldaBlocks.CHISELED_OAK_BRICKS.addToCreative(entries);
-        entries.add(ZeldaBlocks.CHISELED_BIRCH_PLANKS);
-        ZeldaBlocks.CHISELED_BIRCH_BRICKS.addToCreative(entries);
-        entries.add(ZeldaBlocks.CHISELED_SPRUCE_PLANKS);
-        ZeldaBlocks.CHISELED_SPRUCE_BRICKS.addToCreative(entries);
-        entries.add(ZeldaBlocks.CHISELED_JUNGLE_PLANKS);
-        ZeldaBlocks.CHISELED_JUNGLE_BRICKS.addToCreative(entries);
-        entries.add(ZeldaBlocks.CHISELED_ACACIA_PLANKS);
-        ZeldaBlocks.CHISELED_ACACIA_BRICKS.addToCreative(entries);
-        entries.add(ZeldaBlocks.CHISELED_DARK_OAK_PLANKS);
-        ZeldaBlocks.CHISELED_DARK_OAK_BRICKS.addToCreative(entries);
-        entries.add(ZeldaBlocks.CHISELED_CRIMSON_PLANKS);
-        ZeldaBlocks.CHISELED_CRIMSON_BRICKS.addToCreative(entries);
-        entries.add(ZeldaBlocks.CHISELED_WARPED_PLANKS);
-        ZeldaBlocks.CHISELED_WARPED_BRICKS.addToCreative(entries);
-        entries.add(ZeldaBlocks.CHISELED_MANGROVE_PLANKS);
-        ZeldaBlocks.CHISELED_MANGROVE_BRICKS.addToCreative(entries);
-        entries.add(ZeldaBlocks.CHISELED_BAMBOO_PLANKS);
-        ZeldaBlocks.CHISELED_BAMBOO_BRICKS.addToCreative(entries);
-        entries.add(ZeldaBlocks.CHISELED_CHERRY_PLANKS);
-        ZeldaBlocks.CHISELED_CHERRY_BRICKS.addToCreative(entries);
-        entries.add(ZeldaBlocks.CHISELED_DEKU_PLANKS);
-        ZeldaBlocks.CHISELED_DEKU_BRICKS.addToCreative(entries);
+        WoodVariantUtil.addToCreative(entries);
 
         // DEKU WOOD
         ZeldaBlocks.DEKU_WOOD.addToCreative(entries);

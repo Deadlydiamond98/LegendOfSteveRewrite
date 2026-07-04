@@ -50,7 +50,7 @@ public class ZeldaRecipeDatagen extends FabricRecipeProvider {
 
     @Override
     public void generate(Consumer<RecipeJsonProvider> consumer) {
-        chiseledPlanks(consumer);
+        woodRecipes(consumer);
         fairyMarble(consumer);
         masterOre(consumer);
         tektiles(consumer);
@@ -65,45 +65,18 @@ public class ZeldaRecipeDatagen extends FabricRecipeProvider {
         ZeldaBlocks.BROWN_DUNGEONCITE.generateRecipes(consumer);
     }
 
-    private void chiseledPlanks(Consumer<RecipeJsonProvider> consumer) {
-        offerChiseledBlockRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_OAK_PLANKS, Blocks.OAK_SLAB);
-        offerChiseledBlockRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_BIRCH_PLANKS, Blocks.BIRCH_SLAB);
-        offerChiseledBlockRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_SPRUCE_PLANKS, Blocks.SPRUCE_SLAB);
-        offerChiseledBlockRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_JUNGLE_PLANKS, Blocks.JUNGLE_SLAB);
-        offerChiseledBlockRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_ACACIA_PLANKS, Blocks.ACACIA_SLAB);
-        offerChiseledBlockRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_DARK_OAK_PLANKS, Blocks.DARK_OAK_SLAB);
-        offerChiseledBlockRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_CRIMSON_PLANKS, Blocks.CRIMSON_SLAB);
-        offerChiseledBlockRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_WARPED_PLANKS, Blocks.WARPED_SLAB);
-        offerChiseledBlockRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_MANGROVE_PLANKS, Blocks.MANGROVE_SLAB);
-        offerChiseledBlockRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_BAMBOO_PLANKS, Blocks.BAMBOO_MOSAIC_SLAB);
-        offerChiseledBlockRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_CHERRY_PLANKS, Blocks.CHERRY_SLAB);
-        offerChiseledBlockRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_DEKU_PLANKS, ZeldaBlocks.DEKU_WOOD.slab);
+    private void woodRecipes(Consumer<RecipeJsonProvider> consumer) {
+        ZeldaBlocks.CHISELED_PLANKS.forEach((woodVariant, block) -> offerChiseledBlockRecipe(
+                consumer, RecipeCategory.BUILDING_BLOCKS, block, woodVariant.getSlab(true)
+        ));
 
-        offerPolishedStoneRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_OAK_BRICKS.base, ZeldaBlocks.CHISELED_OAK_PLANKS);
-        offerPolishedStoneRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_BIRCH_BRICKS.base, ZeldaBlocks.CHISELED_BIRCH_PLANKS);
-        offerPolishedStoneRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_SPRUCE_BRICKS.base, ZeldaBlocks.CHISELED_SPRUCE_PLANKS);
-        offerPolishedStoneRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_JUNGLE_BRICKS.base, ZeldaBlocks.CHISELED_JUNGLE_PLANKS);
-        offerPolishedStoneRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_ACACIA_BRICKS.base, ZeldaBlocks.CHISELED_ACACIA_PLANKS);
-        offerPolishedStoneRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_DARK_OAK_BRICKS.base, ZeldaBlocks.CHISELED_DARK_OAK_PLANKS);
-        offerPolishedStoneRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_CRIMSON_BRICKS.base, ZeldaBlocks.CHISELED_CRIMSON_PLANKS);
-        offerPolishedStoneRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_WARPED_BRICKS.base, ZeldaBlocks.CHISELED_WARPED_PLANKS);
-        offerPolishedStoneRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_MANGROVE_BRICKS.base, ZeldaBlocks.CHISELED_MANGROVE_PLANKS);
-        offerPolishedStoneRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_BAMBOO_BRICKS.base, ZeldaBlocks.CHISELED_BAMBOO_PLANKS);
-        offerPolishedStoneRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_CHERRY_BRICKS.base, ZeldaBlocks.CHISELED_CHERRY_PLANKS);
-        offerPolishedStoneRecipe(consumer, RecipeCategory.BUILDING_BLOCKS, ZeldaBlocks.CHISELED_DEKU_BRICKS.base, ZeldaBlocks.CHISELED_DEKU_PLANKS);
-
-        ZeldaBlocks.CHISELED_OAK_BRICKS.generateRecipes(consumer);
-        ZeldaBlocks.CHISELED_BIRCH_BRICKS.generateRecipes(consumer);
-        ZeldaBlocks.CHISELED_SPRUCE_BRICKS.generateRecipes(consumer);
-        ZeldaBlocks.CHISELED_JUNGLE_BRICKS.generateRecipes(consumer);
-        ZeldaBlocks.CHISELED_ACACIA_BRICKS.generateRecipes(consumer);
-        ZeldaBlocks.CHISELED_DARK_OAK_BRICKS.generateRecipes(consumer);
-        ZeldaBlocks.CHISELED_CRIMSON_BRICKS.generateRecipes(consumer);
-        ZeldaBlocks.CHISELED_WARPED_BRICKS.generateRecipes(consumer);
-        ZeldaBlocks.CHISELED_MANGROVE_BRICKS.generateRecipes(consumer);
-        ZeldaBlocks.CHISELED_BAMBOO_BRICKS.generateRecipes(consumer);
-        ZeldaBlocks.CHISELED_CHERRY_BRICKS.generateRecipes(consumer);
-        ZeldaBlocks.CHISELED_DEKU_BRICKS.generateRecipes(consumer);
+        ZeldaBlocks.BEVELED_PLANKS.forEach((woodVariant, blockset) -> {
+            offerPolishedStoneRecipe(
+                    consumer, RecipeCategory.BUILDING_BLOCKS, blockset.base,
+                    ZeldaBlocks.CHISELED_PLANKS.get(woodVariant)
+            );
+            blockset.generateRecipes(consumer);
+        });
     }
 
     private void fairyMarble(Consumer<RecipeJsonProvider> consumer) {

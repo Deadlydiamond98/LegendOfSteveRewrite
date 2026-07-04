@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.util.recipe;
+package net.deadlydiamond.legend_of_steve.util;
 
 import com.google.common.collect.Sets;
 import com.google.gson.JsonArray;

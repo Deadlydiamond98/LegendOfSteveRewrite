@@ -1,7 +1,7 @@
 package net.deadlydiamond.legend_of_steve.common.recipes;
 
 import com.google.gson.JsonObject;
-import net.deadlydiamond.legend_of_steve.util.recipe.GridRecipeUtil;
+import net.deadlydiamond.legend_of_steve.util.GridRecipeUtil;
 import net.minecraft.inventory.RecipeInputInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;

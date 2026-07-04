@@ -8,10 +8,13 @@ import net.deadlydiamond.legend_of_steve.util.ZeldaModels;
 import net.deadlydiamond.legend_of_steve.util.datagen.model.IridescentBlockModelDatagenUtil;
 import net.deadlydiamond.legend_of_steve.util.datagen.model.ZeldaBlockModelDatagenUtil;
 import net.deadlydiamond.legend_of_steve.util.datagen.model.ZeldaItemModelDatagenUtil;
+import net.deadlydiamond.legend_of_steve.util.wood.WoodVariant;
+import net.deadlydiamond.legend_of_steve.util.wood.WoodVariantUtil;
 import net.deadlydiamond98.koalalib.util.datagen.BlockModelDatagenUtil;
 import net.deadlydiamond98.koalalib.util.datagen.ItemModelDatagenUtil;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
+import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
@@ -20,6 +23,10 @@ import net.minecraft.data.client.Models;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
+
+import java.util.Map;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
 public class ZeldaModelDatagen extends FabricModelProvider {
 
@@ -57,20 +64,6 @@ public class ZeldaModelDatagen extends FabricModelProvider {
         // CRATE ///////////////////////////////////////////////////////////////////////////////////////////////////////
         generator.registerSimpleCubeAll(ZeldaBlocks.CRATE);
         generator.registerParentedItemModel(ZeldaBlocks.CRATE_ITEM, ModelIds.getBlockModelId(ZeldaBlocks.CRATE));
-        
-        // CHISELED PLANKS /////////////////////////////////////////////////////////////////////////////////////////////
-        generator.registerSimpleCubeAll(ZeldaBlocks.CHISELED_OAK_PLANKS);
-        generator.registerSimpleCubeAll(ZeldaBlocks.CHISELED_BIRCH_PLANKS);
-        generator.registerSimpleCubeAll(ZeldaBlocks.CHISELED_SPRUCE_PLANKS);
-        generator.registerSimpleCubeAll(ZeldaBlocks.CHISELED_JUNGLE_PLANKS);
-        generator.registerSimpleCubeAll(ZeldaBlocks.CHISELED_ACACIA_PLANKS);
-        generator.registerSimpleCubeAll(ZeldaBlocks.CHISELED_DARK_OAK_PLANKS);
-        generator.registerSimpleCubeAll(ZeldaBlocks.CHISELED_CRIMSON_PLANKS);
-        generator.registerSimpleCubeAll(ZeldaBlocks.CHISELED_WARPED_PLANKS);
-        generator.registerSimpleCubeAll(ZeldaBlocks.CHISELED_MANGROVE_PLANKS);
-        generator.registerSimpleCubeAll(ZeldaBlocks.CHISELED_BAMBOO_PLANKS);
-        generator.registerSimpleCubeAll(ZeldaBlocks.CHISELED_CHERRY_PLANKS);
-        generator.registerSimpleCubeAll(ZeldaBlocks.CHISELED_DEKU_PLANKS);
 
         // DUNGEONCITE /////////////////////////////////////////////////////////////////////////////////////////////////
         ZeldaBlocks.BROWN_DUNGEONCITE.generateModels(generator);
@@ -144,18 +137,8 @@ public class ZeldaModelDatagen extends FabricModelProvider {
         ZeldaBlocks.DEKU_WOOD.generateModels(generator);
         generator.registerFlowerPotPlant(ZeldaBlocks.DEKU_SAPLING, ZeldaBlocks.POTTED_DEKU_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
 
-        ZeldaBlocks.CHISELED_OAK_BRICKS.generateModels(generator);
-        ZeldaBlocks.CHISELED_BIRCH_BRICKS.generateModels(generator);
-        ZeldaBlocks.CHISELED_SPRUCE_BRICKS.generateModels(generator);
-        ZeldaBlocks.CHISELED_JUNGLE_BRICKS.generateModels(generator);
-        ZeldaBlocks.CHISELED_ACACIA_BRICKS.generateModels(generator);
-        ZeldaBlocks.CHISELED_DARK_OAK_BRICKS.generateModels(generator);
-        ZeldaBlocks.CHISELED_CRIMSON_BRICKS.generateModels(generator);
-        ZeldaBlocks.CHISELED_WARPED_BRICKS.generateModels(generator);
-        ZeldaBlocks.CHISELED_MANGROVE_BRICKS.generateModels(generator);
-        ZeldaBlocks.CHISELED_BAMBOO_BRICKS.generateModels(generator);
-        ZeldaBlocks.CHISELED_CHERRY_BRICKS.generateModels(generator);
-        ZeldaBlocks.CHISELED_DEKU_BRICKS.generateModels(generator);
+        WoodVariantUtil.generateWoodModels(generator);
+        registerWoodGroup(generator::registerSimpleCubeAll, ZeldaBlocks.CHISELED_PLANKS);
 
         // LOCKS ///////////////////////////////////////////////////////////////////////////////////////////////////////
         for (LockBlockset lock : ZeldaBlocks.LOCKS) {
@@ -216,7 +199,10 @@ public class ZeldaModelDatagen extends FabricModelProvider {
         ZeldaItemModelDatagenUtil.registerBombBag(itemModelGenerator, ZeldaItems.NETHERITE_BOMB_BAG);
     }
 
-    private static void registerKeys(ItemModelGenerator itemModelGenerator, Item... items) {
-        ItemModelDatagenUtil.bulkItemModelRegister(itemModelGenerator, ZeldaModels.KEY, items);
+    @SafeVarargs
+    private static void registerWoodGroup(Consumer<Block> blockConsumer, Map<WoodVariant, Block>... maps) {
+        for (Map<WoodVariant, Block> map : maps) {
+            map.forEach((woodVariant, block) -> blockConsumer.accept(block));
+        }
     }
 }

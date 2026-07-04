@@ -3,6 +3,8 @@ package net.deadlydiamond.legend_of_steve.datagen.tag;
 import net.deadlydiamond.legend_of_steve.common.blocksets.LockBlockset;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
 import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
+import net.deadlydiamond.legend_of_steve.util.wood.WoodVariant;
+import net.deadlydiamond.legend_of_steve.util.wood.WoodVariantUtil;
 import net.deadlydiamond98.koalalib.common.blocksets.AbstractBlockset;
 import net.deadlydiamond98.koalalib.init.KoalaLibTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -13,6 +15,7 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.TagKey;
 
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 @SuppressWarnings("unchecked")
@@ -24,26 +27,18 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-        generateBlockTags(
-                ZeldaBlocks.DEKU_WOOD,
+        // WOOD
+        ZeldaBlocks.DEKU_WOOD.generateBlockTags((blockTagKey, block) -> getOrCreateTagBuilder(blockTagKey).add(block), BlockTags.AXE_MINEABLE);
 
-                // Chiseled Wood
-                ZeldaBlocks.CHISELED_OAK_BRICKS,
-                ZeldaBlocks.CHISELED_BIRCH_BRICKS,
-                ZeldaBlocks.CHISELED_SPRUCE_BRICKS,
-                ZeldaBlocks.CHISELED_JUNGLE_BRICKS,
-                ZeldaBlocks.CHISELED_ACACIA_BRICKS,
-                ZeldaBlocks.CHISELED_DARK_OAK_BRICKS,
-                ZeldaBlocks.CHISELED_CRIMSON_BRICKS,
-                ZeldaBlocks.CHISELED_WARPED_BRICKS,
-                ZeldaBlocks.CHISELED_MANGROVE_BRICKS,
-                ZeldaBlocks.CHISELED_BAMBOO_BRICKS,
-                ZeldaBlocks.CHISELED_CHERRY_BRICKS,
-                ZeldaBlocks.CHISELED_DEKU_BRICKS
-        );
+        WoodVariantUtil.generateWoodBlockTags((blockTagKey, block) -> getOrCreateTagBuilder(blockTagKey).add(block));
+
+        addWoodToTag(BlockTags.AXE_MINEABLE, ZeldaBlocks.CHISELED_PLANKS);
+        addWoodToTag(ZeldaTags.CHISELED_PLANKS_BLOCK, ZeldaBlocks.CHISELED_PLANKS);
 
         // LOCKS
         generateBlockTags(ZeldaBlocks.LOCKS.toArray(LockBlockset[]::new));
+
+        // Mining //////////////////////////////////////////////////////////////////////////////////////////////////////
 
         createMinables(
                 // DUNGEONCITE
@@ -131,18 +126,6 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
         );
 
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(
-                ZeldaBlocks.CHISELED_OAK_PLANKS,
-                ZeldaBlocks.CHISELED_BIRCH_PLANKS,
-                ZeldaBlocks.CHISELED_SPRUCE_PLANKS,
-                ZeldaBlocks.CHISELED_JUNGLE_PLANKS,
-                ZeldaBlocks.CHISELED_ACACIA_PLANKS,
-                ZeldaBlocks.CHISELED_DARK_OAK_PLANKS,
-                ZeldaBlocks.CHISELED_CRIMSON_PLANKS,
-                ZeldaBlocks.CHISELED_WARPED_PLANKS,
-                ZeldaBlocks.CHISELED_MANGROVE_PLANKS,
-                ZeldaBlocks.CHISELED_BAMBOO_PLANKS,
-                ZeldaBlocks.CHISELED_CHERRY_PLANKS,
-                ZeldaBlocks.CHISELED_DEKU_PLANKS,
                 ZeldaBlocks.CRATE,
                 ZeldaBlocks.DUNGEON_TABLE
         );
@@ -187,21 +170,6 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
         );
 
         // TREE RELATED ////////////////////////////////////////////////////////////////////////////////////////////////
-
-        getOrCreateTagBuilder(ZeldaTags.CHISELED_PLANKS_BLOCK).add(
-                ZeldaBlocks.CHISELED_OAK_PLANKS,
-                ZeldaBlocks.CHISELED_BIRCH_PLANKS,
-                ZeldaBlocks.CHISELED_SPRUCE_PLANKS,
-                ZeldaBlocks.CHISELED_JUNGLE_PLANKS,
-                ZeldaBlocks.CHISELED_ACACIA_PLANKS,
-                ZeldaBlocks.CHISELED_DARK_OAK_PLANKS,
-                ZeldaBlocks.CHISELED_CRIMSON_PLANKS,
-                ZeldaBlocks.CHISELED_WARPED_PLANKS,
-                ZeldaBlocks.CHISELED_MANGROVE_PLANKS,
-                ZeldaBlocks.CHISELED_BAMBOO_PLANKS,
-                ZeldaBlocks.CHISELED_CHERRY_PLANKS,
-                ZeldaBlocks.CHISELED_DEKU_PLANKS
-        );
 
         getOrCreateTagBuilder(BlockTags.LEAVES).add(
                 ZeldaBlocks.DEKU_LEAVES,
@@ -279,6 +247,12 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
                     BlockTags.PICKAXE_MINEABLE,
                     miningLevel
             );
+        }
+    }
+
+    private void addWoodToTag(TagKey<Block> tag, Map<WoodVariant, Block>... maps) {
+        for (Map<WoodVariant, Block> map : maps) {
+            getOrCreateTagBuilder(tag).add(map.values().toArray(Block[]::new));
         }
     }
 }

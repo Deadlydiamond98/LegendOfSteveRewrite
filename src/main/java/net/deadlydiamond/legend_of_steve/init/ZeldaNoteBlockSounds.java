@@ -1,5 +1,7 @@
 package net.deadlydiamond.legend_of_steve.init;
 
+import net.deadlydiamond.legend_of_steve.common.blocksets.ChiseledWoodBrickBlockset;
+import net.deadlydiamond.legend_of_steve.util.wood.WoodVariant;
 import net.deadlydiamond98.koalalib.common.blocksets.AbstractBlockset;
 import net.minecraft.block.Block;
 import net.minecraft.sound.SoundEvent;
@@ -69,34 +71,10 @@ public class ZeldaNoteBlockSounds {
         );
         // HAND PAN ////////////////////////////////////////////////////////////////////////////////////////////////////
         registerNoteBlockSound(ZeldaSounds.HAND_PAN,
-                ZeldaBlocks.CHISELED_OAK_BRICKS,
-                ZeldaBlocks.CHISELED_BIRCH_BRICKS,
-                ZeldaBlocks.CHISELED_SPRUCE_BRICKS,
-                ZeldaBlocks.CHISELED_JUNGLE_BRICKS,
-                ZeldaBlocks.CHISELED_ACACIA_BRICKS,
-                ZeldaBlocks.CHISELED_DARK_OAK_BRICKS,
-                ZeldaBlocks.CHISELED_CRIMSON_BRICKS,
-                ZeldaBlocks.CHISELED_WARPED_BRICKS,
-                ZeldaBlocks.CHISELED_MANGROVE_BRICKS,
-                ZeldaBlocks.CHISELED_BAMBOO_BRICKS,
-                ZeldaBlocks.CHISELED_CHERRY_BRICKS,
-                ZeldaBlocks.CHISELED_DEKU_BRICKS
+                ZeldaBlocks.CHISELED_PLANKS,
+                ZeldaBlocks.BEVELED_PLANKS
         );
 
-        registerNoteBlockSound(ZeldaSounds.HAND_PAN,
-                ZeldaBlocks.CHISELED_OAK_PLANKS,
-                ZeldaBlocks.CHISELED_BIRCH_PLANKS,
-                ZeldaBlocks.CHISELED_SPRUCE_PLANKS,
-                ZeldaBlocks.CHISELED_JUNGLE_PLANKS,
-                ZeldaBlocks.CHISELED_ACACIA_PLANKS,
-                ZeldaBlocks.CHISELED_DARK_OAK_PLANKS,
-                ZeldaBlocks.CHISELED_CRIMSON_PLANKS,
-                ZeldaBlocks.CHISELED_WARPED_PLANKS,
-                ZeldaBlocks.CHISELED_MANGROVE_PLANKS,
-                ZeldaBlocks.CHISELED_BAMBOO_PLANKS,
-                ZeldaBlocks.CHISELED_CHERRY_PLANKS,
-                ZeldaBlocks.CHISELED_DEKU_PLANKS
-        );
         // SMW PIANO ///////////////////////////////////////////////////////////////////////////////////////////////////
         registerNoteBlockSound(ZeldaSounds.SMW_PIANO,
                 ZeldaBlocks.STRANGE_DIRT,
@@ -142,6 +120,19 @@ public class ZeldaNoteBlockSounds {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // HELPER METHODS //////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    @SafeVarargs
+    public static void registerNoteBlockSound(SoundEvent soundEvent, Map<WoodVariant, ?>... maps) {
+        for (Map<WoodVariant, ?> map : maps) {
+            map.forEach((woodVariant, t) -> {
+                if (t instanceof Block block) {
+                    registerNoteBlockSound(soundEvent, block);
+                } else if (t instanceof AbstractBlockset blockset) {
+                    registerNoteBlockSound(soundEvent, blockset);
+                }
+            });
+        }
+    }
 
     public static void registerNoteBlockSound(SoundEvent soundEvent, AbstractBlockset... blocksets) {
         for (AbstractBlockset blockset : blocksets) {

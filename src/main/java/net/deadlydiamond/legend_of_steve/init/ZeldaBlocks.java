@@ -24,6 +24,8 @@ import net.deadlydiamond.legend_of_steve.common.blocksets.iridescent.IridescentS
 import net.deadlydiamond.legend_of_steve.common.entities.living.fairy.FairyColor;
 import net.deadlydiamond.legend_of_steve.common.items.block.CrateItem;
 import net.deadlydiamond.legend_of_steve.common.items.block.LootPotItem;
+import net.deadlydiamond.legend_of_steve.util.wood.WoodVariant;
+import net.deadlydiamond.legend_of_steve.util.wood.WoodVariantUtil;
 import net.deadlydiamond.legend_of_steve.worldgen.sapling.DekuSaplingGenerator;
 import net.deadlydiamond98.koalalib.common.blocksets.BaseStairSlabBlockset;
 import net.deadlydiamond98.koalalib.common.blocksets.BaseStairSlabWallBlockset;
@@ -44,6 +46,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static net.deadlydiamond.legend_of_steve.init.ZeldaBlockSettings.*;
 
@@ -55,34 +58,6 @@ public class ZeldaBlocks {
     // DECORATIVE BLOCKS ///////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // CHISELED PLANKS
-    public static final Block CHISELED_OAK_PLANKS = register("chiseled_oak_planks", new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
-    public static final ChiseledWoodBrickBlockset CHISELED_OAK_BRICKS = new ChiseledWoodBrickBlockset(LegendOfSteve.MOD_ID, "chiseled_oak_bricks", FabricBlockSettings.copyOf(Blocks.OAK_PLANKS), true);
-    public static final Block CHISELED_BIRCH_PLANKS = register("chiseled_birch_planks", new Block(FabricBlockSettings.copyOf(Blocks.BIRCH_PLANKS)));
-    public static final ChiseledWoodBrickBlockset CHISELED_BIRCH_BRICKS = new ChiseledWoodBrickBlockset(LegendOfSteve.MOD_ID, "chiseled_birch_bricks", FabricBlockSettings.copyOf(Blocks.BIRCH_PLANKS), true);
-    public static final Block CHISELED_SPRUCE_PLANKS = register("chiseled_spruce_planks", new Block(FabricBlockSettings.copyOf(Blocks.SPRUCE_PLANKS)));
-    public static final ChiseledWoodBrickBlockset CHISELED_SPRUCE_BRICKS = new ChiseledWoodBrickBlockset(LegendOfSteve.MOD_ID, "chiseled_spruce_bricks", FabricBlockSettings.copyOf(Blocks.SPRUCE_PLANKS), true);
-    public static final Block CHISELED_JUNGLE_PLANKS = register("chiseled_jungle_planks", new Block(FabricBlockSettings.copyOf(Blocks.JUNGLE_PLANKS)));
-    public static final ChiseledWoodBrickBlockset CHISELED_JUNGLE_BRICKS = new ChiseledWoodBrickBlockset(LegendOfSteve.MOD_ID, "chiseled_jungle_bricks", FabricBlockSettings.copyOf(Blocks.JUNGLE_PLANKS), true);
-    public static final Block CHISELED_ACACIA_PLANKS = register("chiseled_acacia_planks", new Block(FabricBlockSettings.copyOf(Blocks.ACACIA_PLANKS)));
-    public static final ChiseledWoodBrickBlockset CHISELED_ACACIA_BRICKS = new ChiseledWoodBrickBlockset(LegendOfSteve.MOD_ID, "chiseled_acacia_bricks", FabricBlockSettings.copyOf(Blocks.ACACIA_PLANKS), true);
-    public static final Block CHISELED_DARK_OAK_PLANKS = register("chiseled_dark_oak_planks", new Block(FabricBlockSettings.copyOf(Blocks.DARK_OAK_PLANKS)));
-    public static final ChiseledWoodBrickBlockset CHISELED_DARK_OAK_BRICKS = new ChiseledWoodBrickBlockset(LegendOfSteve.MOD_ID, "chiseled_dark_oak_bricks", FabricBlockSettings.copyOf(Blocks.DARK_OAK_PLANKS), true);
-    public static final Block CHISELED_CRIMSON_PLANKS = register("chiseled_crimson_planks", new Block(FabricBlockSettings.copyOf(Blocks.CRIMSON_PLANKS)));
-    public static final ChiseledWoodBrickBlockset CHISELED_CRIMSON_BRICKS = new ChiseledWoodBrickBlockset(LegendOfSteve.MOD_ID, "chiseled_crimson_bricks", FabricBlockSettings.copyOf(Blocks.CRIMSON_PLANKS), false);
-    public static final Block CHISELED_WARPED_PLANKS = register("chiseled_warped_planks", new Block(FabricBlockSettings.copyOf(Blocks.WARPED_PLANKS)));
-    public static final ChiseledWoodBrickBlockset CHISELED_WARPED_BRICKS = new ChiseledWoodBrickBlockset(LegendOfSteve.MOD_ID, "chiseled_warped_bricks", FabricBlockSettings.copyOf(Blocks.WARPED_PLANKS), false);
-    public static final Block CHISELED_MANGROVE_PLANKS = register("chiseled_mangrove_planks", new Block(FabricBlockSettings.copyOf(Blocks.MANGROVE_PLANKS)));
-    public static final ChiseledWoodBrickBlockset CHISELED_MANGROVE_BRICKS = new ChiseledWoodBrickBlockset(LegendOfSteve.MOD_ID, "chiseled_mangrove_bricks", FabricBlockSettings.copyOf(Blocks.MANGROVE_PLANKS), true);
-    public static final Block CHISELED_BAMBOO_PLANKS = register("chiseled_bamboo_planks", new Block(FabricBlockSettings.copyOf(Blocks.BAMBOO_PLANKS)));
-    public static final ChiseledWoodBrickBlockset CHISELED_BAMBOO_BRICKS = new ChiseledWoodBrickBlockset(LegendOfSteve.MOD_ID, "chiseled_bamboo_bricks", FabricBlockSettings.copyOf(Blocks.BAMBOO_PLANKS), true);
-    public static final Block CHISELED_CHERRY_PLANKS = register("chiseled_cherry_planks", new Block(FabricBlockSettings.copyOf(Blocks.CHERRY_PLANKS)));
-    public static final ChiseledWoodBrickBlockset CHISELED_CHERRY_BRICKS = new ChiseledWoodBrickBlockset(LegendOfSteve.MOD_ID, "chiseled_cherry_bricks", FabricBlockSettings.copyOf(Blocks.CHERRY_PLANKS), true);
-    public static final Block CHISELED_DEKU_PLANKS = register("chiseled_deku_planks", new Block(FabricBlockSettings.copyOf(DEKU_WOOD_SETTINGS)));
-    public static final ChiseledWoodBrickBlockset CHISELED_DEKU_BRICKS = new ChiseledWoodBrickBlockset(LegendOfSteve.MOD_ID, "chiseled_deku_bricks", DEKU_WOOD_SETTINGS, true);
-
-    public static final TileBlockset STONE_TILES = new TileBlockset(LegendOfSteve.MOD_ID, "stone", FabricBlockSettings.copyOf(Blocks.STONE_BRICKS));
-
     // DEKU WOOD
     public static final WoodBlockset DEKU_WOOD = new WoodBlockset(LegendOfSteve.MOD_ID, "deku", DEKU_WOOD_SETTINGS, BlockSetType.CHERRY);
 
@@ -90,6 +65,21 @@ public class ZeldaBlocks {
     public static final Block FRUITING_DEKU_LEAVES = register("fruiting_deku_leaves", new FruitingLeavesBlock(DEKU_LEAVES_SETTINGS, DEKU_LEAVES));
     public static final Block DEKU_SAPLING = register("deku_sapling", new SaplingBlock(new DekuSaplingGenerator(), DEKU_SAPLING_SETTINGS));
     public static final Block POTTED_DEKU_SAPLING = register("potted_deku_sapling", Blocks.createFlowerPotBlock(DEKU_SAPLING), false);
+
+    // WOODEN BLOCKS
+    public static final Map<WoodVariant, Block> CHISELED_PLANKS = WoodVariantUtil.registerWoodVariantsBlock(
+            woodVariant -> register("chiseled_" + woodVariant.getType() + "_planks", new Block(FabricBlockSettings.copyOf(woodVariant.getPlank())))
+    );
+
+    public static final Map<WoodVariant, ChiseledWoodBrickBlockset> BEVELED_PLANKS = WoodVariantUtil.registerWoodVariantsBlockset(
+            woodVariant -> new ChiseledWoodBrickBlockset(
+                    LegendOfSteve.MOD_ID, "chiseled_" + woodVariant.getType() + "_bricks",
+                    FabricBlockSettings.copyOf(woodVariant.getPlank()), woodVariant.isFlammable()
+            )
+    );
+
+    // TILES
+    public static final TileBlockset STONE_TILES = new TileBlockset(LegendOfSteve.MOD_ID, "stone", FabricBlockSettings.copyOf(Blocks.STONE_BRICKS));
 
     // FAIRY LAMPS
     public static final Block PINK_FAIRY_LAMP = register("pink_fairy_lamp", new FairyLamp(PINK_FAIRY_LIGHT_SETTINGS, FairyColor.PINK));
@@ -113,6 +103,7 @@ public class ZeldaBlocks {
     public static final Block FAIRY_MARBLE_PILLAR = register("fairy_marble_pillar", new PillarBlock(FAIRY_MARBLE_SETTINGS));
     public static final Block SMOOTH_FAIRY_MARBLE = register("smooth_fairy_marble", new Block(FAIRY_MARBLE_SETTINGS));
 
+    // PERLITE
     public static final Block PERLITE = register("perlite", new Block(FabricBlockSettings.copyOf(PEARLITE_SETTINGS)));
     public static final IridescentStairSlabWallBlockset PERLITE_BRICKS = new IridescentStairSlabWallBlockset(LegendOfSteve.MOD_ID, "perlite_bricks", PEARLITE_SETTINGS);
     public static final Block PERLITE_PILLAR = register("perlite_pillar", new PillarBlock(FabricBlockSettings.copyOf(PEARLITE_SETTINGS)));

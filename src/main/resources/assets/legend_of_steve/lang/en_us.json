@@ -27,10 +27,10 @@
   "item.legend_of_steve.gold_key": "Gold Key",
   "item.legend_of_steve.boss_key": "Boss Key",
 
-  "item.legend_of_steve.copper_lock": "Copper Lock",
-  "item.legend_of_steve.iron_lock": "Iron Lock",
-  "item.legend_of_steve.gold_lock": "Gold Lock",
-  "item.legend_of_steve.boss_lock": "Boss Lock",
+  "block.legend_of_steve.copper_lock": "Copper Lock",
+  "block.legend_of_steve.iron_lock": "Iron Lock",
+  "block.legend_of_steve.gold_lock": "Gold Lock",
+  "block.legend_of_steve.boss_lock": "Boss Lock",
 
   "item.legend_of_steve.emerald_shard": "Emerald Shard",
   "item.legend_of_steve.emerald_chunk": "Emerald Chunk",

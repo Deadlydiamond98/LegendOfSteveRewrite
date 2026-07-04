@@ -8,6 +8,7 @@ import net.deadlydiamond.legend_of_steve.init.*;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBiomeModifications;
 import net.deadlydiamond.legend_of_steve.networking.ZeldaNetworking;
 import net.deadlydiamond.legend_of_steve.init.ZeldaNoteBlockSounds;
+import net.deadlydiamond.legend_of_steve.util.wood.WoodVariants;
 import net.deadlydiamond.legend_of_steve.worldgen.ZeldaFeatures;
 import net.deadlydiamond.legend_of_steve.worldgen.ZeldaStructures;
 import net.fabricmc.api.ModInitializer;
@@ -29,6 +30,7 @@ public class LegendOfSteve implements ModInitializer {
 		// Registry
 		ZeldaItems.register();
 		ZeldaBlocks.register();
+		WoodVariants.register();
 		ZeldaBlockEntities.register();
 		ZeldaFluids.register();
 		ZeldaEntityTypes.register();

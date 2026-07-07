@@ -99,6 +99,10 @@ public class ZeldaCreativeTabs {
         entries.add(ZeldaBlocks.LOOT_POT);
         ZeldaBlocks.DYED_LOOT_POTS.addToCreative(entries);
 
+        // DUNGEON CHESTS
+        entries.add(ZeldaBlocks.RED_DUNGEON_CHEST);
+        entries.add(ZeldaBlocks.BLUE_DUNGEON_CHEST);
+
         // CRATE
         entries.add(ZeldaBlocks.CRATE_ITEM);
 

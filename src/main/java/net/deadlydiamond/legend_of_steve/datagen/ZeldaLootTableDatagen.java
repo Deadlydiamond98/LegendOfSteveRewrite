@@ -94,16 +94,19 @@ public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
                 ZeldaBlocks.QUESTION_BLOCK,
                 ZeldaBlocks.BLUE_QUESTION_BLOCK,
                 ZeldaBlocks.INVISIBLE_QUESTION_BLOCK,
-
-                // Other
-                ZeldaBlocks.REDSTONE_LOCK_BLOCK,
+                // DUNGEON CHESTS
+                ZeldaBlocks.RED_DUNGEON_CHEST,
+                ZeldaBlocks.BLUE_DUNGEON_CHEST,
+                // SWORD PEDESTALS
                 ZeldaBlocks.STONE_SWORD_PEDESTAL,
                 ZeldaBlocks.DEEPSLATE_SWORD_PEDESTAL,
                 ZeldaBlocks.BLACKSTONE_SWORD_PEDESTAL,
                 ZeldaBlocks.QUARTZ_SWORD_PEDESTAL,
                 ZeldaBlocks.FAIRY_MARBLE_SWORD_PEDESTAL,
                 ZeldaBlocks.STRANGE_DIRT_SWORD_PEDESTAL,
-                ZeldaBlocks.STRANGE_BLUE_DIRT_SWORD_PEDESTAL
+                ZeldaBlocks.STRANGE_BLUE_DIRT_SWORD_PEDESTAL,
+                // Other
+                ZeldaBlocks.REDSTONE_LOCK_BLOCK
         );
 
         addDrop(ZeldaBlocks.FAIRY_MARBLE.base, block -> this.drops(block, ZeldaBlocks.COBBLED_FAIRY_MARBLE.base));

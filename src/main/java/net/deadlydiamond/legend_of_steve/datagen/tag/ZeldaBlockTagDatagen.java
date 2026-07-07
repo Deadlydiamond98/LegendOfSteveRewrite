@@ -123,6 +123,9 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
                 ZeldaBlocks.FAIRY_MARBLE_SWORD_PEDESTAL,
                 ZeldaBlocks.STRANGE_DIRT_SWORD_PEDESTAL,
                 ZeldaBlocks.STRANGE_BLUE_DIRT_SWORD_PEDESTAL,
+                // Dungeon chests
+                ZeldaBlocks.RED_DUNGEON_CHEST,
+                ZeldaBlocks.BLUE_DUNGEON_CHEST,
                 // Other
                 ZeldaBlocks.REDSTONE_LOCK_BLOCK
         );

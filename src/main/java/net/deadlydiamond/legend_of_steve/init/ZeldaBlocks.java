@@ -1,6 +1,7 @@
 package net.deadlydiamond.legend_of_steve.init;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
+import net.deadlydiamond.legend_of_steve.common.blocks.container.DungeonChestBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.container.MasterBarrelBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.container.single.LootPotBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.container.single.SwordPedestal;
@@ -183,6 +184,9 @@ public class ZeldaBlocks {
 
     public static final Block CRATE = register("crate", new Block(CRATE_SETTINGS), false);
     public static final Item CRATE_ITEM = ZeldaItems.register("crate", new CrateItem(new FabricItemSettings(), CRATE.getDefaultState()));
+
+    public static final Block RED_DUNGEON_CHEST = register("red_dungeon_chest", new DungeonChestBlock(FabricBlockSettings.copyOf(Blocks.CHEST)));
+    public static final Block BLUE_DUNGEON_CHEST = register("blue_dungeon_chest", new DungeonChestBlock(FabricBlockSettings.copyOf(Blocks.CHEST)));
 
     // LOCKED BLOCKS
     public static final LockBlockset COPPER_LOCK = registerLock("copper", ZeldaTags.COPPER_KEYS);

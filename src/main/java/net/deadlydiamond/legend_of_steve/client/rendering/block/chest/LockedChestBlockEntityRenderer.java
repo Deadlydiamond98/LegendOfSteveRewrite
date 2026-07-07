@@ -8,18 +8,16 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
-import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.client.util.math.MatrixStack;
 
-public class LockedChestBlockEntityRenderer<T extends LockedChestBlockEntity> extends AbstractCustomChestRenderer<T> {
+public class LockedChestBlockEntityRenderer<T extends LockedChestBlockEntity> extends ZeldaChestBlockEntityRenderer<T> {
     public LockedChestBlockEntityRenderer(BlockEntityRendererFactory.Context ctx) {
         super(ctx);
     }
 
     @Override
     protected VertexConsumer getChestVertexConsumer(T entity, VertexConsumerProvider vertexConsumers, ChestType chestType) {
-        SpriteIdentifier spriteIdentifier = getVanillaChestTexture(entity.getLockedBlock(), chestType);
-        return spriteIdentifier.getVertexConsumer(vertexConsumers, RenderLayer::getEntityCutout);
+        return getChestTexture(entity.getLockedBlock(), chestType).getVertexConsumer(vertexConsumers, RenderLayer::getEntityCutout);
     }
 
     @Override

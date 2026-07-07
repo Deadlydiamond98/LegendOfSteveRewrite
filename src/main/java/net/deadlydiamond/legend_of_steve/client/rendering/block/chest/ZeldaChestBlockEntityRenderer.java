@@ -6,6 +6,7 @@ import net.minecraft.block.entity.ChestBlockEntity;
 import net.minecraft.block.entity.LidOpenable;
 import net.minecraft.block.enums.ChestType;
 import net.minecraft.client.model.ModelPart;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.TexturedRenderLayers;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -20,8 +21,9 @@ import net.minecraft.util.math.RotationAxis;
 import net.minecraft.world.World;
 
 import java.util.Calendar;
+import java.util.function.Function;
 
-public abstract class AbstractCustomChestRenderer<T extends BlockEntity & LidOpenable> implements BlockEntityRenderer<T> {
+public class ZeldaChestBlockEntityRenderer<T extends BlockEntity & LidOpenable> implements BlockEntityRenderer<T> {
     private final ModelPart singleChestLid;
     private final ModelPart singleChestBase;
     private final ModelPart singleChestLatch;
@@ -33,7 +35,7 @@ public abstract class AbstractCustomChestRenderer<T extends BlockEntity & LidOpe
     private final ModelPart doubleChestRightLatch;
     protected boolean christmas;
 
-    public AbstractCustomChestRenderer(BlockEntityRendererFactory.Context ctx) {
+    public ZeldaChestBlockEntityRenderer(BlockEntityRendererFactory.Context ctx) {
         Calendar calendar = Calendar.getInstance();
         if (calendar.get(2) + 1 == 12 && calendar.get(5) >= 24 && calendar.get(5) <= 26) {
             this.christmas = true;
@@ -57,8 +59,6 @@ public abstract class AbstractCustomChestRenderer<T extends BlockEntity & LidOpe
     public void render(T entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
         renderChest(entity, tickDelta, matrices, vertexConsumers, light, overlay);
     }
-
-    protected abstract VertexConsumer getChestVertexConsumer(T entity, VertexConsumerProvider vertexConsumers, ChestType chestType);
 
     protected void renderChest(T entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
         World world = entity.getWorld();
@@ -109,22 +109,26 @@ public abstract class AbstractCustomChestRenderer<T extends BlockEntity & LidOpe
 
     // HELPER //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    protected VertexConsumer getChestVertexConsumer(T entity, VertexConsumerProvider vertexConsumers, ChestType chestType) {
+        return getChestTexture(entity.getCachedState(), chestType).getVertexConsumer(vertexConsumers, RenderLayer::getEntityCutout);
+    }
+
+    protected SpriteIdentifier getChestTexture(BlockState state, ChestType type) {
+        Function<ChestType, SpriteIdentifier> customTexture = CustomChestTextures.TEXTURES.get(state.getBlock());
+        if (customTexture != null) {
+            return customTexture.apply(type);
+        }
+        return getVanillaChestTexture(state, type);
+    }
+
     protected SpriteIdentifier getVanillaChestTexture(BlockState state, ChestType type) {
         if (state.isOf(Blocks.ENDER_CHEST)) {
             return TexturedRenderLayers.ENDER;
         } else if (this.christmas) {
-            return getChestVariantTexture(type, TexturedRenderLayers.CHRISTMAS, TexturedRenderLayers.CHRISTMAS_LEFT, TexturedRenderLayers.CHRISTMAS_RIGHT);
+            return CustomChestTextures.getChestVariantTexture(type, TexturedRenderLayers.CHRISTMAS, TexturedRenderLayers.CHRISTMAS_LEFT, TexturedRenderLayers.CHRISTMAS_RIGHT);
         }
         return state.isOf(Blocks.TRAPPED_CHEST) ?
-                getChestVariantTexture(type, TexturedRenderLayers.TRAPPED, TexturedRenderLayers.TRAPPED_LEFT, TexturedRenderLayers.TRAPPED_RIGHT) :
-                getChestVariantTexture(type, TexturedRenderLayers.NORMAL, TexturedRenderLayers.NORMAL_LEFT, TexturedRenderLayers.NORMAL_RIGHT);
-    }
-
-    protected SpriteIdentifier getChestVariantTexture(ChestType type, SpriteIdentifier single, SpriteIdentifier left, SpriteIdentifier right) {
-        return switch (type) {
-            case LEFT -> left;
-            case RIGHT -> right;
-            default -> single;
-        };
+                CustomChestTextures.getChestVariantTexture(type, TexturedRenderLayers.TRAPPED, TexturedRenderLayers.TRAPPED_LEFT, TexturedRenderLayers.TRAPPED_RIGHT) :
+                CustomChestTextures.getChestVariantTexture(type, TexturedRenderLayers.NORMAL, TexturedRenderLayers.NORMAL_LEFT, TexturedRenderLayers.NORMAL_RIGHT);
     }
 }

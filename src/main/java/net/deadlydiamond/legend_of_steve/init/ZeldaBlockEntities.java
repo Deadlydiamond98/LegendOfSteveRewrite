@@ -3,6 +3,7 @@ package net.deadlydiamond.legend_of_steve.init;
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.bes.BombFlowerBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.BouncingBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.bes.container.DungeonChestBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.locks.LockedBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.single.QuestionBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.single.*;
@@ -45,6 +46,11 @@ public class ZeldaBlockEntities {
             ZeldaBlocks.FAIRY_MARBLE_SWORD_PEDESTAL,
             ZeldaBlocks.STRANGE_DIRT_SWORD_PEDESTAL,
             ZeldaBlocks.STRANGE_BLUE_DIRT_SWORD_PEDESTAL
+    );
+
+    public static final BlockEntityType<DungeonChestBlockEntity> DUNGEON_CHEST = register("dungeon_chest", DungeonChestBlockEntity::new,
+            ZeldaBlocks.RED_DUNGEON_CHEST,
+            ZeldaBlocks.BLUE_DUNGEON_CHEST
     );
 
     // LOCK BLOCKS /////////////////////////////////////////////////////////////////////////////////////////////////////

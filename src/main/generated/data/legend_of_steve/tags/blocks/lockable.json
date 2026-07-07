@@ -17,11 +17,13 @@
     "minecraft:piston",
     "minecraft:sticky_piston",
     "minecraft:note_block",
+    "minecraft:jukebox",
     "legend_of_steve:question_block",
     "legend_of_steve:blue_question_block",
     "legend_of_steve:master_barrel",
     "legend_of_steve:dungeon_table",
     "legend_of_steve:blue_dungeon_chest",
-    "legend_of_steve:red_dungeon_chest"
+    "legend_of_steve:red_dungeon_chest",
+    "#minecraft:doors"
   ]
 }

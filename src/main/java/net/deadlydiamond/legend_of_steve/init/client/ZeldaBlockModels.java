@@ -4,7 +4,7 @@ import net.deadlydiamond.legend_of_steve.client.models.block.LockedBlockBakedMod
 import net.deadlydiamond.legend_of_steve.client.models.block.connected.ConnectedPillarUnbakedModel;
 import net.deadlydiamond.legend_of_steve.client.models.block.SwitchBlockUnbakedModel;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.connected.ConnectedPillarBlock;
-import net.deadlydiamond.legend_of_steve.common.blocks.functional.locks.LockedBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.locks.lock.ILockedBlock;
 import net.deadlydiamond.legend_of_steve.common.blocksets.SwitchBlockset;
 import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin;
 import net.minecraft.block.Block;
@@ -45,7 +45,7 @@ public class ZeldaBlockModels {
             Identifier identifier = context1.id();
             if (identifier instanceof ModelIdentifier modelId) {
                 Block block = Registries.BLOCK.get(Identifier.of(modelId.getNamespace(), modelId.getPath()));
-                if (block instanceof LockedBlock) {
+                if (block instanceof ILockedBlock lockedBlock && lockedBlock.wrappedBlockModel()) {
                     return new LockedBlockBakedModel(model);
                 }
             }

@@ -1,6 +1,6 @@
 package net.deadlydiamond.legend_of_steve.common.bes.locks;
 
-import net.deadlydiamond.legend_of_steve.common.blocks.functional.locks.LockedBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.locks.lock.LockedBlock;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlockEntities;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

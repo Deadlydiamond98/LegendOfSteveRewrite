@@ -1,12 +1,13 @@
 package net.deadlydiamond.legend_of_steve.init;
 
 import net.deadlydiamond.legend_of_steve.common.ZeldaDispenserBehavior;
-import net.deadlydiamond.legend_of_steve.common.blocks.functional.locks.ILockedBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.locks.lock.ILockedBlock;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.ThrownPotEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.BombEntity;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.WaterBombEntity;
 import net.deadlydiamond.legend_of_steve.common.items.locking.LockItem;
 import net.deadlydiamond.legend_of_steve.common.items.projectile.explosive.BombItem;
+import net.deadlydiamond.legend_of_steve.util.LockManager;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.block.dispenser.DispenserBehavior;
@@ -92,7 +93,7 @@ public class ZeldaDispenserBehaviors {
                 BlockState state = world.getBlockState(pos);
 
                 if (state.getBlock() instanceof ILockedBlock lock) {
-                    if (lock.removeLock(world, pos, stack, false)) {
+                    if (lock.removeLock(world, pos, stack)) {
                         if (!stack.isOf(ZeldaItems.CREATIVE_KEY)) {
                             stack.decrement(1);
                         }
@@ -110,7 +111,10 @@ public class ZeldaDispenserBehaviors {
             protected ItemStack dispenseSilently(BlockPointer pointer, ItemStack stack) {
                 if (stack.getItem() instanceof LockItem lock) {
                     Direction facing = pointer.getBlockState().get(DispenserBlock.FACING);
-                    if (lock.tryLockBlock(pointer.getWorld(), pointer.getPos().offset(facing), facing, false)) {
+                    World world = pointer.getWorld();
+                    BlockPos pos = pointer.getPos().offset(facing);
+
+                    if (LockManager.tryLockBlock(world, pos, facing, lock.getLockResult(world.getBlockState(pos)))) {
                         stack.decrement(1);
                         return stack;
                     }

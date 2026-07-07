@@ -25,6 +25,8 @@ public class ZeldaModels {
     public static final Model DUNGEONCITE_PRESSURE_PLATE = block("dungeoncite_pressure_plate_up", TextureKey.TOP, TextureKey.BOTTOM, TextureKey.SIDE);
     public static final Model DUNGEONCITE_PRESSURE_PLATE_DOWN = block("dungeoncite_pressure_plate_down", "_down", TextureKey.TOP, TextureKey.BOTTOM, TextureKey.SIDE);
 
+    public static final Model DOOR_LOCK_BOTTOM = block("locks/door_lock_bottom", "_bottom", TextureKey.ALL);
+    public static final Model DOOR_LOCK_TOP = block("locks/door_lock_top", "_top", TextureKey.ALL);
     public static final Model CHEST_LOCK_BLOCK = block("locks/chest_lock_block", TextureKey.ALL);
     public static final Model LEFT_CHEST_LOCK_BLOCK = block("locks/chest_lock_block_double_left", "_double_left", TextureKey.ALL);
     public static final Model RIGHT_CHEST_LOCK_BLOCK = block("locks/chest_lock_block_double_right", "_double_right", TextureKey.ALL);

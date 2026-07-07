@@ -63,6 +63,16 @@ public class ZeldaBlockModelDatagenUtil {
         );
     }
 
+    public static void registerDoorLockBlock(BlockStateModelGenerator blockStateModelGenerator, Block block, Block textureSource) {
+        TextureMap textureMap = TextureMap.of(TextureKey.ALL, getPrefixedId(textureSource, "locks"));
+
+        Identifier bottom = ZeldaModels.DOOR_LOCK_BOTTOM.upload(block, textureMap, blockStateModelGenerator.modelCollector);
+        Identifier top = ZeldaModels.DOOR_LOCK_TOP.upload(block, textureMap, blockStateModelGenerator.modelCollector);
+        blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createDoorBlockState(
+                block, bottom, bottom, bottom, bottom, top, top, top, top
+        ));
+    }
+
     // BRAZIERS ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public static void registerBrazier(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier fireTexture) {

@@ -9,6 +9,7 @@ import net.deadlydiamond.legend_of_steve.common.blocks.deco.MasterOreBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.connected.ConnectedPillarBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.crafting.DungeonTableBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.locks.RedstoneLockBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.locks.lock.LockedDoorBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.InvisibleQuestionBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.QuestionBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.base.BouncingTransitionBlock;

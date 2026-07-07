@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.common.blocks.functional.locks;
+package net.deadlydiamond.legend_of_steve.common.blocks.functional.locks.lock;
 
 import net.deadlydiamond.legend_of_steve.common.bes.locks.LockedBlockEntity;
 import net.deadlydiamond.legend_of_steve.init.ZeldaAdvancements;
@@ -15,6 +15,7 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
@@ -46,7 +47,7 @@ public class LockedBlock extends BlockWithEntity implements Waterloggable, ILock
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         ItemStack key = player.getStackInHand(hand);
 
-        if (removeLock(world, pos, key, false)) {
+        if (removeLock(world, pos, key)) {
             if (!world.isClient && !player.isCreative() && !key.isOf(ZeldaItems.CREATIVE_KEY)) {
                 key.decrement(1);
             }
@@ -62,12 +63,6 @@ public class LockedBlock extends BlockWithEntity implements Waterloggable, ILock
     public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
         BlockState state1 = getLockedBlock(world, pos);
         return state1.getBlock().getPickStack(world, pos, state1);
-    }
-
-    @Override
-    public float calcBlockBreakingDelta(BlockState state, PlayerEntity player, BlockView world, BlockPos pos) {
-        BlockState state1 = getLockedBlock(world, pos);
-        return state1.getBlock().calcBlockBreakingDelta(state1, player, world, pos);
     }
 
     @Override

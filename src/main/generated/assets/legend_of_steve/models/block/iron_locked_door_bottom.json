@@ -1,0 +1,6 @@
+{
+  "parent": "legend_of_steve:block/locks/door_lock_bottom",
+  "textures": {
+    "all": "legend_of_steve:block/locks/iron_lock"
+  }
+}

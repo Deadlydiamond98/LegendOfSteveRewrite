@@ -44,13 +44,7 @@ public class ZeldaBlockRenderLayers {
                 ZeldaBlocks.STRANGE_BLUE_DIRT_BRAZIER_BLOCKSET
         );
 
-        // Locks
-        for (LockBlockset lock : ZeldaBlocks.LOCKS) {
-            BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
-                    lock.lockedBlock,
-                    lock.lockedChest
-            );
-        }
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), LockBlockset.getAllLockBlocks());
 
         // SWITCH BLOCKS ///////////////////////////////////////////////////////////////////////////////////////////////
 

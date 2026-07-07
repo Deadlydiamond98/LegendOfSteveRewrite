@@ -11,6 +11,7 @@ import net.deadlydiamond.legend_of_steve.common.bes.locks.LockedChestBlockEntity
 import net.deadlydiamond.legend_of_steve.common.bes.switches.CrystalSwitchBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.MasterBarrelBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.switches.SwitchBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.blocksets.LockBlockset;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntity;
@@ -55,19 +56,8 @@ public class ZeldaBlockEntities {
 
     // LOCK BLOCKS /////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public static final BlockEntityType<LockedBlockEntity> LOCKED_BLOCK = register("locked_block", LockedBlockEntity::new,
-            ZeldaBlocks.COPPER_LOCK.lockedBlock,
-            ZeldaBlocks.IRON_LOCK.lockedBlock,
-            ZeldaBlocks.GOLD_LOCK.lockedBlock,
-            ZeldaBlocks.BOSS_LOCK.lockedBlock
-    );
-
-    public static final BlockEntityType<LockedChestBlockEntity> LOCKED_CHEST = register("locked_chest", LockedChestBlockEntity::new,
-            ZeldaBlocks.COPPER_LOCK.lockedChest,
-            ZeldaBlocks.IRON_LOCK.lockedChest,
-            ZeldaBlocks.GOLD_LOCK.lockedChest,
-            ZeldaBlocks.BOSS_LOCK.lockedChest
-    );
+    public static final BlockEntityType<LockedBlockEntity> LOCKED_BLOCK = register("locked_block", LockedBlockEntity::new, LockBlockset.getNonChestLocks());
+    public static final BlockEntityType<LockedChestBlockEntity> LOCKED_CHEST = register("locked_chest", LockedChestBlockEntity::new, LockBlockset.getChestLocks());
 
     // SWITCH BLOCK ENTITIES ///////////////////////////////////////////////////////////////////////////////////////////
 

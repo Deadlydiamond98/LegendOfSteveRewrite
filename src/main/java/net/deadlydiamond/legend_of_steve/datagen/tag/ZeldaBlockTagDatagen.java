@@ -224,7 +224,7 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
                 ZeldaBlocks.DUNGEON_TABLE,
                 ZeldaBlocks.BLUE_DUNGEON_CHEST,
                 ZeldaBlocks.RED_DUNGEON_CHEST
-        );
+        ).addTag(BlockTags.DOORS);
 
         getOrCreateTagBuilder(BlockTags.COMBINATION_STEP_SOUND_BLOCKS).add(
                 ZeldaBlocks.BOMB_FLOWER
@@ -232,6 +232,14 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
 
         getOrCreateTagBuilder(BlockTags.BEACON_BASE_BLOCKS).add(
                 ZeldaBlocks.MASTER_BLOCK
+        );
+
+        getOrCreateTagBuilder(BlockTags.DOORS).add(
+                ZeldaBlocks.MASTER_DOOR
+        );
+
+        getOrCreateTagBuilder(BlockTags.TRAPDOORS).add(
+                ZeldaBlocks.MASTER_TRAPDOOR
         );
     }
 

@@ -1,4 +1,4 @@
-package net.deadlydiamond.legend_of_steve.common.blocks.functional.locks;
+package net.deadlydiamond.legend_of_steve.common.blocks.functional.locks.lock;
 
 import net.deadlydiamond.legend_of_steve.common.bes.locks.LockedChestBlockEntity;
 import net.deadlydiamond.legend_of_steve.init.ZeldaAdvancements;
@@ -38,7 +38,7 @@ public class LockedChestBlock extends ChestBlock implements ILockedBlock {
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         ItemStack key = player.getStackInHand(hand);
 
-        if (removeLock(world, pos, key, false)) {
+        if (removeLock(world, pos, key)) {
             if (!world.isClient && !player.isCreative() && !key.isOf(ZeldaItems.CREATIVE_KEY)) {
                 key.decrement(1);
             }
@@ -54,12 +54,6 @@ public class LockedChestBlock extends ChestBlock implements ILockedBlock {
     public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
         BlockState state1 = getLockedBlock(world, pos);
         return state1.getBlock().getPickStack(world, pos, state1);
-    }
-
-    @Override
-    public float calcBlockBreakingDelta(BlockState state, PlayerEntity player, BlockView world, BlockPos pos) {
-        BlockState state1 = getLockedBlock(world, pos);
-        return state1.getBlock().calcBlockBreakingDelta(state1, player, world, pos);
     }
 
     @Override
@@ -100,5 +94,10 @@ public class LockedChestBlock extends ChestBlock implements ILockedBlock {
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new LockedChestBlockEntity(pos, state);
+    }
+
+    @Override
+    public boolean wrappedBlockModel() {
+        return false;
     }
 }

@@ -1,0 +1,6 @@
+{
+  "parent": "legend_of_steve:block/locks/trapdoor_lock_bottom",
+  "textures": {
+    "all": "legend_of_steve:block/locks/copper_lock"
+  }
+}

@@ -3,6 +3,7 @@ package net.deadlydiamond.legend_of_steve.common.blocksets;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.locks.lock.LockedBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.locks.lock.LockedChestBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.locks.lock.LockedDoorBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.locks.lock.LockedTrapdoorBlock;
 import net.deadlydiamond.legend_of_steve.common.items.locking.LockItem;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
 import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
@@ -34,6 +35,7 @@ public class LockBlockset extends AbstractBlockset {
     public final Block lockedBlock;
     public final Block lockedChest;
     public final Block lockedDoor;
+    public final Block lockedTrapdoor;
 
     public LockBlockset(String modID, String material, TagKey<Item> keyTag, Item.Settings settings) {
         super(modID, material);
@@ -45,6 +47,7 @@ public class LockBlockset extends AbstractBlockset {
         this.lockedBlock = registerNoItem(modID, id() + "_lock", new LockedBlock(blockSettings, this.keyTag));
         this.lockedChest = registerNoItem(modID, id() + "_locked_chest", new LockedChestBlock(blockSettings, this.keyTag));
         this.lockedDoor = registerNoItem(modID, id() + "_locked_door", new LockedDoorBlock(blockSettings, this.keyTag));
+        this.lockedTrapdoor = registerNoItem(modID, id() + "_locked_trapdoor", new LockedTrapdoorBlock(blockSettings, this.keyTag));
 
         this.lockItem = registerItem(Identifier.of(modID, id() + "_lock"), new LockItem(new FabricItemSettings(), this));
         this.keyItem = registerItem(Identifier.of(modID, id() + "_key"), new Item(settings));
@@ -55,6 +58,7 @@ public class LockBlockset extends AbstractBlockset {
         ZeldaBlockModelDatagenUtil.registerLockBlock(modelGen, this.lockedBlock);
         ZeldaBlockModelDatagenUtil.registerChestLockBlock(modelGen, this.lockedChest, this.lockedBlock);
         ZeldaBlockModelDatagenUtil.registerDoorLockBlock(modelGen, this.lockedDoor, this.lockedBlock);
+        ZeldaBlockModelDatagenUtil.registerTrapdoorLockBlock(modelGen, this.lockedTrapdoor, this.lockedBlock);
     }
 
     @Override
@@ -70,6 +74,7 @@ public class LockBlockset extends AbstractBlockset {
             blocks.add(blockset.lockedBlock);
             blocks.add(blockset.lockedChest);
             blocks.add(blockset.lockedDoor);
+            blocks.add(blockset.lockedTrapdoor);
         });
     }
 
@@ -77,6 +82,7 @@ public class LockBlockset extends AbstractBlockset {
         return getBlocks((blocks, blockset) -> {
             blocks.add(blockset.lockedBlock);
             blocks.add(blockset.lockedDoor);
+            blocks.add(blockset.lockedTrapdoor);
         });
     }
 

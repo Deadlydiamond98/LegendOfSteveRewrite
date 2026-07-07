@@ -24,6 +24,7 @@
     "legend_of_steve:dungeon_table",
     "legend_of_steve:blue_dungeon_chest",
     "legend_of_steve:red_dungeon_chest",
-    "#minecraft:doors"
+    "#minecraft:doors",
+    "#minecraft:trapdoors"
   ]
 }

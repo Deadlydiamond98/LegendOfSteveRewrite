@@ -27,6 +27,9 @@ public class ZeldaModels {
 
     public static final Model DOOR_LOCK_BOTTOM = block("locks/door_lock_bottom", "_bottom", TextureKey.ALL);
     public static final Model DOOR_LOCK_TOP = block("locks/door_lock_top", "_top", TextureKey.ALL);
+    public static final Model TRAPDOOR_LOCK_BOTTOM = block("locks/trapdoor_lock_bottom", "_bottom", TextureKey.ALL);
+    public static final Model TRAPDOOR_LOCK_TOP = block("locks/trapdoor_lock_top", "_top", TextureKey.ALL);
+    public static final Model TRAPDOOR_LOCK_OPEN = block("locks/trapdoor_lock_open", "_open", TextureKey.ALL);
     public static final Model CHEST_LOCK_BLOCK = block("locks/chest_lock_block", TextureKey.ALL);
     public static final Model LEFT_CHEST_LOCK_BLOCK = block("locks/chest_lock_block_double_left", "_double_left", TextureKey.ALL);
     public static final Model RIGHT_CHEST_LOCK_BLOCK = block("locks/chest_lock_block_double_right", "_double_right", TextureKey.ALL);

@@ -50,6 +50,8 @@ public class LockItem extends Item {
             return this.lock.lockedChest.getDefaultState();
         } else if (input.getBlock() instanceof DoorBlock) {
             return this.lock.lockedDoor.getDefaultState();
+        } else if (input.getBlock() instanceof TrapdoorBlock) {
+            return this.lock.lockedTrapdoor.getDefaultState();
         }
         return this.lock.lockedBlock.getDefaultState();
     }

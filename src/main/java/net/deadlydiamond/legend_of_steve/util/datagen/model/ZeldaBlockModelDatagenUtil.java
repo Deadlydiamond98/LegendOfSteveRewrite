@@ -73,6 +73,16 @@ public class ZeldaBlockModelDatagenUtil {
         ));
     }
 
+    public static void registerTrapdoorLockBlock(BlockStateModelGenerator blockStateModelGenerator, Block block, Block textureSource) {
+        TextureMap textureMap = TextureMap.of(TextureKey.ALL, getPrefixedId(textureSource, "locks"));
+
+        Identifier identifier = ZeldaModels.TRAPDOOR_LOCK_TOP.upload(block, textureMap, blockStateModelGenerator.modelCollector);
+        Identifier identifier2 = ZeldaModels.TRAPDOOR_LOCK_BOTTOM.upload(block, textureMap, blockStateModelGenerator.modelCollector);
+        Identifier identifier3 = ZeldaModels.TRAPDOOR_LOCK_OPEN.upload(block, textureMap, blockStateModelGenerator.modelCollector);
+
+        blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createOrientableTrapdoorBlockState(block, identifier, identifier2, identifier3));
+    }
+
     // BRAZIERS ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public static void registerBrazier(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier fireTexture) {

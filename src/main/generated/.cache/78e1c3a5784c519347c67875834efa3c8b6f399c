@@ -1,11 +1,11 @@
-// 1.20.1	2026-07-07T04:47:10.587431131	The Legend of Steve/Tags for minecraft:item
+// 1.20.1	2026-07-07T06:14:52.680095473	The Legend of Steve/Tags for minecraft:item
 74c01d9f30deb4d22179a61f3662806588518f65 data/minecraft/tags/items/stairs.json
 b4d7faadc178039d6865f14eedd8edac04e8e1c3 data/minecraft/tags/items/wooden_trapdoors.json
 fba66bfc33c2dc3dfe13926359d5a3fba438019b data/minecraft/tags/items/signs.json
 017256426ee55176f0fd67175039d052701437e7 data/minecraft/tags/items/leaves.json
 419548110fca8190a7d32e38bec2641015ec82e5 data/minecraft/tags/items/slabs.json
+57cc039682aa5dc04b755778f702d4f7552ac357 data/minecraft/tags/items/non_flammable_wood.json
 be91e7b9b5922fd920b1ddf1ec0f07728bff876e data/legend_of_steve/tags/items/quivers.json
-02a628f45e0cb1aa5034ead020b4844474a34ae6 data/minecraft/tags/items/non_flammable_wood.json
 1a3705a704de01fbbf8531c48244f1d5da62f81c data/minecraft/tags/items/piglin_loved.json
 74e143cfd98a53948f8fe45841a77e2808406c16 data/legend_of_steve/tags/items/iridescent.json
 4acf3971dd81bc6374ae98c31266bb07d1892907 data/minecraft/tags/items/small_flowers.json
@@ -33,7 +33,7 @@ b34a3194429d91739b3a61e754435f647849b730 data/legend_of_steve/tags/items/switch_
 78e421ba75d9d839368eb80f51dc3bb54125ee35 data/minecraft/tags/items/wooden_buttons.json
 bb16959c47f727d036e1b5e28ca142e62ad72efc data/minecraft/tags/items/saplings.json
 7b40d9ae3acf98c87dc01ed58d8be3691b14c27d data/minecraft/tags/items/planks.json
+4ea245bc88a6316a57fa0d60d55ef7a78e403517 data/legend_of_steve/tags/items/chiseled_planks.json
 bc87e1ac5a3a45aa856bfff6323953b1785888ef data/minecraft/tags/items/beacon_payment_items.json
-fefb420551cc64e5cf19b687469e2a8dd57d3d42 data/legend_of_steve/tags/items/chiseled_planks.json
 fda8f23bd1fec00cdacd17cfab7e68c81c42454b data/minecraft/tags/items/stone_buttons.json
 8f6bfc9dae81ba0f0645bef61907a07d64912c7e data/legend_of_steve/tags/items/bomb_bags.json

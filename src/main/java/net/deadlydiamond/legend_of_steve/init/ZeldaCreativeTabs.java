@@ -102,6 +102,8 @@ public class ZeldaCreativeTabs {
         // DUNGEON CHESTS
         entries.add(ZeldaBlocks.RED_DUNGEON_CHEST);
         entries.add(ZeldaBlocks.BLUE_DUNGEON_CHEST);
+        entries.add(ZeldaBlocks.TRAPPED_RED_DUNGEON_CHEST);
+        entries.add(ZeldaBlocks.TRAPPED_BLUE_DUNGEON_CHEST);
 
         // CRATE
         entries.add(ZeldaBlocks.CRATE_ITEM);

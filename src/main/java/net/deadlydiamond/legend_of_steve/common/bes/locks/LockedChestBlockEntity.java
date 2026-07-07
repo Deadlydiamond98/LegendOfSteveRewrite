@@ -6,6 +6,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.ChestBlockEntity;
+import net.minecraft.inventory.Inventory;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtHelper;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
@@ -47,6 +49,21 @@ public class LockedChestBlockEntity extends ChestBlockEntity implements ILockedB
     public void setWrappedNBT(NbtCompound nbt) {
         this.wrappedNBT = nbt;
         markDirty();
+    }
+
+    @Override
+    public boolean isValid(int slot, ItemStack stack) {
+        return false;
+    }
+
+    @Override
+    public boolean canTransferTo(Inventory hopperInventory, int slot, ItemStack stack) {
+        return false;
+    }
+
+    @Override
+    public int getMaxCountPerStack() {
+        return 0;
     }
 
     @Override

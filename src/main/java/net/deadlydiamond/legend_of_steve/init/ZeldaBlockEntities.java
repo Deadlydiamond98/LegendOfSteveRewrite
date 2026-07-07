@@ -3,7 +3,8 @@ package net.deadlydiamond.legend_of_steve.init;
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.bes.BombFlowerBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.BouncingBlockEntity;
-import net.deadlydiamond.legend_of_steve.common.bes.container.DungeonChestBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.bes.container.chest.DungeonChestBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.bes.container.chest.TrappedDungeonChestBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.locks.LockedBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.single.QuestionBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.single.*;
@@ -52,6 +53,11 @@ public class ZeldaBlockEntities {
     public static final BlockEntityType<DungeonChestBlockEntity> DUNGEON_CHEST = register("dungeon_chest", DungeonChestBlockEntity::new,
             ZeldaBlocks.RED_DUNGEON_CHEST,
             ZeldaBlocks.BLUE_DUNGEON_CHEST
+    );
+
+    public static final BlockEntityType<TrappedDungeonChestBlockEntity> TRAPPED_DUNGEON_CHEST = register("trapped_dungeon_chest", TrappedDungeonChestBlockEntity::new,
+            ZeldaBlocks.TRAPPED_RED_DUNGEON_CHEST,
+            ZeldaBlocks.TRAPPED_BLUE_DUNGEON_CHEST
     );
 
     // LOCK BLOCKS /////////////////////////////////////////////////////////////////////////////////////////////////////

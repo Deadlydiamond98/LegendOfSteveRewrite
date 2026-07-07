@@ -48,6 +48,7 @@ public class ZeldaRenderers {
         BlockEntityRendererFactories.register(ZeldaBlockEntities.DUNGEON_CHEST, ChestBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ZeldaBlockEntities.LOCKED_CHEST, ChestBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ZeldaBlockEntities.SWORD_PEDESTAL, SwordPedestalBlockEntityRenderer::new);
+        BlockEntityRendererFactories.register(ZeldaBlockEntities.TRAPPED_DUNGEON_CHEST, ChestBlockEntityRenderer::new);
     }
 
     private static void registerModelLayers() {

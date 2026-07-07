@@ -43,6 +43,8 @@ public class ZeldaModelDatagen extends FabricModelProvider {
         // DUNGEON CHESTS //////////////////////////////////////////////////////////////////////////////////////////////
         generator.registerSingleton(ZeldaBlocks.RED_DUNGEON_CHEST, ZeldaModels.BUILTIN_CHEST);
         generator.registerSingleton(ZeldaBlocks.BLUE_DUNGEON_CHEST, ZeldaModels.BUILTIN_CHEST);
+        generator.registerParented(ZeldaBlocks.RED_DUNGEON_CHEST, ZeldaBlocks.TRAPPED_RED_DUNGEON_CHEST);
+        generator.registerParented(ZeldaBlocks.BLUE_DUNGEON_CHEST, ZeldaBlocks.TRAPPED_BLUE_DUNGEON_CHEST);
 
         // SWORD PEDESTALS /////////////////////////////////////////////////////////////////////////////////////////////
         ZeldaBlockModelDatagenUtil.registerSwordPedestal(generator, ZeldaBlocks.STONE_SWORD_PEDESTAL);

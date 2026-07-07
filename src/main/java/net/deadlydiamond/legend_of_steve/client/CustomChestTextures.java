@@ -19,6 +19,8 @@ public class CustomChestTextures {
     static {
         createChestTexture(ZeldaBlocks.RED_DUNGEON_CHEST, "red_dungeon_chest", true);
         createChestTexture(ZeldaBlocks.BLUE_DUNGEON_CHEST, "blue_dungeon_chest", true);
+        createChestTexture(ZeldaBlocks.TRAPPED_RED_DUNGEON_CHEST, "trapped_red_dungeon_chest", true);
+        createChestTexture(ZeldaBlocks.TRAPPED_BLUE_DUNGEON_CHEST, "trapped_blue_dungeon_chest", true);
     }
 
     public static void createChestTexture(Block block, String type, boolean doubleChest) {

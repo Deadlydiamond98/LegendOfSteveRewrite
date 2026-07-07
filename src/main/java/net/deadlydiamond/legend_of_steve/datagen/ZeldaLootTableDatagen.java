@@ -97,6 +97,8 @@ public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
                 // DUNGEON CHESTS
                 ZeldaBlocks.RED_DUNGEON_CHEST,
                 ZeldaBlocks.BLUE_DUNGEON_CHEST,
+                ZeldaBlocks.TRAPPED_RED_DUNGEON_CHEST,
+                ZeldaBlocks.TRAPPED_BLUE_DUNGEON_CHEST,
                 // SWORD PEDESTALS
                 ZeldaBlocks.STONE_SWORD_PEDESTAL,
                 ZeldaBlocks.DEEPSLATE_SWORD_PEDESTAL,

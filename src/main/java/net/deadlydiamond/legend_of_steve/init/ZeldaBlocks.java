@@ -1,15 +1,15 @@
 package net.deadlydiamond.legend_of_steve.init;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
-import net.deadlydiamond.legend_of_steve.common.blocks.container.DungeonChestBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.container.chest.DungeonChestBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.container.MasterBarrelBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.container.chest.TrappedDungeonChestBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.container.single.LootPotBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.container.single.SwordPedestal;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.MasterOreBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.connected.ConnectedPillarBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.crafting.DungeonTableBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.locks.RedstoneLockBlock;
-import net.deadlydiamond.legend_of_steve.common.blocks.functional.locks.lock.LockedDoorBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.InvisibleQuestionBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.QuestionBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.base.BouncingTransitionBlock;
@@ -189,6 +189,9 @@ public class ZeldaBlocks {
     public static final Block RED_DUNGEON_CHEST = register("red_dungeon_chest", new DungeonChestBlock(FabricBlockSettings.copyOf(Blocks.CHEST)));
     public static final Block BLUE_DUNGEON_CHEST = register("blue_dungeon_chest", new DungeonChestBlock(FabricBlockSettings.copyOf(Blocks.CHEST)));
 
+    public static final Block TRAPPED_RED_DUNGEON_CHEST = register("trapped_red_dungeon_chest", new TrappedDungeonChestBlock(FabricBlockSettings.copyOf(Blocks.CHEST)));
+    public static final Block TRAPPED_BLUE_DUNGEON_CHEST = register("trapped_blue_dungeon_chest", new TrappedDungeonChestBlock(FabricBlockSettings.copyOf(Blocks.CHEST)));
+
     // LOCKED BLOCKS
     public static final LockBlockset COPPER_LOCK = registerLock("copper", ZeldaTags.COPPER_KEYS);
     public static final LockBlockset IRON_LOCK = registerLock("iron", ZeldaTags.IRON_KEYS);
@@ -273,6 +276,7 @@ public class ZeldaBlocks {
         FuelRegistry.INSTANCE.add(ZeldaTags.CHISELED_PLANKS_ITEM, 300);
         FuelRegistry.INSTANCE.add(CRATE, 300);
 
+        CompostingChanceRegistry.INSTANCE.add(SILENT_PRINCESS, 0.3f);
         CompostingChanceRegistry.INSTANCE.add(DEKU_SAPLING, 0.3f);
         CompostingChanceRegistry.INSTANCE.add(DEKU_LEAVES, 0.3f);
         CompostingChanceRegistry.INSTANCE.add(FRUITING_DEKU_LEAVES, 0.65f);

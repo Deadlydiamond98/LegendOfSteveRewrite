@@ -126,6 +126,8 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
                 // Dungeon chests
                 ZeldaBlocks.RED_DUNGEON_CHEST,
                 ZeldaBlocks.BLUE_DUNGEON_CHEST,
+                ZeldaBlocks.TRAPPED_RED_DUNGEON_CHEST,
+                ZeldaBlocks.TRAPPED_BLUE_DUNGEON_CHEST,
                 // Other
                 ZeldaBlocks.REDSTONE_LOCK_BLOCK
         );
@@ -223,7 +225,9 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
                 ZeldaBlocks.MASTER_BARREL,
                 ZeldaBlocks.DUNGEON_TABLE,
                 ZeldaBlocks.BLUE_DUNGEON_CHEST,
-                ZeldaBlocks.RED_DUNGEON_CHEST
+                ZeldaBlocks.RED_DUNGEON_CHEST,
+                ZeldaBlocks.TRAPPED_BLUE_DUNGEON_CHEST,
+                ZeldaBlocks.TRAPPED_RED_DUNGEON_CHEST
         ).addTag(BlockTags.DOORS).addTag(BlockTags.TRAPDOORS);
 
         getOrCreateTagBuilder(BlockTags.COMBINATION_STEP_SOUND_BLOCKS).add(

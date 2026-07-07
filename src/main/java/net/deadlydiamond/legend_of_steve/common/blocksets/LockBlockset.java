@@ -37,7 +37,7 @@ public class LockBlockset extends AbstractBlockset {
         AbstractBlock.Settings blockSettings = FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).instrument(Instrument.SNARE);
 
         this.lockedBlock = registerNoItem(modID, id() + "_lock", new LockedBlock(blockSettings, this.keyTag));
-        this.lockedChest = register(modID, id() + "_locked_chest", new LockedChestBlock(blockSettings, this.keyTag));
+        this.lockedChest = registerNoItem(modID, id() + "_locked_chest", new LockedChestBlock(blockSettings, this.keyTag));
 
         this.lockItem = registerItem(Identifier.of(modID, id() + "_lock"), new LockItem(new FabricItemSettings(), this));
         this.keyItem = registerItem(Identifier.of(modID, id() + "_key"), new Item(settings));

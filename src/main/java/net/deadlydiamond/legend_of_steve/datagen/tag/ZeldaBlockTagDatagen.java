@@ -217,6 +217,7 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
                 Blocks.PISTON,
                 Blocks.STICKY_PISTON,
                 Blocks.NOTE_BLOCK,
+                Blocks.JUKEBOX,
                 ZeldaBlocks.QUESTION_BLOCK,
                 ZeldaBlocks.BLUE_QUESTION_BLOCK,
                 ZeldaBlocks.MASTER_BARREL,

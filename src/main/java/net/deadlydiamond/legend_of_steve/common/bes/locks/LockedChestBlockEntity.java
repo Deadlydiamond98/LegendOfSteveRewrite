@@ -16,7 +16,7 @@ import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.Nullable;
 
 public class LockedChestBlockEntity extends ChestBlockEntity implements ILockedBlockEntity {
-    protected BlockState lockedBlock = Blocks.AIR.getDefaultState();
+    protected BlockState lockedBlock = Blocks.CHEST.getDefaultState();
     protected NbtCompound wrappedNBT = new NbtCompound();
 
     public LockedChestBlockEntity(BlockPos blockPos, BlockState blockState) {
@@ -26,7 +26,7 @@ public class LockedChestBlockEntity extends ChestBlockEntity implements ILockedB
     @Override
     public BlockState getLockedBlock() {
         if (this.lockedBlock.getBlock() instanceof LockedBlock) {
-            return Blocks.AIR.getDefaultState();
+            return Blocks.CHEST.getDefaultState();
         }
 
         return this.lockedBlock;

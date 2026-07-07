@@ -4,7 +4,6 @@ import net.deadlydiamond.legend_of_steve.client.models.be.CrystalSwitchOrbModel;
 import net.deadlydiamond.legend_of_steve.client.models.entity.*;
 import net.deadlydiamond.legend_of_steve.client.models.feature.QuiverModel;
 import net.deadlydiamond.legend_of_steve.client.rendering.block.*;
-import net.deadlydiamond.legend_of_steve.client.rendering.block.chest.LockedChestBlockEntityRenderer;
 import net.deadlydiamond.legend_of_steve.client.rendering.entity.PushableBlockEntityRenderer;
 import net.deadlydiamond.legend_of_steve.client.rendering.entity.living.*;
 import net.deadlydiamond.legend_of_steve.client.rendering.entity.living.bombfish.BombfishEntityRenderer;
@@ -47,7 +46,7 @@ public class ZeldaRenderers {
         BlockEntityRendererFactories.register(ZeldaBlockEntities.BOUNCING_BLOCK, BouncingBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ZeldaBlockEntities.CRYSTAL_SWITCH, CrystalSwitchBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ZeldaBlockEntities.DUNGEON_CHEST, ChestBlockEntityRenderer::new);
-        BlockEntityRendererFactories.register(ZeldaBlockEntities.LOCKED_CHEST, LockedChestBlockEntityRenderer::new);
+        BlockEntityRendererFactories.register(ZeldaBlockEntities.LOCKED_CHEST, ChestBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ZeldaBlockEntities.SWORD_PEDESTAL, SwordPedestalBlockEntityRenderer::new);
     }
 

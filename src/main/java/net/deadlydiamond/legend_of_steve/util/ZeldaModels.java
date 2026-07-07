@@ -10,7 +10,7 @@ public class ZeldaModels {
 
     // BUILTIN /////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static final TexturedModel.Factory BUILTIN_ITEM = TexturedModel.makeFactory(TextureMap::particle, new Model(Optional.of(new Identifier("block/block")), Optional.empty(), TextureKey.PARTICLE));
-    public static final TexturedModel.Factory BUILTIN_CHEST = TexturedModel.makeFactory(TextureMap::particle, new Model(Optional.of(LegendOfSteve.id("block/custom_chest")), Optional.empty(), TextureKey.PARTICLE));
+    public static final TexturedModel.Factory BUILTIN_CHEST = TexturedModel.makeFactory(TextureMap::particle, block("custom_chest", TextureKey.PARTICLE));
 
     // ITEMS ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 

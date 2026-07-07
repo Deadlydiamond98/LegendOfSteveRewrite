@@ -220,7 +220,9 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
                 ZeldaBlocks.QUESTION_BLOCK,
                 ZeldaBlocks.BLUE_QUESTION_BLOCK,
                 ZeldaBlocks.MASTER_BARREL,
-                ZeldaBlocks.DUNGEON_TABLE
+                ZeldaBlocks.DUNGEON_TABLE,
+                ZeldaBlocks.BLUE_DUNGEON_CHEST,
+                ZeldaBlocks.RED_DUNGEON_CHEST
         );
 
         getOrCreateTagBuilder(BlockTags.COMBINATION_STEP_SOUND_BLOCKS).add(

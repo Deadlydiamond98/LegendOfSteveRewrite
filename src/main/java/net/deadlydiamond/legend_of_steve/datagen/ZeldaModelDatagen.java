@@ -16,10 +16,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.data.client.BlockStateModelGenerator;
-import net.minecraft.data.client.ItemModelGenerator;
-import net.minecraft.data.client.ModelIds;
-import net.minecraft.data.client.Models;
+import net.minecraft.data.client.*;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
@@ -28,7 +25,6 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 public class ZeldaModelDatagen extends FabricModelProvider {
-
     public ZeldaModelDatagen(FabricDataOutput output) {
         super(output);
     }
@@ -45,8 +41,8 @@ public class ZeldaModelDatagen extends FabricModelProvider {
         );
 
         // DUNGEON CHESTS //////////////////////////////////////////////////////////////////////////////////////////////
-        generator.registerBuiltin(ZeldaBlocks.RED_DUNGEON_CHEST, ZeldaBlocks.RED_TEKTILES.base);
-        generator.registerBuiltin(ZeldaBlocks.BLUE_DUNGEON_CHEST, ZeldaBlocks.BLUE_TEKTILES.base);
+        generator.registerSingleton(ZeldaBlocks.RED_DUNGEON_CHEST, ZeldaModels.BUILTIN_CHEST);
+        generator.registerSingleton(ZeldaBlocks.BLUE_DUNGEON_CHEST, ZeldaModels.BUILTIN_CHEST);
 
         // SWORD PEDESTALS /////////////////////////////////////////////////////////////////////////////////////////////
         ZeldaBlockModelDatagenUtil.registerSwordPedestal(generator, ZeldaBlocks.STONE_SWORD_PEDESTAL);
@@ -217,6 +213,10 @@ public class ZeldaModelDatagen extends FabricModelProvider {
         for (Item quiver : quivers) {
             ZeldaItemModelDatagenUtil.registerQuiver(generator, quiver);
         }
+    }
+
+    private void registerBuiltinItem() {
+
     }
 
     @SafeVarargs

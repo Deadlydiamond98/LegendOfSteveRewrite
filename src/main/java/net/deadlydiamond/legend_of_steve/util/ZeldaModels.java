@@ -1,12 +1,16 @@
 package net.deadlydiamond.legend_of_steve.util;
 
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
-import net.minecraft.data.client.Model;
-import net.minecraft.data.client.TextureKey;
+import net.minecraft.data.client.*;
+import net.minecraft.util.Identifier;
 
 import java.util.Optional;
 
 public class ZeldaModels {
+
+    // BUILTIN /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static final TexturedModel.Factory BUILTIN_ITEM = TexturedModel.makeFactory(TextureMap::particle, new Model(Optional.of(new Identifier("block/block")), Optional.empty(), TextureKey.PARTICLE));
+    public static final TexturedModel.Factory BUILTIN_CHEST = TexturedModel.makeFactory(TextureMap::particle, new Model(Optional.of(LegendOfSteve.id("block/custom_chest")), Optional.empty(), TextureKey.PARTICLE));
 
     // ITEMS ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 

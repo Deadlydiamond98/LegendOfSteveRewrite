@@ -1,22 +1,27 @@
-package net.deadlydiamond.legend_of_steve.mixin.client.rendering;
+package net.deadlydiamond.legend_of_steve.mixin.client.rendering.item;
 
 import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
+import net.deadlydiamond.legend_of_steve.client.CustomBuiltinItemModels;
 import net.deadlydiamond.legend_of_steve.client.rendering.item.BombBagItemRenderer;
 import net.deadlydiamond.legend_of_steve.common.entities.projectile.bomb.ICharged;
 import net.deadlydiamond.legend_of_steve.common.items.bag.BombBagItem;
 import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
 import net.deadlydiamond.legend_of_steve.init.client.ZeldaRenderLayers;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.*;
+import net.minecraft.client.render.item.BuiltinModelItemRenderer;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.render.model.BakedModel;
 import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -26,6 +31,8 @@ public abstract class ItemRendererMixin {
     @Shadow protected abstract void renderBakedItemModel(BakedModel model, ItemStack stack, int light, int overlay, MatrixStack matrices, VertexConsumer vertices);
 
     @Shadow public abstract void renderItem(ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay, BakedModel model);
+
+    @Shadow @Final private BuiltinModelItemRenderer builtinModelItemRenderer;
 
     @WrapOperation(method = "renderItem(Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/render/model/json/ModelTransformationMode;ZLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;IILnet/minecraft/client/render/model/BakedModel;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/RenderLayers;getItemLayer(Lnet/minecraft/item/ItemStack;Z)Lnet/minecraft/client/render/RenderLayer;"))
     private RenderLayer legend_of_steve$renderItem(ItemStack stack, boolean direct, Operation<RenderLayer> original, @Local ModelTransformationMode renderMode) {
@@ -51,6 +58,18 @@ public abstract class ItemRendererMixin {
                 return;
             }
         }
+
+        // Renders Blocks that use a Block Entity Item
+        if (stack.getItem() instanceof BlockItem blockItem && CustomBuiltinItemModels.BUILTIN_ITEM_MODELS.containsKey(blockItem.getBlock())) {
+            BlockEntity entity = CustomBuiltinItemModels.BUILTIN_ITEM_MODELS.get(blockItem.getBlock());
+
+            matrices.push();
+            model.getTransformation().getTransformation(renderMode).apply(leftHanded, matrices);
+            matrices.translate(-0.5F, -0.5F, -0.5F);
+            client.getBlockEntityRenderDispatcher().renderEntity(entity, matrices, vertexConsumers, light, overlay);
+            matrices.pop();
+        }
+
         original.call(stack, renderMode, leftHanded, matrices, vertexConsumers, light, overlay, model);
     }
 

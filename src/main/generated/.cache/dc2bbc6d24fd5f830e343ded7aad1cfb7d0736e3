@@ -1,13 +1,13 @@
-// 1.20.1	2026-07-06T21:34:03.882675234	The Legend of Steve/Tags for minecraft:block
+// 1.20.1	2026-07-07T01:47:29.488525402	The Legend of Steve/Tags for minecraft:block
 4acf3971dd81bc6374ae98c31266bb07d1892907 data/minecraft/tags/blocks/flowers.json
 5ddffc8c235a15168b2697608bf84519c8ceb535 data/legend_of_steve/tags/blocks/blue_switch_blocks.json
-2ab4f805ff32418c3c965fe49ffd21b7609713c6 data/minecraft/tags/blocks/mineable/axe.json
+b785bff97494888ff74aa3e4fee3c60ec408092a data/minecraft/tags/blocks/mineable/axe.json
 7b40d9ae3acf98c87dc01ed58d8be3691b14c27d data/minecraft/tags/blocks/planks.json
 e60f8e63bd12bf78625fc545aadaeb3cac5dbd2e data/minecraft/tags/blocks/stairs.json
 901f64f708c730f4d91d1bafdaf7647aecf116f6 data/minecraft/tags/blocks/wall_hanging_signs.json
 52582474718cec7318b44f492778fbab6eb6b65c data/minecraft/tags/blocks/wall_signs.json
 017256426ee55176f0fd67175039d052701437e7 data/minecraft/tags/blocks/leaves.json
-6b0e472063a466968ec1bafd384b0a6bfa8f93b3 data/legend_of_steve/tags/blocks/chiseled_planks.json
+48c8d22a4317750e292f462bfdce753afff44239 data/legend_of_steve/tags/blocks/chiseled_planks.json
 c0daa1b21e9e93ee5402ad1d7a2a2ebae8e984d9 data/minecraft/tags/blocks/mineable/pickaxe.json
 e295e01b6b4c6c866c57fb1d0ca46cea1fb7a2d4 data/minecraft/tags/blocks/walls.json
 78e421ba75d9d839368eb80f51dc3bb54125ee35 data/minecraft/tags/blocks/wooden_buttons.json

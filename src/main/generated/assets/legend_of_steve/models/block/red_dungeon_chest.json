@@ -1,5 +1,6 @@
 {
+  "parent": "legend_of_steve:block/custom_chest",
   "textures": {
-    "particle": "legend_of_steve:block/red_tektiles"
+    "particle": "legend_of_steve:block/red_dungeon_chest"
   }
 }

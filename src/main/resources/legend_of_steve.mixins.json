@@ -56,7 +56,7 @@
     "client.model.BakedModelManagerMixin",
     "client.model.JsonUnbakedModelMixin",
     "client.model.JsonUnbakedModelMixin$DeserializerMixin",
-    "client.rendering.ItemRendererMixin",
+    "client.rendering.item.ItemRendererMixin",
     "client.rendering.block.ChestBlockEntityRendererMixin",
     "client.rendering.entity.ArmorStandEntityRendererMixin",
     "client.rendering.entity.BipedEntityRendererMixin",

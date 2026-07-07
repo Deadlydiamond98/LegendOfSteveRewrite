@@ -8,6 +8,7 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.util.math.BlockPos;
 
 public class DungeonChestBlock extends ChestBlock {
+
     public DungeonChestBlock(Settings settings) {
         super(settings, () -> ZeldaBlockEntities.DUNGEON_CHEST);
     }

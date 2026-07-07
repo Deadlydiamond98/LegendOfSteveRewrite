@@ -5,7 +5,6 @@ import net.deadlydiamond.legend_of_steve.client.models.entity.*;
 import net.deadlydiamond.legend_of_steve.client.models.feature.QuiverModel;
 import net.deadlydiamond.legend_of_steve.client.rendering.block.*;
 import net.deadlydiamond.legend_of_steve.client.rendering.block.chest.LockedChestBlockEntityRenderer;
-import net.deadlydiamond.legend_of_steve.client.rendering.block.chest.ZeldaChestBlockEntityRenderer;
 import net.deadlydiamond.legend_of_steve.client.rendering.entity.PushableBlockEntityRenderer;
 import net.deadlydiamond.legend_of_steve.client.rendering.entity.living.*;
 import net.deadlydiamond.legend_of_steve.client.rendering.entity.living.bombfish.BombfishEntityRenderer;
@@ -18,6 +17,7 @@ import net.deadlydiamond.legend_of_steve.init.ZeldaEntityTypes;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
+import net.minecraft.client.render.block.entity.ChestBlockEntityRenderer;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 
 public class ZeldaRenderers {
@@ -46,7 +46,7 @@ public class ZeldaRenderers {
         BlockEntityRendererFactories.register(ZeldaBlockEntities.BOMB_FLOWER, BombFlowerBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ZeldaBlockEntities.BOUNCING_BLOCK, BouncingBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ZeldaBlockEntities.CRYSTAL_SWITCH, CrystalSwitchBlockEntityRenderer::new);
-        BlockEntityRendererFactories.register(ZeldaBlockEntities.DUNGEON_CHEST, ZeldaChestBlockEntityRenderer::new);
+        BlockEntityRendererFactories.register(ZeldaBlockEntities.DUNGEON_CHEST, ChestBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ZeldaBlockEntities.LOCKED_CHEST, LockedChestBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ZeldaBlockEntities.SWORD_PEDESTAL, SwordPedestalBlockEntityRenderer::new);
     }

@@ -1,5 +1,6 @@
 package net.deadlydiamond.legend_of_steve.client.rendering.block.chest;
 
+import net.deadlydiamond.legend_of_steve.client.CustomChestTextures;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.ChestBlockEntity;

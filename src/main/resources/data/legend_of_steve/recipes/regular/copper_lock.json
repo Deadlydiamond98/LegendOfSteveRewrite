@@ -2,7 +2,6 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "CCC",
-    "CnC",
     "CnC"
   ],
   "key": {
@@ -14,6 +13,7 @@
     }
   },
   "result": {
-    "item": "legend_of_steve:copper_lock"
+    "item": "legend_of_steve:copper_lock",
+    "count": 3
   }
 }

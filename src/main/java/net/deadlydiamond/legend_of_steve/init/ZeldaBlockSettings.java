@@ -142,6 +142,17 @@ public class ZeldaBlockSettings {
     public static final FabricBlockSettings SILENT_PRINCESS_CROP_SETTINGS = FabricBlockSettings.copyOf(Blocks.TORCHFLOWER_CROP)
             .mapColor(MapColor.BLUE);
 
+    // DUNGEON CHESTS
+
+    public static final FabricBlockSettings RED_DUNGEON_CHEST_SETTINGS = FabricBlockSettings.create()
+            .sounds(ZeldaSounds.DUNGEON_CHEST)
+            .instrument(Instrument.BASS)
+            .mapColor(MapColor.RED)
+            .strength(2.5f);
+
+    public static final FabricBlockSettings BLUE_DUNGEON_CHEST_SETTINGS = FabricBlockSettings.copyOf(RED_DUNGEON_CHEST_SETTINGS)
+            .mapColor(MapColor.BLUE);
+
     // OTHER
 
     public static final FabricBlockSettings LOOT_POT_SETTINGS = FabricBlockSettings.copyOf(Blocks.DECORATED_POT)

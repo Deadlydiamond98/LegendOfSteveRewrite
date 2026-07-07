@@ -6,6 +6,7 @@ import net.deadlydiamond.legend_of_steve.common.items.FairyBottleItem;
 import net.deadlydiamond.legend_of_steve.common.items.EnchantedGlintItem;
 import net.deadlydiamond.legend_of_steve.common.items.bag.BombBagItem;
 import net.deadlydiamond.legend_of_steve.common.items.bag.QuiverItem;
+import net.deadlydiamond.legend_of_steve.common.items.locking.KeyItem;
 import net.deadlydiamond.legend_of_steve.common.items.projectile.DekuNutItem;
 import net.deadlydiamond.legend_of_steve.common.items.projectile.explosive.BombItem;
 import net.deadlydiamond.legend_of_steve.common.items.projectile.explosive.ChargedBombItem;
@@ -87,7 +88,7 @@ public class ZeldaItems {
     public static final Item SILENT_PRINCESS_BULB = register("silent_princess_bulb", new AliasedBlockItem(ZeldaBlocks.SILENT_PRINCESS_CROP, new FabricItemSettings()));
 
     // CREATIVE OR DEBUG ///////////////////////////////////////////////////////////////////////////////////////////////
-    public static final Item CREATIVE_KEY = register("creative_key", new EnchantedGlintItem(new FabricItemSettings().rarity(Rarity.EPIC).maxCount(1)));
+    public static final Item CREATIVE_KEY = register("creative_key", new KeyItem(new FabricItemSettings().rarity(Rarity.EPIC).maxCount(1)));
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // REGISTRATION ////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -1,6 +1,5 @@
 package net.deadlydiamond.legend_of_steve.init;
 
-import net.deadlydiamond.legend_of_steve.common.blocksets.ChiseledWoodBrickBlockset;
 import net.deadlydiamond.legend_of_steve.util.wood.WoodVariant;
 import net.deadlydiamond98.koalalib.common.blocksets.AbstractBlockset;
 import net.minecraft.block.Block;
@@ -34,7 +33,11 @@ public class ZeldaNoteBlockSounds {
                 ZeldaBlocks.MASTER_DOOR,
                 ZeldaBlocks.MASTER_TRAPDOOR,
                 ZeldaBlocks.MASTER_GIRDER,
-                ZeldaBlocks.MASTER_BARREL
+                ZeldaBlocks.MASTER_BARREL,
+                ZeldaBlocks.RED_DUNGEON_CHEST,
+                ZeldaBlocks.TRAPPED_RED_DUNGEON_CHEST,
+                ZeldaBlocks.BLUE_DUNGEON_CHEST,
+                ZeldaBlocks.TRAPPED_BLUE_DUNGEON_CHEST
         );
         // MALON ///////////////////////////////////////////////////////////////////////////////////////////////////////
         registerNoteBlockSound(ZeldaSounds.MALON,

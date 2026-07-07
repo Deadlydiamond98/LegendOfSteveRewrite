@@ -4,11 +4,14 @@ import net.deadlydiamond.legend_of_steve.common.blocks.functional.locks.lock.Loc
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.locks.lock.LockedChestBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.locks.lock.LockedDoorBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.locks.lock.LockedTrapdoorBlock;
+import net.deadlydiamond.legend_of_steve.common.items.locking.KeyItem;
 import net.deadlydiamond.legend_of_steve.common.items.locking.LockItem;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlocks;
+import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
 import net.deadlydiamond.legend_of_steve.init.ZeldaTags;
 import net.deadlydiamond.legend_of_steve.util.datagen.model.ZeldaBlockModelDatagenUtil;
 import net.deadlydiamond98.koalalib.common.blocksets.AbstractBlockset;
+import net.deadlydiamond98.koalalib.common.items.interaction.PickupSoundItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.AbstractBlock;
@@ -50,7 +53,7 @@ public class LockBlockset extends AbstractBlockset {
         this.lockedTrapdoor = registerNoItem(modID, id() + "_locked_trapdoor", new LockedTrapdoorBlock(blockSettings, this.keyTag));
 
         this.lockItem = registerItem(Identifier.of(modID, id() + "_lock"), new LockItem(new FabricItemSettings(), this));
-        this.keyItem = registerItem(Identifier.of(modID, id() + "_key"), new Item(settings));
+        this.keyItem = registerItem(Identifier.of(modID, id() + "_key"), new KeyItem(settings));
     }
 
     @Override

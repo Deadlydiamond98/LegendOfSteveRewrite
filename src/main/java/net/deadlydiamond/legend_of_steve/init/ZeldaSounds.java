@@ -66,6 +66,10 @@ public class ZeldaSounds {
     // Redstone Lock
     public static final SoundEvent REDSTONE_LOCK_UNLOCK = register("block.redstone_lock_block.unlock");
     public static final SoundEvent REDSTONE_LOCK_LOCK = register("block.redstone_lock_block.lock");
+    // Dungeon Chest
+    public static final SoundEvent DUNGEON_CHEST_OPEN = register("block.dungeon_chest.open");
+    public static final SoundEvent DUNGEON_CHEST_CLOSE = register("block.dungeon_chest.close");
+    public static final BlockSoundGroup DUNGEON_CHEST = registerGroup("dungeon_chest", 1, 1.25f);
     // Fluid Walk Sounds
     public static final SoundEvent WATER_STEP = register("block.water.pondstriding.step");
     public static final SoundEvent LAVA_STEP = register("block.lava.hotstriding.step");
@@ -95,9 +99,10 @@ public class ZeldaSounds {
     public static final SoundEvent DEKU_NUT_STUN = register("item.deku_nut.freeze");
     // Bottle
     public static final SoundEvent EMPTY_BOTTLE = register("item.bottle.empty");
-    // Lock
+    // Lock & Key
     public static final SoundEvent LOCK = register("item.lock.lock");
     public static final SoundEvent UNLOCK = register("item.lock.unlock");
+    public static final SoundEvent KEY_PICKED_UP = register("item.key.pick_up");
     // Magic Sword
     public static final SoundEvent SWORD_SHOOT = register("item.magic_sword.shoot");
     public static final SoundEvent SWORD_RECHARGE = register("item.magic_sword.recharge");

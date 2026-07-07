@@ -2,12 +2,14 @@ package net.deadlydiamond.legend_of_steve.common.blocks.container.chest;
 
 import net.deadlydiamond.legend_of_steve.common.bes.container.chest.DungeonChestBlockEntity;
 import net.deadlydiamond.legend_of_steve.init.ZeldaBlockEntities;
+import net.deadlydiamond.legend_of_steve.init.ZeldaSounds;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ChestBlock;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.entity.ChestBlockEntity;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 
 import java.util.function.Supplier;
@@ -25,5 +27,13 @@ public class DungeonChestBlock extends ChestBlock {
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new DungeonChestBlockEntity(pos, state);
+    }
+
+    public SoundEvent getOpenSound() {
+        return ZeldaSounds.DUNGEON_CHEST_OPEN;
+    }
+
+    public SoundEvent getCloseSound() {
+        return ZeldaSounds.DUNGEON_CHEST_CLOSE;
     }
 }

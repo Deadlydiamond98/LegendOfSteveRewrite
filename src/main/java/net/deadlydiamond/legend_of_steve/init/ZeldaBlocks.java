@@ -186,11 +186,11 @@ public class ZeldaBlocks {
     public static final Block CRATE = register("crate", new Block(CRATE_SETTINGS), false);
     public static final Item CRATE_ITEM = ZeldaItems.register("crate", new CrateItem(new FabricItemSettings(), CRATE.getDefaultState()));
 
-    public static final Block RED_DUNGEON_CHEST = register("red_dungeon_chest", new DungeonChestBlock(FabricBlockSettings.copyOf(Blocks.CHEST)));
-    public static final Block BLUE_DUNGEON_CHEST = register("blue_dungeon_chest", new DungeonChestBlock(FabricBlockSettings.copyOf(Blocks.CHEST)));
+    public static final Block RED_DUNGEON_CHEST = register("red_dungeon_chest", new DungeonChestBlock(RED_DUNGEON_CHEST_SETTINGS));
+    public static final Block BLUE_DUNGEON_CHEST = register("blue_dungeon_chest", new DungeonChestBlock(BLUE_DUNGEON_CHEST_SETTINGS));
 
-    public static final Block TRAPPED_RED_DUNGEON_CHEST = register("trapped_red_dungeon_chest", new TrappedDungeonChestBlock(FabricBlockSettings.copyOf(Blocks.CHEST)));
-    public static final Block TRAPPED_BLUE_DUNGEON_CHEST = register("trapped_blue_dungeon_chest", new TrappedDungeonChestBlock(FabricBlockSettings.copyOf(Blocks.CHEST)));
+    public static final Block TRAPPED_RED_DUNGEON_CHEST = register("trapped_red_dungeon_chest", new TrappedDungeonChestBlock(RED_DUNGEON_CHEST_SETTINGS));
+    public static final Block TRAPPED_BLUE_DUNGEON_CHEST = register("trapped_blue_dungeon_chest", new TrappedDungeonChestBlock(BLUE_DUNGEON_CHEST_SETTINGS));
 
     // LOCKED BLOCKS
     public static final LockBlockset COPPER_LOCK = registerLock("copper", ZeldaTags.COPPER_KEYS);

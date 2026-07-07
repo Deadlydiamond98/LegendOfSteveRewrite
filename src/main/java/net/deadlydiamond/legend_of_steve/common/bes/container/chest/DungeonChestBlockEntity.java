@@ -7,6 +7,7 @@ import net.minecraft.block.entity.ChestBlockEntity;
 import net.minecraft.util.math.BlockPos;
 
 public class DungeonChestBlockEntity extends ChestBlockEntity {
+
     public DungeonChestBlockEntity(BlockPos blockPos, BlockState blockState) {
         this(ZeldaBlockEntities.DUNGEON_CHEST, blockPos, blockState);
     }

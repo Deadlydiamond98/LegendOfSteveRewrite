@@ -1,6 +1,7 @@
 package net.deadlydiamond.legend_of_steve.init.client;
 
 import net.deadlydiamond.legend_of_steve.client.models.be.CrystalSwitchOrbModel;
+import net.deadlydiamond.legend_of_steve.client.models.be.FlipBlockEntityModel;
 import net.deadlydiamond.legend_of_steve.client.models.entity.*;
 import net.deadlydiamond.legend_of_steve.client.models.feature.QuiverModel;
 import net.deadlydiamond.legend_of_steve.client.rendering.block.*;
@@ -46,6 +47,7 @@ public class ZeldaRenderers {
         BlockEntityRendererFactories.register(ZeldaBlockEntities.BOUNCING_BLOCK, BouncingBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ZeldaBlockEntities.CRYSTAL_SWITCH, CrystalSwitchBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ZeldaBlockEntities.DUNGEON_CHEST, ChestBlockEntityRenderer::new);
+        BlockEntityRendererFactories.register(ZeldaBlockEntities.FLIP_BLOCK, FlipBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ZeldaBlockEntities.LOCKED_CHEST, ChestBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ZeldaBlockEntities.SWORD_PEDESTAL, SwordPedestalBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ZeldaBlockEntities.TRAPPED_DUNGEON_CHEST, ChestBlockEntityRenderer::new);
@@ -59,6 +61,7 @@ public class ZeldaRenderers {
         EntityModelLayerRegistry.registerModelLayer(TektiteEntityModel.LAYER_LOCATION, TektiteEntityModel::getTexturedModelData);
 
         EntityModelLayerRegistry.registerModelLayer(CrystalSwitchOrbModel.LAYER_LOCATION, CrystalSwitchOrbModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(FlipBlockEntityModel.LAYER_LOCATION, FlipBlockEntityModel::getTexturedModelData);
 
         EntityModelLayerRegistry.registerModelLayer(QuiverModel.LAYER_LOCATION, QuiverModel::getTexturedModelData);
     }

@@ -10,8 +10,10 @@ import net.deadlydiamond.legend_of_steve.common.blocks.deco.MasterOreBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.connected.ConnectedPillarBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.crafting.DungeonTableBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.locks.RedstoneLockBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.FlipBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.InvisibleQuestionBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.QuestionBlock;
+import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.base.BouncableBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.base.BouncingTransitionBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.GirderBlock;
 import net.deadlydiamond.legend_of_steve.common.blocks.deco.glowing.FairyLamp;
@@ -204,10 +206,12 @@ public class ZeldaBlocks {
     public static final Block BOUNCING_BLOCK = register("bouncing_block", new BouncingTransitionBlock(FabricBlockSettings.copyOf(Blocks.MOVING_PISTON)), false);
 
     public static final Block QUESTION_BLOCK = register("question_block", new QuestionBlock(QUESTION_BLOCK_SETTINGS));
-    public static final Block BLUE_QUESTION_BLOCK = register("blue_question_block", new QuestionBlock(QUESTION_BLOCK_SETTINGS));
+    public static final Block BLUE_QUESTION_BLOCK = register("blue_question_block", new QuestionBlock(BLUE_QUESTION_BLOCK_SETTINGS));
     public static final Block INVISIBLE_QUESTION_BLOCK = register("invisible_question_block", new InvisibleQuestionBlock(
             FabricBlockSettings.copyOf(QUESTION_BLOCK_SETTINGS).nonOpaque().dynamicBounds()
     ));
+
+    public static final Block FLIP_BLOCK = register("flip_block", new FlipBlock(FLIP_BLOCK_SETTINGS));
 
     // SWITCH BLOCKS
     public static final Block CRYSTAL_SWITCH = register("crystal_switch", new CrystalSwitchBlock(CRYSTAL_SWITCH_SETTINGS), new FabricItemSettings().rarity(Rarity.RARE));
@@ -272,9 +276,11 @@ public class ZeldaBlocks {
         FlammableBlockRegistry.getDefaultInstance().add(DEKU_LEAVES, 30, 60);
         FlammableBlockRegistry.getDefaultInstance().add(FRUITING_DEKU_LEAVES, 30, 60);
         FlammableBlockRegistry.getDefaultInstance().add(ZeldaTags.CHISELED_PLANKS_BLOCK, 5, 20);
+        FlammableBlockRegistry.getDefaultInstance().add(FLIP_BLOCK, 30, 20);
 
         FuelRegistry.INSTANCE.add(ZeldaTags.CHISELED_PLANKS_ITEM, 300);
         FuelRegistry.INSTANCE.add(CRATE, 300);
+        FuelRegistry.INSTANCE.add(FLIP_BLOCK, 300);
 
         CompostingChanceRegistry.INSTANCE.add(SILENT_PRINCESS, 0.3f);
         CompostingChanceRegistry.INSTANCE.add(DEKU_SAPLING, 0.3f);

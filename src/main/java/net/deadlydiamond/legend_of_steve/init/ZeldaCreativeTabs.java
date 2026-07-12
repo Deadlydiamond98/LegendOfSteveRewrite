@@ -173,6 +173,7 @@ public class ZeldaCreativeTabs {
         entries.add(ZeldaBlocks.QUESTION_BLOCK);
         entries.add(ZeldaBlocks.BLUE_QUESTION_BLOCK);
         entries.add(ZeldaBlocks.INVISIBLE_QUESTION_BLOCK);
+        entries.add(ZeldaBlocks.FLIP_BLOCK);
 
         ZeldaBlocks.STRANGE_DIRT.addToCreative(entries);
         ZeldaBlocks.POLISHED_STRANGE_DIRT.addToCreative(entries);

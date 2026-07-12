@@ -32,6 +32,11 @@ public class StrangeBrickSlabBlock extends SlabBlock implements IBouncableBlock 
         return false;
     }
 
+    @Override
+    public boolean canBombTrigger(World world, BlockPos blockPos, BlockState blockState, @Nullable Entity entity) {
+        return false;
+    }
+
     // BOUNCING ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override

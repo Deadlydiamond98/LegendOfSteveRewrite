@@ -94,6 +94,7 @@ public class ZeldaLootTableDatagen extends FabricBlockLootTableProvider {
                 ZeldaBlocks.QUESTION_BLOCK,
                 ZeldaBlocks.BLUE_QUESTION_BLOCK,
                 ZeldaBlocks.INVISIBLE_QUESTION_BLOCK,
+                ZeldaBlocks.FLIP_BLOCK,
                 // DUNGEON CHESTS
                 ZeldaBlocks.RED_DUNGEON_CHEST,
                 ZeldaBlocks.BLUE_DUNGEON_CHEST,

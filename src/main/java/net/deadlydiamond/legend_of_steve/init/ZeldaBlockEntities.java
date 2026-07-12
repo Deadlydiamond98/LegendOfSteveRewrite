@@ -3,6 +3,7 @@ package net.deadlydiamond.legend_of_steve.init;
 import net.deadlydiamond.legend_of_steve.LegendOfSteve;
 import net.deadlydiamond.legend_of_steve.common.bes.BombFlowerBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.BouncingBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.bes.FlipBlockBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.chest.DungeonChestBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.container.chest.TrappedDungeonChestBlockEntity;
 import net.deadlydiamond.legend_of_steve.common.bes.locks.LockedBlockEntity;
@@ -80,6 +81,8 @@ public class ZeldaBlockEntities {
     public static final BlockEntityType<BombFlowerBlockEntity> BOMB_FLOWER = register("bomb_flower", BombFlowerBlockEntity::new, ZeldaBlocks.BOMB_FLOWER);
 
     public static final BlockEntityType<BouncingBlockEntity> BOUNCING_BLOCK = register("bouncing_block", BouncingBlockEntity::new, ZeldaBlocks.BOUNCING_BLOCK);
+
+    public static final BlockEntityType<FlipBlockBlockEntity> FLIP_BLOCK = register("flip_block", FlipBlockBlockEntity::new, ZeldaBlocks.FLIP_BLOCK);
 
     // HELPER METHODS //////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -33,6 +33,11 @@ public class StrangeBrickStairsBlock extends StairsBlock implements IBouncableBl
         return false;
     }
 
+    @Override
+    public boolean canBombTrigger(World world, BlockPos blockPos, BlockState blockState, @Nullable Entity entity) {
+        return false;
+    }
+
     // BOUNCING ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override

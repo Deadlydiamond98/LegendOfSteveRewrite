@@ -51,6 +51,8 @@ public class ZeldaSounds {
     public static final SoundEvent QUESTION_BLOCK_HIT = register("block.question_block.bounce");
     public static final SoundEvent QUESTION_BLOCK_EMPTY_CONTENTS = register("block.question_block.empty_content");
     public static final SoundEvent QUESTION_BLOCK_DEPOSIT = register("block.question_block.deposit");
+    // Flip Block
+    public static final SoundEvent FLIP_BLOCK_HIT = register("block.flip_block.bounce");
     // Crystal Switch
     public static final BlockSoundGroup CRYSTAL_SWITCH = registerGroup("crystal_switch", 1, 1);
     public static final SoundEvent CRYSTAL_SWITCH_ON = register("block.crystal_switch.toggle_on");
@@ -88,6 +90,7 @@ public class ZeldaSounds {
     public static final SoundEvent PAAH = register("block.note_block.paah");
     public static final SoundEvent NYLON_GUITAR = register("block.note_block.nylon_guitar");
     public static final SoundEvent TMNT4_ORCHESTRA_HIT = register("block.note_block.tmnt4_orchestra_hit");
+    public static final SoundEvent VIBRAPHONE = register("block.note_block.vibraphone");
 
     // Items ///////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Emerald Shards

@@ -45,6 +45,7 @@ public class LockBlockset extends AbstractBlockset {
         this.keyTag = keyTag;
 
         AbstractBlock.Settings blockSettings = FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)
+                .nonOpaque()
                 .instrument(Instrument.SNARE).strength(55, 1200);
 
         this.lockedBlock = registerNoItem(modID, id() + "_lock", new LockedBlock(blockSettings, this.keyTag));

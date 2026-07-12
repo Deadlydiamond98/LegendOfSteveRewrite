@@ -134,7 +134,8 @@ public class ZeldaBlockTagDatagen extends FabricTagProvider.BlockTagProvider {
 
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(
                 ZeldaBlocks.CRATE,
-                ZeldaBlocks.DUNGEON_TABLE
+                ZeldaBlocks.DUNGEON_TABLE,
+                ZeldaBlocks.FLIP_BLOCK
         );
 
         // MINING LEVEL ////////////////////////////////////////////////////////////////////////////////////////////////

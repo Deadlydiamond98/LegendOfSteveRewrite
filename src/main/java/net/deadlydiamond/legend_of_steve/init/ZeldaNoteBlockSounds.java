@@ -56,17 +56,13 @@ public class ZeldaNoteBlockSounds {
                 ZeldaBlocks.COBBLED_FAIRY_MARBLE,
                 ZeldaBlocks.FAIRY_MARBLE_BRICKS,
                 ZeldaBlocks.MOSSY_FAIRY_MARBLE_BRICKS,
-                ZeldaBlocks.FAIRY_MARBLE_TILES,
-                ZeldaBlocks.PERLITE_BRICKS
+                ZeldaBlocks.FAIRY_MARBLE_TILES
         );
         registerNoteBlockSound(ZeldaSounds.PIZZICATO_STRING,
                 ZeldaBlocks.CRACKED_FAIRY_MARBLE_BRICKS,
                 ZeldaBlocks.CHISELED_FAIRY_MARBLE,
                 ZeldaBlocks.FAIRY_MARBLE_PILLAR,
-                ZeldaBlocks.SMOOTH_FAIRY_MARBLE,
-                ZeldaBlocks.PERLITE,
-                ZeldaBlocks.PERLITE_PILLAR,
-                ZeldaBlocks.CHISELED_PERLITE
+                ZeldaBlocks.SMOOTH_FAIRY_MARBLE
         );
         // OCARINA /////////////////////////////////////////////////////////////////////////////////////////////////////
         registerNoteBlockSound(ZeldaSounds.OCARINA,
@@ -86,7 +82,8 @@ public class ZeldaNoteBlockSounds {
                 ZeldaBlocks.REINFORCED_STRANGE_DIRT
         );
         registerNoteBlockSound(ZeldaSounds.SMW_PIANO,
-                ZeldaBlocks.STRANGE_DIRT_PILLAR
+                ZeldaBlocks.STRANGE_DIRT_PILLAR,
+                ZeldaBlocks.FLIP_BLOCK
         );
         // SMW SLAP BASS ///////////////////////////////////////////////////////////////////////////////////////////////
         registerNoteBlockSound(ZeldaSounds.SMW_SLAP_BASS,
@@ -116,6 +113,16 @@ public class ZeldaNoteBlockSounds {
                 ZeldaBlocks.RED_TEKTILES,
                 ZeldaBlocks.SMALL_RED_TEKTILES,
                 ZeldaBlocks.RED_TEKTILE_BRICKS
+        );
+        // VIBRAPHONE //////////////////////////////////////////////////////////////////////////////////////////////////
+        registerNoteBlockSound(ZeldaSounds.VIBRAPHONE,
+                ZeldaBlocks.PERLITE_BRICKS
+        );
+
+        registerNoteBlockSound(ZeldaSounds.VIBRAPHONE,
+                ZeldaBlocks.PERLITE,
+                ZeldaBlocks.PERLITE_PILLAR,
+                ZeldaBlocks.CHISELED_PERLITE
         );
     }
 

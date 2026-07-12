@@ -25,6 +25,11 @@ public class StrangeBrickBlock extends BouncableBlock {
     }
 
     @Override
+    public boolean canBombTrigger(World world, BlockPos blockPos, BlockState blockState, @Nullable Entity entity) {
+        return false;
+    }
+
+    @Override
     public void afterBounce(World world, BlockPos pos, BlockState state, @Nullable Entity owner, Direction bouncedDirection, BounceType bounceType, @Nullable DefaultedList<ItemStack> inventory) {
         breakBricks(world, pos, bounceType);
     }

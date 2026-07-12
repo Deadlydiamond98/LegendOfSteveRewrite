@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "side": "legend_of_steve:block/flip_block",
+    "end": "legend_of_steve:block/flip_block_top",
+    "particle": "legend_of_steve:block/flip_block_top"
+  }
+}

@@ -23,6 +23,11 @@ public class InvisibleQuestionBlock extends QuestionBlock implements IModifiedOu
     }
 
     @Override
+    public boolean canBombTrigger(World world, BlockPos blockPos, BlockState blockState, @Nullable Entity entity) {
+        return false;
+    }
+
+    @Override
     protected void spawnBreakParticles(World world, PlayerEntity player, BlockPos pos, BlockState state) {
         super.spawnBreakParticles(world, player, pos, state);
     }

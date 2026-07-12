@@ -5,5 +5,6 @@ public enum BounceType {
     JUMP,
     ATTACK,
     PROJECTILE,
-    REDSTONE
+    REDSTONE,
+    BOMB
 }

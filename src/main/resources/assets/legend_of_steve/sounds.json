@@ -462,6 +462,12 @@
     ],
     "subtitle": "subtitles.block.note_block.note"
   },
+  "block.note_block.vibraphone": {
+    "sounds": [
+      "legend_of_steve:note/vibraphone"
+    ],
+    "subtitle": "subtitles.block.note_block.note"
+  },
 
   "block.bomb_flower.break": {
     "sounds": [
@@ -1468,6 +1474,14 @@
       "legend_of_steve:block/question_block/empty_content"
     ],
     "subtitle": "subtitles.legend_of_steve.block.question_block.empty_content"
+  },
+
+
+  "block.flip_block.bounce": {
+    "sounds": [
+      "legend_of_steve:block/flip_block/bump"
+    ],
+    "subtitle": "subtitles.legend_of_steve.block.question_block.bounce"
   },
 
   "block.crystal_switch.break": {

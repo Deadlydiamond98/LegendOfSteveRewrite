@@ -107,6 +107,11 @@ public class ZeldaBlockSettings {
             .sounds(ZeldaSounds.STRANGE_BLUE_DIRT);
     public static final FabricBlockSettings QUESTION_BLOCK_SETTINGS = FabricBlockSettings.copyOf(Blocks.GOLD_BLOCK)
             .sounds(ZeldaSounds.QUESTION_BLOCK);
+    public static final FabricBlockSettings BLUE_QUESTION_BLOCK_SETTINGS = FabricBlockSettings.copyOf(Blocks.GOLD_BLOCK)
+            .sounds(ZeldaSounds.QUESTION_BLOCK).mapColor(MapColor.LAPIS_BLUE);
+    public static final FabricBlockSettings FLIP_BLOCK_SETTINGS = FabricBlockSettings.copyOf(Blocks.CHISELED_BOOKSHELF)
+            .mapColor(MapColor.YELLOW)
+            .suffocates((state, world, pos) -> false);
 
     // TEKTILES
     public static final FabricBlockSettings BLUE_TEKTILES_SETTINGS = FabricBlockSettings.copyOf(Blocks.BONE_BLOCK)
@@ -148,7 +153,7 @@ public class ZeldaBlockSettings {
             .sounds(ZeldaSounds.DUNGEON_CHEST)
             .instrument(Instrument.BASS)
             .mapColor(MapColor.RED)
-            .strength(2.5f);
+            .strength(3);
 
     public static final FabricBlockSettings BLUE_DUNGEON_CHEST_SETTINGS = FabricBlockSettings.copyOf(RED_DUNGEON_CHEST_SETTINGS)
             .mapColor(MapColor.BLUE);

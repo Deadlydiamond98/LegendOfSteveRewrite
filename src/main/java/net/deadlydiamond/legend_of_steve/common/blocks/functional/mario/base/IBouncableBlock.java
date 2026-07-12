@@ -1,6 +1,7 @@
 package net.deadlydiamond.legend_of_steve.common.blocks.functional.mario.base;
 
 import net.deadlydiamond.legend_of_steve.common.bes.BouncingBlockEntity;
+import net.deadlydiamond.legend_of_steve.common.blocks.IExplodedInteraction;
 import net.deadlydiamond.legend_of_steve.common.blocks.functional.BounceType;
 import net.deadlydiamond.legend_of_steve.common.items.IExtraCanMine;
 import net.deadlydiamond.legend_of_steve.init.ZeldaAdvancements;
@@ -28,9 +29,10 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraft.world.explosion.Explosion;
 import org.jetbrains.annotations.Nullable;
 
-public interface IBouncableBlock extends IJumpIntoAction, IHitBlockAction, IExtraCanMine {
+public interface IBouncableBlock extends IJumpIntoAction, IHitBlockAction, IExtraCanMine, IExplodedInteraction {
 
     // Getters /////////////////////////////////////////////////////////////////////////////////////////////////////////
     BlockState getPostBounceState(BlockState originalState);
@@ -58,6 +60,10 @@ public interface IBouncableBlock extends IJumpIntoAction, IHitBlockAction, IExtr
     boolean canBounceBlock(World world, BlockPos pos, BlockState state);
 
     default boolean canJumpInto(World world, BlockPos blockPos, BlockState blockState, @Nullable Entity entity) {
+        return true;
+    }
+
+    default boolean canBombTrigger(World world, BlockPos blockPos, BlockState blockState, @Nullable Entity entity) {
         return true;
     }
 
@@ -133,6 +139,17 @@ public interface IBouncableBlock extends IJumpIntoAction, IHitBlockAction, IExtr
     default void jumpIntoBlock(World world, BlockPos pos, BlockState state, @Nullable Entity entity) {
         if (canJumpInto(world, pos, state, entity) && canBounceBlock(world, pos, state) && !world.isClient()) {
             triggerBounce(world, pos, state, entity, Direction.UP, BounceType.JUMP);
+        }
+    }
+
+    // Bomb
+
+    @Override
+    default void onBombExploded(World world, BlockPos blockPos, Explosion explosion) {
+        BlockState state = world.getBlockState(blockPos);
+
+        if (canBombTrigger(world, blockPos, state, explosion.getCausingEntity()) && canBounceBlock(world, blockPos, state) && !world.isClient()) {
+            triggerBounce(world, blockPos, state, explosion.getCausingEntity(), Direction.UP, BounceType.BOMB);
         }
     }
 
